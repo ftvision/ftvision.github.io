@@ -20,5 +20,3 @@ gems:
   - jemoji
   - jekyll-sitemap
   - jekyll-mentions
-kramdown:
-  input: GFM

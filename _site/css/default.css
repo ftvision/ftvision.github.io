@@ -1,0 +1,42 @@
+body {
+	width: 800px;
+	margin : auto;
+	background-color: #eeeeee;
+	font-family: Georgia, SimSun;
+}
+p {
+	font-family: Georgia, SimSun;
+	text-indent: 2em;
+	line-height: 1.5em;
+}
+footer {
+	text-align: center;
+	color: white;
+	background-color: black;
+	padding-top: 1em;
+	padding-bottom: 2em;
+}
+header{
+	text-align: center;
+	padding:1em;
+}
+header nav ul {
+    list-style-type: none;
+    float:right;
+}
+header>nav>ul>li {
+	float: left;
+	background-color: black;
+	color: white;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+}
+header nav ul li a:hover{
+	text-decoration: underline;
+}
+header nav ul li a{
+	text-decoration: none;
+	color:white;
+}
