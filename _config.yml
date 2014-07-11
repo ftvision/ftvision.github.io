@@ -20,3 +20,4 @@ gems:
   - jemoji
   - jekyll-sitemap
   - jekyll-mentions
+markdown: kramdown

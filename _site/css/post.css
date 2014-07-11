@@ -1,0 +1,18 @@
+body {
+	width: 70%;
+	margin : auto;
+	background-color: white;
+	font-size: 20px;
+	font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+	letter-spacing: 0.01rem;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 1.5;
+}
+
+#content {
+	background-color: white;
+	padding: 2em;
+	border:1px solid rgba(25 25 25 0.5);
+	box-shadow: 0 0 0 10px rgba(150, 150, 150, 0.1), 0 1px 3px rgba(25, 25, 25, 0.3), 0 10px 15px rgba(200, 200, 200, 0.1) inset;
+}
