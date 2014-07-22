@@ -5,38 +5,57 @@ title: Life Project
 <div id="top">
 <header>Table of Contents</header>
 <ul>
-	<li><a href="#reading">Reading</a></li>
-	<li><a href="#music">Music</a></li>
-	<li><a href="#travel">Travel</a></li>
-	<li><a href="#sports">Sports</a></li>
-	<li><a href="#language">Language</a></li>
-	<li><a href="#anime">Animation</a></li>
+	<li><a href="#inner">Inner Man</a></li>
+	<li><a href="#outer">Radiative Man</a></li>
+	<li><a href="#travel">World-wide Man</a></li>
+	<li><a href="#sports">Martial Man</a></li>
+	<li><a href="#anime">Childlike Man</a></li>
 </ul>
 </div>
 
-<h1>Reading</h1>
->Read Aggressively!
+<h1><a name="#reading">Inner Man</a></h1>
++ Reading
 
-<h1>Music</h1>
-Ongoing: Yo-Yo Ma's collection
++ Music
 
-<h1>Travel</h1>
+## Programming:
++ [leetcode](http://leetcode.com/)
++ [leetcode Report]
++ [leetcode Report & Discuss - 1](http://answer.ninechapter.com/#userconsent#)
+
+<h1><a name="#outer">Radiative Man</a></h1>
+
+## Writing
+
++ My PhD Survival Guideline
+
++ JHU Diary / 菊花大学日记  
+
+## Teaching	
+## Social activity
+
+<h1><a name="#travel">World-wide Man</a></h1>
++ Travel
 Incoming: N.A.
 
 Finished: 
 WestCoast U.S.A.
 
-<h1>Sports</h1>
++ Language 
 
-<h1>Language</h1>
-Incoming: Spanish
-Ongoing: Japanese
-Archive: English, French
-<h1>Animation</h1>
-Every January, April, July, and October, a new season of animations will be released. I usually pick three to five animations in one season and update each of them weekly. 
+<h1><a name="sports">Martial Man</a></h1>
++ Aikido
++ Sports
 
->Animation is not childish at all! It’s a world, a exceptional, splendid world. Animations tell stories, stories of reality and beyond reality. I always gain the power, knowledge from them. I laugh and I cry; I am hurt and healed.
+<h1><a name="anime">Childllike Man</a></h1>
++Animation
+
+Every **January**, **April**, **July**, and **October**, a new season of animations will be released. I usually pick three to five animations in one season and update each of them weekly. 
+
+>Animation is not childish at all! It\'s a world, a exceptional, splendid world, parallel to the world we are living. Animations tell stories, stories of reality and beyond reality. I always gain the power, knowledge from them. I laugh and I cry; I am hurt and healed.
 
 ### 2014, July
+
 ### 2014, April
+
 ### 2014, January

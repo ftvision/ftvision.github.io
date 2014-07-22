@@ -37,4 +37,4 @@ This course is in plan. I\'ll try to offer this course during winter interssion.
 
 - Functional Anatomy of Central Nervous System, Dr. Yanjie Su, Peking University, 2011 Spring
 
-> THis course offered a general knowledge of human central nervous system. 
+> This course offered a general knowledge of human central nervous system. 

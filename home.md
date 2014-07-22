@@ -4,10 +4,10 @@ title: Home
 ---
 
 # Hello World!
-<img src="/images/profile1.jpg" alt="profile" width="90%" height="75%" id="profile" />
+<img src="/images/profile1.jpg" alt="profile" id="profile" />
 
 ## Details
-I am a PhD <sub>(a.k.a. Pure-Hilarious-Diverse, Permanent-Head-Damage, or Perilous-Hazardous-Despairing) </sub>student studying human vision at Johns Hopkins University. I just wrapped up my first year study during which I experimented on visual working memory\'s modulation on perception, statistical learning, figure-ground perception and attention. I am  drowing in my transition period right now. Outside of research, I travel, watch animations and learn new languages.   
+I am a PhD <sub>(a.k.a. Pure-Hilarious-Diverse, Permanent-Head-Damage, or Perilous-Hazardous-Despairing) </sub>student studying human vision at Johns Hopkins University. I just wrapped up my first year study during which I experimented on visual working memory\'s modulation on perception, statistical learning, figure-ground perception and attention. I am  drowing in my transition period right now. Outside of research, I travel, watch animations and learn new languages. \[[Obsolete Self Introduction is Here]({% post_url 2014-07-11-Obsolete-Self-Introduction %})\]  
 
 <div id="column3">
 <h2>Orignin</h2>

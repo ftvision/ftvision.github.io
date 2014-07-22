@@ -112,6 +112,10 @@ header nav ul li a{
 	width: 45%;
 	float:right;
 }
+#profile{
+	width: 90%;
+	margin:0;
+}
 #clear{
 	clear:both;
 }
