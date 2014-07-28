@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>/2014/07/23/Distracting.html</loc>
+    <lastmod>2014-07-23T00:00:00-04:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>/thought/2014/07/11/research-deserve-to-do.html</loc>
     <lastmod>2014-07-11T00:00:00-04:00</lastmod>
     <priority>0.8</priority>
@@ -17,35 +23,42 @@
   
   <url>
     <loc>/home.html</loc>
-    <lastmod>2014-07-22T05:13:18-04:00</lastmod>
+    <lastmod>2014-07-25T13:40:36-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>/project/</loc>
-    <lastmod>2014-07-22T05:13:18-04:00</lastmod>
+    <lastmod>2014-07-25T13:40:36-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>/project/manage.html</loc>
+    <lastmod>2014-07-25T13:40:36-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>/research/</loc>
-    <lastmod>2014-07-22T05:13:18-04:00</lastmod>
+    <lastmod>2014-07-25T13:40:36-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>/resume/</loc>
-    <lastmod>2014-07-22T05:13:18-04:00</lastmod>
+    <lastmod>2014-07-25T13:40:36-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>/teaching/</loc>
-    <lastmod>2014-07-22T05:13:18-04:00</lastmod>
+    <lastmod>2014-07-25T13:40:36-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -13,6 +13,8 @@ title: Life Project
 </ul>
 </div>
 
+[project management](/project/manage.html)
+
 <h1><a name="#reading">Inner Man</a></h1>
 + Reading
 
