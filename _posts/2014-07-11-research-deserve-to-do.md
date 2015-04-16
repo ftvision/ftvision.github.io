@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Good research to do 
+title: Good Research to Do 
 categories: thought
 tag: research
 ---

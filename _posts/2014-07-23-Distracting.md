@@ -1,6 +1,6 @@
 ---
 layout: post
-title: What distract me?
+title: What Distract Me?
 ---
 
 # WHy I waste my time?
