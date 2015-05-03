@@ -1,14 +1,42 @@
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>{{ page.title }}</title>
-	<link href="/css/post.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-	<h1>Post: {{ page.title }}</h1>
-	<div id="content">
-	{{ content }}
+{% assign minutes = content | number_of_words | divided_by: 180 %}
+{% if minutes == 0 %}
+{% assign minutes = 1 %}
+{% endif %}
+<meta charset="utf-8">
+<link rel="stylesheet" href="{{ "/style.css" | prepend: site.baseurl }}">
+
+	<div class="container" style="background-image: url(/img/portfolio/{{ page.img }});">
+	<div class="post-header">{{page.title}}</div>
+	<p style="color: white; font-size:1em; background-color:black; opacity: 0.8">Last Update: {{ page.date | date: "%b, %d, %Y" }}; <a href="/home.html" style=" font-size:1em">Back to the Homepage</a></p>
+	
 	</div>
 
-</body>
-</html>
+<div class="container content">
+	<div class = "row">
+	<article> {{ content }}</article>
+</div>
+</div>
+
+
+ <footer style="background-color:black; color:white">
+ 	<div class="container" >
+ 		<div class="row">
+ 			<div class="col-md-6">
+ 				<span class="copyright">Copyright &copy; {{ site.title }} 2014 - 2015</span>
+ 			</div>
+ 			<div class="col-md-4">
+
+ 			</div>
+ 			<div class="col-md-6">
+                <!--    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                -->
+                <span> Powered by Agency Theme, Jekyll, and Github </span>
+            </div>
+        </div>
+    </div>
+</footer>

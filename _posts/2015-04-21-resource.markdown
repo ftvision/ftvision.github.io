@@ -1,0 +1,36 @@
+---
+title: Resources
+subtitle: Academic Related Resources
+layout: post
+date: 2015-04-21
+img: resource-img.jpg
+thumbnail: resource.png
+alt: image-alt
+category: teaching
+permalink: /resources
+---
+
+<h3 class="post-section-title"> Research Summaries, and Reading Lists </h3>
+
+* My Advanced Exam Reading List
+* Brain Scholl's [Inattentional Blindness List](http://www.yale.edu/perception/Brian/refGuides/IB.html) & My Summaries
+* Yury Petrov's [Top 100 Vision Paper List](http://nuweb.neu.edu/ypetrov/most-important-vision-papers.html) & My Summaries
+
+<hr>
+
+<h3 class="post-section-title"> Manuals, Tutorials, and Documentations </h3>
+
+* [fMRI 4 Newbies, by Judy Culham](http://culhamlab.ssc.uwo.ca/fmri4newbies/)
+
+<hr>
+
+<h3 class="post-section-title"> Blogs and Websites </h3>
+
+* [My Academic Blog](http://ftvision.github.io/AcademicBlog/)
+: Notes and Thoughts on research and others.
+* [Matt Might's Blog](http://matt.might.net/articles/)
+: Lots of useful suggestions
+* [Terry Tao's Blog](https://terrytao.wordpress.com/)
+: A blog of a genious mathematician, math, research, and general suggestions.
+* [Philip Guo's Writing](http://www.pgbovine.net/writings.htm)
+: Thoughts of a computer scientist, and don't miss his [Ph.D. Grind](http://www.pgbovine.net/PhD-memoir.htm)

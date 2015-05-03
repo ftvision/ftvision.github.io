@@ -1,6 +1,29 @@
-pygments: true
-gems:
-  - jemoji
-  - jekyll-sitemap
-  - jekyll-mentions
+url: https://ftvision.github.io
+baseurl: 
+
+# Site settings
+title: Feitong's Vision
+email: feitong.yang@outlook.com
+description: "Vision is intelligent, and thinking is hard. That's why we are so obsessed."
+
+# Color settings (hex-codes without the leading hash-tag)
+color:
+  primary: 03bafe
+  secondary: 015e81  
+  secondary-dark: 333
+
+# Team names, titles and social links
+people:
+- name: Feitong Yang
+  pic: 1
+  position: PhD Student
+
+# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
+# Postal address (add as many lines as necessary)
+address:
+  - line: 3400 North Charles Street, Ames 150
+  - line: Baltimore, MD 21218
+
+# Build settings
 markdown: kramdown
+#permalink: pretty

@@ -1,13 +1,59 @@
-<header>
-	<hgroup>
-		<h1 id="logo"><a href="/index.html">Feitong's Place</a></h1>
-	</hgroup>
-	<nav>
-		<ul>
-			<li><a href="/home.html">Home</a></li>
-			<li><a href="/research/index.html">Research</a></li>
-			<li><a href="/teaching/index.html">Teaching</a></li>
-			<li><a href="/resume/index.html">Resume</a></li>
-		</ul>
-	</nav>
-</header>
+<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">{{site.title}}</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#journey">Journey</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#research">Research</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#teaching">Teaching</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Welcome aboard</div>
+                <div class="intro-heading">Vision is Intelligent.</div>
+                <div class="intro-heading">Thiking is Hard.</div>
+                <!--<a href="#services" class="page-scroll btn btn-xl">Tell Me More</a> -->
+                <a href="#about" class="btn btn-xl page-scroll">
+                     <span>Take off</span>
+                </a>
+            </div>
+        </div>
+    </header>
+<!--
+        {% for page in site.pages %}
+          {% if page.title %}<a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>{% endif %}
+        {% endfor %}
+ -->
+

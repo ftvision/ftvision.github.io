@@ -1,0 +1,46 @@
+---
+title: Teaching
+subtitle: Instructions & Teaching Assistant Services
+layout: post
+date: 2015-04-21
+thumbnail: teaching.png
+img: teaching-img.jpg
+alt: image-alt
+category: teaching
+permalink: /teaching
+---
+
+
+<h3 class="post-section-title"> As Instructor </h3>
+
+* [AS.200.131.22: Unconscious Computations in Mind](https://github.com/ftvision/AS.200.131.22)
+: Every intersession, I offer this introductory course on unconscious computations in mind. 
+
+
+<hr>
+
+<h3 class="post-section-title"> As Teaching Assistant </h3>
+
+<h4 style="text-align: right">  Johns Hopkins University, Baltimore, MD, U.S.A. </h4>
+
+* Functional Human Neuroanatomy
+: Dr. Susan Courtney, 2015 Spring
+: _This course discussed about neuroanatomy from the perspective of cognitive function._
+
+* Mind, Brain & Experience
+: Dr. Marina Bedny, 2014 Fall
+: _This course discussed about brain plasticity, cognitive development, and core knowledge._
+
+* Neuroscience of Decision Making
+: Dr. Veit Stuphorn, 2014 Spring
+: _This course discussed about human learning and decision making process._
+
+<h4 style="text-align: right">  Peking University, Beijing, China </h4>
+
+* Computational Vision
+: Dr. Zili Liu, 2012 Fall
+: *This course covered basic computational problems and algorithms in vision.*
+
+* Functional Anatomy of Central Nervous System
+: Dr. Yanjie Su, 2011 Spring
+: _This course offered a general knowledge of human central nervous system._
