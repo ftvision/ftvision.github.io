@@ -11,7 +11,7 @@ permalink: /teaching
 ---
 
 
-<h3 class="post-section-title"> As Instructor </h3>
+<h3 class="post-section-title"> As an Instructor </h3>
 
 * [AS.200.131.22: Unconscious Computations in Mind](https://github.com/ftvision/AS.200.131.22)
 : Every intersession, I offer this introductory course on unconscious computations in mind. 
@@ -19,7 +19,7 @@ permalink: /teaching
 
 <hr>
 
-<h3 class="post-section-title"> As Teaching Assistant </h3>
+<h3 class="post-section-title"> As a Teaching Assistant </h3>
 
 <h4 style="text-align: right">  Johns Hopkins University, Baltimore, MD, U.S.A. </h4>
 
