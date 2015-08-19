@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+<body id="page-top" class="index">
+
+    {% include header.html %}
+    <div class="container">
+    <div class="row">
+        <!-- Page Tile and Info -->
+        <div class="col-md-6 col-sm-12">
+          <h1 class="page-header">{{page.title}}</h1>
+          <h3 class="spell">{{page.spell}}</h3>
+          <h4 class="explanation">{{page.explain}}</h4>  
+        </div>
+        <!-- Page Content -->
+        <div class="col-md-6 col-sm-12">
+            {{content}}
+        </div>
+    </div>
+    </div>
+    {% include footer.html %}
+    
+</body>
+</html>

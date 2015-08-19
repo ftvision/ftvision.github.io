@@ -1,0 +1,13 @@
+---
+title: Contact
+spell: \ī-ˈden-tə-tē\ noun.
+explain: Id-entity, the existence of id 
+date: 2015-08-19
+permalink: /contact
+layout: page
+---
+
+[X] Visual Similarity
+[X] Statistical Learning
+[X] Memory and Perception
+[X] Perceptual Decision Making
