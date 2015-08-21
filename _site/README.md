@@ -1,4 +1,4 @@
-Agency Jekyll theme
+Redesign My Homepage
 ====================
 
 Agency theme based on [Agency bootstrap theme](http://startbootstrap.com/templates/agency/)
