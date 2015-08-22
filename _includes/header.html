@@ -18,33 +18,8 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    {% if page.title == "Identity" %}
-                    <li class="active">
-                    {% else  %}
                     <li>
-                    {% endif %}
-                        <a class="page-scroll" href="/identity">About</a>
-                    </li>
-                    {% if page.title == "Research" %}
-                    <li class="active">
-                    {% else  %}
-                    <li>
-                    {% endif %}
-                        <a class="page-scroll" href="/research">Research</a>
-                    </li>
-                    {% if page.title == "Resource" %}
-                    <li class="active">
-                    {% else  %}
-                    <li>
-                    {% endif %}
-                        <a class="page-scroll" href="/resource">Resource</a>
-                    </li>
-                    {% if page.title == "Contact" %}
-                    <li class="active">
-                    {% else  %}
-                    <li>
-                    {% endif %}
-                        <a class="page-scroll" href="/contact">Contact</a>
+                        <a class="page-scroll" href="{{site.url}}">Home</a>
                     </li>
                 </ul>
             </div>
