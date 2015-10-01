@@ -6,7 +6,7 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 70px;
 }
 .footer {
   position: absolute;
@@ -18,5 +18,5 @@ body {
 }
 
 .footer-note {
-  margin-top: 1em
+  margin-top: 0.5em
 }
