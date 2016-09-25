@@ -10,12 +10,12 @@ permalink: /publication
 
 | **Yang, F.,** & Flombaum, J. I., (in Manuscript) Visual Statistical Learning Without Visual Awareness |
 | **Yang, F.,** & Flombaum, J. I., (in Manuscript) Robust Visual Statistical Learning |
-| Gong, M., **Yang, F.,** & Li, S., (in Manuscript) Reward association alters priority map via distractor suppression |
 {: .table .table-striped}
 
 ## Publication
 {: .text-danger}
 
+| Gong, M., **Yang, F.**, Li, S. (2016) Reward association facilitates distractor suppression in visual search. European Journal of Neuroscience (in press). |
 | Li. S., & **Yang, F.,** (2012), Task‐dependent uncertainty modulation of perceptual decisions in the human brain, _European Journal of Neuroscience_, 36(12), 3732-3739 |
 | **Yang, F.,** Wu. Q., Li. S., (2014), Learning-induced uncertainty reduction in perceptual decisions is task-dependent, _Frontiers in Human Neuroscience_, 8, 282 |
 {: .table .table-striped}

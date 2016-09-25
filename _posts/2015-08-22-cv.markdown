@@ -36,8 +36,9 @@ permalink: /cv
 ## Publication
 {: .text-info}
 
-| Li. S., & **Yang, F.,** (2012), Task‐dependent uncertainty modulation of perceptual decisions in the human brain, _European Journal of Neuroscience_, 36(12), 3732-3739 |
+| Gong, M., **Yang, F.**, Li, S. (2016) Reward association facilitates distractor suppression in visual search. European Journal of Neuroscience (in press). |
 | **Yang, F.,** Wu. Q., Li. S., (2014), Learning-induced uncertainty reduction in perceptual decisions is task-dependent, _Frontiers in Human Neuroscience_, 8, 282 |
+| Li. S., & **Yang, F.,** (2012), Task‐dependent uncertainty modulation of perceptual decisions in the human brain, _European Journal of Neuroscience_, 36(12), 3732-3739 |
 {: .table }
 
 ### Presentation
