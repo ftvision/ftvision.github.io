@@ -16,7 +16,6 @@ permalink: /teaching
 * [AS.200.131.22: Unconscious Computations in Mind](https://github.com/ftvision/AS.200.131.22)
 : Every intersession, I offer this introductory course on unconscious computations in mind. 
 
-
 <hr>
 
 <h3 class="post-section-title"> As a Teaching Assistant </h3>

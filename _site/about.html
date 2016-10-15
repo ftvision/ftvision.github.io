@@ -1,45 +1,45 @@
-<!-- Team Section -->
-    <section id="about" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Who is Feitong</h2>
-                    <h3 class="section-subheading text-muted">This is probably the most difficult question.</h3>
-                </div>
-            </div>
-            <div class="row">
-                {% for member in site.people %}
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="img/team/{{ member.pic }}.jpg" class="img-responsive img-circle" alt="">
-                        <h4>{{ member.name }}</h4>
-                        <p class="text-muted">{{ member.position }}</p>
-                        <ul class="list-inline social-buttons">
-                            {% for network in member.social %}
-                            <li><a href="{{ network.url }}"><i class="fa fa-{{ network.title }}"></i></a>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-                {% endfor %}
-                <div class="col-sm-8 content">
-                        <p>I am a Ph.D. student studying human vision at Johns Hopkins University. </p>
+<div class="container">
+<div class="row">
+    <!-- Page Tile and Info -->
+    <div class="col-md-6 col-sm-12">
+      <h1 class="page-header">Identity 
 
-                        <p>By <code>Ph.D</code>, I mean <code>Positive, happy, and Dynamic</code>, which should be pronounced as <code>Pessimistic, hazardous, and Dreadful </code></p>
+        <button type="button" class="btn btn-default fp-controlArrow fp-prev"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Prev</button>
+        
+        <button type="button" class="btn btn-default fp-controlArrow fp-next">Next<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
+      </h1>
+      <h3 class="spell">\ī-ˈden-tə-tē\ noun.</h3>
+      <h4 class="explanation">Id-entity, the existence of id? </h4>  
+      <blockquote>My name is Feitong Yang. <br />You don't know me.<br/> Neither do I.</blockquote>
+   </div>
+    <!-- Page Content -->
+    <div class="col-md-6 col-sm-12">
+      <div class="content-section">
+        <h2>I am a Ph.D. Student </h2>
+        <p class="lead">
+          By <em>Ph.D</em> I mean <span class="label label-success">Positive, Happy and Dynamic</span> which should be pronounced as <span class="label label-danger">Pessimistic, Hazardous, and Dreadful.</span>
+        </p>
+      </div>
+      <div class="content-section">
+        <h2>I do science for fun</h2>
+        <p class="lead">
+          This is <span class="label label-warning">FT's whimsical first principle of doing research</span> or precisely speaking, I do science only when I feel happy. 
+        </p>
+      </div>
+      <div class="content-section">
+        <h2>I also do weird things</h2>
+        <p class="lead">
+          So my explanation of words, like Id-entity, makes little sense. I watch <a href="http://ftanime.github.io"><span data-toggle="tooltip" data-placement="top" title="my anime review blog, in Chinese">ANIME</span></a>, travel some places, read some books, and program some codes, and do other <a href="{% post_url 2015-08-22-hobbies %}">random stuff</a>.
+        </p>
+      </div>
+      <div class="content-section">
+        <h2>Maybe a bit more details</h2>
+        <p class="lead">
+          That's why I made this <a href="{% post_url 2015-08-22-cv %}">CV</a>, to satisfy curiosities, both yours and mine.
+        </p>
+      </div>
+    </div>
+</div>
+</div>
 
-                        <p>As whimsical as I am, I follow my <i>first principle of doing research</i>: <strong>I do science for fun</strong>. Or precisely, I do science only when I feel happy. </p>
 
-                        <p>I mainly use <code style="color:blue">psychophysics</code> to study visual cognition. In addition, I am interested in using <code style="color:blue">computational models</code> to reason algorithms used in mind, and using <code style="color:blue">neuroimaing methods</code> to reveal implementations in the brain, though I have done none of these recently. In fact, I am open to any method as long as the question is interesting. My random thoughts can be found in my <a href="http://ftvision.github.io/AcademicBlog/" title="ft vision blog">Blog</a></p>
-
-                        <p>Outside of research, I travel, enjoy outdoor activities, learn new languages, and <a href="http://ftanime.github.io", title="anime">watch animations</a>. I also code and play with data when I feel like doing so.</p>
-
-                        <p>Reach me by <code style="color:gray">feitong.yang AT outlook dot com</code>.</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 2em">
-            <a href="#journey" class="btn btn-xl page-scroll">
-                    <span>Follow my journey</span>
-            </a>
-            </div>
-        </div>
-    </section>
