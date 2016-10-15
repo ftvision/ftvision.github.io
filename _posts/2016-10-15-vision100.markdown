@@ -7,7 +7,7 @@ permalink: /vision100
 
 ## Introduction
 
-This is a list of 100 vision science paper compiled by Dr.Yury Petrov,who is now at Oculus VR, at Northeastern University around 2007. The original link, however, is broken. Therefore I post the information in the original page here. Credits by Dr.Yury Petrov
+This is a list of 100 vision science paper compiled by Dr. Yury Petrov,who is now at Oculus VR, at Northeastern University around 2007. The original link, however, is broken. Therefore I post the information in the original page here. Credits by Dr. Yury Petrov
 
 The selection criterion:
 
@@ -28,7 +28,7 @@ cited a given article.
 
 ## The Resource
 
-I have collected almost all the papers in this list, but I failed to find about 5 of them. **[Click here](/assets/Papers.zip)** to download the package[259.7MB].
+I have collected almost all the papers in this list, but I failed to find about 5 of them. **[Click here](https://drive.google.com/file/d/0B_LvKHGr8VjLcHJnOGVydzVPWWM/view?usp=sharing)** to download the package[259.7MB].
 
 I didn't finish reading all of them. As far as I can remember, I should have finished 80%~85%.
 
