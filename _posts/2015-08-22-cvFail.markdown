@@ -34,6 +34,9 @@ Here is a running list of my failures during my journey. I was trying to summari
 ### Working Experiences
 {: .text-info}
 
+| <strong> Google </strong>, Mountain View, CA, U.S.A. <br/> _Software Engineer_ <br > **Rejected** with no interview | 2016 | 
+| <strong> The D.E.Shaw Group </strong>, New York, NY, U.S.A. <br/> _Quantitative Trader_ <br > **Rejected** after on-site interview | 2016 | 
+| <strong> Susquehanna International Group </strong>, Bala Cynwyd, PA, U.S.A. <br/> _Quantitative Researcher_ <br > **Rejected** after phone interview | 2016 | 
 | <strong>Jane Street </strong>, New York, NY, U.S.A. <br/> _Quantitative Researcher / Software Deveoloper_ <br > **Rejected** with no interview | 2016 | 
 | <strong>Bloomberg L.P. </strong>, New York, NY, U.S.A. <br/> _Software Developer Intern_ <br > **Rejected** after the on-site interview | 2015 | 
 | <strong>Google</strong>, Mountain View, CA, U.S.A. <br/> _Data Science Intern_ <br > **Silently Rejected** with no further decisions after get contacted by recruiter | 2015 | 

@@ -7,9 +7,9 @@ permalink: /vision100
 
 ## Introduction
 
-This is a list of 100 vision science paper compiled by Dr. Yury Petrov,who is now at Oculus VR, at Northeastern University around 2007. The original link, however, is broken. Therefore I post the information in the original page here. Credits by Dr. Yury Petrov
+This is a list of 100 vision science paper compiled by Dr. Yury Petrov,who is now at Oculus VR, at Northeastern University around 2007. The original link, however, is broken. Therefore I post the information in the original page here. Credits to Dr. Yury Petrov
 
-The selection criterion:
+Dr. Yury Petrov's selection criterion:
 
 > I tried to weed out all review papers. Papers in the list have been ranked based on the number of times the paper was cited as given by Google Scholar, Scopus, and Web of Science databases as of January 2007. Google Scholar and Scopus numbers agree well, while Web of Science numbers are quite different. Apparently, the former two are biased toward more recent papers available online. Therefore, the highest of the two citation numbers (Google Scholar and Web of Science) determined the paper rank. I feel that the ranking provides a somewhat objective justification for the choice of the "most important" papers. As an alternative to the number of citations I also included the "Subjective score", i.e. how many popular textbooks on Sensation and Perception from the following list:
 
