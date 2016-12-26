@@ -1,0 +1,65 @@
+{% assign minutes = content | number_of_words | divided_by: 180 %}
+{% if minutes == 0 %}
+{% assign minutes = 1 %}
+{% endif %}
+
+
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+<body id="page-top" class="index" style="font-size: 18px">
+<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="{{topiclink}}">{{page.topic}}</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{{prev}}">Last</a>
+                    </li>
+                     <li>
+                        <a class="page-scroll" href="{{next}}">Next</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{{site.url}}">Home</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <!-- Title -->
+		<div class="container">
+			<h1 style="text-align:center">{{page.title}}</h1> 
+    </div>
+
+		<!-- Content -->
+    <div class="container">
+
+    	<div class="col-md-12 col-sm-12">
+       		{{content}} 
+    	</div>
+
+    	<div id="Progression">
+    		
+    	</div>  
+    </div>
+   
+    
+</body>
+</html>
