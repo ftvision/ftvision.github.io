@@ -18,9 +18,9 @@ There are many approximations tricks in mathematics. Some of these approximation
 
 $$\log(1 + x) = x$$
 
-<blockquote class="proof">
-Proof: $x \ll 1$ 
+$$\cos x = x$$
 
-$$\frac{d\log(1+x)}{dx} = \frac{1}{(1 + x)}$$
+<div class="proof">
+Proof: 
+</div>
 
-</blockquote>

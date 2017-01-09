@@ -1,0 +1,9 @@
+---
+layout: mathnote
+title: Retina and Retina Model
+permalink: /CVmodel/retina/
+prev: /CVmodel/introduction/
+late: /CVmodel/V1/
+topic: Computational Models for Vision
+topiclink: /CVmodel/
+---

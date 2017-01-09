@@ -1,11 +1,11 @@
 ---
 layout: mathnote
 title: Probabilistic Models of Visual Cortex 
-permalink:
-prev: /Notes/computational-vision-model/2016-12-16-computational-vision-model.md
-next: /Notes/computational-vision-model/2016-12-16-computational-vision-model.md
+permalink: /CVmodel/
+prev: /CVmodel/
+late: /CVmodel/
 topic: Computational Models for Vision
-topiclink: /Notes/computational-vision-model/2016-12-16-computational-vision-model.md
+topiclink: /CVmodel/
 ---
 
 ## Introduction
@@ -14,19 +14,23 @@ topiclink: /Notes/computational-vision-model/2016-12-16-computational-vision-mod
 
 | Content | Notes |
 |:-------:|:-----:|
-|General Introduction| Notes |
-|Retina & Retina Model|Notes|
-|V1 Model & Sparse Coding|Notes|
-|Edge Detection |Notes|
-|Decision Making and Bayes Decision Theory|Notes|
-|Probability Model and Mean Field Theory| Notes|
-|Boltzmann Machines | Notes|
-|Cue Coupling| Notes|
+|General Introduction|<a href="/CVmodel/introduction/">Notes</a> |
+|Retina & Retina Model|<a href="/CVmodel/retina/">Notes</a>|
+|V1 Model & Sparse Coding|<a href="/CVmodel/V1/">Notes</a>|
+|Edge Detection | <a href="/CVmodel/Edge/">Notes</a>|
+|Decision Making and Bayes Decision Theory| <a href="/CVmodel/BDT">Notes</a>|
+|Probability Model and Mean Field Theory| <a href="/CVmodel/MeanField/">Notes</a> |
+|Boltzmann Machines | <a href="/CVmodel/Baltzmann/"> Notes</a>|
+|Cue Coupling| <a href="/CVmodel/cuecoupling">Notes</a>|
 |Weak Membrance, Associative Field, Stereo|Notes|
 |Stereo, Motion, and Correspodence Problem|Notes|
-|Bottom-Up Attention |Notes|
-|Perceptrons and Multilayer Perceptrons|Notes|
-|Deep Networks|Notes|
+|Bottom-Up Attention | <a href="/CVmodel/Attention">Notes</a>|
+|Perceptrons and Multilayer Perceptrons|<a href="/CVmodel/perceptron/">Notes</a>|
+|Deep Networks|<a href="/CVmodel/deeplearning/">Notes</a>|
+|Compositional Model| <a href="/CVmodel/compositional/"> Notes </a> |
+|High Level Vision | <a href="/CVmodel/hlvision"> Notes</a> |
+|Vision and Language | <a href="/CVmodel/caption">Notes</a>  |
+|Reccurent Neural Networks and LSTMs: Models of Attention | <a href="/CVmodel/RNN/"> Notes </a>|
 {: .table}
 
 ### History
