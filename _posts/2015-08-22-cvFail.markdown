@@ -34,16 +34,14 @@ Here is a running list of my failures during my journey. I was trying to summari
 ### Working Experiences
 {: .text-info}
 
-| <strong> Betterment </strong>, New York, NY, U.S.A. <br/> _Software Engineer_ <br > **Rejected** with no interview | 2016 | 
-| <strong> Google </strong>, Mountain View, CA, U.S.A. <br/> _Software Engineer_ <br > **Rejected** with no interview | 2016 | 
+| <strong> Akuna Capital </strong>, Chicago, IL, U.S.A. <br/> _Quantitative Trader / Trader_ <br > **Rejected** after final round interview, respectively | 2016 | 
+| <strong> Jane Street </strong>, Hong Kong, China <br/> _Quantitative Trader_ <br > **Rejected** after first phone interview | 2016 | 
 | <strong> The D.E.Shaw Group </strong>, New York, NY, U.S.A. <br/> _Quantitative Trader_ <br > **Rejected** after on-site interview | 2016 | 
-| <strong> Susquehanna International Group </strong>, Bala Cynwyd, PA, U.S.A. <br/> _Quantitative Researcher_ <br > **Rejected** after phone interview | 2016 | 
-| <strong>Jane Street </strong>, New York, NY, U.S.A. <br/> _Quantitative Researcher / Software Deveoloper_ <br > **Rejected** with no interview | 2016 | 
+| <strong> Susquehanna International Group </strong>, Bala Cynwyd, PA, U.S.A. <br/> _Quantitative Researcher_ <br > **Rejected** after first phone interview | 2016 | 
+| **Rejected with no interview List:** <br /><strong> Betterment </strong>, _Software Engineer_, New York, NY, U.S.A. <br /> <strong>Two Sigma</strong>, _Quantitative Researcher_, New York, NY, U.S.A. <br /> <strong> Google </strong>, _Software Engineer / Quantitative Analysist_,  Mountain View, CA, U.S.A. <br /><strong>Jane Street </strong>, _Quantitative Researcher / Software Deveoloper_, New York, NY, U.S.A.| 2016 |
 | <strong>Bloomberg L.P. </strong>, New York, NY, U.S.A. <br/> _Software Developer Intern_ <br > **Rejected** after the on-site interview | 2015 | 
 | <strong>Google</strong>, Mountain View, CA, U.S.A. <br/> _Data Science Intern_ <br > **Silently Rejected** with no further decisions after get contacted by recruiter | 2015 | 
-| <strong>Facebook/Oculus </strong>, Seattle, WA, U.S.A. <br/> _Oculus Developer_ <br > **Silently Rejected** with no further decisions after resume submission | 2015 | 
-| <strong>Two Sigma</strong>, New York, NY, U.S.A. <br/> _Quantitative Researcher_ <br > **Rejected** with no interview | 2015 | 
-| <strong>Quora </strong>, Mountain View, CA, U.S.A. <br/> _Data Science Intern_  <br > **Rejected** with no interview | 2015 | 
+| **Rejected with no interview List:** <br /> <strong>Facebook/Oculus </strong>, _Oculus Developer_, Seattle, WA, U.S.A. <br /> <strong>Two Sigma</strong>, _Quantitative Researcher_, New York, NY, U.S.A. <br />  <strong>Quora </strong>, _Data Science Intern_, Mountain View, CA, U.S.A. | 2015 |
 {: .table .table-condensed}
 
 ### Grants & Awards
@@ -61,4 +59,5 @@ Here is a running list of my failures during my journey. I was trying to summari
 ### Presentation
 {: .text-info}
 
-To be updated
+| To be updated |
+{: .table }
