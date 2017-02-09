@@ -1,0 +1,56 @@
+---
+layout: mathnote
+title: Module
+permalink: /coding101/IO
+prev: 
+late: 
+topic: Programming Introduction
+topiclink: /coding101/
+
+---
+
+Write a module / library
+
+For python:
+Any file that contains Python code can be imported as a module.
+
+
+The only problem with this example is that when you import the module it executes the test code at the bottom. Normally when you import a module, it defines new functions but it doesn’t execute them.
+
+```
+if __name__ == '__main__':
+    print linecount('wc.py')
+```
+
+```__name__``` is a built-in variable that is set when the program starts. If the program is running as a script, ```__name__``` has the value ```__main__```; in that case, the test code is executed. Otherwise, if the module is being imported, the test code is skipped.
+
+
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#cpp" aria-controls="cpp" role="tab" data-toggle="tab">C/C++</a></li>
+    <li role="presentation"><a href="#python" aria-controls="python" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="cpp">
+    		<pre> <code class="c++">
+{% include helloworld.cpp %}
+				</code></pre>
+	</div>
+    <div role="tabpanel" class="tab-pane" id="python"> 	
+    		<pre> <code class="python">
+
+            {% include helloworld.cpp %}
+
+				</code>
+<p><strong>最好的注意的是：</strong>这个不容易</p> 	
+		</pre>   	
+    </div>
+  </div>
+
+</div>
+
+
+

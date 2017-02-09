@@ -78,7 +78,7 @@ Examples:
 
 <hr>
 
-## Research trategy
+## Research Strategy
 
 >Divide and Conquer: divide vision up into many subtasks that can be studied separately.
 

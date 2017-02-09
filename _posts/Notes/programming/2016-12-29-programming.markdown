@@ -1,11 +1,11 @@
 ---
 layout: mathnote
 title: Programming Parallel Comparison
-permalink:
-prev: /Notes/programming/2016-12-29-programming.markdown
-next: /Notes/programming/2016-12-29-programming.markdown
+permalink: /coding101/
+prev: 
+late: 
 topic: Programming Introduction
-topiclink: /Notes/programming/2016-12-29-programming.markdown
+topiclink: /coding101/
 ---
 
 ## Introduction
@@ -53,11 +53,19 @@ Mark-up languages, such as `HTML` or `Markdown`, are not concerned here. Nor is 
 
 | Content | Notes |
 |:-------:|:-----:|
-|Basic Types| Notes|
-|Compound Types| Notes|
-|Control Flow | Notes|
-|Looping | Notes |
+|Introduction| <a href="/coding101/introduction">Notes</a> |
+|Basic Types| <a href="/coding101/basictypes">Notes</a>|
+|Compound Types| <a href="/coding101/compoundtype">Notes</a>|
+|Control Flow | <a href="/coding101/controlflow">Notes</a>|
+|Function | <a href="/coding101/function">Notes</a> |
+|Input and Output | <a href="/coding101/IO">Notes</a>
 |Object and Class | Notes |
+|Lambda Function | Notes |
 {: .table}
 
+[Python Keyword](https://learnpythonthehardway.org/book/ex37.html)
 
+### Reference
+
+- Think Python: How to Think Like a Computer Scientist
+- [Learn Python The Hard Way](https://learnpythonthehardway.org/book/)
