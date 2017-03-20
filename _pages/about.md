@@ -16,8 +16,7 @@ I am  life-long learner with unstoppable curiosity, a problem-solver from mathem
 
 ## About Ph.D.
 
-Meaning:  <span class="btn btn--success">Positive, Happy, and Dynamic</span>
-Pronunciation: <span class="btn btn--danger">Pessimistic, Hazardous, and Dreadful.</span>
+Meaning:  <span class="btn btn--success">Positive, Happy, and Dynamic</span><br>Pronunciation: <span class="btn btn--danger">Pessimistic, Hazardous, and Dreadful.</span>
 
 ## Roles 
 
