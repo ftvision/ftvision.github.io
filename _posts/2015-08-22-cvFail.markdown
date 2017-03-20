@@ -1,7 +1,7 @@
 ---
 title: Feitong Yang - Resume of Failures
 subtitle: 
-layout: page
+layout: splash
 permalink: /cv-failure
 ---
 
@@ -11,7 +11,8 @@ permalink: /cv-failure
 > Successes are only rare spikes among background noises of failures in daily life. 
 <br> Achieving more successes comes from failing faster, failing more often, then learning more and keeping on. 
 
-Here is a running list of my failures during my journey. I was trying to summarize all of them, but some have eluded my memory. I will keep maintaining this list, so future failures will be recorded and updated. You are welcome to come back and check my latest failures.
+This is a list of what I have tried during my journey. It is a running list of my failures during my journey. The idea is inspired by [Prof. Johannes Haushoferi](http://www.princeton.edu/haushofer/Johannes_Haushofer_CV_of_Failures.pdf). I was trying to summarize all of them, but some may have eluded my memory. I will keep maintaining this list, so future failures will be recorded and updated. You are welcome to come back and check my latest failures.
+{: .notice--info}
 
 ### Education
 {: .text-info}
@@ -38,10 +39,10 @@ Here is a running list of my failures during my journey. I was trying to summari
 | <strong> Jane Street </strong>, Hong Kong, China <br/> _Quantitative Trader_ <br > **Rejected** after first phone interview | 2016 | 
 | <strong> The D.E.Shaw Group </strong>, New York, NY, U.S.A. <br/> _Quantitative Trader_ <br > **Rejected** after on-site interview | 2016 | 
 | <strong> Susquehanna International Group </strong>, Bala Cynwyd, PA, U.S.A. <br/> _Quantitative Researcher_ <br > **Rejected** after first phone interview | 2016 | 
-| **Rejected with no interview List:** <br /><strong> Betterment </strong>, _Software Engineer_, New York, NY, U.S.A. <br /> <strong>Two Sigma</strong>, _Quantitative Researcher_, New York, NY, U.S.A. <br /> <strong> Google </strong>, _Software Engineer / Quantitative Analysist_,  Mountain View, CA, U.S.A. <br /><strong>Jane Street </strong>, _Quantitative Researcher / Software Deveoloper_, New York, NY, U.S.A.| 2016 |
+| **Rejected with no interview, List:** <br /><strong> Betterment </strong>, _Software Engineer_, New York, NY, U.S.A. <br /> <strong>Two Sigma</strong>, _Quantitative Researcher_, New York, NY, U.S.A. <br /> <strong> Google </strong>, _Software Engineer / Quantitative Analysist_,  Mountain View, CA, U.S.A. <br /><strong>Jane Street </strong>, _Quantitative Researcher / Software Deveoloper_, New York, NY, U.S.A.| 2016 |
 | <strong>Bloomberg L.P. </strong>, New York, NY, U.S.A. <br/> _Software Developer Intern_ <br > **Rejected** after the on-site interview | 2015 | 
 | <strong>Google</strong>, Mountain View, CA, U.S.A. <br/> _Data Science Intern_ <br > **Silently Rejected** with no further decisions after get contacted by recruiter | 2015 | 
-| **Rejected with no interview List:** <br /> <strong>Facebook/Oculus </strong>, _Oculus Developer_, Seattle, WA, U.S.A. <br /> <strong>Two Sigma</strong>, _Quantitative Researcher_, New York, NY, U.S.A. <br />  <strong>Quora </strong>, _Data Science Intern_, Mountain View, CA, U.S.A. | 2015 |
+| **Rejected with no interview, List:** <br /> <strong>Facebook/Oculus </strong>, _Oculus Developer_, Seattle, WA, U.S.A. <br /> <strong>Two Sigma</strong>, _Quantitative Researcher_, New York, NY, U.S.A. <br />  <strong>Quora </strong>, _Data Science Intern_, Mountain View, CA, U.S.A. | 2015 |
 {: .table .table-condensed}
 
 ### Grants & Awards

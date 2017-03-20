@@ -1,5 +1,5 @@
 ---
-layout: mathnote
+layout: single
 title: Stochastic Processes Summary Page
 permalink:
 prev: /Notes/stochastic-calculus/2016-12-16-optimization.md

@@ -1,5 +1,5 @@
 ---
-layout: mathnote
+layout: single
 title: Mathematical Approximation
 permalink: 
 prev: /Notes/math-tricks/2016-12-16-approximation.md

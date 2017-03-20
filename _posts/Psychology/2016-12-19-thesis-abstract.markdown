@@ -1,7 +1,7 @@
 ---
 title: Abstrat
 subtitle: 
-layout: post
+layout: single
 ---
 
 There are two basic computational problems in vision: What and Where. The former concerns object recognition; the latter concerns spatial localization. Spatial location is not only important in and of itself but is also essential for other visual computations. To name a few, motion perception calculates the direction and speed based on differences between locations at successive time points. Visual attention operates on spatial locations, selecting one place at a time. Visually guided action is derived from the understanding of the spatial location of objects and their parts, based on which appropriate motor responses are planned and executed. Lastly, object recognition itself also requires an understanding of the spatial configuration of different parts. For example, a scrambled face cannot be and should not be recognized as a face. 

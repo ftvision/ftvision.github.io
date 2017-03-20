@@ -1,5 +1,5 @@
 ---
-layout: mathnote
+layout: single
 title: Perceptrons and Multilayer Perceptrons 
 permalink: /CVmodel/perceptron
 prev: /CVmodel/perceptron/

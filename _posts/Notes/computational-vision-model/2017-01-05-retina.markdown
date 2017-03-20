@@ -1,5 +1,5 @@
 ---
-layout: mathnote
+layout: single
 title: Retina and Retina Model
 permalink: /CVmodel/retina/
 prev: /CVmodel/introduction/

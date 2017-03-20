@@ -1,0 +1,60 @@
+# main links
+main:
+  - title: "About"
+    url: /about/
+  - title: "Research"
+    url: /research/
+  - title: "Notes"
+    url: /notes/
+  # - title: "Sample Collections"
+  #   url: /collection-archive/
+  # - title: "Sitemap"
+  #   url: /sitemap/
+note_nav:
+  - title: "Reference List"
+    children:
+      - title: "Matlab-R thesaurus"
+        url: http://mathesaurus.sourceforge.net/octave-r.html
+      - title: "Matlab-NumPy-R"
+        url: http://mathesaurus.sourceforge.net/matlab-python-xref.pdf
+      - title: "Jekyll Cheatsheet"
+        url: http://ricostacruz.com/cheatsheets/jekyll.html
+      - title: "Jekyll Cheatsheet - 2"
+        url: http://jekyll.tips/jekyll-cheat-sheet/
+  - title: "Manual, Tutorial, & Document"
+    children:
+      - title: "Git Official Doc"
+        url: https://git-scm.com/documentation
+      - title: "Javascript - 阮一峰"
+        url: http://javascript.ruanyifeng.com/
+      - title: "Minimal Mistakes"
+        url: https://mmistakes.github.io/minimal-mistakes/
+  - title: "Blogs and Websites"
+    children:
+      - title: "Matt Might"
+        url: http://matt.might.net/articles/
+      - title: "Terry Tao"
+        url: https://terrytao.wordpress.com/
+      - title: "Phillp Guo"
+        url: http://www.pgbovine.net/writings.htm
+      - title: "Andrew Gelman"
+        url: http://andrewgelman.com/
+      - title: "Andrej Karpathy"
+        url: http://karpathy.github.io/
+      - title: "Matrix 67(Chinese)"
+        url: http://www.matrix67.com/blog/
+research_nav:
+  - title: "Reference List"
+    children:
+      - title: "Vision 100"
+        url: /vision100
+      - title: "Inattentional Blindness"
+        url: http://www.yale.edu/perception/Brian/refGuides/IB.html
+  - title: "Manual, Tutorial, & Document"
+    children:
+      - title: "fMRI 4 Newbies"
+        url: http://www.fmri4newbies.com/
+  - title: "Blogs and Websites"
+    children:
+      - title: "Mind Hacks"
+        url: http://mindhacks.com/

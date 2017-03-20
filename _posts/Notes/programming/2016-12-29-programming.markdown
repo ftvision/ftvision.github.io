@@ -1,5 +1,5 @@
 ---
-layout: mathnote
+layout: single
 title: Programming Parallel Comparison
 permalink: /coding101/
 prev: 

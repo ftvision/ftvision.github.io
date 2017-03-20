@@ -1,5 +1,5 @@
 ---
-layout: mathnote
+layout: single
 title: General Introduction
 permalink: /CVmodel/introduction/
 prev: /CVmodel/

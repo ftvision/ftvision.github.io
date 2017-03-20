@@ -1,5 +1,5 @@
 ---
-layout: mathnote
+layout: single
 title: Compound Types & Data Structures
 permalink: /coding101/compoundtype
 prev: 
@@ -150,35 +150,5 @@ Lists are more common than tuples, mostly because they are mutable. But there ar
 2. If you want to use a sequence as a dictionary key, you have to use an immutable type like a tuple or string.
 
 3. If you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.
-
-
-
-<div>
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#cpp" aria-controls="cpp" role="tab" data-toggle="tab">C/C++</a></li>
-    <li role="presentation"><a href="#python" aria-controls="python" role="tab" data-toggle="tab">Python</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="cpp">
-    		<pre> <code class="c++">
-{% include helloworld.cpp %}
-				</code></pre>
-	</div>
-    <div role="tabpanel" class="tab-pane" id="python"> 	
-    		<pre> <code class="python">
-
-            {% include helloworld.cpp %}
-
-				</code>
-<p><strong>最好的注意的是：</strong>这个不容易</p> 	
-		</pre>   	
-    </div>
-  </div>
-
-</div>
-
 
 

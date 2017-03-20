@@ -1,7 +1,7 @@
 ---
 title: MDK Testing Summary
 subtitle: 
-layout: post
+layout: single
 permalink: /MDK
 ---
 

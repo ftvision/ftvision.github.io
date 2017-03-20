@@ -1,5 +1,5 @@
 ---
-layout: mathnote
+layout: single
 title: Functions
 permalink: /coding101/function
 prev: 
@@ -51,32 +51,18 @@ It is common to use global variables for flags; that is, boolean variables that 
 
 Python: If the global value is mutable, you can modify it without declaring it
 
-<div>
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#cpp" aria-controls="cpp" role="tab" data-toggle="tab">C/C++</a></li>
-    <li role="presentation"><a href="#python" aria-controls="python" role="tab" data-toggle="tab">Python</a></li>
-  </ul>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="cpp">
-    		<pre> <code class="c++">
-{% include helloworld.cpp %}
-				</code></pre>
-	</div>
-    <div role="tabpanel" class="tab-pane" id="python"> 	
-    		<pre> <code class="python">
+# Closure and Decorator
+## This is a difficult concept
 
-            {% include helloworld.cpp %}
+[12 Steps for python decorator](http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/)
 
-				</code>
-<p><strong>最好的注意的是：</strong>这个不容易</p> 	
-		</pre>   	
-    </div>
-  </div>
+It turns out that, against our expectations, our returned inner function does work. Python supports a feature called function closures which means that inner functions defined in non-global scope remember what their enclosing namespaces looked like at definition time. This can be seen by looking at the func_closure attribute of our inner function which contains the variables in the enclosing scopes.
 
-</div>
+From this example you can see that closures - the fact that functions remember their enclosing scope - can be used to build custom functions that have, essentially, a hard coded argument. 
+
+A decorator is just a callable that takes a function as an argument and returns a replacement function. We’ll start simply and work our way up to useful decorators.
+
 
 
 

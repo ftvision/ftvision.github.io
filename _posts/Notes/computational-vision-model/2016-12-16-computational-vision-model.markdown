@@ -1,5 +1,5 @@
 ---
-layout: mathnote
+layout: single
 title: Probabilistic Models of Visual Cortex 
 permalink: /CVmodel/
 prev: /CVmodel/

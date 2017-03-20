@@ -1,30 +1,37 @@
 ---
 title: List of 100 vision papers
 subtitle: 
-layout: page
+layout: splash
 permalink: /vision100
 ---
 
 ## Introduction
 
-This is a list of 100 vision science paper compiled by Dr. Yury Petrov,who is now at Oculus VR, at Northeastern University around 2007. The original link, however, is broken. Therefore I post the information in the original page here. Credits to Dr. Yury Petrov
+This is a list of 100 vision science paper compiled by Dr. Yury Petrov when he was at Northeastern University around 2007. The original link, however, is broken. Therefore I post the information in the original page here. 
 
 Dr. Yury Petrov's selection criterion:
 
-> I tried to weed out all review papers. Papers in the list have been ranked based on the number of times the paper was cited as given by Google Scholar, Scopus, and Web of Science databases as of January 2007. Google Scholar and Scopus numbers agree well, while Web of Science numbers are quite different. Apparently, the former two are biased toward more recent papers available online. Therefore, the highest of the two citation numbers (Google Scholar and Web of Science) determined the paper rank. I feel that the ranking provides a somewhat objective justification for the choice of the "most important" papers. As an alternative to the number of citations I also included the "Subjective score", i.e. how many popular textbooks on Sensation and Perception from the following list:
+<div class="notice--info">
 
-- Blake, R. and Seculer, R., Perception, 5-th edition, McGraw Hill Higher Education, (2006).
-- Coren, S., Ward, L. M., and Enns, J. T., Sensation and Perception, 6-th edition, John Wiley & Sons, Inc., (2004).
-- Goldstein, B., Sensation and Perception, 6-th edition, Wadsworth-Thomson Learning, (2002).
-- Mater, G., Foundations of Perception, Psychology Press, (2006).
-Schiffman, H. R., Sensation and Perception, 5-th edition, John Wiley & Sons, Inc., (2001).
-- Wolfe, J. M. et al., Sensation and Perception, Sinauer Associates, Inc., (2006).
-Wandell, B. A., Foundations of Vision, Sinauer Associates, Inc., (1995).
-cited a given article.
+I tried to weed out all review papers. Papers in the list have been ranked based on the number of times the paper was cited as given by Google Scholar, Scopus, and Web of Science databases as of January 2007. Google Scholar and Scopus numbers agree well, while Web of Science numbers are quite different. Apparently, the former two are biased toward more recent papers available online. Therefore, the highest of the two citation numbers (Google Scholar and Web of Science) determined the paper rank. I feel that the ranking provides a somewhat objective justification for the choice of the "most important" papers. As an alternative to the number of citations I also included the "Subjective score", i.e. how many popular textbooks cited a given article on Sensation and Perception from the following list:
+
+<ul>
+	<li>Blake, R. and Seculer, R., Perception, 5-th edition, McGraw Hill Higher Education, (2006).</li>
+	<li>Coren, S., Ward, L. M., and Enns, J. T., Sensation and Perception, 6-th edition, John Wiley & Sons, Inc., (2004).</li>
+	<li>Goldstein, B., Sensation and Perception, 6-th edition, Wadsworth-Thomson Learning, (2002).</li>
+	<li>Mater, G., Foundations of Perception, Psychology Press, (2006).</li>
+	<li>Schiffman, H. R., Sensation and Perception, 5-th edition, John Wiley & Sons, Inc., (2001).</li>
+	<li>Wolfe, J. M. et al., Sensation and Perception, Sinauer Associates, Inc., (2006).</li>
+	<li>Wandell, B. A., Foundations of Vision, Sinauer Associates, Inc., (1995).</li>
+</ul>
+
+</div>
 
 **Original Disclaimer**: The choice of the data sources reflects my personal opinion. Because the ISI database goes back to 1970 (although Web of Science claims "SCI-expanded" coverage back to 1900 now), the citation figures for older papers are likely to be underestimated. Ranking used here should be treated as a guide to the eye only. No comparison of the scientific merit of the included papers was intended.
+{: .notice--danger}
 
-**Feitong's Disclaimer**: this list is compiled at about 10 years ago, there are lots of updates in vision science research, which may provide new evidence for or against these early papers. This list, however, still serves as a very good introductory reading list for students and researchers to understand the big picture of vision science research, from psychophysics, physiology, and computational modeling approaches.
+**Feitong's Disclaimer**: this list is compiled at about 10 years ago (as of 2017), there are lots of updates in vision science research, which may provide new evidence for or against these early papers. This list, however, still serves as a very good introductory reading list for students and researchers to understand the big picture of vision science research, from psychophysics, physiology, and computational modeling approaches.
+{: .notice--danger}
 
 ## The Resource
 

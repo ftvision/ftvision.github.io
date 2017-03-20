@@ -1,5 +1,5 @@
 ---
-layout: mathnote
+layout: single
 title: Basic Types
 permalink: /coding101/basictypes
 prev: 
@@ -41,13 +41,11 @@ A **statement** is a unit of code that the Python interpreter can execute. We ha
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="cpp">
     		<pre> <code class="c++">
-{% include helloworld.cpp %}
 				</code></pre>
 	</div>
     <div role="tabpanel" class="tab-pane" id="python"> 	
     		<pre> <code class="python">
 
-            {% include helloworld.cpp %}
 
 				</code>
 <p><strong>最好的注意的是：</strong>这个不容易</p> 	
