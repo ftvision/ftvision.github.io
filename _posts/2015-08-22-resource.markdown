@@ -1,8 +1,8 @@
----
+
 ---
 title: Resources
 subtitle: 
-layout: page
+layout: single
 permalink: /resource-list
 ---
 

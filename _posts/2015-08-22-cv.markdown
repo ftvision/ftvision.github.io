@@ -1,50 +1,45 @@
 ---
-title: Feitong Yang - Resume 
+title: Resume 
 subtitle: 
-layout: splash
+layout: single
 permalink: /cv
+modified: 2017-03-20
 ---
 
-## Feitong Yang
-{: page-header}
-
-### Contact
+## Contact
 {: .text-info}
 
 **Address:** 3400 N. Charles Street. Ames 150, Baltimore, MD. 21210 <br> **Email:** ft.yang@jhu.edu 
 
 
-### Education
-{: .text-info}
+## Education
 
+|:--------|--------:|
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>Ph.D.</strong> Cognitive Psychology | 2013/9 – 2018/6 (Expected) |
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>M.S.E </strong> Applied Mathematics and Statistics | 2017 - 2018/6 (Expected) |
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>M.A.</strong> Cognitive Psychology | 2013/9 – 2015/6 |
 | <strong>Peking University</strong>, Beijing, China <br /> <strong>B.Sc.</strong> Experimental Psychology | 2008/9 – 2012/7 |
-{: .table .table-condensed}
 
-### Working And Research Experiences
-{: .text-info}
+## Working And Research Experiences
 
+|:--------|--------:|
 | _Sparkypants Studios_ <br /> Baltimore, Maryland, U.S.A. <br /> Programming Intern | 2016/5 - 2016/8 |
 | _Computational Neuroscience Summer School_ <br /> **University of Pennsylvania**, Philadelphia, Pennsylvania, U.S.A <br /> **Advisor**: Geoffrey Aguirre <br /> | 2011/6 - 2011/8 |
 | _Computational and Cognitive Neuroscience Summer School_ <br /> **Cold Spring Harbor Asia**, Beijing, China <br /> Organizer: Xiao-Jing Wang, Si Wu, Upinder S. Bhalla, Zachary F. Mainen | 2013/7 |
-{: .table .table-condensed}
 
-### Grants & Awards
-{: .text-info}
+## Grants & Awards
 
+|:--------|--------:|
 | Robert S. and Dorothy L. Waldrop Graduate Fellowship, Johns Hopkins University | 2014 - 2015 | 
 | National University Student Innovation Program, Peking University | 2010 – 2011 |
 | Student Travel Award, the 7th Asia-Pacific Conference on Vision| 2011 |
 | Undergraduate Research Grants at Department of Psychology, Peking University| 2009 – 2010 |
 | Excellence in Academic Study Award, Peking University | 2009 – 2011 |
 | First Prize, National Olympiad in Informatics Contest in China | 2004, 2005, 2007 |
-{: .table .table-condensed}
 
-### Languages and Skills
-{: .text-info}
+## Languages and Skills
 
+|:--|:--|
 | Chinese | Native Speaker |
 | English | Professional |
 | Japanese | Intermediate | 
@@ -55,36 +50,33 @@ permalink: /cv
 | JavaScript/HTML/CSS | Participated in Game UI development. |
 | Git / Perforce | Used Git and Perforce during game development.<br> Introduced and established the Git version control system in research labs. |
 | Shell Scripts | Worked on remote cluster computing in Linux environment for mathematical modeling |
-{: .table }
 
 ## Publication
-{: .text-info}
 
+|:--:|:--|
 | [PDF](/assets/papers/Gong_Yang_Li_2016_EJoN.pdf) | Gong, M., **Yang, F.,** & Li, S. (2016). Reward association facilitates distractor suppression in human visual search. European Journal of Neuroscience. |
 | [PDF](/assets/papers/Yang_Wu_Li_14_FHN.pdf) | **Yang, F.,** Wu. Q., & Li. S., (2014), Learning-induced uncertainty reduction in perceptual decisions is task-dependent, _Frontiers in Human Neuroscience_, 8, 282 |
 | [PDF](/assets/papers/Li_Yang_12_EJN.pdf) | Li. S., & **Yang, F.,** (2012), Task‐dependent uncertainty modulation of perceptual decisions in the human brain, _European Journal of Neuroscience_, 36(12), 3732-3739 |
 {: .table }
 
-### Presentation
+## Presentation
 {: .text-info}
 
-#### Talk
+### Talk
 
 | **Yang, F.,** & Li, S., (2011) Asymmetrical Transfer of Learning Effects between Signal-based and Criterion-based Task Uncertainties in Perceptual Decision, The 7th Asia-Pacific Conference on Vision, Hong Kong. |
-{: .table }
 
-#### Poster
+### Poster
 
 | **Yang, F.,** & Flombaum, J. I., (2015) Statistical Learning without Attention, Vision Science Society Meeting 2015, St. Pete, FL. |
 | **Yang, F.,** & Flombaum, J. I., (2014) Ponzo inducers in the working memory produce Illusory line length perception, Vision Science Society Meeting 2014, St. Pete, FL. |
 | Prasad, S., **Yang, F.,** Butt, O., Brandes, L., Datta, R., Thomas, A., & Aguirre, G., (2012) Occipital Areas Distinguish Semantic Content in Congenitally Blind but Not Sighted Individuals. Neurology 2012; 78, P02.018. |
 | **Yang, F.,** & Li, S., (2011) Learning of Uncertain Stimuli Transfers from Criterion-Based to Noise-Based Perceptual Decision, But Not Vice Versa, Vision Science Society Meeting 2011, Naples, FL. |
 | Li, S., & **Yang, F.,** (2010) Learning of Perceptual Judgment under Criterion-based and Noise-based Uncertainties, Society for Neuroscience Annual Meeting 2010, San Diego, CA. |
-{: .table }
 
-### Teaching Experiences
-{: .text-info}
+## Teaching Experiences
 
+| **Introduction to Cognitive Psychology**, Dr. Jonanthon Flombaum <br> **As a Teaching Assistant.** <br> _This course introduced cognitive psychology from the functionalist's point of view._ | 2017 Spring |
 | **Unconscious Computations in Mind**, <br> **As an Instructor.** <br> _In this course, I taught about visual awareness, attention, decision making, and learning._ | 2016 Intersession | 
 | **Research Method**, Dr. Howard Egeth <br> **As an Instructor.** <br>_This course teaches undergradutes how to conduct scientific research, analyze data, and write an APA-style paper_ | 2015 Fall |
 | **Functional Human Neuroanatomy**, Dr. Susan Courtney <br> **As a Teaching Assistant.** <br> _This course discussed about neuroanatomy from the perspective of cognitive function._ | 2015 Spring |
@@ -93,4 +85,3 @@ permalink: /cv
 | **Neuroscience of Decision Making**, Dr. Veit Stuphorn <br> **As a Teaching Assistant.** <br>  _This course discussed about human learning and decision making process._ | 2014 Spring |
 | **Computational Vision**, Dr. Zili Liu <br>  **As a Teaching Assistant.** <br> _This course covered basic computational problems and algorithms in vision._ | 2012 Fall |
 | **Functional Anatomy of Central Nervous System**, Dr. Yanjie Su <br> **As a Teaching Assistant.** <br> _This course offered a general knowledge of human central nervous system._ | 2011 Spring |
-{: .table }

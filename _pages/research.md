@@ -17,6 +17,7 @@ This project investigates the visual spatial representation, with a focus on loc
 {: .notice--info}
 
 | Topic | Content | Progress |
+|:--------|:-------:|--------:|
 | Abstract | [read]({% post_url Psychology/2016-12-19-thesis-abstract %})| 1st Draft |
 | Visual Computations and spatial representation | [read]({% post_url Psychology/2016-12-19-thesis-introduction %}) | Draft Finished|
 | The reference frames in vision | N.A. | Draft Finished |

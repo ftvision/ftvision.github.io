@@ -1,12 +1,10 @@
 ---
-title: Feitong Yang - Resume of Failures
+title: Resume of Failures
 subtitle: 
-layout: splash
+layout: single
 permalink: /cv-failure
+modified: 2017-03-20
 ---
-
-## Feitong Yang - Resume of Failures
-{: page-header}
 
 > Successes are only rare spikes among background noises of failures in daily life. 
 <br> Achieving more successes comes from failing faster, failing more often, then learning more and keeping on. 
@@ -15,7 +13,6 @@ This is a list of what I have tried during my journey. It is a running list of m
 {: .notice--info}
 
 ### Education
-{: .text-info}
 
 | <strong>Baylor College of Medicine</strong>, Houston, TX, U.S.A. <br/> <strong>Ph.D.</strong> Neuroscience <br > **Declined** the offer | 2013 | 
 | <strong>New York University</strong>, New York, NY, U.S.A. <br/> <strong>Ph.D.</strong> Center for Neural Science <br > **Rejected** after two interviews, because vacant positions were full | 2013 |
@@ -26,14 +23,11 @@ This is a list of what I have tried during my journey. It is a running list of m
 {: .table .table-condensed}
 
 ### Research Training
-{: .text-info}
 
 | _CVR Vision Science Summer School_ <br /> **York Universiy**, Toronto, Ontario, Canada <br /> **Rejected** by the program | 2011 |
 | _Undergraduate Summer Fellowship Program in Vision Science_ <br /> **Rochester University**, Rochester, NY, U.S.A. <br /> **Rejected** by the program | 2011 |
-{: .table .table-condensed}
 
 ### Working Experiences
-{: .text-info}
 
 | <strong> Akuna Capital </strong>, Chicago, IL, U.S.A. <br/> _Trader_ <br > **Rejected** after final round interview | 2016 | 
 | <strong> Jane Street </strong>, Hong Kong, China <br/> _Quantitative Trader_ <br > **Rejected** after first phone interview | 2016 | 
@@ -43,22 +37,15 @@ This is a list of what I have tried during my journey. It is a running list of m
 | <strong>Bloomberg L.P. </strong>, New York, NY, U.S.A. <br/> _Software Developer Intern_ <br > **Rejected** after the on-site interview | 2015 | 
 | <strong>Google</strong>, Mountain View, CA, U.S.A. <br/> _Data Science Intern_ <br > **Silently Rejected** with no further decisions after get contacted by recruiter | 2015 | 
 | **Rejected with no interview, List:** <br /> <strong>Facebook/Oculus </strong>, _Oculus Developer_, Seattle, WA, U.S.A. <br /> <strong>Two Sigma</strong>, _Quantitative Researcher_, New York, NY, U.S.A. <br />  <strong>Quora </strong>, _Data Science Intern_, Mountain View, CA, U.S.A. | 2015 |
-{: .table .table-condensed}
 
 ### Grants & Awards
-{: .text-info}
 
 | _Howard Hughes Medical Institute International Research Fellowship_ <br> **Failed** to meet the internal application | 2015 | 
-{: .table .table-condensed}
 
 ### Publication
-{: .text-info}
 
 | Yang, F., & Flombaum, J. I., Stream of Unconsciousness: Statistical Learning without Conscious Awareness <br> **Rejected** By _Nature Neuroscience_ |
-{: .table }
 
 ### Presentation
-{: .text-info}
 
 | To be updated |
-{: .table }

@@ -44,6 +44,7 @@ Programming is to tell the computer how to work step by step. Learning a program
 | Intermediate Programming | |
 | Advanced Programming | |
 | Unix & Linux | |
+| [Minimal Mistakes Adaptation]({% post_url 2017-03-20-mmistakes %}) | Change log of my adaptions of this templates|
 
 ## Computer Science    
 
