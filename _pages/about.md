@@ -4,6 +4,16 @@ permalink: /about/
 title: About
 ---
 
+## My Journey
+
+
+<div class="notice--info">
+  <ul>
+    <li><a href="/cv">Resume of Achievements</a></li>
+    <li><a href="/cv-failure">Resume of Failures</a></li>
+  </ul>
+</div>
+
 ## Current Major Role
 
 A Cognitive Psychologist

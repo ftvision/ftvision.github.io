@@ -11,15 +11,19 @@ sidebar:
 
 ## Vision, Mind, and Brain
 
+How does the mind work? What is the relationship between our mind and our brain? 
+{: .notice--info}
+
 | Topic | Brief Description |
 |:------|:------------------|
-| Glass Pattern | |
-| Eye Movement Trajectory | |
-| Computational Theory of Mind | |
+| Pattern Perception | How does visual system perceive global patterns |
+| Eye Movement | Features, theories, and experiments of eye movements |
+| Computational Theory of Mind | Understand the mind and its computations |
 
 ## Mathematics
 
 It is hard; it is interesting. It is philosophical; it is practical; It is concrete; it is abstract. It is intuitive; it is counterintuitive. It is everything, it is nothing.
+{: .notice--info}
 
 | Topic | Brief Description |
 |:------|:------------------|
@@ -36,21 +40,22 @@ It is hard; it is interesting. It is philosophical; it is practical; It is concr
 ## Programming
 
 Programming is to tell the computer how to work step by step. Learning a programming language is not really hard. Just list the steps you want the computers to do. Mastering a programming language, however, is a completely different thing. The former may take only a week, the latter could take a decade.
+{: .notice--info}
 
 | Topic | Brief Description |
 |:------|:------------------|
-| [Learn to code]({% post_url Notes/programming/2016-12-29-programming %})| This is a general summary of introduction to programming|
-| Programming Paradigm | |
-| Intermediate Programming | |
-| Advanced Programming | |
-| Unix & Linux | |
+| [Learn to code]({% post_url Notes/programming/2016-12-29-programming %})| Basics of several programming languages |
+| Programming Paradigm | General philosophy behind programming languages  |
+| Intermediate Programming | Dive into programming |
+| Advanced Programming | Programming at an advanced level |
+| Unix & Linux | Unix & Linux Learning notes |
 | [Minimal Mistakes Adaptation]({% post_url 2017-03-20-mmistakes %}) | Change log of my adaptions of this templates|
 
 ## Computer Science    
 
 | Topic | Brief Description |
 |:------|:------------------|
-| Computer Vision | |
-| [Computational Models for Vision]({% post_url Notes/computational-vision-model/2016-12-16-computational-vision-model %}) | This is an advanced computer vision course that covers from traditional algorithms, statistical learning algorithms, and recent deep learning algorithms to solve computer vision problems.<br /> [GitHub Repo Course Project](https://github.com/ftvision/computervision_probabilitymodel) | 
+| Computer Vision | Basics of computer vision, and algorithms |
+| [Computational Models for Vision]({% post_url Notes/computational-vision-model/2016-12-16-computational-vision-model %}) | Use probabilistic models to understand computational aspects of vision.<br /> [GitHub Repo Course Project](https://github.com/ftvision/computervision_probabilitymodel) | 
 
 

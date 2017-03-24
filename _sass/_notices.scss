@@ -31,6 +31,11 @@
     font-size: 1em;
   }
 
+  @at-root .page__content #{&} li {
+    /* using at-root to override .page-content li font size*/
+    font-size: 1em;
+  }
+
   p {
     &:last-child {
       margin-bottom: 0 !important; /* override*/
@@ -60,6 +65,7 @@
       margin-bottom: 0; /* override*/
     }
   }
+
 }
 
 /* Default notice */
