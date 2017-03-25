@@ -1,0 +1,27 @@
+---
+layout: single
+title: Module
+permalink: /coding101/IO
+prev: 
+late: 
+topic: Programming Introduction
+topiclink: /coding101/
+
+---
+
+Write a module / library
+
+For python:
+Any file that contains Python code can be imported as a module.
+
+
+The only problem with this example is that when you import the module it executes the test code at the bottom. Normally when you import a module, it defines new functions but it doesn’t execute them.
+
+```
+if __name__ == '__main__':
+    print linecount('wc.py')
+```
+
+```__name__``` is a built-in variable that is set when the program starts. If the program is running as a script, ```__name__``` has the value ```__main__```; in that case, the test code is executed. Otherwise, if the module is being imported, the test code is skipped.
+
+
