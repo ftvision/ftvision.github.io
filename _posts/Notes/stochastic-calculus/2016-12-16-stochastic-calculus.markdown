@@ -1,11 +1,7 @@
 ---
 layout: single
 title: Stochastic Processes Summary Page
-permalink:
-prev: /Notes/stochastic-calculus/2016-12-16-stochastic-calculus.md
-next: /Notes/stochastic-calculus/2016-12-16-stochastic-calculus.md
-topic: Stochastic Processes
-topiclink: /Notes/stochastic-calculus/2016-12-16-stochastic-calculus.md
+permalink: /stochastic_process
 ---
 
 ## Introduction

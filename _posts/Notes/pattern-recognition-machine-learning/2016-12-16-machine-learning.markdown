@@ -1,11 +1,7 @@
 ---
 layout: single
-title: Stochastic Processes Summary Page
-permalink:
-prev: /Notes/stochastic-calculus/2016-12-16-machine-learning.md
-next: /Notes/stochastic-calculus/2016-12-16-machine-learning.md
-topic: Stochastic Processes
-topiclink: /Notes/stochastic-calculus/2016-12-16-machine-learning.md
+title: Machine Learning
+permalink: /machine_learning
 ---
 
 ## Introduction

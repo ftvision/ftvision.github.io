@@ -1,15 +1,10 @@
 ---
 layout: single
-title: Stochastic Processes Summary Page
-permalink:
-prev: /Notes/real-analysis/2016-12-16-real-analysis.md
-next: /Notes/real-analysis/2016-12-16-real-analysis.md
-topic: Stochastic Processes
-topiclink: /Notes/real-analysis/2016-12-16-real-analysis.md
+title: Real Analysis Summary Page
+permalink: /real_analysis
 ---
 
 ## Introduction
-
 
 | Content | Notes |
 |:-------:|:-----:|

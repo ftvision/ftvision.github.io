@@ -1,11 +1,7 @@
 ---
 layout: single
 title: Mathematical Approximation
-permalink: 
-prev: /Notes/math-tricks/2016-12-16-approximation.md
-next: /Notes/math-tricks/2016-12-16-approximation.md
-topic: Math Tricks
-topiclink: /Notes/math-tricks/2016-12-16-approximation.md
+permalink: /math_tricks
 ---
 
 ## Introduction 

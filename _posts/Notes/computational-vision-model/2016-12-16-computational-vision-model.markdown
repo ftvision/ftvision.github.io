@@ -1,11 +1,7 @@
 ---
 layout: single
 title: Probabilistic Models of Visual Cortex 
-permalink: /CVmodel/
-prev: /CVmodel/
-late: /CVmodel/
-topic: Computational Models for Vision
-topiclink: /CVmodel/
+permalink: /CVmodel
 ---
 
 ## Introduction

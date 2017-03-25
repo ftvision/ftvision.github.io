@@ -9,6 +9,8 @@ sidebar:
 
 {% include toc %}
 
+Not every note on this site is organized. I usually first put all the materials here, in a messy format. Then, I take time to organize my notes, to think, and to rewrite my notes. [Here](/note_progress) is a list of progresses.
+
 ## Vision, Mind, and Brain
 
 How does the mind work? What is the relationship between our mind and our brain? 
@@ -17,7 +19,7 @@ How does the mind work? What is the relationship between our mind and our brain?
 | Topic | Brief Description |
 |:------|:------------------|
 | Pattern Perception | How does visual system perceive global patterns |
-| Eye Movement | Features, theories, and experiments of eye movements |
+| [Eye Movement](/eye_movement) | Features, theories, and experiments of eye movements |
 | Computational Theory of Mind | Understand the mind and its computations |
 
 ## Mathematics
@@ -44,11 +46,11 @@ Programming is to tell the computer how to work step by step. Learning a program
 
 | Topic | Brief Description |
 |:------|:------------------|
-| [Learn to code]({% post_url Notes/programming/2016-12-29-programming %})| Basics of several programming languages |
-| Programming Paradigm | General philosophy behind programming languages  |
-| Intermediate Programming | Dive into programming |
-| Advanced Programming | Programming at an advanced level |
-| Unix & Linux | Unix & Linux Learning notes |
+| [Learn to code](/coding101)| Basics of several programming languages |
+| [Programming Paradigm](/programming_paradigm) | General philosophy behind programming languages  |
+| [Intermediate Programming](/coding102) | Dive into programming |
+| [Advanced Programming](/coding103) | Programming at an advanced level |
+| [Unix & Linux](/unix_linux) | Unix & Linux Learning notes |
 | [Minimal Mistakes Adaptation]({% post_url 2017-03-20-mmistakes %}) | Change log of my adaptions of this templates|
 
 ## Computer Science    

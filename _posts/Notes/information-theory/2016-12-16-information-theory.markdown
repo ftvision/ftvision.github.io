@@ -1,18 +1,9 @@
 ---
 layout: single
-title: Stochastic Processes Summary Page
-permalink:
-prev: /Notes/stochastic-calculus/2016-12-16-information-theory.md
-next: /Notes/stochastic-calculus/2016-12-16-information-theory.md
-topic: Stochastic Processes
-topiclink: /Notes/stochastic-calculus/2016-12-16-information-theory.md
+title: Information Theory Summary Page
+permalink: /info_theory
 ---
 
 ## Introduction
 
 
-
-| Content | Notes |
-|:-------:|:-----:|
-|Binominal Assest Pricing Model| Notes|
-{: .table}
