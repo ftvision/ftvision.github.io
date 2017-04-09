@@ -59,5 +59,6 @@ Programming is to tell the computer how to work step by step. Learning a program
 |:------|:------------------|
 | Computer Vision | Basics of computer vision, and algorithms |
 | [Computational Models for Vision]({% post_url Notes/computational-vision-model/2016-12-16-computational-vision-model %}) | Use probabilistic models to understand computational aspects of vision.<br /> [GitHub Repo Course Project](https://github.com/ftvision/computervision_probabilitymodel) | 
+| [Deep Learning](/deeplearning) | learn about deep learning, its core and applications. <br /> [Course Related GitHub Repo](https://github.com/ftvision/DeepLearningNanoDegree) | 
 
 

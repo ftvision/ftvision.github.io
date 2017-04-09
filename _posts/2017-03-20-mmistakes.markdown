@@ -57,6 +57,7 @@ $type-size-6                : 0.85em !default;   // ~12px
 ```css
 p, li, dl {
   font-size: 0.75em;
+  text-align: justify;
 }
 ``` 
 
