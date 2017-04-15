@@ -16,12 +16,15 @@ Visual Perception, Visual Attention, Visual Cognition, Perceptual Decision Makin
 This project investigates the visual spatial representation, with a focus on location representations. In this project, I mainly study the reference frames in vision and the formats of different reference frames. This is my thesis project, therefore I will updates the thesis proposal as well as the final dissertation as the project progresses.
 {: .notice--info}
 
+### Literature Review
+
 | Topic | Content | Progress |
 |:--------|:-------:|--------:|
 | Abstract | [read]({% post_url Psychology/2016-12-19-thesis-abstract %})| 1st Draft |
-| Visual Computations and spatial representation | [read]({% post_url Psychology/2016-12-19-thesis-introduction %}) | Draft Finished|
-| The reference frames in vision | N.A. | Draft Finished |
-| The representational format of visual spatial representation | N.A. | Draft Finished |
+| Introduction | [read]({% post_url Psychology/2017-04-15-litreview-introduction %}) | Final Draft Submitted |
+| Determining the Reference Frame | [read]({% post_url Psychology/2017-04-15-litreview-referenceframes %}) | Final Draft Submitted |
+| The Representational Format of Reference Frames | [read]({% post_url Psychology/2017-04-15-litreview-format %}) | Final Draft Submitted |
+| References | [read]({% post_url Psychology/2017-04-15-litreview-allreferences %}) | Final Draft Submitted | 
 
 ## Previous Research
 
