@@ -5,6 +5,13 @@ permalink: /pacakges
 modified: 2017-03-24
 ---
 
+## How to install software from source
+
+- [Software-Building-HOWTO](http://www.tldp.org/HOWTO/Software-Building-HOWTO.html) 
+- [Beginner's Guide to Installing from Source](http://moi.vonos.net/linux/beginners-installing-from-source/)
+
+
+
 The Shell Programming should be moved into `Coding101`.
 {: .notice--warning}
 
