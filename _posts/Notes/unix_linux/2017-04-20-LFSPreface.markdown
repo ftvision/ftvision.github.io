@@ -23,6 +23,7 @@ POSIX.1-2008 defines a standard operating system interface and environment, incl
 - The `/usr` Hierarchy
 - The `/var` Hierarchy
 
+Details are referred to [Here](/unix_linux_filesystem)
 
 ## 3. [Linux Standard Base (LSB) Version 5.0](http://refspecs.linuxfoundation.org/fhs.shtml)
 
