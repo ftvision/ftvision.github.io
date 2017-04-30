@@ -1,7 +1,7 @@
 ---
 layout: single
 title: Programming Paradigm and Optimization
-permalink: /programming_paradigm
+permalink: /programming_paradigm/
 topic: Programming Introduction
 modified: 2017-03-24
 ---
@@ -12,6 +12,8 @@ modified: 2017-03-24
 
 A programming paradigm is an approach to programming a computer based on a mathematical theory or a coherent set of principles. Each paradigm supports a set of concepts that makes it the best for a certain kind of problem. 
 {: .notice--info}
+
+You won't be able to learn all the programming languages in the wrold, but you can learn the shared philosophy and concepts for many programming languages. By learning programming paradigm, we learn the essence of those shared parts, and extrapolate our knowledge when detailed implementation of one language is encountered. 
 
 | Content | Notes |
 |:-------:|:-----:|
@@ -37,6 +39,8 @@ In computer science, program optimization or software optimization is the proces
 {: .notice--info}
 
 ### Data-oriented design
+
+I came to know the *data-oriented design* or *data-oriented programming* when I was an intern programmer at a game studio, [the Sparkypants studio](https://www.sparkypants.com/). 
 
 - [Noel's Remark](http://gamesfromwithin.com/data-oriented-design)
 - [Mike Acton's Talk](https://www.youtube.com/watch?v=rX0ItVEVjHc)

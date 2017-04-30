@@ -16,7 +16,11 @@ To goal is to write reliable, fast, protable, short, elegant, and readable code.
 
 
 
-## Languages
+## Styles
+
+Once we have managed programming basics, we can start to learn styles for each programming languages. These styles can help us to write readable and reliable codes.
+
+- [Google Shell Styles](https://google.github.io/styleguide/shell.xml), together with two other references: [Another Bash Guide 1](https://github.com/bahamas10/bash-style-guide), [Another Bash Guide 2](https://lug.fh-swf.de/vim/vim-bash/StyleGuideShell.en.pdf)
 
 ## Helpful Entries
 

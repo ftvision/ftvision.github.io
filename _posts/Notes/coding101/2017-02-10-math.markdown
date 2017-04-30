@@ -1,12 +1,7 @@
 ---
 layout: single
 title: Math Libraries
-permalink: /coding101/math
-prev: 
-late: 
-topic: Programming Introduction
-topiclink: /coding101/
-
+permalink: /coding101/math/
 ---
 
 Mathematics Libraries

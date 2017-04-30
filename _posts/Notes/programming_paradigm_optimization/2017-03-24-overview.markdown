@@ -1,97 +1,79 @@
 ---
 layout: single
 title: Programming Paradigm Overview
-permalink: /programming_paradigm_overview
+permalink: /programming_paradigm/programming_paradigm_overview
 modified: 2017-03-24
 ---
 
-## Un-organized
 
-### OOP
-
-OOP is based on the sending of messages to objects. Objects respond to messages by performing operations. Messages can have arguments, so "sending messages" looks a lot like calling subroutines. A society of objects, each with their own "local memory" and own set of operations has a different feel than the "monolithic processor and single shared memory" feel of non object oriented languages.
-
-### Functional programming
-In functional programming control flow is expressed by combining function calls, rather than by assigning values to variables.
-
-With functional programming
-
-- There are no commands, only side-effect free expressions
-- Code is much shorter, less error-prone, and much easier to prove correct
-- There is more inherent parallelism, so good compilers can produce faster code
-
-## Overview
-
-### imperative paradigm: First do this and next do that
-
-Characteristics:
-
-- Discipline and idea
-    - Digital hardware technology and the ideas of Von Neumann
-- Incremental change of the program state as a function of time.
-- Execution of computational steps in an order governed by control structures
-    - We call the steps for commands
-- Straightforward abstractions of the way a traditional Von Neumann computer works
-- Similar to descriptions of everyday routines, such as food recipes and car repair
-- Typical commands offered by imperative languages
-    - Assignment, IO, procedure calls
-- Language representatives
-    - Fortran, Algol, Pascal, Basic, C
-- The natural abstraction is the procedure
-    - Abstracts one or more actions to a procedure, which can be called as a single command.
-    - "Procedural programming"
-
-### functional paradigm: Evaluate an expression and use the resulting value for something
-
-Characteristics:
-
-- Discipline and idea
-    - Mathematics and the theory of functions
-- The values produced are non-mutable
-    - Impossible to change any constituent of a composite value
-    - As a remedy, it is possible to make a revised copy of composite value
-- Atemporal
-    - Time only plays a minor role compared to the imperative paradigm
-- Applicative
-    - All computations are done by applying (calling) functions
-- The natural abstraction is the function
-    - Abstracts a single expression to a function which can be evaluated as an expression
-- Functions are first class values
-    - Functions are full-fledged data just like numbers, lists, ...
-- Fits well with computations driven by needs
-    - Opens a new world of possibilities
+A programming paradigm is a style or “way” of programming. Some languages make it easy to write in some paradigms but not others.
 
 
-### Logic paradigm: Answer a question via search for a solution
+There are some categories of programming paradigms (From [This Note](http://cs.lmu.edu/~ray/notes/paradigms/)).
 
-The logic paradigm fits extremely well when applied in problem domains that deal with the extraction of knowledge from basic facts and relations. The logical paradigm seems less natural in the more general areas of computation.
+| Paradigm | Description |
+|:--------:|:------------|
+| Structured | Programs have clean, goto-free, nested control structures |
+| Procedural | Imperative programming with procedure calls. [Verb-Oriented] |
+| Imperative | Control flow is an explicit sequence of commands |
+| Object-Oriented | Computation is effected by sending messages to objects; objects have state and behavior |
+| Functional (Applicative) | Computation proceeds by (nested) function calls that avoid any global state |
+| Logic (Rule-based) | Programmer specifies a set of facts and rules, and an engine infers the answers to questions |
+| Declarative | Programs state the result you want, not how to get it |
+| Function-Level (Combinator) | Programs have no variables. No kidding.|
+| Class-based | Objects get their state and behavior based on membership in a class |
+| Prototype-based | Objects get their behavior from a prototype object |
+| Event-Driven | Control flow is determined by asynchronous actions (from humans or sensors) |
+| Flow-Driven | Computation is specified by multiple processes communicating over predefined channels |
 
-Characteristics:
+## Imperative Programming Paradigm
 
-- Discipline and idea
-    - Automatic proofs within artificial intelligence
-- Based on axioms, inference rules, and queries.
-- Program execution becomes a systematic search in a set of facts, making use of a set of inference rules
+Main Idea: First do this and next do that
+{: .notice--info}
 
-### Object-oriented paradigm: Send messages between objects to simulate the temporal evolution of a set of real world phenomena
+It's idea is originated from digital hardware technology and the ideas of Von Neumann on how a computer works. It provides straightforward abstractions of the way a traditional Von Neumann computer works. 
 
-Characteristics:
-
-- Discipline and idea
-    - The theory of concepts, and models of human interaction with real world phenomena
-- Data as well as operations are encapsulated in objects
-- Information hiding is used to protect internal properties of an object
-- Objects interact by means of message passing
-    - A metaphor for applying an operation on an object
-- In most object-oriented languages objects are grouped in classes
-    - Objects in classes are similar enough to allow programming of the classes, as opposed to programming of the individual objects
-    - Classes represent concepts whereas objects represent phenomena
-- Classes are organized in inheritance hierarchies
-    - Provides for class extension or specialization
+The Imperative paradigm changes the state of a program incrementally as a function of time. The program, as well as computational steps in the program (a.k.a. commands), is executed in an order governed by control structures. This is similar to descriptions of everyday routines, such as food recipes and car repair. Therefore, the natural abstraction is **the procedure**: abstracts one or more actions to a procedure, which can be called as a single command (see "Procedural programming").
 
 
-### Declarative Programming (Prolog, SQL)
+## Object-Oriented Programming Paradigm (OOP)
 
-Declarative programming has been around for many years, but most programmers are still unaware of it as a concept. Here’s the gist: in most mainstream languages, you describe how to solve a particular problem; in declarative languages, you merely describe the result you want, and the language itself figures out how to get there.
+Main Idea: Send messages between objects to simulate the temporal evolution of a set of real world phenomena
+{: .notice--info}
 
-If you’ve used SQL, you’ve done a form of declarative programming and may not have realized it: when you issue a query like select X from Y where Z, you are describing the data set you’d like to get back; it’s the database engine that actually figures out how to execute the query. You can use the explain command in most databases to see the execution plan and figure out what happened under the hood.
+
+The OOP paradigm try to organize programming practices by using the theory of concepts and models of human interaction with real world phenomena. Because of this idea, **data as well as operations are encapsulated in objects** such information hiding is used to protect internal properties of an object, and objects interact by means of message passing. Messages can have arguments, so "sending messages" looks a lot like calling subroutines. A society of objects, each with their own "local memory" and own set of operations has a different feel than the "monolithic processor and single shared memory" feel of non object oriented languages.
+
+**Class** is one central concept in OOP. Classes represent concepts whereas objects represent phenomena. In most object-oriented languages, objects are grouped in classes: objects in classes are similar enough to allow programming of the classes, as opposed to programming of the individual objects; Classes are organized in *inheritance hierarchies*. Such mechanism provides for class extension or specialization
+
+
+## Functional Programming Paradigm
+
+Main Idea: Evaluate an expression and use the resulting value for something
+{: .notice--info}
+
+It originates from mathematics and the theory of functions. Functions are first class values, just like numbers, lists, etc. All computations are done by applying (calling) functions. The natural abstraction is the function: Abstracts a single expression to a function which can be evaluated as an expression
+
+In functional programming, control flow is expressed by combining function calls, rather than by assigning values to variables. There are no commands, only side-effect free expressions. The values produced are non-mutable, and it is impossible to change any constituent of a composite value. As a remedy, it is possible to make a revised copy of composite value.
+
+One feature of the functional programming is that it is **Atemporal**. Time only plays a minor role compared to the imperative paradigm. 
+
+Using functional programming, code is much shorter, less error-prone, and much easier to prove correct. Also, There is more inherent parallelism, so good compilers can produce faster code.
+
+
+## Logic Programming Paradigm
+
+Main Idea: Answer a question via search for a solution
+{: .notice--info}
+
+The logic paradigm fits extremely well when applied in problem domains that deal with the extraction of knowledge from basic facts and relations. For example, it can help to generate automatic proofs within artificial intelligence. The logical paradigm seems less natural in the more general areas of computation.
+
+Computations of a logic language is based on axioms, inference rules, and queries. Program execution becomes a systematic search in a set of facts, making use of a set of inference rules.
+
+
+## Declarative Programming Paradigm
+
+Main Idea: Describe the result you want, and the language itself figures out how to get there.
+{: .notice--info}
+
+Declarative programming has been around for many years, but most programmers are still unaware of it as a concept. SQL, for example, is a declarative programming language: you issue a query like `select X from Y where Z`, you are describing the data set you’d like to get back;it’s the database engine that actually figures out how to execute the query.

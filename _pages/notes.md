@@ -47,9 +47,9 @@ Programming is to tell the computer how to work step by step. Learning a program
 | Topic | Brief Description |
 |:------|:------------------|
 | [Learn to code](/coding101)| Basics of several programming languages |
-| [Programming Paradigm](/programming_paradigm) | General philosophy behind programming languages  |
 | [Intermediate Programming](/coding102) | Dive into programming |
 | [Advanced Programming](/coding103) | Programming at an advanced level |
+| [Programming Paradigm and Optimization](/programming_paradigm) | General philosophy behind programming languages and several considerations of optimizing codes |
 | [Unix & Linux](/unix_linux) | Unix & Linux Learning notes |
 | [Minimal Mistakes Adaptation]({% post_url 2017-03-20-mmistakes %}) | Change log of my adaptions of this templates|
 

@@ -18,3 +18,10 @@ Instead, I have collected some interesting conversations or opinions here. They 
 - [OO considered harmful](http://www.iwriteiam.nl/AoP_OOCH.html)
 - [Rees Ree: OO](http://www.paulgraham.com/reesoo.html)
 - [Stop writing Class in Python](http://pyvideo.org/pycon-us-2012/stop-writing-classes.html)
+
+## Language Standards 
+
+As an advanced programmer, one is supposed to have a network of solid and fundamental knowledge of programming. Here is a list of international standards for different languages. None of these standards serve a pedagogical role. All of them are long and tedious. They are, however, all agreed foundations for each language. So they may be good references.
+
+- [C Standard](http://www.open-std.org/jtc1/sc22/wg14/) and [C11 Documents](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf)
+- [C++ Standard](https://isocpp.org/std/the-standard)

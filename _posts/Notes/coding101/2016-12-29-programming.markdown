@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Programming Parallel Comparison
+title: Learn to code
 permalink: /coding101/
 ---
 
