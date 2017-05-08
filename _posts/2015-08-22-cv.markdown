@@ -16,16 +16,22 @@ modified: 2017-03-20
 
 |:--------|--------:|
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>Ph.D.</strong> Cognitive Psychology | 2013/9 – 2018/6 (Expected) |
-| <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>M.S.E </strong> Applied Mathematics and Statistics | 2017 - 2018/6 (Expected) |
+| <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>M.S.E </strong> Applied Mathematics and Statistics | 2017/2 - 2018/6 (Expected) |
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>M.A.</strong> Cognitive Psychology | 2013/9 – 2015/6 |
 | <strong>Peking University</strong>, Beijing, China <br /> <strong>B.Sc.</strong> Experimental Psychology | 2008/9 – 2012/7 |
 
-## Working And Research Experiences
+## Research Experiences
 
 |:--------|--------:|
-| _Sparkypants Studios_ <br /> Baltimore, Maryland, U.S.A. <br /> Programming Intern | 2016/5 - 2016/8 |
-| _Computational Neuroscience Summer School_ <br /> **University of Pennsylvania**, Philadelphia, Pennsylvania, U.S.A <br /> **Advisor**: Geoffrey Aguirre <br /> | 2011/6 - 2011/8 |
+| _Brains, Minds & Machines Summer Course_  <br /> **Marine Biological Laboratory**, Woods Hole, MA. U.S.A <br /> | 2017/8 - 2017/9 |
 | _Computational and Cognitive Neuroscience Summer School_ <br /> **Cold Spring Harbor Asia**, Beijing, China <br /> Organizer: Xiao-Jing Wang, Si Wu, Upinder S. Bhalla, Zachary F. Mainen | 2013/7 |
+| _Computational Neuroscience Summer School_ <br /> **University of Pennsylvania**, Philadelphia, PA, U.S.A <br /> **Advisor**: Geoffrey Aguirre <br /> | 2011/6 - 2011/8 |
+
+## Working Experiences
+
+|:--------|--------:|
+| _Akuna Capital_ <br /> Chicago, IL, U.S.A. <br/> Quantative Trader | 2016/6-2016/8 | 
+| _Sparkypants Studios_ <br /> Baltimore, Maryland, U.S.A. <br /> Programming Intern | 2016/5 - 2016/8 |
 
 ## Grants & Awards
 
@@ -44,7 +50,7 @@ modified: 2017-03-20
 | English | Professional |
 | Japanese | Intermediate | 
 | C/C++ | Worked in Game Engine and Game tool development. | 
-| Matlab | Performed scientific computations: optimization, model fitting, Monte Carlo simulation, etc.<br> mplemented computer vision algorithms: image retouching, image matching, image segmentation, etc. |
+| Matlab | Performed scientific computations: optimization, model fitting, Monte Carlo simulation, etc.<br> implemented computer vision algorithms: image retouching, image matching, image segmentation, etc. |
 | R | Used machine learning, data visualization tools for data analysis. <br> Crafted presentations using R markdown and Latex. |
 | Python | Worked on machine learning/data mining projects using SciPy, NumPy, Scikit-learn, and Pandas packages. <br> Studied computer vision and human vision with probabilistic model using Python. |  
 | JavaScript/HTML/CSS | Participated in Game UI development. |
