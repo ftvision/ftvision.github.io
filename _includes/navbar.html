@@ -1,0 +1,9 @@
+<div class="columns is-centered">
+<nav class="navbar" role="navigation" aria-label="dropdown navigation">
+  {% for link in site.links %}
+  <a Class="navbar-item" href="{% unless link.external %}{{ site.url }}{% endunless %}{{ link.url }}">
+    {{ link.name }}
+  </a>
+  {% endfor %}
+</nav>
+</div>
