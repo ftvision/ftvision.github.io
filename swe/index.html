@@ -62,16 +62,20 @@ layout: wide6
   <div class="tile is-parent is-12">
     <article class="tile is-child">
       <h2> Notes </h2>
+      
       {% for post in site.tags['short-notes'] %}
-      <div class="tags has">
-        <span class="tag is-light">{{ post.date | date: "%m/%d/%Y" }}  </span>
-        <span class="tag is-primary">{{ post.title }} </span>
-        <a href="{{ post.url }}"><span class="tag is-link">Read</span></a>
-      </div>
+      <ul class="control">
+ 	<li class="tags">
+          <span class="tag is-light">{{ post.date | date: "%m/%d/%Y" }}  </span>
+          <span class="tag is-primary">{{ post.title }} </span>
+          <a href="{{ post.url }}"><span class="tag is-link">Read</span></a>
+        </li>
+      </ul>
       {% endfor %}
     </article>
   </div>
 </div>
+
 
 </div>
 </div>
