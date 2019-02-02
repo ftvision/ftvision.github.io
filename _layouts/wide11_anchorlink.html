@@ -1,0 +1,22 @@
+<!doctype>
+<html lang="en">
+<head>
+    <meta content='{{ page.title }} - {{ site.title }}' name='title' />
+    <meta content='{{ page.title }} - {{ site.title }}' name='og:title' />
+    <title>{{ page.title }} | {{ site.title }}</title>
+    {% include head_enable_anchorlink.html %}
+</head>
+
+<body>
+  {% include header.html %}
+  {% include navbar.html %}
+  <div class="columns is-mobile is-centered">
+    <div class="column is-11 content">
+      {{ content }}
+    </div>
+  </div>
+  {% include footer.html %}
+
+</body>
+
+</html>
