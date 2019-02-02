@@ -1,8 +1,0 @@
----
-layout: single
-title: Math Libraries
-permalink: /coding101/math/
----
-
-Mathematics Libraries
-
