@@ -26,6 +26,8 @@ You should start to enjoy coding.
 
 Programming is also **hard**. There are countless ways of organizing and integrating the basic operations. The same logics, with the help of algorithms and data structures, can be implemented in different ways by different languages. There are also hacks and tricks, which help to make a program work. **In my opinion, we should respect and emphasize on the logic of programming.** 
 
+[Peter Norvig](http://norvig.com/21-days.html) has written this very good piece of advice for those who want to teach themselves how to program.
+
 Keep calm and go coding.
 <hr>
 

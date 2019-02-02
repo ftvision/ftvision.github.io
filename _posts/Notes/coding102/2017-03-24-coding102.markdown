@@ -14,7 +14,9 @@ To goal is to write reliable, fast, protable, short, elegant, and readable code.
 
 > We ship features, we don't ship code.
 
+## Language points
 
+## Pacakges and libraries
 
 ## Styles
 
@@ -22,7 +24,7 @@ Once we have managed programming basics, we can start to learn styles for each p
 
 - [Google Shell Styles](https://google.github.io/styleguide/shell.xml), together with two other references: [Another Bash Guide 1](https://github.com/bahamas10/bash-style-guide), [Another Bash Guide 2](https://lug.fh-swf.de/vim/vim-bash/StyleGuideShell.en.pdf)
 
-## Helpful Entries
+## A collection of helpful entries
 
 There are many great discussions and explanations on specific knowledge points online. Online communities, such as [Stack Overflow](https://stackoverflow.com/), are really helpful during my learning. I think it is important to learn, and then summarize a list of helpful entries online for quick references in the future. 
 

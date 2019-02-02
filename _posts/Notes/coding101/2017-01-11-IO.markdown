@@ -22,7 +22,7 @@ topiclink: /coding101/
 A string like cwd that identifies a file is called a path. A **relative path** starts from the current directory; an **absolute path** starts from the topmost directory in the file system.
 
 
-#Interface to Linu
+#Interface to Linux
 
 Any program that you can launch from the shell can also be launched from Python using a pipe. A pipe is an object that represents a running program.
 

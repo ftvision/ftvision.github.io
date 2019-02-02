@@ -6,6 +6,8 @@ permalink: /coding103
 
 ## Introduction
 
+I see far more _experienced coders_ than _advanced/expert coders_. 
+
 I am really far away from the advanced level of programing, even though I started programming since 2003. In fact, advanced programmers are not easy to find despite the large population of software engineers nowadays. So I won't have any "real" notes here for a long time. 
 
 Instead, I have collected some interesting conversations or opinions here. They are NOT advanced programming notes, but they are fun. Contents here may be moved to other places in the future. For example, they may be integrated into parts of intermediate programming notes.

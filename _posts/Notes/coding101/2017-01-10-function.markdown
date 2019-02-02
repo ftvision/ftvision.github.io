@@ -12,11 +12,18 @@ topiclink: /coding101/
 Variables and parameters are *local* When you create a variable inside a function, it is local, which means that it only exists
 inside the function. For example:
 
-```
+```python
 def cat_twice(part1, part2):
     cat = part1 + part2
     print_twice(cat)
 ```
+
+```c++
+void cat_twice(int part1, int part2):
+    int cat = part1 + part2
+    printf("%d\n", cat)
+```
+
 cat is local
 
 To keep track of which variables can be used where, it is sometimes useful to draw a stack diagram. Like state diagrams, stack diagrams show the value of each variable, but they also show the function each variable belongs to.

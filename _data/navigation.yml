@@ -25,6 +25,8 @@ note_nav:
     children:
       - title: "Git Official Doc"
         url: https://git-scm.com/documentation
+      - title: "Github/Git Cheatsheet"
+        url: https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.zh-cn.md
       - title: "Javascript - 阮一峰"
         url: http://javascript.ruanyifeng.com/
       - title: "Minimal Mistakes"
