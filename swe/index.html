@@ -1,0 +1,77 @@
+---
+title: Software Engineering
+layout: wide6
+---
+
+<div class="tile is-ancestor">
+<div class="tile is-vertical">
+
+<div class="tile">
+
+  <div class="tile is-parent is-6">
+    <article class="tile is-child">
+    <h2>
+    <span class="subtitle heading">
+      Every Once In A While
+    </span>
+    C++
+    </h2>
+    </article>
+  </div>
+
+  <div class="tile is-parent is-6">
+    <article class="tile is-child">
+      <p class="heading has-text-grey">Series & Compilation</p>
+      <ul>
+        <li>C++ Style and Readability</li>
+      </ul>
+    </article>
+  </div>
+
+</div>
+
+<hr>
+
+<div class="tile">
+
+  <div class="tile is-parent is-6">
+    <article class="tile is-child">
+    <h2>
+    <span class="subtitle heading">
+      Every Once in a While
+    </span>
+    Career Development
+    </h2>
+
+  </article>
+  </div>
+
+  <div class="tile is-parent is-6">
+    <article class="tile is-child">
+      <p class="heading has-text-grey">Series & Compilation</p>
+      <ul>
+        <li>Interview</li>
+      </ul>
+    </article>
+  </div>
+</div>
+
+<hr>
+
+<div class="tile">
+  <div class="tile is-parent is-12">
+    <article class="tile is-child">
+      <h2> Notes </h2>
+      {% for post in site.tags['short-notes'] %}
+      <div class="tags has">
+        <span class="tag is-light">{{ post.date | date: "%m/%d/%Y" }}  </span>
+        <span class="tag is-primary">{{ post.title }} </span>
+        <a href="{{ post.url }}"><span class="tag is-link">Read</span></a>
+      </div>
+      {% endfor %}
+    </article>
+  </div>
+</div>
+
+</div>
+</div>

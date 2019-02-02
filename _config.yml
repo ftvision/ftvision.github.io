@@ -13,6 +13,9 @@ links:
   - name:         About me
     url:          /about
     external:     false
+  - name:         Software Development
+    url:          /swe
+    external:     false
   - name:         Reading
     url:          /reading
     external:     false
