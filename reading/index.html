@@ -1,0 +1,82 @@
+---
+title: Reading
+layout: wide8_anchorlink
+---
+
+
+<h2> Recent Paper
+  <span class="subtitle heading">
+    <a href="/reading/paper_reading">(See Full History)</a>
+  </span>
+</h2>
+
+{% for post in site.categories['reading'] limit:4 %}
+
+<details class="column">
+<summary class="columns card">
+
+<div class="column is-2">
+  <div class="tags has-addons">
+    <span class="tag is-light">{{ post.date | date: "%m/%d" }}  </span>
+    <span class="tag is-link">{{ post.date | date: "%Y" }}  </span>
+  </div>
+</div>
+
+<div class="column is-7">
+  <div class="title is-5">{{post.title}} <br>
+  {% if post.subtitle %}
+  <small class="subtitle is-6"> {{post.subtitle}} </small>
+  {% endif %}
+  <div class="field is-grouped">
+    <div class="control">
+      <div class="tags has-addons">
+        <span class="tag is-dark"> {{post.year}} </span>
+        <span class="tag is-primary"> {{post.publication}} </span>
+      </div>
+    </div>
+
+    <div class="control">
+      {% if post.authors.size > 3 %}
+      <div class="tags has-addons">
+          <span class="tag is-light"> {{ post.authors[0]}} </span>
+          <span class="tag is-dark"> et. al., </span>
+      </div>
+      {% else %}
+      <div class="tags">
+        {% for author in post.authors %}
+          <span class="tag is-light"> {{ author }} </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+
+</div>
+</div>
+
+<div class="column is-2">
+  <small class="tags">
+    {% for tag in post.tags %}
+    <span class="tag is-info"> {{ tag }} </span>
+    {% endfor %}
+  </small>
+</div>
+
+</summary>
+
+<div class="message is-primary">
+  {% if post.citation %}
+  <div class="message-header">
+    <small>{{post.citation}}</small>
+  </div>
+  {% endif %}
+  <div class="message-body content">
+  {{post.content}}
+  </div>
+</div>
+
+</details>
+
+{% endfor %}

@@ -13,6 +13,9 @@ links:
   - name:         About me
     url:          /about
     external:     false
+  - name:         Reading
+    url:          /reading
+    external:     false
 # ------------ CONFIGURABLE END ------------
 
 permalink:        /posts/:title
