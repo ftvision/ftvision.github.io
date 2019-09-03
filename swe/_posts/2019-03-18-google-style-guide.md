@@ -2,7 +2,7 @@
 title: Titus Winter's talks
 layout: wide6_anchorlink
 tags: [draft,]
-date:
+date: 2019-09-01
 lang: en
 ---
 
