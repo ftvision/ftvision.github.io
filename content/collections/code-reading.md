@@ -10,6 +10,9 @@ draft: true
 
 ## How-to Guide
 
+- [Read Code by nemil](https://www.nemil.com/on-software-engineering/read-code.html)
+- [CODE IS NOT LITERATURE](http://www.gigamonkeys.com/code-reading/)
+
 ## Examples
 
 ### Videos
@@ -17,3 +20,22 @@ draft: true
 - 33:38 | [Writing System Software episode 1](https://www.youtube.com/watch?v=VBrnmciV9fM)
 
 In this episode we'll explore the Redis AOF implementation.
+
+### Recommended Codebase to read
+
+* Python
+  * Howdoi (https://github.com/gleitz/howdoi)
+
+  * Flask (https://github.com/mitsuhiko/flask)
+
+  * Werkzeug (https://github.com/mitsuhiko/werkzeug)
+
+  * Requests (https://github.com/kennethreitz/requests)
+
+  * Tablib (https://github.com/kennethreitz/tablib)
+  * Requests - https://github.com/kennethreitz/requests.
+    -  https://speakerdeck.com/kennethreitz/python-for-humans
+
+**Reference**
+
+[1] https://news.ycombinator.com/item?id=9896369&ref=hackernoon.com

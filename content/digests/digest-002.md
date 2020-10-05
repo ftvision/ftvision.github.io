@@ -14,6 +14,10 @@ draft: true
 
 ### Documentations
 
+* [PEP 3333 -- Python Web Server Gateway Interface v1.0.1](https://www.python.org/dev/peps/pep-3333/)
+* [Using Go Modules](https://blog.golang.org/using-go-modules)
+  - [Go Modules](https://github.com/golang/go/wiki/Modules)
+
 ### Articles
 
 * [I was wrong. CRDTs are the future](https://josephg.com/blog/crdts-are-the-future/)
@@ -23,6 +27,9 @@ draft: true
   This is a short urban legendary, but tells an interesting story about how not over-engineering.
 * [An Opinionated Guide to ML Research](http://joschu.net/blog/opinionated-guide-ml-research.html)
 * [斗鱼关注人数爬取 ── 字体反爬的攻与防](https://cjting.me/2020/07/01/douyu-crawler-and-font-anti-crawling/)
+* [Software Archaeology](http://media.pragprog.com/articles/mar_02_archeology.pdf)
+  * [Podcast](http://www.se-radio.net/2009/11/episode-148-software-archaeology-with-dave-thomas/)
+* [Plain-language Summaries of Research](https://elifesciences.org/collections/9e8f4a49/plain-language-summaries-of-research)
 
 ## Watch
 
@@ -39,3 +46,8 @@ draft: true
 #### [Hugo Tutorial](https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3)
 
 A clear introductoin of Hugo. 23 Episodes. Each Episode is 5 to 10 minutes.
+
+## Play and show
+
+- [Flask Dashboard - Black Design](https://docs.appseed.us/admin-dashboards/flask-dashboard-black/#app-forms)
+- [Flask Dashboard Boilerplate](https://docs.appseed.us/boilerplate-code/flask-dashboard/)
