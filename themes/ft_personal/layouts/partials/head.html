@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Define character set -->
+  <meta charset="utf-8">
+  <!-- Mobile optimization -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Define Page title -->
+  <title>
+    {{ if .IsHome }} {{ .Site.Title }} {{ else }} {{ .Title }} {{ end }}
+  </title>
+  <!-- Define Site Description -->
+  {{ if .Site.Params.description }}
+  <meta name="description" content="{{ .Site.Params.description }}}">{% endif %}
+  {{ end }}
+  <!-- Define RSS Feed -->
+  {{ if .Site.Params.rss.enable }}
+  <link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  {{ end }}
+  <!-- Google Analytics -->
+  <!-- {{ partial "googleanalytics" . }} -->
+  <!-- CSS Reset: Normalize 8.0.1 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+  <!-- CSS: Primer -->
+  <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+  <!-- gittalk -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <!-- Local CSS override -->
+  <link rel="stylesheet" href="{{ `css/style.css` | relURL }}"/>
+  <!-- Local JS override-->
+  <script defer src="/js/tab.js"></script>
+  <script defer src="/js/gtalk.js"></script>
+
+</head>
+
+<body>

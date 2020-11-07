@@ -1,0 +1,38 @@
+{{ partial "head" . }}
+
+<!-- Header -->
+{{ partial "header" . }}
+
+<div class="mx-auto my-2  col-10 col-md-7 col-lg-6 col-xl-5">
+  <!-- Navigation -->
+  <div class="py-2">
+    <nav aria-label="Breadcrumb">
+      <ol>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item" aria-current="page"> {{ .Title }}</li>
+      </ol>
+    </nav>
+
+    <h1>{{.Title}}</h1>
+
+    <div class="markdown-body">
+      {{ .Content }}
+    </div>
+  </div>
+
+  <div>
+    <div class="bg-gray-dark pt-1 width-full"></div>
+    <!-- Ranges through content/posts/*.md -->
+    {{ range where .Site.RegularPages "Section" .Section }}
+    <div class="border-bottom py-1">
+      <span class="text-mono">{{ .Params.Date.Format "2006-01-02"}}</span>
+      <a href="{{ .Permalink | relURL }}" title="{{ .Title }}"> <strong class="px-2">{{ .Title }}</strong></a>
+    </div>
+    {{ end }}
+  </div>
+
+  <!-- Footer -->
+  {{ partial "footer" . }}
+
+</div>
+

@@ -1,0 +1,17 @@
+{{ if eq (.Get "type") "info" }}
+<div class="flash flash-full flash my-2">
+    {{ .Inner | markdownify  }}
+</div>
+{{ end }}
+
+{{ if eq (.Get "type") "warning" }}
+<div class="flash flash-full flash-warn my-2">
+    {{ .Inner | markdownify  }}
+</div>
+{{ end }}
+
+{{ if eq (.Get "type") "success" }}
+<div class="flash flash-full flash-success my-2">
+    {{ .Inner | markdownify  }}
+</div>
+{{ end }}

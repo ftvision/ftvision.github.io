@@ -1,0 +1,93 @@
+{{ partial "head" . }}
+
+<!-- Header -->
+<!-- {{ partial "header" . }} -->
+
+
+<div class="mx-auto my-4 col-10 col-md-8 col-lg-7 col-xl-5">
+  <div class="text-gray-dark py-4 my-2">
+    <h1 class="h0-mktg text-serif">思算 ｜ Thinking as Algorithm
+      <span class="Label Label--gray-darker ml-1" title="Label: Dark gray">
+        <a href="/en"><i class="fas fa-arrow-right"></i> Switch to English</a></span>
+    </h1>
+
+    <div class="my-2 flash flash-full">
+      <span>这是一段中文介绍。</span>
+    </div>
+
+  </div>
+  <div>
+    <!-- Blog Section Latest-->
+    <p>Latest</p>
+    <section>
+      <div class="bg-gray-dark pt-1 width-full"></div>
+      <div class="d-flex flex-column flex-sm-row">
+        <div class="col-12 col-sm-4">
+          <h2 class="text-mono">博客</h2>
+        </div>
+        <div class="col-12 col-sm-8">
+          {{ range first 5  (where .Site.RegularPages "Section" "blog")  }}
+          <div class="border-bottom py-1">
+            <span class="text-mono">{{ .Params.Date.Format "2006-01-02"}}</span>
+            <a href="{{ .Permalink | relURL }}" title="{{ .Title }}"> <strong class="px-2">{{ .Title }}</strong></a>
+          </div>
+          {{ end }}
+        </div>
+    </section>
+
+    <!-- Digest Latest-->
+    <section>
+      <div class="bg-gray-dark pt-1 width-full"></div>
+      <div class="d-flex flex-row">
+        <div class="col-4">
+          <h2 class="text-mono">文摘</h2>
+        </div>
+        <div class="col-8">
+          {{ range first 5  (where .Site.RegularPages "Section" "digest")  }}
+          <div class="border-bottom py-1">
+            <span class="text-mono">{{ .Params.Date.Format "2006-01-02"}}</span>
+            <a href="{{ .Permalink | relURL }}" title="{{ .Title }}"> <strong class="px-2">{{ .Title }}</strong></a>
+          </div>
+          {{ end }}
+        </div>
+    </section>
+
+    <!-- Digest Latest-->
+    <section>
+      <div class="bg-gray-dark pt-1 width-full"></div>
+      <div class="d-flex flex-row">
+        <div class="col-4">
+          <h2 class="text-mono">书架</h2>
+        </div>
+        <div class="col-8">
+          {{ range first 5  (where .Site.RegularPages "Section" "library")  }}
+          <div class="border-bottom py-1">
+            <span class="text-mono">{{ .Params.Date.Format "2006-01-02"}}</span>
+            <a href="{{ .Permalink | relURL }}" title="{{ .Title }}"> <strong class="px-2">{{ .Title }}</strong></a>
+          </div>
+          {{ end }}
+        </div>
+    </section>
+
+     <!-- Digest Latest-->
+     <section>
+      <div class="bg-gray-dark pt-1 width-full"></div>
+      <div class="d-flex flex-row">
+        <div class="col-4">
+          <h2 class="text-mono">集子</h2>
+        </div>
+        <div class="col-8">
+          {{ range first 5  (where .Site.RegularPages "Section" "collection")  }}
+          <div class="border-bottom py-1">
+            <span class="text-mono">{{ .Params.Date.Format "2006-01-02"}}</span>
+            <a href="{{ .Permalink | relURL }}" title="{{ .Title }}"> <strong class="px-2">{{ .Title }}</strong></a>
+          </div>
+          {{ end }}
+        </div>
+    </section>
+
+
+  </div>
+
+</div>
+</div>

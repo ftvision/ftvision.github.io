@@ -25,15 +25,15 @@ Downside is the strong correlation between people who suck at meetings and peopl
 
 1. Define Key Objectives for a Meeting
 
-2. Define Agenda
+1. Define Agenda
 
-3. Agenda has 4 parts - Topic, Owner, Expected Outcome, Duration, Time
+2. Agenda has 4 parts - Topic, Owner, Expected Outcome, Duration, Time
 
-4. Owner - The owner of the part of the agenda is expected to own the topic and drive it
+3. Owner - The owner of the part of the agenda is expected to own the topic and drive it
 
-5. Owner needs to pre-define the Expected Outcome beforehand. Broadly, there could be three outcomes - Information, Discussion or Decision
+4. Owner needs to pre-define the Expected Outcome beforehand. Broadly, there could be three outcomes - Information, Discussion or Decision
 
-6. Moderator should keep a strict check on Time. Sometimes, if there's a overshoot - the moderator should either ask for team agreement to continue the topic for a limited time (10 min - for example) until the Expected Outcome is reached. If not, stop the meeting and move on the the next item on the Agenda.
+5. Moderator should keep a strict check on Time. Sometimes, if there's a overshoot - the moderator should either ask for team agreement to continue the topic for a limited time (10 min - for example) until the Expected Outcome is reached. If not, stop the meeting and move on the the next item on the Agenda.
 
 
 ### Reference

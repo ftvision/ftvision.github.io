@@ -1,0 +1,26 @@
+name = "ft-personal"
+license = "MIT"
+description = "A hugo theme for FT's Personal Site."
+tags = [
+  "blog",
+  "minimal",
+  "minimalist",
+  "responsive",
+  "rss"
+]
+features = [
+  "accessibility",
+  "cover-image",
+  "favicon",
+  "multilingual",
+  "pagination",
+  "shortcodes",
+  "single-column",
+  "social-menu",
+  "syntax-highlighting",
+]
+min_version = 0.28
+
+[author]
+  name = "Feitong Yang"
+  homepage = "https://ftvision.github.io"
