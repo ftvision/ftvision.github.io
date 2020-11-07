@@ -6,7 +6,7 @@ const gitalk = new Gitalk({
   repo: 'ftvision.github.io',      // The repository of store comments,
   owner: 'ftvision',
   admin: ['ftvision'],
-  id: location.pathname,      // Ensure uniqueness and length less than 50
+  id: document.querySelector("#page-title").innerHTML,      // Ensure uniqueness and length less than 50
   distractionFreeMode: false  // Facebook-like distraction free mode
 })
 
