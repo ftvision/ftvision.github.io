@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Digests on Thinking as Algorithm</title>
+    <link>http://example.org/en/digest/</link>
+    <description>Recent content in Digests on Thinking as Algorithm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 25 Sep 2020 17:10:38 -0400</lastBuildDate><atom:link href="http://example.org/en/digest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digest 001</title>
+      <link>http://example.org/en/digest/digest-001/</link>
+      <pubDate>Fri, 25 Sep 2020 17:10:38 -0400</pubDate>
+      
+      <guid>http://example.org/en/digest/digest-001/</guid>
+      <description>Articles Neuroscience | Birds do have a brain cortex—and think Source This News and Views covers the following two research articles:
+ A neural correlate of sensory consciousness in a corvid bird A cortex-like canonical circuit in the avian forebrain  Memoroir | How I got into linguistics, and what I got out of it William Labov&amp;rsquo;s account of his research career: how did he become a sociolinguists, what did he do during the years, and how did he feel about his research career.</description>
+    </item>
+    
+  </channel>
+</rss>

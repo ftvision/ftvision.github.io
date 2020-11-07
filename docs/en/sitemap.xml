@@ -48,6 +48,36 @@
   </url>
   
   <url>
+    <loc>http://example.org/en/digest/digest-001/</loc>
+    <lastmod>2020-09-25T17:10:38-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://example.org/digest/digest-001/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://example.org/en/digest/digest-001/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://example.org/en/digest/</loc>
+    <lastmod>2020-09-25T17:10:38-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://example.org/digest/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://example.org/en/digest/"
+                />
+  </url>
+  
+  <url>
     <loc>http://example.org/en/collection/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
     <xhtml:link

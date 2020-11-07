@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Digests on 思算</title>
+    <link>http://example.org/digest/</link>
+    <description>Recent content in Digests on 思算</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 25 Sep 2020 17:10:38 -0400</lastBuildDate><atom:link href="http://example.org/digest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digest 001</title>
+      <link>http://example.org/digest/digest-001/</link>
+      <pubDate>Fri, 25 Sep 2020 17:10:38 -0400</pubDate>
+      
+      <guid>http://example.org/digest/digest-001/</guid>
+      <description>文章 神经科学 | Birds do have a brain cortex—and think 原文 This News and Views covers the following two research articles: A neural correlate of sensory consciousness in a corvid bird A cortex-like canonical circuit in the avian forebrain 回忆录 | How I got into linguistics, and what I got out of it 原</description>
+    </item>
+    
+  </channel>
+</rss>
