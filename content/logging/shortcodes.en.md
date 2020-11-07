@@ -5,6 +5,19 @@ date: 2020-11-05T18:12:30-04:00
 
 Here is a list of **shortcodes** I've made for this blog.
 
+## Digest Title
+
+#### Code
+
+````md
+{{</* digest-item "title"="Title" "source"="#url" "description"="Description" */>}}
+````
+
+#### Demo
+
+{{< digest-item "title"="Title" "source"="#" "description"="Description" >}}
+
+
 ## Code Tabs
 
 #### Code
