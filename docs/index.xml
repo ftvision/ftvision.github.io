@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>思算</title>
+    <link>http://example.org/</link>
+    <description>Recent content on 思算</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 05 Nov 2020 18:12:30 -0400</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>短码更新日志</title>
+      <link>http://example.org/logging/shortcodes/</link>
+      <pubDate>Thu, 05 Nov 2020 18:12:30 -0400</pubDate>
+      
+      <guid>http://example.org/logging/shortcodes/</guid>
+      <description>这个日志主要是来记录我写的各种短码，以及这些短码怎么使用的。 代码标签 代码 {{&amp;lt; tabs &amp;#34;test_file&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;cpp&amp;#34; &amp;gt;}} # cpp code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;python&amp;#34; &amp;gt;}} # python code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}} 演示 test_file int main(){</description>
+    </item>
+    
+    <item>
+      <title>Quotes</title>
+      <link>http://example.org/snippets/clipboard/quotes/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/snippets/clipboard/quotes/</guid>
+      <description> Removing the delusion of a separate self and the desires it produces, and concentrating upon the subject until there is a direct communion with it.
+  Successes are only rare spikes among background noises of failures in daily life. Achieving more successes comes from failing faster, failing more often, then learning more and keeping on.
+ </description>
+    </item>
+    
+    <item>
+      <title>划船机</title>
+      <link>http://example.org/logging/rowing/</link>
+      <pubDate>Mon, 26 Oct 2020 16:33:54 -0400</pubDate>
+      
+      <guid>http://example.org/logging/rowing/</guid>
+      <description>2000米测试 Date Time 2020/10/26 &amp;ndash;:&amp;ndash; 2020/10/06 08:45 2020/09/14 09:28 普通练习 Date Distance(m) 2020/10/25 4000 2020/10/22 3797 2020/10/17 2505 2020/10/14 6140 2020/10/03 6017 2020/09/28 6990 2020/09/27 4063 2020/09/20 4783 2020/09/19 7466 2020/09/14 3435 2020/09/12 3079 2020/09/11 4359 笔记 2020/10/25: 现在可以比较稳定地保持2:25/500m的速</description>
+    </item>
+    
+    <item>
+      <title>弓道练习</title>
+      <link>http://example.org/logging/kyudo/</link>
+      <pubDate>Mon, 26 Oct 2020 16:33:54 -0400</pubDate>
+      
+      <guid>http://example.org/logging/kyudo/</guid>
+      <description>目前参加的弓道练习是由波士顿地区白虎弓道社组织的。这个组织的流派是柴田勘十郎(Shibata Kanjūrō)门下的日置流尾州竹林派(Heki</description>
+    </item>
+    
+    <item>
+      <title>What – if anything – have we learned from C&#43;&#43;?</title>
+      <link>http://example.org/library/media/bjarne_stroustrup_2014_langnext/</link>
+      <pubDate>Fri, 09 Oct 2020 12:19:05 -0400</pubDate>
+      
+      <guid>http://example.org/library/media/bjarne_stroustrup_2014_langnext/</guid>
+      <description>资源 总结 Bjarne Stroustrup talked about his thoughts and ideas of designing the C++ language &amp;ndash; what C++ is and what C++ is not. At least in his mind, C++ should be: C++ is ageneral-purpose programming language with a bias towards systems programming that is a better C supports data abstraction supports object-oriented programming supports generic programming Bjarne talked about several language myths in C++, argued against several</description>
+    </item>
+    
+    <item>
+      <title>Postmortem Action Items</title>
+      <link>http://example.org/library/research_article/lunney_leuder_beyer_2017/</link>
+      <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/lunney_leuder_beyer_2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Interrupt Reduction Projects</title>
+      <link>http://example.org/library/research_article/beyer_tobin_fong-jones_2016/</link>
+      <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/beyer_tobin_fong-jones_2016/</guid>
+      <description>Teams that write and maintain software much decide how to allocate people&amp;rsquo;s time between:
+ On-call/pager response: Immediate response to outages  critical to the immediate health of the service, and requires a response with an urgency of minutes. time-sensitive mitigation with in-depth investigation changes to prevent recurrence   Tickets and interrupts: Medium-urgency production issues and customer issues  have an urgency of days to weeks and usually take between minutes and hours to resolve use BUG or ticket-tracking tools   Project work: Proactive development and systems/network engineering work  have an urgency ranging from weeks to the long backlog of wishlist ideas every team maintains This type of work requires multiple days of sustained concentration in order to facilitate cognitive flow state    toil: pager response &amp;amp; tickets/interrupts</description>
+    </item>
+    
+    <item>
+      <title>Invent More, Toil Less</title>
+      <link>http://example.org/library/research_article/beyer_etal_2016/</link>
+      <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/beyer_etal_2016/</guid>
+      <description>Key Concept: toil Toil is the kind of work tied to running a production service that tends to be: Manual, Repetitive, Automatable and not requiring human judgment, Interrupt-driven and reactive, and Of no enduring value.
+As reported by SREs at Google, our top three sources of toil (in descending order) are:
+ Interrupts (non-urgent service-related messages and emails) On-call (urgent) responses Releases and pushes  Roles  Software engineering Involves writing or modifying code, in addition to any associated design and documentation work.</description>
+    </item>
+    
+    <item>
+      <title>10000行C&#43;&#43;之后对C&#43;&#43;的思考</title>
+      <link>http://example.org/blog/10k-cpp/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/blog/10k-cpp/</guid>
+      <description>从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，</description>
+    </item>
+    
+    <item>
+      <title>10000行代码后对软件工程的思考</title>
+      <link>http://example.org/blog/10k-code/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/blog/10k-code/</guid>
+      <description>第一个10,000行代码是在工作的头半年里面写完的，其中绝大部分是C++代码，而C++代码中大部分是在重构某个工具。这里就说一说我在写这10</description>
+    </item>
+    
+    <item>
+      <title>Artificial intelligence faces reproducibility crisis</title>
+      <link>http://example.org/library/research_article/huston_2018/</link>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/huston_2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resume</title>
+      <link>http://example.org/about/resume/</link>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/about/resume/</guid>
+      <description>Contact Address: 355 Main Street, Cambridge, MA. 02142
+Email: feitong.yang@outlook.com
+Working Experiences    Company Location Role Time     Google Cambridge, MA, U.S.A. Software Engineer 2018/7 - present   Akuna Capital Chicago, IL, U.S.A. Quantative Trader Intern 2017/6-2017/8   Sparkypants Studios Baltimore, Maryland, U.S.A. C++ Programming Intern 2016/5 - 2016/8       Languages and Skills      Natural Language Chinese (Native Speaker), English (Professional), Japanese (JLPT N3)   Coding C/C++, Python, R, Matlab, Javascript, HTML/CSS, Git, Shell    Education    Education      Johns Hopkins University, Baltimore, Maryland, U.</description>
+    </item>
+    
+    <item>
+      <title>Resume of Failures</title>
+      <link>http://example.org/about/resume_failure/</link>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/about/resume_failure/</guid>
+      <description>This is a list of what I have tried during my journey. It is a running list of my failures during my journey. The idea is inspired by Prof. Johannes Haushoferi. I was trying to summarize all of them, but some may have eluded my memory. I will keep maintaining this list, so future failures will be recorded and updated. You are welcome to come back and check my latest failures.</description>
+    </item>
+    
+    <item>
+      <title>Winner&#39;s Curse?</title>
+      <link>http://example.org/library/research_article/sculley_etal_2018/</link>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/sculley_etal_2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Potential downside of high initial visual acuity</title>
+      <link>http://example.org/library/research_article/vogeslang_etal_sinha_2018/</link>
+      <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/vogeslang_etal_sinha_2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>(Commentary) The Code for Facial Identity in the Primate Brain</title>
+      <link>http://example.org/library/research_article/rossion_taubert_2017/</link>
+      <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/rossion_taubert_2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>What can we learn about human individual face recognition from experimental studies in monkeys?</title>
+      <link>http://example.org/library/research_article/rossion_taubert_2018/</link>
+      <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/rossion_taubert_2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Comparing continual task learning in minds and machines</title>
+      <link>http://example.org/library/research_article/flesch_etal_summerfield_2018/</link>
+      <pubDate>Sat, 17 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/flesch_etal_summerfield_2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unifying account of visual motion and position perception</title>
+      <link>http://example.org/library/research_article/kwon_tadin_knill_2015/</link>
+      <pubDate>Sat, 03 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/kwon_tadin_knill_2015/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dissociation between the perceptual and saccadic localization of moving objects</title>
+      <link>http://example.org/library/research_article/lisi_cavanagh_2015/</link>
+      <pubDate>Sat, 15 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/lisi_cavanagh_2015/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Large-scale, high-resolution comparison of the core visual object recognition behavior of humans, monkeys, and state-of-the-art deep artificial neural networks.</title>
+      <link>http://example.org/library/research_article/rajalingham_etal_dicarlo_2018/</link>
+      <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/rajalingham_etal_dicarlo_2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Integration of speed and time for estimating time to contact</title>
+      <link>http://example.org/library/research_article/chang_jazayeri_2018/</link>
+      <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/chang_jazayeri_2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Efficient coding explains the universal law of generalization in human perception</title>
+      <link>http://example.org/library/research_article/sims_2018/</link>
+      <pubDate>Sun, 17 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/library/research_article/sims_2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>100篇视觉研究文献</title>
+      <link>http://example.org/collection/vision-100/</link>
+      <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/collection/vision-100/</guid>
+      <description>导言 这个《100篇视觉研究文献》列表是Yury Petrov博士2007年左右在东北大学任教时编纂的。原始网页现在已经失效了。我在这里转载了原</description>
+    </item>
+    
+  </channel>
+</rss>

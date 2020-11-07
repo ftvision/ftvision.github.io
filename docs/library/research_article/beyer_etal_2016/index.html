@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>
+     Invent More, Toil Less 
+  </title>
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+  
+  <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  
+  <link rel="stylesheet" href="/css/style.css"/>
+  
+  <script defer src="/js/tab.js"></script>
+  <script defer src="/js/gtalk.js"></script>
+
+</head>
+
+<body>
+
+
+
+<div class="Header">
+  <div class="Header-item Header-item--full"> </div>
+  <div class="Header-item">
+    <a href="/blog" class="Header-link">Blog</a>
+  </div>
+  <div class="Header-item">
+    <a href="#" class="Header-link">Digest</a>
+  </div>
+  
+</div>
+
+
+
+
+
+<div class="mx-auto my-2 col-10 col-md-7 col-lg-6 col-xl-5" >
+
+  
+  <div class="p-2">
+    <nav aria-label="Breadcrumb">
+      <ol>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/library">library</a></li>
+        <li class="breadcrumb-item" aria-current="page"> Invent More, Toil Less</li>
+      </ol>
+    </nav>
+
+    <h1>Invent More, Toil Less</h1>
+    <div>
+      
+      </div>
+  </div>
+
+
+  <div class="markdown-body p-2">
+  <h3 id="key-concept-toil">Key Concept: <strong>toil</strong></h3>
+<p><em>Toil</em> is the kind of work tied to running a production service that tends to be: <strong>Manual, Repetitive, Automatable and not requiring human judgment, Interrupt-driven and reactive, and Of no enduring value</strong>.</p>
+<p>As reported by SREs at Google, our top three sources of toil (in descending order) are:</p>
+<ul>
+<li>Interrupts (non-urgent service-related messages and emails)</li>
+<li>On-call (urgent) responses</li>
+<li>Releases and pushes</li>
+</ul>
+<h3 id="roles">Roles</h3>
+<dl>
+<dt><em>Software engineering</em></dt>
+<dd>Involves writing or modifying code, in addition to any associated design and documentation work. Examples include writing automation scripts, creating tools or frameworks, adding service features for scalability and reliability, or modifying infrastructure code to make it more robust</dd>
+<dt><em>Systems engineering</em></dt>
+<dd>Involves configuring production systems, modifying configurations, or documenting systems in a way that produces lasting improvements from a one-time effort.</dd>
+</dl>
+<h3 id="case-study-bigtable-sre">Case Study: BigTable SRE</h3>
+<h4 id="problem">Problem</h4>
+<p>Increasing paging load on the SRE team and lots of BigTable and Colossus requests:</p>
+<ol>
+<li>Increases and decreases in quota</li>
+<li>Turnups and turndowns of Bigtable footprints</li>
+<li>Turnups and turndowns of datacenters</li>
+</ol>
+<h4 id="solution">Solution</h4>
+<p><strong>pre-work</strong></p>
+<ol>
+<li><em>managerial support</em>: The team, supported by management, decided that it was important (and ultimately better for Bigtable users) to respect their colleagues and themselves by pushing back on complex customer requests, performance investigations for customers who were within Bigtable’s promised SLO, and other routine work that yielded nominal value.</li>
+<li><em>organizational adjustment:</em> they decided to split the team into two shards: one focused on Bigtable, and one focused on Colossus. This split had two advantages: it allowed engineers to specialize technically on a single product, and it allowed the leads of each shard to focus on improving the operational state of a single service.</li>
+</ol>
+<p><strong>Incremental Progress</strong></p>
+<ol>
+<li>Bigtable SRE first focused on fully automating the various footprint- and quota-related requests</li>
+<li>Next, the team focused on wrapping automation into self-service tools.</li>
+</ol>
+<p><strong>Makes progress easily visible</strong>: increasing buy-in from external stakeholders and leadership.</p>
+<h4 id="result">Result</h4>
+<p>by 2014, the team was in a much improved place operationally—they reduced user requests from a peak of more than 2200 requests per quarter in early 2013 to fewer than 400 requests per quarter.</p>
+
+  </div>
+  
+  <div class="Header border-top mt-2 bg-gray-light text-gray-dark">
+  <div class="Header-item">
+    <span ><strong>Thinking as Algorithm </strong> By <em>Feitong Yang</em> | 2014 - 2020</span>
+  </div>
+  <div class="Header-item Header-item--full"> </div>
+  <div class="Header-item">
+    <a href="/about/">About</a>
+  </div>
+  <div class="Header-item">
+    <a href="/logging/">Logging</a>
+  </div>
+</div>
+
+<div id="gitalk-container"></div>
+
+
+</body>
+
+</html>
+
+
+</div>
+

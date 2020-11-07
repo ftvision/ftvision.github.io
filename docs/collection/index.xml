@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Collections on 思算</title>
+    <link>http://example.org/collection/</link>
+    <description>Recent content in Collections on 思算</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 26 Mar 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/collection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>100篇视觉研究文献</title>
+      <link>http://example.org/collection/vision-100/</link>
+      <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/collection/vision-100/</guid>
+      <description>导言 这个《100篇视觉研究文献》列表是Yury Petrov博士2007年左右在东北大学任教时编纂的。原始网页现在已经失效了。我在这里转载了原</description>
+    </item>
+    
+  </channel>
+</rss>

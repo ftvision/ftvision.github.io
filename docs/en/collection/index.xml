@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Collections on Thinking as Algorithm</title>
+    <link>http://example.org/en/collection/</link>
+    <description>Recent content in Collections on Thinking as Algorithm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 26 Mar 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/en/collection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>List of 100 vision papers</title>
+      <link>http://example.org/en/collection/vision-100/</link>
+      <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/en/collection/vision-100/</guid>
+      <description>Introduction This is a list of 100 vision science paper compiled by Dr. Yury Petrov when he was at Northeastern University around 2007. The original link, however, is broken. Therefore I post the information in the original page here.
+Dr. Yury Petrov&amp;rsquo;s selection criterion I tried to weed out all review papers. Papers in the list have been ranked based on the number of times the paper was cited as given by Google Scholar, Scopus, and Web of Science databases as of January 2007.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on 思算</title>
+    <link>http://example.org/blog/</link>
+    <description>Recent content in Blogs on 思算</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 01 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10000行C&#43;&#43;之后对C&#43;&#43;的思考</title>
+      <link>http://example.org/blog/10k-cpp/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/blog/10k-cpp/</guid>
+      <description>从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，</description>
+    </item>
+    
+    <item>
+      <title>10000行代码后对软件工程的思考</title>
+      <link>http://example.org/blog/10k-code/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/blog/10k-code/</guid>
+      <description>第一个10,000行代码是在工作的头半年里面写完的，其中绝大部分是C++代码，而C++代码中大部分是在重构某个工具。这里就说一说我在写这10</description>
+    </item>
+    
+  </channel>
+</rss>

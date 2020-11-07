@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on 思算</title>
+    <link>http://example.org/about/</link>
+    <description>Recent content in About on 思算</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 28 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resume</title>
+      <link>http://example.org/about/resume/</link>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/about/resume/</guid>
+      <description>Contact Address: 355 Main Street, Cambridge, MA. 02142
+Email: feitong.yang@outlook.com
+Working Experiences    Company Location Role Time     Google Cambridge, MA, U.S.A. Software Engineer 2018/7 - present   Akuna Capital Chicago, IL, U.S.A. Quantative Trader Intern 2017/6-2017/8   Sparkypants Studios Baltimore, Maryland, U.S.A. C++ Programming Intern 2016/5 - 2016/8       Languages and Skills      Natural Language Chinese (Native Speaker), English (Professional), Japanese (JLPT N3)   Coding C/C++, Python, R, Matlab, Javascript, HTML/CSS, Git, Shell    Education    Education      Johns Hopkins University, Baltimore, Maryland, U.</description>
+    </item>
+    
+    <item>
+      <title>Resume of Failures</title>
+      <link>http://example.org/about/resume_failure/</link>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/about/resume_failure/</guid>
+      <description>This is a list of what I have tried during my journey. It is a running list of my failures during my journey. The idea is inspired by Prof. Johannes Haushoferi. I was trying to summarize all of them, but some may have eluded my memory. I will keep maintaining this list, so future failures will be recorded and updated. You are welcome to come back and check my latest failures.</description>
+    </item>
+    
+  </channel>
+</rss>

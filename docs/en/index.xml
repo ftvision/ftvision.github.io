@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thinking as Algorithm</title>
+    <link>http://example.org/en/</link>
+    <description>Recent content on Thinking as Algorithm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 05 Nov 2020 18:12:30 -0400</lastBuildDate><atom:link href="http://example.org/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shortcodes Update Logging</title>
+      <link>http://example.org/en/logging/shortcodes/</link>
+      <pubDate>Thu, 05 Nov 2020 18:12:30 -0400</pubDate>
+      
+      <guid>http://example.org/en/logging/shortcodes/</guid>
+      <description>Here is a list of shortcodes I&amp;rsquo;ve made for this blog.
+Code Tabs Code {{&amp;lt; tabs &amp;#34;test_file&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;cpp&amp;#34; &amp;gt;}} # cpp code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;python&amp;#34; &amp;gt;}} # python code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}} Demo test_file    int main(){ return 0; }   def main(): return 0     Box Highlight Code {{&amp;lt; box-highlight type=&amp;#34;info&amp;#34; &amp;gt;}} This is a info box.</description>
+    </item>
+    
+    <item>
+      <title>List of 100 vision papers</title>
+      <link>http://example.org/en/collection/vision-100/</link>
+      <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/en/collection/vision-100/</guid>
+      <description>Introduction This is a list of 100 vision science paper compiled by Dr. Yury Petrov when he was at Northeastern University around 2007. The original link, however, is broken. Therefore I post the information in the original page here.
+Dr. Yury Petrov&amp;rsquo;s selection criterion I tried to weed out all review papers. Papers in the list have been ranked based on the number of times the paper was cited as given by Google Scholar, Scopus, and Web of Science databases as of January 2007.</description>
+    </item>
+    
+  </channel>
+</rss>

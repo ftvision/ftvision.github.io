@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Snippets on 思算</title>
+    <link>http://example.org/snippets/</link>
+    <description>Recent content in Snippets on 思算</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 03 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/snippets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quotes</title>
+      <link>http://example.org/snippets/clipboard/quotes/</link>
+      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/snippets/clipboard/quotes/</guid>
+      <description> Removing the delusion of a separate self and the desires it produces, and concentrating upon the subject until there is a direct communion with it.
+  Successes are only rare spikes among background noises of failures in daily life. Achieving more successes comes from failing faster, failing more often, then learning more and keeping on.
+ </description>
+    </item>
+    
+  </channel>
+</rss>
