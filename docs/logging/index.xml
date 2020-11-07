@@ -12,7 +12,7 @@
       <pubDate>Thu, 05 Nov 2020 18:12:30 -0400</pubDate>
       
       <guid>http://example.org/logging/shortcodes/</guid>
-      <description>这个日志主要是来记录我写的各种短码，以及这些短码怎么使用的。 代码标签 代码 {{&amp;lt; tabs &amp;#34;test_file&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;cpp&amp;#34; &amp;gt;}} # cpp code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;python&amp;#34; &amp;gt;}} # python code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}} 演示 test_file int main(){</description>
+      <description>这个日志主要是来记录我写的各种短码，以及这些短码怎么使用的。 文摘标题 代码 {{&amp;lt; digest-item &amp;#34;title&amp;#34;=&amp;#34;标题&amp;#34; &amp;#34;source&amp;#34;=&amp;#34;#url&amp;#34; &amp;#3</description>
     </item>
     
     <item>
