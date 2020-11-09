@@ -3,105 +3,105 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/en/logging/</loc>
+    <loc>http://ftvision.github.io/en/logging/</loc>
     <lastmod>2020-11-05T18:12:30-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/logging/"
+                href="http://ftvision.github.io/logging/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/logging/"
+                href="http://ftvision.github.io/en/logging/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/en/logging/shortcodes/</loc>
+    <loc>http://ftvision.github.io/en/logging/shortcodes/</loc>
     <lastmod>2020-11-05T18:12:30-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/logging/shortcodes/"
+                href="http://ftvision.github.io/logging/shortcodes/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/logging/shortcodes/"
+                href="http://ftvision.github.io/en/logging/shortcodes/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/en/</loc>
+    <loc>http://ftvision.github.io/en/</loc>
     <lastmod>2020-11-05T18:12:30-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/"
+                href="http://ftvision.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/"
+                href="http://ftvision.github.io/en/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/en/collection/</loc>
+    <loc>http://ftvision.github.io/en/collection/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/collection/"
+                href="http://ftvision.github.io/collection/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/collection/"
+                href="http://ftvision.github.io/en/collection/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/en/collection/vision-100/</loc>
+    <loc>http://ftvision.github.io/en/collection/vision-100/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/collection/vision-100/"
+                href="http://ftvision.github.io/collection/vision-100/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/collection/vision-100/"
+                href="http://ftvision.github.io/en/collection/vision-100/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/en/categories/</loc>
+    <loc>http://ftvision.github.io/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/categories/"
+                href="http://ftvision.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/categories/"
+                href="http://ftvision.github.io/en/categories/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/en/tags/</loc>
+    <loc>http://ftvision.github.io/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/tags/"
+                href="http://ftvision.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/tags/"
+                href="http://ftvision.github.io/en/tags/"
                 />
   </url>
   

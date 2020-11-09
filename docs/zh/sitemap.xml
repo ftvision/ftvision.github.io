@@ -3,321 +3,321 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/snippets/clipboard/crowdcast_io_blog/</loc>
+    <loc>http://ftvision.github.io/snippets/clipboard/crowdcast_io_blog/</loc>
     <lastmod>2020-11-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/snippets/</loc>
+    <loc>http://ftvision.github.io/snippets/</loc>
     <lastmod>2020-11-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>http://ftvision.github.io/</loc>
     <lastmod>2020-11-08T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/"
+                href="http://ftvision.github.io/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/"
+                href="http://ftvision.github.io/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/logging/</loc>
+    <loc>http://ftvision.github.io/logging/</loc>
     <lastmod>2020-11-05T18:12:30-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/logging/"
+                href="http://ftvision.github.io/en/logging/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/logging/"
+                href="http://ftvision.github.io/logging/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/logging/shortcodes/</loc>
+    <loc>http://ftvision.github.io/logging/shortcodes/</loc>
     <lastmod>2020-11-05T18:12:30-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/logging/shortcodes/"
+                href="http://ftvision.github.io/en/logging/shortcodes/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/logging/shortcodes/"
+                href="http://ftvision.github.io/logging/shortcodes/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/snippets/clipboard/png_glitch/</loc>
+    <loc>http://ftvision.github.io/snippets/clipboard/png_glitch/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/snippets/clipboard/snowflake_valuation/</loc>
+    <loc>http://ftvision.github.io/snippets/clipboard/snowflake_valuation/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/snippets/clipboard/quotes/</loc>
+    <loc>http://ftvision.github.io/snippets/clipboard/quotes/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/logging/rowing/</loc>
+    <loc>http://ftvision.github.io/logging/rowing/</loc>
     <lastmod>2020-10-26T16:33:54-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/logging/kyudo/</loc>
+    <loc>http://ftvision.github.io/logging/kyudo/</loc>
     <lastmod>2020-10-26T16:33:54-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/</loc>
+    <loc>http://ftvision.github.io/library/</loc>
     <lastmod>2020-10-09T12:19:05-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/media/bjarne_stroustrup_2014_langnext/</loc>
+    <loc>http://ftvision.github.io/library/media/bjarne_stroustrup_2014_langnext/</loc>
     <lastmod>2020-10-09T12:19:05-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/digest/digest-001/</loc>
+    <loc>http://ftvision.github.io/digest/digest-001/</loc>
     <lastmod>2020-09-25T17:10:38-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/digest/</loc>
+    <loc>http://ftvision.github.io/digest/</loc>
     <lastmod>2020-09-25T17:10:38-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/compsci/</loc>
+    <loc>http://ftvision.github.io/tags/compsci/</loc>
     <lastmod>2019-02-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/lunney_leuder_beyer_2017/</loc>
+    <loc>http://ftvision.github.io/library/research_article/lunney_leuder_beyer_2017/</loc>
     <lastmod>2019-02-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/sre/</loc>
+    <loc>http://ftvision.github.io/tags/sre/</loc>
     <lastmod>2019-02-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/sysadmin/</loc>
+    <loc>http://ftvision.github.io/tags/sysadmin/</loc>
     <lastmod>2019-02-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>http://ftvision.github.io/tags/</loc>
     <lastmod>2019-02-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/tags/"
+                href="http://ftvision.github.io/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/tags/"
+                href="http://ftvision.github.io/tags/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/beyer_tobin_fong-jones_2016/</loc>
+    <loc>http://ftvision.github.io/library/research_article/beyer_tobin_fong-jones_2016/</loc>
     <lastmod>2019-02-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/beyer_etal_2016/</loc>
+    <loc>http://ftvision.github.io/library/research_article/beyer_etal_2016/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/blog/10k-cpp/</loc>
+    <loc>http://ftvision.github.io/blog/10k-cpp/</loc>
     <lastmod>2019-02-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/blog/10k-code/</loc>
+    <loc>http://ftvision.github.io/blog/10k-code/</loc>
     <lastmod>2019-02-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/blog/</loc>
+    <loc>http://ftvision.github.io/blog/</loc>
     <lastmod>2019-02-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/about/</loc>
+    <loc>http://ftvision.github.io/about/</loc>
     <lastmod>2018-12-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/huston_2018/</loc>
+    <loc>http://ftvision.github.io/library/research_article/huston_2018/</loc>
     <lastmod>2018-12-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/ml/</loc>
+    <loc>http://ftvision.github.io/tags/ml/</loc>
     <lastmod>2018-12-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/about/resume/</loc>
+    <loc>http://ftvision.github.io/about/resume/</loc>
     <lastmod>2018-12-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/about/resume_failure/</loc>
+    <loc>http://ftvision.github.io/about/resume_failure/</loc>
     <lastmod>2018-12-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/sculley_etal_2018/</loc>
+    <loc>http://ftvision.github.io/library/research_article/sculley_etal_2018/</loc>
     <lastmod>2018-12-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/dnn/</loc>
+    <loc>http://ftvision.github.io/tags/dnn/</loc>
     <lastmod>2018-12-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/plasticity/</loc>
+    <loc>http://ftvision.github.io/tags/plasticity/</loc>
     <lastmod>2018-12-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/vogeslang_etal_sinha_2018/</loc>
+    <loc>http://ftvision.github.io/library/research_article/vogeslang_etal_sinha_2018/</loc>
     <lastmod>2018-12-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/psych/</loc>
+    <loc>http://ftvision.github.io/tags/psych/</loc>
     <lastmod>2018-12-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/rossion_taubert_2017/</loc>
+    <loc>http://ftvision.github.io/library/research_article/rossion_taubert_2017/</loc>
     <lastmod>2018-12-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/face/</loc>
+    <loc>http://ftvision.github.io/tags/face/</loc>
     <lastmod>2018-12-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/neurosci/</loc>
+    <loc>http://ftvision.github.io/tags/neurosci/</loc>
     <lastmod>2018-12-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/rossion_taubert_2018/</loc>
+    <loc>http://ftvision.github.io/library/research_article/rossion_taubert_2018/</loc>
     <lastmod>2018-12-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/flesch_etal_summerfield_2018/</loc>
+    <loc>http://ftvision.github.io/library/research_article/flesch_etal_summerfield_2018/</loc>
     <lastmod>2018-11-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/modeling/</loc>
+    <loc>http://ftvision.github.io/tags/modeling/</loc>
     <lastmod>2018-11-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/motion/</loc>
+    <loc>http://ftvision.github.io/tags/motion/</loc>
     <lastmod>2018-11-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/kwon_tadin_knill_2015/</loc>
+    <loc>http://ftvision.github.io/library/research_article/kwon_tadin_knill_2015/</loc>
     <lastmod>2018-11-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/lisi_cavanagh_2015/</loc>
+    <loc>http://ftvision.github.io/library/research_article/lisi_cavanagh_2015/</loc>
     <lastmod>2018-09-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/rajalingham_etal_dicarlo_2018/</loc>
+    <loc>http://ftvision.github.io/library/research_article/rajalingham_etal_dicarlo_2018/</loc>
     <lastmod>2018-08-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/chang_jazayeri_2018/</loc>
+    <loc>http://ftvision.github.io/library/research_article/chang_jazayeri_2018/</loc>
     <lastmod>2018-07-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/library/research_article/sims_2018/</loc>
+    <loc>http://ftvision.github.io/library/research_article/sims_2018/</loc>
     <lastmod>2018-06-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/perception/</loc>
+    <loc>http://ftvision.github.io/tags/perception/</loc>
     <lastmod>2018-06-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/collection/vision-100/</loc>
+    <loc>http://ftvision.github.io/collection/vision-100/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/collection/vision-100/"
+                href="http://ftvision.github.io/en/collection/vision-100/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/collection/vision-100/"
+                href="http://ftvision.github.io/collection/vision-100/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/collection/</loc>
+    <loc>http://ftvision.github.io/collection/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/collection/"
+                href="http://ftvision.github.io/en/collection/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/collection/"
+                href="http://ftvision.github.io/collection/"
                 />
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>http://ftvision.github.io/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://example.org/en/categories/"
+                href="http://ftvision.github.io/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://example.org/categories/"
+                href="http://ftvision.github.io/categories/"
                 />
   </url>
   

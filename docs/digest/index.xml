@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Digests on 思算</title>
-    <link>http://example.org/digest/</link>
+    <link>http://ftvision.github.io/digest/</link>
     <description>Recent content in Digests on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 25 Sep 2020 17:10:38 -0400</lastBuildDate><atom:link href="http://example.org/digest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Sep 2020 17:10:38 -0400</lastBuildDate><atom:link href="http://ftvision.github.io/digest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Digest 001</title>
-      <link>http://example.org/digest/digest-001/</link>
+      <link>http://ftvision.github.io/digest/digest-001/</link>
       <pubDate>Fri, 25 Sep 2020 17:10:38 -0400</pubDate>
       
-      <guid>http://example.org/digest/digest-001/</guid>
+      <guid>http://ftvision.github.io/digest/digest-001/</guid>
       <description>文章 Birds do have a brain cortex—and think 神经科学 | Source 这篇Science评论从以下两篇Science文章出发，更新了我们对于鸟类的大脑结构和认知功</description>
     </item>
     

@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Libraries on 思算</title>
-    <link>http://example.org/library/</link>
+    <link>http://ftvision.github.io/library/</link>
     <description>Recent content in Libraries on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 09 Oct 2020 12:19:05 -0400</lastBuildDate><atom:link href="http://example.org/library/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Oct 2020 12:19:05 -0400</lastBuildDate><atom:link href="http://ftvision.github.io/library/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What – if anything – have we learned from C&#43;&#43;?</title>
-      <link>http://example.org/library/media/bjarne_stroustrup_2014_langnext/</link>
+      <link>http://ftvision.github.io/library/media/bjarne_stroustrup_2014_langnext/</link>
       <pubDate>Fri, 09 Oct 2020 12:19:05 -0400</pubDate>
       
-      <guid>http://example.org/library/media/bjarne_stroustrup_2014_langnext/</guid>
+      <guid>http://ftvision.github.io/library/media/bjarne_stroustrup_2014_langnext/</guid>
       <description>资源 总结 Bjarne Stroustrup talked about his thoughts and ideas of designing the C++ language &amp;ndash; what C++ is and what C++ is not. At least in his mind, C++ should be: C++ is ageneral-purpose programming language with a bias towards systems programming that is a better C supports data abstraction supports object-oriented programming supports generic programming Bjarne talked about several language myths in C++, argued against several</description>
     </item>
     
     <item>
       <title>Postmortem Action Items</title>
-      <link>http://example.org/library/research_article/lunney_leuder_beyer_2017/</link>
+      <link>http://ftvision.github.io/library/research_article/lunney_leuder_beyer_2017/</link>
       <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/lunney_leuder_beyer_2017/</guid>
+      <guid>http://ftvision.github.io/library/research_article/lunney_leuder_beyer_2017/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Interrupt Reduction Projects</title>
-      <link>http://example.org/library/research_article/beyer_tobin_fong-jones_2016/</link>
+      <link>http://ftvision.github.io/library/research_article/beyer_tobin_fong-jones_2016/</link>
       <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/beyer_tobin_fong-jones_2016/</guid>
+      <guid>http://ftvision.github.io/library/research_article/beyer_tobin_fong-jones_2016/</guid>
       <description>Teams that write and maintain software much decide how to allocate people&amp;rsquo;s time between:
  On-call/pager response: Immediate response to outages  critical to the immediate health of the service, and requires a response with an urgency of minutes. time-sensitive mitigation with in-depth investigation changes to prevent recurrence   Tickets and interrupts: Medium-urgency production issues and customer issues  have an urgency of days to weeks and usually take between minutes and hours to resolve use BUG or ticket-tracking tools   Project work: Proactive development and systems/network engineering work  have an urgency ranging from weeks to the long backlog of wishlist ideas every team maintains This type of work requires multiple days of sustained concentration in order to facilitate cognitive flow state    toil: pager response &amp;amp; tickets/interrupts</description>
     </item>
     
     <item>
       <title>Invent More, Toil Less</title>
-      <link>http://example.org/library/research_article/beyer_etal_2016/</link>
+      <link>http://ftvision.github.io/library/research_article/beyer_etal_2016/</link>
       <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/beyer_etal_2016/</guid>
+      <guid>http://ftvision.github.io/library/research_article/beyer_etal_2016/</guid>
       <description>Key Concept: toil Toil is the kind of work tied to running a production service that tends to be: Manual, Repetitive, Automatable and not requiring human judgment, Interrupt-driven and reactive, and Of no enduring value.
 As reported by SREs at Google, our top three sources of toil (in descending order) are:
  Interrupts (non-urgent service-related messages and emails) On-call (urgent) responses Releases and pushes  Roles  Software engineering Involves writing or modifying code, in addition to any associated design and documentation work.</description>
@@ -47,100 +47,100 @@ As reported by SREs at Google, our top three sources of toil (in descending orde
     
     <item>
       <title>Artificial intelligence faces reproducibility crisis</title>
-      <link>http://example.org/library/research_article/huston_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/huston_2018/</link>
       <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/huston_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/huston_2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Winner&#39;s Curse?</title>
-      <link>http://example.org/library/research_article/sculley_etal_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/sculley_etal_2018/</link>
       <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/sculley_etal_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/sculley_etal_2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Potential downside of high initial visual acuity</title>
-      <link>http://example.org/library/research_article/vogeslang_etal_sinha_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/vogeslang_etal_sinha_2018/</link>
       <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/vogeslang_etal_sinha_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/vogeslang_etal_sinha_2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>(Commentary) The Code for Facial Identity in the Primate Brain</title>
-      <link>http://example.org/library/research_article/rossion_taubert_2017/</link>
+      <link>http://ftvision.github.io/library/research_article/rossion_taubert_2017/</link>
       <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/rossion_taubert_2017/</guid>
+      <guid>http://ftvision.github.io/library/research_article/rossion_taubert_2017/</guid>
       <description></description>
     </item>
     
     <item>
       <title>What can we learn about human individual face recognition from experimental studies in monkeys?</title>
-      <link>http://example.org/library/research_article/rossion_taubert_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/rossion_taubert_2018/</link>
       <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/rossion_taubert_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/rossion_taubert_2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Comparing continual task learning in minds and machines</title>
-      <link>http://example.org/library/research_article/flesch_etal_summerfield_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/flesch_etal_summerfield_2018/</link>
       <pubDate>Sat, 17 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/flesch_etal_summerfield_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/flesch_etal_summerfield_2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Unifying account of visual motion and position perception</title>
-      <link>http://example.org/library/research_article/kwon_tadin_knill_2015/</link>
+      <link>http://ftvision.github.io/library/research_article/kwon_tadin_knill_2015/</link>
       <pubDate>Sat, 03 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/kwon_tadin_knill_2015/</guid>
+      <guid>http://ftvision.github.io/library/research_article/kwon_tadin_knill_2015/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Dissociation between the perceptual and saccadic localization of moving objects</title>
-      <link>http://example.org/library/research_article/lisi_cavanagh_2015/</link>
+      <link>http://ftvision.github.io/library/research_article/lisi_cavanagh_2015/</link>
       <pubDate>Sat, 15 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/lisi_cavanagh_2015/</guid>
+      <guid>http://ftvision.github.io/library/research_article/lisi_cavanagh_2015/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Large-scale, high-resolution comparison of the core visual object recognition behavior of humans, monkeys, and state-of-the-art deep artificial neural networks.</title>
-      <link>http://example.org/library/research_article/rajalingham_etal_dicarlo_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/rajalingham_etal_dicarlo_2018/</link>
       <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/rajalingham_etal_dicarlo_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/rajalingham_etal_dicarlo_2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Integration of speed and time for estimating time to contact</title>
-      <link>http://example.org/library/research_article/chang_jazayeri_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/chang_jazayeri_2018/</link>
       <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/chang_jazayeri_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/chang_jazayeri_2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Efficient coding explains the universal law of generalization in human perception</title>
-      <link>http://example.org/library/research_article/sims_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/sims_2018/</link>
       <pubDate>Sun, 17 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/sims_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/sims_2018/</guid>
       <description></description>
     </item>
     

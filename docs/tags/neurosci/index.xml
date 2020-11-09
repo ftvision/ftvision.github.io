@@ -2,34 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Neurosci on 思算</title>
-    <link>http://example.org/tags/neurosci/</link>
+    <link>http://ftvision.github.io/tags/neurosci/</link>
     <description>Recent content in Neurosci on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/neurosci/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/tags/neurosci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>(Commentary) The Code for Facial Identity in the Primate Brain</title>
-      <link>http://example.org/library/research_article/rossion_taubert_2017/</link>
+      <link>http://ftvision.github.io/library/research_article/rossion_taubert_2017/</link>
       <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/rossion_taubert_2017/</guid>
+      <guid>http://ftvision.github.io/library/research_article/rossion_taubert_2017/</guid>
       <description></description>
     </item>
     
     <item>
       <title>What can we learn about human individual face recognition from experimental studies in monkeys?</title>
-      <link>http://example.org/library/research_article/rossion_taubert_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/rossion_taubert_2018/</link>
       <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/rossion_taubert_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/rossion_taubert_2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Large-scale, high-resolution comparison of the core visual object recognition behavior of humans, monkeys, and state-of-the-art deep artificial neural networks.</title>
-      <link>http://example.org/library/research_article/rajalingham_etal_dicarlo_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/rajalingham_etal_dicarlo_2018/</link>
       <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/rajalingham_etal_dicarlo_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/rajalingham_etal_dicarlo_2018/</guid>
       <description></description>
     </item>
     

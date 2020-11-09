@@ -2,115 +2,115 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 思算</title>
-    <link>http://example.org/tags/</link>
+    <link>http://ftvision.github.io/tags/</link>
     <description>Recent content in Tags on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 23 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CompSci</title>
-      <link>http://example.org/tags/compsci/</link>
+      <link>http://ftvision.github.io/tags/compsci/</link>
       <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/compsci/</guid>
+      <guid>http://ftvision.github.io/tags/compsci/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SRE</title>
-      <link>http://example.org/tags/sre/</link>
+      <link>http://ftvision.github.io/tags/sre/</link>
       <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/sre/</guid>
+      <guid>http://ftvision.github.io/tags/sre/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SYSADMIN</title>
-      <link>http://example.org/tags/sysadmin/</link>
+      <link>http://ftvision.github.io/tags/sysadmin/</link>
       <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/sysadmin/</guid>
+      <guid>http://ftvision.github.io/tags/sysadmin/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ML</title>
-      <link>http://example.org/tags/ml/</link>
+      <link>http://ftvision.github.io/tags/ml/</link>
       <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/ml/</guid>
+      <guid>http://ftvision.github.io/tags/ml/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DNN</title>
-      <link>http://example.org/tags/dnn/</link>
+      <link>http://ftvision.github.io/tags/dnn/</link>
       <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/dnn/</guid>
+      <guid>http://ftvision.github.io/tags/dnn/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Plasticity</title>
-      <link>http://example.org/tags/plasticity/</link>
+      <link>http://ftvision.github.io/tags/plasticity/</link>
       <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/plasticity/</guid>
+      <guid>http://ftvision.github.io/tags/plasticity/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Psych</title>
-      <link>http://example.org/tags/psych/</link>
+      <link>http://ftvision.github.io/tags/psych/</link>
       <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/psych/</guid>
+      <guid>http://ftvision.github.io/tags/psych/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Face</title>
-      <link>http://example.org/tags/face/</link>
+      <link>http://ftvision.github.io/tags/face/</link>
       <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/face/</guid>
+      <guid>http://ftvision.github.io/tags/face/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Neurosci</title>
-      <link>http://example.org/tags/neurosci/</link>
+      <link>http://ftvision.github.io/tags/neurosci/</link>
       <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/neurosci/</guid>
+      <guid>http://ftvision.github.io/tags/neurosci/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Modeling</title>
-      <link>http://example.org/tags/modeling/</link>
+      <link>http://ftvision.github.io/tags/modeling/</link>
       <pubDate>Sat, 03 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/modeling/</guid>
+      <guid>http://ftvision.github.io/tags/modeling/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Motion</title>
-      <link>http://example.org/tags/motion/</link>
+      <link>http://ftvision.github.io/tags/motion/</link>
       <pubDate>Sat, 03 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/motion/</guid>
+      <guid>http://ftvision.github.io/tags/motion/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Perception</title>
-      <link>http://example.org/tags/perception/</link>
+      <link>http://ftvision.github.io/tags/perception/</link>
       <pubDate>Sun, 17 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/tags/perception/</guid>
+      <guid>http://ftvision.github.io/tags/perception/</guid>
       <description></description>
     </item>
     

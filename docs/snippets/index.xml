@@ -2,43 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Snippets on 思算</title>
-    <link>http://example.org/snippets/</link>
+    <link>http://ftvision.github.io/snippets/</link>
     <description>Recent content in Snippets on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/snippets/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/snippets/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CrowdCast.io技术博客</title>
-      <link>http://example.org/snippets/clipboard/crowdcast_io_blog/</link>
+      <link>http://ftvision.github.io/snippets/clipboard/crowdcast_io_blog/</link>
       <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/snippets/clipboard/crowdcast_io_blog/</guid>
+      <guid>http://ftvision.github.io/snippets/clipboard/crowdcast_io_blog/</guid>
       <description>CrowdCast.io的技术博客在https://crowdcast.io/blog/topic/code 比起Zoom和Google Mee</description>
     </item>
     
     <item>
       <title>png Graph Glitch</title>
-      <link>http://example.org/snippets/clipboard/png_glitch/</link>
+      <link>http://ftvision.github.io/snippets/clipboard/png_glitch/</link>
       <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/snippets/clipboard/png_glitch/</guid>
+      <guid>http://ftvision.github.io/snippets/clipboard/png_glitch/</guid>
       <description>The Art of PNG Glitch 技术研究 | Source</description>
     </item>
     
     <item>
       <title>png Graph Glitch</title>
-      <link>http://example.org/snippets/clipboard/snowflake_valuation/</link>
+      <link>http://ftvision.github.io/snippets/clipboard/snowflake_valuation/</link>
       <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/snippets/clipboard/snowflake_valuation/</guid>
+      <guid>http://ftvision.github.io/snippets/clipboard/snowflake_valuation/</guid>
       <description>Why is Snowflake so Valuable? 商业分析 | Source Based on the trading, Snowflake&amp;rsquo;s market cap valuation is $60 billio, but its revenue over the last 12 months was $403 million. Based on that, their market cap is around 150x their revenue.. Growth Rate is high: 121% year-over-year growth. 2x the 75% metrics of the companies with similar revenue. Growth Banchmark Retention Rate is high: 158%. For every</description>
     </item>
     
     <item>
       <title>Quotes</title>
-      <link>http://example.org/snippets/clipboard/quotes/</link>
+      <link>http://ftvision.github.io/snippets/clipboard/quotes/</link>
       <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/snippets/clipboard/quotes/</guid>
+      <guid>http://ftvision.github.io/snippets/clipboard/quotes/</guid>
       <description> Removing the delusion of a separate self and the desires it produces, and concentrating upon the subject until there is a direct communion with it.
   Successes are only rare spikes among background noises of failures in daily life. Achieving more successes comes from failing faster, failing more often, then learning more and keeping on.
  </description>

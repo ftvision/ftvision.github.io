@@ -2,34 +2,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DNN on 思算</title>
-    <link>http://example.org/tags/dnn/</link>
+    <link>http://ftvision.github.io/tags/dnn/</link>
     <description>Recent content in DNN on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 23 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/tags/dnn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/tags/dnn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Potential downside of high initial visual acuity</title>
-      <link>http://example.org/library/research_article/vogeslang_etal_sinha_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/vogeslang_etal_sinha_2018/</link>
       <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/vogeslang_etal_sinha_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/vogeslang_etal_sinha_2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Comparing continual task learning in minds and machines</title>
-      <link>http://example.org/library/research_article/flesch_etal_summerfield_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/flesch_etal_summerfield_2018/</link>
       <pubDate>Sat, 17 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/flesch_etal_summerfield_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/flesch_etal_summerfield_2018/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Large-scale, high-resolution comparison of the core visual object recognition behavior of humans, monkeys, and state-of-the-art deep artificial neural networks.</title>
-      <link>http://example.org/library/research_article/rajalingham_etal_dicarlo_2018/</link>
+      <link>http://ftvision.github.io/library/research_article/rajalingham_etal_dicarlo_2018/</link>
       <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/library/research_article/rajalingham_etal_dicarlo_2018/</guid>
+      <guid>http://ftvision.github.io/library/research_article/rajalingham_etal_dicarlo_2018/</guid>
       <description></description>
     </item>
     

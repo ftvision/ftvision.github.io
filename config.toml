@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "http://ftvision.github.io/"
 DefaultContentLanguage = "zh"
 hasCJKLanguage = true
 title = "思算｜Thinking as Algorithm"
