@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://example.org/snippets/clipboard/crowdcast_io_blog/</loc>
+    <lastmod>2020-11-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/snippets/</loc>
+    <lastmod>2020-11-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/</loc>
+    <lastmod>2020-11-08T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://example.org/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://example.org/"
+                />
+  </url>
+  
+  <url>
     <loc>http://example.org/logging/</loc>
     <lastmod>2020-11-05T18:12:30-04:00</lastmod>
     <xhtml:link
@@ -14,21 +39,6 @@
                 rel="alternate"
                 hreflang="zh"
                 href="http://example.org/logging/"
-                />
-  </url>
-  
-  <url>
-    <loc>http://example.org/</loc>
-    <lastmod>2020-11-05T18:12:30-04:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://example.org/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://example.org/"
                 />
   </url>
   
@@ -59,11 +69,6 @@
   
   <url>
     <loc>http://example.org/snippets/clipboard/quotes/</loc>
-    <lastmod>2020-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://example.org/snippets/</loc>
     <lastmod>2020-11-03T00:00:00+00:00</lastmod>
   </url>
   

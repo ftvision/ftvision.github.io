@@ -5,7 +5,16 @@
     <link>http://example.org/snippets/</link>
     <description>Recent content in Snippets on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 03 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/snippets/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/snippets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CrowdCast.io技术博客</title>
+      <link>http://example.org/snippets/clipboard/crowdcast_io_blog/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/snippets/clipboard/crowdcast_io_blog/</guid>
+      <description>CrowdCast.io的技术博客在https://crowdcast.io/blog/topic/code 比起Zoom和Google Mee</description>
+    </item>
+    
     <item>
       <title>png Graph Glitch</title>
       <link>http://example.org/snippets/clipboard/png_glitch/</link>
