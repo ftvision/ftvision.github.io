@@ -11,9 +11,9 @@ date: 2020-09-25T17:10:38-04:00
 - [A neural correlate of sensory consciousness in a corvid bird](https://science.sciencemag.org/content/369/6511/1626)
 - [A cortex-like canonical circuit in the avian forebrain](https://science.sciencemag.org/content/369/6511/eabc5534)
 
-我们对于哺乳动物大脑的研究已经比较丰富了，一般认为很多认知功能都是由大脑皮层实现的，而皮层下结构往往只是负责一些生理功能和比较初级的认知加工。但是我们对于鸟类大脑的结构和功能的还不是很清楚。之前我们对于鸟类大脑结构的理解一直没有找到“大脑皮层”这样类似的结果，很多脑区在比较生物学上都被对应到了哺乳动物比较原始的脑区和皮层下结构。所以我们以为鸟类的认知功能也会比较简单。但是，近年越来越多的神经科学研究发现鸟类可以完成很多复杂的认知任务，所以神经科学家逐渐认为鸟类具有比较高级的认知过程。这几篇文章旨在更新我们对于鸟类大脑结构和功能的看法，让我们认识到鸟类大脑确实有与哺乳动物大脑皮层相类似的结构，而这些大脑结构为鸟类的高级认知提供了神经基础。
+我们对于哺乳动物大脑的研究已经比较丰富了，一般认为很多认知功能都是由大脑皮层实现的，而皮层下结构往往只是负责一些生理功能和比较初级的认知加工。相比之下，我们对于鸟类大脑的结构和功能的还不是很清楚。之前我们对于鸟类大脑结构的理解一直没有找到“大脑皮层”这样类似的结果，很多脑区在比较生物学上都被对应到了哺乳动物比较原始的脑区和皮层下结构。所以我们以为鸟类的认知功能也会比较简单。但是，近年越来越多的神经科学研究发现鸟类可以完成很多复杂的认知任务，所以神经科学家逐渐认为鸟类具有比较高级的认知过程。这几篇文章旨在更新我们对于鸟类大脑结构和功能的看法，让我们认识到鸟类大脑确实有与哺乳动物大脑皮层相类似的结构，而这些大脑结构为鸟类的高级认知提供了神经基础。
 
-{{< digest-item "title"="How I got into linguistics, and what I got out of it" "source"=https://www.ling.upenn.edu/~wlabov/HowIgot.html "description"="回忆录" >}}
+{{< digest-item "title"="How I got into linguistics, and what I got out of it" "source"=https://www.ling.upenn.edu/~wlabov/HowIgot.html" "description"="回忆录" >}}
 
 社会语言学家William Labov讲述了他的研究生涯：他如何成为一个社会语言学家，他在过去的这些年里研究了哪些课题，这些课题是如何转变的，以及他的研究如何对社会产生影响，以及他如何看待自己的研究生涯。
 
@@ -73,17 +73,17 @@ Scrimba是一个教前端编程的网站，教授的内容也基本上就是和�
 
 *题外话：现在这种类型的网络教学（或者知识付费服务）还挺多的。尤其是国内，现在简直是**卖课成风**。如果课程设计精良、内容丰富，我并不反对卖课。但是我也不希望卖课成了网上唯一分享知识的方法。*
 
-## 多媒体
-
-{{< digest-item "title"="Hacking with Andrew and Brad: tip.golang.org" "source"="https://www.youtube.com/watch?v=1rZ-JorHJEY" "description"="编程实况" >}}
-
-本来我是想找一些视频来学习Go这个语言的，结果找到了这个视频。厉害的程序员不仅仅是程序写得好，写程序相关的工具也用的非常溜啊。我看到了作为码农，跟他们的巨大差距。这个视频不仅仅是讲编程，其实还讲了不少设计方面的想法。
-
 {{< digest-item "title"="Hugo Tutorial" "source"="https://www.youtube.com/playlist?list=PLLAZ4kZ9dFpOnyRlyS-liKL5ReHDcj4G3" "description"="视频教程" >}}
 
 这是一个简单易懂，内容又相对比较全面的Hugo教程。一共23集，每集大概5-10分钟，2倍速看的话，大概两个小时可以对Hugo的整个系统有一个大概的了解。
 
 Hugo网站也基本上把这个系列的视频当作了主要教学视频，在不同的文档页面上都嵌入了相应的教学视频。不得不说，这个系列讲的挺好的，看完这个视频集合以后再去看Hugo的文档或者去网上搜材料就会简单不少。
+
+## 多媒体
+
+{{< digest-item "title"="Hacking with Andrew and Brad: tip.golang.org" "source"="https://www.youtube.com/watch?v=1rZ-JorHJEY" "description"="编程实况" >}}
+
+本来我是想找一些视频来学习Go这个语言的，结果找到了这个视频。厉害的程序员不仅仅是程序写得好，写程序相关的工具也用的非常溜啊。我看到了作为码农，跟他们的巨大差距。这个视频不仅仅是讲编程，其实还讲了不少设计方面的想法。
 
 ## 工具技术
 
