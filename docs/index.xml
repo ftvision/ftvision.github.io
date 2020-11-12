@@ -12,7 +12,16 @@
       <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/crowdcast_io_blog/</guid>
-      <description>CrowdCast.io的技术博客在https://crowdcast.io/blog/topic/code 比起Zoom和Google Mee</description>
+      <description>CrowdCast.io的技术博客在 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量的几</description>
+    </item>
+    
+    <item>
+      <title>写本书值得吗</title>
+      <link>http://ftvision.github.io/snippets/clipboard/martin_kelppmann_write_book/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/martin_kelppmann_write_book/</guid>
+      <description>Writing a book: is it worth it? 分享经验 | Source Martin Kleppmann, the author of Designing Data-Intensive Applications, explains reflects on his experiences of publishing the book. Metrics: 100,000 copies sold. Financial perspective: a good passive income since the book is very popular. The profit for each book is small, but the time and the number helps. Beyond the royalities: 50 talks, blog posts, and other social</description>
     </item>
     
     <item>
@@ -78,6 +87,15 @@
       
       <guid>http://ftvision.github.io/library/media/bjarne_stroustrup_2014_langnext/</guid>
       <description>资源 总结 Bjarne Stroustrup talked about his thoughts and ideas of designing the C++ language &amp;ndash; what C++ is and what C++ is not. At least in his mind, C++ should be: C++ is ageneral-purpose programming language with a bias towards systems programming that is a better C supports data abstraction supports object-oriented programming supports generic programming Bjarne talked about several language myths in C++, argued against several</description>
+    </item>
+    
+    <item>
+      <title>Digest 002</title>
+      <link>http://ftvision.github.io/digest/digest-002/</link>
+      <pubDate>Fri, 02 Oct 2020 17:10:38 -0400</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/digest-002/</guid>
+      <description>文章 Compact Nuclear Fusion Reactor Is ‘Very Likely to Work,’ Studies Suggest 科学报道 | Source MIT的Sparc项目信心满满地认为他们能控制核聚变，并使用核聚变，像太阳一样，制造</description>
     </item>
     
     <item>
@@ -253,7 +271,8 @@ Working Experiences    Company Location Role Time     Google Cambridge, MA, U.S.
       <pubDate>Sun, 17 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/library/research_article/sims_2018/</guid>
-      <description></description>
+      <description>{: .imgright width=&amp;ldquo;300px&amp;rdquo;} This week&amp;rsquo;s code breaking focuses on understanding the codes that accompany the paper Efficient coding explains the universal law of generalization in human perception, and the original code is hosted here at Open Science Framework.
+My analysis and Python-transformation are here at Github</description>
     </item>
     
     <item>
