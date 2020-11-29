@@ -4,8 +4,12 @@ date: 2020-10-04T18:12:30-04:00
 draft: true
 ---
 
+##  Online Magazine
 * [Hacker Noon](https://hackernoon.com/)
 * [Inference: International Review of Science](https://inference-review.com/)
+* [Edge](https://www.edge.org/)
+* [Quanta Magazine](https://www.quantamagazine.org/)
+
 ## Blog Lists
 
 **Capital**
@@ -25,3 +29,9 @@ draft: true
 * [Bartek's coding blog](https://www.bfilipek.com/)
 * [Mattias Geniar](https://ma.ttias.be/)
 * [Brandon Rhodes](https://rhodesmill.org/brandon/)
+- [Julia Evans](https://jvns.ca/)
+- [aem1k](https://aem1k.com/)
+
+**Philosophy**
+
+* [Peter Smith & Logic Matters](https://www.logicmatters.net/)
