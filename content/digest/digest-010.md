@@ -1,7 +1,6 @@
 ---
 title: "Digest 010"
 date: 2020-11-27T09:46:06-05:00
-draft: true
 ---
 
 ## 文章
