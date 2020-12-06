@@ -5,7 +5,34 @@
     <link>http://ftvision.github.io/</link>
     <description>Recent content on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Dec 2020 12:16:30 -0500</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digest 011</title>
+      <link>http://ftvision.github.io/digest/digest-011/</link>
+      <pubDate>Sat, 05 Dec 2020 12:16:30 -0500</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/digest-011/</guid>
+      <description>文章 This is Real. That&amp;#39;s Not. 不同人生 | Source 作者写了自己从一个上层家庭出身变成一个无家可归的流浪者的过程中所体验到的世间百态。作者说自己以前以为这个世界人们都</description>
+    </item>
+    
+    <item>
+      <title>Digest 010</title>
+      <link>http://ftvision.github.io/digest/digest-010/</link>
+      <pubDate>Fri, 27 Nov 2020 09:46:06 -0500</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/digest-010/</guid>
+      <description>文章 Eight years at Roblox 经验分享 | Source 作者介绍了他在Roblox工作八年的经历和大大小小的各种项目。从作者的项目可以看出一部分Roblox系统的演化的过程</description>
+    </item>
+    
+    <item>
+      <title>Digest 009</title>
+      <link>http://ftvision.github.io/digest/digest-009/</link>
+      <pubDate>Fri, 20 Nov 2020 09:46:06 -0500</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/digest-009/</guid>
+      <description>文章 End Micromanagement: 6 Signs You’re a Micromanager (And What to Do Instead) 博客文章 | Source Micromanagement就是作为经理，对员工什么鸡毛蒜皮的小事都要管一管。这篇文章讲</description>
+    </item>
+    
     <item>
       <title>CrowdCast.io技术博客</title>
       <link>http://ftvision.github.io/snippets/clipboard/crowdcast_io_blog/</link>
@@ -108,36 +135,6 @@
     </item>
     
     <item>
-      <title>Postmortem Action Items</title>
-      <link>http://ftvision.github.io/library/research_article/lunney_leuder_beyer_2017/</link>
-      <pubDate>Sat, 23 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/lunney_leuder_beyer_2017/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Interrupt Reduction Projects</title>
-      <link>http://ftvision.github.io/library/research_article/beyer_tobin_fong-jones_2016/</link>
-      <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/beyer_tobin_fong-jones_2016/</guid>
-      <description>Teams that write and maintain software much decide how to allocate people&amp;rsquo;s time between:
- On-call/pager response: Immediate response to outages  critical to the immediate health of the service, and requires a response with an urgency of minutes. time-sensitive mitigation with in-depth investigation changes to prevent recurrence   Tickets and interrupts: Medium-urgency production issues and customer issues  have an urgency of days to weeks and usually take between minutes and hours to resolve use BUG or ticket-tracking tools   Project work: Proactive development and systems/network engineering work  have an urgency ranging from weeks to the long backlog of wishlist ideas every team maintains This type of work requires multiple days of sustained concentration in order to facilitate cognitive flow state    toil: pager response &amp;amp; tickets/interrupts</description>
-    </item>
-    
-    <item>
-      <title>Invent More, Toil Less</title>
-      <link>http://ftvision.github.io/library/research_article/beyer_etal_2016/</link>
-      <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/beyer_etal_2016/</guid>
-      <description>Key Concept: toil Toil is the kind of work tied to running a production service that tends to be: Manual, Repetitive, Automatable and not requiring human judgment, Interrupt-driven and reactive, and Of no enduring value.
-As reported by SREs at Google, our top three sources of toil (in descending order) are:
- Interrupts (non-urgent service-related messages and emails) On-call (urgent) responses Releases and pushes  Roles  Software engineering Involves writing or modifying code, in addition to any associated design and documentation work.</description>
-    </item>
-    
-    <item>
       <title>10000行C&#43;&#43;之后对C&#43;&#43;的思考</title>
       <link>http://ftvision.github.io/blog/10k-cpp/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
@@ -153,15 +150,6 @@ As reported by SREs at Google, our top three sources of toil (in descending orde
       
       <guid>http://ftvision.github.io/blog/10k-code/</guid>
       <description>第一个10,000行代码是在工作的头半年里面写完的，其中绝大部分是C++代码，而C++代码中大部分是在重构某个工具。这里就说一说我在写这10</description>
-    </item>
-    
-    <item>
-      <title>Artificial intelligence faces reproducibility crisis</title>
-      <link>http://ftvision.github.io/library/research_article/huston_2018/</link>
-      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/huston_2018/</guid>
-      <description></description>
     </item>
     
     <item>
@@ -182,97 +170,6 @@ Working Experiences    Company Location Role Time     Google Cambridge, MA, U.S.
       
       <guid>http://ftvision.github.io/about/resume_failure/</guid>
       <description>This is a list of what I have tried during my journey. It is a running list of my failures during my journey. The idea is inspired by Prof. Johannes Haushoferi. I was trying to summarize all of them, but some may have eluded my memory. I will keep maintaining this list, so future failures will be recorded and updated. You are welcome to come back and check my latest failures.</description>
-    </item>
-    
-    <item>
-      <title>Winner&#39;s Curse?</title>
-      <link>http://ftvision.github.io/library/research_article/sculley_etal_2018/</link>
-      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/sculley_etal_2018/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Potential downside of high initial visual acuity</title>
-      <link>http://ftvision.github.io/library/research_article/vogeslang_etal_sinha_2018/</link>
-      <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/vogeslang_etal_sinha_2018/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>(Commentary) The Code for Facial Identity in the Primate Brain</title>
-      <link>http://ftvision.github.io/library/research_article/rossion_taubert_2017/</link>
-      <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/rossion_taubert_2017/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>What can we learn about human individual face recognition from experimental studies in monkeys?</title>
-      <link>http://ftvision.github.io/library/research_article/rossion_taubert_2018/</link>
-      <pubDate>Sat, 08 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/rossion_taubert_2018/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Comparing continual task learning in minds and machines</title>
-      <link>http://ftvision.github.io/library/research_article/flesch_etal_summerfield_2018/</link>
-      <pubDate>Sat, 17 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/flesch_etal_summerfield_2018/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Unifying account of visual motion and position perception</title>
-      <link>http://ftvision.github.io/library/research_article/kwon_tadin_knill_2015/</link>
-      <pubDate>Sat, 03 Nov 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/kwon_tadin_knill_2015/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Dissociation between the perceptual and saccadic localization of moving objects</title>
-      <link>http://ftvision.github.io/library/research_article/lisi_cavanagh_2015/</link>
-      <pubDate>Sat, 15 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/lisi_cavanagh_2015/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Large-scale, high-resolution comparison of the core visual object recognition behavior of humans, monkeys, and state-of-the-art deep artificial neural networks.</title>
-      <link>http://ftvision.github.io/library/research_article/rajalingham_etal_dicarlo_2018/</link>
-      <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/rajalingham_etal_dicarlo_2018/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Integration of speed and time for estimating time to contact</title>
-      <link>http://ftvision.github.io/library/research_article/chang_jazayeri_2018/</link>
-      <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/chang_jazayeri_2018/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Efficient coding explains the universal law of generalization in human perception</title>
-      <link>http://ftvision.github.io/library/research_article/sims_2018/</link>
-      <pubDate>Sun, 17 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/library/research_article/sims_2018/</guid>
-      <description>{: .imgright width=&amp;ldquo;300px&amp;rdquo;} This week&amp;rsquo;s code breaking focuses on understanding the codes that accompany the paper Efficient coding explains the universal law of generalization in human perception, and the original code is hosted here at Open Science Framework.
-My analysis and Python-transformation are here at Github</description>
     </item>
     
     <item>
