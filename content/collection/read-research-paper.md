@@ -16,3 +16,7 @@ draft: true
 - [Art of reading a journal article: Methodically and effectively](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3687192/)
 - [How to Read a Scientific Article](https://www.owlnet.rice.edu/~cainproj/courses/HowToReadSciArticle.pdf)
 - [Ten simple rules for reading a scientific paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008032)
+
+
+### Reading Books
+- [How	to	Read	a	Book,	v5.0](https://pne.people.si.umich.edu/PDF/howtoread.pdf)

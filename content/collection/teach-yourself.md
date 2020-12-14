@@ -44,3 +44,9 @@ https://www.amazon.com/Algebra-Chapter-Graduate-Studies-Mathematics/dp/082184781
   - [Playlist](https://www.youtube.com/playlist?list=PLSE8ODhjZXjbohkNBWQs_otTrBTrjyohi)
 
 
+## 编程
+
+- [Lambdas: From C++11 to C++20, Part 1](https://www.bfilipek.com/2019/02/lambdas-story-part1.html)
+- [Under the hood of lambdas and std::function](https://shaharmike.com/cpp/lambdas-and-functions/)
+- [std::visit is everything wrong with modern C++](https://bitbashing.io/std-visit.html)
+{{< digest-item "title"="An Opinionated Guide to ML Research" "source"="http://joschu.net/blog/opinionated-guide-ml-research.html" "description"="观点文章" >}}
