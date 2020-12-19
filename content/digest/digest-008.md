@@ -1,7 +1,6 @@
 ---
 title: "Digest 008"
 date: 2020-11-13T09:46:06-05:00
-draft: true
 ---
 
 ## 文章
@@ -18,20 +17,32 @@ Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我
 
 > A perfect implementation of the wrong specification is worthless. By the same principle a beautifully crafted library with no documentation is also damn near worthless.
 
-{{< digest-item "title"="The Log: What every software engineer should know about real-time data's unifying abstraction" "source"="hhttps://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying" "description"="博客文章" >}}
-//TODO
+{{< digest-item "title"="The Log: What every software engineer should know about real-time data's unifying abstraction" "source"="https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying" "description"="技术博客" >}}
+
+这是一篇2013年的技术文章，讲述了分布式系统的各个组成成分中的Log怎么处理。文章实在是太长了，没有看完，之后再找时间继续读吧。
 
 {{< digest-item "title"="Why Life Can’t Be Simpler" "source"="https://fs.blog/2020/10/why-life-cant-be-simpler" "description"="博客文章" >}}
-//TODO
+
+这篇文章分析了一下生活中各种设计的复杂性的来源。有两个概念非常有意思：
+
+1. 我们需要更好的**概念模型（conceptual model）**才能简化事物。
+  > 概念模型是人认为事物如何工作的思考方式。这些概念模型是理解和整理复杂事物的重要思维工具。By Dan Norman, [*Living with Complexity*](https://www.amazon.com/gp/product/0262528940)
+2. 系统的复杂度是守恒的
+  > 一个系统的复杂度是个常数。如果你让用户交互变得简单，那藏在幕后的复杂度就会增加。 By Lawrence Tesler
+
+要注意的是，减少用户界面的功能并不见得会把事物变得简单，因为这使得用户失去了操控系统的能力。有时候可能让交互界面稍微复杂一点，反而会降低整个系统的复杂度。
+
+最后文章总结了四个经验：
+1. 根据Tesler的复杂度守恒定律，事物看起来简单并不意味着事物用起来简单。
+2. 不必把事情都让用户看起来特别简单，原因参照1
+3. 产品和服务的好坏取决于出现问题时候的体验，而不是运行正常是的体验。
+4. 设计者要想清楚可以给用户对事物在哪个层面上的操控力，以及用户如何影响事物本身。
 
 {{< digest-item "title"="Orange You Accessible? A Mini Case Study on Color Ratio" "source"="https://www.bounteous.com/insights/2019/03/22/orange-you-accessible-mini-case-study-color-ratio" "description"="可用性设计" >}}
 
-{{< digest-item "title"="Interval Tree Clocks" "source"="https://ferd.ca/interval-tree-clocks.html" "description"="技术文章" >}}
+这篇文章讲了一下互联网无障碍设计（accessibility design）的一些问题。作者从一对例子出发，讨论到底什么对比度更容易看到：在橙色背景上的黑色字体，还是在橙色背景上的白色字体。
 
-
-{{< digest-item "title"="The Games People Play With Cash Flow" "source"="https://llis.nasa.gov/lesson/1956" "description"="经验分享" >}}
-
-
+现在有的Web Content Accessibility Guidelines (WCAG)指南推荐了一些标准，比如AA标准规定字体和背景的对比度（contrast ratio）要在3到4.5之间，而AAA标准规定字体和背景的对比度要在4.5到7之间。如果直接根据物理计算的话，橙色背景上的黑色字体的对比度更高，所以根据标准来说更值得推荐。但是作者根据自己的体验和找来的一些被试的反馈来看，大多数都觉得橙色背景上白色更清晰可见。所以，这篇文章的问题就是到底应该以什么标准来设计？现有的规定和对比度计算方式是否合适？
 
 ## 网络学习
 
@@ -49,21 +60,20 @@ Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我
 
 Ben Eater的显卡教程系列，一共三个视频，每个在30分钟左右。你可以选择从他那里买组合套件，也可以自己去找相关的组合套件。Ben Eater录了好几个非常精良的项目，都非常值得看（虽然我还没有看完）。
 
-{{< digest-item "title"="Using Go Modules" "source"="https://blog.golang.org/using-go-modules" "description"="博客文章" >}}
-  - [Go Modules](https://github.com/golang/go/wiki/Modules)
-
 ## 多媒体
+
+{{< digest-item "title"="Joe Armstrong & Alan Kay - Joe Armstrong interviews Alan Kay" "source"="https://yahnd.com/theater/r/youtube/fhOHn9TClXY/" "description"="对话访谈" >}}
+
+这是个还不错的对话，尤其是前面30分钟Alan Kay在诉说计算的历史的时候，有很多很好的材料，推荐了很多好的论文和书籍。后面的对话就……听听就好。
+
+Alan Kay说到过一句话，跟我几年前的体验很相似：
+
+> In a "real" computer science the best languages of an era should serve as the "assembly code" for the next generation of expression!
+
+
+## 工具、技术、展示
 
 {{< digest-item "title"="Software Library: MS-DOS Games" "source"="https://archive.org/details/softwarelibrary_msdos_games" "description"="游戏列表" >}}
 
 这个网页收录了7000多个MS-DOS时代的游戏，都可以玩！真是充满了童年的回忆！
-
-{{< digest-item "title"="Joe Armstrong & Alan Kay - Joe Armstrong interviews Alan Kay" "source"="https://yahnd.com/theater/r/youtube/fhOHn9TClXY/" "description"="对话访谈" >}}
-//TODO
-
-{{< digest-item "title"="Invited Talk - Guy Steele" "source"="https://yahnd.com/theater/r/youtube/dCuZkaaou0Q/" "description"="研究讲座" >}}
-//TODO
-
-## 工具、技术、展示
-
 

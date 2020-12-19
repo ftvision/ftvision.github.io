@@ -69,6 +69,10 @@ Stripe的技术博客一如既往的写得好啊。读他们的技术博客和AP
 
 这是一本中文写作的现代C++教程，重在介绍C++11以来的变化和改进。其中提到了[What Every Programmer Should Know About Memory](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf)这篇文章，也同样值得花时间好好学习。
 
+{{< digest-item "title"="hacking C++" "source"="https://hackingcpp.com/index.html" "description"="C++教学网站" >}}
+
+这个网站展示和讲述C++的方法很有新意：作者制作了很多Cheatsheet和图标来展示概念，非常清晰易懂，可以作为学习C++的很好地补充材料。
+
 {{< digest-item "title"="2020年TLA+会议" "source"="http://conf.tlapl.us/2020/" "description"="TLA+会议" >}}
 
 之前第五期记录了Leslie Lamport关于TLA+的介绍，今天发现他们还有会议了。这个会议算是一个比较好的学习工业界如何在工作场景中实践TLA+的教程了。不过报告的内容还挺复杂的。TLA+这个东西，感觉有时间确实是可以了解一下，看起来还挺好玩的。
@@ -76,6 +80,8 @@ Stripe的技术博客一如既往的写得好啊。读他们的技术博客和AP
 ## 多媒体
 
 {{< digest-item "title"="The UNIX Time-Sharing System" "source"="https://chsasank.github.io/classic_papers/unix-time-sharing-system.html#" "description"="系统设计" >}}
+
+这是UNIX设计的原始论文，文章写得很清晰，但是比较长。找时间再仔细读一下。
 
 另外，AT&T的这个纪录片档案《[The UNIX Operating System](https://www.youtube.com/watch?v=tc4ROCJYbm0&t=797s)》是一个很不错的关于Unix的介绍。这个视频也讲解了当时Unix设计上的创新，比如`|`操作符，比如重新导向输入输出的操作(`>`和`<`)，以及这篇文章着重讨论的Unix的文件系统。
 

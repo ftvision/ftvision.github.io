@@ -3,9 +3,15 @@ title: CrowdCast.io技术博客
 date: 2020-11-08
 ---
 
-CrowdCast.io的[技术博客在](https://crowdcast.io/blog/topic/code)
+CrowdCast.io的[技术博客在这里](https://crowdcast.io/blog/topic/code)
 
 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量的几个人在视频，然后把视频发送给成千上万的观众来看。比如演唱会，脱口秀等现场直播节目。同时Crowdcast又提供观众互动环节。
+
+### 阅读进度
+
+最后一篇读的是2020/08/06的Scaling Crowdcast
+
+### 博客摘要
 
 {{< digest-item "title"="Scaling Crowdcast" "source"="https://crowdcast.io/blog/post/scaling-crowdcast" "description"="系统设计" >}}
 
