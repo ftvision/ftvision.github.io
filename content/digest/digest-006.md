@@ -86,7 +86,7 @@ Google Spanner数据库的技术讲座。这个讲座讲得挺好的，从背景
 
 一个关于Google Chubby服务的技术讲座。有时间的时候还是要继续认真再看几遍。
 
-## 工具技术
+## 工具、技术、展示
 
 {{< digest-item "title"="Microsoft TileCode" "source"="https://microsoft.github.io/tilecode/doc/manual" "description"="游戏设计" >}}
 

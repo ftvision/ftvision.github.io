@@ -60,7 +60,7 @@ Facebook这个例子还挺有意思的。他们确实有“竞争不如购买”
 
 一个长达4个小时的讲正则语言(Regular Language)的网络课程。
 
-## 工具技术
+## 工具、技术、展示
 
 {{< digest-item "title"="Game UI Database" "source"="https://www.gameuidatabase.com/index.php" "description"="设计素材" >}}
 

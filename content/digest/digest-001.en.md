@@ -3,16 +3,12 @@ title: "Digest 001"
 date: 2020-09-25T17:10:38-04:00
 draft: true
 ---
----
-title: "Digest 001"
-date: 2020-09-25T17:10:38-04:00
----
 
 ## Article
 
 {{< digest-item "title"="Birds do have a brain cortex—and think" "source"="https://science.sciencemag.org/content/369/6511/1567" "description"="神经科学" >}}
 
-这篇Science评论从以下两篇Science文章出发，更新了我们对于鸟类的大脑结构和认知功能的看法。
+This News and Views in Science has covered following two recent papers, which update our underestanding of bird's brain and cognition.
 - [A neural correlate of sensory consciousness in a corvid bird](https://science.sciencemag.org/content/369/6511/1626)
 - [A cortex-like canonical circuit in the avian forebrain](https://science.sciencemag.org/content/369/6511/eabc5534)
 
@@ -20,8 +16,9 @@ date: 2020-09-25T17:10:38-04:00
 
 {{< digest-item "title"="How I got into linguistics, and what I got out of it" "source"=https://www.ling.upenn.edu/~wlabov/HowIgot.html "description"="回忆录" >}}
 
-社会语言学家William Labov讲述了他的研究生涯：他如何成为一个社会语言学家，他在过去的这些年里研究了哪些课题，这些课题是如何转变的，以及他的研究如何对社会产生影响，以及他如何看待自己的研究生涯。
+Sociolinguist William Labov accounted his career: how he became a sociolinguist, what he had studies, how his research topic has changed, and how his research made impact on people's life.
 
+William Labov was born in New Jersey,
 William Labov在新泽西长大，他很早就注意到不同的社区（纽约和新泽西）的语言会有非常明显的特点，这个兴趣后来成为了他研究的方向。他提到了几个特别有意思的经历。
 
 其一，他在哥伦比亚大学期间去Harlem社群研究黑人所使用的语言系统。之前，美国社会一直认为黑人智力水平天生差，其语言系统也是土土的且缺乏逻辑。后来，William Labov写了一篇题为《The Logic of Nonstandard English》的论文，说明黑人社群自身的语言方式能够充分表达逻辑思维，也不会影响学习。所以他建议用黑人社群自己熟悉的语言系统和表达方式来教黑人学生知识，而不是套用白人的所谓“更有逻辑的语言系统”来教授知识。但是这个观点等了几十年才被黑人社群逐渐接受并应用。

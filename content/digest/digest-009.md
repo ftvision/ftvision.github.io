@@ -82,8 +82,7 @@ Affirm向客户提供分期付款的服务。在客户向商家购买物品的�
 
 ![小丑鱼的胚胎发育](https://www.nikonsmallworld.com/images/photos/2020/No2-Amphiprion1_Daniel-Knop.jpg)
 
-
-## 工具技术
+## 工具、技术、展示
 
 {{< digest-item "title"="Drumbit" "source"="https://drumbit.app/" "description"="音频玩具" >}}
 

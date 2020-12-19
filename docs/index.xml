@@ -5,7 +5,61 @@
     <link>http://ftvision.github.io/</link>
     <description>Recent content on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 05 Dec 2020 23:33:06 -0500</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instagram技术博客</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_instagram/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_instagram/</guid>
+      <description>https://instagram-engineering.com/ Python at Scale: Strict Modules 这篇写得还有点意思。需要找时机继续读一下。</description>
+    </item>
+    
+    <item>
+      <title>OpenAI技术博客</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_linkedin/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_linkedin/</guid>
+      <description>https://engineering.linkedin.com/ The Log: What every software engineer should know about real-time data&amp;#39;s unifying abstraction 技术博客 | Source</description>
+    </item>
+    
+    <item>
+      <title>OpenAI技术博客</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_openai/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_openai/</guid>
+      <description>OpenAI的博客，尤其是他们的研究博客真的写得很不错。</description>
+    </item>
+    
+    <item>
+      <title>Repl.it技术博客</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_replit/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_replit/</guid>
+      <description>他们的技术博客什么东西都混在了一起，所以需要根据标题来筛选一下。不过看起来东西也不是特别多，应该都还比较容易读。</description>
+    </item>
+    
+    <item>
+      <title>Stripe技术博客</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_stripe/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_stripe/</guid>
+      <description>Recently, I&amp;rsquo;ve discovered Stripe&amp;rsquo;s Tech Blogs. Arriving at one of their blog on API versioning, I have discovered that their engineering blogs are generally good reads, so I decide take a dive on the entire blogs. Stripe’s payments APIs: the first ten years 技术博客 | Source 这篇Stripe的技术博客总</description>
+    </item>
+    
+    <item>
+      <title>Digest 013</title>
+      <link>http://ftvision.github.io/digest/digest-013/</link>
+      <pubDate>Sun, 13 Dec 2020 23:15:42 -0500</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/digest-013/</guid>
+      <description>文章 编写一个最小的 64 位 Hello World 博客文章 | Source 这是CJTing的一篇新文章，从最简单的C语言Hello World程序出发，逐层剖析，解释了这个最简单</description>
+    </item>
+    
     <item>
       <title>Digest 012</title>
       <link>http://ftvision.github.io/digest/digest-012/</link>
@@ -43,12 +97,21 @@
     </item>
     
     <item>
+      <title>Digest 008</title>
+      <link>http://ftvision.github.io/digest/digest-008/</link>
+      <pubDate>Fri, 13 Nov 2020 09:46:06 -0500</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/digest-008/</guid>
+      <description>文章 I sold Baremetrics 经验分享 | Source Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我第一次知道这个公司，但是整个文章把这个决定</description>
+    </item>
+    
+    <item>
       <title>CrowdCast.io技术博客</title>
-      <link>http://ftvision.github.io/snippets/clipboard/crowdcast_io_blog/</link>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_crowdcast_io/</link>
       <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://ftvision.github.io/snippets/clipboard/crowdcast_io_blog/</guid>
-      <description>CrowdCast.io的技术博客在 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量的几</description>
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_crowdcast_io/</guid>
+      <description>CrowdCast.io的技术博客在这里 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量</description>
     </item>
     
     <item>
@@ -58,6 +121,15 @@
       
       <guid>http://ftvision.github.io/snippets/clipboard/martin_kelppmann_write_book/</guid>
       <description>Writing a book: is it worth it? 分享经验 | Source Martin Kleppmann, the author of Designing Data-Intensive Applications, explains reflects on his experiences of publishing the book. Metrics: 100,000 copies sold. Financial perspective: a good passive income since the book is very popular. The profit for each book is small, but the time and the number helps. Beyond the royalities: 50 talks, blog posts, and other social</description>
+    </item>
+    
+    <item>
+      <title>Digest 007</title>
+      <link>http://ftvision.github.io/digest/digest-007/</link>
+      <pubDate>Fri, 06 Nov 2020 09:46:06 -0500</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/digest-007/</guid>
+      <description>文章 How Facebook is bringing QUIC to billions 技术报道 | Source Facebook撰文介绍他们在全面推广使用QUIC作为网络连接方式，用来取代TCP为基础的连接方式，从HTTP</description>
     </item>
     
     <item>

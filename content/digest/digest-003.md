@@ -103,7 +103,7 @@ Python 3.9的更新目录。东西还挺多的！这是我第一次认真看某�
 
 这个Talk听完以后没有特别多的想法，主旨就是要把整个工具和工程设计得简单（simple），不要搞得特别复杂（complex），但是这个过程并不简单（easy）。我最大的收获可能是Speaker对于Simple vs Easy之间的区分吧。很多内容都是比较抽象的思想讨论。可能是我的软件工程背景还不够，所以有些对比没有非常直观的体会。
 
-## 工具技术
+## 工具、技术、展示
 
 {{< digest-item "title"="ipdata" "source"="https://ipdata.co/" "description"="数据服务" >}}
 

@@ -70,7 +70,7 @@ Bret Victor很早的一篇关于可探索的编程的研究。跟着文章的不
 
 但是这里面有一些建议是Python2的，不再适用与Python3了。虽说如此，里面的条目还是值得根据Python3再了解和学习一下的。
 
-## 多媒体
+## 工具、技术、展示
 
 {{< digest-item "title"="Bret Victor - Inventing on Principle" "source"="https://vimeo.com/36579366" "description"="经验总结" >}}
 

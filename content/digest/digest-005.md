@@ -90,7 +90,7 @@ Leslie认为应该把程序看作一个“行为”的集合，而每一个行�
 
 最后，Leslie在讲座中提到了用TLA+表述了快速排序的算法之后，可以很自然而然地找到非递归的实现方式。有机会应该试着实现以下。
 
-## 工具技术
+## 工具、技术、展示
 
 {{< digest-item "title"="World" "source"="https://aem1k.com/world/" "description"="技术展示" >}}
 

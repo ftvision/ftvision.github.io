@@ -88,7 +88,7 @@ Rust的优点就是安全、高性能、能兼容甚至替代C/C++；而缺点�
 看完了这个视频以后，我又去找了这个制作者其他的视频。他在Youtube上有个账号，叫[Reducible](https://www.youtube.com/channel/UCK8XIGR5kRidIw2fWqwyHRA)，上面发了一些关于计算机算法和数据结构的讲解视频。这一类视频风格非常类似[3Blue1Brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw)讲解数学的视频风格，从动画制作和可视化的呈现，到叙述方式，都跟3B1B有类似之处。3B1B也在Twitter上推荐了他制作的这个FFT的视频。
 
 
-## 工具技术
+## 工具、技术、展示
 
 {{< digest-item "title"="Flappy bird in 205 bytes" "source"="https://gist.github.com/gullyn/95b2ab9e465317f1d4e4607cf6e94205" "description"="代码片段" >}}
 

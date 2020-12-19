@@ -85,7 +85,7 @@ Hugo网站也基本上把这个系列的视频当作了主要教学视频，在�
 
 本来我是想找一些视频来学习Go这个语言的，结果找到了这个视频。厉害的程序员不仅仅是程序写得好，写程序相关的工具也用的非常溜啊。我看到了作为码农，跟他们的巨大差距。这个视频不仅仅是讲编程，其实还讲了不少设计方面的想法。
 
-## 工具技术
+## 工具、技术、展示
 
 {{< digest-item "title"="kitty - the fast, featureful, GPU based terminal emulator" "source"="https://sw.kovidgoyal.net/kitty/" "description"="终端模拟" >}}
 

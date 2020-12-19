@@ -80,7 +80,7 @@ HackerNews上很多人认为这个小故事是个都市传说，我觉得这个�
 
 这个Talk就是大概梳理了一下Just-in-Time Compilaton在过去60年的发展。其中列举和摘录了大概20篇文献，但是如果没有自己去读这些文献，光听他说，我感觉不太能学到什么东西。好在他把文献放在了[这个仓库里](https://github.com/jfbastien/jit-talk)，有时间可以去读。这个Talk涉及到编译原理的知识，可能需要先去打点基础再回来看。
 
-## 工具技术
+## 工具、技术、展示
 
 {{< digest-item "title"="Flask - Code a simple web app" "source"="https://docs.appseed.us/tutorials/flask-understand-flask-code-simple-app/" "description"="网站模板" >}}
 
