@@ -25,10 +25,10 @@ Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我
 
 这篇文章分析了一下生活中各种设计的复杂性的来源。有两个概念非常有意思：
 
-1. 我们需要更好的**概念模型（conceptual model）**才能简化事物。
+1. 我们需要更好的**概念模型（conceptual model**才能简化事物。
   > 概念模型是人认为事物如何工作的思考方式。这些概念模型是理解和整理复杂事物的重要思维工具。By Dan Norman, [*Living with Complexity*](https://www.amazon.com/gp/product/0262528940)
 2. 系统的复杂度是守恒的
-  > 一个系统的复杂度是个常数。如果你让用户交互变得简单，那藏在幕后的复杂度就会增加。 By Lawrence Tesler
+  > 一个系统的复杂度是个常数。如果你让用户交互变得简单，那藏在幕后的复杂度就会增加。By Lawrence Tesler
 
 要注意的是，减少用户界面的功能并不见得会把事物变得简单，因为这使得用户失去了操控系统的能力。有时候可能让交互界面稍微复杂一点，反而会降低整个系统的复杂度。
 
@@ -41,6 +41,8 @@ Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我
 {{< digest-item "title"="Orange You Accessible? A Mini Case Study on Color Ratio" "source"="https://www.bounteous.com/insights/2019/03/22/orange-you-accessible-mini-case-study-color-ratio" "description"="可用性设计" >}}
 
 这篇文章讲了一下互联网无障碍设计（accessibility design）的一些问题。作者从一对例子出发，讨论到底什么对比度更容易看到：在橙色背景上的黑色字体，还是在橙色背景上的白色字体。
+
+![无障碍设计按钮](/images/accessible_button.png)
 
 现在有的Web Content Accessibility Guidelines (WCAG)指南推荐了一些标准，比如AA标准规定字体和背景的对比度（contrast ratio）要在3到4.5之间，而AAA标准规定字体和背景的对比度要在4.5到7之间。如果直接根据物理计算的话，橙色背景上的黑色字体的对比度更高，所以根据标准来说更值得推荐。但是作者根据自己的体验和找来的一些被试的反馈来看，大多数都觉得橙色背景上白色更清晰可见。所以，这篇文章的问题就是到底应该以什么标准来设计？现有的规定和对比度计算方式是否合适？
 
