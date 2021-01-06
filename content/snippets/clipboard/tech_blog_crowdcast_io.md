@@ -3,9 +3,11 @@ title: CrowdCast.io技术博客
 date: 2020-11-08
 ---
 
-CrowdCast.io的[技术博客在这里](https://crowdcast.io/blog/topic/code)
+CrowdCast.io的技术博客地址: https://crowdcast.io/blog/topic/code
 
-比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量的几个人在视频，然后把视频发送给成千上万的观众来看。比如演唱会，脱口秀等现场直播节目。同时Crowdcast又提供观众互动环节。
+### 整体印象
+
+比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量的几个人在视频，然后把视频发送给成千上万的观众来看。比如演唱会，脱口秀等现场直播节目。同时Crowdcast又提供观众互动环节。他们的技术博客主要写的是如何更好地提供视频服务，以及在提供视频服务期间所遇到的技术问题。
 
 ### 阅读进度
 
@@ -33,7 +35,7 @@ Crowdcast的应用逻辑是搭在Firebase上的，结果Firebase本身并不是�
 
 {{< box-highlight type="warning">}}
 
-#### 我多说几句
+**读后感**
 
 > 分离微服务，缓存，流量分析，Firebase痛点
 
@@ -55,11 +57,9 @@ Crowdcast的应用逻辑是搭在Firebase上的，结果Firebase本身并不是�
 
 {{< box-highlight type="warning">}}
 
-#### 我多说几句
+**读后感**
 
-我没有很理解这个技术为什么可以让网络延迟更低。
-
-文中提到的[MPEG-DASH](https://dashif.org/about/)似乎是一个编码标准，
+我没有很理解这个技术为什么可以让网络延迟更低。 文中提到的[MPEG-DASH](https://dashif.org/about/)似乎是一个编码标准。
 
 {{< /box-highlight >}}
 
@@ -89,7 +89,7 @@ Crowdcast的应用逻辑是搭在Firebase上的，结果Firebase本身并不是�
 
 {{< box-highlight type="warning" >}}
 
-#### 我多说几句
+**读后感**
 
 > 用中间层解耦合，不同层增量信息（比特率），视频编码
 
@@ -121,7 +121,7 @@ SFU那个P2P的连接解耦的想法挺有意思的。计算机里面真的是�
 
 {{< box-highlight type="warning" >}}
 
-#### 我多说几句
+**读后感**
 
 如果这个要求是对公司管理层和新员工共同的要求，而且管理层能够做出足够的努力来搭建一套简单易懂的工作流程，帮助新员工提高效率，我觉得是可取的。文章里提到的新员工常见的问题确实是切中要点的。在这种情况下，环境中的脚手架（Scaffolding）确实能够帮助新人的成长和适应。
 {{< /box-highlight >}}
