@@ -1,27 +1,25 @@
 ---
-title: "Futures And Promises"
+title: "分布式系统的学习"
 date: 2020-10-04T18:12:30-04:00
-draft: true
 ---
 
-> This collection curates a list of materials about the distributed system.
+{{< box-highlight type="success">}}
 
-### Courses
+这个集子主要收集分布式系统相关的学习资料。这些资料既包括理论学习方面的内容，也包括工作实践方面的内容，还包括面试准备方面的内容。
+
+{{< /box-highlight >}}
+
+### 课程
 
 - [Programming Models for Distributed Computing](https://heather.miller.am/teaching/cs7680)
-
-### Books and Chapters
-- [Distributed systems for fun and profit](http://book.mixu.net/distsys/index.html)
-- [Programming Models for Distributed Computing](http://dist-prog-book.com/chapter)
-
-
-### Systems and Applications
-
 - [Introduction to Kubernetes](https://www.edx.org/course/introduction-to-kubernetes)
 - [Introduction to Serverless on Kubernetes](https://www.edx.org/course/introduction-to-serverless-on-kubernetes)
 
+### 书籍
+- [Distributed systems for fun and profit](http://book.mixu.net/distsys/index.html)
+- [Programming Models for Distributed Computing](http://dist-prog-book.com/chapter)
 
-### From HackerNews
+### 没有整理完的资料
 
 I am a bit late to the party, but as it happens some top universities have made some of their systems programming courses publicly available, and if you want to get into systems programming, these free options are much deeper, comprehensive, and come with extensive coding assignments that include tests and have been crafted by talented TAs over many years, to help keep you on the straight and narrow:
 [1] Operating Systems Engineering: MIT 6.828 (in C and a bit of x86 assembly, 2011 has videos for all lectures, bad image but outstanding content)

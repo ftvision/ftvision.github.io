@@ -1,9 +1,23 @@
 ---
-title: "Coding Reading"
+title: "代码的学习与阅读"
 date: 2020-10-04T18:12:30-04:00
 draft: true
 ---
 
+{{< box-highlight type="success">}}
+
+这个集子主要收集和整理一些代码阅读的资料和小的、可行的编程项目，用来帮助学习编程。
+
+{{< /box-highlight >}}
+
+
+## 教学内容
+- [The Hitchhiker’s Guide to Python!](https://docs.python-guide.org/)
+
+## 适合的项目
+* [AUTOMATE THE BORING STUFF WITH PYTHON](https://automatetheboringstuff.com/2e/chapter0/)
+
+## 代码阅读
 > Do you need read other's code? How and why do you read code? What are the codes to read.
 
 ## Opinions

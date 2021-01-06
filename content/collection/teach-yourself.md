@@ -4,6 +4,12 @@ date: 2020-11-20T18:12:30-04:00
 draft: true
 ---
 
+{{< box-highlight type="success">}}
+
+这个集子收集了一些学科自学相关的资料。
+
+{{< /box-highlight >}}
+
 ## 自学计算机科学
 
 ## 自学逻辑学
@@ -35,6 +41,11 @@ https://www.amazon.com/Algebra-Chapter-Graduate-Studies-Mathematics/dp/082184781
 
 
 ## 自学计算机
+
+## Computer Architecture
+
+- [Spring 2015 -- Computer Architecture Lectures -- Carnegie Mellon](https://www.youtube.com/playlist?list=PL5PHm2jkkXmi5CxxI7b3JCL1TWybTDtKq)
+
 
 ## Database System
 

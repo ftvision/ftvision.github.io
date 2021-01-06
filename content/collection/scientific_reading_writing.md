@@ -1,10 +1,14 @@
 ---
-title: "Read Research Papers"
+title: "科学研究的阅读与写作"
 date: 2020-10-04T18:31:44-04:00
 draft: true
 ---
 
-> How to read a research paper?
+{{< box-highlight type="success">}}
+
+这个集合收集和整理了如何进行科学阅读和写作相关的内容。
+
+{{< /box-highlight >}}
 
 ## Reference
 
@@ -20,3 +24,7 @@ draft: true
 
 ### Reading Books
 - [How	to	Read	a	Book,	v5.0](https://pne.people.si.umich.edu/PDF/howtoread.pdf)
+
+## 科学读写
+
+* [Plain-language Summaries of Research](https://elifesciences.org/collections/9e8f4a49/plain-language-summaries-of-research)
