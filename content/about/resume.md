@@ -11,7 +11,7 @@ date: 2018-12-28
 ## Working Experiences
 
 |Company  | Location | Role | Time |
-|:--------|------|------|-----:|
+|:--------|------|------|:-----|
 | _Google_  | Cambridge, MA, U.S.A. | Software Engineer | 2018/7 - present |
 | _Akuna Capital_  | Chicago, IL, U.S.A. | Quantative Trader Intern | 2017/6-2017/8 |
 | _Sparkypants Studios_ | Baltimore, Maryland, U.S.A. | C++ Programming Intern | 2016/5 - 2016/8 |
@@ -25,7 +25,7 @@ date: 2018-12-28
 ## Education
 
 | Education | |
-|:--------|--------:|
+|:--------|:--------|
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>Ph.D.</strong> Cognitive Psychology | 2013/9 – 2018/6 |
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>M.S.E </strong> Applied Mathematics and Statistics | 2017/2 - 2018/6 |
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>M.A.</strong> Cognitive Psychology | 2013/9 – 2015/6 |
@@ -34,7 +34,7 @@ date: 2018-12-28
 ## Research
 
 |Research Experiences| |
-|:--------|--------:|
+|:--------|:--------|
 | _Brains, Minds & Machines Summer Course_  <br /> **Marine Biological Laboratory**, Woods Hole, MA. U.S.A <br /> | 2017/8 - 2017/9 |
 | _Computational and Cognitive Neuroscience Summer School_ <br /> **Cold Spring Harbor Asia**, Beijing, China <br /> Organizer: Xiao-Jing Wang, Si Wu, Upinder S. Bhalla, Zachary F. Mainen | 2013/7 |
 | _Computational Neuroscience Summer School_ <br /> **University of Pennsylvania**, Philadelphia, PA, U.S.A <br /> **Advisor**: Geoffrey Aguirre <br /> | 2011/6 - 2011/8 |
