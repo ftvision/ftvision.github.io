@@ -5,14 +5,59 @@
     <link>http://ftvision.github.io/snippets/</link>
     <description>Recent content in Snippets on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/snippets/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/snippets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[课程笔记]Software Debugging</title>
+      <link>http://ftvision.github.io/snippets/clipboard/course_software_debugging/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/course_software_debugging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>[课程笔记]Web Tooling &amp; Automation</title>
+      <link>http://ftvision.github.io/snippets/clipboard/course_web_tooling_automation/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/course_web_tooling_automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Distill杂志阅读</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_distill/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_distill/</guid>
+      <description>Distill.Pub https://distill.pub/2020/communicating-with-interactive-articles/ 整体印象 阅读进度 博客摘要</description>
+    </item>
+    
+    <item>
+      <title>Multithreading in C&#43;&#43;</title>
+      <link>http://ftvision.github.io/snippets/clipboard/multithreading/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/multithreading/</guid>
+      <description>笔记 ß Multithreading in C++ consists of threads, synchronization primitives for shared data, thread-local data, and tasks. Memory Model This contract is between the programmer and the system. The system consists of the compiler that generates machine code and the processor that executes the machine code, and it includes the different caches that store the state of the program. The result is - in the good case - a</description>
+    </item>
+    
+    <item>
+      <title>面向对象的设计</title>
+      <link>http://ftvision.github.io/snippets/clipboard/object_oriented_design/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/object_oriented_design/</guid>
+      <description>OOP organizes the program to combine data and functionality and wrap it inside something called an “Object”. Objects: Objects represent a real-world entity and the basic building block of OOP. For example, an Online Shopping System will have objects such as shopping cart, customer, product item, etc. Class: Class is the prototype or blueprint of an object. It is a template definition</description>
+    </item>
+    
     <item>
       <title>Instagram技术博客</title>
       <link>http://ftvision.github.io/snippets/clipboard/tech_blog_instagram/</link>
       <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_instagram/</guid>
-      <description>https://instagram-engineering.com/ Python at Scale: Strict Modules 这篇写得还有点意思。需要找时机继续读一下。</description>
+      <description>https://instagram-engineering.com/ Python at Scale: Strict Modules 这篇写得还有点意思。需要找时机继续读一下。 整体印象 阅读进度 博客摘要</description>
     </item>
     
     <item>
@@ -21,7 +66,7 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_linkedin/</guid>
-      <description>https://engineering.linkedin.com/ The Log: What every software engineer should know about real-time data&amp;#39;s unifying abstraction 技术博客 | Source</description>
+      <description>https://engineering.linkedin.com/ 整体印象 阅读进度 博客摘要 The Log: What every software engineer should know about real-time data&amp;#39;s unifying abstraction 技术博客 | Source</description>
     </item>
     
     <item>
@@ -30,7 +75,7 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_openai/</guid>
-      <description>OpenAI的博客，尤其是他们的研究博客真的写得很不错。</description>
+      <description>OpenAI的博客，尤其是他们的研究博客真的写得很不错。 整体印象 阅读进度 博客摘要</description>
     </item>
     
     <item>
@@ -39,7 +84,16 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_replit/</guid>
-      <description>他们的技术博客什么东西都混在了一起，所以需要根据标题来筛选一下。不过看起来东西也不是特别多，应该都还比较容易读。</description>
+      <description>整体印象 他们的技术博客什么东西都混在了一起，所以需要根据标题来筛选一下。不过看起来东西也不是特别多，应该都还比较容易读。 阅读进度 博客摘要</description>
+    </item>
+    
+    <item>
+      <title>Square的技术博客</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_square/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_square/</guid>
+      <description>https://developer.squareup.com/blog 整体印象 阅读进度 博客摘要</description>
     </item>
     
     <item>
@@ -48,7 +102,7 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_stripe/</guid>
-      <description>Recently, I&amp;rsquo;ve discovered Stripe&amp;rsquo;s Tech Blogs. Arriving at one of their blog on API versioning, I have discovered that their engineering blogs are generally good reads, so I decide take a dive on the entire blogs. Stripe’s payments APIs: the first ten years 技术博客 | Source 这篇Stripe的技术博客总</description>
+      <description>Recently, I&amp;rsquo;ve discovered Stripe&amp;rsquo;s Tech Blogs. Arriving at one of their blog on API versioning, I have discovered that their engineering blogs are generally good reads, so I decide take a dive on the entire blogs. 整体印象 阅读进度 博客摘要 Stripe’s payments APIs: the first ten years 技术博客 | Source 这篇</description>
     </item>
     
     <item>
@@ -57,7 +111,7 @@
       <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_crowdcast_io/</guid>
-      <description>CrowdCast.io的技术博客在这里 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量</description>
+      <description>CrowdCast.io的技术博客地址: https://crowdcast.io/blog/topic/code 整体印象 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，</description>
     </item>
     
     <item>

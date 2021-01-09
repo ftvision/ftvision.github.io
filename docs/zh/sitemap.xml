@@ -3,18 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://ftvision.github.io/snippets/clipboard/tech_blog_instagram/</loc>
-    <lastmod>2020-12-18T00:00:00+00:00</lastmod>
+    <loc>http://ftvision.github.io/snippets/clipboard/course_software_debugging/</loc>
+    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/snippets/clipboard/course_web_tooling_automation/</loc>
+    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/collection/</loc>
+    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ftvision.github.io/en/collection/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://ftvision.github.io/collection/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/snippets/clipboard/tech_blog_distill/</loc>
+    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://ftvision.github.io/snippets/</loc>
-    <lastmod>2020-12-18T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://ftvision.github.io/</loc>
-    <lastmod>2020-12-18T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -25,6 +50,46 @@
                 hreflang="zh"
                 href="http://ftvision.github.io/"
                 />
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/collection/neural_simulation/</loc>
+    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/collection/software_design/</loc>
+    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/collection/techblog-reading/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/collection/course-notes/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/collection/misc-collection/</loc>
+    <lastmod>2020-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/snippets/clipboard/multithreading/</loc>
+    <lastmod>2020-12-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/snippets/clipboard/object_oriented_design/</loc>
+    <lastmod>2020-12-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/snippets/clipboard/tech_blog_instagram/</loc>
+    <lastmod>2020-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -39,6 +104,11 @@
   
   <url>
     <loc>http://ftvision.github.io/snippets/clipboard/tech_blog_replit/</loc>
+    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/snippets/clipboard/tech_blog_square/</loc>
     <lastmod>2020-12-15T00:00:00+00:00</lastmod>
   </url>
   
@@ -183,6 +253,11 @@
   </url>
   
   <url>
+    <loc>http://ftvision.github.io/collection/distributed-system/</loc>
+    <lastmod>2020-10-04T18:12:30-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://ftvision.github.io/digest/digest-002/</loc>
     <lastmod>2020-10-02T17:10:38-04:00</lastmod>
   </url>
@@ -238,18 +313,8 @@
   </url>
   
   <url>
-    <loc>http://ftvision.github.io/collection/</loc>
+    <loc>http://ftvision.github.io/collection/psych-writing/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://ftvision.github.io/en/collection/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://ftvision.github.io/collection/"
-                />
   </url>
   
   <url>

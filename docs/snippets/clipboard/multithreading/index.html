@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>
+     Multithreading in C&#43;&#43; 
+  </title>
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+  
+  <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  
+  <link rel="stylesheet" href="/css/style.css"/>
+  
+  <script defer src="/js/tab.js"></script>
+  <script defer src="/js/gtalk.js"></script>
+
+</head>
+
+<body>
+
+
+
+<div class="Header">
+  <div class="Header-item Header-item--full"> </div>
+  <div class="Header-item">
+    <a href="/blog" class="Header-link">Blog</a>
+  </div>
+  <div class="Header-item">
+    <a href="#" class="Header-link">Digest</a>
+  </div>
+  
+</div>
+
+
+
+
+
+<div class="mx-auto my-2 col-10 col-md-7 col-lg-6 col-xl-5" >
+
+  
+  <div class="p-2">
+    <nav aria-label="Breadcrumb">
+      <ol>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/snippets">snippets</a></li>
+        <li class="breadcrumb-item" aria-current="page"> Multithreading in C&#43;&#43;</li>
+      </ol>
+    </nav>
+
+    <h1 id="page-title">Multithreading in C&#43;&#43;</h1>
+    <div>
+      
+      </div>
+  </div>
+
+
+  <div class="markdown-body p-2">
+  <h2 id="笔记">笔记</h2>
+<p>ß</p>
+<blockquote>
+<p>Multithreading in C++ consists of <em>threads</em>, <em>synchronization primitives</em> for shared data, <em>thread-local data</em>, and <em>tasks</em>.</p>
+</blockquote>
+<h3 id="memory-model">Memory Model</h3>
+<p>This contract is between the programmer and the system. The system consists of the compiler that generates machine code and the processor that executes the machine code, and it includes the different caches that store the state of the program. The result is - in the good case - a well-defined executable that is fully optimized for the hardware platform. To be precise, there is not only a single contract, but a fine-grained set of contracts; i.e. the weaker the rules are that the programmer has to follow, the more potential there is for the system to generate a highly optimized executable.</p>
+<p>There is a rule of thumb: the stronger the contract, the fewer liberties for the system to generate an optimized executable.</p>
+<h4 id="first-level">First Level</h4>
+<p>Before C++11, there was only one contract. The C++ language specification did not include multithreading or atomics. The system only knew about one control flow and, therefore, there were only restricted opportunities to optimize the executable. The key point of the system was to guarantee–for the programmer–that the observed behavior of the program corresponded to the sequence of the instructions in the source code. Of course, this means that there was no memory model. Instead, there was the concept of a sequence point. Sequence points are points in the program, at which the effects of all instructions preceding it must be observable. The start or the end of the execution of a function are sequence points. When you invoke a function with two arguments, the C++ standard makes no guarantee about which arguments will be evaluated first, so the behavior is unspecified. The reason is straightforward: the comma operator is not a sequence point and this will not change in C++.</p>
+<p>Second Level #
+With C++11 everything has changed. C++11 is the first standard aware of multiple threads. The C++ memory model that was heavily inspired by the Java memory model is the reason for the well-defined behavior of threads. However, the C++ memory model goes - as always - a few steps further. The programmer has to obey a few rules in dealing with shared variables to get a well-defined program. The program is undefined if there exists at least one data race. As I already mentioned, you have to be aware of data races if your threads share mutable data. Tasks are a lot easier to use than threads or condition variables.</p>
+<p>Third Level #
+With atomics, we enter the domain of the experts. This will become more evident, the more we weaken the C++ memory model. We often talk about lock-free programming when we use atomics. I spoke in this subsection about the weak and strong rules; indeed, the sequential consistency is called the strong memory model, and the relaxed semantic is called the weak memory model.</p>
+
+  </div>
+  
+  
+<div id="gitalk-container"></div>
+
+<div class="Header border-top mt-2 bg-gray-light text-gray-dark">
+  <div class="Header-item">
+    <span ><strong>Thinking as Algorithm </strong> By <em>Feitong Yang</em> | 2014 - 2020</span>
+  </div>
+  <div class="Header-item Header-item--full"> </div>
+  <div class="Header-item">
+    <a href="/about/">About</a>
+  </div>
+  <div class="Header-item">
+    <a href="/logging/">Logging</a>
+  </div>
+</div>
+
+</body>
+
+</html>
+
+
+</div>
+

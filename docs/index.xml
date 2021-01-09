@@ -5,14 +5,104 @@
     <link>http://ftvision.github.io/</link>
     <description>Recent content on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[课程笔记]Software Debugging</title>
+      <link>http://ftvision.github.io/snippets/clipboard/course_software_debugging/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/course_software_debugging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>[课程笔记]Web Tooling &amp; Automation</title>
+      <link>http://ftvision.github.io/snippets/clipboard/course_web_tooling_automation/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/course_web_tooling_automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Distill杂志阅读</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_distill/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_distill/</guid>
+      <description>Distill.Pub https://distill.pub/2020/communicating-with-interactive-articles/ 整体印象 阅读进度 博客摘要</description>
+    </item>
+    
+    <item>
+      <title>神经科学工具箱</title>
+      <link>http://ftvision.github.io/collection/neural_simulation/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/collection/neural_simulation/</guid>
+      <description>放在这里的是神经科学相关的一些工具库和工具箱。 神经动力学工具箱 BrainPy 这一款是北京师范大学的理论神经科学实验室开发的。 API和文档都还写的不错。 Neuron</description>
+    </item>
+    
+    <item>
+      <title>软件工程设计</title>
+      <link>http://ftvision.github.io/collection/software_design/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/collection/software_design/</guid>
+      <description>这个集子收集了软件工程设计方面的资料。软件工程设计包括很多方面，这里主要收集和整理面向对象设计、系统设计、API设计这几个方面的内容。 面向对</description>
+    </item>
+    
+    <item>
+      <title>科技博客阅读笔记</title>
+      <link>http://ftvision.github.io/collection/techblog-reading/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/collection/techblog-reading/</guid>
+      <description>这个页面收集的是不同公司的科技博客和科技博客阅读笔记。 很多公司都有专门的网页来更新自己的科技博客。这些博客，有些是分享自己解决问题的经验，有</description>
+    </item>
+    
+    <item>
+      <title>课程自学笔记</title>
+      <link>http://ftvision.github.io/collection/course-notes/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/collection/course-notes/</guid>
+      <description>这个集子主要收集和整理我上过的网络课程。这些网络课程以计算机技术为主，另外可能有一些神经科学和写作相关的课程。 根据网络课程的长度，我将我学习</description>
+    </item>
+    
+    <item>
+      <title>杂七杂八的收藏</title>
+      <link>http://ftvision.github.io/collection/misc-collection/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/collection/misc-collection/</guid>
+      <description>放在这里的都是没有找到合适的去处的杂七杂八的收藏。 Promises, Futures, and Async 相关的知识 Async/await, a more compelling example Using javascript&amp;rsquo;s async/await and requestAnimationFrame to render the Buddhabrot Read More Answers | What&amp;rsquo;s the difference between a Future and a Promise? Chapter | Futures and Promises for Programming Models for</description>
+    </item>
+    
+    <item>
+      <title>Multithreading in C&#43;&#43;</title>
+      <link>http://ftvision.github.io/snippets/clipboard/multithreading/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/multithreading/</guid>
+      <description>笔记 ß Multithreading in C++ consists of threads, synchronization primitives for shared data, thread-local data, and tasks. Memory Model This contract is between the programmer and the system. The system consists of the compiler that generates machine code and the processor that executes the machine code, and it includes the different caches that store the state of the program. The result is - in the good case - a</description>
+    </item>
+    
+    <item>
+      <title>面向对象的设计</title>
+      <link>http://ftvision.github.io/snippets/clipboard/object_oriented_design/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/object_oriented_design/</guid>
+      <description>OOP organizes the program to combine data and functionality and wrap it inside something called an “Object”. Objects: Objects represent a real-world entity and the basic building block of OOP. For example, an Online Shopping System will have objects such as shopping cart, customer, product item, etc. Class: Class is the prototype or blueprint of an object. It is a template definition</description>
+    </item>
+    
     <item>
       <title>Instagram技术博客</title>
       <link>http://ftvision.github.io/snippets/clipboard/tech_blog_instagram/</link>
       <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_instagram/</guid>
-      <description>https://instagram-engineering.com/ Python at Scale: Strict Modules 这篇写得还有点意思。需要找时机继续读一下。</description>
+      <description>https://instagram-engineering.com/ Python at Scale: Strict Modules 这篇写得还有点意思。需要找时机继续读一下。 整体印象 阅读进度 博客摘要</description>
     </item>
     
     <item>
@@ -21,7 +111,7 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_linkedin/</guid>
-      <description>https://engineering.linkedin.com/ The Log: What every software engineer should know about real-time data&amp;#39;s unifying abstraction 技术博客 | Source</description>
+      <description>https://engineering.linkedin.com/ 整体印象 阅读进度 博客摘要 The Log: What every software engineer should know about real-time data&amp;#39;s unifying abstraction 技术博客 | Source</description>
     </item>
     
     <item>
@@ -30,7 +120,7 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_openai/</guid>
-      <description>OpenAI的博客，尤其是他们的研究博客真的写得很不错。</description>
+      <description>OpenAI的博客，尤其是他们的研究博客真的写得很不错。 整体印象 阅读进度 博客摘要</description>
     </item>
     
     <item>
@@ -39,7 +129,16 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_replit/</guid>
-      <description>他们的技术博客什么东西都混在了一起，所以需要根据标题来筛选一下。不过看起来东西也不是特别多，应该都还比较容易读。</description>
+      <description>整体印象 他们的技术博客什么东西都混在了一起，所以需要根据标题来筛选一下。不过看起来东西也不是特别多，应该都还比较容易读。 阅读进度 博客摘要</description>
+    </item>
+    
+    <item>
+      <title>Square的技术博客</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_square/</link>
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_square/</guid>
+      <description>https://developer.squareup.com/blog 整体印象 阅读进度 博客摘要</description>
     </item>
     
     <item>
@@ -48,7 +147,7 @@
       <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_stripe/</guid>
-      <description>Recently, I&amp;rsquo;ve discovered Stripe&amp;rsquo;s Tech Blogs. Arriving at one of their blog on API versioning, I have discovered that their engineering blogs are generally good reads, so I decide take a dive on the entire blogs. Stripe’s payments APIs: the first ten years 技术博客 | Source 这篇Stripe的技术博客总</description>
+      <description>Recently, I&amp;rsquo;ve discovered Stripe&amp;rsquo;s Tech Blogs. Arriving at one of their blog on API versioning, I have discovered that their engineering blogs are generally good reads, so I decide take a dive on the entire blogs. 整体印象 阅读进度 博客摘要 Stripe’s payments APIs: the first ten years 技术博客 | Source 这篇</description>
     </item>
     
     <item>
@@ -111,7 +210,7 @@
       <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_crowdcast_io/</guid>
-      <description>CrowdCast.io的技术博客在这里 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量</description>
+      <description>CrowdCast.io的技术博客地址: https://crowdcast.io/blog/topic/code 整体印象 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，</description>
     </item>
     
     <item>
@@ -234,6 +333,15 @@
     </item>
     
     <item>
+      <title>分布式系统的学习</title>
+      <link>http://ftvision.github.io/collection/distributed-system/</link>
+      <pubDate>Sun, 04 Oct 2020 18:12:30 -0400</pubDate>
+      
+      <guid>http://ftvision.github.io/collection/distributed-system/</guid>
+      <description>这个集子主要收集分布式系统相关的学习资料。这些资料既包括理论学习方面的内容，也包括工作实践方面的内容，还包括面试准备方面的内容。 课程 Programming Models for Distributed</description>
+    </item>
+    
+    <item>
       <title>Digest 002</title>
       <link>http://ftvision.github.io/digest/digest-002/</link>
       <pubDate>Fri, 02 Oct 2020 17:10:38 -0400</pubDate>
@@ -296,6 +404,15 @@ Working Experiences    Company Location Role Time     Google Cambridge, MA, U.S.
       
       <guid>http://ftvision.github.io/collection/vision-100/</guid>
       <description>导言 这个《100篇视觉研究文献》列表是Yury Petrov博士2007年左右在东北大学任教时编纂的。原始网页现在已经失效了。我在这里转载了原</description>
+    </item>
+    
+    <item>
+      <title>心理学科普写作</title>
+      <link>http://ftvision.github.io/collection/psych-writing/</link>
+      <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/collection/psych-writing/</guid>
+      <description>这个集合收集了我写的一些心理学的科普文章。很多文章是我在博士期间，在我的知乎专栏上写得。这些文章一方面是为了我自己练习写作，另一方面是为了帮</description>
     </item>
     
   </channel>
