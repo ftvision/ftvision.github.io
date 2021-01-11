@@ -5,7 +5,25 @@
     <link>http://ftvision.github.io/</link>
     <description>Recent content on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Jan 2021 23:54:11 -0500</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digest 016</title>
+      <link>http://ftvision.github.io/digest/digest-016/</link>
+      <pubDate>Sat, 09 Jan 2021 23:54:11 -0500</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/digest-016/</guid>
+      <description>文章 DALL·E: Creating Images from Text 机器学习 | Source OpenAI介绍了最近在语言转图像的工作。效果看起来是挺不错的，因为通过语言产生的图片看起来已经比较合</description>
+    </item>
+    
+    <item>
+      <title>Netflix技术博客</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_netflix/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_netflix/</guid>
+      <description>Supporting content decision makers with machine learning</description>
+    </item>
+    
     <item>
       <title>[课程笔记]Software Debugging</title>
       <link>http://ftvision.github.io/snippets/clipboard/course_software_debugging/</link>
@@ -52,6 +70,15 @@
     </item>
     
     <item>
+      <title>Digest 015</title>
+      <link>http://ftvision.github.io/digest/digest-015/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/digest-015/</guid>
+      <description>文章 这一周主要是看了一些DevOps和SRE的文章和视频。有一些是从SRE Weekly那里看到的。平时在工作的过程中学到了很多SRE相关的知</description>
+    </item>
+    
+    <item>
       <title>科技博客阅读笔记</title>
       <link>http://ftvision.github.io/collection/techblog-reading/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
@@ -76,6 +103,15 @@
       
       <guid>http://ftvision.github.io/collection/misc-collection/</guid>
       <description>放在这里的都是没有找到合适的去处的杂七杂八的收藏。 Promises, Futures, and Async 相关的知识 Async/await, a more compelling example Using javascript&amp;rsquo;s async/await and requestAnimationFrame to render the Buddhabrot Read More Answers | What&amp;rsquo;s the difference between a Future and a Promise? Chapter | Futures and Promises for Programming Models for</description>
+    </item>
+    
+    <item>
+      <title>Digest 014</title>
+      <link>http://ftvision.github.io/digest/digest-014/</link>
+      <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/digest-014/</guid>
+      <description>文章 Reading, That Strange and Uniquely Human Thing 科普报道 | Source 这是一篇关于人类阅读和文字发展历史的文章。非常典型的美国式科普叙事结构——针对一个特定的人来叙述一件特定事，然</description>
     </item>
     
     <item>

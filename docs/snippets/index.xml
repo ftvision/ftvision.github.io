@@ -5,7 +5,16 @@
     <link>http://ftvision.github.io/snippets/</link>
     <description>Recent content in Snippets on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/snippets/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/snippets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Netflix技术博客</title>
+      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_netflix/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_netflix/</guid>
+      <description>Supporting content decision makers with machine learning</description>
+    </item>
+    
     <item>
       <title>[课程笔记]Software Debugging</title>
       <link>http://ftvision.github.io/snippets/clipboard/course_software_debugging/</link>

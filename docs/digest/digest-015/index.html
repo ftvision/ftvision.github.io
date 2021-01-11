@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>
+     Digest 015 
+  </title>
+  
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
+  
+  <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  
+  <link rel="stylesheet" href="/css/style.css"/>
+  
+  <script defer src="/js/tab.js"></script>
+  <script defer src="/js/gtalk.js"></script>
+
+</head>
+
+<body>
+
+
+
+<div class="Header">
+  <div class="Header-item Header-item--full"> </div>
+  <div class="Header-item">
+    <a href="/blog" class="Header-link">Blog</a>
+  </div>
+  <div class="Header-item">
+    <a href="#" class="Header-link">Digest</a>
+  </div>
+  
+</div>
+
+
+
+
+
+<div class="mx-auto my-2 col-10 col-md-7 col-lg-6 col-xl-5" >
+
+  
+  <div class="p-2">
+    <nav aria-label="Breadcrumb">
+      <ol>
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/digest">digest</a></li>
+        <li class="breadcrumb-item" aria-current="page"> Digest 015</li>
+      </ol>
+    </nav>
+
+    <h1 id="page-title">Digest 015</h1>
+    <div>
+      
+      </div>
+  </div>
+
+
+  <div class="markdown-body p-2">
+  <h2 id="文章">文章</h2>
+<p>这一周主要是看了一些DevOps和SRE的文章和视频。有一些是从<a href="https://sreweekly.com/">SRE Weekly</a>那里看到的。平时在工作的过程中学到了很多SRE相关的知识，本来以为蛮平常的，但是后来才发现这些概念在公司以外的地方还没有扩展开来。通过公司外的人来写SRE/DevOps相关的内容可以学习其他人和公司是怎么看待和实践相关的知识的。</p>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> How to sell SLOs to Engineering Directors <br>
+     <span class="h5">经验分享 | <a href="https://medium.com/brexeng/how-to-sell-slos-to-engineering-directors-9c6379c3f246" role="button">Source</a>  </span></h3>
+</div>
+
+<p>这篇文章讲的是如何向公司上层介绍并引进SLO的概念和指标。如果你的公司还没有使用SLO，但是你发现SLO可能会很有好处，那么这篇文章可以提供一个案例来教你策略性地说服公司上层选择使用SLO。</p>
+<p><strong>商业影响</strong>:</p>
+<ul>
+<li>在各个重要的用户活动(Crtical User Journeys)上记录SLO能够把稳定性（Reliablity）和可用性（Availability）直接与商业价值挂钩（dollar business value），比如99%的稳定性需要付X的价钱，99.9%的稳定性需要Y的价钱。</li>
+<li>当业务在发展的时候，如果能够保证稳定性和可用性不变，那么实际上就同时产生了更大的商业价值。这种时候，技术对商业价值的影响就可以被更好地理解和量化。</li>
+</ul>
+<p><strong>技术影响</strong>：</p>
+<ul>
+<li>设定SLO是为了帮助工程师做更好的决策，决定在什么方面需要投入更多的人力和物力，要如何投入更多的资源，要解决什么重要的问题。</li>
+<li>把SLO跟商业价值绑定，也能帮助产品经理和工程师找到可以沟通的共同语言。而这个共同语言又能帮助经理和员工来计划接下来的工作重点在哪里，比如要花多少精力在减少技术债(Tech Debt)，多少精力在提高稳定性(Reliability)，多少精力来开发新的功能(New Feature Development)</li>
+</ul>
+<p><strong>运营影响</strong>:</p>
+<ul>
+<li>好的SLO能够帮助开发者更有信心地开发新的功能，并且了解新的开发对于已有系统的性能、功能、稳定性、质量、甚至是客户端业务的影响。</li>
+<li>设定内部和外部SLOs（或者区分内部SLO和客户的SLA），能够在用户发现问题之前找到系统存在的可能问题，并且及时修复，从而减少对用户的影响和对业务的影响。</li>
+<li>利用SLO来设定预警系统，可以让监控系统自动化，并且有可以被衡量的指标。</li>
+</ul>
+<p>整体来说，我们通过SLO，把技术开发的价值与和公司商业价值的保持一致，让整个公司业务更加稳定，风险更加可控，迭代速度更加快，但又不影响客户的使用体验。但是在向领导层兜售这个概念的时候，需要考虑很多方面的影响，包括战略上的，技术上的，运营上的，等等。同时，使用SLO是一个Culture Shift，是一个对公司文化有改变的事情，所以可能需要逐步推广。但是，SLO确实有很多好处，值得考虑。</p>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> SLO Adoption at Twitter <br>
+     <span class="h5">案例分享 | <a href="https://www.blameless.com/blog/slo-adoption-twitter" role="button">Source</a>  </span></h3>
+</div>
+
+<p>这篇文章讲的是Twitter内部逐渐采用SLO的过程。这篇文章提到了向stakeholder介绍和使用SLO的过程中常见的一些挑战：</p>
+<ol>
+<li>不知道需要测量什么指标，或者如何测量这些指标(Not knowing what (and how) to measure)。</li>
+<li>不知道SLO能够带来什么具体的行动(confusion over how to make SLOs actionable)。</li>
+<li>工具和自动化程度不高，导致没有开发团队缺乏兴趣(Service owners could configure SLOs, but due to a lack of tooling and benefits automatically associated with turning SLOs on, there was little incentive to do so in context of other priorities.)。</li>
+</ol>
+<p>而Twitter推广SLO的重大转机在于：<strong>把SLO跟错误预算绑定（tying SLOs to error budgets）</strong>。所谓错误预算，是<strong>一段时间之内</strong>，在特定的SLO指标下，可以允许的出错时间长度。比如如果Availability SLO是99%，那么每30天可以允许7小时11分59秒的Downtime，如果Availability SLO是99.9%，那么每30天可以允许21分54秒的Downtime。如果在30天的时间里面，服务的Availability Error在预算规定的范围内，那么可以着重开发新的功能；但是如果Availability问题超过了预算，那么开发团队就需要花时间来提高服务的Availability。因此，SLO和错误预算就可以转化为用来指导工作的指标，成为Actionable Item。</p>
+<p>那么使用SLO的好处有哪些呢？Twitter觉得有这么一些好处：</p>
+<ul>
+<li>不同的服务之间建立起了一个共同的语言（From a ‘distributed service zoo’ to a shared language）</li>
+<li>明确的指标给开发团队提供了恰当的背景（The right amount of context）</li>
+<li>服务之间可以提供动态的负载均衡（Dynamic load balancing and load shedding）（也就是说服务直接的Load Balancing可以通过检测其他服务的SLO来决定如何引导流量）</li>
+<li>容错（Graceful degradation）</li>
+</ul>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> Netflix&#39;s Context, Not Control: How Does it Work? <br>
+     <span class="h5">公司文化 | <a href="https://www.linkedin.com/pulse/netflixs-context-control-how-does-work-steve-urban/" role="button">Source</a>  </span></h3>
+</div>
+
+<p>这篇文章分享了Netflix的管理哲学，集中讨论了<a href="https://jobs.netflix.com/culture">Netflix的管理文化</a>（也可以对比参见<a href="https://www.slideshare.net/reed2001/culture-1798664">这个Slide Deck</a>）中提到的：<strong>管理者应该给员工提供工作合适的情景而不是控制员工应该做什么</strong>。我觉得有几个知识点是值得学习的。</p>
+<ol>
+<li>面对相信工程师，可以提出自己的看法，询问工程师是否考虑了其他选项，思考设计和提案是否存在风险。虽然经理有时候需要出面解决一些难题，但是不要给工程师做每一个细小的决定，不要控制他们该干什么不该干什么，应该相信他们会作出好的决定。</li>
+<li>如果你的团队能够了解他们的工作如何与公司当前的商业挂钩，团队自己就能做出很多很好的决策。所以，在这个问题上，Netflix的高管会在每个季度都给各个阶层的员工分享公司的商业战略，沟通商业决策，并且逐步将工作背景(context)解释给各层员工。这种透明度能帮员工知道自己要怎么调整自己的工作，从而对应到公司的商业方向上。</li>
+<li>员工和管理层的信任是双向的：管理层相信员工能作出正确的技术决策，而员工相信管理层能够提供正确的信息和需求。当两者之间都能做好各自的工作的时候，各自就都能集中精力在自己应该做好的事情上，并且提高整个团队的效率。</li>
+<li>很重要的一点就是在招纳员工的时候，一定要选择正确的员工。文化上要合适，技术上要优秀。恰当的团队，正确的信息，是帮助团队高产的重要因素。</li>
+</ol>
+<p>我觉得国内科技公司听起来在文化上就缺乏这些点。一方面管理层不见得相信员工能作出正确的技术决策，另一方面员工也不一定能从管理层得到恰当的背景和信息。另外，当所有人都比较年轻的时候，设计出来的结果不一定好，会进一步导致管理层对员工的能力不信任。这样是非常糟糕的环境和非常糟糕的文化。</p>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> Why I&#39;ve Been Merging Microservices Back Into The Monolith At InVision <br>
+     <span class="h5">技术实践 | <a href="https://www.bennadel.com/blog/3944-why-ive-been-merging-microservices-back-into-the-monolith-at-invision.htm" role="button">Source</a>  </span></h3>
+</div>
+
+<p>这篇文章分享了为什么作者所在的团队把单一服务拆成多个Microservice，然后又为什么把多个Microservice整合回单一的服务。背后主要的原因还是Conway&rsquo;s Law所描述的系统设计与组织架构之间的关系：</p>
+<blockquote>
+<p>Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization&rsquo;s communication structure</p>
+<p>设计系统的架构受制于产生这些设计的组织的沟通结构。</p>
+</blockquote>
+<p>作者所在的团队一开始只有3个人，所以服务是一个单一服务。后来团队增长，有了很多开发者，这个时候把单一服务拆成多个Microservice能够让不同的子团队来负责不同的微服务，从而增加整个大团队的开发速度。后来，随着业务的发展和改变，作者所在的团队又变成了一个只有几个人的小团队。这个时候，作者发现这个小团队需要维护多个独立的微服务，变得非常麻烦，于是又决定把微服务整合起来成为一个单一的服务。</p>
+<p>我觉得这个案例还是很有启发性的。公司业务到底是要用单一的服务还是要拆成各种微服务，这个是取决于公司本身的组织架构的。大公司和小公司，大部门和小部门，在设计上的决策都应该是不同的。好的架构应该是符合自己团队特点，能够被自己团队最好地控制的架构。</p>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> Knightmare: A DevOps Cautionary Tale <br>
+     <span class="h5">案例分析 | <a href="https://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale/" role="button">Source</a>  </span></h3>
+</div>
+
+<p>2012年8月1日，骑士资本因为错误的软件部署，在45分钟内损失了4亿美元，而且导致了交易市场的闪崩。这个事件直接导致骑士资本破产，也给金融界的机器交易实践者上了重要一课。这个案例值得好好学习。这篇文章梳理了一下骑士资本出问题背后的事件和过程。另外<a href="http://www.nanex.net/aqck2/3522.html">Nanex Research的这篇文章</a>也分析骑士资本这次闪崩造成的各种影响。机器交易这方面的风向还挺大的。</p>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> SLO — From Nothing to… Production <br>
+     <span class="h5">学习经验 | <a href="https://geototti21.medium.com/slo-from-nothing-to-production-91b8d4270bd5" role="button">Source</a>  </span></h3>
+</div>
+
+<p>在这篇文章中，作者分享了他如何学习SLO以及SRE相关的概念，然后在自己的工作中从0开始部署整个SLO的设定、测量和监控的。如果是到一个没有使用SLO相关概念的工作场合，需要通过自己的工作来给提倡SLO等概念，这篇文章可以说提供了很好的教程。文章里面不但分享了作者读过的书，还分享了作者在部署过程中所使用的软件和常见的工作流程。文章提到了<a href="https://docs.google.com/presentation/d/1qcQ6alG_qUg3qWf733ZsDnTggwzqe4PZICrFXZ1zQZs/edit#slide=id.g75945b48fe_0_0">The Art of SLOs</a>这个Slide Deck。这个Slide Deck更加深入地讲解了什么事SLI，SLO，SLA，并且做了一些个案分析。这个Slide Deck挺值得学习。</p>
+<h2 id="网络学习">网络学习</h2>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> 基本操作 <br>
+     <span class="h5">可视化学习 | <a href="https://jibencaozuo.com/" role="button">Source</a>  </span></h3>
+</div>
+
+<p>回形针团队做的一个可视化、互动式学习的项目。这个项目可以被看作是一个有趣的尝试，也确实花了不少功夫来制作神经网络相关的交互动画。尤其是整个内容都是在视频里面进行的，让我觉得这是一个很有趣的技术挑战。</p>
+<p>但是就内容而言，我觉得这样的方式其实学不到真正的内容，最多只是一些直观上的感受。有很多知识都还是需要扎扎实实地动手计算才行的。</p>
+<p>如果你问我49块钱值不值，我觉得还是值的。我相信回形针这一波应该还是能赚不少钱的。</p>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> School of SRE <br>
+     <span class="h5">网络课程 | <a href="https://linkedin.github.io/school-of-sre/" role="button">Source</a>  </span></h3>
+</div>
+
+<p>LinkedIn出品的SRE相关的教程。可以简单了解一下。但是我觉得可能可以优先了解一下Google的SRE的两本书。</p>
+<h2 id="多媒体">多媒体</h2>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> DevOps Vs. SRE: Competing Standards or Friends? <br>
+     <span class="h5">SRE知识分享 | <a href="https://www.youtube.com/watch?v=0UyrVqBoCAU" role="button">Source</a>  </span></h3>
+</div>
+
+<p>这个视频讲了SRE和DevOps之间的关系。<code>Class SRE implements DevOps</code>这个说法还挺有趣的。DevOps更多定义的是做事的哲学和看法，而SRE定义了更多具体的指标和可执行的步骤。</p>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> class SRE implements DevOps <br>
+     <span class="h5">SRE简短课程 | <a href="https://www.youtube.com/playlist?list=PLIivdWyY5sqJrKl7D2u-gmis8h9K66qoj" role="button">Source</a>  </span></h3>
+</div>
+
+<p>这个系列一共是10个视频，讲解了SRE相关的10个重要的概念。每个视频也就5分钟左右，很快就可以看完。</p>
+<h2 id="工具技术展示">工具、技术、展示</h2>
+<div>
+  <h3 class="p-2 border-left border-blue bg-blue-light"> horrifying-pdf-experiments <br>
+     <span class="h5">技术展示 | <a href="https://github.com/osnr/horrifying-pdf-experiments?utm_source=hackernewsletter&amp;utm_medium=email&amp;utm_term=fav" role="button">Source</a>  </span></h3>
+</div>
+
+<p>这个Repo讨论了PDF支持的各种媒体，然后谈到PDF其实是支持Javascript，但是绝大部分的PDF reader都没有去实现这个API。Adobe设计的<a href="https://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf">PDF规格</a>有1300页，似乎现在绝大部分的PDF reader都只实现了其中很少的一部分。有意思的是，<a href="https://pdfium.googlesource.com/pdfium/+/chromium/2557/fpdfsdk/src/javascript/Document.cpp#258">Chrome</a>实现了这个规格中<a href="https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf#page=709">关于Javascript的一部分API</a>，所以我们在Chrome里面读PDF的时候，可以读到PDF里面的Javascript程序。作者提供了一个展示：<a href="https://cdn.jsdelivr.net/gh/osnr/horrifying-pdf-experiments@master/breakout.pdf">breakout PDF</a>。这个PDF只有在Chrome下面看才能看到文件中的游戏，下载下来，或者用Safari都看不到文件中的游戏。这个演示挺有意思的。</p>
+
+  </div>
+  
+  
+<div id="gitalk-container"></div>
+
+<div class="Header border-top mt-2 bg-gray-light text-gray-dark">
+  <div class="Header-item">
+    <span ><strong>Thinking as Algorithm </strong> By <em>Feitong Yang</em> | 2014 - 2020</span>
+  </div>
+  <div class="Header-item Header-item--full"> </div>
+  <div class="Header-item">
+    <a href="/about/">About</a>
+  </div>
+  <div class="Header-item">
+    <a href="/logging/">Logging</a>
+  </div>
+</div>
+
+</body>
+
+</html>
+
+
+</div>
+

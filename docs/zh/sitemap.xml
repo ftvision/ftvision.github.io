@@ -3,6 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://ftvision.github.io/digest/digest-016/</loc>
+    <lastmod>2021-01-09T23:54:11-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/digest/</loc>
+    <lastmod>2021-01-09T23:54:11-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/</loc>
+    <lastmod>2021-01-09T23:54:11-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ftvision.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://ftvision.github.io/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/snippets/clipboard/tech_blog_netflix/</loc>
+    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/snippets/</loc>
+    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://ftvision.github.io/snippets/clipboard/course_software_debugging/</loc>
     <lastmod>2021-01-02T00:00:00+00:00</lastmod>
   </url>
@@ -33,26 +68,6 @@
   </url>
   
   <url>
-    <loc>http://ftvision.github.io/snippets/</loc>
-    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/</loc>
-    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://ftvision.github.io/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://ftvision.github.io/"
-                />
-  </url>
-  
-  <url>
     <loc>http://ftvision.github.io/collection/neural_simulation/</loc>
     <lastmod>2021-01-02T00:00:00+00:00</lastmod>
   </url>
@@ -60,6 +75,11 @@
   <url>
     <loc>http://ftvision.github.io/collection/software_design/</loc>
     <lastmod>2021-01-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/digest/digest-015/</loc>
+    <lastmod>2021-01-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -75,6 +95,11 @@
   <url>
     <loc>http://ftvision.github.io/collection/misc-collection/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/digest/digest-014/</loc>
+    <lastmod>2020-12-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -119,11 +144,6 @@
   
   <url>
     <loc>http://ftvision.github.io/digest/digest-013/</loc>
-    <lastmod>2020-12-13T23:15:42-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/digest/</loc>
     <lastmod>2020-12-13T23:15:42-05:00</lastmod>
   </url>
   
