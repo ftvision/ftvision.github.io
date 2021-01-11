@@ -71,7 +71,7 @@ Stripe的这个技术文章很有意思，讲的是作为基础设施服务的�
 
 这个Talk的主题实际上是如何使用Leslie发明的TLA+语言来确定所需要实现的程序的规格说明(Specification)。
 
-学习TLA+可以从[这个网站开始](https://learntla.com/)，另外[TLA+](https://lamport.azurewebsites.net/tla/tla.html)网站上有更多关于TLA+的资料，[这个页面](https://github.com/tlaplus)有Github上相关的仓库。[这个实现](https://github.com/tlaplus/tlaplus)好像是比较受欢迎的一个实现。另外还有人整理了一系列[TLA+的使用案例](https://github.com/tlaplus/Examples)。
+学习TLA+可以从[这个网站开始](https://learntla.com/)，另外[TLA+](https://lamport.azurewebsites.net/tla/tla.html)网站上有更多关于TLA+的资料。另外[TLA+的四部曲](https://pron.github.io/tlaplus)也是很不错的教材。[这个页面](https://github.com/tlaplus)有Github上相关的仓库。[这个实现](https://github.com/tlaplus/tlaplus)好像是比较受欢迎的一个实现。另外还有人整理了一系列[TLA+的使用案例](https://github.com/tlaplus/Examples)。
 
 讲座的细节就不谈了，这里说一下我觉得对我很有启发的几个点：
 
