@@ -50,11 +50,11 @@ date: 2021-01-01
 | 课程 | 提供者 | 用时 | 笔记 |
 | :--- | :----- | :--- | :--- |
 | [Programming Language Part A](https://www.coursera.org/learn/programming-languages) | Coursera | TODO | TODO |
-
+| [Site Reliability Engineering: Measuring and Managing Reliability](https://www.coursera.org/learn/site-reliability-engineering-slos) | Coursera | TODO | TODO |
 ### 长课程
 
 | 课程 | 提供者 | 用时 | 笔记 |
 | :--- | :----- | :--- | :--- |
 | [CSCI 1730 Programming Language](http://cs.brown.edu/courses/cs173/2012/Videos/) | Brown University | TODO | TODO |
-
+| [Performance Engineering of Software Systems](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering-of-software-systems-fall-2018/index.htm) | MIT | TODO | TODO |
 

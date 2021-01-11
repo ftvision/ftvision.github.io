@@ -7,7 +7,6 @@ date: 2021-01-02
 
 这个集子收集了软件工程设计方面的资料。软件工程设计包括很多方面，这里主要收集和整理面向对象设计、系统设计、API设计这几个方面的内容。
 
-
 {{< /box-highlight >}}
 
 ## 面向对象设计 / 设计模式
@@ -22,6 +21,11 @@ date: 2021-01-02
 * [Grokking the System Design Interview](https://www.educative.io/courses/grokking-the-system-design-interview)
 * [Cloud Design Patterns](https://docs.microsoft.com/en-us/azure/architecture/patterns/)
 
+### 系统组成部分
+
+* Rate Limiting
+  * [CloudFlare: How we built rate limiting capable of scaling to millions of domains](https://blog.cloudflare.com/counting-things-a-lot-of-different-things/)
+  * [AWS: Throttle API requests for better throughput](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html)
 
 ## API设计
 
@@ -32,6 +36,10 @@ date: 2021-01-02
 * [APIs 101: Everything you need to know about API design](https://cloud.google.com/blog/products/api-management/google-cloud-api-design-tips)
 * [REST vs. RPC: What problems are you trying to solve with your APIs?](https://cloud.google.com/blog/products/application-development/rest-vs-rpc-what-problems-are-you-trying-to-solve-with-your-apis)
 * [API design: Understanding gRPC, OpenAPI and REST and when to use them](https://cloud.google.com/blog/products/api-management/understanding-grpc-openapi-and-rest-and-when-to-use-them)
+
+### Multi-threading
+
+* [An Introduction to Lock-Free Programming](https://preshing.com/20120612/an-introduction-to-lock-free-programming/)
 
 ## 批评意见和观点
 
