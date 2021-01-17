@@ -3,18 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://ftvision.github.io/digest/digest-016/</loc>
-    <lastmod>2021-01-09T23:54:11-05:00</lastmod>
+    <loc>http://ftvision.github.io/snippets/clipboard/tech_blog_plaid/</loc>
+    <lastmod>2021-01-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ftvision.github.io/digest/</loc>
-    <lastmod>2021-01-09T23:54:11-05:00</lastmod>
+    <loc>http://ftvision.github.io/snippets/</loc>
+    <lastmod>2021-01-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://ftvision.github.io/</loc>
-    <lastmod>2021-01-09T23:54:11-05:00</lastmod>
+    <lastmod>2021-01-17T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -28,12 +28,22 @@
   </url>
   
   <url>
-    <loc>http://ftvision.github.io/snippets/clipboard/tech_blog_netflix/</loc>
-    <lastmod>2021-01-10T00:00:00+00:00</lastmod>
+    <loc>http://ftvision.github.io/digest/digest-017/</loc>
+    <lastmod>2021-01-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://ftvision.github.io/snippets/</loc>
+    <loc>http://ftvision.github.io/digest/</loc>
+    <lastmod>2021-01-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/digest/digest-016/</loc>
+    <lastmod>2021-01-09T23:54:11-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/snippets/clipboard/tech_blog_netflix/</loc>
     <lastmod>2021-01-10T00:00:00+00:00</lastmod>
   </url>
   
