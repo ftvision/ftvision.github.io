@@ -29,6 +29,7 @@ date: 2021-01-01
 | :------------------ | :----------------------------------- | :---------------------------------------------------------------------- |
 | CrowdCast的技术博客 | https://crowdcast.io/blog/topic/code | [阅读笔记]({{< ref "/snippets/clipboard/tech_blog_crowdcast_io.md" >}}) |
 | Replit的技术博客    | https://blog.repl.it/                | [阅读笔记]({{< ref "/snippets/clipboard/tech_blog_replit.md" >}})       |
+| Plaid的技术博客     | https://plaid.com/blog/              | [阅读笔记]({{< ref "/snippets/clipboard/tech_blog_plaid.md" >}})       |
 
 ## 个人技术博客
 
