@@ -3,8 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://ftvision.github.io/en/about/</loc>
+    <lastmod>2021-11-02T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://ftvision.github.io/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ftvision.github.io/en/about/"
+                />
+  </url>
+  
+  <url>
     <loc>http://ftvision.github.io/en/logging/</loc>
-    <lastmod>2020-11-05T18:12:30-04:00</lastmod>
+    <lastmod>2021-11-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -14,6 +29,21 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://ftvision.github.io/en/logging/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/</loc>
+    <lastmod>2021-11-02T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://ftvision.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ftvision.github.io/en/"
                 />
   </url>
   
@@ -33,17 +63,32 @@
   </url>
   
   <url>
-    <loc>http://ftvision.github.io/en/</loc>
-    <lastmod>2020-11-05T18:12:30-04:00</lastmod>
+    <loc>http://ftvision.github.io/en/about/resume/</loc>
+    <lastmod>2018-12-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/"
+                href="http://ftvision.github.io/about/resume/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/"
+                href="http://ftvision.github.io/en/about/resume/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/about/resume_failure/</loc>
+    <lastmod>2018-12-28T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://ftvision.github.io/about/resume_failure/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ftvision.github.io/en/about/resume_failure/"
                 />
   </url>
   

@@ -5,14 +5,14 @@
     <link>http://ftvision.github.io/</link>
     <description>Recent content on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Plaid技术博客</title>
-      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_plaid/</link>
-      <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
+      <title>简历</title>
+      <link>http://ftvision.github.io/about/resume/</link>
+      <pubDate>Tue, 02 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_plaid/</guid>
-      <description>Plaid的博客。 整体印象 阅读进度 博客摘要 How we built developer efficiency at Plaid 组织结构和文化 | Source 这篇文章讲了Plaid创立Developer Efficiency这</description>
+      <guid>http://ftvision.github.io/about/resume/</guid>
+      <description>联系方式 Email: feitong.yang@outlook.com 工作经验 公司 地址 工作职位 时间 Citadel New York, NY, U.S.A. 软件工程师 2021/6 至今 Google Cambridge, MA, U.S.A. 软件工程师 2018/7 - 2021/05 Akuna Capital Chicago, IL, U.S.A. 实习量化交易员 2017/6-2017/8 Sparkypants Studios Baltimore, Maryland, U.S.A. 实习C++程序</description>
     </item>
     
     <item>
@@ -34,60 +34,6 @@
     </item>
     
     <item>
-      <title>Netflix技术博客</title>
-      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_netflix/</link>
-      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_netflix/</guid>
-      <description>Supporting content decision makers with machine learning</description>
-    </item>
-    
-    <item>
-      <title>[课程笔记]Software Debugging</title>
-      <link>http://ftvision.github.io/snippets/clipboard/course_software_debugging/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/course_software_debugging/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>[课程笔记]Web Tooling &amp; Automation</title>
-      <link>http://ftvision.github.io/snippets/clipboard/course_web_tooling_automation/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/course_web_tooling_automation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Distill杂志阅读</title>
-      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_distill/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_distill/</guid>
-      <description>Distill.Pub https://distill.pub/2020/communicating-with-interactive-articles/ 整体印象 阅读进度 博客摘要</description>
-    </item>
-    
-    <item>
-      <title>神经科学工具箱</title>
-      <link>http://ftvision.github.io/collection/neural_simulation/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/neural_simulation/</guid>
-      <description>放在这里的是神经科学相关的一些工具库和工具箱。 神经动力学工具箱 BrainPy 这一款是北京师范大学的理论神经科学实验室开发的。 API和文档都还写的不错。 Neuron</description>
-    </item>
-    
-    <item>
-      <title>软件工程设计</title>
-      <link>http://ftvision.github.io/collection/software_design/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/software_design/</guid>
-      <description>这个集子收集了软件工程设计方面的资料。软件工程设计包括很多方面，这里主要收集和整理面向对象设计、系统设计、API设计这几个方面的内容。 面向对</description>
-    </item>
-    
-    <item>
       <title>Digest 015</title>
       <link>http://ftvision.github.io/digest/digest-015/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
@@ -97,111 +43,12 @@
     </item>
     
     <item>
-      <title>科技博客阅读笔记</title>
-      <link>http://ftvision.github.io/collection/techblog-reading/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/techblog-reading/</guid>
-      <description>这个页面收集的是不同公司的科技博客和科技博客阅读笔记。 很多公司都有专门的网页来更新自己的科技博客。这些博客，有些是分享自己解决问题的经验，有</description>
-    </item>
-    
-    <item>
-      <title>课程自学笔记</title>
-      <link>http://ftvision.github.io/collection/course-notes/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/course-notes/</guid>
-      <description>这个集子主要收集和整理我上过的网络课程。这些网络课程以计算机技术为主，另外可能有一些神经科学和写作相关的课程。 根据网络课程的长度，我将我学习</description>
-    </item>
-    
-    <item>
-      <title>杂七杂八的收藏</title>
-      <link>http://ftvision.github.io/collection/misc-collection/</link>
-      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/misc-collection/</guid>
-      <description>放在这里的都是没有找到合适的去处的杂七杂八的收藏。 Promises, Futures, and Async 相关的知识 Async/await, a more compelling example Using javascript&amp;rsquo;s async/await and requestAnimationFrame to render the Buddhabrot Read More Answers | What&amp;rsquo;s the difference between a Future and a Promise? Chapter | Futures and Promises for Programming Models for</description>
-    </item>
-    
-    <item>
       <title>Digest 014</title>
       <link>http://ftvision.github.io/digest/digest-014/</link>
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-014/</guid>
       <description>文章 Reading, That Strange and Uniquely Human Thing 科普报道 | Source 这是一篇关于人类阅读和文字发展历史的文章。非常典型的美国式科普叙事结构——针对一个特定的人来叙述一件特定事，然</description>
-    </item>
-    
-    <item>
-      <title>Multithreading in C&#43;&#43;</title>
-      <link>http://ftvision.github.io/snippets/clipboard/multithreading/</link>
-      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/multithreading/</guid>
-      <description>笔记 ß Multithreading in C++ consists of threads, synchronization primitives for shared data, thread-local data, and tasks. Memory Model This contract is between the programmer and the system. The system consists of the compiler that generates machine code and the processor that executes the machine code, and it includes the different caches that store the state of the program. The result is - in the good case - a</description>
-    </item>
-    
-    <item>
-      <title>面向对象的设计</title>
-      <link>http://ftvision.github.io/snippets/clipboard/object_oriented_design/</link>
-      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/object_oriented_design/</guid>
-      <description>OOP organizes the program to combine data and functionality and wrap it inside something called an “Object”. Objects: Objects represent a real-world entity and the basic building block of OOP. For example, an Online Shopping System will have objects such as shopping cart, customer, product item, etc. Class: Class is the prototype or blueprint of an object. It is a template definition</description>
-    </item>
-    
-    <item>
-      <title>Instagram技术博客</title>
-      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_instagram/</link>
-      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_instagram/</guid>
-      <description>https://instagram-engineering.com/ Python at Scale: Strict Modules 这篇写得还有点意思。需要找时机继续读一下。 整体印象 阅读进度 博客摘要</description>
-    </item>
-    
-    <item>
-      <title>OpenAI技术博客</title>
-      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_linkedin/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_linkedin/</guid>
-      <description>https://engineering.linkedin.com/ 整体印象 阅读进度 博客摘要 The Log: What every software engineer should know about real-time data&amp;#39;s unifying abstraction 技术博客 | Source</description>
-    </item>
-    
-    <item>
-      <title>OpenAI技术博客</title>
-      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_openai/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_openai/</guid>
-      <description>OpenAI的博客，尤其是他们的研究博客真的写得很不错。 整体印象 阅读进度 博客摘要</description>
-    </item>
-    
-    <item>
-      <title>Repl.it技术博客</title>
-      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_replit/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_replit/</guid>
-      <description>整体印象 他们的技术博客什么东西都混在了一起，所以需要根据标题来筛选一下。不过看起来东西也不是特别多，应该都还比较容易读。 阅读进度 博客摘要</description>
-    </item>
-    
-    <item>
-      <title>Square的技术博客</title>
-      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_square/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_square/</guid>
-      <description>https://developer.squareup.com/blog 整体印象 阅读进度 博客摘要</description>
-    </item>
-    
-    <item>
-      <title>Stripe技术博客</title>
-      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_stripe/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_stripe/</guid>
-      <description>Recently, I&amp;rsquo;ve discovered Stripe&amp;rsquo;s Tech Blogs. Arriving at one of their blog on API versioning, I have discovered that their engineering blogs are generally good reads, so I decide take a dive on the entire blogs. 整体印象 阅读进度 博客摘要 Stripe’s payments APIs: the first ten years 技术博客 | Source 这篇</description>
     </item>
     
     <item>
@@ -268,15 +115,6 @@
     </item>
     
     <item>
-      <title>写本书值得吗</title>
-      <link>http://ftvision.github.io/snippets/clipboard/martin_kelppmann_write_book/</link>
-      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/martin_kelppmann_write_book/</guid>
-      <description>Writing a book: is it worth it? 分享经验 | Source Martin Kleppmann, the author of Designing Data-Intensive Applications, explains reflects on his experiences of publishing the book. Metrics: 100,000 copies sold. Financial perspective: a good passive income since the book is very popular. The profit for each book is small, but the time and the number helps. Beyond the royalities: 50 talks, blog posts, and other social</description>
-    </item>
-    
-    <item>
       <title>Digest 007</title>
       <link>http://ftvision.github.io/digest/digest-007/</link>
       <pubDate>Fri, 06 Nov 2020 09:46:06 -0500</pubDate>
@@ -295,59 +133,12 @@
     </item>
     
     <item>
-      <title>png Graph Glitch</title>
-      <link>http://ftvision.github.io/snippets/clipboard/png_glitch/</link>
-      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/png_glitch/</guid>
-      <description>The Art of PNG Glitch 技术研究 | Source</description>
-    </item>
-    
-    <item>
-      <title>png Graph Glitch</title>
-      <link>http://ftvision.github.io/snippets/clipboard/snowflake_valuation/</link>
-      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/snowflake_valuation/</guid>
-      <description>Why is Snowflake so Valuable? 商业分析 | Source Based on the trading, Snowflake&amp;rsquo;s market cap valuation is $60 billio, but its revenue over the last 12 months was $403 million. Based on that, their market cap is around 150x their revenue.. Growth Rate is high: 121% year-over-year growth. 2x the 75% metrics of the companies with similar revenue. Growth Banchmark Retention Rate is high: 158%. For every</description>
-    </item>
-    
-    <item>
-      <title>Quotes</title>
-      <link>http://ftvision.github.io/snippets/clipboard/quotes/</link>
-      <pubDate>Tue, 03 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/quotes/</guid>
-      <description> Removing the delusion of a separate self and the desires it produces, and concentrating upon the subject until there is a direct communion with it.
-  Successes are only rare spikes among background noises of failures in daily life. Achieving more successes comes from failing faster, failing more often, then learning more and keeping on.
- </description>
-    </item>
-    
-    <item>
       <title>Digest 006</title>
       <link>http://ftvision.github.io/digest/digest-006/</link>
       <pubDate>Fri, 30 Oct 2020 18:57:35 -0400</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-006/</guid>
       <description>文章 Type in the exact number of machines to proceed 经验分享 | Source 这篇文章让我很有启发。这篇文章说到的问题是Linux系统有很多命令行的交互界面。很多时候，命令行界面要求你</description>
-    </item>
-    
-    <item>
-      <title>划船机</title>
-      <link>http://ftvision.github.io/logging/rowing/</link>
-      <pubDate>Mon, 26 Oct 2020 16:33:54 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/logging/rowing/</guid>
-      <description>2000米测试 Date Time 2020/10/26 &amp;ndash;:&amp;ndash; 2020/10/06 08:45 2020/09/14 09:28 普通练习 Date Distance(m) 2020/10/25 4000 2020/10/22 3797 2020/10/17 2505 2020/10/14 6140 2020/10/03 6017 2020/09/28 6990 2020/09/27 4063 2020/09/20 4783 2020/09/19 7466 2020/09/14 3435 2020/09/12 3079 2020/09/11 4359 笔记 2020/10/25: 现在可以比较稳定地保持2:25/500m的速</description>
-    </item>
-    
-    <item>
-      <title>弓道练习</title>
-      <link>http://ftvision.github.io/logging/kyudo/</link>
-      <pubDate>Mon, 26 Oct 2020 16:33:54 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/logging/kyudo/</guid>
-      <description>目前参加的弓道练习是由波士顿地区白虎弓道社组织的。这个组织的流派是柴田勘十郎(Shibata Kanjūrō)门下的日置流尾州竹林派(Heki</description>
     </item>
     
     <item>
@@ -375,24 +166,6 @@
       
       <guid>http://ftvision.github.io/digest/digest-003/</guid>
       <description>文章 How we built a $1m ARR SaaS startup 创业分享 | Source Canny的创始人Sarah分享了他们达到一百万美元年度经常性收入（annual recurring revenue）这个指标。</description>
-    </item>
-    
-    <item>
-      <title>What – if anything – have we learned from C&#43;&#43;?</title>
-      <link>http://ftvision.github.io/library/media/bjarne_stroustrup_2014_langnext/</link>
-      <pubDate>Fri, 09 Oct 2020 12:19:05 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/library/media/bjarne_stroustrup_2014_langnext/</guid>
-      <description>资源 总结 Bjarne Stroustrup talked about his thoughts and ideas of designing the C++ language &amp;ndash; what C++ is and what C++ is not. At least in his mind, C++ should be: C++ is ageneral-purpose programming language with a bias towards systems programming that is a better C supports data abstraction supports object-oriented programming supports generic programming Bjarne talked about several language myths in C++, argued against several</description>
-    </item>
-    
-    <item>
-      <title>分布式系统的学习</title>
-      <link>http://ftvision.github.io/collection/distributed-system/</link>
-      <pubDate>Sun, 04 Oct 2020 18:12:30 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/distributed-system/</guid>
-      <description>这个集子主要收集分布式系统相关的学习资料。这些资料既包括理论学习方面的内容，也包括工作实践方面的内容，还包括面试准备方面的内容。 课程 Programming Models for Distributed</description>
     </item>
     
     <item>
@@ -432,23 +205,12 @@
     </item>
     
     <item>
-      <title>Resume</title>
-      <link>http://ftvision.github.io/about/resume/</link>
-      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/about/resume/</guid>
-      <description>Contact Address: 355 Main Street, Cambridge, MA. 02142
-Email: feitong.yang@outlook.com
-Working Experiences    Company Location Role Time     Google Cambridge, MA, U.S.A. Software Engineer 2018/7 - present   Akuna Capital Chicago, IL, U.S.A. Quantative Trader Intern 2017/6-2017/8   Sparkypants Studios Baltimore, Maryland, U.S.A. C++ Programming Intern 2016/5 - 2016/8       Languages and Skills      Natural Language Chinese (Native Speaker), English (Professional), Japanese (JLPT N3)   Coding C/C++, Python, R, Matlab, Javascript, HTML/CSS, Git, Shell    Education    Education      Johns Hopkins University, Baltimore, Maryland, U.</description>
-    </item>
-    
-    <item>
-      <title>Resume of Failures</title>
+      <title>失败简历</title>
       <link>http://ftvision.github.io/about/resume_failure/</link>
       <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/about/resume_failure/</guid>
-      <description>This is a list of what I have tried during my journey. It is a running list of my failures during my journey. The idea is inspired by Prof. Johannes Haushoferi. I was trying to summarize all of them, but some may have eluded my memory. I will keep maintaining this list, so future failures will be recorded and updated. You are welcome to come back and check my latest failures.</description>
+      <description>这个页面收藏了我一路上尝试过并失败过的各种经验。之所以有这个“失败简历”是因为之前普林斯顿的教授Prof. Johannes Haushoferi在网上分享过</description>
     </item>
     
     <item>
@@ -461,7 +223,7 @@ Working Experiences    Company Location Role Time     Google Cambridge, MA, U.S.
     </item>
     
     <item>
-      <title>心理学科普写作</title>
+      <title>过往的心理学科普写作</title>
       <link>http://ftvision.github.io/collection/psych-writing/</link>
       <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
       

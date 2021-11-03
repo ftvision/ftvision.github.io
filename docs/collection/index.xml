@@ -5,61 +5,7 @@
     <link>http://ftvision.github.io/collection/</link>
     <description>Recent content in Collections on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/collection/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>神经科学工具箱</title>
-      <link>http://ftvision.github.io/collection/neural_simulation/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/neural_simulation/</guid>
-      <description>放在这里的是神经科学相关的一些工具库和工具箱。 神经动力学工具箱 BrainPy 这一款是北京师范大学的理论神经科学实验室开发的。 API和文档都还写的不错。 Neuron</description>
-    </item>
-    
-    <item>
-      <title>软件工程设计</title>
-      <link>http://ftvision.github.io/collection/software_design/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/software_design/</guid>
-      <description>这个集子收集了软件工程设计方面的资料。软件工程设计包括很多方面，这里主要收集和整理面向对象设计、系统设计、API设计这几个方面的内容。 面向对</description>
-    </item>
-    
-    <item>
-      <title>科技博客阅读笔记</title>
-      <link>http://ftvision.github.io/collection/techblog-reading/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/techblog-reading/</guid>
-      <description>这个页面收集的是不同公司的科技博客和科技博客阅读笔记。 很多公司都有专门的网页来更新自己的科技博客。这些博客，有些是分享自己解决问题的经验，有</description>
-    </item>
-    
-    <item>
-      <title>课程自学笔记</title>
-      <link>http://ftvision.github.io/collection/course-notes/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/course-notes/</guid>
-      <description>这个集子主要收集和整理我上过的网络课程。这些网络课程以计算机技术为主，另外可能有一些神经科学和写作相关的课程。 根据网络课程的长度，我将我学习</description>
-    </item>
-    
-    <item>
-      <title>杂七杂八的收藏</title>
-      <link>http://ftvision.github.io/collection/misc-collection/</link>
-      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/misc-collection/</guid>
-      <description>放在这里的都是没有找到合适的去处的杂七杂八的收藏。 Promises, Futures, and Async 相关的知识 Async/await, a more compelling example Using javascript&amp;rsquo;s async/await and requestAnimationFrame to render the Buddhabrot Read More Answers | What&amp;rsquo;s the difference between a Future and a Promise? Chapter | Futures and Promises for Programming Models for</description>
-    </item>
-    
-    <item>
-      <title>分布式系统的学习</title>
-      <link>http://ftvision.github.io/collection/distributed-system/</link>
-      <pubDate>Sun, 04 Oct 2020 18:12:30 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/distributed-system/</guid>
-      <description>这个集子主要收集分布式系统相关的学习资料。这些资料既包括理论学习方面的内容，也包括工作实践方面的内容，还包括面试准备方面的内容。 课程 Programming Models for Distributed</description>
-    </item>
-    
+    <lastBuildDate>Sun, 26 Mar 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/collection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>100篇视觉研究文献</title>
       <link>http://ftvision.github.io/collection/vision-100/</link>
@@ -70,7 +16,7 @@
     </item>
     
     <item>
-      <title>心理学科普写作</title>
+      <title>过往的心理学科普写作</title>
       <link>http://ftvision.github.io/collection/psych-writing/</link>
       <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
       

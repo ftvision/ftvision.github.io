@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on Thinking as Algorithm</title>
+    <link>http://ftvision.github.io/en/about/</link>
+    <description>Recent content in About on Thinking as Algorithm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 02 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/en/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resume</title>
+      <link>http://ftvision.github.io/en/about/resume/</link>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/en/about/resume/</guid>
+      <description>Contact Email: feitong.yang@outlook.com
+Working Experiences    Company Location Role Time     Citadel New York, NY, U.S.A. Software Engineer 2021/6 - present   Google Cambridge, MA, U.S.A. Software Engineer 2018/7 - present   Akuna Capital Chicago, IL, U.S.A. Quantative Trader Intern 2017/6-2017/8   Sparkypants Studios Baltimore, Maryland, U.S.A. C++ Programming Intern 2016/5 - 2016/8    Education    Education      Johns Hopkins University, Baltimore, Maryland, U.</description>
+    </item>
+    
+    <item>
+      <title>Resume of Failures</title>
+      <link>http://ftvision.github.io/en/about/resume_failure/</link>
+      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/en/about/resume_failure/</guid>
+      <description>This is a list of what I have tried during my journey. It is a running list of my failures during my journey. The idea is inspired by Prof. Johannes Haushoferi. I was trying to summarize all of them, but some may have eluded my memory. I will keep maintaining this list, so future failures will be recorded and updated. You are welcome to come back and check my latest failures.</description>
+    </item>
+    
+  </channel>
+</rss>

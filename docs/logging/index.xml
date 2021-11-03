@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Loggings on 思算</title>
+    <title>日志 on 思算</title>
     <link>http://ftvision.github.io/logging/</link>
-    <description>Recent content in Loggings on 思算</description>
+    <description>Recent content in 日志 on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 Nov 2020 18:12:30 -0400</lastBuildDate><atom:link href="http://ftvision.github.io/logging/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 02 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/logging/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>短码更新日志</title>
       <link>http://ftvision.github.io/logging/shortcodes/</link>
@@ -13,24 +13,6 @@
       
       <guid>http://ftvision.github.io/logging/shortcodes/</guid>
       <description>这个日志主要是来记录我写的各种短码，以及这些短码怎么使用的。 文摘标题 代码 {{&amp;lt; digest-item &amp;#34;title&amp;#34;=&amp;#34;标题&amp;#34; &amp;#34;source&amp;#34;=&amp;#34;#url&amp;#34; &amp;#3</description>
-    </item>
-    
-    <item>
-      <title>划船机</title>
-      <link>http://ftvision.github.io/logging/rowing/</link>
-      <pubDate>Mon, 26 Oct 2020 16:33:54 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/logging/rowing/</guid>
-      <description>2000米测试 Date Time 2020/10/26 &amp;ndash;:&amp;ndash; 2020/10/06 08:45 2020/09/14 09:28 普通练习 Date Distance(m) 2020/10/25 4000 2020/10/22 3797 2020/10/17 2505 2020/10/14 6140 2020/10/03 6017 2020/09/28 6990 2020/09/27 4063 2020/09/20 4783 2020/09/19 7466 2020/09/14 3435 2020/09/12 3079 2020/09/11 4359 笔记 2020/10/25: 现在可以比较稳定地保持2:25/500m的速</description>
-    </item>
-    
-    <item>
-      <title>弓道练习</title>
-      <link>http://ftvision.github.io/logging/kyudo/</link>
-      <pubDate>Mon, 26 Oct 2020 16:33:54 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/logging/kyudo/</guid>
-      <description>目前参加的弓道练习是由波士顿地区白虎弓道社组织的。这个组织的流派是柴田勘十郎(Shibata Kanjūrō)门下的日置流尾州竹林派(Heki</description>
     </item>
     
   </channel>

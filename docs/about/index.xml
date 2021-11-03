@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About on 思算</title>
+    <title>关于作者 on 思算</title>
     <link>http://ftvision.github.io/about/</link>
-    <description>Recent content in About on 思算</description>
+    <description>Recent content in 关于作者 on 思算</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 28 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Resume</title>
+      <title>简历</title>
       <link>http://ftvision.github.io/about/resume/</link>
-      <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/about/resume/</guid>
-      <description>Contact Address: 355 Main Street, Cambridge, MA. 02142
-Email: feitong.yang@outlook.com
-Working Experiences    Company Location Role Time     Google Cambridge, MA, U.S.A. Software Engineer 2018/7 - present   Akuna Capital Chicago, IL, U.S.A. Quantative Trader Intern 2017/6-2017/8   Sparkypants Studios Baltimore, Maryland, U.S.A. C++ Programming Intern 2016/5 - 2016/8       Languages and Skills      Natural Language Chinese (Native Speaker), English (Professional), Japanese (JLPT N3)   Coding C/C++, Python, R, Matlab, Javascript, HTML/CSS, Git, Shell    Education    Education      Johns Hopkins University, Baltimore, Maryland, U.</description>
+      <description>联系方式 Email: feitong.yang@outlook.com 工作经验 公司 地址 工作职位 时间 Citadel New York, NY, U.S.A. 软件工程师 2021/6 至今 Google Cambridge, MA, U.S.A. 软件工程师 2018/7 - 2021/05 Akuna Capital Chicago, IL, U.S.A. 实习量化交易员 2017/6-2017/8 Sparkypants Studios Baltimore, Maryland, U.S.A. 实习C++程序</description>
     </item>
     
     <item>
-      <title>Resume of Failures</title>
+      <title>失败简历</title>
       <link>http://ftvision.github.io/about/resume_failure/</link>
       <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/about/resume_failure/</guid>
-      <description>This is a list of what I have tried during my journey. It is a running list of my failures during my journey. The idea is inspired by Prof. Johannes Haushoferi. I was trying to summarize all of them, but some may have eluded my memory. I will keep maintaining this list, so future failures will be recorded and updated. You are welcome to come back and check my latest failures.</description>
+      <description>这个页面收藏了我一路上尝试过并失败过的各种经验。之所以有这个“失败简历”是因为之前普林斯顿的教授Prof. Johannes Haushoferi在网上分享过</description>
     </item>
     
   </channel>
