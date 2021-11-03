@@ -1,13 +1,13 @@
 ---
-title: 失败简历
+title: Resume of Failures
 date: 2018-12-28
 ---
 
-这个页面收藏了我一路上尝试过并失败过的各种经验。之所以有这个“失败简历”是因为之前普林斯顿的教授[Prof. Johannes Haushoferi](http://www.princeton.edu/haushofer/Johannes_Haushofer_CV_of_Failures.pdf)在网上分享过这样的简历，我觉得很有帮助，而且了解每个人成功的简历背后的各种尝试远比了解这个人有什么成就来得有趣多了。我还会继续保持更新这个页面，这样才能说明我还在继续尝试不同的事情。
+This is a list of what I have tried during my journey. It is a running list of my failures during my journey. The idea is inspired by [Prof. Johannes Haushoferi](http://www.princeton.edu/haushofer/Johannes_Haushofer_CV_of_Failures.pdf). I was trying to summarize all of them, but some may have eluded my memory. I will keep maintaining this list, so future failures will be recorded and updated. You are welcome to come back and check my latest failures.
 
-### 我没能获得的工作和失败过的面试
+### Working Experiences
 
-| 时间 | 工作职位 |
+| Time | Case |
 |:-----|:-----|
 | 2017 | <strong> Akuna Capital </strong>, Chicago, IL, U.S.A. <br/> _Quantitative Developer_ <br > **Declined** the offer |
 | 2017 | <strong> Bloomberg L.P. </strong>, New York, NY, U.S.A. <br/> _Software Developer_ <br > **Declined** the offer |
@@ -22,9 +22,9 @@ date: 2018-12-28
 | 2015 | <strong>Google</strong>, Mountain View, CA, U.S.A. <br/> _Data Science Intern_ <br > **Silently Rejected** with no further decisions after get contacted by recruiter |
 | 2015 | **Rejected with no interview, List:** <br /> <strong>Facebook/Oculus </strong>, _Oculus Developer Intern_, Seattle, WA, U.S.A. <br /> <strong>Two Sigma</strong>, _Quantitative Researcher Intern_, New York, NY, U.S.A. <br />  <strong>Quora </strong>, _Data Science Intern_, Mountain View, CA, U.S.A. |
 
-### 我没能进入的学校和学术训练项目
+### Education
 
-| 时间 | 学校/项目 |
+| Time | Case |
 |:-----|:-----|
 | 2013 | <strong>Baylor College of Medicine</strong>, Houston, TX, U.S.A. <br/> <strong>Ph.D.</strong> Neuroscience <br > **Declined** the offer |
 | 2013 | <strong>New York University</strong>, New York, NY, U.S.A. <br/> <strong>Ph.D.</strong> Center for Neural Science <br > **Rejected** after two interviews, because vacant positions were full |
@@ -35,9 +35,9 @@ date: 2018-12-28
 | 2011 | _CVR Vision Science Summer School_ <br /> **York Universiy**, Toronto, Ontario, Canada <br /> **Rejected** by the program |
 | 2011 | _Undergraduate Summer Fellowship Program in Vision Science_ <br /> **Rochester University**, Rochester, NY, U.S.A. <br /> **Rejected** by the program |
 
-### 我没能获得的科研基金和投稿失败的文章
+### Grants & Publication
 
-| 时间 | 项目　|
+| Time | Case |
 |:-----|:-----|
 | 2020 | Yang, F., & Flombaum, J. I., Visual Pattern Recognition as Algebra within a Coordinate Representation <br> **Rejected** By _PNAS_ |
 | 2020 | Yang, F., & Flombaum, J. I., Visual Pattern Recognition as Algebra within a Coordinate Representation <br> **Rejected** By _Nature Human Behaviour_ |

@@ -1,30 +1,30 @@
 ---
-title: 简历
-date: 2021-11-02
+title: Resume
+date: 2018-12-28
 ---
-## 联系方式
+## Contact
 
 **Email:** feitong.yang@outlook.com
 
-## 工作经验
+## Working Experiences
 
-|公司  | 地址 | 工作职位 | 时间 |
+|Company  | Location | Role | Time |
 |:--------|------|------|:-----|
-| _Citadel_  | New York, NY, U.S.A. | 软件工程师 | 2021/6 至今 |
-| _Google_  | Cambridge, MA, U.S.A. | 软件工程师 | 2018/7 - 2021/05 |
-| _Akuna Capital_  | Chicago, IL, U.S.A. | 实习量化交易员 | 2017/6-2017/8 |
-| _Sparkypants Studios_ | Baltimore, Maryland, U.S.A. | 实习C++程序员 | 2016/5 - 2016/8 |
+| _Citadel_  | New York, NY, U.S.A. | Software Engineer | 2021/6 - present |
+| _Google_  | Cambridge, MA, U.S.A. | Software Engineer | 2018/7 - present |
+| _Akuna Capital_  | Chicago, IL, U.S.A. | Quantative Trader Intern | 2017/6-2017/8 |
+| _Sparkypants Studios_ | Baltimore, Maryland, U.S.A. | C++ Programming Intern | 2016/5 - 2016/8 |
 
-## 教育背景
+## Education
 
-| 学位教育 | |
+| Education | |
 |:--------|:--------|
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>Ph.D.</strong> Cognitive Psychology | 2013/9 – 2018/6 |
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>M.S.E </strong> Applied Mathematics and Statistics | 2017/2 - 2018/6 |
 | <strong>Johns Hopkins University</strong>, Baltimore, Maryland, U.S.A. <br/> <strong>M.A.</strong> Cognitive Psychology | 2013/9 – 2015/6 |
 | <strong>Peking University</strong>, Beijing, China <br /> <strong>B.Sc.</strong> Experimental Psychology | 2008/9 – 2012/7 |
 
-## 研究经验
+## Research
 
 |Research Experiences| |
 |:--------|:--------|
@@ -61,7 +61,7 @@ date: 2021-11-02
 | Excellence in Academic Study Award, Peking University | 2009 – 2011 |
 | First Prize, National Olympiad in Informatics Contest in China | 2004, 2005, 2007 |
 
-## 教授课程
+## Teaching
 
 | Course | Time |
 |--------|------|
