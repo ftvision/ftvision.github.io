@@ -26,24 +26,24 @@ date: 2021-11-02
 
 ## 研究经验
 
-|Research Experiences| |
+| **暑期训练** | |
 |:--------|:--------|
 | _Brains, Minds & Machines Summer Course_  <br /> **Marine Biological Laboratory**, Woods Hole, MA. U.S.A <br /> | 2017/8 - 2017/9 |
 | _Computational and Cognitive Neuroscience Summer School_ <br /> **Cold Spring Harbor Asia**, Beijing, China <br /> Organizer: Xiao-Jing Wang, Si Wu, Upinder S. Bhalla, Zachary F. Mainen | 2013/7 |
 | _Computational Neuroscience Summer School_ <br /> **University of Pennsylvania**, Philadelphia, PA, U.S.A <br /> **Advisor**: Geoffrey Aguirre <br /> | 2011/6 - 2011/8 |
 
-| **Publication** |
+| **论文发表** |
 |:----------------|
 | Gong, M., **Yang, F.,** & Li, S. (2016). Reward association facilitates distractor suppression in human visual search. European Journal of Neuroscience. |
 | **Yang, F.,** Wu. Q., & Li. S., (2014), Learning-induced uncertainty reduction in perceptual decisions is task-dependent, _Frontiers in Human Neuroscience_, 8, 282 |
 | Li. S., & **Yang, F.,** (2012), Task‐dependent uncertainty modulation of perceptual decisions in the human brain, _European Journal of Neuroscience_, 36(12), 3732-3739 |
 
-| **Talk** |
+| **学术演讲** |
 |:---------|
 | **Yang, F.,** & Flombaum, J., (2018) Polar coordinates as the format of spatial representation in visual perception, Vision Science Society, 2018, St. Pete, FL. |
 | **Yang, F.,** & Li, S., (2011) Asymmetrical Transfer of Learning Effects between Signal-based and Criterion-based Task Uncertainties in Perceptual Decision, The 7th Asia-Pacific Conference on Vision, Hong Kong. |
 
-| **Poster** |
+| **研究海报** |
 |:-------|
 | **Yang, F.,** & Flombaum, J. I., (2015) Statistical Learning without Attention, Vision Science Society Meeting 2015, St. Pete, FL. |
 | **Yang, F.,** & Flombaum, J. I., (2014) Ponzo inducers in the working memory produce Illusory line length perception, Vision Science Society Meeting 2014, St. Pete, FL. |
@@ -52,7 +52,7 @@ date: 2021-11-02
 | Li, S., & **Yang, F.,** (2010) Learning of Perceptual Judgment under Criterion-based and Noise-based Uncertainties, Society for Neuroscience Annual Meeting 2010, San Diego, CA. |
 
 
-| **Grants & Awards** |
+| **基金与奖项** |
 |:---------------------|
 | Robert S. and Dorothy L. Waldrop Graduate Fellowship, Johns Hopkins University | 2014 - 2015 |
 | National University Student Innovation Program, Peking University | 2010 – 2011 |
@@ -63,7 +63,7 @@ date: 2021-11-02
 
 ## 教授课程
 
-| Course | Time |
+| 课程 | 时间 |
 |--------|------|
 | **Introduction to Cognitive Psychology**, Dr. Jonanthon Flombaum <br> **As a Teaching Assistant.** <br> _This course introduced cognitive psychology from the functionalist's point of view._ | 2017 Spring |
 | **Unconscious Computations in Mind**, <br> **As an Instructor.** <br> _In this course, I taught about visual awareness, attention, decision making, and learning._ | 2016 Intersession |
