@@ -1,180 +1,19 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>
-     10000行C&#43;&#43;之后对C&#43;&#43;的思考 
-  </title>
-  
-  
-  
-  
-  
-  
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
-  
-  <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-  
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
-  
-  <link rel="stylesheet" href="/css/style.css"/>
-  
-  <script defer src="/js/tab.js"></script>
-  <script defer src="/js/gtalk.js"></script>
-
-</head>
-
-<body>
-
-
-
-<div class="Header">
-  <div class="Header-item Header-item--full"> </div>
-  <div class="Header-item">
-    <a href="/blog" class="Header-link">Blog</a>
-  </div>
-  <div class="Header-item">
-    <a href="#" class="Header-link">Digest</a>
-  </div>
-  
-</div>
-
-
-
-
-
-<div class="mx-auto my-2 col-10 col-md-7 col-lg-6 col-xl-5" >
-
-  
-  <div class="p-2">
-    <nav aria-label="Breadcrumb">
-      <ol>
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item"><a href="/blog">blog</a></li>
-        <li class="breadcrumb-item" aria-current="page"> 10000行C&#43;&#43;之后对C&#43;&#43;的思考</li>
-      </ol>
-    </nav>
-
-    <h1 id="page-title">10000行C&#43;&#43;之后对C&#43;&#43;的思考</h1>
-    <div>
-      
-      </div>
-  </div>
-
-
-  <div class="markdown-body p-2">
-  <p>从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，使用C++其实也只是用其中C的子集，甚至可以说是用一个Visual Studio来编译<code>cpp</code>后缀名的c文件。过去半年就大不一样，代码库是真材实料的C++，而且很多还是C++11的风格和语法。所以，我最多算一个0.5起点的C++程序员。</p>
-<p>从这半年写的10,000行C++代码里面，我学到的不仅仅是C++语言的语法和特性，这篇文章主要总结一下C++语言相关的收货，<a href="2019-02-01-10k-code.md">另一篇文章</a>整理一下关于软件工程的一些知识：设计、测试、遗留代码、代码审查、版本控制等等。</p>
-<h2 id="10k行后的c感受">10k行后的C++感受</h2>
-<p>开始工作后的第一件事情就是学习C++。不过C++这门语言在C++11之后变化之大，让我确实感受到了Bjarne Stroustrup所说：</p>
-<blockquote>
-<p>C++是一门新的语言。</p>
-</blockquote>
-<p>C++变化巨大，变得越来越复杂，但是也越来越有意思。同时，C++与C的距离也越来越远。面对两种语言当前的差距，我觉得学习今天的C++，确实是没有必要从C开始了：很多C语言的表达方式不被推荐，一些C语言的语言特性在C++中更好的选择。学习C和学习C++确实应该被当做两件独立的事情了。</p>
-<h3 id="全新的表达能力">全新的表达能力</h3>
-<p>C++11以来，语言变得越来越具有表达性了<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。Peter Van Roy在<a href="https://www.edx.org/course/paradigms-of-computer-programming-fundamentals">计算机编程范式</a>中曾说道现代程序语言有往“声明式编程(declarative programming)”转变的趋势。从C++的转变来看，确实有这个意思。</p>
-<p>比如说<code>range_for</code>这样的新语法，使得循环语句能够直接将关心的对象作为目标变量，而不再需要用下标索引来访问。<code>auto</code>的引入进一步简化了复杂的语法。这样一方面能够让处理内部元素的逻辑更加清晰，另一方面也能减少诸如下标访问非法的错误。</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#a2f;font-weight:bold">for</span> (<span style="color:#a2f;font-weight:bold">auto</span> <span style="color:#a0a000">element</span> : collection) {
-  <span style="color:#080;font-style:italic">// 专心处理关心的对象element。
-</span><span style="color:#080;font-style:italic"></span>  <span style="color:#080;font-style:italic">// 不用被下标索引等冗余分心。
-</span><span style="color:#080;font-style:italic"></span>}
-</code></pre></div><p>这样的表达方式很早就在Python之类的语言里面有了。不过在语法和思考方式上，这种<code>for</code>循环的写法都和之前的方法不一样，所以经常发现代码的结构和设计都自然地偏向原始的<code>for</code>循环。而一些有C/C++背景的人去写python的时候也时不时会习惯性地用“丑陋的”下标来写循环语句。</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a2f;font-weight:bold">for</span> element <span style="color:#a2f;font-weight:bold">in</span> collection:
-  <span style="color:#080;font-style:italic"># 专心处理对象element。</span>
-</code></pre></div><p>我之前关于C++的印象就是我需要写很多指令来告诉C++一步一步具体怎么做。而我更喜欢Python这门语言的原因之一也是Python的语言表达性使得我写的代码更短、更易读、更好理解。不过这半年的C++11的体验让我觉得现代的C++还是很令人愉悦的：C++11以来全新的表达能力让我觉得C++表达能力越来越好，表达的内容也更加清晰明快。</p>
-<p>要说让我强烈地感受到C++的新的表达能力的强大的，要数Sean Parent一系列关于“更好的代码”的讲座(<a href="https://www.youtube.com/watch?v=0WlJEz2wb8Y">讲座1</a>，<a href="https://www.youtube.com/watch?v=QGcVXgEVMJg">讲座2</a>，<a href="https://www.youtube.com/watch?v=IzNtM038JuI">讲座3</a>)和<a href="https://sean-parent.stlab.cc/presentations/2013-09-11-cpp-seasoning/cpp-seasoning.pdf">资料</a>，都非常的精彩。当整屏幕的代码最后被两三行的语句所代替的时候，那种美感和满足感真的是难以言表。</p>
-<h3 id="写有风格的c">写有风格的C++</h3>
-<p>代码是写给人看的，编译器会把人写的代码编译为机器能看懂的代码。所以，人就专心做好人要做的事情，让编译器去专心做编译器要做的事情。C++是一门可以接触到机器底层的语言，也有很多语言技巧可以提高C++程序的性能，结果这个领域经常出现一些奇技淫巧。提高性能当然是好事，但是看得懂代码的人少，学得懂代码的人更少，这就会影响代码库的维护。虽然其中一些奇技淫巧已经成为了固定的套路（或者说是常用模式），但是还是有很多的技巧晦涩又危险。</p>
-<p>这种感觉在我进入现在工作的这个巨大的代码库的时候变得十分强烈。读代码就好像读文章一样。一段简洁清晰的代码能让人很快地理解这段意思和推理这段代码的行为，正如一篇简洁明了的文章能快速传达文章要义，激发读者的想象。而一段晦涩的代码，如一篇晦涩的文章一样，让人不知所云。虽然作家可以尽情地寻找和发挥自己喜欢的风格，但是程序员最好还是追求一种简洁清晰的代码风格为好。毕竟编程也是一种社交活动<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，而写软件通常都是靠团队合作。</p>
-<p>不同的程序语言通常有不同的风格。比如Python社区就有很好的风格指导<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>，而具有Python风格的代码被认为是“Pythonic Style”。相比而言，C++的风格就没有那么成型。一方面是因为语言本身特性庞杂、变化多端，另一方面是可能是因为各自为政、各有所需，常常没有一个可以覆盖各个公司/开发者的需求的风格指南。这其中，比较有名的，也被吐槽的比较严重的莫过于<a href="https://google.github.io/styleguide/cppguide.html">Google的C++风格指南</a>了。这份风格之南在过去几年中已经有了不少的改变，但是主要还是针对Google自己的代码库、程序员背景和产品需求来设计的。很多规定对其他开发项目并不合适，看到被吐槽的点，我觉得双方都应该被理解。作为更普适的风格指南，当前C++社区正在制定和书写的<a href="https://github.com/isocpp/CppCoreGuidelines">C++核心指南</a>可能会比较好。</p>
-<p>由于工作的需要，我自然需要先学习和理解我们自己的风格指南。通读全篇文章倒不用花费很长的时间，但是真正要在日常的代码书写中跟着要求走却是一件不容易的事情。更别说在指南之外还有160多个建议，我这10,000行代码的经验也就学到了个零头。写完了10,000行代码以后，注意了代码审阅中所有的知识点，还是经常被<strong>C++可读性</strong>学习项目的评审人轻易地指出20来个修改建议。</p>
-<h3 id="最感兴趣的两个专题">最感兴趣的两个专题</h3>
-<p>写完10,000行以后，我现在最想好好搞清楚的是两个专题：生命周期(lifetime)和资源所有权(resource ownership)。</p>
-<p>生命的周期也就是一个对象从“生”到“死”的时间线。C++里面有全局变量，局部变量，静态变量，类内部静态与非静态成员变量，动态构造的指针变量等等，每一种变量都有自己的逻辑和生命周期。即使是同一类的变量，生命周期也有先后顺序。</p>
-<p>对生命周期感兴趣主要是因为在写过的代码里面出现的几次重大问题都和变量生命周期没有搞清楚有关。比如没有搞清楚变量构造和析构的先后顺序，导致非法访问已经释放的空间。又比如没有搞清楚局部静态变量的构造时间点，导致提前访问了还没有分配的空间。更不要说面对网络通讯和多线程计算之类的问题的时候，我现在也很难理清各种变量产生和消亡的时间点，通常就想放弃推理，交给同事来审阅代码。这一部分，接下来要好好学习一下。</p>
-<p>资源所有权跟生命周期息息相关。除了只能在对象存在的时候才能安全地访问对象所持有的资源（比如内存）中的数据之外，还要推理动态分配资源的所有权的转移问题。比如“智能指针(smart pointers)”这一类抽象类型的引入，就强调了指针对其指向的内存的所有权的管理。<code>std::unique_ptr</code>是相对比较好理解的，所以也在我们的风格之南中被高度推荐，而<code>std::shared_ptr</code>之类对于内存所有权的管理需要计算和跟踪，对开发者来说推理难度增大，所以经常不被推荐<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>。除此之外，还有移动语意(move semnatics)、返回值优化(return value optimization)之类的语法概念，都使得资源所有权的推理变得更加复杂。</p>
-<p>C++11以来似乎越来越注重如何安全地管理资源，因此也更新了以上一系列的语法概念。作为初学者，我觉得学起来确实还挺难的。主要是刚开始接触这些概念的时候，感觉非常抽象。只有多写，多经历一些实际的例子之后，可能才能习惯。10,000行代码，肯定是远远不够的。</p>
-<h3 id="难点概念和特性">难点概念和特性</h3>
-<p>10,000行代码毕竟只是一个开始，很多C++的语言概念和特性我都还似懂非懂。希望自己能够在写完20,000行前理解这些语言特性。</p>
-<ol>
-<li>
-<p><em>右值(Rvalue)</em>。</p>
-</li>
-<li>
-<p><em>移动和复制语意(move and copy semantics)</em></p>
-</li>
-<li>
-<p><em>资源获取即初始化(Resource Acquisition Is Initialization, RAII)</em></p>
-</li>
-<li>
-<p><em>运行时类型信息(Runtime Type Information, RTTI)</em></p>
-</li>
-<li>
-<p><em>参数依赖查找(Argument-Dependent Lookup, ADL)</em></p>
-</li>
-<li>
-<p><em>线程与并发(Thread &amp; Concurrency)</em></p>
-</li>
-<li>
-<p><em>回调(Callbacks)与<code>std::function</code></em></p>
-</li>
-</ol>
-<p>除此之外，我在阅读中第一次体会到很多常用的数据，比如时间和字符串，处理起来原来是异常的复杂。之前编程只觉得字符串处理非常繁琐。后来才知道，时间的计算和处理更加困难，边界条件多得数不过来。想一想时区的更变，各个国家各个文化的日历，以及著名的千年虫和<a href="https://en.wikipedia.org/wiki/Year_2038_problem">2038问题</a><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>。有时候很庆幸我不负责写这些底层逻辑，只是用写好的时间库就可以了。</p>
-<h3 id="接下来的路">接下来的路</h3>
-<p>10,000行C++仅仅只是个开始。我所使用过的C++语言特性还只是非常少的一部分。C++的语言学习还有很长的路要走。希望在20,000行Code之后能够写出初具风格的C++代码，以及对一些比较重要的C++语言特性和概念有比较好的把握。</p>
-<section class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1" role="doc-endnote">
-<p>Expressive这个说法是我从博客“<a href="https://www.fluentcpp.com/">Fluent C++</a>”第一次学到的。可能我有点过时了，但是这个说法确实让我眼前一亮。 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2" role="doc-endnote">
-<p>Github不就被戏称为全球最大同性交友网站么。 <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3" role="doc-endnote">
-<p>比如纲领性的<a href="https://www.python.org/dev/peps/pep-0020/">The Zen of Python</a>， <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:4" role="doc-endnote">
-<p>开发者对于某项语法的理解难度通常是我们风格指南考虑是否推荐这项语法的因素，这也是被很多人吐槽的一点。不过说实话，我们这很多码农可能是我这样的C++普通玩家，要让大多数码农都能写出比较正确的代码，我觉得这是可以理解的。 <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:5" role="doc-endnote">
-<p>2038问题也跟《斯坦因之门》紧密相关啊。 <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</section>
-
-  </div>
-  
-  
-<div id="gitalk-container"></div>
-
-<div class="Header border-top mt-2 bg-gray-light text-gray-dark">
-  <div class="Header-item">
-    <span ><strong>Thinking as Algorithm </strong> By <em>Feitong Yang</em> | 2014 - 2020</span>
-  </div>
-  <div class="Header-item Header-item--full"> </div>
-  <div class="Header-item">
-    <a href="/about/">About</a>
-  </div>
-  <div class="Header-item">
-    <a href="/logging/">Logging</a>
-  </div>
-</div>
-
-</body>
-
-</html>
-
-
-</div>
-
+<!doctype html><html lang=zh dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>10000行C++之后对C++的思考 | 思算</title><meta name=keywords content><meta name=description content="从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，"><meta name=author content="Feitong"><link rel=canonical href=http://ftvision.github.io/blog/10k-cpp/><link crossorigin=anonymous href=/assets/css/stylesheet.39f6e04d6f39cad5c85b67239e7dbd7eedab5bef63548fd027cfda3bfe08ac83.css integrity="sha256-OfbgTW85ytXIW2cjnn29fu2rW+9jVI/QJ8/aO/4IrIM=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad();></script><script defer crossorigin=anonymous src=/assets/js/tabs.js></script><link rel=icon href=http://ftvision.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=http://ftvision.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=http://ftvision.github.io/favicon-32x32.png><link rel=apple-touch-icon href=http://ftvision.github.io/apple-touch-icon.png><link rel=mask-icon href=http://ftvision.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=zh href=http://ftvision.github.io/blog/10k-cpp/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme: rgb(29, 30, 32);--entry: rgb(46, 46, 51);--primary: rgb(218, 218, 219);--secondary: rgb(155, 156, 157);--tertiary: rgb(65, 66, 68);--content: rgb(196, 196, 197);--hljs-bg: rgb(46, 46, 51);--code-bg: rgb(55, 56, 62);--border: rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:title" content="10000行C++之后对C++的思考"><meta property="og:description" content="从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，"><meta property="og:type" content="article"><meta property="og:url" content="http://ftvision.github.io/blog/10k-cpp/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2019-02-01T00:00:00+00:00"><meta property="article:modified_time" content="2019-02-01T00:00:00+00:00"><meta property="og:site_name" content="思算"><meta name=twitter:card content="summary"><meta name=twitter:title content="10000行C++之后对C++的思考"><meta name=twitter:description content="从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blogs","item":"http://ftvision.github.io/blog/"},{"@type":"ListItem","position":2,"name":"10000行C++之后对C++的思考","item":"http://ftvision.github.io/blog/10k-cpp/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"10000行C++之后对C++的思考","name":"10000行C\u002b\u002b之后对C\u002b\u002b的思考","description":"从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，","keywords":[],"articleBody":"从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，使用C++其实也只是用其中C的子集，甚至可以说是用一个Visual Studio来编译cpp后缀名的c文件。过去半年就大不一样，代码库是真材实料的C++，而且很多还是C++11的风格和语法。所以，我最多算一个0.5起点的C++程序员。\n从这半年写的10,000行C++代码里面，我学到的不仅仅是C++语言的语法和特性，这篇文章主要总结一下C++语言相关的收货，另一篇文章整理一下关于软件工程的一些知识：设计、测试、遗留代码、代码审查、版本控制等等。\n10k行后的C++感受 开始工作后的第一件事情就是学习C++。不过C++这门语言在C++11之后变化之大，让我确实感受到了Bjarne Stroustrup所说：\n C++是一门新的语言。\n C++变化巨大，变得越来越复杂，但是也越来越有意思。同时，C++与C的距离也越来越远。面对两种语言当前的差距，我觉得学习今天的C++，确实是没有必要从C开始了：很多C语言的表达方式不被推荐，一些C语言的语言特性在C++中更好的选择。学习C和学习C++确实应该被当做两件独立的事情了。\n全新的表达能力 C++11以来，语言变得越来越具有表达性了1。Peter Van Roy在计算机编程范式中曾说道现代程序语言有往“声明式编程(declarative programming)”转变的趋势。从C++的转变来看，确实有这个意思。\n比如说range_for这样的新语法，使得循环语句能够直接将关心的对象作为目标变量，而不再需要用下标索引来访问。auto的引入进一步简化了复杂的语法。这样一方面能够让处理内部元素的逻辑更加清晰，另一方面也能减少诸如下标访问非法的错误。\n1 2 3 4  for (auto element : collection) { // 专心处理关心的对象element。  // 不用被下标索引等冗余分心。 }   这样的表达方式很早就在Python之类的语言里面有了。不过在语法和思考方式上，这种for循环的写法都和之前的方法不一样，所以经常发现代码的结构和设计都自然地偏向原始的for循环。而一些有C/C++背景的人去写python的时候也时不时会习惯性地用“丑陋的”下标来写循环语句。\n1 2  for element in collection: # 专心处理对象element。   我之前关于C++的印象就是我需要写很多指令来告诉C++一步一步具体怎么做。而我更喜欢Python这门语言的原因之一也是Python的语言表达性使得我写的代码更短、更易读、更好理解。不过这半年的C++11的体验让我觉得现代的C++还是很令人愉悦的：C++11以来全新的表达能力让我觉得C++表达能力越来越好，表达的内容也更加清晰明快。\n要说让我强烈地感受到C++的新的表达能力的强大的，要数Sean Parent一系列关于“更好的代码”的讲座(讲座1，讲座2，讲座3)和资料，都非常的精彩。当整屏幕的代码最后被两三行的语句所代替的时候，那种美感和满足感真的是难以言表。\n写有风格的C++ 代码是写给人看的，编译器会把人写的代码编译为机器能看懂的代码。所以，人就专心做好人要做的事情，让编译器去专心做编译器要做的事情。C++是一门可以接触到机器底层的语言，也有很多语言技巧可以提高C++程序的性能，结果这个领域经常出现一些奇技淫巧。提高性能当然是好事，但是看得懂代码的人少，学得懂代码的人更少，这就会影响代码库的维护。虽然其中一些奇技淫巧已经成为了固定的套路（或者说是常用模式），但是还是有很多的技巧晦涩又危险。\n这种感觉在我进入现在工作的这个巨大的代码库的时候变得十分强烈。读代码就好像读文章一样。一段简洁清晰的代码能让人很快地理解这段意思和推理这段代码的行为，正如一篇简洁明了的文章能快速传达文章要义，激发读者的想象。而一段晦涩的代码，如一篇晦涩的文章一样，让人不知所云。虽然作家可以尽情地寻找和发挥自己喜欢的风格，但是程序员最好还是追求一种简洁清晰的代码风格为好。毕竟编程也是一种社交活动2，而写软件通常都是靠团队合作。\n不同的程序语言通常有不同的风格。比如Python社区就有很好的风格指导3，而具有Python风格的代码被认为是“Pythonic Style”。相比而言，C++的风格就没有那么成型。一方面是因为语言本身特性庞杂、变化多端，另一方面是可能是因为各自为政、各有所需，常常没有一个可以覆盖各个公司/开发者的需求的风格指南。这其中，比较有名的，也被吐槽的比较严重的莫过于Google的C++风格指南了。这份风格之南在过去几年中已经有了不少的改变，但是主要还是针对Google自己的代码库、程序员背景和产品需求来设计的。很多规定对其他开发项目并不合适，看到被吐槽的点，我觉得双方都应该被理解。作为更普适的风格指南，当前C++社区正在制定和书写的C++核心指南可能会比较好。\n由于工作的需要，我自然需要先学习和理解我们自己的风格指南。通读全篇文章倒不用花费很长的时间，但是真正要在日常的代码书写中跟着要求走却是一件不容易的事情。更别说在指南之外还有160多个建议，我这10,000行代码的经验也就学到了个零头。写完了10,000行代码以后，注意了代码审阅中所有的知识点，还是经常被C++可读性学习项目的评审人轻易地指出20来个修改建议。\n最感兴趣的两个专题 写完10,000行以后，我现在最想好好搞清楚的是两个专题：生命周期(lifetime)和资源所有权(resource ownership)。\n生命的周期也就是一个对象从“生”到“死”的时间线。C++里面有全局变量，局部变量，静态变量，类内部静态与非静态成员变量，动态构造的指针变量等等，每一种变量都有自己的逻辑和生命周期。即使是同一类的变量，生命周期也有先后顺序。\n对生命周期感兴趣主要是因为在写过的代码里面出现的几次重大问题都和变量生命周期没有搞清楚有关。比如没有搞清楚变量构造和析构的先后顺序，导致非法访问已经释放的空间。又比如没有搞清楚局部静态变量的构造时间点，导致提前访问了还没有分配的空间。更不要说面对网络通讯和多线程计算之类的问题的时候，我现在也很难理清各种变量产生和消亡的时间点，通常就想放弃推理，交给同事来审阅代码。这一部分，接下来要好好学习一下。\n资源所有权跟生命周期息息相关。除了只能在对象存在的时候才能安全地访问对象所持有的资源（比如内存）中的数据之外，还要推理动态分配资源的所有权的转移问题。比如“智能指针(smart pointers)”这一类抽象类型的引入，就强调了指针对其指向的内存的所有权的管理。std::unique_ptr是相对比较好理解的，所以也在我们的风格之南中被高度推荐，而std::shared_ptr之类对于内存所有权的管理需要计算和跟踪，对开发者来说推理难度增大，所以经常不被推荐4。除此之外，还有移动语意(move semnatics)、返回值优化(return value optimization)之类的语法概念，都使得资源所有权的推理变得更加复杂。\nC++11以来似乎越来越注重如何安全地管理资源，因此也更新了以上一系列的语法概念。作为初学者，我觉得学起来确实还挺难的。主要是刚开始接触这些概念的时候，感觉非常抽象。只有多写，多经历一些实际的例子之后，可能才能习惯。10,000行代码，肯定是远远不够的。\n难点概念和特性 10,000行代码毕竟只是一个开始，很多C++的语言概念和特性我都还似懂非懂。希望自己能够在写完20,000行前理解这些语言特性。\n  右值(Rvalue)。\n  移动和复制语意(move and copy semantics)\n  资源获取即初始化(Resource Acquisition Is Initialization, RAII)\n  运行时类型信息(Runtime Type Information, RTTI)\n  参数依赖查找(Argument-Dependent Lookup, ADL)\n  线程与并发(Thread \u0026 Concurrency)\n  回调(Callbacks)与std::function\n  除此之外，我在阅读中第一次体会到很多常用的数据，比如时间和字符串，处理起来原来是异常的复杂。之前编程只觉得字符串处理非常繁琐。后来才知道，时间的计算和处理更加困难，边界条件多得数不过来。想一想时区的更变，各个国家各个文化的日历，以及著名的千年虫和2038问题5。有时候很庆幸我不负责写这些底层逻辑，只是用写好的时间库就可以了。\n接下来的路 10,000行C++仅仅只是个开始。我所使用过的C++语言特性还只是非常少的一部分。C++的语言学习还有很长的路要走。希望在20,000行Code之后能够写出初具风格的C++代码，以及对一些比较重要的C++语言特性和概念有比较好的把握。\n  Expressive这个说法是我从博客“Fluent C++”第一次学到的。可能我有点过时了，但是这个说法确实让我眼前一亮。 ↩︎\n Github不就被戏称为全球最大同性交友网站么。 ↩︎\n 比如纲领性的The Zen of Python， ↩︎\n 开发者对于某项语法的理解难度通常是我们风格指南考虑是否推荐这项语法的因素，这也是被很多人吐槽的一点。不过说实话，我们这很多码农可能是我这样的C++普通玩家，要让大多数码农都能写出比较正确的代码，我觉得这是可以理解的。 ↩︎\n 2038问题也跟《斯坦因之门》紧密相关啊。 ↩︎\n   ","wordCount":"3725","inLanguage":"zh","datePublished":"2019-02-01T00:00:00Z","dateModified":"2019-02-01T00:00:00Z","author":{"@type":"Person","name":"Feitong"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://ftvision.github.io/blog/10k-cpp/"},"publisher":{"@type":"Organization","name":"思算","logo":{"@type":"ImageObject","url":"http://ftvision.github.io/favicon.ico"}}}</script></head><body id=top><script>if(localStorage.getItem("pref-theme")==="dark"){document.body.classList.add('dark');}else if(localStorage.getItem("pref-theme")==="light"){document.body.classList.remove('dark')}else if(window.matchMedia('(prefers-color-scheme: dark)').matches){document.body.classList.add('dark');}</script><header class=header><nav class=nav><div class=logo><a href=http://ftvision.github.io/ accesskey=h title="Home (Alt + H)"><img src=http://ftvision.github.io/apple-touch-icon.png alt aria-label=logo height=35>Home</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=http://ftvision.github.io/en/ title=English aria-label=English>En</a></li></ul></div></div><ul id=menu><li><a href=http://ftvision.github.io/categories/ title=分类><span>分类</span></a></li><li><a href=http://ftvision.github.io/tags/ title=标签><span>标签</span></a></li><li><a href=http://ftvision.github.io/about/ title=关于><span>关于</span></a></li><li><a href=http://ftvision.github.io/digest/ title=既往摘录><span>既往摘录</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=http://ftvision.github.io/>主页</a>&nbsp;»&nbsp;<a href=http://ftvision.github.io/blog/>Blogs</a></div><h1 class=post-title>10000行C++之后对C++的思考</h1><div class=post-meta><span title="2019-02-01 00:00:00 +0000 UTC">February 1, 2019</span>&nbsp;·&nbsp;8 分钟&nbsp;·&nbsp;3725 字&nbsp;·&nbsp;Feitong</div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#10k%e8%a1%8c%e5%90%8e%e7%9a%84c%e6%84%9f%e5%8f%97 aria-label=10k行后的C++感受>10k行后的C++感受</a><ul><li><a href=#%e5%85%a8%e6%96%b0%e7%9a%84%e8%a1%a8%e8%be%be%e8%83%bd%e5%8a%9b aria-label=全新的表达能力>全新的表达能力</a></li><li><a href=#%e5%86%99%e6%9c%89%e9%a3%8e%e6%a0%bc%e7%9a%84c aria-label=写有风格的C++>写有风格的C++</a></li><li><a href=#%e6%9c%80%e6%84%9f%e5%85%b4%e8%b6%a3%e7%9a%84%e4%b8%a4%e4%b8%aa%e4%b8%93%e9%a2%98 aria-label=最感兴趣的两个专题>最感兴趣的两个专题</a></li><li><a href=#%e9%9a%be%e7%82%b9%e6%a6%82%e5%bf%b5%e5%92%8c%e7%89%b9%e6%80%a7 aria-label=难点概念和特性>难点概念和特性</a></li><li><a href=#%e6%8e%a5%e4%b8%8b%e6%9d%a5%e7%9a%84%e8%b7%af aria-label=接下来的路>接下来的路</a></li></ul></li></ul></div></details></div><div class=post-content><p>从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，使用C++其实也只是用其中C的子集，甚至可以说是用一个Visual Studio来编译<code>cpp</code>后缀名的c文件。过去半年就大不一样，代码库是真材实料的C++，而且很多还是C++11的风格和语法。所以，我最多算一个0.5起点的C++程序员。</p><p>从这半年写的10,000行C++代码里面，我学到的不仅仅是C++语言的语法和特性，这篇文章主要总结一下C++语言相关的收货，<a href=2019-02-01-10k-code.md>另一篇文章</a>整理一下关于软件工程的一些知识：设计、测试、遗留代码、代码审查、版本控制等等。</p><h2 id=10k行后的c感受>10k行后的C++感受<a hidden class=anchor aria-hidden=true href=#10k行后的c感受>#</a></h2><p>开始工作后的第一件事情就是学习C++。不过C++这门语言在C++11之后变化之大，让我确实感受到了Bjarne Stroustrup所说：</p><blockquote><p>C++是一门新的语言。</p></blockquote><p>C++变化巨大，变得越来越复杂，但是也越来越有意思。同时，C++与C的距离也越来越远。面对两种语言当前的差距，我觉得学习今天的C++，确实是没有必要从C开始了：很多C语言的表达方式不被推荐，一些C语言的语言特性在C++中更好的选择。学习C和学习C++确实应该被当做两件独立的事情了。</p><h3 id=全新的表达能力>全新的表达能力<a hidden class=anchor aria-hidden=true href=#全新的表达能力>#</a></h3><p>C++11以来，语言变得越来越具有表达性了<sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>。Peter Van Roy在<a href=https://www.edx.org/course/paradigms-of-computer-programming-fundamentals>计算机编程范式</a>中曾说道现代程序语言有往“声明式编程(declarative programming)”转变的趋势。从C++的转变来看，确实有这个意思。</p><p>比如说<code>range_for</code>这样的新语法，使得循环语句能够直接将关心的对象作为目标变量，而不再需要用下标索引来访问。<code>auto</code>的引入进一步简化了复杂的语法。这样一方面能够让处理内部元素的逻辑更加清晰，另一方面也能减少诸如下标访问非法的错误。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt id=1>1
+</span><span class=lnt id=2>2
+</span><span class=lnt id=3>3
+</span><span class=lnt id=4>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-c++ data-lang=c++><span class=k>for</span> <span class=p>(</span><span class=k>auto</span> <span class=nl>element</span> <span class=p>:</span> <span class=n>collection</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// 专心处理关心的对象element。
+</span><span class=c1></span>  <span class=c1>// 不用被下标索引等冗余分心。
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></td></tr></table></div></div><p>这样的表达方式很早就在Python之类的语言里面有了。不过在语法和思考方式上，这种<code>for</code>循环的写法都和之前的方法不一样，所以经常发现代码的结构和设计都自然地偏向原始的<code>for</code>循环。而一些有C/C++背景的人去写python的时候也时不时会习惯性地用“丑陋的”下标来写循环语句。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt id=1>1
+</span><span class=lnt id=2>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-python data-lang=python><span class=k>for</span> <span class=n>element</span> <span class=ow>in</span> <span class=n>collection</span><span class=p>:</span>
+  <span class=c1># 专心处理对象element。</span>
+</code></pre></td></tr></table></div></div><p>我之前关于C++的印象就是我需要写很多指令来告诉C++一步一步具体怎么做。而我更喜欢Python这门语言的原因之一也是Python的语言表达性使得我写的代码更短、更易读、更好理解。不过这半年的C++11的体验让我觉得现代的C++还是很令人愉悦的：C++11以来全新的表达能力让我觉得C++表达能力越来越好，表达的内容也更加清晰明快。</p><p>要说让我强烈地感受到C++的新的表达能力的强大的，要数Sean Parent一系列关于“更好的代码”的讲座(<a href="https://www.youtube.com/watch?v=0WlJEz2wb8Y">讲座1</a>，<a href="https://www.youtube.com/watch?v=QGcVXgEVMJg">讲座2</a>，<a href="https://www.youtube.com/watch?v=IzNtM038JuI">讲座3</a>)和<a href=https://sean-parent.stlab.cc/presentations/2013-09-11-cpp-seasoning/cpp-seasoning.pdf>资料</a>，都非常的精彩。当整屏幕的代码最后被两三行的语句所代替的时候，那种美感和满足感真的是难以言表。</p><h3 id=写有风格的c>写有风格的C++<a hidden class=anchor aria-hidden=true href=#写有风格的c>#</a></h3><p>代码是写给人看的，编译器会把人写的代码编译为机器能看懂的代码。所以，人就专心做好人要做的事情，让编译器去专心做编译器要做的事情。C++是一门可以接触到机器底层的语言，也有很多语言技巧可以提高C++程序的性能，结果这个领域经常出现一些奇技淫巧。提高性能当然是好事，但是看得懂代码的人少，学得懂代码的人更少，这就会影响代码库的维护。虽然其中一些奇技淫巧已经成为了固定的套路（或者说是常用模式），但是还是有很多的技巧晦涩又危险。</p><p>这种感觉在我进入现在工作的这个巨大的代码库的时候变得十分强烈。读代码就好像读文章一样。一段简洁清晰的代码能让人很快地理解这段意思和推理这段代码的行为，正如一篇简洁明了的文章能快速传达文章要义，激发读者的想象。而一段晦涩的代码，如一篇晦涩的文章一样，让人不知所云。虽然作家可以尽情地寻找和发挥自己喜欢的风格，但是程序员最好还是追求一种简洁清晰的代码风格为好。毕竟编程也是一种社交活动<sup id=fnref:2><a href=#fn:2 class=footnote-ref role=doc-noteref>2</a></sup>，而写软件通常都是靠团队合作。</p><p>不同的程序语言通常有不同的风格。比如Python社区就有很好的风格指导<sup id=fnref:3><a href=#fn:3 class=footnote-ref role=doc-noteref>3</a></sup>，而具有Python风格的代码被认为是“Pythonic Style”。相比而言，C++的风格就没有那么成型。一方面是因为语言本身特性庞杂、变化多端，另一方面是可能是因为各自为政、各有所需，常常没有一个可以覆盖各个公司/开发者的需求的风格指南。这其中，比较有名的，也被吐槽的比较严重的莫过于<a href=https://google.github.io/styleguide/cppguide.html>Google的C++风格指南</a>了。这份风格之南在过去几年中已经有了不少的改变，但是主要还是针对Google自己的代码库、程序员背景和产品需求来设计的。很多规定对其他开发项目并不合适，看到被吐槽的点，我觉得双方都应该被理解。作为更普适的风格指南，当前C++社区正在制定和书写的<a href=https://github.com/isocpp/CppCoreGuidelines>C++核心指南</a>可能会比较好。</p><p>由于工作的需要，我自然需要先学习和理解我们自己的风格指南。通读全篇文章倒不用花费很长的时间，但是真正要在日常的代码书写中跟着要求走却是一件不容易的事情。更别说在指南之外还有160多个建议，我这10,000行代码的经验也就学到了个零头。写完了10,000行代码以后，注意了代码审阅中所有的知识点，还是经常被<strong>C++可读性</strong>学习项目的评审人轻易地指出20来个修改建议。</p><h3 id=最感兴趣的两个专题>最感兴趣的两个专题<a hidden class=anchor aria-hidden=true href=#最感兴趣的两个专题>#</a></h3><p>写完10,000行以后，我现在最想好好搞清楚的是两个专题：生命周期(lifetime)和资源所有权(resource ownership)。</p><p>生命的周期也就是一个对象从“生”到“死”的时间线。C++里面有全局变量，局部变量，静态变量，类内部静态与非静态成员变量，动态构造的指针变量等等，每一种变量都有自己的逻辑和生命周期。即使是同一类的变量，生命周期也有先后顺序。</p><p>对生命周期感兴趣主要是因为在写过的代码里面出现的几次重大问题都和变量生命周期没有搞清楚有关。比如没有搞清楚变量构造和析构的先后顺序，导致非法访问已经释放的空间。又比如没有搞清楚局部静态变量的构造时间点，导致提前访问了还没有分配的空间。更不要说面对网络通讯和多线程计算之类的问题的时候，我现在也很难理清各种变量产生和消亡的时间点，通常就想放弃推理，交给同事来审阅代码。这一部分，接下来要好好学习一下。</p><p>资源所有权跟生命周期息息相关。除了只能在对象存在的时候才能安全地访问对象所持有的资源（比如内存）中的数据之外，还要推理动态分配资源的所有权的转移问题。比如“智能指针(smart pointers)”这一类抽象类型的引入，就强调了指针对其指向的内存的所有权的管理。<code>std::unique_ptr</code>是相对比较好理解的，所以也在我们的风格之南中被高度推荐，而<code>std::shared_ptr</code>之类对于内存所有权的管理需要计算和跟踪，对开发者来说推理难度增大，所以经常不被推荐<sup id=fnref:4><a href=#fn:4 class=footnote-ref role=doc-noteref>4</a></sup>。除此之外，还有移动语意(move semnatics)、返回值优化(return value optimization)之类的语法概念，都使得资源所有权的推理变得更加复杂。</p><p>C++11以来似乎越来越注重如何安全地管理资源，因此也更新了以上一系列的语法概念。作为初学者，我觉得学起来确实还挺难的。主要是刚开始接触这些概念的时候，感觉非常抽象。只有多写，多经历一些实际的例子之后，可能才能习惯。10,000行代码，肯定是远远不够的。</p><h3 id=难点概念和特性>难点概念和特性<a hidden class=anchor aria-hidden=true href=#难点概念和特性>#</a></h3><p>10,000行代码毕竟只是一个开始，很多C++的语言概念和特性我都还似懂非懂。希望自己能够在写完20,000行前理解这些语言特性。</p><ol><li><p><em>右值(Rvalue)</em>。</p></li><li><p><em>移动和复制语意(move and copy semantics)</em></p></li><li><p><em>资源获取即初始化(Resource Acquisition Is Initialization, RAII)</em></p></li><li><p><em>运行时类型信息(Runtime Type Information, RTTI)</em></p></li><li><p><em>参数依赖查找(Argument-Dependent Lookup, ADL)</em></p></li><li><p><em>线程与并发(Thread & Concurrency)</em></p></li><li><p><em>回调(Callbacks)与<code>std::function</code></em></p></li></ol><p>除此之外，我在阅读中第一次体会到很多常用的数据，比如时间和字符串，处理起来原来是异常的复杂。之前编程只觉得字符串处理非常繁琐。后来才知道，时间的计算和处理更加困难，边界条件多得数不过来。想一想时区的更变，各个国家各个文化的日历，以及著名的千年虫和<a href=https://en.wikipedia.org/wiki/Year_2038_problem>2038问题</a><sup id=fnref:5><a href=#fn:5 class=footnote-ref role=doc-noteref>5</a></sup>。有时候很庆幸我不负责写这些底层逻辑，只是用写好的时间库就可以了。</p><h3 id=接下来的路>接下来的路<a hidden class=anchor aria-hidden=true href=#接下来的路>#</a></h3><p>10,000行C++仅仅只是个开始。我所使用过的C++语言特性还只是非常少的一部分。C++的语言学习还有很长的路要走。希望在20,000行Code之后能够写出初具风格的C++代码，以及对一些比较重要的C++语言特性和概念有比较好的把握。</p><section class=footnotes role=doc-endnotes><hr><ol><li id=fn:1 role=doc-endnote><p>Expressive这个说法是我从博客“<a href=https://www.fluentcpp.com/>Fluent C++</a>”第一次学到的。可能我有点过时了，但是这个说法确实让我眼前一亮。 <a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:2 role=doc-endnote><p>Github不就被戏称为全球最大同性交友网站么。 <a href=#fnref:2 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:3 role=doc-endnote><p>比如纲领性的<a href=https://www.python.org/dev/peps/pep-0020/>The Zen of Python</a>， <a href=#fnref:3 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:4 role=doc-endnote><p>开发者对于某项语法的理解难度通常是我们风格指南考虑是否推荐这项语法的因素，这也是被很多人吐槽的一点。不过说实话，我们这很多码农可能是我这样的C++普通玩家，要让大多数码农都能写出比较正确的代码，我觉得这是可以理解的。 <a href=#fnref:4 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li><li id=fn:5 role=doc-endnote><p>2038问题也跟《斯坦因之门》紧密相关啊。 <a href=#fnref:5 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p></li></ol></section></div><footer class=post-footer><ul class=post-tags></ul><div class=share-buttons><a target=_blank rel="noopener noreferrer" aria-label="share 10000行C++之后对C++的思考 on twitter" href="https://twitter.com/intent/tweet/?text=10000%e8%a1%8cC%2b%2b%e4%b9%8b%e5%90%8e%e5%af%b9C%2b%2b%e7%9a%84%e6%80%9d%e8%80%83&url=http%3a%2f%2fftvision.github.io%2fblog%2f10k-cpp%2f&hashtags="><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512h-386.892c-34.524.0-62.554-28.03-62.554-62.554v-386.892c0-34.524 28.029-62.554 62.554-62.554h386.892zm-253.927 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share 10000行C++之后对C++的思考 on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2fftvision.github.io%2fblog%2f10k-cpp%2f&title=10000%e8%a1%8cC%2b%2b%e4%b9%8b%e5%90%8e%e5%af%b9C%2b%2b%e7%9a%84%e6%80%9d%e8%80%83&summary=10000%e8%a1%8cC%2b%2b%e4%b9%8b%e5%90%8e%e5%af%b9C%2b%2b%e7%9a%84%e6%80%9d%e8%80%83&source=http%3a%2f%2fftvision.github.io%2fblog%2f10k-cpp%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512h-386.892c-34.524.0-62.554-28.03-62.554-62.554v-386.892c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0v-129.439c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02v-126.056c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768h75.024zm-307.552-334.556c-25.674.0-42.448 16.879-42.448 39.002.0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share 10000行C++之后对C++的思考 on reddit" href="https://reddit.com/submit?url=http%3a%2f%2fftvision.github.io%2fblog%2f10k-cpp%2f&title=10000%e8%a1%8cC%2b%2b%e4%b9%8b%e5%90%8e%e5%af%b9C%2b%2b%e7%9a%84%e6%80%9d%e8%80%83"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512h-386.892c-34.524.0-62.554-28.03-62.554-62.554v-386.892c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zm-119.474 108.193c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zm-160.386-29.702c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share 10000行C++之后对C++的思考 on facebook" href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2fftvision.github.io%2fblog%2f10k-cpp%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978v-192.915h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554v-386.892c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share 10000行C++之后对C++的思考 on whatsapp" href="https://api.whatsapp.com/send?text=10000%e8%a1%8cC%2b%2b%e4%b9%8b%e5%90%8e%e5%af%b9C%2b%2b%e7%9a%84%e6%80%9d%e8%80%83%20-%20http%3a%2f%2fftvision.github.io%2fblog%2f10k-cpp%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512h-386.892c-34.524.0-62.554-28.03-62.554-62.554v-386.892c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23-13.314-11.876-22.304-26.542-24.916-31.026s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share 10000行C++之后对C++的思考 on telegram" href="https://telegram.me/share/url?text=10000%e8%a1%8cC%2b%2b%e4%b9%8b%e5%90%8e%e5%af%b9C%2b%2b%e7%9a%84%e6%80%9d%e8%80%83&url=http%3a%2f%2fftvision.github.io%2fblog%2f10k-cpp%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentcolor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47A3.38 3.38.0 0126.49 29.86zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></div></footer></article></main><footer class=footer><span>&copy; 2023 <a href=http://ftvision.github.io/>思算</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById('menu')
+if(menu){menu.scrollLeft=localStorage.getItem("menu-scroll-position");menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft);}}
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener("click",function(e){e.preventDefault();var id=this.getAttribute("href").substr(1);if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({behavior:"smooth"});}else{document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();}
+if(id==="top"){history.replaceState(null,null," ");}else{history.pushState(null,null,`#${id}`);}});});</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){if(document.body.scrollTop>800||document.documentElement.scrollTop>800){mybutton.style.visibility="visible";mybutton.style.opacity="1";}else{mybutton.style.visibility="hidden";mybutton.style.opacity="0";}};</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{if(document.body.className.includes("dark")){document.body.classList.remove('dark');localStorage.setItem("pref-theme",'light');}else{document.body.classList.add('dark');localStorage.setItem("pref-theme",'dark');}})</script></body></html>
