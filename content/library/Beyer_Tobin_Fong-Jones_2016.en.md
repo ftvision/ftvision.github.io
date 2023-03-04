@@ -1,4 +1,5 @@
 ---
+draft: true
 layout: paper-reading
 date: 2019-02-22
 title:  Interrupt Reduction Projects
@@ -7,7 +8,8 @@ year: 2016
 tags: [CompSci, SYSADMIN, SRE]
 publication: ";login:"
 citation: <a href="https://www.usenix.org/system/files/login/articles/login_winter16_11_beyer.pdf"> Interrupt Reduction Projects </a> in <em>;login:(41:4)</em> at USENIX.
-outline: Interrupt Reduction ...
+categories:
+- White Paper
 ---
 
 Teams that write and maintain software much decide how to allocate people's time between:

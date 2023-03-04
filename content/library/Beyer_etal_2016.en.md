@@ -1,14 +1,16 @@
 ---
-layout: paper-reading
 date: 2019-02-21
 title:  Invent More, Toil Less
-authors: [Beyer, Gleason, O'Connor, Rau]
 year: 2016
 tags: [CompSci, SYSADMIN, SRE]
-publication: ";login:"
-citation: <a href="https://www.usenix.org/system/files/login/articles/login_fall16_08_beyer.pdf"> Invent More, Toil Less </a> in <em>;login:(41:3)</em> at USENIX.
-outline: "the Google SRE team identifies <strong>toils</strong> in running production services and talks about their experiences in how to reduce these toils. A case example the from BigTable SRE team illustrated an incremental process that involved both management and tech teams to reduce toils effectively. "
+categories:
+- White Paper
 ---
+> Beyer, Gleason, O'Connor, Rau (2016), [Invent More, Toil Less](https://www.usenix.org/system/files/login/articles/login_fall16_08_beyer.pdf) in *;login:(41:3)* at USENIX.
+
+{{< box-highlight type="info">}}
+the Google SRE team identifies **toils** in running production services and talks about their experiences in how to reduce these toils. A case example the from BigTable SRE team illustrated an incremental process that involved both management and tech teams to reduce toils effectively. 
+{{< /box-highlight>}}
 
 ### Key Concept: **toil**
 
@@ -32,6 +34,7 @@ As reported by SREs at Google, our top three sources of toil (in descending orde
 #### Problem
 
 Increasing paging load on the SRE team and lots of BigTable and Colossus requests:
+
 1. Increases and decreases in quota
 2. Turnups and turndowns of Bigtable footprints
 3. Turnups and turndowns of datacenters

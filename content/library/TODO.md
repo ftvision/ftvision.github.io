@@ -1,5 +1,5 @@
 ---
-layout: paper-reading
+title: TODO LIST
 date: 2020-11-23
 draft: true
 ---
@@ -11,7 +11,6 @@ draft: true
 ## Philosophy of Mind
 
 * [The Present Status of the Innateness Controversy](http://www.nyu.edu/gsas/dept/philo/courses/readings/1981.present.pdf)
-
 * [Concepts, Representation and Mental States](http://www.nyu.edu/gsas/dept/philo/courses/representation/)
 * [CONCEPTS](http://www.nyu.edu/gsas/dept/philo/courses/concepts/)
 * [Consciousness](http://www.nyu.edu/gsas/dept/philo/courses/consciousness/)

@@ -1,6 +1,9 @@
 ---
 title: List of 100 vision papers
 date: 2017-03-26
+tags:
+- Vision Science
+- Psychology
 ---
 
 ## Introduction

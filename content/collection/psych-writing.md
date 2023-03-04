@@ -1,6 +1,9 @@
 ---
 title: 过往的心理学科普写作
 date: 2017-03-26
+tags:
+- 心理学
+- 科普
 ---
 
 {{< box-highlight type="success">}}

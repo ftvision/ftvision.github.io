@@ -2,12 +2,17 @@
 title: "Digest 018"
 date: 2021-01-17T17:03:12-05:00
 draft: true
+categories: 
+- 阅读笔记
+tags:
+- 技术新闻
 ---
 
 ## 文章
 
-{{< digest-item "title"="Edsger Dijkstra: The Man Who Carried Computer Science on His Shoulders" "source"="https://inference-review.com/article/the-man-who-carried-computer-science-on-his-shoulders" "description"="知识网页" >}}
-//TODO
+{{< digest-item "source"="https://inference-review.com/article/the-man-who-carried-computer-science-on-his-shoulders" "description"="知识网页" >}}
+### Edsger Dijkstra: The Man Who Carried Computer Science on His Shoulders
+{{< /digest-item >}}
 
 
 https://www.dougengelbart.org/content/view/138

@@ -40,3 +40,9 @@ Downside is the strong correlation between people who suck at meetings and peopl
 
 - [How to take meeting notes](https://barehands.substack.com/p/how-to-take-meeting-notes) and [discussion about it](https://news.ycombinator.com/item?id=24547098&utm_term=comment) on HackerNews.
 - [Reaching Peak Meeting Efficiency](https://medium.learningbyshipping.com/reaching-peak-meeting-efficiency-f8e47c93317a)
+
+1. 解决具体的问题
+2. 了解背景和相关信息 Context Clarification
+3. 项目计划
+4. 固定时间的Catch UP（闲聊型）
+5. 固定时间的项目Catch Up

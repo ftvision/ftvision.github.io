@@ -1,21 +1,30 @@
 ---
 title: CrowdCast.io技术博客
 date: 2020-11-08
+categories: 
+- 阅读笔记
+tags:
+- 技术文摘
+- 网络技术
+- 公司技术合集
+weight: 1
 ---
 
 CrowdCast.io的技术博客地址: https://crowdcast.io/blog/topic/code
 
-### 整体印象
+## 整体印象
 
 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量的几个人在视频，然后把视频发送给成千上万的观众来看。比如演唱会，脱口秀等现场直播节目。同时Crowdcast又提供观众互动环节。他们的技术博客主要写的是如何更好地提供视频服务，以及在提供视频服务期间所遇到的技术问题。
 
-### 阅读进度
+## 阅读进度
 
 最后一篇读的是2020/08/06的Scaling Crowdcast
 
-### 博客摘要
+## 博客摘要
 
-{{< digest-item "title"="Scaling Crowdcast" "source"="https://crowdcast.io/blog/post/scaling-crowdcast" "description"="系统设计" >}}
+{{< digest-item "source"="https://crowdcast.io/blog/post/scaling-crowdcast" "description"="系统设计" >}}
+### Scaling Crowdcast
+{{< /digest-item >}}
 
 COVID-19期间，Crowdcast与其他网络视频业务一样发展十分迅速。比如我所知道的，认知科学和认知神经科学好几个大的会议都是在这个平台上，经常一次就是一两千人同时在线。而且Crowdcast确实有很多功能让这几个大会的组织者和参与者很喜欢。但是快速增长也就意味着整个产品需要迅速扩大规模，于是就有了这篇文章。
 
@@ -47,7 +56,9 @@ Crowdcast的应用逻辑是搭在Firebase上的，结果Firebase本身并不是�
 {{< /box-highlight >}}
 
 
-{{< digest-item "title"="Broadcasting WebRTC Over Low Latency Dash" "source"="https://crowdcast.io/blog/post/broadcasting-webrtc-over-low-latency-dash" "description"="系统设计" >}}
+{{< digest-item "source"="https://crowdcast.io/blog/post/broadcasting-webrtc-over-low-latency-dash" "description"="系统设计" >}}
+### Broadcasting WebRTC Over Low Latency Dash
+{{< /digest-item >}}
 
 这里的大概意思是设计了一个中间层，一边用编码发布端的视频（使用Headless Chrome），一边向订阅端发送视频。重要的是订阅端的网络请求可能比发布端提供内容的时间更早，但是通过HTTP组块仍然能够让订阅端及时获得发布端的信息。
 
@@ -63,8 +74,9 @@ Crowdcast的应用逻辑是搭在Firebase上的，结果Firebase本身并不是�
 
 {{< /box-highlight >}}
 
-{{< digest-item "title"="How WebRTC Scales" "source"="https://crowdcast.io/blog/post/how-webrtc-scales" "description"="系统设计" >}}
-
+{{< digest-item "source"="https://crowdcast.io/blog/post/how-webrtc-scales" "description"="系统设计" >}}
+### How WebRTC Scales
+{{< /digest-item >}}
 考虑一个视频直播节目，这个时候有一个发布者（Publisher），剩下的都是订阅者（Subscriber），或者说是观众。我们可以使用WebRTC这个网络框架。WebRTC可以让浏览器就能承担实时通讯的功能。
 
 之前，WebRTC设计的时候是peer-to-peer连接的，也就是所有的订阅者就直接连接到发布者的浏览器端。这个时候，在发布视频的时候（比如开会或者演讲），发布段会根据所有的订阅者的带宽来发送的视频质量（通过设定*比特率*）。于是，带宽最差的订阅者就可以以一己之力拉低整个所有人观看的视频质量（发布者会以最低比特率向所有人发布视频）。
@@ -100,7 +112,9 @@ SFU那个P2P的连接解耦的想法挺有意思的。计算机里面真的是�
 视频编码以及浏览器层面的视频处理这方面的问题我是完全不懂，VP8，VP9，H264，H265这几个编码方式有时间可以了解一下。
 {{< /box-highlight >}}
 
-{{< digest-item "title"="Engineers: Ship code on Day 1" "source"="https://crowdcast.io/blog/post/engineers-ship-code-on-day-1" "description"="公司文化" >}}
+{{< digest-item "source"="https://crowdcast.io/blog/post/engineers-ship-code-on-day-1" "description"="公司文化" >}}
+### Engineers: Ship code on Day 1
+{{< /digest-item >}}
 
 这篇文章说Crowdcast希望达到一个目标：所有新的员工第一天就能直接提交上线产品的代码（Ship Production Code）。这个做法还是蛮激进的，因为很多刚入职的员工可能连整个开发环境都没有搞清楚。但是仔细看了一下发现，这里所谓的“第一天提交的”上线产品代码，很有可能是一行小改动，比如CSS错位啊之类的。
 
