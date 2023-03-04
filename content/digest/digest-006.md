@@ -1,12 +1,17 @@
 ---
 title: "Digest 006"
 date: 2020-10-30T18:57:35-04:00
+categories: 
+- 阅读笔记
+tags:
+- 技术新闻
 ---
 
 ## 文章
 
-{{< digest-item "title"="Type in the exact number of machines to proceed" "source"="https://rachelbythebay.com/w/2020/10/26/num/" "description"="经验分享" >}}
-
+{{< digest-item "source"="https://rachelbythebay.com/w/2020/10/26/num/" "description"="经验分享" >}}
+### Type in the exact number of machines to proceed
+{{< /digest-item >}}
 这篇文章让我很有启发。这篇文章说到的问题是Linux系统有很多命令行的交互界面。很多时候，命令行界面要求你确认信息的时候，可能只是要你输入一个”Y/N“，或者是按任意键继续。作者从自己多年的经验出发，指出输入简单的“Y/N”进行确认有时候是非常危险的事情，因为用户的粗心没看清楚信息就确认了。作者建议，在要求用户确认信息的时候，应该要求用户完整地输入信息本身的内容。比如
 
 ```bash
@@ -22,7 +27,9 @@ $ Enter number of machines to confirm: 123456
 $ OK!  Continuing.
 ```
 
-{{< digest-item "title"="How to waste your career, one comfortable year at a time" "source"="https://apoorvagovind.substack.com/p/how-to-waste-your-career-one-comfortable" "description"="经验分享" >}}
+{{< digest-item "source"="https://apoorvagovind.substack.com/p/how-to-waste-your-career-one-comfortable" "description"="经验分享" >}}
+### How to waste your career, one comfortable year at a time
+{{< /digest-item >}}
 
 这篇文章的标题非常震撼，有给我当头一棒的感觉。具体内容其实主要是关于“什么情况下应该改变，不要再安于现状”的思考。
 
@@ -37,7 +44,9 @@ $ OK!  Continuing.
 
 那么，今天你考虑跳槽吗？
 
-{{< digest-item "title"="I was wrong. CRDTs are the future" "source"="https://josephg.com/blog/crdts-are-the-future/" "description"="经验分享" >}}
+{{< digest-item "source"="https://josephg.com/blog/crdts-are-the-future/" "description"="经验分享" >}}
+### I was wrong. CRDTs are the future
+{{< /digest-item >}}
 
 这篇文章主要讨论的是实时协作(Realtime Collaboration)背后的技术问题。实时协作有很多例子，比如Google Docs这种多人在线共同写文章的应用。在疫情的影响下，多人在线的应用会有越来越大的市场，腾讯文档、石墨文档等等都在做类似的应用软件，做一这篇讨论还是挺有意思的。
 
@@ -48,7 +57,10 @@ $ OK!  Continuing.
 这两个算法的选择之间主要是功能、性能、和实现难度之间的比较。OT相对比较容易实现，而且额外负担比较少，也比较容易解决协作出现的冲突。CRDT一直就不是很容易实现，就算实现了性能也不是特别好。但是作者听了Martin的讲座以后自己用Rust写了一个，发现好像CRDT可以有比较高效的实现方法，所以他还是蛮看好CRDT的前景的。而且OT最终是需要一个中央服务器来控制算法的，而CRDT并不需要一个中央机构来管理。
 
 
-{{< digest-item "title"="The SaaS Website Content You Need to Close Sales [Data]" "source"="https://www.mikesonders.com/saas-website-content/" "description"="数据分析" >}}
+{{< digest-item "source"="https://www.mikesonders.com/saas-website-content/" "description"="数据分析" >}}
+### The SaaS Website Content You Need to Close Sales [Data]
+{{< /digest-item >}}
+
 
 这篇文章有点意思。主要的方法就是分享Google搜索关键字然后来“猜测”用户在寻找Saas产品的时候最关注哪些问题。感觉他好像是根据自己的经验事先确定的关键字，然后把关键字分为“售前关注信息”和“售后关注信息”，然后统计“品牌+关键字”在Google搜索得到的结果。这个研究方法还是写得很清晰的。
 
@@ -68,7 +80,9 @@ $ OK!  Continuing.
 
 ## 网络学习
 
-{{< digest-item "title"="Fast load times" "source"="https://web.dev/fast/" "description"="网站性能课程" >}}
+{{< digest-item "source"="https://web.dev/fast/" "description"="网站性能课程" >}}
+### Fast load times
+{{< /digest-item >}}
 
 这个系列讲的是如何提高网站的性能，包括如何测量和理解网站的性能，以及各种提高性能的技术。
 
@@ -78,16 +92,21 @@ $ OK!  Continuing.
 
 ## 多媒体
 
-{{< digest-item "title"="Cloud Spanner 101: Google's mission-critical relational database (Google Cloud Next '17)" "source"="https://www.youtube.com/watch?v=IfsTINNCooY" "description"="技术讲座" >}}
+{{< digest-item "source"="https://www.youtube.com/watch?v=IfsTINNCooY" "description"="技术讲座" >}}
+### Cloud Spanner 101: Google's mission-critical relational database (Google Cloud Next '17)
+{{< /digest-item >}}
 
 Google Spanner数据库的技术讲座。这个讲座讲得挺好的，从背景问题到解决方案，每一个过度都讲得挺不错的。有时间的时候还是要继续看几遍。
 
-{{< digest-item "title"="The Chubby lock service for loosely-coupled distributed systems" "source"="https://www.youtube.com/watch?v=PqItueBaiRg" "description"="技术讲座" >}}
+{{< digest-item "source"="https://www.youtube.com/watch?v=PqItueBaiRg" "description"="技术讲座" >}}
+### The Chubby lock service for loosely-coupled distributed systems
+{{< /digest-item >}}
 
 一个关于Google Chubby服务的技术讲座。有时间的时候还是要继续认真再看几遍。
 
 ## 工具、技术、展示
 
-{{< digest-item "title"="Microsoft TileCode" "source"="https://microsoft.github.io/tilecode/doc/manual" "description"="游戏设计" >}}
-
+{{< digest-item "source"="https://microsoft.github.io/tilecode/doc/manual" "description"="游戏设计" >}}
+### Microsoft TileCode
+{{< /digest-item >}}
 微软设计了一个手掌机游戏制作器。大家可以用这个小软件来制作一些规则简单的小游戏，然后在一些小的手掌机上玩。我发现这个仓库提到的手掌机真的是各种各样，还挺神奇的。他们还就这个主题写了篇[论文](https://www.microsoft.com/en-us/research/uploads/prod/2020/08/paperFinal.pdf)，有时间可以读一读。

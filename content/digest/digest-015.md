@@ -1,13 +1,19 @@
 ---
 title: "Digest 015"
 date: 2021-01-01
+categories: 
+- 阅读笔记
+tags:
+- 技术新闻
 ---
 
 ## 文章
 
 这一周主要是看了一些DevOps和SRE的文章和视频。有一些是从[SRE Weekly](https://sreweekly.com/)那里看到的。平时在工作的过程中学到了很多SRE相关的知识，本来以为蛮平常的，但是后来才发现这些概念在公司以外的地方还没有扩展开来。通过公司外的人来写SRE/DevOps相关的内容可以学习其他人和公司是怎么看待和实践相关的知识的。
 
-{{< digest-item "title"="How to sell SLOs to Engineering Directors" "source"="https://medium.com/brexeng/how-to-sell-slos-to-engineering-directors-9c6379c3f246" "description"="经验分享" >}}
+{{< digest-item "source"="https://medium.com/brexeng/how-to-sell-slos-to-engineering-directors-9c6379c3f246" "description"="经验分享" >}}
+### How to sell SLOs to Engineering Directors
+{{< /digest-item >}}
 
 这篇文章讲的是如何向公司上层介绍并引进SLO的概念和指标。如果你的公司还没有使用SLO，但是你发现SLO可能会很有好处，那么这篇文章可以提供一个案例来教你策略性地说服公司上层选择使用SLO。
 
@@ -26,7 +32,9 @@ date: 2021-01-01
 
 整体来说，我们通过SLO，把技术开发的价值与和公司商业价值的保持一致，让整个公司业务更加稳定，风险更加可控，迭代速度更加快，但又不影响客户的使用体验。但是在向领导层兜售这个概念的时候，需要考虑很多方面的影响，包括战略上的，技术上的，运营上的，等等。同时，使用SLO是一个Culture Shift，是一个对公司文化有改变的事情，所以可能需要逐步推广。但是，SLO确实有很多好处，值得考虑。
 
-{{< digest-item "title"="SLO Adoption at Twitter" "source"="https://www.blameless.com/blog/slo-adoption-twitter" "description"="案例分享" >}}
+{{< digest-item "source"="https://www.blameless.com/blog/slo-adoption-twitter" "description"="案例分享" >}}
+### SLO Adoption at Twitter
+{{< /digest-item >}}
 
 这篇文章讲的是Twitter内部逐渐采用SLO的过程。这篇文章提到了向stakeholder介绍和使用SLO的过程中常见的一些挑战：
 1. 不知道需要测量什么指标，或者如何测量这些指标(Not knowing what (and how) to measure)。
@@ -41,7 +49,9 @@ date: 2021-01-01
 * 服务之间可以提供动态的负载均衡（Dynamic load balancing and load shedding）（也就是说服务直接的Load Balancing可以通过检测其他服务的SLO来决定如何引导流量）
 * 容错（Graceful degradation）
 
-{{< digest-item "title"="Netflix's Context, Not Control: How Does it Work?" "source"="https://www.linkedin.com/pulse/netflixs-context-control-how-does-work-steve-urban/" "description"="公司文化" >}}
+{{< digest-item "source"="https://www.linkedin.com/pulse/netflixs-context-control-how-does-work-steve-urban/" "description"="公司文化" >}}
+### Netflix's Context, Not Control: How Does it Work?
+{{< /digest-item >}}
 
 这篇文章分享了Netflix的管理哲学，集中讨论了[Netflix的管理文化](https://jobs.netflix.com/culture)（也可以对比参见[这个Slide Deck](https://www.slideshare.net/reed2001/culture-1798664)）中提到的：**管理者应该给员工提供工作合适的情景而不是控制员工应该做什么**。我觉得有几个知识点是值得学习的。
 
@@ -52,7 +62,9 @@ date: 2021-01-01
 
 我觉得国内科技公司听起来在文化上就缺乏这些点。一方面管理层不见得相信员工能作出正确的技术决策，另一方面员工也不一定能从管理层得到恰当的背景和信息。另外，当所有人都比较年轻的时候，设计出来的结果不一定好，会进一步导致管理层对员工的能力不信任。这样是非常糟糕的环境和非常糟糕的文化。
 
-{{< digest-item "title"="Why I've Been Merging Microservices Back Into The Monolith At InVision" "source"="https://www.bennadel.com/blog/3944-why-ive-been-merging-microservices-back-into-the-monolith-at-invision.htm" "description"="技术实践" >}}
+{{< digest-item "source"="https://www.bennadel.com/blog/3944-why-ive-been-merging-microservices-back-into-the-monolith-at-invision.htm" "description"="技术实践" >}}
+### Why I've Been Merging Microservices Back Into The Monolith At InVision
+{{< /digest-item >}}
 
 这篇文章分享了为什么作者所在的团队把单一服务拆成多个Microservice，然后又为什么把多个Microservice整合回单一的服务。背后主要的原因还是Conway's Law所描述的系统设计与组织架构之间的关系：
 
@@ -64,17 +76,23 @@ date: 2021-01-01
 
 我觉得这个案例还是很有启发性的。公司业务到底是要用单一的服务还是要拆成各种微服务，这个是取决于公司本身的组织架构的。大公司和小公司，大部门和小部门，在设计上的决策都应该是不同的。好的架构应该是符合自己团队特点，能够被自己团队最好地控制的架构。
 
-{{< digest-item "title"="Knightmare: A DevOps Cautionary Tale" "source"="https://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale/" "description"="案例分析" >}}
+{{< digest-item "source"="https://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale/" "description"="案例分析" >}}
+### Knightmare: A DevOps Cautionary Tale
+{{< /digest-item >}}
 
 2012年8月1日，骑士资本因为错误的软件部署，在45分钟内损失了4亿美元，而且导致了交易市场的闪崩。这个事件直接导致骑士资本破产，也给金融界的机器交易实践者上了重要一课。这个案例值得好好学习。这篇文章梳理了一下骑士资本出问题背后的事件和过程。另外[Nanex Research的这篇文章](http://www.nanex.net/aqck2/3522.html)也分析骑士资本这次闪崩造成的各种影响。机器交易这方面的风向还挺大的。
 
-{{< digest-item "title"="SLO — From Nothing to… Production" "source"="https://geototti21.medium.com/slo-from-nothing-to-production-91b8d4270bd5" "description"="学习经验" >}}
+{{< digest-item "source"="https://geototti21.medium.com/slo-from-nothing-to-production-91b8d4270bd5" "description"="学习经验" >}}
+### SLO — From Nothing to… Production
+{{< /digest-item >}}
 
 在这篇文章中，作者分享了他如何学习SLO以及SRE相关的概念，然后在自己的工作中从0开始部署整个SLO的设定、测量和监控的。如果是到一个没有使用SLO相关概念的工作场合，需要通过自己的工作来给提倡SLO等概念，这篇文章可以说提供了很好的教程。文章里面不但分享了作者读过的书，还分享了作者在部署过程中所使用的软件和常见的工作流程。文章提到了[The Art of SLOs](https://docs.google.com/presentation/d/1qcQ6alG_qUg3qWf733ZsDnTggwzqe4PZICrFXZ1zQZs/edit#slide=id.g75945b48fe_0_0)这个Slide Deck。这个Slide Deck更加深入地讲解了什么事SLI，SLO，SLA，并且做了一些个案分析。这个Slide Deck挺值得学习。
 
 ## 网络学习
 
-{{< digest-item "title"="基本操作" "source"="https://jibencaozuo.com/" "description"="可视化学习" >}}
+{{< digest-item "source"="https://jibencaozuo.com/" "description"="可视化学习" >}}
+### 基本操作
+{{< /digest-item >}}
 
 回形针团队做的一个可视化、互动式学习的项目。这个项目可以被看作是一个有趣的尝试，也确实花了不少功夫来制作神经网络相关的交互动画。尤其是整个内容都是在视频里面进行的，让我觉得这是一个很有趣的技术挑战。
 
@@ -82,22 +100,30 @@ date: 2021-01-01
 
 如果你问我49块钱值不值，我觉得还是值的。我相信回形针这一波应该还是能赚不少钱的。
 
-{{< digest-item "title"="School of SRE" "source"="https://linkedin.github.io/school-of-sre/" "description"="网络课程" >}}
+{{< digest-item "source"="https://linkedin.github.io/school-of-sre/" "description"="网络课程" >}}
+### School of SRE
+{{< /digest-item >}}
 
 LinkedIn出品的SRE相关的教程。可以简单了解一下。但是我觉得可能可以优先了解一下Google的SRE的两本书。
 
 ## 多媒体
 
-{{< digest-item "title"="DevOps Vs. SRE: Competing Standards or Friends?" "source"="https://www.youtube.com/watch?v=0UyrVqBoCAU" "description"="SRE知识分享" >}}
+{{< digest-item "source"="https://www.youtube.com/watch?v=0UyrVqBoCAU" "description"="SRE知识分享" >}}
+### DevOps Vs. SRE: Competing Standards or Friends?
+{{< /digest-item >}}
 
 这个视频讲了SRE和DevOps之间的关系。`Class SRE implements DevOps`这个说法还挺有趣的。DevOps更多定义的是做事的哲学和看法，而SRE定义了更多具体的指标和可执行的步骤。
 
-{{< digest-item "title"="class SRE implements DevOps" "source"="https://www.youtube.com/playlist?list=PLIivdWyY5sqJrKl7D2u-gmis8h9K66qoj" "description"="SRE简短课程" >}}
+{{< digest-item "source"="https://www.youtube.com/playlist?list=PLIivdWyY5sqJrKl7D2u-gmis8h9K66qoj" "description"="SRE简短课程" >}}
+### class SRE implements DevOps
+{{< /digest-item >}}
 
 这个系列一共是10个视频，讲解了SRE相关的10个重要的概念。每个视频也就5分钟左右，很快就可以看完。
 
 ## 工具、技术、展示
 
-{{< digest-item "title"="horrifying-pdf-experiments" "source"="https://github.com/osnr/horrifying-pdf-experiments?utm_source=hackernewsletter&utm_medium=email&utm_term=fav" "description"="技术展示" >}}
+{{< digest-item "source"="https://github.com/osnr/horrifying-pdf-experiments?utm_source=hackernewsletter&utm_medium=email&utm_term=fav" "description"="技术展示" >}}
+### horrifying-pdf-experiments
+{{< /digest-item >}}
 
 这个Repo讨论了PDF支持的各种媒体，然后谈到PDF其实是支持Javascript，但是绝大部分的PDF reader都没有去实现这个API。Adobe设计的[PDF规格](https://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf)有1300页，似乎现在绝大部分的PDF reader都只实现了其中很少的一部分。有意思的是，[Chrome](https://pdfium.googlesource.com/pdfium/+/chromium/2557/fpdfsdk/src/javascript/Document.cpp#258)实现了这个规格中[关于Javascript的一部分API](https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf#page=709)，所以我们在Chrome里面读PDF的时候，可以读到PDF里面的Javascript程序。作者提供了一个展示：[breakout PDF](https://cdn.jsdelivr.net/gh/osnr/horrifying-pdf-experiments@master/breakout.pdf)。这个PDF只有在Chrome下面看才能看到文件中的游戏，下载下来，或者用Safari都看不到文件中的游戏。这个演示挺有意思的。

@@ -20,3 +20,14 @@ Bret Victor的演讲系列
 
 - [Augmenting Human Intellect: A Conceptual Framework](/www.dougengelbart.org/content/view/138)
   - 这篇文章很重要。
+
+**网站**
+
+- https://www.redblobgames.com/
+- https://bost.ocks.org/mike/
+  - 新的内容主要在：https://observablehq.com/@mbostock
+  - https://bl.ocks.org/mbostock
+
+**文章**
+
+- https://jackschaedler.github.io/handwriting-recognition/

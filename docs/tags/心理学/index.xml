@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>心理学 on 思算</title>
+    <link>http://ftvision.github.io/tags/%E5%BF%83%E7%90%86%E5%AD%A6/</link>
+    <description>Recent content in 心理学 on 思算</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 26 Mar 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/tags/%E5%BF%83%E7%90%86%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>100篇视觉研究文献</title>
+      <link>http://ftvision.github.io/collection/vision-100/</link>
+      <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/collection/vision-100/</guid>
+      <description>导言 这个《100篇视觉研究文献》列表是Yury Petrov博士2007年左右在东北大学任教时编纂的。原始网页现在已经失效了。我在这里转载了原</description>
+    </item>
+    
+    <item>
+      <title>过往的心理学科普写作</title>
+      <link>http://ftvision.github.io/collection/psych-writing/</link>
+      <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/collection/psych-writing/</guid>
+      <description>这个集合收集了我写的一些心理学的科普文章。很多文章是我在博士期间，在我的知乎专栏上写得。这些文章一方面是为了我自己练习写作，另一方面是为了帮</description>
+    </item>
+    
+  </channel>
+</rss>

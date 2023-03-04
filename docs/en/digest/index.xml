@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Digests on Thinking as Algorithm</title>
-    <link>http://example.org/en/digest/</link>
-    <description>Recent content in Digests on Thinking as Algorithm</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 25 Sep 2020 17:10:38 -0400</lastBuildDate><atom:link href="http://example.org/en/digest/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Digest 001</title>
-      <link>http://example.org/en/digest/digest-001/</link>
-      <pubDate>Fri, 25 Sep 2020 17:10:38 -0400</pubDate>
-      
-      <guid>http://example.org/en/digest/digest-001/</guid>
-      <description>Articles  Birds do have a brain cortex—and think Neuroscience | Source   Neuroscience | Birds do have a brain cortex—and think Source This News and Views covers the following two research articles:
- A neural correlate of sensory consciousness in a corvid bird A cortex-like canonical circuit in the avian forebrain   How I got into linguistics, and what I got out of it Memoroir | Source   Memoroir | How I got into linguistics, and what I got out of it William Labov&amp;rsquo;s account of his research career: how did he become a sociolinguists, what did he do during the years, and how did he feel about his research career.</description>
-    </item>
-    
+    <title>Reading Digests on Thinking as Algorithm</title>
+    <link>http://ftvision.github.io/en/digest/</link>
+    <description>Recent content in Reading Digests on Thinking as Algorithm</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="http://ftvision.github.io/en/digest/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

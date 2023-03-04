@@ -1,16 +1,25 @@
 ---
 title: "Digest 014"
 date: 2020-12-25
+categories: 
+- 阅读笔记
+tags:
+- 技术新闻
 ---
 
 ## 文章
-{{< digest-item "title"="Reading, That Strange and Uniquely Human Thing" "source"="http://nautil.us/issue/94/evolving/reading-that-strange-and-uniquely-human-thing" "description"="科普报道" >}}
+{{< digest-item "source"="http://nautil.us/issue/94/evolving/reading-that-strange-and-uniquely-human-thing" "description"="科普报道" >}}
+### Reading, That Strange and Uniquely Human Thing
+{{< /digest-item >}}
+
 
 这是一篇关于人类阅读和文字发展历史的文章。非常典型的美国式科普叙事结构——针对一个特定的人来叙述一件特定事，然后从这个个案展开来讲整个文章要探讨的问题，最后又回到这个特定的人/事上作为结尾。
 
 整个文章还是有点意思的。我觉得的确是能学到一些关于阅读和文字发展的历史。我觉得这样的科普形式还是可以接受的，所以我也可以学着这种方式写文章吧。
 
-{{< digest-item "title"="The Games People Play With Cash Flow" "source"="https://commoncog.com/blog/cash-flow-games/" "description"="经验分享" >}}
+{{< digest-item "source"="https://commoncog.com/blog/cash-flow-games/" "description"="经验分享" >}}
+### The Games People Play With Cash Flow
+{{< /digest-item >}}
 
 这篇文章是关于“现金流”的一篇蛮有深度的文章。有两句话我觉得能总结全文的主旨
 
@@ -20,16 +29,23 @@ date: 2020-12-25
 
 这个文章很长，里面又说到（1）初期成本高，但是后续收入稳定的业务；（2）预付费用能降低成本的业务，比如餐饮业，还有很多其他的案例。有时间可能要再重新读一遍。确实是一篇很不错的文章。
 
-{{< digest-item "title"="An Engineer’s guide to Stock Options" "source"="https://blog.alexmaccaw.com/an-engineers-guide-to-stock-options#" "description"="博客文章" >}}
+{{< digest-item "source"="https://blog.alexmaccaw.com/an-engineers-guide-to-stock-options#" "description"="博客文章" >}}
+### An Engineer’s guide to Stock Options
+{{< /digest-item >}}
 
 这篇文章是一篇讲解创业公司股票期权的文章，分享了在创业公司工作时，获得股票期权之后，你将面临的不同情景。所讨论的问题包括：合适行权，入职和离开公司所需要的注意的问题，行权时的税务考虑等。如果你有去创业公司的想法，读一读这篇文章了解一下相关的知识会挺有好处的。
 
-{{< digest-item "title"="Artificial Intelligence — The Revolution Hasn’t Happened Yet" "source"="https://medium.com/@mijordan3/artificial-intelligence-the-revolution-hasnt-happened-yet-5e1d5812e1e7" "description"="学术思想" >}}
+{{< digest-item "source"="https://medium.com/@mijordan3/artificial-intelligence-the-revolution-hasnt-happened-yet-5e1d5812e1e7" "description"="学术思想" >}}
+### Artificial Intelligence — The Revolution Hasn’t Happened Yet
+{{< /digest-item >}}
 
 Jordan在这篇文章里面讲了他对现在AI研究和AI行业的看法。他觉得，目前所谓的人工智能的发展是有局限性的，还是要发展智能增强（Intelligence Augmentation，IA)和智能基建（Intelligent Infrastructure，II)。在这种倡议下，我觉得智能本身就是一个物种中立的概念了，而且智能科学的发展需要更多工程上的发展才行。
 
 
-{{< digest-item "title"="Generic mitigations" "source"="https://www.oreilly.com/content/generic-mitigations/" "description"="SRE经验" >}}
+{{< digest-item "source"="https://www.oreilly.com/content/generic-mitigations/" "description"="SRE经验" >}}
+### Generic mitigations
+{{< /digest-item >}}
+
 
 这个文章介绍了一些在运营出现问题的时候可以使用的比较“通用”的缓解方案（mitigation plan）。这里提到的方法包括：
 * Rollback (回滚代码)：直接把运行的代码回滚到之前的好的状态。但是rollback safety是一个很大的问题，因为其他的配置文件如果不对的话，代码回滚本身也会成为新的问题。
@@ -50,7 +66,9 @@ Jordan在这篇文章里面讲了他对现在AI研究和AI行业的看法。他�
 
 ![mitigation](/images/mitigation.png)
 
-{{< digest-item "title"="Extremist Programming(极限编程）" "source"="http://blog.ezyang.com/2012/11/extremist-programming/" "description"="SRE经验" >}}
+{{< digest-item "source"="http://blog.ezyang.com/2012/11/extremist-programming/" "description"="SRE经验" >}}
+### Extremist Programming（极限编程）
+{{< /digest-item >}}
 
 这篇文章很有意思，主要想法是如果你有一个程序设计的理念，如果把这个理念极限地推广到程序设计的所有方面会变成什么样。比如，函数很棒，如果一个程序语言所有成员都是函数会怎么样？又比如，对象（object）很棒，如果一个程序语言所有成员都是对象会怎么样？
 
@@ -61,17 +79,23 @@ Jordan在这篇文章里面讲了他对现在AI研究和AI行业的看法。他�
 
 ## 网络学习
 
-{{< digest-item "title"="FullStack D3 and Data Visualization" "source"="https://www.newline.co/fullstack-d3" "description"="D3教学" >}}
+{{< digest-item "source"="https://www.newline.co/fullstack-d3" "description"="D3教学" >}}
+### FullStack D3 and Data Visualization
+{{< /digest-item >}}
 
 这是一个将D3的教程，挺贵的，原价500刀，但是内容还挺多的。我觉得可以先看一下试看视频吧。我一直很犹豫到底要不要花钱来学D3，因为我也没找到网上的好的材料。
 
-{{< digest-item "title"="Siggraph2019 Geometric Algebra" "source"="https://www.youtube.com/watch?v=tX4H_ctggYo" "description"="数学教程" >}}
+{{< digest-item "source"="https://www.youtube.com/watch?v=tX4H_ctggYo" "description"="数学教程" >}}
+### Siggraph2019 Geometric Algebra
+{{< /digest-item >}}
 
 这个课程是Siggraph2019的一个讲几何代数的视频。时间比较长，将近两个小时，但是还是值得一学的。
 
 ## 多媒体
 
-{{< digest-item "title"="Dylan Beattie — The cost of code" "source"="https://www.youtube.com/watch?v=001SxQCEuv8&feature=emb_title" "description"="经验讲座" >}}
+{{< digest-item "source"="https://www.youtube.com/watch?v=001SxQCEuv8&feature=emb_title" "description"="经验讲座" >}}
+### Dylan Beattie — The cost of code
+{{< /digest-item >}}
 
 Dylan在这个讲座里面回顾了一些有意思的程序历史，提到每一款程序本身自身是会带来成本的。随着现在技术对生活的影响越来越大，程序对生活的影响也越来越大，而程序中的小问题也会变成越来越高额的社会成本——整个社会所需要付出的成本。这些成本不仅仅只是需要付给开发者的工资，不仅仅是政府和公司要付出的金钱，还有使用者时间、隐私、甚至是生命（比如波音飞机的代码问题导致的事故）。另外，当一个技术团队使用了第三方的代码（比如Open Source的代码），那么那些第三方代码中的问题也直接成为了每一个使用该代码的团队的问题，从而成为了更多用户和开发团队的成本。
 
@@ -79,18 +103,24 @@ Dylan在这个讲座里面回顾了一些有意思的程序历史，提到每一
 
 我觉得，每一个程序员应该尽量减少自己产生的代码给社会和他人带来的成本。
 
-{{< digest-item "title"="Puzzle Solving... or Problem Solving? | How to Design Puzzles" "source"="https://www.youtube.com/watch?v=w1_zmx-wU0U" "description"="游戏设计" >}}
+{{< digest-item "source"="https://www.youtube.com/watch?v=w1_zmx-wU0U" "description"="游戏设计" >}}
+### Puzzle Solving... or Problem Solving? | How to Design Puzzles
+{{< /digest-item >}}
 
 这个视频讨论了各种解谜游戏（Puzzle Game）的设计，提到了几个解谜游戏是没有标准解法的，完全是开放性的问题。这样的游戏比有特定解法的游戏更能激发玩家的创造力，而且有时候能够解决一些现实中真正的问题，比如作者提到了Fold It的那个蛋白质折叠的游戏。确实，游戏的设计是一门艺术。新冠疫情蔓延开的时候，很多人在讨论[瘟疫公司](https://zh.wikipedia.org/wiki/%E7%98%9F%E7%96%AB%E5%85%AC%E5%8F%B8)这个游戏，可见好的游戏不但能够给玩家带来快乐，也能帮助玩家学到很多知识。
 
 
 ## 工具、技术、展示
 
-{{< digest-item "title"="The Deadlock Empire" "source"="http://deadlockempire.github.io/" "description"="技术游戏" >}}
+{{< digest-item "source"="http://deadlockempire.github.io/" "description"="技术游戏" >}}
+### The Deadlock Empire
+{{< /digest-item >}}
 
 这个网页挺有意思的，是一个Learning by doing的一个网站，也可以当作是一个学习concurrency的技术展示吧。 在这个游戏中，你的任务就是把自己当作Scheduler，而你需要做的就是switch context，然后尽量让两个thread互相之间锁死（deadlock）。这个可以好好学习一下。
 
-{{< digest-item "title"="How I REVERSE ENGINEERED GOOGLE DOCS" "source"="http://features.jsomers.net/how-i-reverse-engineered-google-docs/" "description"="技术展示" >}}
+{{< digest-item "source"="http://features.jsomers.net/how-i-reverse-engineered-google-docs/" "description"="技术展示" >}}
+### How I REVERSE ENGINEERED GOOGLE DOCS
+{{< /digest-item >}}
 
 这个技术展示很有意思。作者发现Google Doc的所有修改记录都保存下来了，而且是精确到秒级别的。于是，我们就可以写一个程序来replay整个文档的写作过程。这个某种程度其实也可以学习别人如何修改文档的过程。这么一想，这个说不定可以作为教学工具。不过话说回来，有多少人需要精确到秒级别的修改回放呢？
 

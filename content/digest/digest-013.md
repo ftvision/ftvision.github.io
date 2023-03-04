@@ -1,11 +1,17 @@
 ---
 title: "Digest 013"
 date: 2020-12-13T23:15:42-05:00
+categories: 
+- 阅读笔记
+tags:
+- 技术新闻
 ---
 
 ## 文章
 
-{{< digest-item "title"="编写一个最小的 64 位 Hello World" "source"="https://cjting.me/2020/12/10/tiny-x64-helloworld/" "description"="博客文章" >}}
+{{< digest-item "source"="https://cjting.me/2020/12/10/tiny-x64-helloworld/" "description"="博客文章" >}}
+### 编写一个最小的 64 位 Hello World
+{{< /digest-item >}}
 
 这是CJTing的一篇新文章，从最简单的C语言Hello World程序出发，逐层剖析，解释了这个最简单的程序从编译到运行各个阶段的底层知识。
 * 什么是可执行文件，可执行文件在Linux下是什么格式。
@@ -14,7 +20,10 @@ date: 2020-12-13T23:15:42-05:00
 
 跟之前的文章一样，这篇文章内容详细，解读深入浅出，是非常不错的技术类博客文章。
 
-{{< digest-item "title"="100+ Lessons Learned for Project Managers" "source"="https://llis.nasa.gov/lesson/1956" "description"="经验分享" >}}
+{{< digest-item "source"="https://llis.nasa.gov/lesson/1956" "description"="经验分享" >}}
+### 100+ Lessons Learned for Project Managers
+{{< /digest-item >}}
+
 
 这篇文章是NASA的前副主任(Associate Director)Jerry Madden总结了122条项目经理的经验总结。里面**工程设计**、**统筹决策报告**、**管理项目人员**、**应对上级领导**、**客户关系**和**承包商关系**六个大类。这122条经验可以当作是格言短文吧，时不时拿出来看看也挺好的。这里还有一份[PDF版本](https://www.nasa.gov/pdf/293253main_62682main_jerry_madden_forum7.pdf)
 
@@ -29,14 +38,19 @@ date: 2020-12-13T23:15:42-05:00
 > * 如果你有问题需要更多的人来解决，要像厨子加盐一样的方法招人：一次只加一点盐。（第五十四条）
 > * 项目需要一个团队的努力才能成功。记住很多团队有一个教练而不是老板，但是教练仍然需要叫人参加比赛。（第七十三条）
 
-{{< digest-item "title"="OpenAI LP" "source"="https://openai.com/blog/openai-lp/" "description"="公司公告" >}}
+{{< digest-item "source"="https://openai.com/blog/openai-lp/" "description"="公司公告" >}}
+### OpenAI LP
+{{< /digest-item >}}
+
 
 OpenAI宣布成立有限公司OpenAI LP，由OpenAI Nonprofit的董事会管理。这个有限公司想设计一个回报上限(Capped Value Return)，号称在投资人注资的时候就商定一个将来的回报限额，如果将来OpenAI LP赚钱了，在限额内的部分会反馈给投资者，但是在限额以外的所有盈利都收归OpenAI Nonprofit所有，用来进一步开发通用人工智能的技术。
 
 这个决策还挺有意思的。我们可以先看看同行的情况，Deepmind在2018年就将近[亏损了6个亿](https://www.forbes.com/sites/samshead/2019/08/07/deepmind-losses-soared-to-570-million-in-2018/?sh=3894156b3504)，然后2020年有得到Google的帮助，直接把用来探索AI技术的[15个亿的贷款给一笔勾销](https://www.bloomberg.com/news/articles/2020-12-17/deepmind-says-2019-revenue-jumped-158-on-ai-research-work)了。OpenAI虽然一开始一直想做非盈利机构，但是发现技术突破需要的费用实在是太高了，但是同时他们也发现了一些可以用来盈利的技术，所以看来是放弃了一开始天真的想法，还是决定做一个有限公司来解决技术背后的经济需求。这个“带有回报上线”的有限责任公司到底会变得怎么样，我们可以拭目以待。
 
 
-{{< digest-item "title"="I regret quitting astrophysics" "source"="http://www.marcelhaas.com/index.php/2020/12/16/i-regret-quitting-astrophysics/" "description"="经验分享" >}}
+{{< digest-item "source"="http://www.marcelhaas.com/index.php/2020/12/16/i-regret-quitting-astrophysics/" "description"="经验分享" >}}
+### I regret quitting astrophysics
+{{< /digest-item >}}
 
 作者2013年离开学术界，离开了天文学的研究，成为了一名数据科学家。7年之后，当他回过头来看，他觉得挺后悔的。基本上后悔的点在于：
 1. 工作缺乏动力
@@ -46,17 +60,23 @@ OpenAI宣布成立有限公司OpenAI LP，由OpenAI Nonprofit的董事会管理�
 
 我感觉这几点可能确实是因为在新的工作中没有找到激情和有趣的地方。当然，工业界的工作确实是比较琐碎和平凡。我是2018年离开学术界的，不知道我7年以后会不会后悔离开学术界。
 
-{{< digest-item "title"="The CPUs of Spacecraft Computers in Space" "source"="http://www.cpushack.com/space-craft-cpu.html" "description"="历史回顾" >}}
+{{< digest-item "source"="http://www.cpushack.com/space-craft-cpu.html" "description"="历史回顾" >}}
+### The CPUs of Spacecraft Computers in Space
+{{< /digest-item >}}
 
 这个页面整理了截止到2012年，美国不同型号的太空飞行器所使用的CPU的型号。由于太空飞行器所处的环境极其恶劣，比如温度变化非常大，受到的辐射非常强等，太空飞行器一般都不用最新的CPU，而是使用经过长时间测试的CPU。这个页面罗列了CPU的信号和选择、设计CPU的时候的考虑。我觉得这个页面很有意思的原因是，如果我们想象将来的太空扩张，我们会发现实际上飞在天上的各种飞行器是来自“过去的文明”，而反倒是地球表面的社会处在一个“将来的文明”中。
 
-{{< digest-item "title"="Stripe’s payments APIs: the first ten years" "source"="https://stripe.com/blog/payment-api-design" "description"="技术博客" >}}
+{{< digest-item "source"="https://stripe.com/blog/payment-api-design" "description"="技术博客" >}}
+### Stripe’s payments APIs: the first ten years
+{{< /digest-item >}}
 
 这篇Stripe的技术博客总结了Stripe的API在过去十年的变化，以及背后的原因。一开始Stripe只支持信用卡，所以在API的设计上是围绕着信用卡的使用场景来简化的（只使用了一对概念：`token`和`charges`）。后来，银行业务和比特币的业务加了进来，因为这两项业务有新的结算方式，所以API变得更加复杂。再后来（2015-2017），电子支付方式如雨后春笋，Stripe为了支持更多的支付方式，开始进一步往之前的API里面加入参数，直到最后发现最开始的API设计变得过于复杂。于是，2018年的时候，Stripe重新审视已有的各种支付方式，然后设计了全新的API（回到一对概念：`PaymentIntent`和`PaymentMethod`），将支付方式进行了新的抽象。这个新的抽象将整个API的工作流程简化了不少。但是，新的API有很大的改变，所以花了2年的时间才逐渐把新的API推广到全球的用户。
 
 Stripe的技术博客一如既往的写得好啊。读他们的技术博客和API文档，确实感觉是一家让人喜欢的公司。Hackernews上也是好评如潮。
 
 {{< digest-item "title"="Equity guide for employees at fast-growing companies" "source"="https://withcompound.com/r/equity-guide-to-fast-growing-companies" "description"="知识分享" >}}
+### Equity guide for employees at fast-growing companies
+{{< /digest-item >}}
 
 这篇文章讲的是在创业公司工作，员工面临的股权行权的问题。不同的决策会有不同的收益，也有不同的税收要求。
 
@@ -65,33 +85,45 @@ Stripe的技术博客一如既往的写得好啊。读他们的技术博客和AP
 
 ## 网络学习
 
-{{< digest-item "title"="现代 C++ 教程: 高速上手 C++ 11/14/17/20" "source"="https://changkun.de/modern-cpp/" "description"="C++书籍" >}}
+{{< digest-item "source"="https://changkun.de/modern-cpp/" "description"="C++书籍" >}}
+### 现代 C++ 教程: 高速上手 C++ 11/14/17/20
+{{< /digest-item >}}
 
 这是一本中文写作的现代C++教程，重在介绍C++11以来的变化和改进。其中提到了[What Every Programmer Should Know About Memory](https://people.freebsd.org/~lstewart/articles/cpumemory.pdf)这篇文章，也同样值得花时间好好学习。
 
-{{< digest-item "title"="hacking C++" "source"="https://hackingcpp.com/index.html" "description"="C++教学网站" >}}
+{{< digest-item "source"="https://hackingcpp.com/index.html" "description"="C++教学网站" >}}
+### hacking C++
+{{< /digest-item >}}
 
 这个网站展示和讲述C++的方法很有新意：作者制作了很多Cheatsheet和图标来展示概念，非常清晰易懂，可以作为学习C++的很好地补充材料。
 
-{{< digest-item "title"="2020年TLA+会议" "source"="http://conf.tlapl.us/2020/" "description"="TLA+会议" >}}
+{{< digest-item "source"="http://conf.tlapl.us/2020/" "description"="TLA+会议" >}}
+### 2020年TLA+会议
+{{< /digest-item >}}
 
 之前第五期记录了Leslie Lamport关于TLA+的介绍，今天发现他们还有会议了。这个会议算是一个比较好的学习工业界如何在工作场景中实践TLA+的教程了。不过报告的内容还挺复杂的。TLA+这个东西，感觉有时间确实是可以了解一下，看起来还挺好玩的。
 
 ## 多媒体
 
-{{< digest-item "title"="The UNIX Time-Sharing System" "source"="https://chsasank.github.io/classic_papers/unix-time-sharing-system.html#" "description"="系统设计" >}}
+{{< digest-item "source"="https://chsasank.github.io/classic_papers/unix-time-sharing-system.html#" "description"="系统设计" >}}
+### The UNIX Time-Sharing System
+{{< /digest-item >}}
 
 这是UNIX设计的原始论文，文章写得很清晰，但是比较长。找时间再仔细读一下。
 
 另外，AT&T的这个纪录片档案《[The UNIX Operating System](https://www.youtube.com/watch?v=tc4ROCJYbm0&t=797s)》是一个很不错的关于Unix的介绍。这个视频也讲解了当时Unix设计上的创新，比如`|`操作符，比如重新导向输入输出的操作(`>`和`<`)，以及这篇文章着重讨论的Unix的文件系统。
 
-{{< digest-item "title"="Hacker interview-Gummo" "source"="https://yahnd.com/theater/r/youtube/g6igTJXcqvo/" "description"="人物采访" >}}
+{{< digest-item "source"="https://yahnd.com/theater/r/youtube/g6igTJXcqvo/" "description"="人物采访" >}}
+### Hacker interview-Gummo
+{{< /digest-item >}}
 
 这个是Gummo的个人采访。Gummo分享了他整个人的发展过程，从早起的不幸家庭，到后来学会计算机并且逐步成为计算机黑客，到后来挖了8000多个比特币、进入网络安全行业，再到最后的人生感悟。整个过程就是听他娓娓道来自己的经历，听他诉说自己的挫折，谈自己的成长。
 
 我觉得最后有一点挺可爱的，就是Gummo一只手指一直涂的是粉红色的指甲油。因为当年一个小姑娘问他为什么不当好人，而要当坏坏的黑客。他有了家庭和孩子之后，又被这个小姑娘感化，于是决定用自己所学的知识来保护更多人，然后涂上这个粉红色指甲油，作为一种宣言，也是一种对自己的提示。真是力量越大，责任越大。
 
-{{< digest-item "title"="Let’s go whaling: Tricks for monetising mobile game players with free-to-play" "source"="https://yahnd.com/theater/r/youtube/xNjI03CGkb4/" "description"="技术分享" >}}
+{{< digest-item "source"="https://yahnd.com/theater/r/youtube/xNjI03CGkb4/" "description"="技术分享" >}}
+### Let’s go whaling: Tricks for monetising mobile game players with free-to-play
+{{< /digest-item >}}
 
 这个视频真的值得看一看，讲的是怎么设计游戏里面的费用，让玩家愿意去大把氪金。讲得还挺有道理的，基本上就是把心理学上研究过的各种行为现象往“赚钱”的目标上优化。这里面包括扭蛋和赌博背后的行为机制，斯金纳的操作性条件反射，卡尼曼的非理性消费者行为，延迟满足与立即满足，服从与从众等等。虽然听演讲着讲起来都挺有道理的，但是我并不希望这些人性被利用，所以听完之后觉得人们好可悲。
 
@@ -115,7 +147,9 @@ Stripe的技术博客一如既往的写得好啊。读他们的技术博客和AP
 
 ## 工具、技术、展示
 
-{{< digest-item "title"="Tiny Projects" "source"="https://tinyprojects.dev/" "description"="小项目展示" >}}
+{{< digest-item "source"="https://tinyprojects.dev/" "description"="小项目展示" >}}
+### Tiny Projects
+{{< /digest-item >}}
 
 作者的目标是制作一些需要1-2周就能完成的小项目，到目前为止一共有6个小项目，其中一个小项目还[卖了5300刀](https://tinyprojects.dev/posts/selling_a_tiny_project)。在完成每个项目以后，作者都写了一个项目总结，把自己制作这个项目的整个过程记录了下来。读者也可以把这些总结看作是教程来学习怎么制作一些小的项目。读完这些项目，感觉学到了挺多东西的。
 

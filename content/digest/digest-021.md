@@ -2,6 +2,10 @@
 title: "Digest 021"
 date: 2021-03-01T23:03:54-05:00
 draft: true
+categories: 
+- 阅读笔记
+tags:
+- 技术新闻
 ---
 
 ## 文章

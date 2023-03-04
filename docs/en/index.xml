@@ -13,7 +13,17 @@
       
       <guid>http://ftvision.github.io/en/logging/shortcodes/</guid>
       <description>Here is a list of shortcodes I&amp;rsquo;ve made for this blog.
-Digest Title Code 1  {{&amp;lt; digest-item &amp;#34;title&amp;#34;=&amp;#34;Title&amp;#34; &amp;#34;source&amp;#34;=&amp;#34;#url&amp;#34; &amp;#34;description&amp;#34;=&amp;#34;Description&amp;#34; &amp;gt;}}   Demo Title Description | Source    Code Tabs Code 1 2 3 4 5 6 7 8 9 10 11  {{&amp;lt; tabs &amp;#34;test_file&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;cpp&amp;#34; &amp;gt;}} # cpp code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;python&amp;#34; &amp;gt;}} # python code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}}   Demo  test_file  1 2 3  int main(){ return 0; }     1 2  def main(): return 0       Box Highlight Code 1 2 3 4 5 6 7 8 9 10 11  {{&amp;lt; box-highlight type=&amp;#34;info&amp;#34; &amp;gt;}} This is a info box.</description>
+Digest Title Code 1  {{&amp;lt; digest-item &amp;#34;title&amp;#34;=&amp;#34;Title&amp;#34; &amp;#34;source&amp;#34;=&amp;#34;#url&amp;#34; &amp;#34;description&amp;#34;=&amp;#34;Description&amp;#34; &amp;gt;}}   Demo Description | Source Code Tabs Code 1 2 3 4 5 6 7 8 9 10 11  {{&amp;lt; tabs &amp;#34;test_file&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;cpp&amp;#34; &amp;gt;}} # cpp code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;python&amp;#34; &amp;gt;}} # python code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}}   Demo Box Highlight Code 1 2 3 4 5 6 7 8 9 10 11  {{&amp;lt; box-highlight type=&amp;#34;info&amp;#34; &amp;gt;}} This is a info box.</description>
+    </item>
+    
+    <item>
+      <title>Invent More, Toil Less</title>
+      <link>http://ftvision.github.io/en/library/beyer_etal_2016/</link>
+      <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/en/library/beyer_etal_2016/</guid>
+      <description>Beyer, Gleason, O&amp;rsquo;Connor, Rau (2016), Invent More, Toil Less in ;login:(41:3) at USENIX.
+ the Google SRE team identifies toils in running production services and talks about their experiences in how to reduce these toils. A case example the from BigTable SRE team illustrated an incremental process that involved both management and tech teams to reduce toils effectively.  Key Concept: toil Toil is the kind of work tied to running a production service that tends to be: Manual, Repetitive, Automatable and not requiring human judgment, Interrupt-driven and reactive, and Of no enduring value.</description>
     </item>
     
     <item>
@@ -33,6 +43,16 @@ Working Experiences    Company Location Role Time     Citadel New York, NY, U.S.
       
       <guid>http://ftvision.github.io/en/about/resume_failure/</guid>
       <description>This is a list of what I have tried during my journey. It is a running list of my failures during my journey. The idea is inspired by Prof. Johannes Haushoferi. I was trying to summarize all of them, but some may have eluded my memory. I will keep maintaining this list, so future failures will be recorded and updated. You are welcome to come back and check my latest failures.</description>
+    </item>
+    
+    <item>
+      <title>Potential downside of high initial visual acuity</title>
+      <link>http://ftvision.github.io/en/library/vogeslang_etal_sinha_2018/</link>
+      <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/en/library/vogeslang_etal_sinha_2018/</guid>
+      <description>Vogelsang, L., Gilad-Gutnick, S., Ehrenberg, E., Yonas, A., Diamond, S., Held, R., &amp;amp; Sinha, P. (2018). Potential downside of high initial visual acuity. Proceedings of the National Academy of Sciences, 115(44), 11333-11338.
+ Vogelsang and colleagues tried to test one interesting hypothesis: seeing sharp, clear images at the very early stage of life can actually do harm to visual perception and its development. The hypothesis started with an observation that infants who have cataracts but cured at early age may actually have problems in face recognition.</description>
     </item>
     
     <item>
