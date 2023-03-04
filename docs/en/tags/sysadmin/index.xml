@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SYSADMIN on Thinking as Algorithm</title>
+    <link>http://ftvision.github.io/en/tags/sysadmin/</link>
+    <description>Recent content in SYSADMIN on Thinking as Algorithm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 21 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/en/tags/sysadmin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Invent More, Toil Less</title>
+      <link>http://ftvision.github.io/en/library/beyer_etal_2016/</link>
+      <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/en/library/beyer_etal_2016/</guid>
+      <description>Beyer, Gleason, O&amp;rsquo;Connor, Rau (2016), Invent More, Toil Less in ;login:(41:3) at USENIX.
+ the Google SRE team identifies toils in running production services and talks about their experiences in how to reduce these toils. A case example the from BigTable SRE team illustrated an incremental process that involved both management and tech teams to reduce toils effectively.  Key Concept: toil Toil is the kind of work tied to running a production service that tends to be: Manual, Repetitive, Automatable and not requiring human judgment, Interrupt-driven and reactive, and Of no enduring value.</description>
+    </item>
+    
+  </channel>
+</rss>

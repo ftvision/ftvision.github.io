@@ -13,7 +13,7 @@
       
       <guid>http://ftvision.github.io/en/logging/shortcodes/</guid>
       <description>Here is a list of shortcodes I&amp;rsquo;ve made for this blog.
-Digest Title Code 1  {{&amp;lt; digest-item &amp;#34;title&amp;#34;=&amp;#34;Title&amp;#34; &amp;#34;source&amp;#34;=&amp;#34;#url&amp;#34; &amp;#34;description&amp;#34;=&amp;#34;Description&amp;#34; &amp;gt;}}   Demo Title Description | Source    Code Tabs Code 1 2 3 4 5 6 7 8 9 10 11  {{&amp;lt; tabs &amp;#34;test_file&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;cpp&amp;#34; &amp;gt;}} # cpp code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;python&amp;#34; &amp;gt;}} # python code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}}   Demo  test_file  1 2 3  int main(){ return 0; }     1 2  def main(): return 0       Box Highlight Code 1 2 3 4 5 6 7 8 9 10 11  {{&amp;lt; box-highlight type=&amp;#34;info&amp;#34; &amp;gt;}} This is a info box.</description>
+Digest Title Code 1  {{&amp;lt; digest-item &amp;#34;title&amp;#34;=&amp;#34;Title&amp;#34; &amp;#34;source&amp;#34;=&amp;#34;#url&amp;#34; &amp;#34;description&amp;#34;=&amp;#34;Description&amp;#34; &amp;gt;}}   Demo Description | Source Code Tabs Code 1 2 3 4 5 6 7 8 9 10 11  {{&amp;lt; tabs &amp;#34;test_file&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;cpp&amp;#34; &amp;gt;}} # cpp code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;python&amp;#34; &amp;gt;}} # python code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}}   Demo Box Highlight Code 1 2 3 4 5 6 7 8 9 10 11  {{&amp;lt; box-highlight type=&amp;#34;info&amp;#34; &amp;gt;}} This is a info box.</description>
     </item>
     
   </channel>

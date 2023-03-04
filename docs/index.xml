@@ -7,6 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 23 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>CrowdCast.io技术博客</title>
+      <link>http://ftvision.github.io/digest/tech_blog_crowdcast_io/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/digest/tech_blog_crowdcast_io/</guid>
+      <description>CrowdCast.io的技术博客地址: https://crowdcast.io/blog/topic/code 整体印象 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，</description>
+    </item>
+    
+    <item>
       <title>简历</title>
       <link>http://ftvision.github.io/about/resume/</link>
       <pubDate>Tue, 02 Nov 2021 00:00:00 +0000</pubDate>
@@ -21,7 +30,7 @@
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-017/</guid>
-      <description>文章 State Of Javascript 2020 行业研究 | Source 这是一个关于2020年Javascript行业内的问卷调查，询问和总结了开发者的开发经验，喜爱的开发环境和工具，以及</description>
+      <description>文章 行业研究 | Source EState Of Javascript 2020 这是一个关于2020年Javascript行业内的问卷调查，询问和总结了开发者的开发经验，喜爱的开发环境和工具，以及</description>
     </item>
     
     <item>
@@ -30,7 +39,7 @@
       <pubDate>Sat, 09 Jan 2021 23:54:11 -0500</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-016/</guid>
-      <description>文章 DALL·E: Creating Images from Text 机器学习 | Source OpenAI介绍了最近在语言转图像的工作。效果看起来是挺不错的，因为通过语言产生的图片看起来已经比较合</description>
+      <description>文章 机器学习 | Source DALL·E: Creating Images from Text OpenAI介绍了最近在语言转图像的工作。效果看起来是挺不错的，因为通过语言产生的图片看起来已经比较合</description>
     </item>
     
     <item>
@@ -48,7 +57,7 @@
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-014/</guid>
-      <description>文章 Reading, That Strange and Uniquely Human Thing 科普报道 | Source 这是一篇关于人类阅读和文字发展历史的文章。非常典型的美国式科普叙事结构——针对一个特定的人来叙述一件特定事，然</description>
+      <description>文章 科普报道 | Source Reading, That Strange and Uniquely Human Thing 这是一篇关于人类阅读和文字发展历史的文章。非常典型的美国式科普叙事结构——针对一个特定的人来叙述一件特定事，然</description>
     </item>
     
     <item>
@@ -57,7 +66,7 @@
       <pubDate>Sun, 13 Dec 2020 23:15:42 -0500</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-013/</guid>
-      <description>文章 编写一个最小的 64 位 Hello World 博客文章 | Source 这是CJTing的一篇新文章，从最简单的C语言Hello World程序出发，逐层剖析，解释了这个最简单</description>
+      <description>文章 博客文章 | Source 编写一个最小的 64 位 Hello World 这是CJTing的一篇新文章，从最简单的C语言Hello World程序出发，逐层剖析，解释了这个最简单</description>
     </item>
     
     <item>
@@ -66,7 +75,7 @@
       <pubDate>Sat, 05 Dec 2020 23:33:06 -0500</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-012/</guid>
-      <description>文章 Cemetery of Soviet computers 博客文章 | Source 这篇文章带着大家浏览了苏联70年代、80年代、90年代的几个计算机机型。很多机型可以看到美国PDP机型的影子，不过这</description>
+      <description>文章 博客文章 | Source Cemetery of Soviet computers 这篇文章带着大家浏览了苏联70年代、80年代、90年代的几个计算机机型。很多机型可以看到美国PDP机型的影子，不过这</description>
     </item>
     
     <item>
@@ -75,7 +84,7 @@
       <pubDate>Sat, 05 Dec 2020 12:16:30 -0500</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-011/</guid>
-      <description>文章 This is Real. That&amp;#39;s Not. 不同人生 | Source 作者写了自己从一个上层家庭出身变成一个无家可归的流浪者的过程中所体验到的世间百态。作者说自己以前以为这个世界人们都</description>
+      <description>文章 不同人生 | Source This is Real. That&amp;rsquo;s Not. 作者写了自己从一个上层家庭出身变成一个无家可归的流浪者的过程中所体验到的世间百态。作者说自己以前以为这个世界人们都</description>
     </item>
     
     <item>
@@ -84,7 +93,7 @@
       <pubDate>Fri, 27 Nov 2020 09:46:06 -0500</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-010/</guid>
-      <description>文章 Eight years at Roblox 经验分享 | Source 作者介绍了他在Roblox工作八年的经历和大大小小的各种项目。从作者的项目可以看出一部分Roblox系统的演化的过程</description>
+      <description>文章 经验分享 | Source Eight years at Roblox 作者介绍了他在Roblox工作八年的经历和大大小小的各种项目。从作者的项目可以看出一部分Roblox系统的演化的过程</description>
     </item>
     
     <item>
@@ -93,7 +102,7 @@
       <pubDate>Fri, 20 Nov 2020 09:46:06 -0500</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-009/</guid>
-      <description>文章 End Micromanagement: 6 Signs You’re a Micromanager (And What to Do Instead) 博客文章 | Source Micromanagement就是作为经理，对员工什么鸡毛蒜皮的小事都要管一管。这篇文章讲</description>
+      <description>文章 博客文章 | Source End Micromanagement: 6 Signs You’re a Micromanager (And What to Do Instead) Micromanagement就是作为经理，对员工什么鸡毛蒜皮的小事都要管一管。这篇文章讲</description>
     </item>
     
     <item>
@@ -102,16 +111,7 @@
       <pubDate>Fri, 13 Nov 2020 09:46:06 -0500</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-008/</guid>
-      <description>文章 I sold Baremetrics 经验分享 | Source Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我第一次知道这个公司，但是整个文章把这个决定</description>
-    </item>
-    
-    <item>
-      <title>CrowdCast.io技术博客</title>
-      <link>http://ftvision.github.io/snippets/clipboard/tech_blog_crowdcast_io/</link>
-      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/snippets/clipboard/tech_blog_crowdcast_io/</guid>
-      <description>CrowdCast.io的技术博客地址: https://crowdcast.io/blog/topic/code 整体印象 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，</description>
+      <description>文章 经验分享 | Source I sold Baremetrics Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我第一次知道这个公司，但是整个文章把这个决定</description>
     </item>
     
     <item>
@@ -120,7 +120,7 @@
       <pubDate>Fri, 06 Nov 2020 09:46:06 -0500</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-007/</guid>
-      <description>文章 How Facebook is bringing QUIC to billions 技术报道 | Source Facebook撰文介绍他们在全面推广使用QUIC作为网络连接方式，用来取代TCP为基础的连接方式，从HTTP</description>
+      <description>文章 技术报道 | Source How Facebook is bringing QUIC to billions Facebook撰文介绍他们在全面推广使用QUIC作为网络连接方式，用来取代TCP为基础的连接方式，从HTTP</description>
     </item>
     
     <item>
@@ -138,7 +138,7 @@
       <pubDate>Fri, 30 Oct 2020 18:57:35 -0400</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-006/</guid>
-      <description>文章 Type in the exact number of machines to proceed 经验分享 | Source 这篇文章让我很有启发。这篇文章说到的问题是Linux系统有很多命令行的交互界面。很多时候，命令行界面要求你</description>
+      <description>文章 经验分享 | Source Type in the exact number of machines to proceed 这篇文章让我很有启发。这篇文章说到的问题是Linux系统有很多命令行的交互界面。很多时候，命令行界面要求你</description>
     </item>
     
     <item>
@@ -147,7 +147,7 @@
       <pubDate>Fri, 23 Oct 2020 18:57:35 -0400</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-005/</guid>
-      <description>文章 Up and Down the Ladder of Abstraction 可视化解释 | Source 这个网页是上一期提到的Bret Victor的一个展示。这个网页通过具体的例子，展现了如何讲一个问题（利用算法</description>
+      <description>文章 可视化解释 | Source Up and Down the Ladder of Abstraction 这个网页是上一期提到的Bret Victor的一个展示。这个网页通过具体的例子，展现了如何讲一个问题（利用算法</description>
     </item>
     
     <item>
@@ -156,7 +156,7 @@
       <pubDate>Fri, 16 Oct 2020 11:17:28 -0400</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-004/</guid>
-      <description>文章 Startup Cemetery 创业经验 | Source 这个集合很有意思，整理了一系列初创公司的业务、募资额度和倒闭的原因。点开不同的创业公司会读到不同的总结，这个还蛮适合休闲</description>
+      <description>文章 创业经验 | Source Startup Cemetery 这个集合很有意思，整理了一系列初创公司的业务、募资额度和倒闭的原因。点开不同的创业公司会读到不同的总结，这个还蛮适合休闲</description>
     </item>
     
     <item>
@@ -165,7 +165,7 @@
       <pubDate>Fri, 09 Oct 2020 12:19:05 -0400</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-003/</guid>
-      <description>文章 How we built a $1m ARR SaaS startup 创业分享 | Source Canny的创始人Sarah分享了他们达到一百万美元年度经常性收入（annual recurring revenue）这个指标。</description>
+      <description>文章 创业分享 | Source How we built a $1m ARR SaaS startup Canny的创始人Sarah分享了他们达到一百万美元年度经常性收入（annual recurring revenue）这个指标。</description>
     </item>
     
     <item>
@@ -174,7 +174,7 @@
       <pubDate>Fri, 02 Oct 2020 17:10:38 -0400</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-002/</guid>
-      <description>文章 Compact Nuclear Fusion Reactor Is ‘Very Likely to Work,’ Studies Suggest 科学报道 | Source MIT的Sparc项目信心满满地认为他们能控制核聚变，并使用核聚变，像太阳一样，制造</description>
+      <description>文章 科学报道 | Source Compact Nuclear Fusion Reactor Is ‘Very Likely to Work,’ Studies Suggest MIT的Sparc项目信心满满地认为他们能控制核聚变，并使用核聚变，像太阳一样，制造</description>
     </item>
     
     <item>
@@ -183,7 +183,7 @@
       <pubDate>Fri, 25 Sep 2020 17:10:38 -0400</pubDate>
       
       <guid>http://ftvision.github.io/digest/digest-001/</guid>
-      <description>文章 Birds do have a brain cortex—and think 神经科学 | Source 这篇Science评论从以下两篇Science文章出发，更新了我们对于鸟类的大脑结构和认知功</description>
+      <description>文章 神经科学 | Source Birds do have a brain cortex—and think 这篇Science评论从以下两篇Science文章出发，更新了我们对于鸟类的大脑结构和认知功</description>
     </item>
     
     <item>

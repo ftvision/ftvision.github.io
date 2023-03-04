@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>工作感想 on 思算</title>
+    <link>http://ftvision.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%84%9F%E6%83%B3/</link>
+    <description>Recent content in 工作感想 on 思算</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 01 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%84%9F%E6%83%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10000行C&#43;&#43;之后对C&#43;&#43;的思考</title>
+      <link>http://ftvision.github.io/blog/10k-cpp/</link>
+      <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://ftvision.github.io/blog/10k-cpp/</guid>
+      <description>从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，</description>
+    </item>
+    
+  </channel>
+</rss>

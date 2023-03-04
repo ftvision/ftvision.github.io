@@ -78,6 +78,61 @@
   </url>
   
   <url>
+    <loc>http://ftvision.github.io/en/categories/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://ftvision.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ftvision.github.io/en/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/tags/compsci/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/library/beyer_etal_2016/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/tags/sre/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/tags/sysadmin/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/tags/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://ftvision.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://ftvision.github.io/en/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/categories/white-paper/</loc>
+    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://ftvision.github.io/en/about/resume/</loc>
     <lastmod>2018-12-28T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -105,6 +160,31 @@
                 hreflang="en"
                 href="http://ftvision.github.io/en/about/resume_failure/"
                 />
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/tags/dnn/</loc>
+    <lastmod>2018-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/tags/ml/</loc>
+    <lastmod>2018-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/tags/plasticity/</loc>
+    <lastmod>2018-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/library/vogeslang_etal_sinha_2018/</loc>
+    <lastmod>2018-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/tags/psychology/</loc>
+    <lastmod>2018-12-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -138,30 +218,35 @@
   </url>
   
   <url>
-    <loc>http://ftvision.github.io/en/categories/</loc>
+    <loc>http://ftvision.github.io/en/tags/vision-science/</loc>
+    <lastmod>2017-03-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ftvision.github.io/en/blog/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/categories/"
+                href="http://ftvision.github.io/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/categories/"
+                href="http://ftvision.github.io/en/blog/"
                 />
   </url>
   
   <url>
-    <loc>http://ftvision.github.io/en/tags/</loc>
+    <loc>http://ftvision.github.io/en/digest/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/tags/"
+                href="http://ftvision.github.io/digest/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/tags/"
+                href="http://ftvision.github.io/en/digest/"
                 />
   </url>
   
