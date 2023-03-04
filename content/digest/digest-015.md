@@ -49,7 +49,9 @@ tags:
 * 服务之间可以提供动态的负载均衡（Dynamic load balancing and load shedding）（也就是说服务直接的Load Balancing可以通过检测其他服务的SLO来决定如何引导流量）
 * 容错（Graceful degradation）
 
-{{< digest-item "title"="Netflix's Context, Not Control: How Does it Work?" "source"="https://www.linkedin.com/pulse/netflixs-context-control-how-does-work-steve-urban/" "description"="公司文化" >}}
+{{< digest-item "source"="https://www.linkedin.com/pulse/netflixs-context-control-how-does-work-steve-urban/" "description"="公司文化" >}}
+### Netflix's Context, Not Control: How Does it Work?
+{{< /digest-item >}}
 
 这篇文章分享了Netflix的管理哲学，集中讨论了[Netflix的管理文化](https://jobs.netflix.com/culture)（也可以对比参见[这个Slide Deck](https://www.slideshare.net/reed2001/culture-1798664)）中提到的：**管理者应该给员工提供工作合适的情景而不是控制员工应该做什么**。我觉得有几个知识点是值得学习的。
 

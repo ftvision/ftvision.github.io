@@ -9,21 +9,29 @@ tags:
 
 ## 文章
 
-{{< digest-item "title"="How we built a $1m ARR SaaS startup" "source"="https://canny.io/blog/how-we-built-a-1m-arr-saas-startup/" "description"="创业分享" >}}
+{{< digest-item "source"="https://canny.io/blog/how-we-built-a-1m-arr-saas-startup/" "description"="创业分享" >}}
+### How we built a $1m ARR SaaS startup
+{{< /digest-item >}}
 
 Canny的创始人Sarah分享了他们达到一百万美元年度经常性收入（annual recurring revenue）这个指标。ARR似乎是评价订阅业务（包括SaaS）的关键指标[^1]，将定期订阅的合同经常性收入部分规范化为一年期的价值。整个团队在达到目标时一共七个人，都是远程工作。公司从零开始到达这个目标用了3年时间，而且都是用的自己的资金。Sarah将整个过程分成几个阶段，每个阶段都分享了需要解决的问题和学到的东西。而且他们一直在写博客，把他们的创业经历记录下来并分享给其他人。
 
 这个小公司的业务就是建立了一个集中用户反馈的模块。其他的开发者可以使用这个模块来帮助整理他们的产品所遇到的用户需求，并且对需求进行归类和排序。感觉这是一个非常有意思的Niche，解决了一个小问题，但是这个问题又确实是很多开发者会面对的。然后对这个小服务进行一定的收费。感觉在互联网发展的今天，其实机会还是蛮多的，只要把问题提出的好，然后提供一个不错的解决方法。
 
-{{< digest-item "title"="Python 3.9 What's New" "source"="https://docs.python.org/release/3.9.0/whatsnew/3.9.html/" "description"="语言更新" >}}
+{{< digest-item "source"="https://docs.python.org/release/3.9.0/whatsnew/3.9.html/" "description"="语言更新" >}}
+### Python 3.9 What's New
+{{< /digest-item >}}
 
 Python 3.9的更新目录。东西还挺多的！这是我第一次认真看某个语言的版本更新目录，暂时还没有时间仔细研究每个细节。新的`zoneinfo`和`graphlib.TopologicalSorter`类看起来挺有意思的。不过内容这么多，线性地跟着版本更新目录来了解可能有点难。可能还是的根据专题来了解。
 
-{{< digest-item "title"="改变世界的一次代码提交" "source"="https://hutusi.com/articles/the-greatest-git-commit#fn:3" "description"="博客文章" >}}
+{{< digest-item "source"="https://hutusi.com/articles/the-greatest-git-commit#fn:3" "description"="博客文章" >}}
+### 改变世界的一次代码提交
+{{< /digest-item >}}
 
 这篇文章介绍类一下Linus的第一个Git的Commit，然后分析了一下Git在设计上的一些思路。作为源码分析理解的文章还是不错的。
 
-{{< digest-item "title"="Salary Negotiation: Make More Money, Be More Valued" "source"="https://www.kalzumeus.com/2012/01/23/salary-negotiation/" "description"="博客文章" >}}
+{{< digest-item "source"="https://www.kalzumeus.com/2012/01/23/salary-negotiation/" "description"="博客文章" >}}
+### Salary Negotiation: Make More Money, Be More Valued
+{{< /digest-item >}}
 
 这是一篇关于工资谈判的文章。文章的主旨就是让应聘者在工资谈判上大胆一点。
 
@@ -62,7 +70,10 @@ Python 3.9的更新目录。东西还挺多的！这是我第一次认真看某�
 
 除了工资之外，整个薪资结构还有很多其他的组成成分，比如股票，比如期权，比如福利等。这些都可以作为谈判的一部分。
 
-{{< digest-item "title"="Software Archaeology" "source"="http://media.pragprog.com/articles/mar_02_archeology.pdf" "description"="会议文章" >}}
+{{< digest-item "source"="http://media.pragprog.com/articles/mar_02_archeology.pdf" "description"="会议文章" >}}
+### Software Archaeology
+{{< /digest-item >}}
+
 
 很多人都在讲怎么“写”代码，但是很少人讨论怎么“读”代码。实际上，工程师可能只花20%的时间写代码， 但是需要花80%的时间读代码。这篇文章讲了讲如何开始读代码。结合文章做的[Podcast](http://www.se-radio.net/2009/11/episode-148-software-archaeology-with-dave-thomas/)一起学习，效果更好。
 
@@ -86,21 +97,29 @@ Python 3.9的更新目录。东西还挺多的！这是我第一次认真看某�
 
 ## 网络学习
 
-{{< digest-item "title"="Learn & practice Git" "source"="https://gitexercises.fracz.com/" "description"="Git学习" >}}
+{{< digest-item "source"="https://gitexercises.fracz.com/" "description"="Git学习" >}}
+### Learn & practice Git
+{{< /digest-item >}}
 
 又是另一个Git教程。这年头Git教程真的是很多，但是各有各的特点，所以也挺不错的。这个教程用的是互动的方法，直接使用`git`来完成一系列的任务。我想起当年又一个用[游戏来教你Vim](https://vim-adventures.com/)的教程。大家都是在画各种心思来教大家怎么使用GIT这个工具。好的教程总是不嫌多的！
 
-{{< digest-item "title"="Startup Hiring 101: A Founder's Guide" "source"="https://www.notion.so/Startup-Hiring-101-A-Founder-s-Guide-946dad6dd9fd433abdd12338a83e931f/" "description"="创业分享" >}}
+{{< digest-item "source"="https://www.notion.so/Startup-Hiring-101-A-Founder-s-Guide-946dad6dd9fd433abdd12338a83e931f/" "description"="创业分享" >}}
+### Startup Hiring 101: A Founder's Guide
+{{< /digest-item >}}
 
 这是Gem的创始人写的一些列关于初创公司如何找人的文章。算是创业经验分享吧。如果对于创业期间招人应该如何进行完全没有头绪的话，可以快速扫一遍这一系列文章。但是这种文章最多也就是仅供参考了。
 
 ## 多媒体
 
-{{< digest-item "title"="Raycasting engine in Factorio 1.0 (unmodded) - Facto-RayO v2.0" "source"="https://www.youtube.com/watch?v=28UzqVz1r24/" "description"="游戏视频" >}}
+{{< digest-item "source"="https://www.youtube.com/watch?v=28UzqVz1r24/" "description"="游戏视频" >}}
+### Raycasting engine in Factorio 1.0 (unmodded) - Facto-RayO v2.0
+{{< /digest-item >}}
 
 这是一个用Factorio这个游戏直接实现了一个raycasting的功能。用游戏编写另一个游戏，编写另一个游戏，无限循环。只要有基本的元素、足够的耐心和巨大的规模，终究可以用任何信息载体实现另一个信息载体。
 
-{{< digest-item "title"="Simple Made Easy 2012 - Rich Hickey" "source"="https://www.youtube.com/watch?v=oytL881p-nQ" "description"="软件设计" >}}
+{{< digest-item "source"="https://www.youtube.com/watch?v=oytL881p-nQ" "description"="软件设计" >}}
+### Simple Made Easy 2012 - Rich Hickey
+{{< /digest-item >}}
 
 > Simplicity is prerequisite for reliability.
 > -- Edsgar Dijkstra
@@ -109,11 +128,15 @@ Python 3.9的更新目录。东西还挺多的！这是我第一次认真看某�
 
 ## 工具、技术、展示
 
-{{< digest-item "title"="ipdata" "source"="https://ipdata.co/" "description"="数据服务" >}}
+{{< digest-item "source"="https://ipdata.co/" "description"="数据服务" >}}
+### ipdata
+{{< /digest-item >}}
 
 IP data是一个提供IP数据的服务商，可以通过IP地址得到相关的地理位置信息，比如经纬度、国家省份等。
 
-{{< digest-item "title"="Calibre" "source"="https://calibre-ebook.com/" "description"="开源软件" >}}
+{{< digest-item "source"="https://calibre-ebook.com/" "description"="开源软件" >}}
+### Calibre
+{{< /digest-item >}}
 
 kitty终端的作者所写的另一个非常受欢迎的电子书管理软件。虽然用户界面比较粗糙，但是功能强大，而且广受好评。最近作者发布了[Calibra 5.0](https://calibre-ebook.com/new-in/fourteen)。
 

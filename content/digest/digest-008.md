@@ -23,8 +23,9 @@ Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我
 
 > A perfect implementation of the wrong specification is worthless. By the same principle a beautifully crafted library with no documentation is also damn near worthless.
 
-{{< digest-item "title"="The Log: What every software engineer should know about real-time data's unifying abstraction" "source"="https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying" "description"="技术博客" >}}
-
+{{< digest-item "source"="https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying" "description"="技术博客" >}}
+### The Log: What every software engineer should know about real-time data's unifying abstraction
+{{< /digest-item >}}
 这是一篇2013年的技术文章，讲述了分布式系统的各个组成成分中的Log怎么处理。文章实在是太长了，没有看完，之后再找时间继续读吧。
 
 {{< digest-item "source"="https://fs.blog/2020/10/why-life-cant-be-simpler" "description"="博客文章" >}}

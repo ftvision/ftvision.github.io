@@ -18,8 +18,9 @@ Facebook撰文介绍他们在全面推广使用[QUIC](https://quicwg.org/)作为
 
 另外，Facebook也写了一个自己的QUIC实现：[mvfst](https://github.com/facebookincubator/mvfst)。
 
-{{< digest-item "title"="AI pioneer Geoff Hinton: “Deep learning is going to be able to do everything”" "source"="https://www.technologyreview.com/2020/11/03/1011616/ai-godfather-geoffrey-hinton-deep-learning-will-do-everything/amp/" "description"="个人采访" >}}
-
+{{< digest-item "source"="https://www.technologyreview.com/2020/11/03/1011616/ai-godfather-geoffrey-hinton-deep-learning-will-do-everything/amp/" "description"="个人采访" >}}
+### "AI pioneer Geoff Hinton: “Deep learning is going to be able to do everything”
+{{< /digest-item >}}
 这篇最近对于Geoff Hinton的采访回顾了一下Hinton复兴这次神经网络的旅程，聊了一下他走上这条路的历史，以及他对于联接主义的信念。采访中问到了几个问题，Geoff Hinton的回答挺值得思考的。
 
 1. 深度网络能实现人类智能吗？
@@ -43,7 +44,6 @@ Facebook撰文介绍他们在全面推广使用[QUIC](https://quicwg.org/)作为
 这个观点真的非常有意思。
 
 {{< digest-item "source"="https://ihatecoordinatesystems.com/" "description"="知识网页" >}}
-
 ### I Hate Coordinate Systems!
 {{< /digest-item >}}
 
