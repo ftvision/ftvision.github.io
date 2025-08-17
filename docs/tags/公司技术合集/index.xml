@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>公司技术合集 on 思算</title>
-    <link>http://ftvision.github.io/tags/%E5%85%AC%E5%8F%B8%E6%8A%80%E6%9C%AF%E5%90%88%E9%9B%86/</link>
+    <link>http://localhost:1313/tags/%E5%85%AC%E5%8F%B8%E6%8A%80%E6%9C%AF%E5%90%88%E9%9B%86/</link>
     <description>Recent content in 公司技术合集 on 思算</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/tags/%E5%85%AC%E5%8F%B8%E6%8A%80%E6%9C%AF%E5%90%88%E9%9B%86/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E5%85%AC%E5%8F%B8%E6%8A%80%E6%9C%AF%E5%90%88%E9%9B%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CrowdCast.io技术博客</title>
-      <link>http://ftvision.github.io/digest/tech_blog_crowdcast_io/</link>
+      <link>http://localhost:1313/digest/tech_blog_crowdcast_io/</link>
       <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/tech_blog_crowdcast_io/</guid>
-      <description>CrowdCast.io的技术博客地址: https://crowdcast.io/blog/topic/code 整体印象 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，</description>
+      <guid>http://localhost:1313/digest/tech_blog_crowdcast_io/</guid>
+      <description>&lt;p&gt;CrowdCast.io的技术博客地址: &lt;a href=&#34;https://crowdcast.io/blog/topic/code&#34;&gt;https://crowdcast.io/blog/topic/code&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;整体印象&#34;&gt;整体印象&lt;/h2&gt;&#xA;&lt;p&gt;比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量的几个人在视频，然后把视频发送给成千上万的观众来看。比如演唱会，脱口秀等现场直播节目。同时Crowdcast又提供观众互动环节。他们的技术博客主要写的是如何更好地提供视频服务，以及在提供视频服务期间所遇到的技术问题。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

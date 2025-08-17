@@ -1,0 +1,227 @@
+{{ partial "head" . }}
+
+{{ partial "header" . }}
+
+<main>
+  <!-- Hero Section -->
+  <section class="py-16 lg:py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-6 tracking-tight">
+          Thinking as Algorithm
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 font-light leading-relaxed max-w-3xl mx-auto">
+          Exploring the algorithmic nature of thinking, documenting the intersection of technology and reflection
+        </p>
+      </div>
+      
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-light text-gray-900 dark:text-white mb-2">
+            {{ len (where .Site.RegularPages "Section" "blog") }}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">Blog Posts</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-light text-gray-900 dark:text-white mb-2">
+            {{ len (where .Site.RegularPages "Section" "digest") }}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">Digest</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-light text-gray-900 dark:text-white mb-2">
+            {{ len (where .Site.RegularPages "Section" "collection") }}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">Collections</div>
+        </div>
+        {{ if where .Site.RegularPages "Section" "library" }}
+        <div class="text-center">
+          <div class="text-3xl font-light text-gray-900 dark:text-white mb-2">
+            {{ len (where .Site.RegularPages "Section" "library") }}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">Library</div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Sections -->
+  <section class="py-16 border-t border-gray-100 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+        
+        <!-- Blog Posts -->
+        {{ $blogPosts := first 8 (where .Site.RegularPages "Section" "blog") }}
+        {{ if $blogPosts }}
+        <div>
+          <div class="mb-8">
+            <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 tracking-tight">
+              Latest Posts
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Recent thoughts and technical explorations
+            </p>
+          </div>
+          
+          <div class="space-y-6">
+            {{ range $blogPosts }}
+            <article class="group">
+              <time class="text-xs font-mono text-gray-500 dark:text-gray-400 tracking-wide block mb-2">
+                {{ .Date.Format "2006.01.02" }}
+              </time>
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug mb-2">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </h3>
+              {{ if .Summary }}
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {{ .Summary | truncate 100 }}
+              </p>
+              {{ end }}
+            </article>
+            {{ end }}
+          </div>
+          
+          <div class="mt-8 pt-6 border-t border-gray-100 dark:border-slate-800">
+            <a href="{{ "/blog" | relLangURL }}" class="text-sm font-mono text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 tracking-wide">
+              View all posts →
+            </a>
+          </div>
+        </div>
+        {{ end }}
+
+        <!-- Digest -->
+        {{ $digestPosts := first 8 (where .Site.RegularPages "Section" "digest") }}
+        {{ if $digestPosts }}
+        <div>
+          <div class="mb-8">
+            <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 tracking-tight">
+              Digest
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              Curated insights and quick thoughts
+            </p>
+          </div>
+          
+          <div class="space-y-6">
+            {{ range $digestPosts }}
+            <article class="group">
+              <time class="text-xs font-mono text-gray-500 dark:text-gray-400 tracking-wide block mb-2">
+                {{ .Date.Format "2006.01.02" }}
+              </time>
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </h3>
+            </article>
+            {{ end }}
+          </div>
+          
+          <div class="mt-8 pt-6 border-t border-gray-100 dark:border-slate-800">
+            <a href="{{ "/digest" | relLangURL }}" class="text-sm font-mono text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 tracking-wide">
+              View all digest →
+            </a>
+          </div>
+        </div>
+        {{ end }}
+
+        <!-- Collections & Library -->
+        <div>
+          <!-- Collections -->
+          {{ $collectionPosts := first 6 (where .Site.RegularPages "Section" "collection") }}
+          {{ if $collectionPosts }}
+          <div class="mb-12">
+            <div class="mb-8">
+              <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 tracking-tight">
+                Collections
+              </h2>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">
+                Organized resources and references
+              </p>
+            </div>
+            
+            <div class="space-y-6">
+              {{ range $collectionPosts }}
+              <article class="group">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug">
+                  <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h3>
+                {{ if .Summary }}
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-2">
+                  {{ .Summary | truncate 80 }}
+                </p>
+                {{ end }}
+              </article>
+              {{ end }}
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-100 dark:border-slate-800">
+              <a href="{{ "/collection" | relLangURL }}" class="text-sm font-mono text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 tracking-wide">
+                View all collections →
+              </a>
+            </div>
+          </div>
+          {{ end }}
+
+          <!-- Library -->
+          {{ $libraryPosts := first 6 (where .Site.RegularPages "Section" "library") }}
+          {{ if $libraryPosts }}
+          <div>
+            <div class="mb-8">
+              <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 tracking-tight">
+                Library
+              </h2>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">
+                Books and reading notes
+              </p>
+            </div>
+            
+            <div class="space-y-6">
+              {{ range $libraryPosts }}
+              <article class="group">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug">
+                  <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h3>
+                {{ if .Params.author }}
+                <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">
+                  by {{ .Params.author }}
+                </p>
+                {{ end }}
+              </article>
+              {{ end }}
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-100 dark:border-slate-800">
+              <a href="{{ "/library" | relLangURL }}" class="text-sm font-mono text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 tracking-wide">
+                View all books →
+              </a>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 lg:py-24 border-t border-gray-100 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="prose prose-lg dark:prose-dark max-w-none">
+        <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-light text-lg">
+          Welcome to my digital space where technology meets reflection. This blog explores the intersection of algorithmic thinking and human creativity, documenting thoughts, discoveries, and insights along the way.
+        </p>
+      </div>
+      
+      <div class="mt-8 flex justify-center space-x-8">
+        <a href="{{ "/about" | relLangURL }}" class="text-sm font-mono text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 border-b border-gray-200 dark:border-gray-700 pb-1 tracking-wide">
+          About
+        </a>
+        <a href="/" class="text-sm font-mono text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 border-b border-gray-200 dark:border-gray-700 pb-1 tracking-wide">
+          Language Selection
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{ partial "footer" . }} 

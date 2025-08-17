@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>视觉科学 on 思算</title>
-    <link>http://ftvision.github.io/tags/%E8%A7%86%E8%A7%89%E7%A7%91%E5%AD%A6/</link>
+    <link>http://localhost:1313/tags/%E8%A7%86%E8%A7%89%E7%A7%91%E5%AD%A6/</link>
     <description>Recent content in 视觉科学 on 思算</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 26 Mar 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/tags/%E8%A7%86%E8%A7%89%E7%A7%91%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 26 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E8%A7%86%E8%A7%89%E7%A7%91%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>100篇视觉研究文献</title>
-      <link>http://ftvision.github.io/collection/vision-100/</link>
+      <link>http://localhost:1313/collection/vision-100/</link>
       <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/vision-100/</guid>
-      <description>导言 这个《100篇视觉研究文献》列表是Yury Petrov博士2007年左右在东北大学任教时编纂的。原始网页现在已经失效了。我在这里转载了原</description>
+      <guid>http://localhost:1313/collection/vision-100/</guid>
+      <description>&lt;h2 id=&#34;导言&#34;&gt;导言&lt;/h2&gt;&#xA;&lt;p&gt;这个《100篇视觉研究文献》列表是Yury Petrov博士2007年左右在东北大学任教时编纂的。原始网页现在已经失效了。我在这里转载了原始网页的内容。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

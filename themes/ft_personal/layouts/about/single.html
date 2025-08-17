@@ -1,34 +1,57 @@
 {{ partial "head" . }}
 
-<!-- Header -->
 {{ partial "header" . }}
 
-<!-- Main Content-->
-<div class="mx-auto my-2 col-10 col-md-7 col-lg-6 col-xl-5" >
-
-  <!-- Navigation -->
-  <div class="p-2">
-    <nav aria-label="Breadcrumb">
-      <ol>
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item"><a href="/{{.Section}}">{{ .Section }}</a></li>
-        <li class="breadcrumb-item" aria-current="page"> {{ .Title }}</li>
+<main class="min-h-screen bg-white dark:bg-slate-900">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Breadcrumb -->
+    <nav class="mb-8" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        <li><a href="/" class="hover:text-gray-900 dark:hover:text-white transition-colors duration-200">Home</a></li>
+        <li class="flex items-center">
+          <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+          </svg>
+          <a href="/{{ .Section }}" class="hover:text-gray-900 dark:hover:text-white transition-colors duration-200">{{ .Section | title }}</a>
+        </li>
+        <li class="flex items-center">
+          <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+          </svg>
+          <span class="text-gray-900 dark:text-white">{{ .Title }}</span>
+        </li>
       </ol>
     </nav>
 
-    <h1>{{.Title}}</h1>
-    <div>
+    <!-- Article Header -->
+    <header class="mb-16">
+      <h1 class="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-8 tracking-tight">
+        {{ .Title }}
+      </h1>
+      
+      <!-- Language Switch -->
       {{ if .IsTranslated }}
-      <strong>Also in:</strong>
+      <div class="mb-8">
+        <span class="text-sm text-gray-500 dark:text-gray-400 mr-3">
+          {{ if eq .Site.Language.Lang "zh" }}其他语言:{{ else }}Also in:{{ end }}
+        </span>
         {{ range .Translations }}
-        <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
-        {{ end }}
+        <a href="{{ .Permalink }}" class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 border-b border-gray-200 dark:border-gray-700 pb-1 mr-4">
+          {{ .Language.LanguageName }}
+        </a>
         {{ end }}
       </div>
-  </div>
-  <div class="markdown-body p-2">
-  {{ .Content }}
-  </div>
+      {{ end }}
+    </header>
 
-</div>
+    <!-- Article Content -->
+    <article class="prose prose-lg dark:prose-dark max-w-none">
+      <div class="text-gray-600 dark:text-gray-400 leading-relaxed">
+        {{ .Content }}
+      </div>
+    </article>
+  </div>
+</main>
+
+{{ partial "footer" . }}
 

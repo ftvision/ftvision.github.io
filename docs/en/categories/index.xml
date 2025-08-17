@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Thinking as Algorithm</title>
-    <link>http://ftvision.github.io/en/categories/</link>
+    <link>http://localhost:1313/en/categories/</link>
     <description>Recent content in Categories on Thinking as Algorithm</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 21 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 03 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>http://localhost:1313/en/categories/ai/</link>
+      <pubDate>Sun, 03 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/categories/ai/</guid>
+      <description></description>
+    </item>
     <item>
       <title>White Paper</title>
-      <link>http://ftvision.github.io/en/categories/white-paper/</link>
+      <link>http://localhost:1313/en/categories/white-paper/</link>
       <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/en/categories/white-paper/</guid>
+      <guid>http://localhost:1313/en/categories/white-paper/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>workplace</title>
-      <link>http://ftvision.github.io/en/categories/workplace/</link>
+      <title>Workplace</title>
+      <link>http://localhost:1313/en/categories/workplace/</link>
       <pubDate>Sat, 04 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/en/categories/workplace/</guid>
+      <guid>http://localhost:1313/en/categories/workplace/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>科普 on 思算</title>
-    <link>http://ftvision.github.io/tags/%E7%A7%91%E6%99%AE/</link>
+    <link>http://localhost:1313/tags/%E7%A7%91%E6%99%AE/</link>
     <description>Recent content in 科普 on 思算</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 26 Mar 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/tags/%E7%A7%91%E6%99%AE/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>zh</language>
+    <lastBuildDate>Sun, 26 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E7%A7%91%E6%99%AE/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>过往的心理学科普写作</title>
-      <link>http://ftvision.github.io/collection/psych-writing/</link>
+      <link>http://localhost:1313/collection/psych-writing/</link>
       <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/psych-writing/</guid>
-      <description>这个集合收集了我写的一些心理学的科普文章。很多文章是我在博士期间，在我的知乎专栏上写得。这些文章一方面是为了我自己练习写作，另一方面是为了帮</description>
+      <guid>http://localhost:1313/collection/psych-writing/</guid>
+      <description>&lt;div class=&#34;flash flash-full flash-success my-2&#34;&gt;&#xA;    这个集合收集了我写的一些心理学的科普文章。很多文章是我在博士期间，在我的知乎专栏上写得。这些文章一方面是为了我自己练习写作，另一方面是为了帮助我整理思路。&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;h2 id=&#34;观点讨论&#34;&gt;观点讨论&lt;/h2&gt;&#xA;&lt;p&gt;在不讨论专题的时候，有一些不太能一下子讲明白的事情倒是适合泛泛而谈。这包括学术日常生活，心理学是什么，如何学习心理学之类的内容。当然，我并没有教科书或者课程表之类的东西。资源列表的话，也暂时没有足够的内容。所以，就偶尔讨论一些普通话题吧。这个列表的文章可能没有参考文献，个人观点也比较重，仅供参考，欢迎讨论。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>软件开发 on 思算</title>
-    <link>http://ftvision.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/</link>
+    <link>http://localhost:1313/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/</link>
     <description>Recent content in 软件开发 on 思算</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 01 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 01 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>10000行C&#43;&#43;之后对C&#43;&#43;的思考</title>
-      <link>http://ftvision.github.io/blog/10k-cpp/</link>
+      <link>http://localhost:1313/blog/10k-cpp/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/blog/10k-cpp/</guid>
-      <description>从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，</description>
+      <guid>http://localhost:1313/blog/10k-cpp/</guid>
+      <description>&lt;p&gt;从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，使用C++其实也只是用其中C的子集，甚至可以说是用一个Visual Studio来编译&lt;code&gt;cpp&lt;/code&gt;后缀名的c文件。过去半年就大不一样，代码库是真材实料的C++，而且很多还是C++11的风格和语法。所以，我最多算一个0.5起点的C++程序员。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>10000行代码后对软件工程的思考</title>
-      <link>http://ftvision.github.io/blog/10k-code/</link>
+      <link>http://localhost:1313/blog/10k-code/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/blog/10k-code/</guid>
-      <description>第一个10,000行代码是在工作的头半年里面写完的，其中绝大部分是C++代码，而C++代码中大部分是在重构某个工具。这里就说一说我在写这10</description>
+      <guid>http://localhost:1313/blog/10k-code/</guid>
+      <description>&lt;p&gt;第一个10,000行代码是在工作的头半年里面写完的，其中绝大部分是C++代码，而C++代码中大部分是在重构某个工具。这里就说一说我在写这10,000行代码的过程中学到的软件工程的一些知识：包括设计、测试、遗留代码、代码审查、版本控制。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

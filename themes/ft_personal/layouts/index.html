@@ -1,93 +1,53 @@
 {{ partial "head" . }}
 
-<!-- Header -->
-<!-- {{ partial "header" . }} -->
+<main>
+  <!-- Hero Section -->
+  <div class="relative py-32 lg:py-40 bg-white dark:bg-slate-900">
+    <div class="hidden md:block absolute right-0 top-0 h-full border-r border-gray-200 dark:border-slate-800"></div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-6xl md:text-8xl font-light text-gray-900 dark:text-white mb-8 tracking-tight">
+        思算
+      </h1>
+      <p class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-20 font-light tracking-wide">
+        Thinking as Algorithm
+      </p>
+      
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-24 max-w-2xl leading-relaxed">
+        探索思维的算法本质，记录技术与思考的交汇点<br class="hidden sm:block">
+        Exploring the algorithmic nature of thinking
+      </p>
 
-
-<div class="mx-auto my-4 col-10 col-md-8 col-lg-7 col-xl-5">
-  <div class="text-gray-dark py-4 my-2">
-    <h1 class="h0-mktg text-serif">思算 ｜ Thinking as Algorithm
-      <span class="Label Label--gray-darker ml-1" title="Label: Dark gray">
-        <a href="/en"><i class="fas fa-arrow-right"></i> Switch to English</a></span>
-    </h1>
-
-    <div class="my-2 flash flash-full">
-      <span>是的，这次博客又被完全推翻重来了。从Jekyll换到了Hugo，发现Hugo还蛮好用的。老实说，我现在也没有完全想清楚我到底想写些什么，这个博客或许是写给我自己看的，也或许是写给某些读者的。</span>
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-24 max-w-2xl leading-relaxed">
+        by <a href="/about" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200">Feitong Yang</a>
+      </p>
     </div>
-
-  </div>
-  <div>
-    <!-- Blog Section Latest-->
-    <p>Latest</p>
-    <section>
-      <div class="bg-gray-dark pt-1 width-full"></div>
-      <div class="d-flex flex-column flex-sm-row">
-        <div class="col-12 col-sm-4">
-          <h2 class="text-mono">博客</h2>
-        </div>
-        <div class="col-12 col-sm-8">
-          {{ range first 5  (where .Site.RegularPages "Section" "blog")  }}
-          <div class="border-bottom py-1">
-            <span class="text-mono">{{ .Params.Date.Format "2006-01-02"}}</span>
-            <a href="{{ .Permalink | relURL }}" title="{{ .Title }}"> <strong class="px-2">{{ .Title }}</strong></a>
-          </div>
-          {{ end }}
-        </div>
-    </section>
-
-    <!-- Digest Latest-->
-    <section>
-      <div class="bg-gray-dark pt-1 width-full"></div>
-      <div class="d-flex flex-column flex-sm-row">
-        <div class="col-12 col-sm-4">
-          <h2 class="text-mono">文摘</h2>
-        </div>
-        <div class="col-12 col-sm-8">
-          {{ range first 5  (where .Site.RegularPages "Section" "digest")  }}
-          <div class="border-bottom py-1">
-            <span class="text-mono">{{ .Params.Date.Format "2006-01-02"}}</span>
-            <a href="{{ .Permalink | relURL }}" title="{{ .Title }}"> <strong class="px-2">{{ .Title }}</strong></a>
-          </div>
-          {{ end }}
-        </div>
-    </section>
-
-    <!-- Digest Latest-->
-    <section>
-      <div class="bg-gray-dark pt-1 width-full"></div>
-      <div class="d-flex flex-column flex-sm-row">
-        <div class="col-12 col-sm-4">
-          <h2 class="text-mono">书架</h2>
-        </div>
-        <div class="col-12 col-sm-8">
-          {{ range first 5  (where .Site.RegularPages "Section" "library")  }}
-          <div class="border-bottom py-1">
-            <span class="text-mono">{{ .Params.Date.Format "2006-01-02"}}</span>
-            <a href="{{ .Permalink | relURL }}" title="{{ .Title }}"> <strong class="px-2">{{ .Title }}</strong></a>
-          </div>
-          {{ end }}
-        </div>
-    </section>
-
-     <!-- Digest Latest-->
-     <section>
-      <div class="bg-gray-dark pt-1 width-full"></div>
-      <div class="d-flex flex-column flex-sm-row">
-        <div class="col-12 col-sm-4">
-          <h2 class="text-mono">集子</h2>
-        </div>
-        <div class="col-12 col-sm-8">
-          {{ range first 5  (where .Site.RegularPages "Section" "collection")  }}
-          <div class="border-bottom py-1">
-            <span class="text-mono">{{ .Params.Date.Format "2006-01-02"}}</span>
-            <a href="{{ .Permalink | relURL }}" title="{{ .Title }}"> <strong class="px-2">{{ .Title }}</strong></a>
-          </div>
-          {{ end }}
-        </div>
-    </section>
-
-
   </div>
 
-</div>
-</div>
+  <!-- Recent Posts (ZH) -->
+  <div class="py-16 lg:py-24 border-t border-gray-100 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-8 tracking-tight">最近文章</h2>
+      {{ $lang := .Site.Language.Lang }}
+      {{ $posts := first 10 (where (where .Site.RegularPages "Section" "blog") "Lang" $lang) }}
+      {{ if $posts }}
+      <ul class="divide-y divide-gray-100 dark:divide-slate-800 border-t border-gray-100 dark:border-slate-800">
+        {{ range $posts }}
+        <li class="py-3">
+          <div class="flex items-baseline justify-between gap-4">
+            <a href="{{ .Permalink }}" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{{ .Title }}</a>
+            <time class="text-xs font-mono text-gray-500 dark:text-gray-400 tracking-wide">{{ .Date.Format "2006.01.02" }}</time>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+      <div class="mt-10">
+        <a href="{{ "/blog" | relLangURL }}" class="text-sm font-mono text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 tracking-wide">查看全部 →</a>
+      </div>
+      {{ else }}
+      <p class="text-gray-600 dark:text-gray-400">暂无文章。</p>
+      {{ end }}
+    </div>
+  </div>
+  
+  <!-- Footer spacer -->
+</main>

@@ -1,235 +1,201 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>思算</title>
-    <link>http://ftvision.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on 思算</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 23 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>zh</language>
+    <lastBuildDate>Tue, 02 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CrowdCast.io技术博客</title>
-      <link>http://ftvision.github.io/digest/tech_blog_crowdcast_io/</link>
+      <link>http://localhost:1313/digest/tech_blog_crowdcast_io/</link>
       <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/tech_blog_crowdcast_io/</guid>
-      <description>CrowdCast.io的技术博客地址: https://crowdcast.io/blog/topic/code 整体印象 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，</description>
+      <guid>http://localhost:1313/digest/tech_blog_crowdcast_io/</guid>
+      <description>&lt;p&gt;CrowdCast.io的技术博客地址: &lt;a href=&#34;https://crowdcast.io/blog/topic/code&#34;&gt;https://crowdcast.io/blog/topic/code&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;整体印象&#34;&gt;整体印象&lt;/h2&gt;&#xA;&lt;p&gt;比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量的几个人在视频，然后把视频发送给成千上万的观众来看。比如演唱会，脱口秀等现场直播节目。同时Crowdcast又提供观众互动环节。他们的技术博客主要写的是如何更好地提供视频服务，以及在提供视频服务期间所遇到的技术问题。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>简历</title>
-      <link>http://ftvision.github.io/about/resume/</link>
+      <link>http://localhost:1313/about/resume/</link>
       <pubDate>Tue, 02 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/about/resume/</guid>
-      <description>联系方式 Email: feitong.yang@outlook.com 工作经验 公司 地址 工作职位 时间 Citadel New York, NY, U.S.A. 软件工程师 2021/6 至今 Google Cambridge, MA, U.S.A. 软件工程师 2018/7 - 2021/05 Akuna Capital Chicago, IL, U.S.A. 实习量化交易员 2017/6-2017/8 Sparkypants Studios Baltimore, Maryland, U.S.A. 实习C++程序</description>
+      <guid>http://localhost:1313/about/resume/</guid>
+      <description>&lt;h2 id=&#34;联系方式&#34;&gt;联系方式&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:feitong.yang@outlook.com&#34;&gt;feitong.yang@outlook.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;工作经验&#34;&gt;工作经验&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;公司&lt;/th&gt;&#xA;          &lt;th&gt;地址&lt;/th&gt;&#xA;          &lt;th&gt;工作职位&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;时间&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;em&gt;Citadel&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;New York, NY, U.S.A.&lt;/td&gt;&#xA;          &lt;td&gt;软件工程师&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2021/6 至今&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;em&gt;Google&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Cambridge, MA, U.S.A.&lt;/td&gt;&#xA;          &lt;td&gt;软件工程师&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2018/7 - 2021/05&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;em&gt;Akuna Capital&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Chicago, IL, U.S.A.&lt;/td&gt;&#xA;          &lt;td&gt;实习量化交易员&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2017/6-2017/8&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;em&gt;Sparkypants Studios&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;Baltimore, Maryland, U.S.A.&lt;/td&gt;&#xA;          &lt;td&gt;实习C++程序员&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2016/5 - 2016/8&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;教育背景&#34;&gt;教育背景&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;学位教育&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Johns Hopkins University&lt;/strong&gt;, Baltimore, Maryland, U.S.A. &lt;br/&gt; &lt;strong&gt;Ph.D.&lt;/strong&gt; Cognitive Psychology&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2013/9 – 2018/6&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Johns Hopkins University&lt;/strong&gt;, Baltimore, Maryland, U.S.A. &lt;br/&gt; &lt;strong&gt;M.S.E &lt;/strong&gt; Applied Mathematics and Statistics&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2017/2 - 2018/6&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Johns Hopkins University&lt;/strong&gt;, Baltimore, Maryland, U.S.A. &lt;br/&gt; &lt;strong&gt;M.A.&lt;/strong&gt; Cognitive Psychology&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2013/9 – 2015/6&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Peking University&lt;/strong&gt;, Beijing, China &lt;br /&gt; &lt;strong&gt;B.Sc.&lt;/strong&gt; Experimental Psychology&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2008/9 – 2012/7&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;研究经验&#34;&gt;研究经验&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;&lt;strong&gt;暑期训练&lt;/strong&gt;&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;em&gt;Brains, Minds &amp;amp; Machines Summer Course&lt;/em&gt;  &lt;br /&gt; &lt;strong&gt;Marine Biological Laboratory&lt;/strong&gt;, Woods Hole, MA. U.S.A &lt;br /&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2017/8 - 2017/9&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;em&gt;Computational and Cognitive Neuroscience Summer School&lt;/em&gt; &lt;br /&gt; &lt;strong&gt;Cold Spring Harbor Asia&lt;/strong&gt;, Beijing, China &lt;br /&gt; Organizer: Xiao-Jing Wang, Si Wu, Upinder S. Bhalla, Zachary F. Mainen&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2013/7&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;em&gt;Computational Neuroscience Summer School&lt;/em&gt; &lt;br /&gt; &lt;strong&gt;University of Pennsylvania&lt;/strong&gt;, Philadelphia, PA, U.S.A &lt;br /&gt; &lt;strong&gt;Advisor&lt;/strong&gt;: Geoffrey Aguirre &lt;br /&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;2011/6 - 2011/8&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;&lt;strong&gt;论文发表&lt;/strong&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Gong, M., &lt;strong&gt;Yang, F.,&lt;/strong&gt; &amp;amp; Li, S. (2016). Reward association facilitates distractor suppression in human visual search. European Journal of Neuroscience.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Yang, F.,&lt;/strong&gt; Wu. Q., &amp;amp; Li. S., (2014), Learning-induced uncertainty reduction in perceptual decisions is task-dependent, &lt;em&gt;Frontiers in Human Neuroscience&lt;/em&gt;, 8, 282&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Li. S., &amp;amp; &lt;strong&gt;Yang, F.,&lt;/strong&gt; (2012), Task‐dependent uncertainty modulation of perceptual decisions in the human brain, &lt;em&gt;European Journal of Neuroscience&lt;/em&gt;, 36(12), 3732-3739&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;&lt;strong&gt;学术演讲&lt;/strong&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Yang, F.,&lt;/strong&gt; &amp;amp; Flombaum, J., (2018) Polar coordinates as the format of spatial representation in visual perception, Vision Science Society, 2018, St. Pete, FL.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Yang, F.,&lt;/strong&gt; &amp;amp; Li, S., (2011) Asymmetrical Transfer of Learning Effects between Signal-based and Criterion-based Task Uncertainties in Perceptual Decision, The 7th Asia-Pacific Conference on Vision, Hong Kong.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;&lt;strong&gt;研究海报&lt;/strong&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Yang, F.,&lt;/strong&gt; &amp;amp; Flombaum, J. I., (2015) Statistical Learning without Attention, Vision Science Society Meeting 2015, St. Pete, FL.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Yang, F.,&lt;/strong&gt; &amp;amp; Flombaum, J. I., (2014) Ponzo inducers in the working memory produce Illusory line length perception, Vision Science Society Meeting 2014, St. Pete, FL.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Prasad, S., &lt;strong&gt;Yang, F.,&lt;/strong&gt; Butt, O., Brandes, L., Datta, R., Thomas, A., &amp;amp; Aguirre, G., (2012) Occipital Areas Distinguish Semantic Content in Congenitally Blind but Not Sighted Individuals. Neurology 2012; 78, P02.018.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Yang, F.,&lt;/strong&gt; &amp;amp; Li, S., (2011) Learning of Uncertain Stimuli Transfers from Criterion-Based to Noise-Based Perceptual Decision, But Not Vice Versa, Vision Science Society Meeting 2011, Naples, FL.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Li, S., &amp;amp; &lt;strong&gt;Yang, F.,&lt;/strong&gt; (2010) Learning of Perceptual Judgment under Criterion-based and Noise-based Uncertainties, Society for Neuroscience Annual Meeting 2010, San Diego, CA.&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;&lt;strong&gt;基金与奖项&lt;/strong&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Robert S. and Dorothy L. Waldrop Graduate Fellowship, Johns Hopkins University&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;National University Student Innovation Program, Peking University&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Student Travel Award, the 7th Asia-Pacific Conference on Vision&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Undergraduate Research Grants at Department of Psychology, Peking University&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;Excellence in Academic Study Award, Peking University&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;First Prize, National Olympiad in Informatics Contest in China&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;教授课程&#34;&gt;教授课程&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;课程&lt;/th&gt;&#xA;          &lt;th&gt;时间&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Introduction to Cognitive Psychology&lt;/strong&gt;, Dr. Jonanthon Flombaum &lt;br&gt; &lt;strong&gt;As a Teaching Assistant.&lt;/strong&gt; &lt;br&gt; &lt;em&gt;This course introduced cognitive psychology from the functionalist&amp;rsquo;s point of view.&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;2017 Spring&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Unconscious Computations in Mind&lt;/strong&gt;, &lt;br&gt; &lt;strong&gt;As an Instructor.&lt;/strong&gt; &lt;br&gt; &lt;em&gt;In this course, I taught about visual awareness, attention, decision making, and learning.&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;2016 Intersession&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Research Method&lt;/strong&gt;, Dr. Howard Egeth &lt;br&gt; &lt;strong&gt;As an Instructor.&lt;/strong&gt; &lt;br&gt;&lt;em&gt;This course teaches undergradutes how to conduct scientific research, analyze data, and write an APA-style paper&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;2015 Fall&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Functional Human Neuroanatomy&lt;/strong&gt;, Dr. Susan Courtney &lt;br&gt; &lt;strong&gt;As a Teaching Assistant.&lt;/strong&gt; &lt;br&gt; &lt;em&gt;This course discussed about neuroanatomy from the perspective of cognitive function.&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;2015 Spring&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Unconscious Computations in Mind&lt;/strong&gt;, &lt;br&gt; &lt;strong&gt;As an Instructor.&lt;/strong&gt; &lt;br&gt; &lt;em&gt;Every intersession, I offer this introductory course on unconscious computations in mind&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;2015 Intersession&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Mind, Brain &amp;amp; Experience&lt;/strong&gt;, Dr. Marina Bedny &lt;br&gt; &lt;strong&gt;As a Teaching Assistant.&lt;/strong&gt; &lt;br&gt; &lt;em&gt;This course discussed about brain plasticity, cognitive development, and core knowledge.&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;2014 Fall&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Neuroscience of Decision Making&lt;/strong&gt;, Dr. Veit Stuphorn &lt;br&gt; &lt;strong&gt;As a Teaching Assistant.&lt;/strong&gt; &lt;br&gt;  &lt;em&gt;This course discussed about human learning and decision making process.&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;2014 Spring&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Computational Vision&lt;/strong&gt;, Dr. Zili Liu &lt;br&gt;  &lt;strong&gt;As a Teaching Assistant.&lt;/strong&gt; &lt;br&gt; &lt;em&gt;This course covered basic computational problems and algorithms in vision.&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;2012 Fall&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;&lt;strong&gt;Functional Anatomy of Central Nervous System&lt;/strong&gt;, Dr. Yanjie Su &lt;br&gt; &lt;strong&gt;As a Teaching Assistant.&lt;/strong&gt; &lt;br&gt; &lt;em&gt;This course offered a general knowledge of human central nervous system.&lt;/em&gt;&lt;/td&gt;&#xA;          &lt;td&gt;2011 Spring&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
     </item>
-    
     <item>
       <title>Digest 017</title>
-      <link>http://ftvision.github.io/digest/digest-017/</link>
+      <link>http://localhost:1313/digest/digest-017/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-017/</guid>
-      <description>文章 行业研究 | Source EState Of Javascript 2020 这是一个关于2020年Javascript行业内的问卷调查，询问和总结了开发者的开发经验，喜爱的开发环境和工具，以及</description>
+      <guid>http://localhost:1313/digest/digest-017/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    行业研究 | &lt;a href=&#34;https://2020.stateofjs.com/en-US/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### EState Of Javascript 2020&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;这是一个关于2020年Javascript行业内的问卷调查，询问和总结了开发者的开发经验，喜爱的开发环境和工具，以及对于行业发展的开发。整个调查结果是以互动的方式展现出来的，我也学到了不是新东西。前端开发真的是越来越复杂了。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 016</title>
-      <link>http://ftvision.github.io/digest/digest-016/</link>
+      <link>http://localhost:1313/digest/digest-016/</link>
       <pubDate>Sat, 09 Jan 2021 23:54:11 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-016/</guid>
-      <description>文章 机器学习 | Source DALL·E: Creating Images from Text OpenAI介绍了最近在语言转图像的工作。效果看起来是挺不错的，因为通过语言产生的图片看起来已经比较合</description>
+      <guid>http://localhost:1313/digest/digest-016/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    机器学习 | &lt;a href=&#34;https://openai.com/blog/dall-e/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### DALL·E: Creating Images from Text&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;OpenAI介绍了最近在语言转图像的工作。效果看起来是挺不错的，因为通过语言产生的图片看起来已经比较合理了。挺有意思的一个工作。另外，Open AI写得互动文章解释真的是做的很不错。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 015</title>
-      <link>http://ftvision.github.io/digest/digest-015/</link>
+      <link>http://localhost:1313/digest/digest-015/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-015/</guid>
-      <description>文章 这一周主要是看了一些DevOps和SRE的文章和视频。有一些是从SRE Weekly那里看到的。平时在工作的过程中学到了很多SRE相关的知</description>
+      <guid>http://localhost:1313/digest/digest-015/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;p&gt;这一周主要是看了一些DevOps和SRE的文章和视频。有一些是从&lt;a href=&#34;https://sreweekly.com/&#34;&gt;SRE Weekly&lt;/a&gt;那里看到的。平时在工作的过程中学到了很多SRE相关的知识，本来以为蛮平常的，但是后来才发现这些概念在公司以外的地方还没有扩展开来。通过公司外的人来写SRE/DevOps相关的内容可以学习其他人和公司是怎么看待和实践相关的知识的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 014</title>
-      <link>http://ftvision.github.io/digest/digest-014/</link>
+      <link>http://localhost:1313/digest/digest-014/</link>
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-014/</guid>
-      <description>文章 科普报道 | Source Reading, That Strange and Uniquely Human Thing 这是一篇关于人类阅读和文字发展历史的文章。非常典型的美国式科普叙事结构——针对一个特定的人来叙述一件特定事，然</description>
+      <guid>http://localhost:1313/digest/digest-014/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    科普报道 | &lt;a href=&#34;http://nautil.us/issue/94/evolving/reading-that-strange-and-uniquely-human-thing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Reading, That Strange and Uniquely Human Thing&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;这是一篇关于人类阅读和文字发展历史的文章。非常典型的美国式科普叙事结构——针对一个特定的人来叙述一件特定事，然后从这个个案展开来讲整个文章要探讨的问题，最后又回到这个特定的人/事上作为结尾。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 013</title>
-      <link>http://ftvision.github.io/digest/digest-013/</link>
+      <link>http://localhost:1313/digest/digest-013/</link>
       <pubDate>Sun, 13 Dec 2020 23:15:42 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-013/</guid>
-      <description>文章 博客文章 | Source 编写一个最小的 64 位 Hello World 这是CJTing的一篇新文章，从最简单的C语言Hello World程序出发，逐层剖析，解释了这个最简单</description>
+      <guid>http://localhost:1313/digest/digest-013/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    博客文章 | &lt;a href=&#34;https://cjting.me/2020/12/10/tiny-x64-helloworld/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### 编写一个最小的 64 位 Hello World&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;这是CJTing的一篇新文章，从最简单的C语言Hello World程序出发，逐层剖析，解释了这个最简单的程序从编译到运行各个阶段的底层知识。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 012</title>
-      <link>http://ftvision.github.io/digest/digest-012/</link>
+      <link>http://localhost:1313/digest/digest-012/</link>
       <pubDate>Sat, 05 Dec 2020 23:33:06 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-012/</guid>
-      <description>文章 博客文章 | Source Cemetery of Soviet computers 这篇文章带着大家浏览了苏联70年代、80年代、90年代的几个计算机机型。很多机型可以看到美国PDP机型的影子，不过这</description>
+      <guid>http://localhost:1313/digest/digest-012/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;p&gt;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    博客文章 | &lt;a href=&#34;https://rusue.com/cemetery-of-soviet-computers/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Cemetery of Soviet computers&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;这篇文章带着大家浏览了苏联70年代、80年代、90年代的几个计算机机型。很多机型可以看到美国PDP机型的影子，不过这些苏联机型的实体样子在互联网上比较少见。看完这些照片，其实感觉可以做成赛博朋克的样子。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 011</title>
-      <link>http://ftvision.github.io/digest/digest-011/</link>
+      <link>http://localhost:1313/digest/digest-011/</link>
       <pubDate>Sat, 05 Dec 2020 12:16:30 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-011/</guid>
-      <description>文章 不同人生 | Source This is Real. That&amp;rsquo;s Not. 作者写了自己从一个上层家庭出身变成一个无家可归的流浪者的过程中所体验到的世间百态。作者说自己以前以为这个世界人们都</description>
+      <guid>http://localhost:1313/digest/digest-011/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    不同人生 | &lt;a href=&#34;https://streetlifesolutions.blogspot.com/2020/12/this-is-real-thats-not.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### This is Real. That&#39;s Not.&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;作者写了自己从一个上层家庭出身变成一个无家可归的流浪者的过程中所体验到的世间百态。作者说自己以前以为这个世界人们都互相友爱，为人善良。结果沦为流浪者之后才发现这个世界充满了恶意，尤其是别人对于自己认为”卑贱“的人的恶意。作者经历过的最糟糕的欺辱是来自看起来受过高等教育或者家庭出身好的几个人的。这篇文章想告诉那些生活在“温室里”的人们：“你们现在认为理所当然的一切，都不是理所当然的。你们以后好的教育、好的家庭就能获得富足的生活；但是我想告诉你们，好的教育，好的家庭，也可能沦为无家可归的流浪者。”这篇文章写得挺好的，值得细细品味。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 010</title>
-      <link>http://ftvision.github.io/digest/digest-010/</link>
+      <link>http://localhost:1313/digest/digest-010/</link>
       <pubDate>Fri, 27 Nov 2020 09:46:06 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-010/</guid>
-      <description>文章 经验分享 | Source Eight years at Roblox 作者介绍了他在Roblox工作八年的经历和大大小小的各种项目。从作者的项目可以看出一部分Roblox系统的演化的过程</description>
+      <guid>http://localhost:1313/digest/digest-010/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    经验分享 | &lt;a href=&#34;https://zeux.io/2020/08/02/eight-years-at-roblox/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Eight years at Roblox&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;作者介绍了他在Roblox工作八年的经历和大大小小的各种项目。从作者的项目可以看出一部分Roblox系统的演化的过程，以及Roblox一直遇到的挑战，比如外挂、性能要求、和底层引擎的改变。 HackerNews关于这篇文章的讨论也挺有意思的，其中好几个家长提到自己2-4岁的小孩都在玩Roblox，还有几个人说10岁以下的小孩几乎都知道Roblox。这个信息跟之前关于Roblox上市的讨论中提到的信息是很相似的。看起来Roblox还是蛮有前途的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 009</title>
-      <link>http://ftvision.github.io/digest/digest-009/</link>
+      <link>http://localhost:1313/digest/digest-009/</link>
       <pubDate>Fri, 20 Nov 2020 09:46:06 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-009/</guid>
-      <description>文章 博客文章 | Source End Micromanagement: 6 Signs You’re a Micromanager (And What to Do Instead) Micromanagement就是作为经理，对员工什么鸡毛蒜皮的小事都要管一管。这篇文章讲</description>
+      <guid>http://localhost:1313/digest/digest-009/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    博客文章 | &lt;a href=&#34;https://unito.io/blog/micromanagement-signs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### End Micromanagement: 6 Signs You’re a Micromanager (And What to Do Instead)&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Micromanagement就是作为经理，对员工什么鸡毛蒜皮的小事都要管一管。这篇文章讲了几个常见的micromanagement的表现：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 008</title>
-      <link>http://ftvision.github.io/digest/digest-008/</link>
+      <link>http://localhost:1313/digest/digest-008/</link>
       <pubDate>Fri, 13 Nov 2020 09:46:06 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-008/</guid>
-      <description>文章 经验分享 | Source I sold Baremetrics Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我第一次知道这个公司，但是整个文章把这个决定</description>
+      <guid>http://localhost:1313/digest/digest-008/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;p&gt;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    经验分享 | &lt;a href=&#34;https://baremetrics.com/blog/i-sold-baremetrics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### I sold Baremetrics&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我第一次知道这个公司，但是整个文章把这个决定的过程说得很清楚，很透明。作为局外人，我还是很感谢有人把这个写出来的。整个公司10个人，1000多个用户，售价4百万美元，创始人可以拿走370万美元，剩下30万分给了9个员工，而早期投资了80万的投资人决定一分钱都不要。这个结果我感觉还是有点惊讶的。一方面是投资人竟然连本都不要了，另一方面是员工竟然拿了不到一个零头。当然，因为整个公司经营到七年都只有10个人，有可能整个业务开始的很多年都是Josh Pigford一个人在运营。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 007</title>
-      <link>http://ftvision.github.io/digest/digest-007/</link>
+      <link>http://localhost:1313/digest/digest-007/</link>
       <pubDate>Fri, 06 Nov 2020 09:46:06 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-007/</guid>
-      <description>文章 技术报道 | Source How Facebook is bringing QUIC to billions Facebook撰文介绍他们在全面推广使用QUIC作为网络连接方式，用来取代TCP为基础的连接方式，从HTTP</description>
+      <guid>http://localhost:1313/digest/digest-007/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    技术报道 | &lt;a href=&#34;https://engineering.fb.com/2020/10/21/networking-traffic/how-facebook-is-bringing-quic-to-billions/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;&#xA;### How Facebook is bringing QUIC to billions&#xA;&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Facebook 撰文介绍他们在全面推广使用&lt;a href=&#34;https://quicwg.org/&#34;&gt;QUIC&lt;/a&gt;作为网络连接方式，用来取代 TCP 为基础的连接方式，从 HTTP2 迈向 HTTP3。他们花了大篇幅介绍这个迁移项目的影响。我连 TCP/IP 都还没有完全搞明白，现在看来又要学新的东西了。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>短码更新日志</title>
-      <link>http://ftvision.github.io/logging/shortcodes/</link>
+      <link>http://localhost:1313/logging/shortcodes/</link>
       <pubDate>Thu, 05 Nov 2020 18:12:30 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/logging/shortcodes/</guid>
-      <description>这个日志主要是来记录我写的各种短码，以及这些短码怎么使用的。 文摘标题 代码 1 {{&amp;lt; digest-item &amp;#34;title&amp;#34;=&amp;#34;标题&amp;#34; &amp;#34;source&amp;#34;=&amp;#34;#url&amp;#34; &amp;#</description>
+      <guid>http://localhost:1313/logging/shortcodes/</guid>
+      <description>&lt;p&gt;这个日志主要是来记录我写的各种短码，以及这些短码怎么使用的。&lt;/p&gt;&#xA;&lt;h2 id=&#34;文摘标题&#34;&gt;文摘标题&lt;/h2&gt;&#xA;&lt;h4 id=&#34;代码&#34;&gt;代码&lt;/h4&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;{{&amp;lt; digest-item &amp;quot;title&amp;quot;=&amp;quot;标题&amp;quot; &amp;quot;source&amp;quot;=&amp;quot;#url&amp;quot; &amp;quot;description&amp;quot;=&amp;quot;描述&amp;quot; &amp;gt;}}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h4 id=&#34;演示&#34;&gt;演示&lt;/h4&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;标题&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    描述 | &lt;a href=&#34;#&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;h2 id=&#34;代码标签&#34;&gt;代码标签&lt;/h2&gt;&#xA;&lt;h4 id=&#34;代码-1&#34;&gt;代码&lt;/h4&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;{{&amp;lt; tabs &amp;quot;test_file&amp;quot; &amp;gt;}}&#xA;&#xA;{{&amp;lt; tab &amp;quot;cpp&amp;quot; &amp;gt;}} # cpp code here&#xA;{{&amp;lt; /tab &amp;gt;}}&#xA;&#xA;{{&amp;lt; tab &amp;quot;python&amp;quot; &amp;gt;}} # python code here&#xA;{{&amp;lt; /tab &amp;gt;}}&#xA;&#xA;{{&amp;lt; /tabs &amp;gt;}}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h4 id=&#34;演示-1&#34;&gt;演示&lt;/h4&gt;&#xA;&lt;div class=&#39;tabs&#39;&gt;&#xA;  &lt;nav class=&#34;UnderlineNav&#34; aria-label=&#34;Foo bar&#34;&gt;&#xA;    &lt;div class=&#34;UnderlineNav-actions&#34;&gt;&#xA;      &lt;small class=&#34;text-mono&#34;&gt;test_file&lt;/small&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;tab-list UnderlineNav-body&#34;&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/nav&gt;&#xA;&#xA;  &lt;div class=&#34;tab-content&#34;&gt;&#xA;&lt;div class=&#34;tab-panel my-1&#34; id=&#34;cpp&#34;&gt;&#xA;  &lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int main(){&#xA;  return 0;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;div class=&#34;tab-panel my-1&#34; id=&#34;python&#34;&gt;&#xA;  &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def main():&#xA;  return 0&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;h2 id=&#34;高亮块&#34;&gt;高亮块&lt;/h2&gt;&#xA;&lt;h4 id=&#34;代码-2&#34;&gt;代码&lt;/h4&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;{{&amp;lt; box-highlight type=&amp;quot;info&amp;quot; &amp;gt;}}&#xA;This is a info box.&#xA;{{&amp;lt; /box-highlight &amp;gt;}}&#xA;&#xA;{{&amp;lt; box-highlight type=&amp;quot;warning&amp;quot; &amp;gt;}}&#xA;This is a warning box.&#xA;{{&amp;lt; /box-highlight &amp;gt;}}&#xA;&#xA;{{&amp;lt; box-highlight type=&amp;quot;success&amp;quot; &amp;gt;}}&#xA;This is a success box.&#xA;{{&amp;lt; /box-highlight &amp;gt;}}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h4 id=&#34;演示-2&#34;&gt;演示&lt;/h4&gt;&#xA;&#xA;&lt;div class=&#34;flash flash-full flash my-2&#34;&gt;&#xA;    This is a info box.&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;flash flash-full flash-warn my-2&#34;&gt;&#xA;    This is a warning box.&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;flash flash-full flash-success my-2&#34;&gt;&#xA;    This is a success box.&#xA;&lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Digest 006</title>
-      <link>http://ftvision.github.io/digest/digest-006/</link>
+      <link>http://localhost:1313/digest/digest-006/</link>
       <pubDate>Fri, 30 Oct 2020 18:57:35 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-006/</guid>
-      <description>文章 经验分享 | Source Type in the exact number of machines to proceed 这篇文章让我很有启发。这篇文章说到的问题是Linux系统有很多命令行的交互界面。很多时候，命令行界面要求你</description>
+      <guid>http://localhost:1313/digest/digest-006/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;p&gt;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    经验分享 | &lt;a href=&#34;https://rachelbythebay.com/w/2020/10/26/num/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Type in the exact number of machines to proceed&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;这篇文章让我很有启发。这篇文章说到的问题是Linux系统有很多命令行的交互界面。很多时候，命令行界面要求你确认信息的时候，可能只是要你输入一个”Y/N“，或者是按任意键继续。作者从自己多年的经验出发，指出输入简单的“Y/N”进行确认有时候是非常危险的事情，因为用户的粗心没看清楚信息就确认了。作者建议，在要求用户确认信息的时候，应该要求用户完整地输入信息本身的内容。比如&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 005</title>
-      <link>http://ftvision.github.io/digest/digest-005/</link>
+      <link>http://localhost:1313/digest/digest-005/</link>
       <pubDate>Fri, 23 Oct 2020 18:57:35 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-005/</guid>
-      <description>文章 可视化解释 | Source Up and Down the Ladder of Abstraction 这个网页是上一期提到的Bret Victor的一个展示。这个网页通过具体的例子，展现了如何讲一个问题（利用算法</description>
+      <guid>http://localhost:1313/digest/digest-005/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    可视化解释 | &lt;a href=&#34;http://worrydream.com/LadderOfAbstraction/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Up and Down the Ladder of Abstraction&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;这个网页是上一期提到的Bret Victor的一个展示。这个网页通过具体的例子，展现了如何讲一个问题（利用算法控制汽车在路上自动驾驶）讲得透透彻彻。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 004</title>
-      <link>http://ftvision.github.io/digest/digest-004/</link>
+      <link>http://localhost:1313/digest/digest-004/</link>
       <pubDate>Fri, 16 Oct 2020 11:17:28 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-004/</guid>
-      <description>文章 创业经验 | Source Startup Cemetery 这个集合很有意思，整理了一系列初创公司的业务、募资额度和倒闭的原因。点开不同的创业公司会读到不同的总结，这个还蛮适合休闲</description>
+      <guid>http://localhost:1313/digest/digest-004/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;p&gt;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    创业经验 | &lt;a href=&#34;https://www.failory.com/cemetery&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Startup Cemetery&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;这个集合很有意思，整理了一系列初创公司的业务、募资额度和倒闭的原因。点开不同的创业公司会读到不同的总结，这个还蛮适合休闲的时候了解一下创业失败背后的故事的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 003</title>
-      <link>http://ftvision.github.io/digest/digest-003/</link>
+      <link>http://localhost:1313/digest/digest-003/</link>
       <pubDate>Fri, 09 Oct 2020 12:19:05 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-003/</guid>
-      <description>文章 创业分享 | Source How we built a $1m ARR SaaS startup Canny的创始人Sarah分享了他们达到一百万美元年度经常性收入（annual recurring revenue）这个指标。</description>
+      <guid>http://localhost:1313/digest/digest-003/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    创业分享 | &lt;a href=&#34;https://canny.io/blog/how-we-built-a-1m-arr-saas-startup/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### How we built a $1m ARR SaaS startup&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Canny的创始人Sarah分享了他们达到一百万美元年度经常性收入（annual recurring revenue）这个指标。ARR似乎是评价订阅业务（包括SaaS）的关键指标&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;，将定期订阅的合同经常性收入部分规范化为一年期的价值。整个团队在达到目标时一共七个人，都是远程工作。公司从零开始到达这个目标用了3年时间，而且都是用的自己的资金。Sarah将整个过程分成几个阶段，每个阶段都分享了需要解决的问题和学到的东西。而且他们一直在写博客，把他们的创业经历记录下来并分享给其他人。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 002</title>
-      <link>http://ftvision.github.io/digest/digest-002/</link>
+      <link>http://localhost:1313/digest/digest-002/</link>
       <pubDate>Fri, 02 Oct 2020 17:10:38 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-002/</guid>
-      <description>文章 科学报道 | Source Compact Nuclear Fusion Reactor Is ‘Very Likely to Work,’ Studies Suggest MIT的Sparc项目信心满满地认为他们能控制核聚变，并使用核聚变，像太阳一样，制造</description>
+      <guid>http://localhost:1313/digest/digest-002/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    科学报道 | &lt;a href=&#34;https://www.nytimes.com/2020/09/29/climate/nuclear-fusion-reactor.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Compact Nuclear Fusion Reactor Is ‘Very Likely to Work,’ Studies Suggest&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;MIT的&lt;a href=&#34;https://www.psfc.mit.edu/sparc&#34;&gt;Sparc&lt;/a&gt;项目信心满满地认为他们能控制核聚变，并使用核聚变，像太阳一样，制造出更多的能量。这一想法要是实现了，我们将迈向一个崭新的能源时代；同时，我们也可以更好地缓解全球气候变暖的问题。&lt;/p&gt;&#xA;&lt;p&gt;这篇纽约时报的文章其实没有涉及到太深的技术问题，但是这篇科学报道的写作方法确实有不少值得学习的地方。至于具体的关于MIT这一系列核聚变的研究的科学讲座，还是看下面列出来的视频吧。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 001</title>
-      <link>http://ftvision.github.io/digest/digest-001/</link>
+      <link>http://localhost:1313/digest/digest-001/</link>
       <pubDate>Fri, 25 Sep 2020 17:10:38 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-001/</guid>
-      <description>文章 神经科学 | Source Birds do have a brain cortex—and think 这篇Science评论从以下两篇Science文章出发，更新了我们对于鸟类的大脑结构和认知功</description>
+      <guid>http://localhost:1313/digest/digest-001/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    神经科学 | &lt;a href=&#34;https://science.sciencemag.org/content/369/6511/1567&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Birds do have a brain cortex—and think&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;这篇Science评论从以下两篇Science文章出发，更新了我们对于鸟类的大脑结构和认知功能的看法。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>10000行C&#43;&#43;之后对C&#43;&#43;的思考</title>
-      <link>http://ftvision.github.io/blog/10k-cpp/</link>
+      <link>http://localhost:1313/blog/10k-cpp/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/blog/10k-cpp/</guid>
-      <description>从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，</description>
+      <guid>http://localhost:1313/blog/10k-cpp/</guid>
+      <description>&lt;p&gt;从去年七月到今年一月，我写完了工作后的第一个10,000行C++代码。虽然2015年实习的时候也写过一个暑假的C++，但是之前是游戏工作室，使用C++其实也只是用其中C的子集，甚至可以说是用一个Visual Studio来编译&lt;code&gt;cpp&lt;/code&gt;后缀名的c文件。过去半年就大不一样，代码库是真材实料的C++，而且很多还是C++11的风格和语法。所以，我最多算一个0.5起点的C++程序员。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>10000行代码后对软件工程的思考</title>
-      <link>http://ftvision.github.io/blog/10k-code/</link>
+      <link>http://localhost:1313/blog/10k-code/</link>
       <pubDate>Fri, 01 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/blog/10k-code/</guid>
-      <description>第一个10,000行代码是在工作的头半年里面写完的，其中绝大部分是C++代码，而C++代码中大部分是在重构某个工具。这里就说一说我在写这10</description>
+      <guid>http://localhost:1313/blog/10k-code/</guid>
+      <description>&lt;p&gt;第一个10,000行代码是在工作的头半年里面写完的，其中绝大部分是C++代码，而C++代码中大部分是在重构某个工具。这里就说一说我在写这10,000行代码的过程中学到的软件工程的一些知识：包括设计、测试、遗留代码、代码审查、版本控制。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>失败简历</title>
-      <link>http://ftvision.github.io/about/resume_failure/</link>
+      <link>http://localhost:1313/about/resume_failure/</link>
       <pubDate>Fri, 28 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/about/resume_failure/</guid>
-      <description>这个页面收藏了我一路上尝试过并失败过的各种经验。之所以有这个“失败简历”是因为之前普林斯顿的教授Prof. Johannes Haushoferi在网上分享过</description>
+      <guid>http://localhost:1313/about/resume_failure/</guid>
+      <description>&lt;p&gt;这个页面收藏了我一路上尝试过并失败过的各种经验。之所以有这个“失败简历”是因为之前普林斯顿的教授&lt;a href=&#34;http://www.princeton.edu/haushofer/Johannes_Haushofer_CV_of_Failures.pdf&#34;&gt;Prof. Johannes Haushoferi&lt;/a&gt;在网上分享过这样的简历，我觉得很有帮助，而且了解每个人成功的简历背后的各种尝试远比了解这个人有什么成就来得有趣多了。我还会继续保持更新这个页面，这样才能说明我还在继续尝试不同的事情。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>100篇视觉研究文献</title>
-      <link>http://ftvision.github.io/collection/vision-100/</link>
+      <link>http://localhost:1313/collection/vision-100/</link>
       <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/vision-100/</guid>
-      <description>导言 这个《100篇视觉研究文献》列表是Yury Petrov博士2007年左右在东北大学任教时编纂的。原始网页现在已经失效了。我在这里转载了原</description>
+      <guid>http://localhost:1313/collection/vision-100/</guid>
+      <description>&lt;h2 id=&#34;导言&#34;&gt;导言&lt;/h2&gt;&#xA;&lt;p&gt;这个《100篇视觉研究文献》列表是Yury Petrov博士2007年左右在东北大学任教时编纂的。原始网页现在已经失效了。我在这里转载了原始网页的内容。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>过往的心理学科普写作</title>
-      <link>http://ftvision.github.io/collection/psych-writing/</link>
+      <link>http://localhost:1313/collection/psych-writing/</link>
       <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/collection/psych-writing/</guid>
-      <description>这个集合收集了我写的一些心理学的科普文章。很多文章是我在博士期间，在我的知乎专栏上写得。这些文章一方面是为了我自己练习写作，另一方面是为了帮</description>
+      <guid>http://localhost:1313/collection/psych-writing/</guid>
+      <description>&lt;div class=&#34;flash flash-full flash-success my-2&#34;&gt;&#xA;    这个集合收集了我写的一些心理学的科普文章。很多文章是我在博士期间，在我的知乎专栏上写得。这些文章一方面是为了我自己练习写作，另一方面是为了帮助我整理思路。&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;h2 id=&#34;观点讨论&#34;&gt;观点讨论&lt;/h2&gt;&#xA;&lt;p&gt;在不讨论专题的时候，有一些不太能一下子讲明白的事情倒是适合泛泛而谈。这包括学术日常生活，心理学是什么，如何学习心理学之类的内容。当然，我并没有教科书或者课程表之类的东西。资源列表的话，也暂时没有足够的内容。所以，就偶尔讨论一些普通话题吧。这个列表的文章可能没有参考文献，个人观点也比较重，仅供参考，欢迎讨论。&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title></title>
+      <link>http://localhost:1313/blog/building_agent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/building_agent/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>思算 - 中文版</title>
+      <link>http://localhost:1313/content/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/content/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

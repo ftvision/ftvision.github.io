@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CompSci on Thinking as Algorithm</title>
-    <link>http://ftvision.github.io/en/tags/compsci/</link>
+    <link>http://localhost:1313/en/tags/compsci/</link>
     <description>Recent content in CompSci on Thinking as Algorithm</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 21 Feb 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/en/tags/compsci/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 21 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tags/compsci/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Invent More, Toil Less</title>
-      <link>http://ftvision.github.io/en/library/beyer_etal_2016/</link>
+      <link>http://localhost:1313/en/library/beyer_etal_2016/</link>
       <pubDate>Thu, 21 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/en/library/beyer_etal_2016/</guid>
-      <description>Beyer, Gleason, O&amp;rsquo;Connor, Rau (2016), Invent More, Toil Less in ;login:(41:3) at USENIX.
- the Google SRE team identifies toils in running production services and talks about their experiences in how to reduce these toils. A case example the from BigTable SRE team illustrated an incremental process that involved both management and tech teams to reduce toils effectively.  Key Concept: toil Toil is the kind of work tied to running a production service that tends to be: Manual, Repetitive, Automatable and not requiring human judgment, Interrupt-driven and reactive, and Of no enduring value.</description>
+      <guid>http://localhost:1313/en/library/beyer_etal_2016/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Beyer, Gleason, O&amp;rsquo;Connor, Rau (2016), &lt;a href=&#34;https://www.usenix.org/system/files/login/articles/login_fall16_08_beyer.pdf&#34;&gt;Invent More, Toil Less&lt;/a&gt; in &lt;em&gt;;login:(41:3)&lt;/em&gt; at USENIX.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&#xA;&lt;div class=&#34;flash flash-full flash my-2&#34;&gt;&#xA;    the Google SRE team identifies &lt;strong&gt;toils&lt;/strong&gt; in running production services and talks about their experiences in how to reduce these toils. A case example the from BigTable SRE team illustrated an incremental process that involved both management and tech teams to reduce toils effectively.&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;h3 id=&#34;key-concept-toil&#34;&gt;Key Concept: &lt;strong&gt;toil&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;em&gt;Toil&lt;/em&gt; is the kind of work tied to running a production service that tends to be: &lt;strong&gt;Manual, Repetitive, Automatable and not requiring human judgment, Interrupt-driven and reactive, and Of no enduring value&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

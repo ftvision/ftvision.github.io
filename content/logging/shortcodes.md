@@ -1,5 +1,5 @@
 ---
-title: "短码更新日志"
+title: '短码更新日志'
 date: 2020-11-05T18:12:30-04:00
 ---
 
@@ -9,13 +9,13 @@ date: 2020-11-05T18:12:30-04:00
 
 #### 代码
 
-````md
+```md
 {{</* digest-item "title"="标题" "source"="#url" "description"="描述" */>}}
-````
+```
 
 #### 演示
 
-{{< digest-item "title"="标题" "source"="#" "description"="描述" >}}
+{{< digest-item "title"="标题" "source"="#" "description"="描述" />}}
 
 ## 代码标签
 
@@ -24,13 +24,11 @@ date: 2020-11-05T18:12:30-04:00
 ```md
 {{</* tabs "test_file" */>}}
 
-  {{</* tab "cpp" */>}}
-    # cpp code here
-  {{</* /tab */>}}
+{{</* tab "cpp" */>}} # cpp code here
+{{</* /tab */>}}
 
-  {{</* tab "python" */>}}
-    # python code here
-  {{</* /tab */>}}
+{{</* tab "python" */>}} # python code here
+{{</* /tab */>}}
 
 {{</* /tabs */>}}
 ```
@@ -39,21 +37,24 @@ date: 2020-11-05T18:12:30-04:00
 
 {{< tabs "test_file">}}
 {{< tab "cpp">}}
+
 ```cpp
 int main(){
   return 0;
 }
 ```
+
 {{< /tab>}}
 
 {{< tab "python">}}
+
 ```python
 def main():
   return 0
 ```
+
 {{< /tab>}}
 {{< /tabs>}}
-
 
 ## 高亮块
 

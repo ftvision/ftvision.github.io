@@ -1,5 +1,5 @@
 ---
-title: "Shortcodes Update Logging"
+title: 'Shortcodes Update Logging'
 date: 2020-11-05T18:12:30-04:00
 ---
 
@@ -9,14 +9,13 @@ Here is a list of **shortcodes** I've made for this blog.
 
 #### Code
 
-````md
+```md
 {{</* digest-item "title"="Title" "source"="#url" "description"="Description" */>}}
-````
+```
 
 #### Demo
 
-{{< digest-item "title"="Title" "source"="#" "description"="Description" >}}
-
+{{< digest-item "title"="Title" "source"="#" "description"="Description" />}}
 
 ## Code Tabs
 
@@ -25,13 +24,11 @@ Here is a list of **shortcodes** I've made for this blog.
 ```md
 {{</* tabs "test_file" */>}}
 
-  {{</* tab "cpp" */>}}
-    # cpp code here
-  {{</* /tab */>}}
+{{</* tab "cpp" */>}} # cpp code here
+{{</* /tab */>}}
 
-  {{</* tab "python" */>}}
-    # python code here
-  {{</* /tab */>}}
+{{</* tab "python" */>}} # python code here
+{{</* /tab */>}}
 
 {{</* /tabs */>}}
 ```
@@ -40,21 +37,24 @@ Here is a list of **shortcodes** I've made for this blog.
 
 {{< tabs "test_file">}}
 {{< tab "cpp">}}
+
 ```cpp
 int main(){
   return 0;
 }
 ```
+
 {{< /tab>}}
 
 {{< tab "python">}}
+
 ```python
 def main():
   return 0
 ```
+
 {{< /tab>}}
 {{< /tabs>}}
-
 
 ## Box Highlight
 

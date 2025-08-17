@@ -1,0 +1,328 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom typography and layout components */
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+  }
+  
+  .content-card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-6;
+  }
+  
+  .digest-item {
+    @apply bg-white rounded-lg border border-gray-200 p-6 mb-6 hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .digest-item h3 {
+    @apply text-lg font-semibold text-gray-900 mb-2;
+  }
+  
+  .digest-item .meta {
+    @apply text-sm text-gray-600;
+  }
+  
+  .digest-item .meta a {
+    @apply text-blue-600 hover:text-blue-800 transition-colors duration-200;
+  }
+
+  /* Enhanced typography for articles */
+  .article-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 dark:text-white leading-tight tracking-tight;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+  
+  .article-subtitle {
+    @apply text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light leading-relaxed;
+    font-feature-settings: 'kern' 1;
+  }
+  
+  .article-meta {
+    @apply text-sm font-mono text-gray-500 dark:text-gray-400 tracking-wide;
+    font-feature-settings: 'tnum' 1;
+  }
+  
+  /* Enhanced prose styles */
+  .prose-enhanced {
+    @apply prose prose-xl dark:prose-dark max-w-none;
+    
+    /* Headings */
+    @apply prose-headings:font-light prose-headings:tracking-tight;
+    @apply prose-h1:text-4xl prose-h1:mb-8 prose-h1:mt-12;
+    @apply prose-h2:text-3xl prose-h2:mb-6 prose-h2:mt-12;
+    @apply prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8;
+    @apply prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-6;
+    
+    /* Paragraphs */
+    @apply prose-p:text-gray-700 dark:prose-p:text-gray-300;
+    @apply prose-p:leading-relaxed prose-p:mb-6;
+    
+    /* Lists */
+    @apply prose-li:text-gray-700 dark:prose-li:text-gray-300;
+    @apply prose-li:mb-2;
+    
+    /* Blockquotes */
+    @apply prose-blockquote:border-l-4 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-600;
+    @apply prose-blockquote:pl-6 prose-blockquote:italic;
+    @apply prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400;
+    @apply prose-blockquote:font-light prose-blockquote:text-xl;
+    
+    /* Links */
+    @apply prose-a:text-blue-600 dark:prose-a:text-blue-400;
+    @apply prose-a:no-underline hover:prose-a:underline;
+    @apply prose-a:transition-colors prose-a:duration-200;
+    
+    /* Code */
+    @apply prose-code:text-sm prose-code:bg-gray-100 dark:prose-code:bg-slate-800;
+    @apply prose-code:px-2 prose-code:py-1 prose-code:rounded;
+    @apply prose-code:font-mono prose-code:text-gray-800 dark:prose-code:text-gray-200;
+    
+    /* Pre blocks */
+    @apply prose-pre:bg-gray-900 dark:prose-pre:bg-slate-900;
+    @apply prose-pre:border prose-pre:border-gray-200 dark:prose-pre:border-slate-700;
+    @apply prose-pre:rounded-lg prose-pre:overflow-x-auto;
+    
+    /* Images */
+    @apply prose-img:rounded-lg prose-img:shadow-sm;
+    @apply prose-img:border prose-img:border-gray-200 dark:prose-img:border-slate-700;
+    
+    /* Tables */
+    @apply prose-table:text-sm prose-table:border-collapse;
+    @apply prose-th:border prose-th:border-gray-300 dark:prose-th:border-slate-600;
+    @apply prose-td:border prose-td:border-gray-300 dark:prose-td:border-slate-600;
+    @apply prose-th:bg-gray-50 dark:prose-th:bg-slate-800;
+  }
+  
+  /* Typography utilities */
+  .font-editorial {
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  }
+  
+  .font-mono-tabular {
+    font-feature-settings: 'tnum' 1;
+  }
+  
+  /* Basic code styling - let Prism.js handle the rest */
+  .prose code {
+    @apply font-mono;
+  }
+  
+  /* Mermaid diagram styling */
+  .mermaid-wrapper {
+    @apply my-8 flex justify-center;
+  }
+  
+  .mermaid {
+    @apply bg-white dark:bg-slate-800 rounded-lg p-4 border border-gray-200 dark:border-slate-700 shadow-sm;
+  }
+  
+  .mermaid svg {
+    @apply max-w-full h-auto;
+  }
+  
+  /* Layout utilities */
+  .sidebar-sticky {
+    @apply sticky top-24;
+  }
+  
+  .article-grid {
+    @apply grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16;
+  }
+  
+  .article-content {
+    @apply lg:col-span-8 lg:col-start-3;
+  }
+  
+  .article-sidebar {
+    @apply lg:col-span-2 lg:col-start-11;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tw-bg-opacity: 1;
+    background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+    color: rgb(241 245 249 / var(--tw-text-opacity));
+  }
+  
+  .card {
+    @apply bg-slate-800 border-slate-700;
+  }
+  
+  .content-card {
+    @apply bg-slate-800 border-slate-700;
+  }
+  
+  .digest-item {
+    @apply bg-slate-800 border-slate-700;
+  }
+  
+  .digest-item h3 {
+    @apply text-slate-100;
+  }
+  
+  .digest-item .meta {
+    @apply text-slate-400;
+  }
+} 
+
+/* Terminal/TUI variant - scoped behind .tui on <html> so it’s toggleable */
+.tui {
+  --tui-bg: #0a0f14;
+  --tui-panel: #0c1217;
+  --tui-border: #1f6f3d;
+  --tui-fg: #d2ffd6;
+  --tui-muted: #8fa79a;
+  --tui-accent: #00ff7f;
+  --tui-accent-2: #1ede86;
+  --tui-danger: #ff5f5f;
+  --tui-warn: #ffd166;
+  --tui-info: #64d6ff;
+}
+
+/* Base */
+.tui body {
+  background: var(--tui-bg) !important;
+  color: var(--tui-fg) !important;
+  font-family: SF Mono, Monaco, Menlo, Inconsolata, "Roboto Mono", Consolas, monospace;
+}
+
+/* Optional faint scanlines for CRT vibe */
+.tui body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 128, 0.03),
+    rgba(0, 255, 128, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* Header/nav */
+.tui header {
+  background: rgba(0, 0, 0, 0.85) !important;
+  border-bottom: 1px solid var(--tui-border) !important;
+}
+.tui header a {
+  color: var(--tui-fg) !important;
+}
+.tui header a:hover {
+  color: var(--tui-accent) !important;
+  text-decoration: underline;
+}
+
+/* Links, focus, selection */
+.tui a { color: var(--tui-accent) !important; }
+.tui a:hover { color: var(--tui-accent-2) !important; text-decoration: underline; }
+.tui *:focus-visible {
+  outline: 1px dashed var(--tui-accent) !important;
+  outline-offset: 2px;
+}
+.tui ::selection {
+  background: rgba(0,255,127,0.25);
+  color: var(--tui-fg);
+}
+
+/* Cards, panels, list items */
+.tui article,
+.tui .card,
+.tui .digest-item,
+.tui .prose table,
+.tui .prose th,
+.tui .prose td {
+  background: var(--tui-panel) !important;
+  border-color: var(--tui-border) !important;
+  color: var(--tui-fg) !important;
+  box-shadow: inset 0 0 0 1px var(--tui-border) !important;
+}
+
+/* Typography */
+.tui .prose h1,
+.tui .prose h2,
+.tui .prose h3,
+.tui .prose h4,
+.tui h1, .tui h2, .tui h3, .tui h4 {
+  color: var(--tui-fg) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 6px rgba(0,255,127,0.15);
+}
+.tui .prose p,
+.tui .prose li {
+  color: var(--tui-fg) !important;
+}
+.tui .prose blockquote {
+  color: var(--tui-muted) !important;
+  border-left: 1px solid var(--tui-border) !important;
+  background: rgba(0,0,0,0.2);
+}
+
+/* Code and preformatted */
+.tui .prose code,
+.tui code {
+  background: #000 !important;
+  color: var(--tui-accent) !important;
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px var(--tui-border);
+}
+.tui .prose pre,
+.tui pre {
+  background: #000 !important;
+  color: var(--tui-fg) !important;
+  border: 1px solid var(--tui-border) !important;
+  box-shadow: inset 0 0 0 1px var(--tui-border);
+}
+
+/* Buttons/interactive (if any) */
+.tui button,
+.tui .btn {
+  color: var(--tui-fg) !important;
+  background: #000 !important;
+  border: 1px solid var(--tui-border) !important;
+  box-shadow: inset 0 0 0 1px var(--tui-border);
+}
+.tui button:hover,
+.tui .btn:hover {
+  color: var(--tui-accent) !important;
+}
+
+/* Tags/pills */
+.tui .inline-flex,
+.tui .rounded-full {
+  background: #000 !important;
+  color: var(--tui-fg) !important;
+  border: 1px solid var(--tui-border) !important;
+  box-shadow: inset 0 0 0 1px var(--tui-border);
+}
+
+/* Table borders */
+.tui table, .tui th, .tui td {
+  border-color: var(--tui-border) !important;
+}
+
+/* Footer (inherits general palette) */
+.tui footer {
+  border-top: 1px solid var(--tui-border);
+}
+
+/* Reduce tailwind’s drop shadows that feel non-TUI */
+.tui .shadow, .tui .shadow-md, .tui .shadow-lg, .tui [class*="shadow-"] {
+  box-shadow: none !important;
+} 

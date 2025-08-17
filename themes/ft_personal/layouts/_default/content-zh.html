@@ -1,0 +1,227 @@
+{{ partial "head" . }}
+
+{{ partial "header" . }}
+
+<main>
+  <!-- Hero Section -->
+  <section class="py-16 lg:py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-light text-gray-900 dark:text-white mb-6 tracking-tight">
+          思算
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 font-light leading-relaxed max-w-3xl mx-auto">
+          探索思维的算法本质，记录技术与思考的交汇点
+        </p>
+      </div>
+      
+      <!-- Quick Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-light text-gray-900 dark:text-white mb-2">
+            {{ len (where .Site.RegularPages "Section" "blog") }}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">博客文章</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-light text-gray-900 dark:text-white mb-2">
+            {{ len (where .Site.RegularPages "Section" "digest") }}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">文摘</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-light text-gray-900 dark:text-white mb-2">
+            {{ len (where .Site.RegularPages "Section" "collection") }}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">收集</div>
+        </div>
+        {{ if where .Site.RegularPages "Section" "library" }}
+        <div class="text-center">
+          <div class="text-3xl font-light text-gray-900 dark:text-white mb-2">
+            {{ len (where .Site.RegularPages "Section" "library") }}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">书架</div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Sections -->
+  <section class="py-16 border-t border-gray-100 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+        
+        <!-- Blog Posts -->
+        {{ $blogPosts := first 8 (where .Site.RegularPages "Section" "blog") }}
+        {{ if $blogPosts }}
+        <div>
+          <div class="mb-8">
+            <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 tracking-tight">
+              最新文章
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              最近的思考和技术探索
+            </p>
+          </div>
+          
+          <div class="space-y-6">
+            {{ range $blogPosts }}
+            <article class="group">
+              <time class="text-xs font-mono text-gray-500 dark:text-gray-400 tracking-wide block mb-2">
+                {{ .Date.Format "2006.01.02" }}
+              </time>
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug mb-2">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </h3>
+              {{ if .Summary }}
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                {{ .Summary | truncate 100 }}
+              </p>
+              {{ end }}
+            </article>
+            {{ end }}
+          </div>
+          
+          <div class="mt-8 pt-6 border-t border-gray-100 dark:border-slate-800">
+            <a href="{{ "/blog" | relLangURL }}" class="text-sm font-mono text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 tracking-wide">
+              查看全部文章 →
+            </a>
+          </div>
+        </div>
+        {{ end }}
+
+        <!-- Digest -->
+        {{ $digestPosts := first 8 (where .Site.RegularPages "Section" "digest") }}
+        {{ if $digestPosts }}
+        <div>
+          <div class="mb-8">
+            <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 tracking-tight">
+              文摘
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 text-sm">
+              精选的洞察和快思
+            </p>
+          </div>
+          
+          <div class="space-y-6">
+            {{ range $digestPosts }}
+            <article class="group">
+              <time class="text-xs font-mono text-gray-500 dark:text-gray-400 tracking-wide block mb-2">
+                {{ .Date.Format "2006.01.02" }}
+              </time>
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </h3>
+            </article>
+            {{ end }}
+          </div>
+          
+          <div class="mt-8 pt-6 border-t border-gray-100 dark:border-slate-800">
+            <a href="{{ "/digest" | relLangURL }}" class="text-sm font-mono text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 tracking-wide">
+              查看全部文摘 →
+            </a>
+          </div>
+        </div>
+        {{ end }}
+
+        <!-- Collections & Library -->
+        <div>
+          <!-- Collections -->
+          {{ $collectionPosts := first 6 (where .Site.RegularPages "Section" "collection") }}
+          {{ if $collectionPosts }}
+          <div class="mb-12">
+            <div class="mb-8">
+              <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 tracking-tight">
+                收集
+              </h2>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">
+                整理的资源和参考资料
+              </p>
+            </div>
+            
+            <div class="space-y-6">
+              {{ range $collectionPosts }}
+              <article class="group">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug">
+                  <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h3>
+                {{ if .Summary }}
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-2">
+                  {{ .Summary | truncate 80 }}
+                </p>
+                {{ end }}
+              </article>
+              {{ end }}
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-100 dark:border-slate-800">
+              <a href="{{ "/collection" | relLangURL }}" class="text-sm font-mono text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 tracking-wide">
+                查看全部收集 →
+              </a>
+            </div>
+          </div>
+          {{ end }}
+
+          <!-- Library -->
+          {{ $libraryPosts := first 6 (where .Site.RegularPages "Section" "library") }}
+          {{ if $libraryPosts }}
+          <div>
+            <div class="mb-8">
+              <h2 class="text-2xl font-light text-gray-900 dark:text-white mb-4 tracking-tight">
+                书架
+              </h2>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">
+                书籍和阅读笔记
+              </p>
+            </div>
+            
+            <div class="space-y-6">
+              {{ range $libraryPosts }}
+              <article class="group">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug">
+                  <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h3>
+                {{ if .Params.author }}
+                <p class="text-sm text-gray-500 dark:text-gray-500 mt-1">
+                  作者: {{ .Params.author }}
+                </p>
+                {{ end }}
+              </article>
+              {{ end }}
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-gray-100 dark:border-slate-800">
+              <a href="{{ "/library" | relLangURL }}" class="text-sm font-mono text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 tracking-wide">
+                查看全部书籍 →
+              </a>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 lg:py-24 border-t border-gray-100 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="prose prose-lg dark:prose-dark max-w-none">
+        <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-light text-lg">
+          这里记录着关于编程、算法、人工智能以及生活感悟的思考片段。每个想法都是思维算法的一次迭代，每篇文字都是对这个复杂世界的一种理解尝试。
+        </p>
+      </div>
+      
+      <div class="mt-8 flex justify-center space-x-8">
+        <a href="{{ "/about" | relLangURL }}" class="text-sm font-mono text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 border-b border-gray-200 dark:border-gray-700 pb-1 tracking-wide">
+          关于
+        </a>
+        <a href="/" class="text-sm font-mono text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 border-b border-gray-200 dark:border-gray-700 pb-1 tracking-wide">
+          语言选择
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{ partial "footer" . }} 

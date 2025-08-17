@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DNN on Thinking as Algorithm</title>
-    <link>http://ftvision.github.io/en/tags/dnn/</link>
+    <link>http://localhost:1313/en/tags/dnn/</link>
     <description>Recent content in DNN on Thinking as Algorithm</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 23 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/en/tags/dnn/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tags/dnn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Potential downside of high initial visual acuity</title>
-      <link>http://ftvision.github.io/en/library/vogeslang_etal_sinha_2018/</link>
+      <link>http://localhost:1313/en/library/vogeslang_etal_sinha_2018/</link>
       <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/en/library/vogeslang_etal_sinha_2018/</guid>
-      <description>Vogelsang, L., Gilad-Gutnick, S., Ehrenberg, E., Yonas, A., Diamond, S., Held, R., &amp;amp; Sinha, P. (2018). Potential downside of high initial visual acuity. Proceedings of the National Academy of Sciences, 115(44), 11333-11338.
- Vogelsang and colleagues tried to test one interesting hypothesis: seeing sharp, clear images at the very early stage of life can actually do harm to visual perception and its development. The hypothesis started with an observation that infants who have cataracts but cured at early age may actually have problems in face recognition.</description>
+      <guid>http://localhost:1313/en/library/vogeslang_etal_sinha_2018/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Vogelsang, L., Gilad-Gutnick, S., Ehrenberg, E., Yonas, A., Diamond, S., Held, R., &amp;amp; Sinha, P. (2018). Potential downside of high initial visual acuity. Proceedings of the National Academy of Sciences, 115(44), 11333-11338.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Vogelsang and colleagues tried to test one interesting hypothesis: seeing sharp, clear images at the very early stage of life can actually do harm to visual perception and its development. The hypothesis started with an observation that infants who have cataracts but cured at early age may actually have problems in face recognition. The authors approached this hypothesis by first using image-analysis techniques to show blurry images may require the development of large receptive fields of neurons in visual cortices. Then, they tried to train Deep Neural Networks with images blurred (or filtered) by different Gaussian filters. They found that training that started with blurry images can help the network to achieve better performance in the end.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

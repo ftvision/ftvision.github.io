@@ -1,4 +1,9 @@
-<div>
-  <h3 class="p-2 border-left border-blue bg-blue-light"> {{ .Get "title" }} <br>
-     <span class="h5">{{ .Get "description" }} | <a href="{{ .Get "source" }}" role="button">Source</a>  </span></h3>
+<div class="digest-item">
+  <h3>{{ .Get "title" }}</h3>
+  <div class="meta">
+    {{ .Get "description" }} | <a href="{{ .Get "source" }}" target="_blank" rel="noopener">{{ if eq site.Language.Lang "zh" }}来源{{ else }}Source{{ end }}</a>
+  </div>
+  {{- if .Inner -}}
+    <div class="content" style="margin-top: 1rem;">{{ .Inner }}</div>
+  {{- end -}}
 </div>

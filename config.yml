@@ -1,7 +1,8 @@
 baseURL: "http://ftvision.github.io/"
 title: "思算｜Thinking as Algorithm"
-paginate: 5
-theme: "PaperMod"
+pagination:
+  pagerSize: 5
+theme: "ft_personal"
 
 DefaultContentLanguage: zh
 hasCJKLanguage: true
@@ -11,6 +12,9 @@ enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
+
+# Suppress HTML warnings
+ignoreLogs: ['warning-goldmark-raw-html']
 
 minify:
   disableXML: true
@@ -115,15 +119,12 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
-pygmentsUseClasses: true
 markup:
+  goldmark:
+    renderer:
+      unsafe: true
   highlight:
-    noClasses: false
-    anchorLineNos: true
-    codeFences: true
-    guessSyntax: true
-    lineNos: true
-    style: emacs
+    codeFences: false
 
 # language setting
 languages:

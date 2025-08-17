@@ -1,274 +1,252 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>http://ftvision.github.io/en/library/</loc>
+    <loc>http://localhost:1313/en/tags/agent/</loc>
+    <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/categories/ai/</loc>
+    <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/blog/building_agent/</loc>
+    <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/blog/building_agent/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/blog/building_agent/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/categories/</loc>
+    <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/categories/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/blog/</loc>
+    <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/blog/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/tags/product/</loc>
+    <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/</loc>
+    <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/</loc>
+    <lastmod>2025-08-03T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://localhost:1313/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/en/library/</loc>
     <lastmod>2023-02-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/library/"
+                href="http://localhost:1313/library/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/library/"
+                href="http://localhost:1313/en/library/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/</loc>
-    <lastmod>2023-02-23T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://ftvision.github.io/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://ftvision.github.io/en/"
-                />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/about/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/about/</loc>
     <lastmod>2021-11-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/about/"
+                href="http://localhost:1313/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/about/"
+                href="http://localhost:1313/en/about/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/logging/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/logging/</loc>
     <lastmod>2021-11-02T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/logging/"
+                href="http://localhost:1313/logging/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/logging/"
+                href="http://localhost:1313/en/logging/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/logging/shortcodes/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/logging/shortcodes/</loc>
     <lastmod>2020-11-05T18:12:30-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/logging/shortcodes/"
+                href="http://localhost:1313/logging/shortcodes/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/logging/shortcodes/"
+                href="http://localhost:1313/en/logging/shortcodes/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/compsci/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://ftvision.github.io/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://ftvision.github.io/en/categories/"
-                />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/tags/compsci/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/library/beyer_etal_2016/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/library/beyer_etal_2016/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/sre/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/tags/sre/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/sysadmin/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/tags/sysadmin/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/categories/white-paper/</loc>
     <lastmod>2019-02-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/tags/</loc>
-    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="http://ftvision.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://ftvision.github.io/en/tags/"
-                />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/categories/white-paper/</loc>
-    <lastmod>2019-02-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/about/resume/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/about/resume/</loc>
     <lastmod>2018-12-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/about/resume/"
+                href="http://localhost:1313/about/resume/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/about/resume/"
+                href="http://localhost:1313/en/about/resume/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/about/resume_failure/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/about/resume_failure/</loc>
     <lastmod>2018-12-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/about/resume_failure/"
+                href="http://localhost:1313/about/resume_failure/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/about/resume_failure/"
+                href="http://localhost:1313/en/about/resume_failure/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/tags/dnn/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/dnn/</loc>
     <lastmod>2018-12-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/tags/ml/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/ml/</loc>
     <lastmod>2018-12-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/tags/plasticity/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/plasticity/</loc>
     <lastmod>2018-12-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/library/vogeslang_etal_sinha_2018/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/library/vogeslang_etal_sinha_2018/</loc>
     <lastmod>2018-12-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/tags/psychology/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/psychology/</loc>
     <lastmod>2018-12-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/tags/job-searching/</loc>
-    <lastmod>2017-11-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/blog/offer_negotiation/</loc>
-    <lastmod>2017-11-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/blog/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/collection/</loc>
     <lastmod>2017-11-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/blog/"
+                href="http://localhost:1313/collection/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/blog/"
+                href="http://localhost:1313/en/collection/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/categories/workplace/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/job-searching/</loc>
     <lastmod>2017-11-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/blog/job_search_reflection/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/blog/offer_negotiation/</loc>
+    <lastmod>2017-11-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/categories/workplace/</loc>
+    <lastmod>2017-11-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/blog/job_search_reflection/</loc>
     <lastmod>2017-10-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/collection/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/collection/vision-100/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/collection/"
+                href="http://localhost:1313/collection/vision-100/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/collection/"
+                href="http://localhost:1313/en/collection/vision-100/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/collection/vision-100/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/tags/vision-science/</loc>
     <lastmod>2017-03-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/en/digest/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/collection/vision-100/"
+                href="http://localhost:1313/digest/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/collection/vision-100/"
+                href="http://localhost:1313/en/digest/"
                 />
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/tags/vision-science/</loc>
-    <lastmod>2017-03-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://ftvision.github.io/en/digest/</loc>
+  </url><url>
+    <loc>http://localhost:1313/en/content/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://ftvision.github.io/digest/"
+                href="http://localhost:1313/content/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://ftvision.github.io/en/digest/"
+                href="http://localhost:1313/en/content/"
                 />
   </url>
-  
 </urlset>

@@ -1,172 +1,138 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>阅读摘录 on 思算</title>
-    <link>http://ftvision.github.io/digest/</link>
+    <link>http://localhost:1313/digest/</link>
     <description>Recent content in 阅读摘录 on 思算</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/digest/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 15 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/digest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CrowdCast.io技术博客</title>
-      <link>http://ftvision.github.io/digest/tech_blog_crowdcast_io/</link>
+      <link>http://localhost:1313/digest/tech_blog_crowdcast_io/</link>
       <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/tech_blog_crowdcast_io/</guid>
-      <description>CrowdCast.io的技术博客地址: https://crowdcast.io/blog/topic/code 整体印象 比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，</description>
+      <guid>http://localhost:1313/digest/tech_blog_crowdcast_io/</guid>
+      <description>&lt;p&gt;CrowdCast.io的技术博客地址: &lt;a href=&#34;https://crowdcast.io/blog/topic/code&#34;&gt;https://crowdcast.io/blog/topic/code&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;整体印象&#34;&gt;整体印象&lt;/h2&gt;&#xA;&lt;p&gt;比起Zoom和Google Meet，CrowdCast更像是一个Panel Hosting，主要是少量的几个人在视频，然后把视频发送给成千上万的观众来看。比如演唱会，脱口秀等现场直播节目。同时Crowdcast又提供观众互动环节。他们的技术博客主要写的是如何更好地提供视频服务，以及在提供视频服务期间所遇到的技术问题。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 017</title>
-      <link>http://ftvision.github.io/digest/digest-017/</link>
+      <link>http://localhost:1313/digest/digest-017/</link>
       <pubDate>Fri, 15 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-017/</guid>
-      <description>文章 行业研究 | Source EState Of Javascript 2020 这是一个关于2020年Javascript行业内的问卷调查，询问和总结了开发者的开发经验，喜爱的开发环境和工具，以及</description>
+      <guid>http://localhost:1313/digest/digest-017/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    行业研究 | &lt;a href=&#34;https://2020.stateofjs.com/en-US/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### EState Of Javascript 2020&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;这是一个关于2020年Javascript行业内的问卷调查，询问和总结了开发者的开发经验，喜爱的开发环境和工具，以及对于行业发展的开发。整个调查结果是以互动的方式展现出来的，我也学到了不是新东西。前端开发真的是越来越复杂了。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 016</title>
-      <link>http://ftvision.github.io/digest/digest-016/</link>
+      <link>http://localhost:1313/digest/digest-016/</link>
       <pubDate>Sat, 09 Jan 2021 23:54:11 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-016/</guid>
-      <description>文章 机器学习 | Source DALL·E: Creating Images from Text OpenAI介绍了最近在语言转图像的工作。效果看起来是挺不错的，因为通过语言产生的图片看起来已经比较合</description>
+      <guid>http://localhost:1313/digest/digest-016/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    机器学习 | &lt;a href=&#34;https://openai.com/blog/dall-e/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### DALL·E: Creating Images from Text&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;OpenAI介绍了最近在语言转图像的工作。效果看起来是挺不错的，因为通过语言产生的图片看起来已经比较合理了。挺有意思的一个工作。另外，Open AI写得互动文章解释真的是做的很不错。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 015</title>
-      <link>http://ftvision.github.io/digest/digest-015/</link>
+      <link>http://localhost:1313/digest/digest-015/</link>
       <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-015/</guid>
-      <description>文章 这一周主要是看了一些DevOps和SRE的文章和视频。有一些是从SRE Weekly那里看到的。平时在工作的过程中学到了很多SRE相关的知</description>
+      <guid>http://localhost:1313/digest/digest-015/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;p&gt;这一周主要是看了一些DevOps和SRE的文章和视频。有一些是从&lt;a href=&#34;https://sreweekly.com/&#34;&gt;SRE Weekly&lt;/a&gt;那里看到的。平时在工作的过程中学到了很多SRE相关的知识，本来以为蛮平常的，但是后来才发现这些概念在公司以外的地方还没有扩展开来。通过公司外的人来写SRE/DevOps相关的内容可以学习其他人和公司是怎么看待和实践相关的知识的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 014</title>
-      <link>http://ftvision.github.io/digest/digest-014/</link>
+      <link>http://localhost:1313/digest/digest-014/</link>
       <pubDate>Fri, 25 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-014/</guid>
-      <description>文章 科普报道 | Source Reading, That Strange and Uniquely Human Thing 这是一篇关于人类阅读和文字发展历史的文章。非常典型的美国式科普叙事结构——针对一个特定的人来叙述一件特定事，然</description>
+      <guid>http://localhost:1313/digest/digest-014/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    科普报道 | &lt;a href=&#34;http://nautil.us/issue/94/evolving/reading-that-strange-and-uniquely-human-thing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Reading, That Strange and Uniquely Human Thing&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;这是一篇关于人类阅读和文字发展历史的文章。非常典型的美国式科普叙事结构——针对一个特定的人来叙述一件特定事，然后从这个个案展开来讲整个文章要探讨的问题，最后又回到这个特定的人/事上作为结尾。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 013</title>
-      <link>http://ftvision.github.io/digest/digest-013/</link>
+      <link>http://localhost:1313/digest/digest-013/</link>
       <pubDate>Sun, 13 Dec 2020 23:15:42 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-013/</guid>
-      <description>文章 博客文章 | Source 编写一个最小的 64 位 Hello World 这是CJTing的一篇新文章，从最简单的C语言Hello World程序出发，逐层剖析，解释了这个最简单</description>
+      <guid>http://localhost:1313/digest/digest-013/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    博客文章 | &lt;a href=&#34;https://cjting.me/2020/12/10/tiny-x64-helloworld/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### 编写一个最小的 64 位 Hello World&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;这是CJTing的一篇新文章，从最简单的C语言Hello World程序出发，逐层剖析，解释了这个最简单的程序从编译到运行各个阶段的底层知识。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 012</title>
-      <link>http://ftvision.github.io/digest/digest-012/</link>
+      <link>http://localhost:1313/digest/digest-012/</link>
       <pubDate>Sat, 05 Dec 2020 23:33:06 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-012/</guid>
-      <description>文章 博客文章 | Source Cemetery of Soviet computers 这篇文章带着大家浏览了苏联70年代、80年代、90年代的几个计算机机型。很多机型可以看到美国PDP机型的影子，不过这</description>
+      <guid>http://localhost:1313/digest/digest-012/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;p&gt;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    博客文章 | &lt;a href=&#34;https://rusue.com/cemetery-of-soviet-computers/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Cemetery of Soviet computers&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;这篇文章带着大家浏览了苏联70年代、80年代、90年代的几个计算机机型。很多机型可以看到美国PDP机型的影子，不过这些苏联机型的实体样子在互联网上比较少见。看完这些照片，其实感觉可以做成赛博朋克的样子。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 011</title>
-      <link>http://ftvision.github.io/digest/digest-011/</link>
+      <link>http://localhost:1313/digest/digest-011/</link>
       <pubDate>Sat, 05 Dec 2020 12:16:30 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-011/</guid>
-      <description>文章 不同人生 | Source This is Real. That&amp;rsquo;s Not. 作者写了自己从一个上层家庭出身变成一个无家可归的流浪者的过程中所体验到的世间百态。作者说自己以前以为这个世界人们都</description>
+      <guid>http://localhost:1313/digest/digest-011/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    不同人生 | &lt;a href=&#34;https://streetlifesolutions.blogspot.com/2020/12/this-is-real-thats-not.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### This is Real. That&#39;s Not.&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;作者写了自己从一个上层家庭出身变成一个无家可归的流浪者的过程中所体验到的世间百态。作者说自己以前以为这个世界人们都互相友爱，为人善良。结果沦为流浪者之后才发现这个世界充满了恶意，尤其是别人对于自己认为”卑贱“的人的恶意。作者经历过的最糟糕的欺辱是来自看起来受过高等教育或者家庭出身好的几个人的。这篇文章想告诉那些生活在“温室里”的人们：“你们现在认为理所当然的一切，都不是理所当然的。你们以后好的教育、好的家庭就能获得富足的生活；但是我想告诉你们，好的教育，好的家庭，也可能沦为无家可归的流浪者。”这篇文章写得挺好的，值得细细品味。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 010</title>
-      <link>http://ftvision.github.io/digest/digest-010/</link>
+      <link>http://localhost:1313/digest/digest-010/</link>
       <pubDate>Fri, 27 Nov 2020 09:46:06 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-010/</guid>
-      <description>文章 经验分享 | Source Eight years at Roblox 作者介绍了他在Roblox工作八年的经历和大大小小的各种项目。从作者的项目可以看出一部分Roblox系统的演化的过程</description>
+      <guid>http://localhost:1313/digest/digest-010/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    经验分享 | &lt;a href=&#34;https://zeux.io/2020/08/02/eight-years-at-roblox/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Eight years at Roblox&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;作者介绍了他在Roblox工作八年的经历和大大小小的各种项目。从作者的项目可以看出一部分Roblox系统的演化的过程，以及Roblox一直遇到的挑战，比如外挂、性能要求、和底层引擎的改变。 HackerNews关于这篇文章的讨论也挺有意思的，其中好几个家长提到自己2-4岁的小孩都在玩Roblox，还有几个人说10岁以下的小孩几乎都知道Roblox。这个信息跟之前关于Roblox上市的讨论中提到的信息是很相似的。看起来Roblox还是蛮有前途的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 009</title>
-      <link>http://ftvision.github.io/digest/digest-009/</link>
+      <link>http://localhost:1313/digest/digest-009/</link>
       <pubDate>Fri, 20 Nov 2020 09:46:06 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-009/</guid>
-      <description>文章 博客文章 | Source End Micromanagement: 6 Signs You’re a Micromanager (And What to Do Instead) Micromanagement就是作为经理，对员工什么鸡毛蒜皮的小事都要管一管。这篇文章讲</description>
+      <guid>http://localhost:1313/digest/digest-009/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    博客文章 | &lt;a href=&#34;https://unito.io/blog/micromanagement-signs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### End Micromanagement: 6 Signs You’re a Micromanager (And What to Do Instead)&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Micromanagement就是作为经理，对员工什么鸡毛蒜皮的小事都要管一管。这篇文章讲了几个常见的micromanagement的表现：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 008</title>
-      <link>http://ftvision.github.io/digest/digest-008/</link>
+      <link>http://localhost:1313/digest/digest-008/</link>
       <pubDate>Fri, 13 Nov 2020 09:46:06 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-008/</guid>
-      <description>文章 经验分享 | Source I sold Baremetrics Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我第一次知道这个公司，但是整个文章把这个决定</description>
+      <guid>http://localhost:1313/digest/digest-008/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;p&gt;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    经验分享 | &lt;a href=&#34;https://baremetrics.com/blog/i-sold-baremetrics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### I sold Baremetrics&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;Josh Pigford分享了他决定卖掉Baremetrics这个公司的决定。虽然我第一次知道这个公司，但是整个文章把这个决定的过程说得很清楚，很透明。作为局外人，我还是很感谢有人把这个写出来的。整个公司10个人，1000多个用户，售价4百万美元，创始人可以拿走370万美元，剩下30万分给了9个员工，而早期投资了80万的投资人决定一分钱都不要。这个结果我感觉还是有点惊讶的。一方面是投资人竟然连本都不要了，另一方面是员工竟然拿了不到一个零头。当然，因为整个公司经营到七年都只有10个人，有可能整个业务开始的很多年都是Josh Pigford一个人在运营。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 007</title>
-      <link>http://ftvision.github.io/digest/digest-007/</link>
+      <link>http://localhost:1313/digest/digest-007/</link>
       <pubDate>Fri, 06 Nov 2020 09:46:06 -0500</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-007/</guid>
-      <description>文章 技术报道 | Source How Facebook is bringing QUIC to billions Facebook撰文介绍他们在全面推广使用QUIC作为网络连接方式，用来取代TCP为基础的连接方式，从HTTP</description>
+      <guid>http://localhost:1313/digest/digest-007/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    技术报道 | &lt;a href=&#34;https://engineering.fb.com/2020/10/21/networking-traffic/how-facebook-is-bringing-quic-to-billions/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;&#xA;### How Facebook is bringing QUIC to billions&#xA;&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Facebook 撰文介绍他们在全面推广使用&lt;a href=&#34;https://quicwg.org/&#34;&gt;QUIC&lt;/a&gt;作为网络连接方式，用来取代 TCP 为基础的连接方式，从 HTTP2 迈向 HTTP3。他们花了大篇幅介绍这个迁移项目的影响。我连 TCP/IP 都还没有完全搞明白，现在看来又要学新的东西了。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 006</title>
-      <link>http://ftvision.github.io/digest/digest-006/</link>
+      <link>http://localhost:1313/digest/digest-006/</link>
       <pubDate>Fri, 30 Oct 2020 18:57:35 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-006/</guid>
-      <description>文章 经验分享 | Source Type in the exact number of machines to proceed 这篇文章让我很有启发。这篇文章说到的问题是Linux系统有很多命令行的交互界面。很多时候，命令行界面要求你</description>
+      <guid>http://localhost:1313/digest/digest-006/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;p&gt;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    经验分享 | &lt;a href=&#34;https://rachelbythebay.com/w/2020/10/26/num/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Type in the exact number of machines to proceed&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;这篇文章让我很有启发。这篇文章说到的问题是Linux系统有很多命令行的交互界面。很多时候，命令行界面要求你确认信息的时候，可能只是要你输入一个”Y/N“，或者是按任意键继续。作者从自己多年的经验出发，指出输入简单的“Y/N”进行确认有时候是非常危险的事情，因为用户的粗心没看清楚信息就确认了。作者建议，在要求用户确认信息的时候，应该要求用户完整地输入信息本身的内容。比如&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 005</title>
-      <link>http://ftvision.github.io/digest/digest-005/</link>
+      <link>http://localhost:1313/digest/digest-005/</link>
       <pubDate>Fri, 23 Oct 2020 18:57:35 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-005/</guid>
-      <description>文章 可视化解释 | Source Up and Down the Ladder of Abstraction 这个网页是上一期提到的Bret Victor的一个展示。这个网页通过具体的例子，展现了如何讲一个问题（利用算法</description>
+      <guid>http://localhost:1313/digest/digest-005/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    可视化解释 | &lt;a href=&#34;http://worrydream.com/LadderOfAbstraction/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Up and Down the Ladder of Abstraction&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;这个网页是上一期提到的Bret Victor的一个展示。这个网页通过具体的例子，展现了如何讲一个问题（利用算法控制汽车在路上自动驾驶）讲得透透彻彻。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 004</title>
-      <link>http://ftvision.github.io/digest/digest-004/</link>
+      <link>http://localhost:1313/digest/digest-004/</link>
       <pubDate>Fri, 16 Oct 2020 11:17:28 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-004/</guid>
-      <description>文章 创业经验 | Source Startup Cemetery 这个集合很有意思，整理了一系列初创公司的业务、募资额度和倒闭的原因。点开不同的创业公司会读到不同的总结，这个还蛮适合休闲</description>
+      <guid>http://localhost:1313/digest/digest-004/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;p&gt;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    创业经验 | &lt;a href=&#34;https://www.failory.com/cemetery&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Startup Cemetery&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;这个集合很有意思，整理了一系列初创公司的业务、募资额度和倒闭的原因。点开不同的创业公司会读到不同的总结，这个还蛮适合休闲的时候了解一下创业失败背后的故事的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 003</title>
-      <link>http://ftvision.github.io/digest/digest-003/</link>
+      <link>http://localhost:1313/digest/digest-003/</link>
       <pubDate>Fri, 09 Oct 2020 12:19:05 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-003/</guid>
-      <description>文章 创业分享 | Source How we built a $1m ARR SaaS startup Canny的创始人Sarah分享了他们达到一百万美元年度经常性收入（annual recurring revenue）这个指标。</description>
+      <guid>http://localhost:1313/digest/digest-003/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    创业分享 | &lt;a href=&#34;https://canny.io/blog/how-we-built-a-1m-arr-saas-startup/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### How we built a $1m ARR SaaS startup&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;Canny的创始人Sarah分享了他们达到一百万美元年度经常性收入（annual recurring revenue）这个指标。ARR似乎是评价订阅业务（包括SaaS）的关键指标&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;，将定期订阅的合同经常性收入部分规范化为一年期的价值。整个团队在达到目标时一共七个人，都是远程工作。公司从零开始到达这个目标用了3年时间，而且都是用的自己的资金。Sarah将整个过程分成几个阶段，每个阶段都分享了需要解决的问题和学到的东西。而且他们一直在写博客，把他们的创业经历记录下来并分享给其他人。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 002</title>
-      <link>http://ftvision.github.io/digest/digest-002/</link>
+      <link>http://localhost:1313/digest/digest-002/</link>
       <pubDate>Fri, 02 Oct 2020 17:10:38 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-002/</guid>
-      <description>文章 科学报道 | Source Compact Nuclear Fusion Reactor Is ‘Very Likely to Work,’ Studies Suggest MIT的Sparc项目信心满满地认为他们能控制核聚变，并使用核聚变，像太阳一样，制造</description>
+      <guid>http://localhost:1313/digest/digest-002/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    科学报道 | &lt;a href=&#34;https://www.nytimes.com/2020/09/29/climate/nuclear-fusion-reactor.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Compact Nuclear Fusion Reactor Is ‘Very Likely to Work,’ Studies Suggest&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;MIT的&lt;a href=&#34;https://www.psfc.mit.edu/sparc&#34;&gt;Sparc&lt;/a&gt;项目信心满满地认为他们能控制核聚变，并使用核聚变，像太阳一样，制造出更多的能量。这一想法要是实现了，我们将迈向一个崭新的能源时代；同时，我们也可以更好地缓解全球气候变暖的问题。&lt;/p&gt;&#xA;&lt;p&gt;这篇纽约时报的文章其实没有涉及到太深的技术问题，但是这篇科学报道的写作方法确实有不少值得学习的地方。至于具体的关于MIT这一系列核聚变的研究的科学讲座，还是看下面列出来的视频吧。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Digest 001</title>
-      <link>http://ftvision.github.io/digest/digest-001/</link>
+      <link>http://localhost:1313/digest/digest-001/</link>
       <pubDate>Fri, 25 Sep 2020 17:10:38 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/digest/digest-001/</guid>
-      <description>文章 神经科学 | Source Birds do have a brain cortex—and think 这篇Science评论从以下两篇Science文章出发，更新了我们对于鸟类的大脑结构和认知功</description>
+      <guid>http://localhost:1313/digest/digest-001/</guid>
+      <description>&lt;h2 id=&#34;文章&#34;&gt;文章&lt;/h2&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    神经科学 | &lt;a href=&#34;https://science.sciencemag.org/content/369/6511/1567&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;来源&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;div class=&#34;content&#34; style=&#34;margin-top: 1rem;&#34;&gt;&#xA;### Birds do have a brain cortex—and think&#xA;&lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;p&gt;这篇Science评论从以下两篇Science文章出发，更新了我们对于鸟类的大脑结构和认知功能的看法。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

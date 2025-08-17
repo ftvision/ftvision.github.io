@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Psychology on Thinking as Algorithm</title>
-    <link>http://ftvision.github.io/en/tags/psychology/</link>
+    <link>http://localhost:1313/en/tags/psychology/</link>
     <description>Recent content in Psychology on Thinking as Algorithm</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 23 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/en/tags/psychology/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tags/psychology/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Potential downside of high initial visual acuity</title>
-      <link>http://ftvision.github.io/en/library/vogeslang_etal_sinha_2018/</link>
+      <link>http://localhost:1313/en/library/vogeslang_etal_sinha_2018/</link>
       <pubDate>Sun, 23 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/en/library/vogeslang_etal_sinha_2018/</guid>
-      <description>Vogelsang, L., Gilad-Gutnick, S., Ehrenberg, E., Yonas, A., Diamond, S., Held, R., &amp;amp; Sinha, P. (2018). Potential downside of high initial visual acuity. Proceedings of the National Academy of Sciences, 115(44), 11333-11338.
- Vogelsang and colleagues tried to test one interesting hypothesis: seeing sharp, clear images at the very early stage of life can actually do harm to visual perception and its development. The hypothesis started with an observation that infants who have cataracts but cured at early age may actually have problems in face recognition.</description>
+      <guid>http://localhost:1313/en/library/vogeslang_etal_sinha_2018/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Vogelsang, L., Gilad-Gutnick, S., Ehrenberg, E., Yonas, A., Diamond, S., Held, R., &amp;amp; Sinha, P. (2018). Potential downside of high initial visual acuity. Proceedings of the National Academy of Sciences, 115(44), 11333-11338.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Vogelsang and colleagues tried to test one interesting hypothesis: seeing sharp, clear images at the very early stage of life can actually do harm to visual perception and its development. The hypothesis started with an observation that infants who have cataracts but cured at early age may actually have problems in face recognition. The authors approached this hypothesis by first using image-analysis techniques to show blurry images may require the development of large receptive fields of neurons in visual cortices. Then, they tried to train Deep Neural Networks with images blurred (or filtered) by different Gaussian filters. They found that training that started with blurry images can help the network to achieve better performance in the end.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>List of 100 vision papers</title>
-      <link>http://ftvision.github.io/en/collection/vision-100/</link>
+      <link>http://localhost:1313/en/collection/vision-100/</link>
       <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>http://ftvision.github.io/en/collection/vision-100/</guid>
-      <description>Introduction This is a list of 100 vision science paper compiled by Dr. Yury Petrov when he was at Northeastern University around 2007. The original link, however, is broken. Therefore I post the information in the original page here.
-Dr. Yury Petrov&amp;rsquo;s selection criterion I tried to weed out all review papers. Papers in the list have been ranked based on the number of times the paper was cited as given by Google Scholar, Scopus, and Web of Science databases as of January 2007.</description>
+      <guid>http://localhost:1313/en/collection/vision-100/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;This is a list of 100 vision science paper compiled by Dr. Yury Petrov when he was at Northeastern University around 2007. The original link, however, is broken. Therefore I post the information in the original page here.&lt;/p&gt;&#xA;&#xA;&lt;div class=&#34;flash flash-full flash my-2&#34;&gt;&#xA;    &lt;h3 id=&#34;dr-yury-petrovs-selection-criterion&#34;&gt;Dr. Yury Petrov&amp;rsquo;s selection criterion&lt;/h3&gt;&#xA;&lt;p&gt;I tried to weed out all review papers. Papers in the list have been ranked based on the number of times the paper was cited as given by Google Scholar, Scopus, and Web of Science databases as of January 2007. Google Scholar and Scopus numbers agree well, while Web of Science numbers are quite different. Apparently, the former two are biased toward more recent papers available online. Therefore, the highest of the two citation numbers (Google Scholar and Web of Science) determined the paper rank. I feel that the ranking provides a somewhat objective justification for the choice of the &amp;ldquo;most important&amp;rdquo; papers. As an alternative to the number of citations I also included the &amp;ldquo;Subjective score&amp;rdquo;, i.e. how many popular textbooks cited a given article on Sensation and Perception from the following list:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

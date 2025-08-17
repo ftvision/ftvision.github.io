@@ -1,38 +1,137 @@
 {{ partial "head" . }}
 
-<!-- Header -->
 {{ partial "header" . }}
 
-<!-- Main Content-->
-<div class="mx-auto my-2 col-10 col-md-7 col-lg-6 col-xl-5" >
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
+    
+    <!-- Main Content Column -->
+    <div class="lg:col-span-8 lg:col-start-3">
+      <!-- Breadcrumb Navigation -->
+      <nav aria-label="Breadcrumb" class="mb-8 lg:mb-12">
+        <ol class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <li>
+            <a href="{{ "/" | relLangURL }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
+              {{ if eq .Site.Language.Lang "zh" }}首页{{ else }}Home{{ end }}
+            </a>
+          </li>
+          <li class="text-gray-300 dark:text-gray-600">/</li>
+          <li>
+            <a href="{{ printf "/%s" .Section | relLangURL }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 capitalize">
+              {{ .Section }}
+            </a>
+          </li>
+          <li class="text-gray-300 dark:text-gray-600">/</li>
+          <li aria-current="page" class="text-gray-700 dark:text-gray-300 font-medium truncate">{{ .Title }}</li>
+        </ol>
+      </nav>
 
-  <!-- Navigation -->
-  <div class="p-2">
-    <nav aria-label="Breadcrumb">
-      <ol>
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item"><a href="/{{.Section}}">{{ .Section }}</a></li>
-        <li class="breadcrumb-item" aria-current="page"> {{ .Title }}</li>
-      </ol>
-    </nav>
-
-    <h1 id="page-title">{{.Title}}</h1>
-    <div>
-      {{ if .IsTranslated }}
-      <strong>Also in:</strong>
-        {{ range .Translations }}
-        <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+      <!-- Article Header -->
+      <header class="mb-12 lg:mb-16">
+        <!-- Meta Information -->
+        {{ if .Date }}
+        <div class="mb-6">
+          <time datetime="{{ .Date.Format "2006-01-02" }}" class="text-sm font-mono text-gray-500 dark:text-gray-400 tracking-wide">
+            {{ .Date.Format "2006.01.02" }}
+          </time>
+        </div>
         {{ end }}
+        
+        <!-- Title -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 dark:text-white mb-8 leading-tight tracking-tight">
+          {{ .Title }}
+        </h1>
+        
+        <!-- Subtitle/Description -->
+        {{ if .Params.subtitle }}
+        <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-8">
+          {{ .Params.subtitle }}
+        </p>
+        {{ end }}
+        
+        <!-- Tags -->
+        {{ if .Params.tags }}
+        <div class="flex flex-wrap gap-2 pt-6 border-t border-gray-100 dark:border-slate-800">
+          {{ range .Params.tags }}
+          <span class="inline-flex items-center px-3 py-1 text-xs font-medium text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-slate-800 rounded-full">
+            {{ . }}
+          </span>
+          {{ end }}
+        </div>
+        {{ end }}
+      </header>
+
+      <!-- Article Content -->
+      <article class="prose prose-xl dark:prose-dark max-w-4xl prose-headings:font-light prose-headings:tracking-tight prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h2:mt-10 prose-h2:mb-5 prose-h3:mt-8 prose-h3:mb-4 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6 prose-blockquote:border-l-4 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-600 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400 prose-code:text-sm prose-code:bg-gray-100 dark:prose-code:bg-slate-800 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-900 dark:prose-pre:bg-slate-900 prose-pre:border prose-pre:border-gray-200 dark:prose-pre:border-slate-700">
+        {{ .Content }}
+      </article>
+
+
+
+      <!-- Post Navigation -->
+      {{ if or .NextInSection .PrevInSection }}
+      <nav class="mt-16 pt-8 border-t border-gray-100 dark:border-slate-800">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {{ if .PrevInSection }}
+          <div class="group">
+            <p class="text-sm font-mono text-gray-500 dark:text-gray-400 mb-2 tracking-wide">
+              {{ if eq .Site.Language.Lang "zh" }}上一篇{{ else }}Previous{{ end }}
+            </p>
+            <a href="{{ .PrevInSection.Permalink }}" class="block">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug">
+                {{ .PrevInSection.Title }}
+              </h3>
+            </a>
+          </div>
+          {{ end }}
+          
+          {{ if .NextInSection }}
+          <div class="group md:text-right">
+            <p class="text-sm font-mono text-gray-500 dark:text-gray-400 mb-2 tracking-wide">
+              {{ if eq .Site.Language.Lang "zh" }}下一篇{{ else }}Next{{ end }}
+            </p>
+            <a href="{{ .NextInSection.Permalink }}" class="block">
+              <h3 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 leading-snug">
+                {{ .NextInSection.Title }}
+              </h3>
+            </a>
+          </div>
+          {{ end }}
+        </div>
+      </nav>
+      {{ end }}
+    </div>
+    
+    <!-- Side Column for Typography Info (Optional) -->
+    <div class="lg:col-span-2 lg:col-start-11">
+      <div class="sticky top-24 space-y-8">
+        <!-- Reading Time -->
+        {{ if .ReadingTime }}
+        <div class="text-right">
+          <p class="text-sm font-mono text-gray-500 dark:text-gray-400 tracking-wide">
+            {{ if eq .Site.Language.Lang "zh" }}阅读时间{{ else }}Reading Time{{ end }}
+          </p>
+          <p class="text-lg font-light text-gray-700 dark:text-gray-300">
+            {{ .ReadingTime }} {{ if eq .Site.Language.Lang "zh" }}分钟{{ else }}min{{ end }}
+          </p>
+        </div>
+        {{ end }}
+        
+        <!-- Word Count -->
+        {{ if .WordCount }}
+        <div class="text-right">
+          <p class="text-sm font-mono text-gray-500 dark:text-gray-400 tracking-wide">
+            {{ if eq .Site.Language.Lang "zh" }}字数{{ else }}Words{{ end }}
+          </p>
+          <p class="text-lg font-light text-gray-700 dark:text-gray-300">
+            {{ .WordCount }}
+          </p>
+        </div>
         {{ end }}
       </div>
+    </div>
   </div>
+</main>
 
-
-  <div class="markdown-body p-2">
-  {{ .Content }}
-  </div>
-  <!-- Footer -->
-  {{ partial "footer" . }}
-
-</div>
+{{ partial "footer" . }}
 

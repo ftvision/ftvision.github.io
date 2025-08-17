@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Logging on Thinking as Algorithm</title>
-    <link>http://ftvision.github.io/en/logging/</link>
+    <link>http://localhost:1313/en/logging/</link>
     <description>Recent content in Logging on Thinking as Algorithm</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 02 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://ftvision.github.io/en/logging/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 05 Nov 2020 18:12:30 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/logging/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Shortcodes Update Logging</title>
-      <link>http://ftvision.github.io/en/logging/shortcodes/</link>
+      <link>http://localhost:1313/en/logging/shortcodes/</link>
       <pubDate>Thu, 05 Nov 2020 18:12:30 -0400</pubDate>
-      
-      <guid>http://ftvision.github.io/en/logging/shortcodes/</guid>
-      <description>Here is a list of shortcodes I&amp;rsquo;ve made for this blog.
-Digest Title Code 1  {{&amp;lt; digest-item &amp;#34;title&amp;#34;=&amp;#34;Title&amp;#34; &amp;#34;source&amp;#34;=&amp;#34;#url&amp;#34; &amp;#34;description&amp;#34;=&amp;#34;Description&amp;#34; &amp;gt;}}   Demo Description | Source Code Tabs Code 1 2 3 4 5 6 7 8 9 10 11  {{&amp;lt; tabs &amp;#34;test_file&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;cpp&amp;#34; &amp;gt;}} # cpp code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;python&amp;#34; &amp;gt;}} # python code here {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}}   Demo Box Highlight Code 1 2 3 4 5 6 7 8 9 10 11  {{&amp;lt; box-highlight type=&amp;#34;info&amp;#34; &amp;gt;}} This is a info box.</description>
+      <guid>http://localhost:1313/en/logging/shortcodes/</guid>
+      <description>&lt;p&gt;Here is a list of &lt;strong&gt;shortcodes&lt;/strong&gt; I&amp;rsquo;ve made for this blog.&lt;/p&gt;&#xA;&lt;h2 id=&#34;digest-title&#34;&gt;Digest Title&lt;/h2&gt;&#xA;&lt;h4 id=&#34;code&#34;&gt;Code&lt;/h4&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;{{&amp;lt; digest-item &amp;quot;title&amp;quot;=&amp;quot;Title&amp;quot; &amp;quot;source&amp;quot;=&amp;quot;#url&amp;quot; &amp;quot;description&amp;quot;=&amp;quot;Description&amp;quot; &amp;gt;}}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h4 id=&#34;demo&#34;&gt;Demo&lt;/h4&gt;&#xA;&lt;div class=&#34;digest-item&#34;&gt;&#xA;  &lt;h3&gt;Title&lt;/h3&gt;&#xA;  &lt;div class=&#34;meta&#34;&gt;&#xA;    Description | &lt;a href=&#34;#&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Source&lt;/a&gt;&#xA;  &lt;/div&gt;&lt;/div&gt;&#xA;&#xA;&lt;h2 id=&#34;code-tabs&#34;&gt;Code Tabs&lt;/h2&gt;&#xA;&lt;h4 id=&#34;code-1&#34;&gt;Code&lt;/h4&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-md&#34;&gt;{{&amp;lt; tabs &amp;quot;test_file&amp;quot; &amp;gt;}}&#xA;&#xA;{{&amp;lt; tab &amp;quot;cpp&amp;quot; &amp;gt;}} # cpp code here&#xA;{{&amp;lt; /tab &amp;gt;}}&#xA;&#xA;{{&amp;lt; tab &amp;quot;python&amp;quot; &amp;gt;}} # python code here&#xA;{{&amp;lt; /tab &amp;gt;}}&#xA;&#xA;{{&amp;lt; /tabs &amp;gt;}}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h4 id=&#34;demo-1&#34;&gt;Demo&lt;/h4&gt;&#xA;&lt;div class=&#39;tabs&#39;&gt;&#xA;  &lt;nav class=&#34;UnderlineNav&#34; aria-label=&#34;Foo bar&#34;&gt;&#xA;    &lt;div class=&#34;UnderlineNav-actions&#34;&gt;&#xA;      &lt;small class=&#34;text-mono&#34;&gt;test_file&lt;/small&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;tab-list UnderlineNav-body&#34;&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/nav&gt;&#xA;&#xA;  &lt;div class=&#34;tab-content&#34;&gt;&#xA;&lt;div class=&#34;tab-panel my-1&#34; id=&#34;cpp&#34;&gt;&#xA;  &lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int main(){&#xA;  return 0;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;div class=&#34;tab-panel my-1&#34; id=&#34;python&#34;&gt;&#xA;  &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def main():&#xA;  return 0&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;h2 id=&#34;box-highlight&#34;&gt;Box Highlight&lt;/h2&gt;&#xA;&lt;h4 id=&#34;code-2&#34;&gt;Code&lt;/h4&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;{{&amp;lt; box-highlight type=&amp;quot;info&amp;quot; &amp;gt;}}&#xA;This is a info box.&#xA;{{&amp;lt; /box-highlight &amp;gt;}}&#xA;&#xA;{{&amp;lt; box-highlight type=&amp;quot;warning&amp;quot; &amp;gt;}}&#xA;This is a warning box.&#xA;{{&amp;lt; /box-highlight &amp;gt;}}&#xA;&#xA;{{&amp;lt; box-highlight type=&amp;quot;success&amp;quot; &amp;gt;}}&#xA;This is a success box.&#xA;{{&amp;lt; /box-highlight &amp;gt;}}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h4 id=&#34;demo-2&#34;&gt;Demo&lt;/h4&gt;&#xA;&#xA;&lt;div class=&#34;flash flash-full flash my-2&#34;&gt;&#xA;    This is a info box.&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;flash flash-full flash-warn my-2&#34;&gt;&#xA;    This is a warning box.&#xA;&lt;/div&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;flash flash-full flash-success my-2&#34;&gt;&#xA;    This is a success box.&#xA;&lt;/div&gt;</description>
     </item>
-    
   </channel>
 </rss>

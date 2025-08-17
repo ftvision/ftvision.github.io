@@ -1,41 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ .Site.LanguageCode | default "en" }}" class="h-full">
 
 <head>
   <!-- Define character set -->
   <meta charset="utf-8">
   <!-- Mobile optimization -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <!-- Define Page title -->
   <title>
-    {{ if .IsHome }} {{ .Site.Title }} {{ else }} {{ .Title }} {{ end }}
+    {{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}
   </title>
+  
   <!-- Define Site Description -->
   {{ if .Site.Params.description }}
-  <meta name="description" content="{{ .Site.Params.description }}}">{% endif %}
+  <meta name="description" content="{{ .Site.Params.description }}">
   {{ end }}
+  
   <!-- Define RSS Feed -->
   {{ if .Site.Params.rss.enable }}
   <link href="{{ .Site.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
   {{ end }}
-  <!-- Google Analytics -->
-  <!-- {{ partial "googleanalytics" . }} -->
-  <!-- CSS Reset: Normalize 8.0.1 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">
-  <!-- CSS: Primer -->
-  <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-  <!-- gittalk -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-  <!-- Font Awesome -->
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
-  <!-- Local CSS override -->
-  <link rel="stylesheet" href="{{ `css/style.css` | relURL }}"/>
-  <!-- Local JS override-->
-  <script defer src="/js/tab.js"></script>
-  <script defer src="/js/gtalk.js"></script>
-
+  
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
+  
+  <!-- Syntax Highlighting with Prism.js -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" media="(prefers-color-scheme: light)">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css" rel="stylesheet" media="(prefers-color-scheme: dark)">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  
+  <style>
+    /* Custom Prism styling */
+    pre[class*="language-"] {
+      background: #f8f9fa !important;
+      border: 1px solid #e1e8ed !important;
+      border-radius: 8px !important;
+      margin: 1.5rem 0 !important;
+      padding: 1rem !important;
+      overflow-x: auto !important;
+      font-size: 0.875rem !important;
+      line-height: 1.6 !important;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      pre[class*="language-"] {
+        background: #1e293b !important;
+        border: 1px solid #374151 !important;
+        color: #e2e8f0 !important;
+      }
+    }
+    
+    code[class*="language-"] {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+    }
+    
+    /* Inline code */
+    :not(pre) > code {
+      background: #f1f5f9 !important;
+      color: #475569 !important;
+      padding: 0.125rem 0.375rem !important;
+      border-radius: 0.25rem !important;
+      font-size: 0.875rem !important;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      :not(pre) > code {
+        background: #374151 !important;
+        color: #d1d5db !important;
+      }
+    }
+     </style>
+  
+  <!-- Mermaid.js for diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (document.querySelector('.mermaid')) {
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default',
+          themeVariables: {
+            fontFamily: 'ui-sans-serif, system-ui, sans-serif',
+            primaryColor: '#3b82f6',
+            primaryTextColor: '#1f2937',
+            primaryBorderColor: '#e5e7eb',
+            lineColor: '#6b7280'
+          },
+          flowchart: { useMaxWidth: true, htmlLabels: true },
+          sequence: { useMaxWidth: true },
+          gitgraph: { useMaxWidth: true }
+        });
+      }
+    });
+  </script>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{{ "/favicon.ico" | relURL }}">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  {{ if .Site.Params.description }}
+  <meta property="og:description" content="{{ .Site.Params.description }}">
+  {{ end }}
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  {{ if .Site.Params.description }}
+  <meta name="twitter:description" content="{{ .Site.Params.description }}">
+  {{ end }}
+  
+  <!-- Theme color for mobile browsers -->
+  <meta name="theme-color" content="#3b82f6">
 </head>
 
-<body>
+<body class="min-h-full bg-gray-50 dark:bg-slate-900 transition-colors duration-200">
