@@ -2,41 +2,20 @@
 
 ## Overview
 
-This document describes the architecture for rebuilding the personal blog from Hugo/PaperMod to a Next.js + MDX design system approach.
+Personal blog rebuild from Hugo/PaperMod to Next.js + MDX with a themeable design system monorepo.
 
 ---
 
-## Current State Analysis
+## Design Principles
 
-### Existing Structure
-```
-sarajevo/
-├── content/
-│   ├── about/          # About pages (zh/en)
-│   ├── blog/           # Blog posts (~10 posts)
-│   ├── collection/     # Curated collections
-│   ├── digest/         # Weekly digests (~22 entries)
-│   ├── library/        # Paper notes/reviews
-│   └── logging/        # Dev logs
-├── docs/               # Built output (GitHub Pages)
-├── archetypes/         # Hugo templates
-├── config.yml          # Hugo configuration
-└── themes/PaperMod/    # Hugo theme (external)
-```
-
-### Current Features
-- Multi-language (Chinese primary, English secondary)
-- PaperMod theme with dark/light mode
-- Categories and tags
-- Search (Fuse.js)
-- Table of contents
-- Reading time estimation
+1. **Minimal by default** - Start with the smallest viable implementation, extend as needed
+2. **Themeable** - Support multiple visual themes (NYT-style, Brutalist, etc.) for experimentation
+3. **Layer separation** - Lower layers never import from higher layers
+4. **Co-location** - Stories live with components, tests live with code
 
 ---
 
-## Proposed Architecture
-
-### 5-Layer Design System
+## 5-Layer Design System
 
 ```
 Layer 5: Pages/Views        → apps/blog/app/
@@ -46,491 +25,332 @@ Layer 4: App Components     → apps/blog/components/
          Blog-specific: PostCard, DigestList, PaperNote
 
 Layer 3: Pattern Components → packages/ui/ (complex)
-         Reusable patterns: Modal, Tabs, SearchDialog
+         Reusable patterns: Tabs, Accordion, Modal
+         (Uses Radix UI for accessibility)
 
 Layer 2: Primitive Components → packages/ui/ (basic)
-         Generic UI: Button, Card, Badge, Input
+         Generic UI: Button, Card, Callout
+         (No external dependencies beyond CVA)
 
 Layer 1: Design Tokens      → packages/tokens/
-         Colors, spacing, typography, shadows
+         Primitives → Semantic → Themes
 ```
+
+**Rule**: Lower layers never import from higher layers.
+
+---
+
+## Token Architecture
+
+### 3-Layer Token Model
+
+```
+Primitives (raw values)
+    ↓
+Semantic (meaning)
+    ↓
+Themes (variations)
+```
+
+**Primitives**: Raw design values (colors, font stacks, spacing scale)
+```json
+{ "gray-900": "#18181b", "blue-600": "#2563eb" }
+```
+
+**Semantic**: Meaning-based tokens that reference primitives
+```json
+{ "color-text-primary": "{gray-900}", "color-action": "{blue-600}" }
+```
+
+**Themes**: Remap semantic tokens for different visual styles
+```json
+// brutalist theme
+{ "color-action": "{red-600}", "font-heading": "{font-mono}" }
+```
+
+### Theme × Mode Matrix
+
+Each theme supports light and dark modes independently:
+
+```
+              Light    Dark
+NYT           ✓        ✓
+Brutalist     ✓        ✓
+Minimal       ✓        ✓
+```
+
+### Token Categories
+
+| Category | Themeable | Notes |
+|----------|-----------|-------|
+| Color | Yes | Defines personality |
+| Typography | Yes | Font family, not sizes |
+| Radius | Yes | Sharp vs rounded |
+| Border | Yes | Width, style |
+| Spacing | No | Shared across themes |
+| Motion | No | Shared across themes |
 
 ### Directory Structure
 
 ```
-sarajevo/
-├── packages/
-│   ├── tokens/
-│   │   ├── src/
-│   │   │   ├── colors.json
-│   │   │   ├── spacing.json
-│   │   │   ├── typography.json
-│   │   │   └── shadows.json
-│   │   ├── build/              # Generated CSS/JS
-│   │   ├── style-dictionary.config.js
-│   │   └── package.json
+packages/tokens/
+├── src/
+│   ├── primitives/           # Raw values (shared)
+│   │   ├── colors.json
+│   │   ├── typography.json
+│   │   ├── spacing.json
+│   │   └── radius.json
 │   │
-│   ├── ui/
-│   │   ├── src/
-│   │   │   ├── components/
-│   │   │   │   ├── Button.tsx
-│   │   │   │   ├── Card.tsx
-│   │   │   │   ├── Badge.tsx
-│   │   │   │   ├── Input.tsx
-│   │   │   │   ├── Tabs.tsx
-│   │   │   │   └── ...
-│   │   │   ├── lib/
-│   │   │   │   └── utils.ts    # cn() utility
-│   │   │   └── index.tsx
-│   │   ├── package.json
-│   │   └── tailwind.config.js
+│   ├── semantic/             # Default semantic mapping
+│   │   └── base.json
 │   │
-│   └── config/
-│       ├── tsconfig/
-│       │   ├── base.json
-│       │   ├── react.json
-│       │   └── nextjs.json
-│       ├── tailwind.config.js
-│       └── package.json
+│   ├── themes/               # Theme overrides
+│   │   ├── nyt/
+│   │   │   ├── light.json
+│   │   │   └── dark.json
+│   │   ├── brutalist/
+│   │   │   ├── light.json
+│   │   │   └── dark.json
+│   │   └── _template.json    # Copy to create new theme
+│   │
+│   └── index.ts              # Theme metadata & types
 │
-├── apps/
-│   └── blog/
-│       ├── app/
-│       │   ├── layout.tsx
-│       │   ├── page.tsx
-│       │   ├── globals.css
-│       │   ├── [locale]/
-│       │   │   ├── layout.tsx
-│       │   │   ├── page.tsx
-│       │   │   ├── blog/
-│       │   │   │   ├── page.tsx
-│       │   │   │   └── [slug]/page.tsx
-│       │   │   ├── collection/
-│       │   │   ├── library/
-│       │   │   └── about/
-│       │   └── ...
-│       ├── components/
-│       │   ├── PostCard.tsx
-│       │   ├── PostList.tsx
-│       │   ├── DigestEntry.tsx
-│       │   ├── PaperNote.tsx
-│       │   ├── TableOfContents.tsx
-│       │   ├── LanguageSwitcher.tsx
-│       │   └── ThemeToggle.tsx
-│       ├── content/            # MDX content files
-│       │   ├── blog/
-│       │   │   └── zh/
-│       │   │       └── 10k-code.mdx
-│       │   ├── collection/
-│       │   ├── library/
-│       │   └── about/
-│       ├── lib/
-│       │   ├── mdx.ts          # MDX utilities
-│       │   ├── content.ts      # Content fetching
-│       │   └── i18n.ts         # Internationalization
-│       ├── mdx-components.tsx  # Custom MDX components
-│       ├── next.config.js
-│       ├── tailwind.config.js
-│       └── package.json
+├── config.js                 # Style Dictionary config
+└── build/
+    ├── primitives.css
+    ├── semantic.css
+    ├── theme-nyt-light.css
+    ├── theme-nyt-dark.css
+    └── ...
+```
+
+### CSS Custom Properties Naming
+
+```css
+--{category}-{property}-{variant}-{state}
+
+/* Examples */
+--color-bg-primary
+--color-text-primary
+--color-text-muted
+--color-action-primary
+--color-action-primary-hover
+--font-family-heading
+--font-family-body
+--radius-default
+--border-width-default
+```
+
+---
+
+## UI Package Architecture
+
+### Structure (Nested + Co-located)
+
+```
+packages/ui/
+├── src/
+│   ├── components/
+│   │   ├── Button/
+│   │   │   ├── Button.tsx
+│   │   │   ├── Button.stories.tsx
+│   │   │   └── index.ts
+│   │   ├── Card/
+│   │   │   ├── Card.tsx
+│   │   │   ├── Card.stories.tsx
+│   │   │   └── index.ts
+│   │   └── Callout/
+│   │       ├── Callout.tsx
+│   │       ├── Callout.stories.tsx
+│   │       └── index.ts
+│   │
+│   ├── lib/
+│   │   └── utils.ts          # cn() utility
+│   │
+│   └── index.tsx             # Public exports
 │
-├── content/                    # Legacy Hugo content (reference)
-├── docs/                       # Static export output
 ├── package.json
-├── pnpm-workspace.yaml
-├── turbo.json
-└── .gitignore
+├── tsconfig.json
+└── tailwind.config.js
 ```
+
+### MVP Components
+
+**Layer 2 (Primitives):**
+- `Button` - Actions, theme toggle, copy code
+- `Card` - Content containers
+
+**Layer 3 (Patterns):**
+- `Callout` - Info/warning/danger boxes
+
+### Component Implementation
+
+- **CVA (class-variance-authority)** for variant management
+- **Tailwind CSS** with semantic token classes
+- **forwardRef** for all components
+- **Full TypeScript** types
+
+Example pattern:
+```tsx
+// Button uses semantic tokens via Tailwind
+<button className="bg-action text-action-contrast rounded-default">
+```
+
+### Future Components (Add As Needed)
+
+Layer 2: Badge, Input, Prose
+Layer 3: Tabs, Accordion, Modal (use Radix UI)
 
 ---
 
-## Technology Stack
+## Storybook Architecture
 
-### Core
-| Technology | Purpose | Version |
-|------------|---------|---------|
-| Next.js | Framework | 14.x (App Router) |
-| React | UI Library | 18.x |
-| TypeScript | Type Safety | 5.x |
-| Tailwind CSS | Styling | 3.x |
+### Co-located Stories
 
-### Monorepo
-| Technology | Purpose |
-|------------|---------|
-| Turborepo | Build orchestration |
-| pnpm | Package management |
-
-### Content
-| Technology | Purpose |
-|------------|---------|
-| MDX | Interactive markdown |
-| @next/mdx | MDX integration |
-| gray-matter | Frontmatter parsing |
-| rehype-pretty-code | Code highlighting |
-| remark-gfm | GitHub-flavored markdown |
-
-### Design System
-| Technology | Purpose |
-|------------|---------|
-| Style Dictionary | Token transformation |
-| CVA | Component variants |
-| clsx + tailwind-merge | Class utilities |
-
-### i18n
-| Technology | Purpose |
-|------------|---------|
-| next-intl | Internationalization |
-
----
-
-## Path Aliases Configuration
-
-All packages use absolute imports via TypeScript path aliases for cleaner imports.
-
-### UI Package (`packages/ui/tsconfig.json`)
-```json
-{
-  "extends": "@blog/config/tsconfig/react.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@ui/*": ["src/*"]
-    }
-  },
-  "include": ["src/**/*"]
-}
+Stories live alongside components in `packages/ui/`:
+```
+packages/ui/src/components/Button/
+├── Button.tsx
+└── Button.stories.tsx    # Co-located
 ```
 
-### Blog App (`apps/blog/tsconfig.json`)
-```json
-{
-  "extends": "@blog/config/tsconfig/nextjs.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"],
-      "@/content/*": ["content/*"]
-    }
-  },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
-}
+### Aggregator App
+
+`apps/docs/` aggregates stories from all packages:
+```
+apps/docs/
+├── .storybook/
+│   └── main.ts           # Points to packages/ui/**/*.stories.tsx
+├── stories/
+│   └── README.md         # How to add stories
+└── package.json
 ```
 
-### Import Examples
-```typescript
-// In packages/ui/src/components/Card.tsx
-import { cn } from '@ui/lib/utils';
+### Configuration
 
-// In apps/blog/components/PostCard.tsx
-import { Card, Badge } from '@blog/ui';
-import { formatDate } from '@/lib/utils';
-import type { Post } from '@/lib/content';
-```
-
----
-
-## Content Model
-
-### Blog Post (MDX)
-```mdx
----
-title: "10000行代码后对软件工程的思考"
-date: 2019-02-01
-locale: zh
-categories:
-  - 软件开发
-tags:
-  - C++
-  - software-engineering
-summary: "第一个10,000行代码的思考..."
----
-
-# Content here
-
-<Callout type="info">
-  Interactive component example
-</Callout>
-```
-
-### Frontmatter Schema
-```typescript
-interface PostFrontmatter {
-  title: string;
-  date: string;
-  locale: 'zh' | 'en';
-  categories?: string[];
-  tags?: string[];
-  summary?: string;
-  draft?: boolean;
-}
-
-interface CollectionFrontmatter {
-  title: string;
-  description: string;
-  locale: 'zh' | 'en';
-}
-
-interface LibraryFrontmatter {
-  title: string;
-  authors: string[];
-  year: number;
-  venue?: string;
-  locale: 'zh' | 'en';
-  tags?: string[];
+```ts
+// apps/docs/.storybook/main.ts
+export default {
+  stories: [
+    '../../packages/ui/src/**/*.stories.tsx',
+    // Future: '../../apps/blog/components/**/*.stories.tsx'
+  ],
+  // ...
 }
 ```
 
 ---
 
-## Routing Structure
+## Blog App Architecture
 
-### URL Patterns
-```
-/                           → Home (redirects to /zh)
-/zh                         → Chinese home
-/en                         → English home
-/zh/blog                    → Chinese blog listing
-/zh/blog/10k-code           → Chinese blog post
-/en/blog                    → English blog listing
-/zh/collection              → Collections
-/zh/library                 → Paper notes
-/zh/about                   → About page
-```
+### Directory Structure
 
-### File-based Routing
 ```
-apps/blog/app/
-├── [locale]/
-│   ├── layout.tsx          → Locale layout with i18n provider
-│   ├── page.tsx            → Home page
-│   ├── blog/
-│   │   ├── page.tsx        → Blog listing
-│   │   └── [slug]/
-│   │       └── page.tsx    → Individual post
-│   ├── collection/
+apps/blog/
+├── app/
+│   ├── layout.tsx
+│   ├── globals.css           # Import tokens, Tailwind
+│   ├── [locale]/
+│   │   ├── layout.tsx
 │   │   ├── page.tsx
-│   │   └── [slug]/page.tsx
-│   ├── library/
-│   │   ├── page.tsx
-│   │   └── [slug]/page.tsx
-│   └── about/
-│       └── page.tsx
-└── layout.tsx              → Root layout
+│   │   ├── blog/
+│   │   │   ├── page.tsx
+│   │   │   └── [slug]/page.tsx
+│   │   └── ...
+│
+├── components/
+│   ├── PostCard.tsx          # Layer 4 - uses Card, Badge
+│   ├── PostList.tsx
+│   ├── ThemeToggle.tsx
+│   └── mdx/                   # MDX-specific components
+│       ├── index.ts
+│       └── README.md
+│
+├── lib/
+│   ├── mdx.ts
+│   ├── content.ts
+│   └── i18n.ts
+│
+├── content/                   # MDX files
+├── mdx-components.tsx
+├── next.config.js
+└── tailwind.config.js
 ```
 
----
+### Theme Integration
 
-## Component Architecture
+```tsx
+// apps/blog/app/layout.tsx
+import '@blog/tokens/build/primitives.css'
+import '@blog/tokens/build/semantic.css'
+import '@blog/tokens/build/theme-nyt-light.css'
+import '@blog/tokens/build/theme-nyt-dark.css'
+// Additional themes loaded as needed
 
-### UI Package Components (Layer 2)
-
-```typescript
-// packages/ui/src/index.tsx
-// Primitive components - no business logic
-// Uses absolute imports via path alias (@ui/*)
-export { Button } from '@ui/components/Button';
-export { Card } from '@ui/components/Card';
-export { Badge } from '@ui/components/Badge';
-export { Input } from '@ui/components/Input';
-export { Tabs, TabsList, TabsTrigger, TabsContent } from '@ui/components/Tabs';
-export { ThemeProvider, useTheme } from '@ui/components/ThemeProvider';
-export { cn } from '@ui/lib/utils';
-```
-
-### Blog App Components (Layer 4)
-
-```typescript
-// apps/blog/components/index.ts
-// Blog-specific components with business logic
-// Uses absolute imports via path alias (@/*)
-export { PostCard } from '@/components/PostCard';        // Uses Card, Badge
-export { PostList } from '@/components/PostList';        // Uses PostCard
-export { TableOfContents } from '@/components/TableOfContents';
-export { LanguageSwitcher } from '@/components/LanguageSwitcher';
-export { SearchDialog } from '@/components/SearchDialog'; // Uses Input, Card
-export { ThemeToggle } from '@/components/ThemeToggle';  // Uses Button
-```
-
-### MDX Components
-
-```typescript
-// Custom components available in MDX
-const mdxComponents = {
-  // Override default elements
-  h1: (props) => <h1 className="..." {...props} />,
-  h2: (props) => <h2 className="..." {...props} />,
-  pre: (props) => <CodeBlock {...props} />,
-
-  // Custom components
-  Callout: CalloutComponent,
-  Tabs: TabsComponent,
-  CodeBlock: CodeBlockComponent,
-  Citation: CitationComponent,
-  Diagram: DiagramComponent,
-};
-```
-
----
-
-## Design Tokens
-
-### Color Palette (Minimal Starter)
-```json
-{
-  "color": {
-    "gray": {
-      "50": { "value": "#fafafa" },
-      "100": { "value": "#f4f4f5" },
-      "200": { "value": "#e4e4e7" },
-      "300": { "value": "#d4d4d8" },
-      "400": { "value": "#a1a1aa" },
-      "500": { "value": "#71717a" },
-      "600": { "value": "#52525b" },
-      "700": { "value": "#3f3f46" },
-      "800": { "value": "#27272a" },
-      "900": { "value": "#18181b" }
-    },
-    "accent": {
-      "primary": { "value": "#3b82f6" },
-      "secondary": { "value": "#8b5cf6" }
-    }
-  }
-}
-```
-
-### Typography
-```json
-{
-  "font": {
-    "family": {
-      "sans": { "value": "system-ui, -apple-system, sans-serif" },
-      "serif": { "value": "Georgia, serif" },
-      "mono": { "value": "ui-monospace, monospace" }
-    },
-    "size": {
-      "xs": { "value": "0.75rem" },
-      "sm": { "value": "0.875rem" },
-      "base": { "value": "1rem" },
-      "lg": { "value": "1.125rem" },
-      "xl": { "value": "1.25rem" },
-      "2xl": { "value": "1.5rem" },
-      "3xl": { "value": "1.875rem" }
-    }
-  }
+export default function RootLayout({ children }) {
+  return (
+    <html data-theme="nyt" data-mode="light">
+      <body>{children}</body>
+    </html>
+  )
 }
 ```
 
 ---
 
-## Build & Deployment
+## Technology Decisions
 
-### Build Pipeline
-```
-1. pnpm install
-2. pnpm --filter @blog/tokens build    → Generate CSS/JS tokens
-3. pnpm --filter @blog/blog build      → Build Next.js app
-4. next export                          → Static HTML to docs/
-```
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| Variant management | CVA | Clean API for Button variants, ~2KB |
+| Accessibility | Radix UI (future) | For Tabs/Modal/Accordion only |
+| Dark mode | next-themes | Handles SSR flash, ~1KB |
+| Token generation | Style Dictionary | Already in stack, multi-format output |
+| Stories | Co-located | Easier maintenance, industry standard |
+| Folder structure | Nested | Scales better, supports sub-components |
 
-### GitHub Pages Deployment
-- Output directory: `docs/`
-- CNAME file preserved
-- Static export with `output: 'export'` in next.config.js
+### What We're NOT Using (Yet)
 
-### Turborepo Configuration
-```json
-{
-  "tasks": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "out/**"]
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    }
-  }
-}
-```
+- Radix UI for primitives (Button, Card don't need it)
+- Extensive component library (add as needed)
+- Component-level tokens (use semantic tokens directly)
 
 ---
 
-## Performance Considerations
+## Implementation Phases
 
-### Static Generation
-- All pages statically generated at build time
-- MDX compiled to optimized JavaScript
-- Images optimized with next/image
+### Phase 1: Foundation ✓
+- [x] Monorepo setup (Turborepo + pnpm)
+- [x] packages/config (TypeScript configs)
+- [x] packages/tokens (basic tokens)
 
-### Bundle Optimization
-- Only import components actually used
-- Code splitting per route
-- Tailwind CSS purging
+### Phase 2: Token Architecture
+- [ ] Restructure tokens: primitives → semantic → themes
+- [ ] Create NYT theme (light/dark)
+- [ ] Update Style Dictionary config for multi-theme
 
-### Caching
-- Turborepo caching for faster rebuilds
-- Browser caching for static assets
+### Phase 3: UI Package
+- [ ] packages/ui scaffold
+- [ ] Button component (CVA)
+- [ ] Card component
+- [ ] Callout component
+- [ ] Storybook setup (apps/docs)
 
----
+### Phase 4: Blog App Skeleton
+- [ ] Next.js app with App Router
+- [ ] Theme integration (next-themes)
+- [ ] Basic layout with theme switching
 
-## Migration Path
-
-### Phase 1: Preserve
-- Keep existing `docs/` output working
-- Hugo site remains functional during development
-
-### Phase 2: Parallel Development
-- New Next.js app in `apps/blog/`
-- Content migrated to `apps/blog/content/`
-
-### Phase 3: Switch
-- Update build script to use Next.js export
-- Verify all URLs work
-- Remove Hugo configuration
-
-### Phase 4: Cleanup
-- Archive old Hugo content
-- Remove theme dependencies
-- Update documentation
-
----
-
-## Future Extensibility
-
-### Potential Additions
-- **RSS Feed**: Generate at build time
-- **Search**: Client-side with Fuse.js or Algolia
-- **Comments**: Giscus (GitHub Discussions)
-- **Analytics**: Plausible or simple-analytics
-- **Newsletter**: Integration with email service
-
-### New Content Types
-- Interactive tutorials
-- Code playgrounds
-- Data visualizations
-- Timeline/changelog
-
----
-
-## Decision Log
-
-| Decision | Rationale |
-|----------|-----------|
-| Next.js over Astro | Better React ecosystem, MDX support, familiar to author |
-| App Router over Pages | Latest patterns, better layouts, server components |
-| MDX over plain Markdown | Interactive components, custom styling |
-| Monorepo structure | Reusable design system, clear separation |
-| Static export | Simple hosting, GitHub Pages compatible |
-| next-intl over next-i18n-routing | Better App Router support, simpler API |
+### Phase 5+: Content & Features
+- [ ] MDX configuration
+- [ ] Content migration
+- [ ] Additional components as needed
 
 ---
 
 ## References
 
-- [Next.js App Router](https://nextjs.org/docs/app)
-- [MDX Documentation](https://mdxjs.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
 - [Style Dictionary](https://amzn.github.io/style-dictionary/)
-- [next-intl](https://next-intl-docs.vercel.app/)
+- [CVA](https://cva.style/docs)
+- [Radix UI](https://www.radix-ui.com/)
+- [next-themes](https://github.com/pacocoursey/next-themes)

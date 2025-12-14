@@ -1,128 +1,86 @@
 # Agent Guide
 
-This document provides context for AI agents working on this codebase.
+Context for AI agents working on this codebase.
 
 ## Project Overview
 
-Personal blog rebuild from Hugo/PaperMod to Next.js + MDX with a design system monorepo.
+Personal blog rebuild from Hugo/PaperMod to Next.js + MDX with a themeable design system.
 
 ## Tech Stack
 
 - **Monorepo**: Turborepo + pnpm
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript 5 (strict mode)
-- **Styling**: Tailwind CSS + Design Tokens
+- **Styling**: Tailwind CSS + Design Tokens (Style Dictionary)
+- **Components**: CVA for variants, Radix UI for complex patterns
 - **Content**: MDX
-
-## Directory Structure
-
-```
-sarajevo/
-├── packages/
-│   ├── config/          # Shared TypeScript & Tailwind configs
-│   ├── tokens/          # Design tokens (Style Dictionary)
-│   └── ui/              # Component library (to be created)
-├── apps/
-│   └── blog/            # Next.js blog app (to be created)
-├── content/             # Legacy Hugo content (reference only)
-├── docs/                # Static export output (GitHub Pages)
-├── plan/                # Architecture and implementation docs
-├── package.json         # Workspace root
-├── pnpm-workspace.yaml  # Workspace packages
-└── turbo.json           # Build orchestration
-```
 
 ## Package Naming
 
 - `@blog/config` - Shared configs
-- `@blog/tokens` - Design tokens
-- `@blog/ui` - UI components (to be created)
-- `@blog/blog` - Next.js app (to be created)
-
-## Import Conventions
-
-Always use absolute imports with path aliases:
-
-```typescript
-// In packages/ui - use @ui/*
-import { cn } from '@ui/lib/utils';
-
-// In apps/blog - use @/*
-import { PostCard } from '@/components/PostCard';
-import { Card } from '@blog/ui';
-```
+- `@blog/tokens` - Design tokens (primitives → semantic → themes)
+- `@blog/ui` - UI components
+- `@blog/blog` - Next.js app
 
 ## Key Commands
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Build tokens (required before other packages)
-pnpm --filter @blog/tokens build
-
-# Run all dev servers
-pnpm dev
-
-# Build all packages
-pnpm build
-
-# Clean all build artifacts
-pnpm clean
+pnpm install                          # Install dependencies
+pnpm --filter @blog/tokens build      # Build tokens (run first)
+pnpm dev                              # Run all dev servers
+pnpm build                            # Build all packages
 ```
+
+## Architecture
+
+5-layer design system with multi-theme support:
+
+```
+Layer 5: Pages           → apps/blog/app/
+Layer 4: App Components  → apps/blog/components/
+Layer 3: Patterns        → packages/ui/ (Tabs, Modal - uses Radix)
+Layer 2: Primitives      → packages/ui/ (Button, Card, Callout)
+Layer 1: Tokens          → packages/tokens/
+```
+
+**Rules:**
+- Lower layers never import from higher layers
+- Themes remap semantic tokens, not primitives
+- Stories co-located with components
+
+See [plan/ARCHITECTURE.md](plan/ARCHITECTURE.md) for details.
 
 ## Implementation Status
 
 ### Completed
 - [x] Phase 1: Monorepo Foundation
-  - Root workspace configuration
-  - packages/config (TypeScript configs)
-  - packages/tokens (Style Dictionary)
+
+### Current
+- [ ] Phase 2: Token Architecture (primitives → semantic → themes)
+- [ ] Phase 3: UI Package (Button, Card, Callout + Storybook)
 
 ### Pending
-- [ ] Phase 2: UI Package
-- [ ] Phase 3: Blog App Skeleton
-- [ ] Phase 4: MDX Configuration
-- [ ] Phase 5: Content Pages
-- [ ] Phase 6: Content Migration
-- [ ] Phase 7: Features & Polish
-- [ ] Phase 8: Deployment
-- [ ] Phase 9: Cleanup
+- [ ] Phase 4: Blog App Skeleton
+- [ ] Phase 5+: MDX, Content Migration, Features
 
-## Architecture
+See [plan/IMPLEMENTATION_PLAN.md](plan/IMPLEMENTATION_PLAN.md) for details.
 
-5-layer design system:
+## Guidelines
 
-```
-Layer 5: Pages           → apps/blog/app/
-Layer 4: App Components  → apps/blog/components/
-Layer 3: Patterns        → packages/ui/ (complex)
-Layer 2: Primitives      → packages/ui/ (basic)
-Layer 1: Tokens          → packages/tokens/
-```
-
-**Rule**: Lower layers never import from higher layers.
+1. **Read the plan first** - Check `plan/` docs before architectural decisions
+2. **Minimal by default** - Only add what's needed
+3. **Use absolute imports** - `@ui/*` in packages/ui, `@/*` in apps/blog
+4. **Build tokens first** - Required before other packages
+5. **Co-locate stories** - `Button.stories.tsx` next to `Button.tsx`
 
 ## Planning Documents
 
-See `plan/` directory for detailed documentation:
-
-- `ARCHITECTURE.md` - System architecture and tech decisions
-- `IMPLEMENTATION_PLAN.md` - Phase-by-phase tasks
-- `CONTENT_MIGRATION.md` - Hugo to MDX migration guide
-- `MDX_COMPONENTS.md` - Custom component specifications
-
-## Guidelines for Agents
-
-1. **Read the plan first**: Check `plan/` docs before making architectural decisions
-2. **Use absolute imports**: Never use relative imports like `./` or `../`
-3. **Build tokens first**: Always run `pnpm --filter @blog/tokens build` before other packages
-4. **Follow the layers**: Keep business logic in app components, not UI primitives
-5. **Minimal changes**: Don't over-engineer; only add what's needed
-6. **Test incrementally**: Verify each phase works before proceeding
+- [ARCHITECTURE.md](plan/ARCHITECTURE.md) - System architecture, token model, tech decisions
+- [IMPLEMENTATION_PLAN.md](plan/IMPLEMENTATION_PLAN.md) - Phase-by-phase tasks
+- [MDX_COMPONENTS.md](plan/MDX_COMPONENTS.md) - Custom component specifications
+- [CONTENT_MIGRATION.md](plan/CONTENT_MIGRATION.md) - Hugo to MDX migration
 
 ## Legacy Content
 
-The `content/` directory contains the original Hugo markdown files. These are for reference during migration only. Do not modify them directly.
-
-The `docs/` directory is the static export target for GitHub Pages. It will be overwritten by Next.js builds once migration is complete.
+- `content/` - Original Hugo markdown (reference only, do not modify)
+- `docs/` - Static export output (will be overwritten by Next.js builds)
