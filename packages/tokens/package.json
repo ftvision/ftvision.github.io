@@ -9,10 +9,22 @@
       "types": "./build/js/tokens.d.ts",
       "default": "./build/js/tokens.js"
     },
-    "./css": "./build/css/variables.css"
+    "./css": "./build/css/index.css",
+    "./css/primitives": "./build/css/primitives.css",
+    "./css/semantic": "./build/css/semantic.css",
+    "./css/theme-nyt-light": "./build/css/theme-nyt-light.css",
+    "./css/theme-nyt-dark": "./build/css/theme-nyt-dark.css",
+    "./primitives": {
+      "types": "./build/js/primitives.d.ts",
+      "default": "./build/js/primitives.js"
+    },
+    "./semantic": {
+      "types": "./build/js/semantic.d.ts",
+      "default": "./build/js/semantic.js"
+    }
   },
   "scripts": {
-    "build": "style-dictionary build",
+    "build": "node build.js",
     "clean": "rm -rf build"
   },
   "devDependencies": {

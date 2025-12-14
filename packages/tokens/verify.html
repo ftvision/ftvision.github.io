@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="nyt" data-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token Verification</title>
+  <link rel="stylesheet" href="build/css/index.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-family-body);
+      background: var(--color-bg-primary);
+      color: var(--color-text-primary);
+      padding: 2rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    .controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-default);
+      border: var(--border-width-default) solid var(--color-border-default);
+    }
+    .controls button {
+      padding: 0.5rem 1rem;
+      background: var(--color-action-primary);
+      color: var(--color-text-inverse);
+      border: none;
+      border-radius: var(--radius-default);
+      cursor: pointer;
+      font-family: var(--font-family-body);
+    }
+    .controls button:hover {
+      background: var(--color-action-primary-hover);
+    }
+    h1 {
+      font-family: var(--font-family-heading);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-family: var(--font-family-heading);
+      margin: 2rem 0 1rem;
+      color: var(--color-text-secondary);
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .color-swatch {
+      padding: 1rem;
+      border-radius: var(--radius-default);
+      border: var(--border-width-default) solid var(--color-border-default);
+    }
+    .color-swatch code {
+      font-family: var(--font-family-code);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+    .callout {
+      padding: 1rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 1rem;
+    }
+    .callout-info {
+      background: var(--color-status-info-bg);
+      border-left: 4px solid var(--color-status-info);
+    }
+    .callout-success {
+      background: var(--color-status-success-bg);
+      border-left: 4px solid var(--color-status-success);
+    }
+    .callout-warning {
+      background: var(--color-status-warning-bg);
+      border-left: 4px solid var(--color-status-warning);
+    }
+    .callout-danger {
+      background: var(--color-status-danger-bg);
+      border-left: 4px solid var(--color-status-danger);
+    }
+    .card {
+      background: var(--color-bg-secondary);
+      border: var(--border-width-default) solid var(--color-border-default);
+      border-radius: var(--radius-default);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-family: var(--font-family-heading);
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      color: var(--color-text-secondary);
+    }
+    .button-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-default);
+      cursor: pointer;
+      font-family: var(--font-family-body);
+      border: var(--border-width-default) solid transparent;
+    }
+    .btn-primary {
+      background: var(--color-action-primary);
+      color: var(--color-text-inverse);
+    }
+    .btn-primary:hover {
+      background: var(--color-action-primary-hover);
+    }
+    .btn-secondary {
+      background: var(--color-action-secondary);
+      color: var(--color-text-primary);
+      border-color: var(--color-border-default);
+    }
+    .btn-secondary:hover {
+      background: var(--color-action-secondary-hover);
+    }
+    pre {
+      background: var(--color-bg-tertiary);
+      padding: 1rem;
+      border-radius: var(--radius-default);
+      font-family: var(--font-family-code);
+      font-size: 0.875rem;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Token Verification Page</h1>
+  <p style="color: var(--color-text-secondary); margin-bottom: 2rem;">
+    This page demonstrates the design tokens in action. Toggle theme and mode to verify all combinations work.
+  </p>
+
+  <div class="controls">
+    <button onclick="setMode('light')">Light Mode</button>
+    <button onclick="setMode('dark')">Dark Mode</button>
+    <span style="border-left: 1px solid var(--color-border-default); margin: 0 0.5rem;"></span>
+    <button onclick="setTheme('nyt')">NYT Theme</button>
+  </div>
+
+  <div class="section">
+    <h2>Current Settings</h2>
+    <pre id="settings">Theme: nyt, Mode: light</pre>
+  </div>
+
+  <div class="section">
+    <h2>Typography</h2>
+    <div class="card">
+      <h3>Heading (font-family-heading)</h3>
+      <p>Body text using font-family-body. The quick brown fox jumps over the lazy dog.</p>
+      <pre style="margin-top: 1rem;">Code block using font-family-code</pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Buttons</h2>
+    <div class="button-group">
+      <button class="btn btn-primary">Primary Button</button>
+      <button class="btn btn-secondary">Secondary Button</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Callouts (Status Colors)</h2>
+    <div class="callout callout-info">
+      <strong>Info:</strong> This is an informational message.
+    </div>
+    <div class="callout callout-success">
+      <strong>Success:</strong> Operation completed successfully.
+    </div>
+    <div class="callout callout-warning">
+      <strong>Warning:</strong> Please review before proceeding.
+    </div>
+    <div class="callout callout-danger">
+      <strong>Danger:</strong> This action cannot be undone.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Color Tokens</h2>
+    <div class="color-grid">
+      <div class="color-swatch" style="background: var(--color-bg-primary);">
+        <code>--color-bg-primary</code>
+      </div>
+      <div class="color-swatch" style="background: var(--color-bg-secondary);">
+        <code>--color-bg-secondary</code>
+      </div>
+      <div class="color-swatch" style="background: var(--color-bg-tertiary);">
+        <code>--color-bg-tertiary</code>
+      </div>
+      <div class="color-swatch" style="background: var(--color-bg-inverse); color: var(--color-text-inverse);">
+        <code>--color-bg-inverse</code>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setMode(mode) {
+      document.documentElement.dataset.mode = mode;
+      updateSettings();
+    }
+    function setTheme(theme) {
+      document.documentElement.dataset.theme = theme;
+      updateSettings();
+    }
+    function updateSettings() {
+      const theme = document.documentElement.dataset.theme;
+      const mode = document.documentElement.dataset.mode;
+      document.getElementById('settings').textContent = `Theme: ${theme}, Mode: ${mode}`;
+    }
+  </script>
+</body>
+</html>
