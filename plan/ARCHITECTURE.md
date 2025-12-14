@@ -141,6 +141,43 @@ packages/tokens/
 --border-width-default
 ```
 
+### Tailwind Color Naming: Ground & Figure
+
+To avoid redundant class names like `bg-bg-primary` or `text-text-primary`, we use **ground** and **figure** as semantic color categories in Tailwind.
+
+**Ground** - Background/surface colors (what things sit ON)
+- Page backgrounds, card backgrounds, input backgrounds
+- Surfaces, containers, overlays
+- The "canvas" or "stage" that content appears on
+- Usage: `bg-ground-primary`, `bg-ground-secondary`
+
+**Figure** - Foreground/content colors (what you SEE)
+- Text, icons, labels
+- Visual content that sits on top of ground
+- The "actors" that appear on the stage
+- Usage: `text-figure-primary`, `text-figure-muted`
+
+This naming comes from **figure-ground perception** in Gestalt psychology—the visual principle of distinguishing objects (figures) from their backgrounds (grounds).
+
+```tsx
+// Result: clear, non-redundant classes
+<div className="bg-ground-secondary text-figure-primary">
+  <span className="text-figure-muted">Subtitle</span>
+</div>
+
+// vs the redundant alternative we avoided:
+<div className="bg-bg-secondary text-text-primary">
+```
+
+**Full Tailwind color categories:**
+| Category | Purpose | Example classes |
+|----------|---------|-----------------|
+| `ground` | Background/surface colors | `bg-ground-primary`, `bg-ground-inverse` |
+| `figure` | Text/foreground colors | `text-figure-primary`, `text-figure-muted` |
+| `border` | Border colors | `border-border`, `border-border-strong` |
+| `action` | Interactive element colors | `bg-action-primary`, `hover:bg-action-primary-hover` |
+| `status` | Semantic status colors | `bg-status-info-bg`, `text-status-danger` |
+
 ---
 
 ## UI Package Architecture
