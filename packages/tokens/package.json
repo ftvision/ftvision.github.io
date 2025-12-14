@@ -1,0 +1,21 @@
+{
+  "name": "@blog/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "main": "build/js/tokens.js",
+  "types": "build/js/tokens.d.ts",
+  "exports": {
+    ".": {
+      "types": "./build/js/tokens.d.ts",
+      "default": "./build/js/tokens.js"
+    },
+    "./css": "./build/css/variables.css"
+  },
+  "scripts": {
+    "build": "style-dictionary build",
+    "clean": "rm -rf build"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.2.0"
+  }
+}
