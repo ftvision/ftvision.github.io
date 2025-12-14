@@ -1,0 +1,56 @@
+{
+  "color": {
+    "bg": {
+      "primary": { "value": "{primitive.color.white}" },
+      "secondary": { "value": "{primitive.color.gray.50}" },
+      "tertiary": { "value": "{primitive.color.gray.100}" },
+      "inverse": { "value": "{primitive.color.gray.900}" }
+    },
+    "text": {
+      "primary": { "value": "{primitive.color.gray.900}" },
+      "secondary": { "value": "{primitive.color.gray.600}" },
+      "muted": { "value": "{primitive.color.gray.400}" },
+      "inverse": { "value": "{primitive.color.white}" }
+    },
+    "border": {
+      "default": { "value": "{primitive.color.gray.200}" },
+      "muted": { "value": "{primitive.color.gray.100}" },
+      "strong": { "value": "{primitive.color.gray.300}" }
+    },
+    "action": {
+      "primary": { "value": "{primitive.color.blue.600}" },
+      "primary-hover": { "value": "{primitive.color.blue.700}" },
+      "secondary": { "value": "{primitive.color.gray.100}" },
+      "secondary-hover": { "value": "{primitive.color.gray.200}" }
+    },
+    "status": {
+      "info": { "value": "{primitive.color.blue.500}" },
+      "info-bg": { "value": "{primitive.color.blue.50}" },
+      "success": { "value": "{primitive.color.green.500}" },
+      "success-bg": { "value": "{primitive.color.green.50}" },
+      "warning": { "value": "{primitive.color.amber.500}" },
+      "warning-bg": { "value": "{primitive.color.amber.50}" },
+      "danger": { "value": "{primitive.color.red.500}" },
+      "danger-bg": { "value": "{primitive.color.red.50}" }
+    }
+  },
+  "font": {
+    "family": {
+      "heading": { "value": "{primitive.font.family.serif}" },
+      "body": { "value": "{primitive.font.family.serif}" },
+      "code": { "value": "{primitive.font.family.mono}" }
+    }
+  },
+  "radius": {
+    "default": { "value": "{primitive.radius.none}" },
+    "sm": { "value": "{primitive.radius.none}" },
+    "lg": { "value": "{primitive.radius.sm}" },
+    "full": { "value": "{primitive.radius.full}" }
+  },
+  "border": {
+    "width": {
+      "default": { "value": "1px" },
+      "thick": { "value": "2px" }
+    }
+  }
+}
