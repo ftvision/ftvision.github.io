@@ -52,7 +52,7 @@ const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
             {title && (
               <p className="font-semibold mb-1 font-heading">{title}</p>
             )}
-            <div className="text-sm">{children}</div>
+            <div className="text-body-sm">{children}</div>
           </div>
         </div>
       </div>
