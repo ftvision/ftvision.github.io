@@ -18,8 +18,8 @@
       "strong": { "value": "{primitive.color.gray.600}" }
     },
     "action": {
-      "primary": { "value": "{primitive.color.blue.500}" },
-      "primary-hover": { "value": "{primitive.color.blue.600}" },
+      "primary": { "value": "{primitive.color.nyt-blue.light}" },
+      "primary-hover": { "value": "{primitive.color.nyt-blue.DEFAULT}" },
       "secondary": { "value": "{primitive.color.gray.800}" },
       "secondary-hover": { "value": "{primitive.color.gray.700}" }
     },
@@ -32,6 +32,46 @@
       "warning-bg": { "value": "{primitive.color.gray.800}" },
       "danger": { "value": "{primitive.color.red.500}" },
       "danger-bg": { "value": "{primitive.color.gray.800}" }
+    },
+    "accent": {
+      "primary": { "value": "{primitive.color.nyt-blue.light}" },
+      "secondary": { "value": "{primitive.color.gray.400}" },
+      "tertiary": { "value": "{primitive.color.data.3}" }
+    },
+    "surface": {
+      "code": { "value": "{primitive.color.gray.800}" },
+      "quote": { "value": "{primitive.color.gray.900}" },
+      "aside": { "value": "{primitive.color.gray.800}" },
+      "highlight": { "value": "{primitive.color.yellow.highlight-dark}" },
+      "elevated": { "value": "{primitive.color.gray.800}" }
+    },
+    "link": {
+      "default": { "value": "{primitive.color.nyt-blue.light}" },
+      "hover": { "value": "{primitive.color.nyt-blue.DEFAULT}" },
+      "visited": { "value": "{primitive.color.purple.visited-dark}" },
+      "active": { "value": "{primitive.color.nyt-blue.DEFAULT}" }
+    },
+    "focus": {
+      "ring": { "value": "{primitive.color.nyt-blue.light}" },
+      "ring-offset": { "value": "{primitive.color.gray.950}" }
+    },
+    "overlay": {
+      "scrim": { "value": "{primitive.color.overlay.black-50}" },
+      "light": { "value": "{primitive.color.overlay.white-50}" },
+      "dark": { "value": "{primitive.color.overlay.black-50}" }
+    },
+    "data": {
+      "1": { "value": "{primitive.color.nyt-blue.light}" },
+      "2": { "value": "{primitive.color.red.500}" },
+      "3": { "value": "{primitive.color.green.500}" },
+      "4": { "value": "{primitive.color.amber.500}" },
+      "5": { "value": "#a78bfa" },
+      "6": { "value": "#22d3d3" },
+      "sequential-1": { "value": "#1a3a52" },
+      "sequential-2": { "value": "#2a5573" },
+      "sequential-3": { "value": "#3a7094" },
+      "sequential-4": { "value": "{primitive.color.nyt-blue.DEFAULT}" },
+      "sequential-5": { "value": "{primitive.color.nyt-blue.light}" }
     }
   },
   "font": {
