@@ -3,13 +3,14 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@ui/lib/utils';
 
 const inputVariants = cva(
-  // Base styles with accessibility considerations
+  // Base styles with accessibility considerations using design tokens
+  // Using arbitrary values with CSS variables to ensure proper theming
   [
-    'flex w-full rounded border bg-ground-primary px-3 py-2',
-    'font-body text-figure-primary placeholder:text-figure-muted',
-    'transition-colors duration-fast',
-    // Focus styles with proper ring
-    'focus:outline-none focus:ring-2 focus:ring-offset-2',
+    'flex w-full [border-radius:var(--radius-default)] [border-width:var(--border-width-default)] border-solid bg-ground-primary px-inset-sm',
+    'text-figure-primary placeholder:text-figure-muted',
+    'transition-hover',
+    // Focus styles with proper ring using tokens
+    'focus:outline-none focus-visible:focus-ring',
     // Disabled state
     'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-ground-secondary',
     // File input specific
@@ -20,15 +21,15 @@ const inputVariants = cva(
       variant: {
         default: [
           'border-border',
-          'focus:border-action-primary focus:ring-action-primary',
+          'focus:border-action-primary',
         ],
         error: [
           'border-status-danger',
-          'focus:border-status-danger focus:ring-status-danger',
+          'focus:border-status-danger',
         ],
         success: [
           'border-status-success',
-          'focus:border-status-success focus:ring-status-success',
+          'focus:border-status-success',
         ],
       },
       inputSize: {
@@ -82,12 +83,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {error && (
-          <p id={errorId} className="mt-1 text-caption text-status-danger" role="alert">
+          <p id={errorId} className="mt-stack-xs text-caption text-status-danger" role="alert">
             {error}
           </p>
         )}
         {helperText && !error && (
-          <p id={helperId} className="mt-1 text-caption text-figure-muted">
+          <p id={helperId} className="mt-stack-xs text-caption text-figure-muted">
             {helperText}
           </p>
         )}

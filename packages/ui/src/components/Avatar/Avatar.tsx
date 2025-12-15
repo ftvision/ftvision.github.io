@@ -5,7 +5,9 @@ import { cn } from '@ui/lib/utils';
 const avatarVariants = cva(
   [
     'relative inline-flex items-center justify-center shrink-0',
-    'overflow-hidden rounded-full bg-action-secondary border border-border',
+    // Use explicit 9999px for circular shape - avatars should always be round regardless of theme
+    // Use bg-ground-tertiary for visible fallback background across all themes
+    'overflow-hidden [border-radius:9999px] bg-ground-tertiary border border-border',
   ],
   {
     variants: {

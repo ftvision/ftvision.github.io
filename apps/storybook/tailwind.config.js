@@ -398,6 +398,26 @@ module.exports = {
           outline: 'var(--focus-ring-width) solid var(--color-focus-ring)',
           outlineOffset: 'var(--focus-ring-offset)',
         },
+        // Ensure inverse text color works for buttons
+        '.text-inverse': {
+          color: 'var(--color-text-inverse)',
+        },
+        // Border width utilities for design tokens
+        '.border-l-thick': {
+          borderLeftWidth: 'var(--border-width-thick)',
+        },
+        '.border-r-thick': {
+          borderRightWidth: 'var(--border-width-thick)',
+        },
+        '.border-t-thick': {
+          borderTopWidth: 'var(--border-width-thick)',
+        },
+        '.border-b-thick': {
+          borderBottomWidth: 'var(--border-width-thick)',
+        },
+        '.border-thick': {
+          borderWidth: 'var(--border-width-thick)',
+        },
       });
       addBase({
         ':focus-visible': {

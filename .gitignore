@@ -19,6 +19,10 @@ pnpm-lock.yaml
 .env.local
 .env.*.local
 
+# Test
+playwright-report/
+test-results/
+
 # Logs
 *.log
 npm-debug.log*
