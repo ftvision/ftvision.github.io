@@ -52,6 +52,13 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
+    // Brutalism Theme tests
+    {
+      name: 'themes-brutalism',
+      testDir: './tests/themes/brutalism',
+      use: { ...devices['Desktop Chrome'] },
+    },
+
     // Cross-browser testing (run selectively)
     {
       name: 'webkit',
@@ -67,7 +74,7 @@ export default defineConfig({
 
   // Webserver configuration for local development
   webServer: {
-    command: 'pnpm --filter @san-jose/ui storybook --ci',
+    command: 'pnpm --filter @blog/storybook dev',
     url: 'http://localhost:6006',
     reuseExistingServer: !process.env.CI,
     timeout: 120000,

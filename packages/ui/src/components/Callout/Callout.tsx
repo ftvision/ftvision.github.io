@@ -3,7 +3,10 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@ui/lib/utils';
 
 const calloutVariants = cva(
-  'border-l-4 p-4 my-4 rounded-r font-body',
+  // Base styles: bordered container with semantic spacing
+  // Using arbitrary values with CSS variables to ensure proper theming
+  // Set each border side individually to ensure left border is thicker
+  '[border-top-width:var(--border-width-default)] [border-right-width:var(--border-width-default)] [border-bottom-width:var(--border-width-default)] [border-left-width:var(--border-width-thick)] [border-radius:var(--radius-default)] p-inset-md my-stack-md border-solid',
   {
     variants: {
       type: {
@@ -44,13 +47,13 @@ const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
         className={cn(calloutVariants({ type }), className)}
         {...props}
       >
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-inline-sm">
           <span className="text-xl flex-shrink-0" aria-hidden="true">
             {icon}
           </span>
           <div className="flex-1 min-w-0">
             {title && (
-              <p className="font-semibold mb-1 font-heading">{title}</p>
+              <p className="font-semibold mb-stack-xs font-heading uppercase tracking-wide">{title}</p>
             )}
             <div className="text-body-sm">{children}</div>
           </div>

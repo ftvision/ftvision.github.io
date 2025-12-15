@@ -75,7 +75,8 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
       <span
         className={cn(
           switchTrackVariants({ switchSize }),
-          isChecked ? 'bg-action-primary' : 'bg-border',
+          // Use accent color for "on" state for better visibility across themes
+          isChecked ? 'bg-accent-primary' : 'bg-border',
           props.disabled && 'opacity-50 cursor-not-allowed'
         )}
       >

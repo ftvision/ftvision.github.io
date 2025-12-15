@@ -83,8 +83,14 @@
       "overlay": {
         "black-50": { "value": "rgba(0, 0, 0, 0.5)" },
         "black-30": { "value": "rgba(0, 0, 0, 0.3)" },
+        "black-80": { "value": "rgba(0, 0, 0, 0.8)" },
         "white-70": { "value": "rgba(255, 255, 255, 0.7)" },
         "white-50": { "value": "rgba(255, 255, 255, 0.5)" }
+      },
+      "brutalist": {
+        "accent": { "value": "#ff0000" },
+        "accent-hover": { "value": "#cc0000" },
+        "accent-light": { "value": "#ff3333" }
       }
     }
   }

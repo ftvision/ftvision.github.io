@@ -11,7 +11,8 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default: 'bg-ground-tertiary text-figure-primary',
-        primary: 'bg-action-primary text-figure-inverse',
+        // Use arbitrary value for inverse text color to ensure it works across themes
+        primary: 'bg-action-primary [color:var(--color-text-inverse)]',
         secondary: 'bg-ground-secondary text-figure-secondary border border-border',
         success: 'bg-status-success-bg text-status-success',
         warning: 'bg-status-warning-bg text-status-warning',
