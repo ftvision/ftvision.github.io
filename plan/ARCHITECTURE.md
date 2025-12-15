@@ -4,6 +4,8 @@
 
 Personal blog rebuild from Hugo/PaperMod to Next.js + MDX with a themeable design system monorepo.
 
+**Design Aesthetic**: Synthesis of Gwern.net (sidenotes, dense information), Maggie Appleton (warmth, illustrations), and NYT (typography excellence).
+
 ---
 
 ## Design Principles
@@ -15,25 +17,63 @@ Personal blog rebuild from Hugo/PaperMod to Next.js + MDX with a themeable desig
 
 ---
 
+## Content Model
+
+### Essay Taxonomy (Two-Axis System)
+
+Essays are categorized by **type** (how it's written) and **topics** (what it's about).
+
+**Type** (mutually exclusive - pick one):
+
+| Type | Description | Reader Expectation |
+|------|-------------|-------------------|
+| `guide` | How X works, teaching | "I'll understand this topic" |
+| `deep-dive` | Why X happened, detailed analysis | "I'll see the deeper picture" |
+| `opinion` | What I think about X, takes | "I'll hear a perspective" |
+| `review` | Evaluating X (tools, books, papers) | "I'll know if X is worth it" |
+| `narrative` | What happened, storytelling | "I'll experience something" |
+
+**Topics** (can have multiple):
+
+| Topic | Covers |
+|-------|--------|
+| `technical` | Engineering, systems, code, how things are built |
+| `ai` | ML, AI products, models, the AI landscape |
+| `product` | Product thinking, market, startup, business |
+| `career` | Work, jobs, companies, professional life |
+
+**Languages**: `en` (default), `zh`
+
+### URL Structure
+
+```
+/                     → Home
+/essays               → Essay index (filterable by type/topic)
+/essays/[slug]        → Individual essay
+/about                → About page
+```
+
+---
+
 ## 5-Layer Design System
 
 ```
-Layer 5: Pages/Views        → apps/blog/app/
-         Route handlers, full pages, layouts
-
-Layer 4: App Components     → apps/blog/components/
-         Blog-specific: PostCard, DigestList, PaperNote
-
-Layer 3: Pattern Components → packages/ui/ (complex)
-         Reusable patterns: Tabs, Accordion, Modal
-         (Uses Radix UI for accessibility)
-
-Layer 2: Primitive Components → packages/ui/ (basic)
-         Generic UI: Button, Card, Callout
-         (No external dependencies beyond CVA)
-
-Layer 1: Design Tokens      → packages/tokens/
-         Primitives → Semantic → Themes
+┌─────────────────────────────────────────────────────────────────┐
+│ Layer 5: PAGES (apps/blog/app/)                                 │
+│ Route handlers, data fetching, page composition                 │
+├─────────────────────────────────────────────────────────────────┤
+│ Layer 4: APP COMPONENTS (apps/blog/components/)                 │
+│ Blog-specific components with domain knowledge                  │
+├─────────────────────────────────────────────────────────────────┤
+│ Layer 3: PATTERNS (packages/ui/) ✓ EXISTS                       │
+│ Modal, Tabs, Accordion, Dropdown, Tooltip, Toast                │
+├─────────────────────────────────────────────────────────────────┤
+│ Layer 2: PRIMITIVES (packages/ui/) ✓ EXISTS                     │
+│ Button, Card, Badge, Figure, CodeBlock, Callout, Blockquote     │
+├─────────────────────────────────────────────────────────────────┤
+│ Layer 1: TOKENS (packages/tokens/) ✓ EXISTS                     │
+│ Colors, Typography, Spacing, Motion, Themes (NYT light/dark)    │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 **Rule**: Lower layers never import from higher layers.
@@ -45,131 +85,15 @@ Layer 1: Design Tokens      → packages/tokens/
 ### 3-Layer Token Model
 
 ```
-Primitives (raw values)
-    ↓
-Semantic (meaning)
-    ↓
-Themes (variations)
+Primitives (raw values)  →  Semantic (meaning)  →  Themes (variations)
 ```
 
-**Primitives**: Raw design values (colors, font stacks, spacing scale)
-```json
-{ "gray-900": "#18181b", "blue-600": "#2563eb" }
-```
-
-**Semantic**: Meaning-based tokens that reference primitives
-```json
-{ "color-text-primary": "{gray-900}", "color-action": "{blue-600}" }
-```
-
-**Themes**: Remap semantic tokens for different visual styles
-```json
-// brutalist theme
-{ "color-action": "{red-600}", "font-heading": "{font-mono}" }
-```
-
-### Theme × Mode Matrix
-
-Each theme supports light and dark modes independently:
-
-```
-              Light    Dark
-NYT           ✓        ✓
-Brutalist     ✓        ✓
-Minimal       ✓        ✓
-```
-
-### Token Categories
-
-| Category | Themeable | Notes |
-|----------|-----------|-------|
-| Color | Yes | Defines personality |
-| Typography | Yes | Font family, not sizes |
-| Radius | Yes | Sharp vs rounded |
-| Border | Yes | Width, style |
-| Spacing | No | Shared across themes |
-| Motion | No | Shared across themes |
-
-### Directory Structure
-
-```
-packages/tokens/
-├── src/
-│   ├── primitives/           # Raw values (shared)
-│   │   ├── colors.json
-│   │   ├── typography.json
-│   │   ├── spacing.json
-│   │   └── radius.json
-│   │
-│   ├── semantic/             # Default semantic mapping
-│   │   └── base.json
-│   │
-│   ├── themes/               # Theme overrides
-│   │   ├── nyt/
-│   │   │   ├── light.json
-│   │   │   └── dark.json
-│   │   ├── brutalist/
-│   │   │   ├── light.json
-│   │   │   └── dark.json
-│   │   └── _template.json    # Copy to create new theme
-│   │
-│   └── index.ts              # Theme metadata & types
-│
-├── config.js                 # Style Dictionary config
-└── build/
-    ├── primitives.css
-    ├── semantic.css
-    ├── theme-nyt-light.css
-    ├── theme-nyt-dark.css
-    └── ...
-```
-
-### CSS Custom Properties Naming
-
-```css
---{category}-{property}-{variant}-{state}
-
-/* Examples */
---color-bg-primary
---color-text-primary
---color-text-muted
---color-action-primary
---color-action-primary-hover
---font-family-heading
---font-family-body
---radius-default
---border-width-default
-```
+- **Primitives**: Raw design values (colors, font stacks, spacing scale)
+- **Semantic**: Meaning-based tokens that reference primitives
+- **Themes**: Remap semantic tokens for different visual styles
 
 ### Tailwind Color Naming: Ground & Figure
 
-To avoid redundant class names like `bg-bg-primary` or `text-text-primary`, we use **ground** and **figure** as semantic color categories in Tailwind.
-
-**Ground** - Background/surface colors (what things sit ON)
-- Page backgrounds, card backgrounds, input backgrounds
-- Surfaces, containers, overlays
-- The "canvas" or "stage" that content appears on
-- Usage: `bg-ground-primary`, `bg-ground-secondary`
-
-**Figure** - Foreground/content colors (what you SEE)
-- Text, icons, labels
-- Visual content that sits on top of ground
-- The "actors" that appear on the stage
-- Usage: `text-figure-primary`, `text-figure-muted`
-
-This naming comes from **figure-ground perception** in Gestalt psychology—the visual principle of distinguishing objects (figures) from their backgrounds (grounds).
-
-```tsx
-// Result: clear, non-redundant classes
-<div className="bg-ground-secondary text-figure-primary">
-  <span className="text-figure-muted">Subtitle</span>
-</div>
-
-// vs the redundant alternative we avoided:
-<div className="bg-bg-secondary text-text-primary">
-```
-
-**Full Tailwind color categories:**
 | Category | Purpose | Example classes |
 |----------|---------|-----------------|
 | `ground` | Background/surface colors | `bg-ground-primary`, `bg-ground-inverse` |
@@ -180,158 +104,98 @@ This naming comes from **figure-ground perception** in Gestalt psychology—the 
 
 ---
 
-## UI Package Architecture
+## Layer 4: App Components
 
-### Structure (Nested + Co-located)
+### Layout Components
 
-```
-packages/ui/
-├── src/
-│   ├── components/
-│   │   ├── Button/
-│   │   │   ├── Button.tsx
-│   │   │   ├── Button.stories.tsx
-│   │   │   └── index.ts
-│   │   ├── Card/
-│   │   │   ├── Card.tsx
-│   │   │   ├── Card.stories.tsx
-│   │   │   └── index.ts
-│   │   └── Callout/
-│   │       ├── Callout.tsx
-│   │       ├── Callout.stories.tsx
-│   │       └── index.ts
-│   │
-│   ├── lib/
-│   │   └── utils.ts          # cn() utility
-│   │
-│   └── index.tsx             # Public exports
-│
-├── package.json
-├── tsconfig.json
-└── tailwind.config.js
-```
+| Component | Purpose |
+|-----------|---------|
+| `SiteHeader` | Logo, navigation, theme/lang toggles |
+| `SiteFooter` | Links, copyright |
+| `SiteNav` | Navigation links |
+| `ThemeToggle` | Light/dark mode switch |
+| `LanguageToggle` | en/zh switch |
+| `MobileMenu` | Responsive navigation |
 
-### MVP Components
+### Essay Components
 
-**Layer 2 (Primitives):**
-- `Button` - Actions, theme toggle, copy code
-- `Card` - Content containers
+| Component | Purpose |
+|-----------|---------|
+| `EssayCard` | Preview card in list view |
+| `EssayList` | Grid/list of essays |
+| `EssayHeader` | Title, type badge, topics, date, reading time |
+| `EssayFilters` | Filter UI for type/topic |
+| `EssayLayout` | Wide container with sidenote margins |
 
-**Layer 3 (Patterns):**
-- `Callout` - Info/warning/danger boxes
+### Content Components (MDX)
 
-### Component Implementation
+| Component | Purpose |
+|-----------|---------|
+| `Note` | Numbered sidenotes (desktop: margin, mobile: expandable) |
+| `Marginnote` | Unnumbered margin annotations |
+| `Reference` | Citation with [n] format, links to References section |
+| `References` | Auto-generated references section from citations |
+| `WideBlock` | Content that breaks out of main column |
 
-- **CVA (class-variance-authority)** for variant management
-- **Tailwind CSS** with semantic token classes
-- **forwardRef** for all components
-- **Full TypeScript** types
+### About Components
 
-Example pattern:
-```tsx
-// Button uses semantic tokens via Tailwind
-<button className="bg-action text-action-contrast rounded-default">
-```
-
-### Future Components (Add As Needed)
-
-Layer 2: Badge, Input, Prose
-Layer 3: Tabs, Accordion, Modal (use Radix UI)
+| Component | Purpose |
+|-----------|---------|
+| `NowSection` | What I'm doing currently |
+| `Timeline` | Career/education timeline |
+| `ResumeSection` | Collapsible CV details |
 
 ---
 
-## Storybook Architecture
+## Notes vs References
 
-### Co-located Stories
+| Component | Purpose | Display |
+|-----------|---------|---------|
+| `<Note>` | Explanatory sidenotes, tangential thoughts | Superscript ¹, content in margin |
+| `<Reference>` | Academic citations | [n] inline, full citation in References section |
 
-Stories live alongside components in `packages/ui/`:
-```
-packages/ui/src/components/Button/
-├── Button.tsx
-└── Button.stories.tsx    # Co-located
-```
+### Note Behavior
 
-### Aggregator App
-
-`apps/docs/` aggregates stories from all packages:
-```
-apps/docs/
-├── .storybook/
-│   └── main.ts           # Points to packages/ui/**/*.stories.tsx
-├── stories/
-│   └── README.md         # How to add stories
-└── package.json
-```
-
-### Configuration
-
-```ts
-// apps/docs/.storybook/main.ts
-export default {
-  stories: [
-    '../../packages/ui/src/**/*.stories.tsx',
-    // Future: '../../apps/blog/components/**/*.stories.tsx'
-  ],
-  // ...
-}
-```
+- **Desktop (≥1024px)**: Notes appear in right margin, aligned with reference point
+- **Mobile (<1024px)**: Notes collapse to expandable inline elements
 
 ---
 
-## Blog App Architecture
-
-### Directory Structure
+## Essay Page Layout
 
 ```
-apps/blog/
-├── app/
-│   ├── layout.tsx
-│   ├── globals.css           # Import tokens, Tailwind
-│   ├── [locale]/
-│   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   ├── blog/
-│   │   │   ├── page.tsx
-│   │   │   └── [slug]/page.tsx
-│   │   └── ...
-│
-├── components/
-│   ├── PostCard.tsx          # Layer 4 - uses Card, Badge
-│   ├── PostList.tsx
-│   ├── ThemeToggle.tsx
-│   └── mdx/                   # MDX-specific components
-│       ├── index.ts
-│       └── README.md
-│
-├── lib/
-│   ├── mdx.ts
-│   ├── content.ts
-│   └── i18n.ts
-│
-├── content/                   # MDX files
-├── mdx-components.tsx
-├── next.config.js
-└── tailwind.config.js
+┌────────────────────────────────────────────────────────────────────┐
+│ [Logo]              Essays   About              [Theme] [Lang]     │
+├────────────────────────────────────────────────────────────────────┤
+│                                                                    │
+│           GUIDE · AI, TECHNICAL                                    │
+│                                                                    │
+│           How Transformers Work                                    │
+│           December 14, 2024 · 15 min read                          │
+│                                                                    │
+├──────────┬─────────────────────────────────┬───────────────────────┤
+│          │                                 │                       │
+│          │  The transformer architecture   │  ¹ This refers to    │
+│  (empty) │  changed everything.¹           │  the seminal paper   │
+│          │                                 │  by Vaswani et al.   │
+│          │  Recent work [1] has shown...   │                       │
+│          │                                 │  ² Side note about   │
+│          │  This is important because...²  │  implementation...   │
+│          │                                 │                       │
+│          │  ┌─────────────────────────────────────────────────┐   │
+│          │  │     [Wide diagram/figure breaks out]            │   │
+│          │  └─────────────────────────────────────────────────┘   │
+│          │                                 │                       │
+│          │  ## References                  │                       │
+│          │  [1] Vaswani, A., et al. (2017) │                       │
+│          │                                 │                       │
+├──────────┴─────────────────────────────────┴───────────────────────┤
+│                         [Footer]                                   │
+└────────────────────────────────────────────────────────────────────┘
 ```
 
-### Theme Integration
-
-```tsx
-// apps/blog/app/layout.tsx
-import '@blog/tokens/build/primitives.css'
-import '@blog/tokens/build/semantic.css'
-import '@blog/tokens/build/theme-nyt-light.css'
-import '@blog/tokens/build/theme-nyt-dark.css'
-// Additional themes loaded as needed
-
-export default function RootLayout({ children }) {
-  return (
-    <html data-theme="nyt" data-mode="light">
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+**Grid**: `[1fr] [min(65ch, 100%)] [300px]` on desktop
+**Mobile**: Single column, full width
 
 ---
 
@@ -339,49 +203,39 @@ export default function RootLayout({ children }) {
 
 | Decision | Choice | Rationale |
 |----------|--------|-----------|
-| Variant management | CVA | Clean API for Button variants, ~2KB |
-| Accessibility | Radix UI (future) | For Tabs/Modal/Accordion only |
-| Dark mode | next-themes | Handles SSR flash, ~1KB |
-| Token generation | Style Dictionary | Already in stack, multi-format output |
-| Stories | Co-located | Easier maintenance, industry standard |
-| Folder structure | Nested | Scales better, supports sub-components |
-
-### What We're NOT Using (Yet)
-
-- Radix UI for primitives (Button, Card don't need it)
-- Extensive component library (add as needed)
-- Component-level tokens (use semantic tokens directly)
+| Variant management | CVA | Clean API for variants, ~2KB |
+| Accessibility | Radix UI | For Tabs/Modal/Accordion |
+| Dark mode | data-mode attribute | Works with existing token system |
+| Token generation | Style Dictionary | Multi-format output |
+| MDX processing | next-mdx-remote | Proven solution |
 
 ---
 
-## Implementation Phases
+## Implementation Status
 
-### Phase 1: Foundation ✓
-- [x] Monorepo setup (Turborepo + pnpm)
-- [x] packages/config (TypeScript configs)
-- [x] packages/tokens (basic tokens)
+### Completed
+- [x] Phase 1: Monorepo Foundation
+- [x] Phase 2: Token Architecture
+- [x] Phase 3: UI Package (22+ components)
 
-### Phase 2: Token Architecture
-- [ ] Restructure tokens: primitives → semantic → themes
-- [ ] Create NYT theme (light/dark)
-- [ ] Update Style Dictionary config for multi-theme
+### Current
+- [ ] Phase 4: Blog App Foundation
+- [ ] Phase 5: Layout & Theme
+- [ ] Phase 6: Essay Core
 
-### Phase 3: UI Package
-- [ ] packages/ui scaffold
-- [ ] Button component (CVA)
-- [ ] Card component
-- [ ] Callout component
-- [ ] Storybook setup (apps/docs)
+### Future
+- [ ] Phase 7: Essay Index & Home
+- [ ] Phase 8: About & Polish
+- [ ] Phase 9: Content Migration
+- [ ] Phase 10: Deployment
 
-### Phase 4: Blog App Skeleton
-- [ ] Next.js app with App Router
-- [ ] Theme integration (next-themes)
-- [ ] Basic layout with theme switching
+---
 
-### Phase 5+: Content & Features
-- [ ] MDX configuration
-- [ ] Content migration
-- [ ] Additional components as needed
+## Related Documents
+
+- [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) - Phase-by-phase tasks with parallel workstreams
+- [BLOG_APP_STRUCTURE.md](./BLOG_APP_STRUCTURE.md) - Detailed file structure, types, and code patterns
+- [MDX_COMPONENTS.md](./MDX_COMPONENTS.md) - MDX component specifications
 
 ---
 
@@ -390,4 +244,5 @@ export default function RootLayout({ children }) {
 - [Style Dictionary](https://amzn.github.io/style-dictionary/)
 - [CVA](https://cva.style/docs)
 - [Radix UI](https://www.radix-ui.com/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+- [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
+- [Tufte CSS](https://edwardtufte.github.io/tufte-css/) (sidenote inspiration)

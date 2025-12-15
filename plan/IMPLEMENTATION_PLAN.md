@@ -2,450 +2,607 @@
 
 ## Overview
 
-This document outlines the step-by-step implementation plan for rebuilding the blog with Next.js + MDX.
+This document outlines the step-by-step implementation plan for rebuilding the blog with Next.js + MDX, building on top of the existing design system (Layers 1-3).
+
+**Key principle**: Each phase has parallel workstreams (A and B) that can be developed concurrently without conflicts.
 
 ---
 
-## Phase 1: Monorepo Foundation
+## Phase Summary
 
-### Objective
-Set up the monorepo structure with Turborepo, pnpm, and basic configuration.
-
-### Tasks
-
-#### 1.1 Initialize Monorepo Root
-- [ ] Create root `package.json` with workspace scripts
-- [ ] Create `pnpm-workspace.yaml`
-- [ ] Create `turbo.json` for build orchestration
-- [ ] Update `.gitignore` for new structure
-
-#### 1.2 Create Config Package
-```
-packages/config/
-├── tsconfig/
-│   ├── base.json
-│   ├── react.json
-│   └── nextjs.json
-├── tailwind.config.js
-├── package.json
-└── README.md
-```
-
-#### 1.3 Create Tokens Package
-```
-packages/tokens/
-├── src/
-│   ├── colors.json
-│   ├── spacing.json
-│   ├── typography.json
-│   └── shadows.json
-├── style-dictionary.config.js
-├── package.json
-└── README.md
-```
-
-### Validation Checklist
-- [ ] `pnpm install` succeeds
-- [ ] `pnpm --filter @blog/tokens build` generates CSS/JS
-- [ ] TypeScript configs extend correctly
+| Phase | Focus | Workstream A | Workstream B | Dependencies |
+|-------|-------|--------------|--------------|--------------|
+| 1-3 | Foundation | ✅ Complete | ✅ Complete | - |
+| **4** | Blog App Foundation | Next.js scaffold | Types & content infra | Phase 3 |
+| **5** | Layout & Theme | Site layout | Theme system | Phase 4 |
+| **6** | Essay Core | Essay page & layout | Content components | Phase 5 |
+| **7** | Essay Index & Home | List & filters | Home page | Phase 6 |
+| **8** | About & Polish | About page | Mobile & a11y | Phase 7 |
+| **9** | Content Migration | Single stream | - | Phase 8 |
+| **10** | Deployment | Single stream | - | Phase 9 |
 
 ---
 
-## Phase 2: UI Package
+## Phase 1-3: Foundation (Complete)
 
-### Objective
-Create the component library with essential primitives.
+### Phase 1: Monorepo Foundation ✅
+- [x] Turborepo + pnpm workspace setup
+- [x] packages/config (TypeScript, Tailwind configs)
+- [x] packages/tokens (basic tokens)
 
-### Tasks
+### Phase 2: Token Architecture ✅
+- [x] 3-layer token system (primitives → semantic → themes)
+- [x] NYT theme (light/dark)
+- [x] Style Dictionary multi-theme build
 
-#### 2.1 Package Setup
-- [ ] Create `packages/ui/package.json` with dependencies
-- [ ] Set up TypeScript configuration
-- [ ] Configure Tailwind for the package
-- [ ] Create `cn()` utility function
-
-#### 2.2 Core Components
-Create minimal set of components needed for the blog:
-
-| Component | Priority | Description |
-|-----------|----------|-------------|
-| Button | High | Basic button with variants |
-| Card | High | Content container |
-| Badge | High | Category/tag labels |
-| Input | Medium | Search input |
-| Tabs | Medium | Tabbed content for code examples |
-| ThemeProvider | High | Dark/light mode |
-
-#### 2.3 Component Pattern
-Each component follows CVA pattern:
-```typescript
-// Example: Button.tsx
-import { cva, type VariantProps } from 'class-variance-authority';
-
-const buttonVariants = cva('base-classes', {
-  variants: {
-    variant: { primary: '...', secondary: '...' },
-    size: { sm: '...', md: '...', lg: '...' }
-  },
-  defaultVariants: { variant: 'primary', size: 'md' }
-});
-```
-
-### Validation Checklist
-- [ ] All components export correctly
-- [ ] TypeScript types are complete
-- [ ] Components render with Tailwind styles
+### Phase 3: UI Package ✅
+- [x] 22+ components in packages/ui
+- [x] Storybook setup (apps/storybook)
+- [x] Editorial components (Blockquote, Figure, CodeBlock, etc.)
 
 ---
 
-## Phase 3: Blog App Skeleton
+## Phase 4: Blog App Foundation
 
-### Objective
-Create the Next.js 14 blog application with basic routing.
+**Goal:** Working Next.js app with type definitions and content loading infrastructure.
 
-### Tasks
+### Workstream 4A: Next.js Scaffold
 
-#### 3.1 Initialize Next.js App
-```bash
-cd apps
-pnpm create next-app@latest blog --typescript --tailwind --app --src-dir
+**Files to create:**
+```
+apps/blog/
+├── app/
+│   ├── layout.tsx          # Minimal root layout
+│   ├── page.tsx            # Placeholder home
+│   └── globals.css         # Import tokens
+├── next.config.js          # Transpile packages
+├── tailwind.config.js      # Extend shared config
+├── tsconfig.json           # Extend shared config
+└── package.json            # Dependencies
 ```
 
-#### 3.2 Configure for Monorepo
-- [ ] Update `next.config.js` with `transpilePackages`
-- [ ] Configure Tailwind to include UI package paths
-- [ ] Import token CSS in `globals.css`
-- [ ] Set up static export configuration
+**Tasks:**
+- [ ] Create `apps/blog/package.json` with dependencies:
+  ```json
+  {
+    "dependencies": {
+      "@blog/tokens": "workspace:*",
+      "@blog/ui": "workspace:*",
+      "next": "^14.0.0",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "next-mdx-remote": "^4.4.1",
+      "gray-matter": "^4.0.3",
+      "reading-time": "^1.5.0"
+    }
+  }
+  ```
+- [ ] Create `next.config.js` with `transpilePackages: ['@blog/ui', '@blog/tokens']`
+- [ ] Create `tailwind.config.js` extending `@blog/config`
+- [ ] Create `tsconfig.json` extending `@blog/config`
+- [ ] Create minimal `app/layout.tsx` with theme data attributes
+- [ ] Create `app/globals.css` importing token CSS
+- [ ] Create placeholder `app/page.tsx`
+- [ ] Add `blog` to turbo.json pipeline
 
-#### 3.3 Create Basic Layouts
+**Validation:**
+- [ ] `pnpm --filter @blog/blog dev` starts on localhost:3000
+- [ ] Tailwind classes work
+- [ ] Token CSS variables available in browser
+
+### Workstream 4B: Types & Content Infrastructure
+
+**Files to create:**
 ```
-apps/blog/app/
-├── layout.tsx          # Root layout
-├── [locale]/
-│   ├── layout.tsx      # Locale layout
-│   └── page.tsx        # Home page
+apps/blog/
+├── types/
+│   └── content.ts          # Essay types
+├── lib/
+│   ├── essays.ts           # Content fetching
+│   └── mdx.ts              # MDX utilities
+└── content/
+    └── essays/
+        └── _example.mdx    # Test content
 ```
 
-#### 3.4 Configure i18n
-- [ ] Install and configure next-intl
-- [ ] Create locale routing middleware
-- [ ] Set up message files for zh/en
+**Tasks:**
+- [ ] Define TypeScript types in `types/content.ts`:
+  ```typescript
+  type EssayType = 'guide' | 'deep-dive' | 'opinion' | 'review' | 'narrative';
+  type Topic = 'technical' | 'ai' | 'product' | 'career';
+  type Language = 'en' | 'zh';
 
-### Validation Checklist
-- [ ] `pnpm --filter @blog/blog dev` starts on :3000
-- [ ] Root layout renders
-- [ ] Theme toggle works
-- [ ] Locale switching works
+  interface EssayMeta {
+    slug: string;
+    title: string;
+    description: string;
+    date: string;
+    type: EssayType;
+    topics: Topic[];
+    lang: Language;
+    draft?: boolean;
+    readingTime?: number;
+  }
+  ```
+- [ ] Create `lib/essays.ts` with functions:
+  - `getAllEssays()` - returns all essay metadata
+  - `getEssayBySlug(slug)` - returns single essay with content
+  - `getEssaySlugs()` - returns all slugs for static generation
+- [ ] Create `lib/mdx.ts` with MDX compilation helpers
+- [ ] Create example MDX file `content/essays/_example.mdx` with all frontmatter fields
+
+**Validation:**
+- [ ] `getAllEssays()` returns parsed frontmatter
+- [ ] `getEssayBySlug()` returns compiled MDX
+- [ ] TypeScript enforces frontmatter schema
+
+**No conflicts:** 4A works on app shell, 4B works on lib/types. No shared files.
 
 ---
 
-## Phase 4: MDX Configuration
+## Phase 5: Layout & Theme
 
-### Objective
-Set up MDX for content authoring with custom components.
+**Goal:** Site header, footer, navigation, and theme switching.
 
-### Tasks
+### Workstream 5A: Site Layout Components
 
-#### 4.1 Install MDX Dependencies
-```bash
-pnpm --filter @blog/blog add @next/mdx @mdx-js/loader @mdx-js/react
-pnpm --filter @blog/blog add gray-matter
-pnpm --filter @blog/blog add rehype-pretty-code shiki
-pnpm --filter @blog/blog add remark-gfm
+**Files to create:**
+```
+apps/blog/components/
+└── layout/
+    ├── SiteHeader.tsx
+    ├── SiteFooter.tsx
+    ├── SiteNav.tsx
+    └── index.ts
 ```
 
-#### 4.2 Configure next.config.js
-```javascript
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, { theme: 'github-dark' }]],
-  },
-});
+**Tasks:**
+- [ ] Create `SiteHeader` with:
+  - Logo/site name (link to home)
+  - Navigation slot
+  - Actions slot (for theme toggle)
+- [ ] Create `SiteNav` with links: Essays, About
+- [ ] Create `SiteFooter` with copyright, optional social links
+- [ ] Update `app/layout.tsx` to use layout components
+- [ ] Basic responsive styles (mobile hamburger deferred to Phase 8)
 
-module.exports = withMDX({
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  // ... other config
-});
+**Uses from @blog/ui:** Button, Separator
+
+### Workstream 5B: Theme System
+
+**Files to create:**
+```
+apps/blog/
+├── components/
+│   └── layout/
+│       ├── ThemeToggle.tsx
+│       └── ThemeProvider.tsx
+└── lib/
+    └── theme.ts
 ```
 
-#### 4.3 Create MDX Components File
-```typescript
-// apps/blog/mdx-components.tsx
-import type { MDXComponents } from 'mdx/types';
-import { Callout, CodeBlock, Tabs } from '@/components/mdx';
+**Tasks:**
+- [ ] Create `ThemeProvider` context:
+  - Read system preference
+  - Read localStorage preference
+  - Provide toggle function
+  - Set `data-mode` on `<html>`
+- [ ] Create `ThemeToggle` component (sun/moon icon button)
+- [ ] Create `lib/theme.ts` with helpers
+- [ ] Integrate into `SiteHeader`
+- [ ] Handle SSR (avoid hydration mismatch with suppressHydrationWarning or script)
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
-  return {
-    ...components,
-    Callout,
-    CodeBlock,
-    Tabs,
-    // Custom heading styles, etc.
-  };
-}
-```
+**Uses from @blog/ui:** Button, Tooltip
 
-#### 4.4 Create Content Utilities
-```typescript
-// apps/blog/lib/content.ts
-- getPostBySlug(slug, locale)
-- getAllPosts(locale)
-- getPostSlugs()
-```
-
-### Validation Checklist
-- [ ] MDX files render correctly
-- [ ] Custom components work in MDX
-- [ ] Code highlighting works
-- [ ] Frontmatter parsing works
+**No conflicts:** 5A builds static layout, 5B adds interactivity. Both touch `SiteHeader` but 5A creates structure, 5B adds toggle.
 
 ---
 
-## Phase 5: Content Pages
+## Phase 6: Essay Core
 
-### Objective
-Build out all content page types with proper layouts.
+**Goal:** Full essay page with sidenote layout, notes, and references.
 
-### Tasks
+### Workstream 6A: Essay Page & Layout
 
-#### 5.1 Blog Section
-- [ ] Create blog listing page (`/[locale]/blog/page.tsx`)
-- [ ] Create blog post page (`/[locale]/blog/[slug]/page.tsx`)
-- [ ] Implement PostCard component
-- [ ] Implement PostList component
-- [ ] Add pagination (if needed)
+**Files to create:**
+```
+apps/blog/
+├── app/
+│   └── essays/
+│       └── [slug]/
+│           └── page.tsx
+└── components/
+    └── essay/
+        ├── EssayLayout.tsx
+        ├── EssayHeader.tsx
+        └── index.ts
+```
 
-#### 5.2 Collection Section
-- [ ] Create collection listing page
-- [ ] Create collection detail page
-- [ ] Implement CollectionCard component
+**Tasks:**
+- [ ] Create `EssayLayout` with 3-column CSS grid:
+  ```css
+  grid-template-columns: 1fr min(65ch, 100%) 300px;
+  ```
+  - Left margin (empty, for balance)
+  - Main content (max 65ch)
+  - Right margin (sidenotes, 300px)
+  - Responsive: collapse to single column < 1024px
+- [ ] Create `EssayHeader` with:
+  - Type badge (GUIDE, DEEP-DIVE, etc.)
+  - Topic badges
+  - Title (h1)
+  - Description
+  - Date + reading time (calculated)
+- [ ] Create `app/essays/[slug]/page.tsx`:
+  - `generateStaticParams()` for SSG
+  - Fetch essay by slug
+  - Render with `EssayLayout`
+- [ ] Set up MDX rendering with `next-mdx-remote`
 
-#### 5.3 Library Section
-- [ ] Create library listing page
-- [ ] Create paper note page
-- [ ] Implement PaperNote component
+**Uses from @blog/ui:** Badge, Byline
 
-#### 5.4 About Section
-- [ ] Create about page
-- [ ] Create resume subpage
-- [ ] Implement profile components
+### Workstream 6B: Content Components
 
-#### 5.5 Shared Components
-- [ ] TableOfContents (auto-generated from headings)
-- [ ] ReadingTime component
-- [ ] ShareButtons component
-- [ ] NavigationLinks (prev/next post)
+**Files to create:**
+```
+apps/blog/components/
+├── content/
+│   ├── Note.tsx
+│   ├── Marginnote.tsx
+│   ├── Reference.tsx
+│   ├── References.tsx
+│   ├── WideBlock.tsx
+│   ├── NoteContext.tsx
+│   ├── ReferenceContext.tsx
+│   └── index.ts
+└── mdx/
+    └── MDXComponents.tsx
+```
 
-### Validation Checklist
-- [ ] All routes accessible
-- [ ] Content renders correctly
-- [ ] Navigation works
-- [ ] Locale switching preserves route
+**Tasks:**
+- [ ] Create `NoteContext` for sidenote numbering
+- [ ] Create `Note` component:
+  - Desktop: position in right margin using CSS
+  - Mobile: expandable inline element
+  - Superscript number in text
+- [ ] Create `Marginnote` (same as Note but unnumbered)
+- [ ] Create `ReferenceContext` for citation numbering
+- [ ] Create `Reference` component:
+  - Renders as `[n]` inline
+  - Links to References section
+- [ ] Create `References` component:
+  - Collects all registered references
+  - Renders formatted citation list
+- [ ] Create `WideBlock` component for images/diagrams that break out
+- [ ] Create `MDXComponents.tsx` mapping all components
+
+**Uses from @blog/ui:** Tooltip (mobile note fallback)
+
+**No conflicts:** 6A builds page structure/layout, 6B builds content components that go inside the layout.
 
 ---
 
-## Phase 6: Content Migration
+## Phase 7: Essay Index & Home
 
-### Objective
-Migrate existing Hugo content to MDX format.
+**Goal:** Browseable essay list with filtering, minimal home page.
 
-### Tasks
+### Workstream 7A: Essay List & Filters
 
-#### 6.1 Create Migration Script
-```typescript
-// scripts/migrate-content.ts
-- Read Hugo markdown files
-- Parse frontmatter
-- Transform to MDX format
-- Handle footnotes
-- Handle shortcodes
+**Files to create:**
+```
+apps/blog/
+├── app/
+│   └── essays/
+│       └── page.tsx
+└── components/
+    └── essay/
+        ├── EssayCard.tsx
+        ├── EssayList.tsx
+        └── EssayFilters.tsx
 ```
 
-#### 6.2 Migrate Blog Posts
-| Post | Status |
-|------|--------|
-| 10k-code.md | Pending |
-| 10k-cpp.md | Pending |
-| job_search_reflection.en.md | Pending |
-| meeting-how-to.md | Pending |
-| offer_negotiation.en.md | Pending |
-| programmer_quality.md | Pending |
-| programming_augmenting_intelligence.md | Pending |
-| reverse-interview.md | Pending |
-| short_pr.md | Pending |
+**Tasks:**
+- [ ] Create `EssayCard` component:
+  - Type badge
+  - Title (link to essay)
+  - Description (truncated)
+  - Date
+  - Topic badges
+- [ ] Create `EssayList` component (grid layout)
+- [ ] Create `EssayFilters` component:
+  - Type filter (button group: All, Guide, Deep-Dive, etc.)
+  - Topic filter (toggleable badges)
+  - Client-side filtering with URL searchParams
+- [ ] Create `app/essays/page.tsx`:
+  - Fetch all essays
+  - Render filters + list
+  - Handle filter state via searchParams
 
-#### 6.3 Migrate Collections
-- [ ] psych-writing.md
-- [ ] system_design_interview.en.md
-- [ ] vision-100.md / vision-100.en.md
+**Uses from @blog/ui:** Card, Badge, Button
 
-#### 6.4 Migrate Library
-- [ ] All paper notes (15+ files)
+### Workstream 7B: Home Page
 
-#### 6.5 Migrate Digests
-Decision: Keep or archive?
-- Option A: Migrate all 22 digests
-- Option B: Archive digests, keep only recent
-- Option C: Create digest archive page without individual routes
+**Files to modify:**
+```
+apps/blog/app/page.tsx     # Replace placeholder
+```
 
-### Validation Checklist
-- [ ] All content renders correctly
+**Tasks:**
+- [ ] Design minimal home layout:
+  - Site title/name
+  - One-line description/tagline
+  - Recent essays (3-5 most recent)
+  - Link to all essays
+- [ ] Implement home page:
+  - Fetch recent essays
+  - Render with `EssayCard` (compact variant or reuse)
+- [ ] Add any home-specific styling
+
+**Uses from @blog/ui:** Button, components from 7A (EssayCard)
+
+**No conflicts:** 7A builds essay browsing, 7B builds home. 7A creates `EssayCard` first, 7B imports it. Ensure 7A completes `EssayCard` before 7B needs it.
+
+---
+
+## Phase 8: About & Polish
+
+**Goal:** About page, mobile navigation, accessibility review.
+
+### Workstream 8A: About Page
+
+**Files to create:**
+```
+apps/blog/
+├── app/
+│   └── about/
+│       └── page.tsx
+└── components/
+    └── about/
+        ├── NowSection.tsx
+        ├── Timeline.tsx
+        ├── ResumeSection.tsx
+        └── index.ts
+```
+
+**Tasks:**
+- [ ] Create `NowSection` component:
+  - Current role/focus
+  - What I'm working on
+  - Inspired by nownownow.com
+- [ ] Create `Timeline` component:
+  - Career/education milestones
+  - Visual timeline or simple list
+- [ ] Create `ResumeSection` component:
+  - Collapsible sections (Work, Education, Publications)
+  - Uses Accordion from @blog/ui
+- [ ] Create `app/about/page.tsx`:
+  - Personal intro
+  - Now section
+  - Timeline
+  - Collapsible resume
+
+**Uses from @blog/ui:** Card, Accordion, Badge
+
+### Workstream 8B: Mobile & Accessibility
+
+**Files to create/modify:**
+```
+apps/blog/components/layout/
+├── SiteHeader.tsx          # Modify for mobile
+├── SiteNav.tsx             # Mobile variant
+└── MobileMenu.tsx          # New
+```
+
+**Tasks:**
+- [ ] Create `MobileMenu` component:
+  - Hamburger button trigger
+  - Slide-out or dropdown menu
+  - Close on navigation or outside click
+- [ ] Update `SiteHeader` for responsive:
+  - Hide desktop nav on mobile (< 768px)
+  - Show hamburger on mobile
+- [ ] Accessibility audit:
+  - Focus management (especially mobile menu)
+  - Keyboard navigation (Tab, Enter, Escape)
+  - Screen reader testing
+  - Color contrast verification
+- [ ] Test all pages at breakpoints: 320px, 768px, 1024px, 1440px
+- [ ] Test with VoiceOver (Mac) or NVDA (Windows)
+
+**Uses from @blog/ui:** Modal or Dropdown (for mobile menu), Button
+
+**No conflicts:** 8A is about page content, 8B is cross-cutting UX. Different focus areas.
+
+---
+
+## Phase 9: Content Migration
+
+**Goal:** Migrate existing content from Hugo format to MDX.
+
+**Single workstream** - content work is sequential.
+
+**Tasks:**
+- [ ] Audit existing content in `content/` folder
+- [ ] Prioritize posts to migrate (start with blog/, defer digest/)
+- [ ] Create migration checklist per post:
+  - [ ] Update frontmatter to new schema
+  - [ ] Add `type` field
+  - [ ] Add `topics` array
+  - [ ] Convert Hugo shortcodes to MDX components
+  - [ ] Review/update formatting
+- [ ] Migrate priority posts:
+
+| Post | Type | Topics | Status |
+|------|------|--------|--------|
+| `10k-code.md` | narrative | technical, career | Pending |
+| `10k-cpp.md` | guide | technical | Pending |
+| `job_search_reflection.en.md` | narrative | career | Pending |
+| `offer_negotiation.en.md` | guide | career | Pending |
+| `meeting-how-to.md` | guide | career | Pending |
+
+- [ ] Set up redirects if URLs change
+- [ ] Archive old Hugo content folder
+
+**Validation:**
+- [ ] All migrated content renders correctly
 - [ ] Links work
 - [ ] Images display
-- [ ] Code blocks highlight properly
-- [ ] Footnotes work
+- [ ] Code blocks highlight
+- [ ] Notes and references work
 
 ---
 
-## Phase 7: Features & Polish
+## Phase 10: Deployment
 
-### Objective
-Add remaining features and polish the experience.
+**Goal:** Static export and deploy to GitHub Pages.
 
-### Tasks
+**Single workstream.**
 
-#### 7.1 Search
-- [ ] Implement client-side search with Fuse.js
-- [ ] Create search index at build time
-- [ ] Add SearchDialog component
-- [ ] Add keyboard shortcut (Cmd/Ctrl + K)
+**Tasks:**
+- [ ] Configure static export in `next.config.js`:
+  ```js
+  module.exports = {
+    output: 'export',
+    distDir: 'docs',
+    images: { unoptimized: true },
+    trailingSlash: true,
+  };
+  ```
+- [ ] Add build scripts to package.json
+- [ ] Ensure `.nojekyll` file in output
+- [ ] Preserve CNAME file for custom domain
+- [ ] Test local static build
+- [ ] Deploy to GitHub Pages
+- [ ] Verify all pages accessible
+- [ ] Optional: Set up GitHub Actions for auto-deploy
 
-#### 7.2 RSS Feed
-- [ ] Generate RSS at build time
-- [ ] Add feed link to layout
-
-#### 7.3 SEO
-- [ ] Configure metadata for all pages
-- [ ] Add Open Graph images
-- [ ] Add structured data (JSON-LD)
-- [ ] Create sitemap
-
-#### 7.4 Performance
-- [ ] Optimize images with next/image
-- [ ] Add font optimization
-- [ ] Verify Core Web Vitals
-
-#### 7.5 Accessibility
-- [ ] Test with screen reader
-- [ ] Verify keyboard navigation
-- [ ] Check color contrast
-
-### Validation Checklist
-- [ ] Search works
-- [ ] RSS feed validates
-- [ ] Lighthouse score > 90
-- [ ] No accessibility errors
-
----
-
-## Phase 8: Deployment
-
-### Objective
-Configure static export and deploy to GitHub Pages.
-
-### Tasks
-
-#### 8.1 Static Export Configuration
-```javascript
-// next.config.js
-module.exports = {
-  output: 'export',
-  distDir: 'docs',
-  images: { unoptimized: true }, // Required for static export
-  trailingSlash: true,
-};
-```
-
-#### 8.2 Build Script
-```json
-{
-  "scripts": {
-    "build": "next build",
-    "export": "next build && touch docs/.nojekyll"
-  }
-}
-```
-
-#### 8.3 GitHub Pages Setup
-- [ ] Ensure CNAME file is copied to output
-- [ ] Add `.nojekyll` file
-- [ ] Test deployment
-
-#### 8.4 CI/CD (Optional)
-- [ ] GitHub Actions workflow for auto-deploy
-- [ ] Build validation on PRs
-
-### Validation Checklist
-- [ ] Static export succeeds
-- [ ] All pages accessible
-- [ ] CNAME preserved
+**Validation:**
+- [ ] `pnpm build` succeeds
+- [ ] Static files in `docs/` directory
 - [ ] Site works on GitHub Pages
-
----
-
-## Phase 9: Cleanup
-
-### Objective
-Remove old Hugo setup and finalize migration.
-
-### Tasks
-
-#### 9.1 Archive Old Content
-- [ ] Move old `content/` to `content-archive/` or delete
-- [ ] Remove Hugo `config.yml`
-- [ ] Remove `archetypes/` directory
-
-#### 9.2 Update Documentation
-- [ ] Update root README.md
-- [ ] Document content authoring workflow
-- [ ] Document deployment process
-
-#### 9.3 Final Verification
-- [ ] All URLs match old structure (or set up redirects)
+- [ ] All routes accessible
 - [ ] No broken links
-- [ ] Analytics working (if applicable)
 
 ---
 
-## Timeline Estimates
+## Dependency Graph
 
-| Phase | Complexity | Dependencies |
-|-------|------------|--------------|
-| Phase 1: Foundation | Low | None |
-| Phase 2: UI Package | Medium | Phase 1 |
-| Phase 3: Blog Skeleton | Medium | Phase 1, 2 |
-| Phase 4: MDX Setup | Medium | Phase 3 |
-| Phase 5: Content Pages | Medium | Phase 4 |
-| Phase 6: Migration | High | Phase 5 |
-| Phase 7: Features | Medium | Phase 6 |
-| Phase 8: Deployment | Low | Phase 7 |
-| Phase 9: Cleanup | Low | Phase 8 |
+```
+Phase 1-3 (Complete)
+       │
+       ▼
+┌──────┴──────┐
+│  Phase 4    │
+│ 4A ←──→ 4B  │  (parallel)
+└──────┬──────┘
+       │
+       ▼
+┌──────┴──────┐
+│  Phase 5    │
+│ 5A ←──→ 5B  │  (parallel)
+└──────┬──────┘
+       │
+       ▼
+┌──────┴──────┐
+│  Phase 6    │
+│ 6A ←──→ 6B  │  (parallel)
+└──────┬──────┘
+       │
+       ▼
+┌──────┴──────┐
+│  Phase 7    │
+│ 7A ──→ 7B   │  (7B waits for EssayCard from 7A)
+└──────┬──────┘
+       │
+       ▼
+┌──────┴──────┐
+│  Phase 8    │
+│ 8A ←──→ 8B  │  (parallel)
+└──────┬──────┘
+       │
+       ▼
+   Phase 9
+   (sequential)
+       │
+       ▼
+   Phase 10
+   (sequential)
+```
+
+---
+
+## Validation Checklist
+
+### Phase 4
+- [ ] `pnpm --filter @blog/blog dev` starts
+- [ ] Token CSS variables work
+- [ ] `getAllEssays()` returns data
+- [ ] TypeScript types enforce schema
+
+### Phase 5
+- [ ] Header/footer render on all pages
+- [ ] Navigation links work
+- [ ] Theme toggle persists preference
+- [ ] No hydration errors
+
+### Phase 6
+- [ ] Essay page renders MDX content
+- [ ] Sidenotes appear in margin (desktop)
+- [ ] Sidenotes expand inline (mobile)
+- [ ] References render with [n] format
+- [ ] Wide blocks break out of column
+
+### Phase 7
+- [ ] Essay list shows all essays
+- [ ] Filters update URL and list
+- [ ] Home shows recent essays
+- [ ] All links work
+
+### Phase 8
+- [ ] About page renders all sections
+- [ ] Mobile menu works
+- [ ] Keyboard navigation works
+- [ ] Lighthouse accessibility score ≥ 90
+
+### Phase 9
+- [ ] Priority posts migrated
+- [ ] No broken links
+- [ ] Content renders correctly
+
+### Phase 10
+- [ ] Static export succeeds
+- [ ] Site works on GitHub Pages
+- [ ] All routes accessible
 
 ---
 
 ## Risk Mitigation
 
-### Risk: Static Export Limitations
-**Mitigation**: Use `output: 'export'` from start, avoid features requiring server.
+| Risk | Mitigation |
+|------|------------|
+| MDX compilation complexity | Use `next-mdx-remote`, proven solution |
+| Sidenote positioning | Start with CSS-only approach, enhance with JS if needed |
+| Reference auto-numbering | Use React context, test with example content early |
+| Mobile sidenote UX | Prototype in Phase 6, iterate based on testing |
+| Theme hydration flash | Use blocking script or `suppressHydrationWarning` |
+| Static export limitations | Use `output: 'export'` from start, avoid server features |
 
-### Risk: i18n Complexity
-**Mitigation**: Start with simple file-based approach, add complexity as needed.
+---
 
-### Risk: Content Migration Errors
-**Mitigation**: Run parallel sites during migration, verify each page.
+## Open Questions
 
-### Risk: Breaking URLs
-**Mitigation**: Map old URLs to new, set up redirects if needed.
+1. **Language toggle**: Same page with content switch, or separate URL paths (`/zh/essays/...`)?
+2. **Search**: Add in Phase 8 or defer to post-launch?
+3. **RSS feed**: Add in Phase 8 or defer?
+4. **Interactive diagrams (D3)**: Defer to post-Phase 10?
 
 ---
 
 ## Success Criteria
 
-1. **Functional Parity**: All existing content accessible
-2. **Performance**: Lighthouse score > 90
-3. **Interactivity**: MDX components work as expected
-4. **Maintainability**: Clear component structure
-5. **Developer Experience**: Fast local development
-6. **Deployment**: Automated build to GitHub Pages
+1. **Functional**: All pages render, navigation works, theme toggles
+2. **Content**: Essays display with sidenotes and references
+3. **Performance**: Lighthouse score > 90
+4. **Accessibility**: No critical a11y errors
+5. **Mobile**: Responsive design works at all breakpoints
+6. **Deployment**: Site live on GitHub Pages
