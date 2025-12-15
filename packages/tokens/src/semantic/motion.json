@@ -1,0 +1,20 @@
+{
+  "motion": {
+    "duration": {
+      "instant": { "value": "{primitive.motion.duration.0}" },
+      "fast": { "value": "{primitive.motion.duration.100}" },
+      "normal": { "value": "{primitive.motion.duration.200}" },
+      "slow": { "value": "{primitive.motion.duration.300}" },
+      "deliberate": { "value": "{primitive.motion.duration.500}" },
+      "dramatic": { "value": "{primitive.motion.duration.800}" }
+    },
+    "easing": {
+      "default": { "value": "{primitive.motion.easing.ease-out}" },
+      "enter": { "value": "{primitive.motion.easing.ease-out}" },
+      "exit": { "value": "{primitive.motion.easing.ease-in}" },
+      "move": { "value": "{primitive.motion.easing.ease-in-out}" },
+      "linear": { "value": "{primitive.motion.easing.linear}" },
+      "spring": { "value": "{primitive.motion.easing.spring}" }
+    }
+  }
+}

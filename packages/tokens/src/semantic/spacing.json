@@ -1,0 +1,46 @@
+{
+  "spacing": {
+    "stack": {
+      "$description": "Vertical spacing between stacked elements",
+      "xs": { "value": "{primitive.spacing.1}", "$description": "4px - Tight: icon-to-text, dense UI" },
+      "sm": { "value": "{primitive.spacing.2}", "$description": "8px - Small: related items, compact cards" },
+      "md": { "value": "{primitive.spacing.4}", "$description": "16px - Medium: default spacing" },
+      "lg": { "value": "{primitive.spacing.6}", "$description": "24px - Large: section breaks, generous cards" },
+      "xl": { "value": "{primitive.spacing.8}", "$description": "32px - Extra large: major separations" },
+      "2xl": { "value": "{primitive.spacing.12}", "$description": "48px - Massive: page sections" },
+      "3xl": { "value": "{primitive.spacing.16}", "$description": "64px - Hero: major page divisions" }
+    },
+    "inline": {
+      "$description": "Horizontal spacing between inline elements",
+      "xs": { "value": "{primitive.spacing.1}", "$description": "4px - Tight: icon-to-text" },
+      "sm": { "value": "{primitive.spacing.2}", "$description": "8px - Small: button icon gap" },
+      "md": { "value": "{primitive.spacing.4}", "$description": "16px - Medium: default inline spacing" },
+      "lg": { "value": "{primitive.spacing.6}", "$description": "24px - Large: generous inline spacing" },
+      "xl": { "value": "{primitive.spacing.8}", "$description": "32px - Extra large: major inline separation" }
+    },
+    "inset": {
+      "$description": "Internal padding within containers",
+      "xs": { "value": "{primitive.spacing.1}", "$description": "4px - Minimal: badges, chips" },
+      "sm": { "value": "{primitive.spacing.2}", "$description": "8px - Small: compact buttons, tags" },
+      "md": { "value": "{primitive.spacing.4}", "$description": "16px - Medium: default card padding" },
+      "lg": { "value": "{primitive.spacing.6}", "$description": "24px - Large: generous card padding" },
+      "xl": { "value": "{primitive.spacing.8}", "$description": "32px - Extra large: modal padding" }
+    },
+    "gutter": {
+      "$description": "Space between columns or grid items",
+      "xs": { "value": "{primitive.spacing.2}", "$description": "8px - Tight grid" },
+      "sm": { "value": "{primitive.spacing.3}", "$description": "12px - Compact grid" },
+      "md": { "value": "{primitive.spacing.4}", "$description": "16px - Default grid gap" },
+      "lg": { "value": "{primitive.spacing.6}", "$description": "24px - Generous grid gap" },
+      "xl": { "value": "{primitive.spacing.8}", "$description": "32px - Wide grid gap" }
+    },
+    "section": {
+      "$description": "Large-scale spacing between major page sections",
+      "sm": { "value": "{primitive.spacing.8}", "$description": "32px - Small section break" },
+      "md": { "value": "{primitive.spacing.12}", "$description": "48px - Medium section break" },
+      "lg": { "value": "{primitive.spacing.16}", "$description": "64px - Large section break" },
+      "xl": { "value": "{primitive.spacing.20}", "$description": "80px - Extra large section break" },
+      "2xl": { "value": "{primitive.spacing.24}", "$description": "96px - Hero section break" }
+    }
+  }
+}

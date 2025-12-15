@@ -14,6 +14,14 @@
       "16": { "value": "4rem" },
       "20": { "value": "5rem" },
       "24": { "value": "6rem" }
+    },
+    "size": {
+      "touch-min": { "value": "2.75rem", "comment": "44px - WCAG minimum touch target" },
+      "touch-comfortable": { "value": "3rem", "comment": "48px - comfortable touch target" }
+    },
+    "focus": {
+      "ring-width": { "value": "2px" },
+      "ring-offset": { "value": "2px" }
     }
   }
 }

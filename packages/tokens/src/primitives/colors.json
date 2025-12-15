@@ -2,6 +2,7 @@
   "primitive": {
     "color": {
       "white": { "value": "#ffffff" },
+      "off-white": { "value": "#f7f7f5" },
       "black": { "value": "#000000" },
       "gray": {
         "50": { "value": "#fafafa" },
@@ -23,10 +24,18 @@
         "600": { "value": "#2563eb" },
         "700": { "value": "#1d4ed8" }
       },
+      "nyt-blue": {
+        "DEFAULT": { "value": "#326891" },
+        "dark": { "value": "#1a4a6e" },
+        "light": { "value": "#4a7fa8" }
+      },
       "red": {
         "50": { "value": "#fef2f2" },
         "500": { "value": "#ef4444" },
         "600": { "value": "#dc2626" }
+      },
+      "nyt-red": {
+        "DEFAULT": { "value": "#d93a3a" }
       },
       "amber": {
         "50": { "value": "#fffbeb" },
@@ -37,6 +46,45 @@
         "50": { "value": "#f0fdf4" },
         "500": { "value": "#22c55e" },
         "600": { "value": "#16a34a" }
+      },
+      "status": {
+        "info": { "value": "#4a7fa8" },
+        "info-light": { "value": "#e8f1f8" },
+        "success": { "value": "#3d7a4a" },
+        "success-light": { "value": "#e8f2ea" },
+        "warning": { "value": "#b86e00" },
+        "warning-light": { "value": "#fef3e2" },
+        "danger": { "value": "#c53030" },
+        "danger-light": { "value": "#fde8e8" }
+      },
+      "purple": {
+        "visited": { "value": "#6b5b7a" },
+        "visited-dark": { "value": "#9b8ba8" }
+      },
+      "yellow": {
+        "highlight": { "value": "#fff9c4" },
+        "highlight-dark": { "value": "#5c5424" }
+      },
+      "data": {
+        "1": { "value": "#326891" },
+        "2": { "value": "#d93a3a" },
+        "3": { "value": "#2e7d32" },
+        "4": { "value": "#f57c00" },
+        "5": { "value": "#7b1fa2" },
+        "6": { "value": "#00838f" }
+      },
+      "data-sequential": {
+        "1": { "value": "#cfe2f3" },
+        "2": { "value": "#9fc5e8" },
+        "3": { "value": "#6fa8dc" },
+        "4": { "value": "#3d85c6" },
+        "5": { "value": "#326891" }
+      },
+      "overlay": {
+        "black-50": { "value": "rgba(0, 0, 0, 0.5)" },
+        "black-30": { "value": "rgba(0, 0, 0, 0.3)" },
+        "white-70": { "value": "rgba(255, 255, 255, 0.7)" },
+        "white-50": { "value": "rgba(255, 255, 255, 0.5)" }
       }
     }
   }

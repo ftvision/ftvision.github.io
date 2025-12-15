@@ -1,0 +1,172 @@
+{
+  "font": {
+    "size": {
+      "display": {
+        "value": "{primitive.font.size.4xl}",
+        "$description": "Hero headlines, feature titles - the first thing you see"
+      },
+      "h1": {
+        "value": "{primitive.font.size.3xl}",
+        "$description": "Article headlines, section titles - primary structural marker"
+      },
+      "h2": {
+        "value": "{primitive.font.size.2xl}",
+        "$description": "Section headers within articles - secondary structural marker"
+      },
+      "h3": {
+        "value": "{primitive.font.size.xl}",
+        "$description": "Subsection headers, card titles - tertiary structural marker"
+      },
+      "h4": {
+        "value": "{primitive.font.size.lg}",
+        "$description": "Minor headers, list group titles - quaternary structural marker"
+      },
+      "body": {
+        "value": "{primitive.font.size.base}",
+        "$description": "Primary reading text - optimized for long-form consumption"
+      },
+      "body-sm": {
+        "value": "{primitive.font.size.sm}",
+        "$description": "Secondary content, sidebar text - reduced emphasis, still readable"
+      },
+      "caption": {
+        "value": "{primitive.font.size.xs}",
+        "$description": "Image captions, footnotes, metadata - auxiliary information"
+      },
+      "label": {
+        "value": "{primitive.font.size.xs}",
+        "$description": "Form labels, UI text, buttons - functional, not editorial"
+      },
+      "overline": {
+        "value": "{primitive.font.size.xs}",
+        "$description": "Category tags, section markers - small caps or uppercase treatments"
+      }
+    },
+    "lineHeight": {
+      "display": {
+        "value": "{primitive.font.lineHeight.tighter}",
+        "$description": "Massive type needs minimal leading"
+      },
+      "h1": {
+        "value": "{primitive.font.lineHeight.tight}",
+        "$description": "Headlines stay compact"
+      },
+      "h2": {
+        "value": "{primitive.font.lineHeight.snug}",
+        "$description": "Still headline-like"
+      },
+      "h3": {
+        "value": "{primitive.font.lineHeight.cozy}",
+        "$description": "Transitioning to text"
+      },
+      "h4": {
+        "value": "{primitive.font.lineHeight.normal}",
+        "$description": "Approaching body rhythm"
+      },
+      "body": {
+        "value": "{primitive.font.lineHeight.loose}",
+        "$description": "Optimal long-form reading"
+      },
+      "body-sm": {
+        "value": "{primitive.font.lineHeight.relaxed}",
+        "$description": "Slightly tighter for density"
+      },
+      "caption": {
+        "value": "{primitive.font.lineHeight.relaxed}",
+        "$description": "Compact but legible"
+      },
+      "label": {
+        "value": "{primitive.font.lineHeight.relaxed}",
+        "$description": "UI-focused"
+      },
+      "overline": {
+        "value": "{primitive.font.lineHeight.normal}",
+        "$description": "Uppercase needs less leading"
+      }
+    },
+    "weight": {
+      "display": {
+        "value": "{primitive.font.weight.bold}",
+        "$description": "Maximum impact"
+      },
+      "h1": {
+        "value": "{primitive.font.weight.bold}",
+        "$description": "Clear hierarchy"
+      },
+      "h2": {
+        "value": "{primitive.font.weight.semibold}",
+        "$description": "Distinct from h1"
+      },
+      "h3": {
+        "value": "{primitive.font.weight.semibold}",
+        "$description": "Consistent with h2"
+      },
+      "h4": {
+        "value": "{primitive.font.weight.medium}",
+        "$description": "Lighter touch"
+      },
+      "body": {
+        "value": "{primitive.font.weight.normal}",
+        "$description": "Reading comfort"
+      },
+      "body-sm": {
+        "value": "{primitive.font.weight.normal}",
+        "$description": "Consistency"
+      },
+      "caption": {
+        "value": "{primitive.font.weight.normal}",
+        "$description": "Unobtrusive"
+      },
+      "label": {
+        "value": "{primitive.font.weight.medium}",
+        "$description": "UI needs presence"
+      },
+      "overline": {
+        "value": "{primitive.font.weight.semibold}",
+        "$description": "Compensate for small size"
+      }
+    },
+    "letterSpacing": {
+      "display": {
+        "value": "-0.02em",
+        "$description": "Tighter tracking for large display type"
+      },
+      "h1": {
+        "value": "-0.01em",
+        "$description": "Slightly tight for headlines"
+      },
+      "h2": {
+        "value": "-0.01em",
+        "$description": "Consistent with h1"
+      },
+      "h3": {
+        "value": "0",
+        "$description": "Normal tracking"
+      },
+      "h4": {
+        "value": "0",
+        "$description": "Normal tracking"
+      },
+      "body": {
+        "value": "0",
+        "$description": "Optimal for reading"
+      },
+      "body-sm": {
+        "value": "0",
+        "$description": "Normal tracking"
+      },
+      "caption": {
+        "value": "0.01em",
+        "$description": "Slightly open for small text"
+      },
+      "label": {
+        "value": "0.01em",
+        "$description": "Slightly open for small text"
+      },
+      "overline": {
+        "value": "0.08em",
+        "$description": "Wide tracking for uppercase"
+      }
+    }
+  }
+}
