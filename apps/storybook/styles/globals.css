@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Set default theme */
+:root {
+  color-scheme: light dark;
+}
+
+[data-mode="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Accessibility: Respect user's motion preferences */
+/* Note: Temporarily commented out for demo purposes.
+   Uncomment in production to respect prefers-reduced-motion */
+/*
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+*/
