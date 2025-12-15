@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Callout } from './Callout';
 
@@ -73,7 +74,7 @@ export const WithRichContent: Story = {
     children: (
       <div>
         <p className="mb-2">Use the following command to install:</p>
-        <code className="bg-bg-tertiary px-2 py-1 rounded text-sm font-code">
+        <code className="bg-ground-tertiary px-2 py-1 rounded text-sm font-code">
           pnpm add @blog/ui
         </code>
       </div>

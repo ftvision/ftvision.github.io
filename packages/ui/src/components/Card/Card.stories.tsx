@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import {
   Card,
@@ -49,7 +50,7 @@ export const Simple: Story = {
 export const WithImage: Story = {
   render: () => (
     <Card className="w-[350px] overflow-hidden">
-      <div className="h-48 bg-bg-tertiary flex items-center justify-center text-text-muted">
+      <div className="h-48 bg-ground-tertiary flex items-center justify-center text-figure-muted">
         Image placeholder
       </div>
       <CardHeader>
@@ -57,7 +58,7 @@ export const WithImage: Story = {
         <CardDescription>Published on Dec 13, 2025</CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-text-secondary">
+        <p className="text-figure-secondary">
           A brief excerpt from the blog post that gives readers a preview of the content...
         </p>
       </CardContent>
@@ -74,10 +75,10 @@ export const PostCard: Story = {
     <Card className="w-full max-w-2xl">
       <CardHeader>
         <div className="flex gap-2 mb-2">
-          <span className="px-2 py-1 text-xs rounded bg-bg-tertiary text-text-secondary">
+          <span className="px-2 py-1 text-xs rounded bg-ground-tertiary text-figure-secondary">
             TypeScript
           </span>
-          <span className="px-2 py-1 text-xs rounded bg-bg-tertiary text-text-secondary">
+          <span className="px-2 py-1 text-xs rounded bg-ground-tertiary text-figure-secondary">
             React
           </span>
         </div>
@@ -87,12 +88,12 @@ export const PostCard: Story = {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-text-secondary">
+        <p className="text-figure-secondary">
           In this article, we'll explore the key concepts behind building a design system,
           including token architecture, component composition, and documentation strategies.
         </p>
       </CardContent>
-      <CardFooter className="text-sm text-text-muted">
+      <CardFooter className="text-sm text-figure-muted">
         <span>5 min read</span>
         <span className="mx-2">•</span>
         <span>Dec 13, 2025</span>
