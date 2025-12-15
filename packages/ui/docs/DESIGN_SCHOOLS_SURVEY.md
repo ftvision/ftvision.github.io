@@ -628,6 +628,568 @@ This gives enough signal to decide whether to invest in full implementation.
 
 ---
 
+## Chinese Art & Design Traditions
+
+Chinese design philosophy spans over 5,000 years, offering a rich alternative to Western modernist traditions. Unlike the Western progression through distinct "movements," Chinese aesthetics evolved through dynastic periods, each building upon and reinterpreting classical foundations. The core remains consistent: harmony between human creation and natural order.
+
+---
+
+### 20. Classical Chinese Painting Aesthetics (水墨画 / Ink Wash)
+
+**Origins**: Song Dynasty (960–1279) brought ink wash painting to its philosophical peak. Key figures: Fan Kuan, Guo Xi, Ma Yuan, Xia Gui. Continued through Yuan, Ming, and Qing dynasties.
+
+**Core Principles**:
+- **留白 (Liúbái)** — "Leaving white." Empty space is not absence but presence. More radical than Western whitespace—the void *is* the subject.
+- **气韵生动 (Qìyùn shēngdòng)** — "Spirit resonance, life movement." Art should capture the essence, not the appearance.
+- **意在笔先 (Yì zài bǐ xiān)** — "Intent before brush." Conceive completely before executing.
+- **以形写神 (Yǐ xíng xiě shén)** — "Through form, convey spirit."
+- Monochromatic ink gradients creating infinite tonal variation
+- Brushwork itself as expressive element (not just mark-making)
+
+**Philosophy**: True mastery lies in what is *not* shown. A few brushstrokes can suggest an entire mountain range. The viewer completes the work through imagination. Unlike Western realism's goal of accurate representation, Chinese painting aims to capture *qi* (vital energy)—the aliveness beneath the surface.
+
+**Visual Markers**:
+- Ink gradients from deep black to paper white
+- Asymmetric compositions with dramatic empty space
+- Calligraphic quality in all marks
+- Atmospheric perspective (mist, fog, distance)
+- Vertical or horizontal scroll formats
+- Seal stamps (印章) as compositional elements
+- Inscription poetry integrated with image
+
+**Digital Relevance**: Highly relevant for long-form reading, personal blogs, meditative interfaces. The emphasis on empty space aligns with calm technology principles. Scroll-based reading is literally native to Chinese painting (scrolls were unrolled progressively).
+
+**Implementation Effort**: Medium. Requires careful spacing tokens, ink-inspired grayscale palette, consideration of East Asian typography, possibly calligraphic accent fonts.
+
+**Suitable For**: Personal blogs, long-form essays, poetry, photography portfolios, meditation apps, anywhere contemplation matters.
+
+---
+
+### 21. Tang Dynasty Court Style (618–907)
+
+**Origins**: The golden age of Chinese civilization. Capital Chang'an was the world's largest city. Key artifacts: murals from Dunhuang caves, ceramic tomb figures, palace architecture.
+
+**Core Principles**:
+- **富丽堂皇 (Fùlì tánghuáng)** — "Magnificent and imposing." Grandeur without garishness.
+- Bold, saturated colors (vermillion, gold, turquoise, deep blue)
+- Full, rounded forms expressing prosperity (note: Tang beauty ideals favored plumpness)
+- International sophistication (Silk Road influences)
+- Confident, outward-looking aesthetics
+- Ornamental borders and frames
+
+**Philosophy**: Empire at its peak expresses confidence. Tang aesthetics celebrate abundance, cosmopolitan culture, and imperial grandeur. This is not minimalism—it's maximalism with discipline. Every ornament has purpose; nothing is arbitrary.
+
+**Visual Markers**:
+- Rich vermillion red with gold accents
+- Intricate floral patterns (peony as symbol of prosperity)
+- Rounded, full forms
+- Layered borders and frames
+- Cloud motifs (祥云)
+- Tri-color pottery palette (sancai: cream, green, amber-brown)
+- Silk Road motifs (grape vines, lions, Central Asian influences)
+
+**Digital Relevance**: Powerful for cultural institutions, luxury brands with Chinese heritage, festival/celebration themes, high-impact landing pages. The confidence translates well to hero sections and branded experiences.
+
+**Implementation Effort**: Medium-High. Requires ornamental border components, specific color tokens, possibly custom iconography, rich pattern systems.
+
+**Suitable For**: Cultural institutions, luxury brands, festival campaigns, heritage-focused content, anywhere celebration and confidence are appropriate.
+
+---
+
+### 22. Song Dynasty Refined Minimalism (960–1279)
+
+**Origins**: Scholar-officials (文人 wénrén) developed aesthetics emphasizing restraint, subtlety, and intellectual depth. Key expressions: Ru ware ceramics, garden design, furniture, painting.
+
+**Core Principles**:
+- **清雅 (Qīngyǎ)** — "Clear elegance." Refined understatement.
+- **古朴 (Gǔpǔ)** — "Antique simplicity." Sophisticated through simplicity.
+- Subtle color palettes (celadon green, pale blues, muted browns)
+- Natural materials celebrated in their essence
+- Quality over ostentation
+- Intellectual depth over visual complexity
+- Objects for contemplation, not display
+
+**Philosophy**: True sophistication shows in what is *not* done. The most valuable Song ceramics have no decoration—their beauty lies in form, glaze depth, and subtle crazing. The scholar-aesthete values suggestion over statement. This is minimalism not from poverty of imagination, but from wealth of understanding.
+
+**Visual Markers**:
+- Celadon greens and jade-inspired palettes
+- Muted, harmonious color relationships
+- Simple forms with exquisite proportions
+- Subtle textures (crackle glaze, brushed surfaces)
+- Asymmetric arrangements
+- Natural wood and stone textures
+- Understated typography
+
+**Digital Relevance**: Excellent for personal blogs, reading interfaces, academic sites, anywhere a sense of cultivated intelligence matters. The Song aesthetic is the Chinese parallel to Japanese wabi-sabi (and historically influenced it).
+
+**Implementation Effort**: Medium. Requires careful color tokens (Song palette is specific), texture consideration, restrained component styling. Similar to Atmospheric/Ambient in execution.
+
+**Suitable For**: Personal blogs, academic sites, literary journals, anything positioning intellectual depth, reading-focused interfaces.
+
+---
+
+### 23. Ming Dynasty Structural Clarity (1368–1644)
+
+**Origins**: Ming furniture, architecture, and graphic design (woodblock printing). Key artifacts: hardwood furniture, blue-and-white porcelain, garden architecture.
+
+**Core Principles**:
+- **简洁 (Jiǎnjié)** — "Concise." Clarity through reduction.
+- Structural honesty (joinery visible and celebrated)
+- Blue and white as primary palette
+- Grid-based organization
+- Proportion and rhythm
+- Natural wood grain as decoration
+- Modularity and repeatable components
+
+**Philosophy**: Form should arise from structure, not mask it. Ming furniture uses no nails or screws—the joinery *is* the design. This parallels modernist "truth to materials" but predates it by centuries. The grid is not imposed but discovered.
+
+**Visual Markers**:
+- Blue and white color schemes (porcelain influence)
+- Visible structural logic
+- Natural wood textures (huanghuali, zitan)
+- Geometric lattice patterns (窗棂)
+- Modular, repeatable elements
+- Clear hierarchical organization
+- Generous proportions
+
+**Digital Relevance**: Strong for documentation, technical content, design systems themselves, anywhere systematic clarity is the goal. The blue-and-white palette is distinctive yet professional. The structural honesty maps well to component-based design.
+
+**Implementation Effort**: Medium. Blue-and-white color tokens, geometric pattern components, clear grid system. Actually quite aligned with modern UI conventions.
+
+**Suitable For**: Documentation, technical products, design tools, academic content, anywhere clarity and structure are valued.
+
+---
+
+### 24. Chinese Calligraphy as System (书法)
+
+**Origins**: From oracle bone script (c. 1200 BCE) through all dynasties. Key styles: seal script (篆书), clerical (隶书), standard (楷书), running (行书), cursive (草书).
+
+**Core Principles**:
+- **笔画 (Bǐhuà)** — Stroke order and rhythm are meaning
+- **结构 (Jiégòu)** — Character structure and balance
+- **章法 (Zhāngfǎ)** — Overall composition and flow
+- Breathing rhythm in stroke execution
+- Variation within consistency
+- The trace of the brush reveals the person
+- Time and movement embedded in static form
+
+**Philosophy**: Calligraphy is not writing—it is visible thinking. The speed, pressure, and rhythm of execution are preserved in the final form. Each stroke is a decision made in real-time. The work cannot be corrected; it must be accepted or begun again. This is design as performance.
+
+**Visual Markers**:
+- Brush-quality marks (thick-to-thin variation)
+- Dynamic stroke relationships
+- Asymmetric balance within character boxes
+- Red seal stamps as compositional accent
+- Vertical text orientation (traditional)
+- Running rhythm across composition
+- Ink gradients from dry to wet brush
+
+**Digital Relevance**: Powerful for typographic-focused designs, cultural content, personal expression. The concept of "time embedded in mark" translates to motion design. Calligraphic principles inform East Asian typography selection and pairing.
+
+**Implementation Effort**: Medium-High. Requires calligraphic accent fonts, possibly brush-stroke SVG components, understanding of Chinese typography, red accent color tokens.
+
+**Suitable For**: Personal blogs, cultural content, poetry, anywhere handcraft quality matters, East Asian language content.
+
+---
+
+### 25. Chinese Garden Design Philosophy (园林)
+
+**Origins**: Imperial gardens (圆明园, Summer Palace), scholar gardens (苏州园林 Suzhou gardens). Key principles codified in *Yuanye* (园冶, 1631).
+
+**Core Principles**:
+- **借景 (Jièjǐng)** — "Borrowed scenery." Incorporate views beyond your boundaries.
+- **曲径通幽 (Qūjìng tōng yōu)** — "Winding paths lead to quiet seclusion." Journey matters more than destination.
+- **移步换景 (Yí bù huàn jǐng)** — "Each step, a new view." Progressive revelation.
+- Framed views through moon gates and windows
+- Layered depth creating illusion of infinity
+- Rock and water as yin-yang balance
+- Miniaturization (compressed mountains, lakes as seas)
+
+**Philosophy**: A garden is not nature—it is a conversation with nature. Space should unfold as narrative. The path controls the experience; each turn reveals something new, previously hidden. Anticipation and surprise are designed. This is environmental choreography.
+
+**Visual Markers**:
+- Layered depth (foreground/midground/background)
+- Framing devices (windows, gates, archways)
+- Asymmetric path flows
+- Rock textures and water surfaces
+- Filtered light and shadow patterns
+- Progressive information revelation
+- Compressed space creating immensity
+
+**Digital Relevance**: Highly relevant for scroll-based storytelling, progressive disclosure interfaces, layered information architecture. The "borrowed scenery" concept maps to contextual content, pulling in external elements. The "winding path" informs navigation design.
+
+**Implementation Effort**: Medium-High. Requires layering system, scroll-based reveal mechanisms, framing components. The philosophy is more important than specific visuals.
+
+**Suitable For**: Long-form storytelling, educational content, portfolio sites, anywhere narrative structure matters, onboarding flows.
+
+---
+
+### 26. Chinese Paper-Cutting Art (剪纸)
+
+**Origins**: Folk art tradition dating to Han Dynasty (206 BCE–220 CE). Particularly strong in northern China (Shaanxi, Shanxi).
+
+**Core Principles**:
+- Silhouette and negative space
+- Symmetry (bilateral and radial)
+- Intricate detail within simple boundaries
+- Red as dominant color (auspicious)
+- Folk symbols and narrative
+- Pattern and repetition
+- Hand-cut quality (slight imperfections)
+
+**Philosophy**: Complexity within simplicity. A single sheet of paper, folded and cut, produces infinite variation. The art is subtractive—meaning emerges from what is removed. This is the peasant's art, democratic and accessible, yet capable of astonishing intricacy.
+
+**Visual Markers**:
+- Red on white (or white on red)
+- Intricate cutout patterns
+- Bilateral symmetry
+- Folk narrative imagery
+- Continuous line designs (paper integrity maintained)
+- Decorative borders
+- Shadow effects from layered paper
+
+**Digital Relevance**: Strong for celebratory/festival content, cultural landing pages, decorative accents, Chinese New Year themes. The silhouette quality translates well to SVG iconography. The symmetry creates patterns for backgrounds.
+
+**Implementation Effort**: Medium. Requires SVG pattern library, red accent color tokens, possibly illustration system. The aesthetic is distinctive and recognizable.
+
+**Suitable For**: Festival campaigns, cultural institutions, celebratory content, decorative system components, anywhere folk warmth is appropriate.
+
+---
+
+### 27. Communist-Era Chinese Design (1949–1976)
+
+**Origins**: Revolutionary propaganda posters, publication design, industrial graphics. Influenced by Soviet Socialist Realism and Constructivism, transformed with Chinese characteristics.
+
+**Core Principles**:
+- **红色基因 (Hóngsè jīyīn)** — "Red gene." Red as ideological color.
+- Bold, legible messaging
+- Hero figures (workers, farmers, soldiers)
+- Diagonal compositions for dynamism
+- Mass production aesthetics
+- Slogans as design element
+- Limited palette: red, gold, black, white
+
+**Philosophy**: Design serves the people. Clarity is political—everyone must understand. The individual artist disappears into collective production. Visual rhetoric is a tool for social transformation. This is Chinese Constructivism, adapted for Mao Zedong Thought.
+
+**Visual Markers**:
+- Saturated revolutionary red
+- Bold sans-serif and Song typefaces
+- Diagonal banners and compositions
+- Radiating sunburst patterns
+- Worker/peasant/soldier imagery
+- Slogan-forward layouts
+- Gold accents (stars, wheat)
+
+**Digital Relevance**: Interesting for historical/archival content, critical/ironic commentary, certain gaming aesthetics, anywhere strong visual rhetoric is appropriate. Handle with awareness of political implications.
+
+**Implementation Effort**: Medium. Diagonal compositions (harder), specific color palette (easy), bold typography (easy). Similar to Neo-Constructivist in execution.
+
+**Suitable For**: Historical archives, commentary/critique, gaming with political themes, anywhere the aesthetic's implications are understood.
+
+---
+
+### 28. Contemporary Chinese Design (当代中国设计)
+
+**Origins**: Post-1978 opening, particularly 2000s–present. Key figures: Wang Xu, Kenya Hara's Muji China work, contemporary typographers, digital-native design studios.
+
+**Core Principles**:
+- **传统与现代 (Chuántǒng yǔ xiàndài)** — "Tradition and modernity." Heritage reinterpreted, not abandoned.
+- East-West synthesis
+- High-tech minimalism with cultural depth
+- Typography as both Latin and CJK challenge
+- Mobile-first (Chinese internet is predominantly mobile)
+- WeChat/app-native interaction patterns
+- Cultural confidence without nostalgia
+
+**Philosophy**: China is not learning from the West—it is creating its own path. Traditional aesthetics can coexist with cutting-edge technology. The goal is not to look "Chinese" (in the orientalist sense) but to be authentically contemporary while honoring heritage.
+
+**Visual Markers**:
+- Clean, minimalist layouts (Western influence)
+- Subtle cultural references (not obvious)
+- Bilingual typography solutions
+- High-density information (Chinese internet conventions)
+- Mobile-optimized interactions
+- Blend of Eastern and Western grid systems
+- Modern interpretation of traditional colors
+
+**Digital Relevance**: Essential reference for any project targeting Chinese or bilingual audiences. The mobile-first, high-density approach offers alternative models to Western-centric design. Bilingual typography is a significant challenge with creative solutions.
+
+**Implementation Effort**: Medium-High. Bilingual typography system (complex), cultural color palette, possibly different information density tokens for different contexts.
+
+**Suitable For**: Bilingual products, Chinese market targeting, international brands with Chinese presence, contemporary cultural content.
+
+---
+
+## Chinese Design for Interactive Blog Websites
+
+The following section focuses specifically on which Chinese design traditions translate most effectively to personal blogs and interactive web content.
+
+### Most Suitable Styles for Personal/Interactive Blogs
+
+#### 1. **Song Dynasty Refined Minimalism** (Highest Recommendation)
+
+**Why It Works**:
+- Reading-focused aesthetics perfectly align with blog content
+- The "scholar-official" tradition maps to thought leadership and intellectual blogging
+- Subtle sophistication signals depth without ostentation
+- Excellent contrast to typical Western blog templates
+- The celadon palette is distinctive yet not overwhelming
+
+**Implementation Approach**:
+```
+Color tokens: Celadon greens (#A4C9A8, #789B79), warm whites (#F5F3ED),
+             charcoal blacks (#2A2A2A), muted browns (#8B7355)
+Typography: Clean serif for body (modern interpretation),
+            calligraphic accent for titles (optional)
+Spacing: Generous—Song aesthetics demand breathing room
+Texture: Subtle paper or silk textures, crackle glaze effects for accents
+```
+
+**Interaction Principles**:
+- Slow, considered transitions (not snappy)
+- Hover states that reveal rather than transform
+- Scroll experiences that feel like unrolling a scroll
+- Comments/annotations as marginal notes (traditional book formatting)
+
+---
+
+#### 2. **Ink Wash Painting Aesthetics** (留白 Approach)
+
+**Why It Works**:
+- The radical embrace of empty space creates visual distinction
+- Monochromatic palette scales beautifully
+- Strongly compatible with dark mode
+- The "viewer completes the work" philosophy maps to reader engagement
+- Scroll-based reading is historically native to this tradition
+
+**Implementation Approach**:
+```
+Color tokens: Ink gradients (5-7 gray steps from #000000 to #FFFFFF),
+             single accent color (seal red #C14B3E)
+Typography: Clean, with clear contrast between heading and body
+Spacing: Dramatic asymmetric margins (40% content, 60% void on some pages)
+Texture: Paper texture for light mode, stone/slate for dark mode
+```
+
+**Interaction Principles**:
+- Content fading in like ink wash spreading
+- Horizontal scroll sections for image galleries (scroll format)
+- Seal stamps as interactive elements (click for author info)
+- Calligraphic flourishes on section transitions
+- Text that appears as if being written (typewriter effect, brushstroke style)
+
+---
+
+#### 3. **Chinese Garden Progressive Revelation**
+
+**Why It Works**:
+- The "winding path" principle creates engaging scroll experiences
+- "Borrowed scenery" maps to contextual content pulling
+- Framing devices create visual interest and hierarchy
+- The narrative structure suits long-form content
+- Mobile scroll experiences feel like walking through a garden
+
+**Implementation Approach**:
+```
+Visual frames: Moon gate shapes for featured images,
+               window patterns for code blocks
+Layering: Parallax effects suggesting depth
+Navigation: Non-linear options, "scenic routes" through content
+Color: Natural palette (rock grays, water blues, foliage greens)
+```
+
+**Interaction Principles**:
+- Scroll-triggered reveals that feel like turning a corner
+- "Glimpse" previews before full content appears
+- Related content appearing in "borrowed scenery" sidebars
+- Audio ambience options (water, birds, wind through bamboo)
+- Minimap navigation showing "garden layout" of content
+
+---
+
+#### 4. **Calligraphy as Motion System**
+
+**Why It Works**:
+- Stroke-based animation creates unique interaction feel
+- The "visible thinking" concept maps to showing process
+- Time-embedded marks suit content that changes/updates
+- Brush rhythm informs motion timing
+- Strong differentiation from mechanical UI animation
+
+**Implementation Approach**:
+```
+Motion tokens: Brush-stroke easing curves (fast attack, slow release)
+SVG strokes: Animated paths for section dividers, underlines
+Typography: Variable fonts that can simulate brush pressure
+Accents: Seal stamps as signature elements
+```
+
+**Interaction Principles**:
+- Underlines that "draw" themselves when content comes into view
+- Section dividers as animated brush strokes
+- Loading states as ink dissolving/spreading
+- Button hover states that suggest brush contact
+- Signature animations that feel handwritten
+
+---
+
+### Practical Implementation Patterns
+
+#### Cross-Dynasty Synthesis
+
+The most sophisticated approach combines elements from multiple periods:
+
+| Element | Dynasty/Tradition | Rationale |
+|---------|------------------|-----------|
+| Color palette | Song (celadon base) | Intellectual, calming |
+| Accent color | Tang (vermillion) | Confident punctuation |
+| Spacing philosophy | Ink wash (留白) | Dramatic restraint |
+| Navigation structure | Garden (借景, 曲径通幽) | Progressive revelation |
+| Motion system | Calligraphy (笔画) | Organic timing |
+| Typography treatment | Ming (structural clarity) | Readable hierarchy |
+| Decorative accents | Paper-cutting (剪纸) | Folk warmth |
+
+#### Sample Theme: "Scholar's Studio" (书房)
+
+A personal blog theme synthesizing Chinese traditions:
+
+**Color System**:
+- Background: Warm white (#F8F5F0) / Deep ink (#1A1A1A) for dark mode
+- Text: Charcoal (#2E2E2E) / Pale stone (#E5E0D8) for dark mode
+- Accent primary: Seal red (#C14B3E)
+- Accent secondary: Celadon (#8FAE89)
+- Muted accent: Old gold (#B8860B)
+
+**Typography**:
+- Headings: Noto Serif CJK (or similar with good CJK support)
+- Body: System serif stack with CJK fallbacks
+- Code: Monospace with ink-wash gray background
+- Pull quotes: Slightly larger, centered, extra letter-spacing
+
+**Spacing Scale**:
+- Base unit: 8px
+- Generous margins: 2-3x typical Western blog
+- Asymmetric option: 30% margin on one side for annotations/notes
+- Section spacing: Dramatic (48-64px minimum)
+
+**Component Patterns**:
+- **Article cards**: Minimal border, shadow on hover suggests paper lifting
+- **Image frames**: Subtle rounded-corner frames suggesting scroll edges
+- **Blockquotes**: Vertical red accent line (simplified seal impression)
+- **Code blocks**: Stone/paper texture background, clear frame
+- **Navigation**: Hidden by default, revealed through gentle animation
+- **Footer**: Seal-stamp style author signature
+
+**Motion Tokens**:
+- **Default easing**: cubic-bezier(0.25, 0.1, 0.25, 1.0) — brush-like
+- **Enter**: 300-500ms — leisurely, not snappy
+- **Exit**: 200-300ms — quicker release
+- **Scroll reveal**: Fade + slight upward drift, 400ms, staggered for lists
+- **Hover**: Subtle scale (1.01) + shadow depth change
+
+---
+
+### Blog-Specific Component Ideas
+
+#### 1. Scroll Progress as Landscape
+
+Instead of a linear progress bar, show a miniature landscape scroll that "unrolls" as the reader progresses. When complete, they've traversed the entire "mountain path."
+
+#### 2. Seasonal Theming
+
+Traditional Chinese design is highly attuned to seasons. Auto-adjust color accents:
+- Spring: Plum blossom pink, fresh green
+- Summer: Lotus pink, deep green
+- Autumn: Chrysanthemum gold, warm red
+- Winter: Plum red, bare branch gray
+
+#### 3. Reading Mode Transitions
+
+"Tea time" mode: User activates a contemplative reading mode where:
+- Typography enlarges slightly
+- Margins expand dramatically
+- Color palette mutes further
+- All animations stop
+- Ambient background texture appears (paper grain)
+
+#### 4. Annotation System
+
+Following traditional Chinese scholarly practice, enable margin annotations:
+- Reader notes appear in side margins
+- Author notes in different accent color
+- Annotations can be collapsed/expanded
+- Vertical "seal" markers indicate annotated passages
+
+#### 5. Series Navigation as Garden Paths
+
+For multi-part blog series, visualize as garden navigation:
+- Current article is "where you stand"
+- Previous/next are visible paths
+- Related articles are "borrowed scenery" (visible but requiring a turn)
+- Complete series shows full "garden map"
+
+---
+
+### Accessibility Considerations
+
+Chinese design traditions offer both opportunities and challenges for accessibility:
+
+**Opportunities**:
+- Generous whitespace improves readability
+- High contrast in calligraphy tradition (black ink on white paper)
+- Clear hierarchy in classical compositions
+- Slow motion respects motion sensitivity
+
+**Challenges**:
+- Some traditional color combinations (red/gold) may have contrast issues
+- Decorative elements must have proper ARIA labels
+- Calligraphic fonts may reduce readability at small sizes
+- Right-to-left/vertical text options add complexity
+
+**Recommendations**:
+- Always maintain WCAG AA contrast ratios (prefer AAA for body text)
+- Offer simplified version without decorative elements
+- Ensure all animations respect `prefers-reduced-motion`
+- Test with screen readers, especially for decorative components
+- Provide font-size controls (respects traditional "reader in control" philosophy)
+
+---
+
+## Updated Implementation Effort Summary
+
+| Design Direction | Effort | Key Challenges |
+|-----------------|--------|----------------|
+| Swiss/International | Low-Medium | Already close to default; refine grid |
+| Bauhaus | Medium | Strict geometry, primary colors |
+| Art Deco | Medium-High | Ornamental components, patterns |
+| De Stijl | Medium | Perpendicular constraint, asymmetric balance |
+| Constructivism | Medium | Diagonal layouts, photomontage |
+| Mid-Century Modern | Medium | Organic shapes, warm palette |
+| Postmodernism | High | Anti-systematic by nature |
+| Memphis | Medium-High | Patterns, controlled chaos |
+| Wabi-Sabi | Medium | Restraint is hard; texture consideration |
+| Organic/Biomorphic | Medium-High | Curves, gradients, natural color |
+| Flat/Material | Low | Default assumption |
+| Neumorphism | Medium | Accessibility issues inherent |
+| Glassmorphism | Medium | Performance, backdrop-filter support |
+| Kinetic/Motion-First | High | Animation infrastructure required |
+| Atmospheric/Ambient | Medium | Restraint; slow motion tokens |
+| Neo-Constructivist | Medium | Diagonal compositions |
+| Retro-Futurism | Medium | CRT effects require animation |
+| Maximalist | High | Decorative component library |
+| Generative | High | Requires actual programming |
+| **Ink Wash / 留白** | Medium | Spacing tokens, grayscale palette |
+| **Tang Dynasty** | Medium-High | Ornamental components, rich palette |
+| **Song Minimalism** | Medium | Specific palette, texture, restraint |
+| **Ming Structural** | Medium | Blue-white palette, grid clarity |
+| **Calligraphy System** | Medium-High | Font selection, brush-stroke motion |
+| **Garden Design** | Medium-High | Layering, progressive reveal |
+| **Paper-Cutting** | Medium | SVG patterns, symmetry system |
+| **Communist Era** | Medium | Political awareness, diagonal layouts |
+| **Contemporary Chinese** | Medium-High | Bilingual typography, mobile-first |
+
+---
+
 ## Recommended Next Explorations
 
 Given existing NYT (classical editorial) and Brutalism (raw honesty) themes:
@@ -640,6 +1202,12 @@ Given existing NYT (classical editorial) and Brutalism (raw honesty) themes:
 
 4. **Generative** — Trust through uniqueness. Most technically ambitious, but most differentiated.
 
+5. **Song Dynasty Minimalism / Scholar's Studio** — Trust through cultivated restraint. Offers a distinctive alternative to Western minimalism with deeper philosophical grounding. Excellent for long-form reading.
+
+6. **Ink Wash / 留白** — Trust through contemplative space. The most radical embrace of emptiness. Pairs beautifully with dark mode for a different sensibility.
+
+7. **Chinese Garden Progressive Disclosure** — Trust through narrative structure. The "winding path" principle offers unique scroll-based storytelling opportunities distinct from Western motion-first approaches.
+
 ---
 
 *"Design is not just what it looks like and feels like. Design is how it works."*
@@ -650,3 +1218,12 @@ Given existing NYT (classical editorial) and Brutalism (raw honesty) themes:
 
 *"Have nothing in your houses that you do not know to be useful or believe to be beautiful."*
 — William Morris
+
+*"计白当黑" (Jì bái dāng hēi) — "Count the white as black." Empty space has the same weight as filled space.*
+— Traditional Chinese painting principle
+
+*"意在笔先" (Yì zài bǐ xiān) — "Intent before brush." Conceive completely before executing.*
+— Calligraphy principle
+
+*"借景" (Jièjǐng) — "Borrowed scenery." Your composition extends beyond your frame.*
+— Garden design principle
