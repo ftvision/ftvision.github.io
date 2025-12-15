@@ -1,5 +1,5 @@
 {
-  "name": "@blog/docs",
+  "name": "@blog/storybook",
   "version": "0.0.0",
   "private": true,
   "scripts": {
