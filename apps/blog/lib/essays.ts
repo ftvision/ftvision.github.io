@@ -14,7 +14,7 @@ import {
   type EssayMeta,
   type EssayType,
   type Topic,
-} from '../types/content';
+} from '@/types/content';
 
 /** Directory where essay MDX files are stored */
 const ESSAYS_DIRECTORY = path.join(process.cwd(), 'content', 'essays');

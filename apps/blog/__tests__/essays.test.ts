@@ -5,8 +5,8 @@ import {
   getEssaySlugs,
   getEssaysByType,
   getEssaysByTopic,
-} from '../lib/essays';
-import type { EssayMeta } from '../types/content';
+} from '@/lib/essays';
+import type { EssayMeta } from '@/types/content';
 
 // Mock the fs module
 vi.mock('fs', async (importOriginal) => {

@@ -7,7 +7,7 @@ import {
   type EssayType,
   type Topic,
   type Language,
-} from '../types/content';
+} from '@/types/content';
 
 describe('Content Types', () => {
   describe('Type Guards', () => {

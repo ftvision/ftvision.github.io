@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { extractHeadings, stripFrontmatter } from '../lib/mdx';
+import { extractHeadings, stripFrontmatter } from '@/lib/mdx';
 
 describe('MDX Helper Functions', () => {
   describe('extractHeadings', () => {

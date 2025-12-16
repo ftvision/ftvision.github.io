@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { compileMDX, getMDXComponents, type MDXScope } from '../lib/mdx';
+import { compileMDX, getMDXComponents, type MDXScope } from '@/lib/mdx';
 
 // Mock next-mdx-remote/serialize
 vi.mock('next-mdx-remote/serialize', () => ({
