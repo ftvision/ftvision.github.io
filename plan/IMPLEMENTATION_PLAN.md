@@ -13,7 +13,7 @@ This document outlines the step-by-step implementation plan for rebuilding the b
 | Phase | Focus | Workstream A | Workstream B | Dependencies |
 |-------|-------|--------------|--------------|--------------|
 | 1-3 | Foundation | ✅ Complete | ✅ Complete | - |
-| **4** | Blog App Foundation | Next.js scaffold | Types & content infra | Phase 3 |
+| 4 | Blog App Foundation | ✅ Complete | ✅ Complete | Phase 3 |
 | **5** | Layout & Theme | Site layout | Theme system | Phase 4 |
 | **6** | Essay Core | Essay page & layout | Content components | Phase 5 |
 | **7** | Essay Index & Home | List & filters | Home page | Phase 6 |
@@ -42,101 +42,72 @@ This document outlines the step-by-step implementation plan for rebuilding the b
 
 ---
 
-## Phase 4: Blog App Foundation
+## Phase 4: Blog App Foundation ✅
 
 **Goal:** Working Next.js app with type definitions and content loading infrastructure.
 
-### Workstream 4A: Next.js Scaffold
+### Workstream 4A: Next.js Scaffold ✅
 
-**Files to create:**
+**Files created:**
 ```
 apps/blog/
 ├── app/
-│   ├── layout.tsx          # Minimal root layout
-│   ├── page.tsx            # Placeholder home
-│   └── globals.css         # Import tokens
-├── next.config.js          # Transpile packages
-├── tailwind.config.js      # Extend shared config
-├── tsconfig.json           # Extend shared config
-└── package.json            # Dependencies
+│   ├── layout.tsx          # Root layout with theme data attributes
+│   ├── page.tsx            # Home page placeholder
+│   └── globals.css         # Token CSS imports + prose styles
+├── next.config.js          # Transpile packages config
+├── tailwind.config.js      # Extends @blog/config
+├── tsconfig.json           # Extends @blog/config
+└── package.json            # All dependencies
 ```
 
 **Tasks:**
-- [ ] Create `apps/blog/package.json` with dependencies:
-  ```json
-  {
-    "dependencies": {
-      "@blog/tokens": "workspace:*",
-      "@blog/ui": "workspace:*",
-      "next": "^14.0.0",
-      "react": "^18.2.0",
-      "react-dom": "^18.2.0",
-      "next-mdx-remote": "^4.4.1",
-      "gray-matter": "^4.0.3",
-      "reading-time": "^1.5.0"
-    }
-  }
-  ```
-- [ ] Create `next.config.js` with `transpilePackages: ['@blog/ui', '@blog/tokens']`
-- [ ] Create `tailwind.config.js` extending `@blog/config`
-- [ ] Create `tsconfig.json` extending `@blog/config`
-- [ ] Create minimal `app/layout.tsx` with theme data attributes
-- [ ] Create `app/globals.css` importing token CSS
-- [ ] Create placeholder `app/page.tsx`
-- [ ] Add `blog` to turbo.json pipeline
+- [x] Create `apps/blog/package.json` with dependencies
+- [x] Create `next.config.js` with `transpilePackages: ['@blog/ui', '@blog/tokens']`
+- [x] Create `tailwind.config.js` extending `@blog/config`
+- [x] Create `tsconfig.json` extending `@blog/config`
+- [x] Create minimal `app/layout.tsx` with theme data attributes
+- [x] Create `app/globals.css` importing token CSS
+- [x] Create placeholder `app/page.tsx`
+- [x] Add `blog` to turbo.json pipeline
 
 **Validation:**
-- [ ] `pnpm --filter @blog/blog dev` starts on localhost:3000
-- [ ] Tailwind classes work
-- [ ] Token CSS variables available in browser
+- [x] `pnpm --filter @blog/blog dev` starts on localhost:3000
+- [x] Tailwind classes work
+- [x] Token CSS variables available in browser
 
-### Workstream 4B: Types & Content Infrastructure
+### Workstream 4B: Types & Content Infrastructure ✅
 
-**Files to create:**
+**Files created:**
 ```
 apps/blog/
 ├── types/
-│   └── content.ts          # Essay types
+│   └── content.ts          # Essay types with validation
 ├── lib/
-│   ├── essays.ts           # Content fetching
-│   └── mdx.ts              # MDX utilities
+│   ├── essays.ts           # Content fetching functions
+│   └── mdx.ts              # MDX compilation utilities
 └── content/
     └── essays/
-        └── _example.mdx    # Test content
+        └── _example.mdx    # Example essay with all frontmatter
 ```
 
 **Tasks:**
-- [ ] Define TypeScript types in `types/content.ts`:
-  ```typescript
-  type EssayType = 'guide' | 'deep-dive' | 'opinion' | 'review' | 'narrative';
-  type Topic = 'technical' | 'ai' | 'product' | 'career';
-  type Language = 'en' | 'zh';
-
-  interface EssayMeta {
-    slug: string;
-    title: string;
-    description: string;
-    date: string;
-    type: EssayType;
-    topics: Topic[];
-    lang: Language;
-    draft?: boolean;
-    readingTime?: number;
-  }
-  ```
-- [ ] Create `lib/essays.ts` with functions:
+- [x] Define TypeScript types in `types/content.ts`
+- [x] Create `lib/essays.ts` with functions:
   - `getAllEssays()` - returns all essay metadata
   - `getEssayBySlug(slug)` - returns single essay with content
   - `getEssaySlugs()` - returns all slugs for static generation
-- [ ] Create `lib/mdx.ts` with MDX compilation helpers
-- [ ] Create example MDX file `content/essays/_example.mdx` with all frontmatter fields
+  - `getEssaysByType()` - filter by type
+  - `getEssaysByTopic()` - filter by topic
+  - `getRecentEssays()` - for home page
+- [x] Create `lib/mdx.ts` with MDX compilation helpers
+- [x] Create example MDX file `content/essays/_example.mdx` with all frontmatter fields
 
 **Validation:**
-- [ ] `getAllEssays()` returns parsed frontmatter
-- [ ] `getEssayBySlug()` returns compiled MDX
-- [ ] TypeScript enforces frontmatter schema
-
-**No conflicts:** 4A works on app shell, 4B works on lib/types. No shared files.
+- [x] `getAllEssays()` returns parsed frontmatter
+- [x] `getEssayBySlug()` returns compiled MDX
+- [x] TypeScript enforces frontmatter schema
+- [x] All 53 tests pass
 
 ---
 
@@ -491,10 +462,7 @@ apps/blog/components/layout/
 Phase 1-3 (Complete)
        │
        ▼
-┌──────┴──────┐
-│  Phase 4    │
-│ 4A ←──→ 4B  │  (parallel)
-└──────┬──────┘
+Phase 4 (Complete)
        │
        ▼
 ┌──────┴──────┐
@@ -533,11 +501,11 @@ Phase 1-3 (Complete)
 
 ## Validation Checklist
 
-### Phase 4
-- [ ] `pnpm --filter @blog/blog dev` starts
-- [ ] Token CSS variables work
-- [ ] `getAllEssays()` returns data
-- [ ] TypeScript types enforce schema
+### Phase 4 ✅
+- [x] `pnpm --filter @blog/blog dev` starts
+- [x] Token CSS variables work
+- [x] `getAllEssays()` returns data
+- [x] TypeScript types enforce schema
 
 ### Phase 5
 - [ ] Header/footer render on all pages

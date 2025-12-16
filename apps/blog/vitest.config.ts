@@ -18,6 +18,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
+      // Mock CSS imports from @blog/tokens
+      '@blog/tokens/css': path.resolve(__dirname, './__tests__/mocks/tokens-css.ts'),
     },
   },
 });

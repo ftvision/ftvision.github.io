@@ -217,9 +217,9 @@ Primitives (raw values)  →  Semantic (meaning)  →  Themes (variations)
 - [x] Phase 1: Monorepo Foundation
 - [x] Phase 2: Token Architecture
 - [x] Phase 3: UI Package (22+ components)
+- [x] Phase 4: Blog App Foundation
 
 ### Current
-- [ ] Phase 4: Blog App Foundation
 - [ ] Phase 5: Layout & Theme
 - [ ] Phase 6: Essay Core
 
