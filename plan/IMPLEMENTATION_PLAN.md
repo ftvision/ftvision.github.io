@@ -14,7 +14,7 @@ This document outlines the step-by-step implementation plan for rebuilding the b
 |-------|-------|--------------|--------------|--------------|
 | 1-3 | Foundation | ✅ Complete | ✅ Complete | - |
 | 4 | Blog App Foundation | ✅ Complete | ✅ Complete | Phase 3 |
-| **5** | Layout & Theme | Site layout | Theme system | Phase 4 |
+| 5 | Layout & Theme | ✅ Complete | ✅ Complete | Phase 4 |
 | **6** | Essay Core | Essay page & layout | Content components | Phase 5 |
 | **7** | Essay Index & Home | List & filters | Home page | Phase 6 |
 | **8** | About & Polish | About page | Mobile & a11y | Phase 7 |
@@ -111,57 +111,65 @@ apps/blog/
 
 ---
 
-## Phase 5: Layout & Theme
+## Phase 5: Layout & Theme ✅
 
 **Goal:** Site header, footer, navigation, and theme switching.
 
-### Workstream 5A: Site Layout Components
+### Workstream 5A: Site Layout Components ✅
 
-**Files to create:**
+**Files created:**
 ```
 apps/blog/components/
 └── layout/
     ├── SiteHeader.tsx
+    ├── SiteHeader.stories.tsx
     ├── SiteFooter.tsx
+    ├── SiteFooter.stories.tsx
     ├── SiteNav.tsx
+    ├── SiteNav.stories.tsx
     └── index.ts
 ```
 
 **Tasks:**
-- [ ] Create `SiteHeader` with:
+- [x] Create `SiteHeader` with:
   - Logo/site name (link to home)
   - Navigation slot
   - Actions slot (for theme toggle)
-- [ ] Create `SiteNav` with links: Essays, About
-- [ ] Create `SiteFooter` with copyright, optional social links
-- [ ] Update `app/layout.tsx` to use layout components
-- [ ] Basic responsive styles (mobile hamburger deferred to Phase 8)
+- [x] Create `SiteNav` with links: Essays, About
+- [x] Create `SiteFooter` with copyright, optional social links
+- [x] Update `app/layout.tsx` to use layout components
+- [x] Basic responsive styles (mobile hamburger deferred to Phase 8)
+- [x] Add Storybook stories for all layout components
+- [x] Add Playwright tests for blog component stories (8 tests)
 
-**Uses from @blog/ui:** Button, Separator
+**Uses from @blog/ui:** Button, Separator, cn utility
 
-### Workstream 5B: Theme System
+### Workstream 5B: Theme System ✅
 
-**Files to create:**
+**Files created:**
 ```
 apps/blog/
 ├── components/
 │   └── layout/
 │       ├── ThemeToggle.tsx
+│       ├── ThemeToggle.stories.tsx
 │       └── ThemeProvider.tsx
-└── lib/
-    └── theme.ts
+├── lib/
+│   └── theme.ts
+└── __tests__/
+    └── theme.test.ts
 ```
 
 **Tasks:**
-- [ ] Create `ThemeProvider` context:
+- [x] Create `ThemeProvider` context:
   - Read system preference
   - Read localStorage preference
   - Provide toggle function
   - Set `data-mode` on `<html>`
-- [ ] Create `ThemeToggle` component (sun/moon icon button)
-- [ ] Create `lib/theme.ts` with helpers
-- [ ] Integrate into `SiteHeader`
-- [ ] Handle SSR (avoid hydration mismatch with suppressHydrationWarning or script)
+- [x] Create `ThemeToggle` component (sun/moon icon button)
+- [x] Create `lib/theme.ts` with helpers
+- [x] Integrate into `SiteHeader`
+- [x] Handle SSR (avoid hydration mismatch with suppressHydrationWarning or script)
 
 **Uses from @blog/ui:** Button, Tooltip
 
@@ -507,11 +515,15 @@ Phase 4 (Complete)
 - [x] `getAllEssays()` returns data
 - [x] TypeScript types enforce schema
 
-### Phase 5
-- [ ] Header/footer render on all pages
-- [ ] Navigation links work
-- [ ] Theme toggle persists preference
-- [ ] No hydration errors
+### Phase 5 ✅ (Complete)
+- [x] Header/footer render on all pages
+- [x] Navigation links work
+- [x] Theme toggle persists preference
+- [x] No hydration errors
+- [x] Unit tests pass (22 theme tests)
+- [x] Storybook stories for all layout components (Blog / Layout / *)
+- [x] Playwright tests pass (32 total: 8 foundations + 16 brutalism + 8 blog)
+- [x] Next.js mocks configured for Storybook (next/navigation, next/link)
 
 ### Phase 6
 - [ ] Essay page renders MDX content

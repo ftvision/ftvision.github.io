@@ -22,3 +22,22 @@ export {
   type CompileMDXOptions,
   type MDXComponents,
 } from './mdx';
+
+export {
+  type ThemeMode,
+  type ThemeName,
+  THEME_MODE_KEY,
+  THEME_NAME_KEY,
+  DEFAULT_THEME_MODE,
+  DEFAULT_THEME_NAME,
+  getStoredThemeMode,
+  getStoredThemeName,
+  getSystemPreference,
+  setStoredThemeMode,
+  setStoredThemeName,
+  applyThemeMode,
+  applyThemeName,
+  getResolvedThemeMode,
+  getResolvedThemeName,
+  toggleThemeMode,
+} from './theme';

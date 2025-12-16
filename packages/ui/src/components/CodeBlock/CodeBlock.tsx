@@ -1,22 +1,25 @@
+'use client';
+
 import * as React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { cn } from '@ui/lib/utils';
 
 // Custom theme based on our design tokens
-const customTheme = {
+// Using 'as const' to make the literal types work with react-syntax-highlighter
+const customTheme: Record<string, React.CSSProperties> = {
   'code[class*="language-"]': {
     color: 'var(--color-text-primary)',
     background: 'none',
     fontFamily: 'var(--font-code)',
     fontSize: '0.875rem',
     lineHeight: '1.75',
-    textAlign: 'left',
-    whiteSpace: 'pre',
+    textAlign: 'left' as const,
+    whiteSpace: 'pre' as const,
     wordSpacing: 'normal',
-    wordBreak: 'normal',
-    wordWrap: 'normal',
+    wordBreak: 'normal' as const,
+    wordWrap: 'normal' as const,
     tabSize: 2,
-    hyphens: 'none',
+    hyphens: 'none' as const,
   },
   'pre[class*="language-"]': {
     color: 'var(--color-text-primary)',
@@ -24,16 +27,16 @@ const customTheme = {
     fontFamily: 'var(--font-code)',
     fontSize: '0.875rem',
     lineHeight: '1.75',
-    textAlign: 'left',
-    whiteSpace: 'pre',
+    textAlign: 'left' as const,
+    whiteSpace: 'pre' as const,
     wordSpacing: 'normal',
-    wordBreak: 'normal',
-    wordWrap: 'normal',
+    wordBreak: 'normal' as const,
+    wordWrap: 'normal' as const,
     tabSize: 2,
-    hyphens: 'none',
+    hyphens: 'none' as const,
     padding: 0,
     margin: 0,
-    overflow: 'auto',
+    overflow: 'auto' as const,
   },
   comment: {
     color: 'var(--color-text-muted)',
