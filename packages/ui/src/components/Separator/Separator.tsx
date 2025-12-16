@@ -93,11 +93,14 @@ const Separator = React.forwardRef<HTMLDivElement, SeparatorProps>(
       );
     }
 
+    // Ensure orientation is not null for aria-orientation
+    const ariaOrientation = orientation === 'horizontal' || orientation === 'vertical' ? orientation : undefined;
+
     return (
       <div
         ref={ref}
         role={decorative ? 'none' : 'separator'}
-        aria-orientation={decorative ? undefined : orientation}
+        aria-orientation={decorative ? undefined : ariaOrientation}
         className={cn(separatorVariants({ orientation, variant, spacing, className }))}
         {...props}
       />

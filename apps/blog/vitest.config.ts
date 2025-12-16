@@ -20,6 +20,8 @@ export default defineConfig({
       '@': path.resolve(__dirname, '.'),
       // Mock CSS imports from @blog/tokens
       '@blog/tokens/css': path.resolve(__dirname, './__tests__/mocks/tokens-css.ts'),
+      // Resolve @ui alias for @blog/ui package
+      '@ui': path.resolve(__dirname, '../../packages/ui/src'),
     },
   },
 });

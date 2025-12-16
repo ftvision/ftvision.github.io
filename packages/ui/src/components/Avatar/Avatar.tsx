@@ -92,7 +92,7 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
               'font-medium text-figure-secondary',
               (loading || imageLoading) && 'animate-pulse'
             )}
-            aria-hidden={showImage}
+            aria-hidden={showImage ? 'true' : undefined}
           >
             {children || initials || (
               <svg

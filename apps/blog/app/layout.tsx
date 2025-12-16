@@ -1,6 +1,12 @@
 import type { Metadata } from 'next';
 import '@blog/tokens/css';
 import './globals.css';
+import {
+  SiteHeader,
+  SiteFooter,
+  ThemeProvider,
+  ThemeToggle,
+} from '../components/layout';
 
 export const metadata: Metadata = {
   title: {
@@ -45,8 +51,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
           }}
         />
       </head>
-      <body className="min-h-screen bg-ground-primary text-figure-primary antialiased">
-        {children}
+      <body className="flex min-h-screen flex-col bg-ground-primary text-figure-primary antialiased">
+        <ThemeProvider>
+          <SiteHeader actions={<ThemeToggle />} />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </ThemeProvider>
       </body>
     </html>
   );

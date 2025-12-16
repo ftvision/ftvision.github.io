@@ -218,9 +218,11 @@ Primitives (raw values)  →  Semantic (meaning)  →  Themes (variations)
 - [x] Phase 2: Token Architecture
 - [x] Phase 3: UI Package (22+ components)
 - [x] Phase 4: Blog App Foundation
+- [x] Phase 5A: Site Layout Components (SiteHeader, SiteFooter, SiteNav)
+- [x] Phase 5B: Theme System (ThemeProvider, ThemeToggle, lib/theme.ts)
+- [x] Storybook integration for blog components (with Playwright tests)
 
 ### Current
-- [ ] Phase 5: Layout & Theme
 - [ ] Phase 6: Essay Core
 
 ### Future
