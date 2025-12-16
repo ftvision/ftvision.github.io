@@ -11,6 +11,9 @@ storybook-static/
 # Turborepo
 .turbo/
 
+# TypeScript
+*.tsbuildinfo
+
 # Package manager
 pnpm-lock.yaml
 
