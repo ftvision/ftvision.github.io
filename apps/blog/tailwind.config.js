@@ -4,7 +4,8 @@ const sharedConfig = require('@blog/config/tailwind.config');
 module.exports = {
   presets: [sharedConfig],
   content: [
-    './stories/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
     '../../packages/ui/src/**/*.{ts,tsx}',
   ],
 };

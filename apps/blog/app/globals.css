@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Set default theme */
+:root {
+  color-scheme: light dark;
+}
+
+[data-mode="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* Accessibility: Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base prose styles for essay content */
+.prose {
+  max-width: 65ch;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-family-heading);
+  color: var(--color-text-primary);
+}
+
+.prose p {
+  color: var(--color-text-primary);
+}
+
+.prose a {
+  color: var(--color-link-default);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: var(--color-link-hover);
+}
+
+.prose a:visited {
+  color: var(--color-link-visited);
+}
+
+/* Code blocks */
+.prose pre {
+  background-color: var(--color-surface-code);
+  border-radius: var(--radius-default);
+  padding: var(--spacing-inset-md);
+  overflow-x: auto;
+}
+
+.prose code {
+  font-family: var(--font-family-code);
+  font-size: 0.9em;
+}
+
+/* Inline code */
+.prose :not(pre) > code {
+  background-color: var(--color-surface-code);
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Blockquotes */
+.prose blockquote {
+  background-color: var(--color-surface-quote);
+  border-left-width: var(--border-width-thick);
+  border-left-color: var(--color-accent-primary);
+  padding: var(--spacing-inset-md);
+  font-style: italic;
+}
