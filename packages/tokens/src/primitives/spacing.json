@@ -13,7 +13,9 @@
       "12": { "value": "3rem" },
       "16": { "value": "4rem" },
       "20": { "value": "5rem" },
-      "24": { "value": "6rem" }
+      "24": { "value": "6rem" },
+      "32": { "value": "8rem", "$description": "For contemplative spacing (void)" },
+      "48": { "value": "12rem", "$description": "For vast void spacing" }
     },
     "size": {
       "touch-min": { "value": "2.75rem", "comment": "44px - WCAG minimum touch target" },

@@ -91,6 +91,70 @@
         "accent": { "value": "#ff0000" },
         "accent-hover": { "value": "#cc0000" },
         "accent-light": { "value": "#ff3333" }
+      },
+      "chinese": {
+        "ink": {
+          "scorched": { "value": "#0A0A0A", "$description": "焦 jiāo - Scorched, densest black" },
+          "dense": { "value": "#1A1A1A", "$description": "浓 nóng - Dense, rich black" },
+          "heavy": { "value": "#2E2E2E", "$description": "重 zhòng - Heavy, dark gray" },
+          "medium": { "value": "#525252", "$description": "中 zhōng - Medium ink" },
+          "light": { "value": "#8B8B8B", "$description": "淡 dàn - Light, pale gray" },
+          "faint": { "value": "#B8B8B8", "$description": "薄 báo - Faint ink" },
+          "wash": { "value": "#E5E0D8", "$description": "清 qīng - Clear wash" }
+        },
+        "paper": {
+          "aged": { "value": "#F8F5F0", "$description": "旧纸 - Aged paper" },
+          "silk": { "value": "#FFFEF9", "$description": "绢 - Raw silk" },
+          "xuan": { "value": "#F5F3ED", "$description": "宣纸 - Xuan paper" }
+        },
+        "stone": {
+          "inkstone": { "value": "#121210", "$description": "砚 - Inkstone black" },
+          "slate": { "value": "#1E1E1C", "$description": "板岩 - Slate" },
+          "rock": { "value": "#2A2A28", "$description": "山石 - Mountain rock" },
+          "weathered": { "value": "#3D3D3A", "$description": "风化石 - Weathered stone" }
+        },
+        "seal": {
+          "red": { "value": "#C14B3E", "$description": "印泥红 - Seal paste red, primary accent" },
+          "red-light": { "value": "#D4756A", "$description": "Light seal red for hover/dark mode" },
+          "red-dark": { "value": "#9E3B30", "$description": "Dark seal red for active state" },
+          "red-muted": { "value": "#B87A72", "$description": "Muted seal red for subtle accents" }
+        },
+        "celadon": {
+          "primary": { "value": "#8FAE89", "$description": "青瓷绿 - Celadon green, secondary accent" },
+          "light": { "value": "#A4C9A8", "$description": "Light celadon" },
+          "dark": { "value": "#6B8B67", "$description": "Dark celadon" },
+          "muted": { "value": "#9DB898", "$description": "Muted celadon" }
+        },
+        "gold": {
+          "primary": { "value": "#B8860B", "$description": "古金 - Old gold, tertiary accent" },
+          "light": { "value": "#D4A84B", "$description": "Light gold" },
+          "dark": { "value": "#8B6508", "$description": "Dark gold" },
+          "muted": { "value": "#C9A857", "$description": "Muted gold" }
+        },
+        "status": {
+          "info": { "value": "#4A6FA5", "$description": "Scholar's blue 青" },
+          "info-light": { "value": "#E8F1F8" },
+          "success": { "value": "#5B8C5A", "$description": "Jade green 玉绿" },
+          "success-light": { "value": "#E8F2EA" },
+          "warning": { "value": "#C9A227", "$description": "Imperial yellow 黄" },
+          "warning-light": { "value": "#FEF6E2" },
+          "danger": { "value": "#B84C4C", "$description": "Cinnabar 朱砂" },
+          "danger-light": { "value": "#FDE8E8" }
+        },
+        "surface": {
+          "code": { "value": "#F0EDE6" },
+          "code-dark": { "value": "#252523" },
+          "quote": { "value": "#F5F2EB" },
+          "quote-dark": { "value": "#1F1F1D" },
+          "highlight": { "value": "#FFF4D6" },
+          "highlight-dark": { "value": "#3D3520" },
+          "aside": { "value": "#F2F0E8" },
+          "aside-dark": { "value": "#232321" }
+        },
+        "link": {
+          "visited": { "value": "#7B6B8A" },
+          "visited-dark": { "value": "#9B8BAA" }
+        }
       }
     }
   }

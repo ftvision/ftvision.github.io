@@ -1,0 +1,89 @@
+{
+  "primitive": {
+    "shadow": {
+      "none": { "value": "none" },
+      "sm": { "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)" },
+      "md": { "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)" },
+      "lg": { "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)" },
+      "xl": { "value": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" },
+      "ink-sm": { "value": "0 1px 3px rgba(26,26,26,0.05)", "$description": "Chinese Aesthetic - subtle ink wash lift" },
+      "ink-md": { "value": "0 4px 12px rgba(26,26,26,0.08)", "$description": "Chinese Aesthetic - interactive elements" },
+      "ink-lg": { "value": "0 8px 24px rgba(26,26,26,0.1)", "$description": "Chinese Aesthetic - elevated panels" },
+      "ink-xl": { "value": "0 16px 48px rgba(26,26,26,0.12)", "$description": "Chinese Aesthetic - maximum elevation" },
+      "ink-sm-dark": { "value": "0 1px 3px rgba(0,0,0,0.3)", "$description": "Chinese Aesthetic dark mode - subtle" },
+      "ink-md-dark": { "value": "0 4px 12px rgba(0,0,0,0.4)", "$description": "Chinese Aesthetic dark mode - interactive" },
+      "ink-lg-dark": { "value": "0 8px 24px rgba(0,0,0,0.5)", "$description": "Chinese Aesthetic dark mode - elevated" },
+      "ink-xl-dark": { "value": "0 16px 48px rgba(0,0,0,0.6)", "$description": "Chinese Aesthetic dark mode - maximum" }
+    },
+    "z": {
+      "base": { "value": "0" },
+      "raised": { "value": "10" },
+      "dropdown": { "value": "100" },
+      "sticky": { "value": "200" },
+      "overlay": { "value": "300" },
+      "modal": { "value": "400" },
+      "popover": { "value": "500" },
+      "tooltip": { "value": "600" },
+      "toast": { "value": "700" },
+      "landscape": { "value": "800", "$description": "Scroll progress landscape (fixed)" },
+      "max": { "value": "9999" }
+    },
+    "container": {
+      "xs": { "value": "20rem", "$description": "320px - Mobile minimum" },
+      "sm": { "value": "24rem", "$description": "384px - Small cards" },
+      "md": { "value": "32rem", "$description": "512px - Medium content" },
+      "prose": { "value": "42rem", "$description": "672px - Long-form reading (wider for CJK)" },
+      "content": { "value": "48rem", "$description": "768px - Standard article with media" },
+      "wide": { "value": "64rem", "$description": "1024px - Wide content layouts" },
+      "max": { "value": "80rem", "$description": "1280px - Maximum site width" }
+    },
+    "prose": {
+      "p-spacing": { "value": "1.5em" },
+      "heading-mt": { "value": "2.5em" },
+      "heading-mb": { "value": "0.75em" },
+      "list-pl": { "value": "1.5em" },
+      "list-spacing": { "value": "0.75em" },
+      "blockquote-pl": { "value": "1.25em" },
+      "blockquote-my": { "value": "2em" },
+      "figure-my": { "value": "2.5em" },
+      "hr-my": { "value": "3em" },
+      "code-py": { "value": "1em" },
+      "code-px": { "value": "1.25em" }
+    },
+    "aspect": {
+      "square": { "value": "1 / 1" },
+      "photo": { "value": "4 / 3" },
+      "video": { "value": "16 / 9" },
+      "wide": { "value": "21 / 9" },
+      "portrait": { "value": "3 / 4" },
+      "story": { "value": "9 / 16" },
+      "handscroll": { "value": "3 / 1", "$description": "Chinese horizontal scroll format (卷轴)" },
+      "hanging": { "value": "1 / 2", "$description": "Chinese vertical scroll format (挂轴)" },
+      "album": { "value": "5 / 4", "$description": "Chinese album leaf format (册页)" }
+    },
+    "border": {
+      "none": { "value": "0" },
+      "hairline": { "value": "0.5px" },
+      "thin": { "value": "1px" },
+      "medium": { "value": "2px" },
+      "thick": { "value": "3px" },
+      "brush": { "value": "4px", "$description": "Brush-stroke-like borders" }
+    },
+    "opacity": {
+      "transparent": { "value": "0" },
+      "ghost": { "value": "0.05" },
+      "faint": { "value": "0.1" },
+      "mist": { "value": "0.3" },
+      "haze": { "value": "0.5" },
+      "translucent": { "value": "0.7" },
+      "solid": { "value": "1" }
+    },
+    "breakpoint": {
+      "sm": { "value": "640px" },
+      "md": { "value": "768px" },
+      "lg": { "value": "1024px" },
+      "xl": { "value": "1280px" },
+      "2xl": { "value": "1536px" }
+    }
+  }
+}
