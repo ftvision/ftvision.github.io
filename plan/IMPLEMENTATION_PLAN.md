@@ -15,7 +15,7 @@ This document outlines the step-by-step implementation plan for rebuilding the b
 | 1-3 | Foundation | ✅ Complete | ✅ Complete | - |
 | 4 | Blog App Foundation | ✅ Complete | ✅ Complete | Phase 3 |
 | 5 | Layout & Theme | ✅ Complete | ✅ Complete | Phase 4 |
-| **6** | Essay Core | Essay page & layout | Content components | Phase 5 |
+| 6 | Essay Core | ✅ Complete | ✅ Complete | Phase 5 |
 | **7** | Essay Index & Home | List & filters | Home page | Phase 6 |
 | **8** | About & Polish | About page | Mobile & a11y | Phase 7 |
 | **9** | Content Migration | Single stream | - | Phase 8 |
@@ -177,87 +177,100 @@ apps/blog/
 
 ---
 
-## Phase 6: Essay Core
+## Phase 6: Essay Core ✅
 
 **Goal:** Full essay page with sidenote layout, notes, and references.
 
-### Workstream 6A: Essay Page & Layout
+### Workstream 6A: Essay Page & Layout ✅
 
-**Files to create:**
+**Files created:**
 ```
 apps/blog/
 ├── app/
 │   └── essays/
 │       └── [slug]/
 │           └── page.tsx
-└── components/
-    └── essay/
-        ├── EssayLayout.tsx
-        ├── EssayHeader.tsx
-        └── index.ts
+├── components/
+│   └── essay/
+│       ├── EssayLayout.tsx
+│       ├── EssayLayout.stories.tsx
+│       ├── EssayHeader.tsx
+│       ├── EssayHeader.stories.tsx
+│       └── index.ts
+└── styles/
+    └── essay.css
 ```
 
 **Tasks:**
-- [ ] Create `EssayLayout` with 3-column CSS grid:
-  ```css
-  grid-template-columns: 1fr min(65ch, 100%) 300px;
-  ```
-  - Left margin (empty, for balance)
-  - Main content (max 65ch)
-  - Right margin (sidenotes, 300px)
+- [x] Create `EssayLayout` with Tufte CSS-inspired approach:
+  - Content has `max-w-prose` (65ch) for readability
+  - Container has `pr-[340px]` right padding for margin space
+  - Sidenotes use `float: right` + `mr-[-320px]` negative margin
   - Responsive: collapse to single column < 1024px
-- [ ] Create `EssayHeader` with:
+- [x] Create `EssayHeader` with:
   - Type badge (GUIDE, DEEP-DIVE, etc.)
   - Topic badges
   - Title (h1)
   - Description
   - Date + reading time (calculated)
-- [ ] Create `app/essays/[slug]/page.tsx`:
+- [x] Create `app/essays/[slug]/page.tsx`:
   - `generateStaticParams()` for SSG
   - Fetch essay by slug
   - Render with `EssayLayout`
-- [ ] Set up MDX rendering with `next-mdx-remote`
+- [x] Set up MDX rendering with `next-mdx-remote/rsc`
+- [x] Add Storybook stories for EssayLayout and EssayHeader
 
-**Uses from @blog/ui:** Badge, Byline
+**Uses from @blog/ui:** Badge
 
-### Workstream 6B: Content Components
+### Workstream 6B: Content Components ✅
 
-**Files to create:**
+**Files created:**
 ```
 apps/blog/components/
 ├── content/
 │   ├── Note.tsx
+│   ├── Note.stories.tsx
 │   ├── Marginnote.tsx
+│   ├── Marginnote.stories.tsx
 │   ├── Reference.tsx
+│   ├── Reference.stories.tsx
 │   ├── References.tsx
 │   ├── WideBlock.tsx
+│   ├── WideBlock.stories.tsx
 │   ├── NoteContext.tsx
 │   ├── ReferenceContext.tsx
 │   └── index.ts
 └── mdx/
-    └── MDXComponents.tsx
+    ├── MDXComponents.tsx
+    └── index.ts
 ```
 
 **Tasks:**
-- [ ] Create `NoteContext` for sidenote numbering
-- [ ] Create `Note` component:
-  - Desktop: position in right margin using CSS
-  - Mobile: expandable inline element
-  - Superscript number in text
-- [ ] Create `Marginnote` (same as Note but unnumbered)
-- [ ] Create `ReferenceContext` for citation numbering
-- [ ] Create `Reference` component:
+- [x] Create `NoteContext` for sidenote numbering
+- [x] Create `Note` component:
+  - Desktop: float into right margin with negative margin (Tufte CSS approach)
+  - Mobile: expandable inline element with tap-to-expand
+  - Superscript number in text (¹, ², etc.)
+- [x] Create `Marginnote` (same positioning as Note but unnumbered, italic, uses ⁺ symbol)
+- [x] Create `ReferenceContext` for citation numbering
+- [x] Create `Reference` component:
   - Renders as `[n]` inline
   - Links to References section
-- [ ] Create `References` component:
-  - Collects all registered references
+- [x] Create `References` component:
+  - Subscribes to ReferenceContext
   - Renders formatted citation list
-- [ ] Create `WideBlock` component for images/diagrams that break out
-- [ ] Create `MDXComponents.tsx` mapping all components
+- [x] Create `WideBlock` component for images/diagrams that break out
+- [x] Create `MDXComponents.tsx` mapping all components
+- [x] Add Storybook stories for all content components
+- [x] Add Playwright tests (52 tests covering desktop/mobile behavior)
 
-**Uses from @blog/ui:** Tooltip (mobile note fallback)
-
-**No conflicts:** 6A builds page structure/layout, 6B builds content components that go inside the layout.
+**Validation:**
+- [x] Essay page renders MDX content at `/essays/test-essay`
+- [x] Sidenotes appear in margin (desktop, ≥1024px)
+- [x] Sidenotes expand inline (mobile, <1024px)
+- [x] References render with [n] format
+- [x] Wide blocks break out of column
+- [x] All 52 Playwright tests pass
 
 ---
 
@@ -525,12 +538,13 @@ Phase 4 (Complete)
 - [x] Playwright tests pass (32 total: 8 foundations + 16 brutalism + 8 blog)
 - [x] Next.js mocks configured for Storybook (next/navigation, next/link)
 
-### Phase 6
-- [ ] Essay page renders MDX content
-- [ ] Sidenotes appear in margin (desktop)
-- [ ] Sidenotes expand inline (mobile)
-- [ ] References render with [n] format
-- [ ] Wide blocks break out of column
+### Phase 6 ✅
+- [x] Essay page renders MDX content
+- [x] Sidenotes appear in margin (desktop)
+- [x] Sidenotes expand inline (mobile)
+- [x] References render with [n] format
+- [x] Wide blocks break out of column
+- [x] 52 Playwright tests pass
 
 ### Phase 7
 - [ ] Essay list shows all essays

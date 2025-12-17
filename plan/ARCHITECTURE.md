@@ -173,29 +173,32 @@ Primitives (raw values)  →  Semantic (meaning)  →  Themes (variations)
 │           How Transformers Work                                    │
 │           December 14, 2024 · 15 min read                          │
 │                                                                    │
-├──────────┬─────────────────────────────────┬───────────────────────┤
-│          │                                 │                       │
-│          │  The transformer architecture   │  ¹ This refers to    │
-│  (empty) │  changed everything.¹           │  the seminal paper   │
-│          │                                 │  by Vaswani et al.   │
-│          │  Recent work [1] has shown...   │                       │
-│          │                                 │  ² Side note about   │
-│          │  This is important because...²  │  implementation...   │
-│          │                                 │                       │
-│          │  ┌─────────────────────────────────────────────────┐   │
-│          │  │     [Wide diagram/figure breaks out]            │   │
-│          │  └─────────────────────────────────────────────────┘   │
-│          │                                 │                       │
-│          │  ## References                  │                       │
-│          │  [1] Vaswani, A., et al. (2017) │                       │
-│          │                                 │                       │
-├──────────┴─────────────────────────────────┴───────────────────────┤
+├────────────────────────────────────────────────────────────────────┤
+│                                                                    │
+│  The transformer architecture              ¹ This refers to        │
+│  changed everything.¹                      the seminal paper       │
+│                                            by Vaswani et al.       │
+│  Recent work [1] has shown...                                      │
+│                                            ² Side note about       │
+│  This is important because...²             implementation...       │
+│                                                                    │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │     [Wide diagram/figure breaks out of main column]         │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                    │
+│  ## References                                                     │
+│  [1] Vaswani, A., et al. (2017)                                    │
+│                                                                    │
+├────────────────────────────────────────────────────────────────────┤
 │                         [Footer]                                   │
 └────────────────────────────────────────────────────────────────────┘
 ```
 
-**Grid**: `[1fr] [min(65ch, 100%)] [300px]` on desktop
-**Mobile**: Single column, full width
+**Layout approach (Tufte CSS-inspired):**
+- Content has `max-w-prose` (65ch) for readability
+- Container has `pr-[340px]` right padding to create margin space
+- Sidenotes use `float: right` + `mr-[-320px]` negative margin to flow into the padding
+- Mobile: Single column, sidenotes collapse inline and expand on tap
 
 ---
 
@@ -221,12 +224,13 @@ Primitives (raw values)  →  Semantic (meaning)  →  Themes (variations)
 - [x] Phase 5A: Site Layout Components (SiteHeader, SiteFooter, SiteNav)
 - [x] Phase 5B: Theme System (ThemeProvider, ThemeToggle, lib/theme.ts)
 - [x] Storybook integration for blog components (with Playwright tests)
+- [x] Phase 6A: Essay Page & Layout (EssayLayout, EssayHeader, essay page route)
+- [x] Phase 6B: Content Components (Note, Marginnote, Reference, WideBlock)
 
 ### Current
-- [ ] Phase 6: Essay Core
+- [ ] Phase 7: Essay Index & Home
 
 ### Future
-- [ ] Phase 7: Essay Index & Home
 - [ ] Phase 8: About & Polish
 - [ ] Phase 9: Content Migration
 - [ ] Phase 10: Deployment
