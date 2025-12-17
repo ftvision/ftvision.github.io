@@ -29,7 +29,7 @@ const preview: Preview = {
       toolbar: {
         title: 'Theme',
         icon: 'paintbrush',
-        items: ['nyt', 'brutalism'],
+        items: ['nyt', 'brutalism', 'chinese-aesthetic'],
         dynamicTitle: true,
       },
     },

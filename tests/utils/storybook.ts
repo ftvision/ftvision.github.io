@@ -111,7 +111,7 @@ export function parseColor(
  */
 export async function setTheme(
   page: Page,
-  theme: 'nyt' | 'brutalism'
+  theme: 'nyt' | 'brutalism' | 'chinese-aesthetic'
 ): Promise<void> {
   // Click the theme toolbar button
   const themeButton = page.locator('[title="Theme"]');
@@ -147,7 +147,7 @@ export async function setMode(page: Page, mode: 'light' | 'dark'): Promise<void>
 export async function navigateToStoryWithTheme(
   page: Page,
   storyPath: string,
-  theme: 'nyt' | 'brutalism',
+  theme: 'nyt' | 'brutalism' | 'chinese-aesthetic',
   mode: 'light' | 'dark' = 'light'
 ): Promise<FrameLocator> {
   // Navigate with theme globals in URL

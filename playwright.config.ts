@@ -66,6 +66,13 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
+    // Chinese Aesthetic Theme tests
+    {
+      name: 'themes-chinese-aesthetic',
+      testDir: './tests/themes/chinese-aesthetic',
+      use: { ...devices['Desktop Chrome'] },
+    },
+
     // Cross-browser testing (run selectively)
     {
       name: 'webkit',

@@ -4,7 +4,11 @@
       "family": {
         "sans": { "value": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" },
         "serif": { "value": "Georgia, 'Times New Roman', serif" },
-        "mono": { "value": "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" }
+        "mono": { "value": "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" },
+        "serif-cjk": { "value": "'Noto Serif CJK SC', 'Source Han Serif SC', 'Songti SC', 'SimSun', Georgia, 'Times New Roman', serif", "$description": "Serif stack with CJK support - for mixed Chinese/English content" },
+        "serif-latin": { "value": "'Source Serif Pro', 'Source Serif 4', Georgia, 'Times New Roman', serif", "$description": "Latin serif optimized for pure English content in Chinese Aesthetic theme" },
+        "serif-hybrid": { "value": "'Source Serif Pro', 'Source Serif 4', 'Noto Serif CJK SC', 'Source Han Serif SC', 'Songti SC', 'SimSun', serif", "$description": "Hybrid stack: Source Serif Pro for Latin, falls back to CJK fonts for Chinese characters" },
+        "sans-cjk": { "value": "'Noto Sans CJK SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif", "$description": "Sans-serif stack with CJK support for Chinese Aesthetic theme UI" }
       },
       "size": {
         "xs": { "value": "0.8rem", "$description": "~13px - caption, label" },
@@ -29,7 +33,10 @@
         "cozy": { "value": "1.25", "$description": "For small headlines" },
         "normal": { "value": "1.3", "$description": "For transitional text" },
         "relaxed": { "value": "1.5", "$description": "For body-sm, caption" },
-        "loose": { "value": "1.6", "$description": "For optimal body reading" }
+        "loose": { "value": "1.6", "$description": "For optimal body reading" },
+        "cjk-body": { "value": "1.8", "$description": "For CJK body text - Chinese characters need more breathing room" },
+        "cjk-body-sm": { "value": "1.7", "$description": "For CJK small body text" },
+        "cjk-caption": { "value": "1.6", "$description": "For CJK captions" }
       }
     }
   }

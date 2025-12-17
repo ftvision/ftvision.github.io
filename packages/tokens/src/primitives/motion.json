@@ -8,9 +8,11 @@
         "100": { "value": "100ms" },
         "200": { "value": "200ms" },
         "300": { "value": "300ms" },
+        "350": { "value": "350ms", "$description": "Deliberate duration for Chinese Aesthetic" },
         "400": { "value": "400ms" },
         "500": { "value": "500ms" },
-        "800": { "value": "800ms" }
+        "800": { "value": "800ms" },
+        "1200": { "value": "1200ms", "$description": "Ceremonial duration for special moments" }
       },
       "easing": {
         "linear": { "value": "linear" },
@@ -20,7 +22,14 @@
         "ease-in-subtle": { "value": "cubic-bezier(0.42, 0.0, 1, 1)" },
         "ease-in-out": { "value": "cubic-bezier(0.4, 0.0, 0.2, 1)" },
         "spring": { "value": "cubic-bezier(0.34, 1.56, 0.64, 1)" },
-        "step": { "value": "steps(1)" }
+        "step": { "value": "steps(1)" },
+        "brush-enter": { "value": "cubic-bezier(0.0, 0.0, 0.2, 1)", "$description": "Fast attack, slow release - like brush touching paper" },
+        "brush-exit": { "value": "cubic-bezier(0.4, 0.0, 1, 1)", "$description": "Slow gather, fast release - brush lifting" },
+        "brush-move": { "value": "cubic-bezier(0.4, 0.0, 0.2, 1)", "$description": "Balanced - elements transforming in place" },
+        "ink-spread": { "value": "cubic-bezier(0.0, 0.0, 0.1, 1)", "$description": "Very fast attack, very slow fade - ink dissolving" },
+        "lift": { "value": "cubic-bezier(0.34, 1.56, 0.64, 1)", "$description": "Slight overshoot - cards lifting" },
+        "settle": { "value": "cubic-bezier(0.25, 0.1, 0.25, 1)", "$description": "Gentle landing - returning to rest" },
+        "breath": { "value": "cubic-bezier(0.45, 0.05, 0.55, 0.95)", "$description": "Symmetric, organic - breathing animations" }
       }
     }
   }
