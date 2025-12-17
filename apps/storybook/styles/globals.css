@@ -1,3 +1,7 @@
+/* Import essay styles from blog app (single source of truth) */
+/* Must be before @tailwind directives per CSS spec */
+@import '../../blog/styles/essay.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
