@@ -6,5 +6,7 @@ module.exports = {
   content: [
     './stories/**/*.{ts,tsx}',
     '../../packages/ui/src/**/*.{ts,tsx}',
+    // Blog app components (Note, Marginnote, EssayLayout, etc.)
+    '../../apps/blog/components/**/*.{ts,tsx}',
   ],
 };

@@ -14,12 +14,14 @@
   "dependencies": {
     "@blog/tokens": "workspace:*",
     "@blog/ui": "workspace:*",
+    "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "next": "^14.0.0",
     "next-mdx-remote": "^4.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "reading-time": "^1.5.0"
+    "reading-time": "^1.5.0",
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@blog/config": "workspace:*",
