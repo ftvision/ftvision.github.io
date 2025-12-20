@@ -228,12 +228,13 @@ Primitives (raw values)  →  Semantic (meaning)  →  Themes (variations)
 - [x] Phase 6B: Content Components (Note, Marginnote, Reference, WideBlock)
 - [x] Phase 7A: Essay List & Filters (EssayCard, EssayList, EssayFilters, /essays page)
 - [x] Phase 7B: Home Page (Recent essays section)
+- [x] Phase 8A: About Page (NowSection, Timeline, ResumeSection)
+- [x] Phase 8B: Mobile Navigation & Accessibility (MobileMenu, responsive SiteHeader)
 
 ### Current
-- [ ] Phase 8: About & Polish
+- [ ] Phase 9: Content Migration
 
 ### Future
-- [ ] Phase 9: Content Migration
 - [ ] Phase 10: Deployment
 
 ---

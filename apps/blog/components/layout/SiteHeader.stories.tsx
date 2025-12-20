@@ -1,4 +1,3 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { SiteHeader } from './SiteHeader';
 import { ThemeProvider } from './ThemeProvider';
@@ -43,25 +42,15 @@ export const CustomSiteName: Story = {
   },
 };
 
-export const WithCustomNavigation: Story = {
+export const CustomLinks: Story = {
   args: {
     siteName: 'Essays',
-    navigation: (
-      <nav className="flex items-center gap-6">
-        <a href="#" className="text-body text-figure-secondary hover:text-figure-primary">
-          Home
-        </a>
-        <a href="#" className="text-body text-figure-secondary hover:text-figure-primary">
-          Articles
-        </a>
-        <a href="#" className="text-body text-figure-secondary hover:text-figure-primary">
-          Projects
-        </a>
-        <a href="#" className="text-body text-figure-secondary hover:text-figure-primary">
-          Contact
-        </a>
-      </nav>
-    ),
+    links: [
+      { href: '/', label: 'Home' },
+      { href: '/essays', label: 'Essays' },
+      { href: '/projects', label: 'Projects' },
+      { href: '/about', label: 'About' },
+    ],
     actions: <ThemeToggle />,
   },
 };
