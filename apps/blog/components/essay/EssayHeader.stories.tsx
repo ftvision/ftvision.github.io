@@ -1,6 +1,7 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { EssayHeader } from './EssayHeader';
+
+// Note: React import not needed as no JSX in this file
 
 const meta: Meta<typeof EssayHeader> = {
   title: 'Blog / Essay / EssayHeader',

@@ -56,7 +56,7 @@ const teaTimeToggleVariants = cva(
 );
 
 export interface TeaTimeToggleProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange' | 'onToggle'>,
     VariantProps<typeof teaTimeToggleVariants> {
   /** Whether tea time mode is enabled */
   enabled?: boolean;

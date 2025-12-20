@@ -1,6 +1,5 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { SiteNav, type NavLink } from './SiteNav';
+import { SiteNav } from './SiteNav';
 
 const meta: Meta<typeof SiteNav> = {
   title: 'Blog / Layout / SiteNav',
