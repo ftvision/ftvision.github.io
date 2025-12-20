@@ -1,5 +1,4 @@
-export { SiteHeader, type SiteHeaderProps } from './SiteHeader';
-export { SiteNav, type SiteNavProps, type NavLink } from './SiteNav';
+export { SiteHeader, type SiteHeaderProps, type NavLink } from './SiteHeader';
 export { SiteFooter, type SiteFooterProps, type SocialLink } from './SiteFooter';
 export {
   ThemeProvider,

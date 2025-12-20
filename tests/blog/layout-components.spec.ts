@@ -66,34 +66,6 @@ test.describe('Blog: Layout Components', () => {
     });
   });
 
-  test.describe('SiteNav', () => {
-    test('default story renders correctly', async ({ page }) => {
-      await page.goto(
-        '/iframe.html?id=blog-layout-sitenav--default&viewMode=story'
-      );
-
-      // Verify nav renders
-      const nav = page.locator('nav');
-      await expect(nav).toBeVisible();
-    });
-
-    test('custom links story shows all links', async ({ page }) => {
-      await page.goto(
-        '/iframe.html?id=blog-layout-sitenav--custom-links&viewMode=story'
-      );
-
-      // Verify nav renders
-      const nav = page.locator('nav');
-      await expect(nav).toBeVisible();
-
-      // Verify custom links are present
-      await expect(page.locator('text=Blog')).toBeVisible();
-      await expect(page.locator('text=Projects')).toBeVisible();
-      await expect(page.locator('text=About')).toBeVisible();
-      await expect(page.locator('text=Contact')).toBeVisible();
-    });
-  });
-
   test.describe('ThemeToggle', () => {
     test('default story renders correctly', async ({ page }) => {
       await page.goto(
