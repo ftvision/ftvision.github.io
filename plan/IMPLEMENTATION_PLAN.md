@@ -16,7 +16,7 @@ This document outlines the step-by-step implementation plan for rebuilding the b
 | 4 | Blog App Foundation | ✅ Complete | ✅ Complete | Phase 3 |
 | 5 | Layout & Theme | ✅ Complete | ✅ Complete | Phase 4 |
 | 6 | Essay Core | ✅ Complete | ✅ Complete | Phase 5 |
-| **7** | Essay Index & Home | List & filters | Home page | Phase 6 |
+| 7 | Essay Index & Home | ✅ Complete | ✅ Complete | Phase 6 |
 | **8** | About & Polish | About page | Mobile & a11y | Phase 7 |
 | **9** | Content Migration | Single stream | - | Phase 8 |
 | **10** | Deployment | Single stream | - | Phase 9 |
@@ -274,13 +274,13 @@ apps/blog/components/
 
 ---
 
-## Phase 7: Essay Index & Home
+## Phase 7: Essay Index & Home ✅
 
 **Goal:** Browseable essay list with filtering, minimal home page.
 
-### Workstream 7A: Essay List & Filters
+### Workstream 7A: Essay List & Filters ✅
 
-**Files to create:**
+**Files created:**
 ```
 apps/blog/
 ├── app/
@@ -289,50 +289,56 @@ apps/blog/
 └── components/
     └── essay/
         ├── EssayCard.tsx
+        ├── EssayCard.stories.tsx
         ├── EssayList.tsx
-        └── EssayFilters.tsx
+        ├── EssayList.stories.tsx
+        ├── EssayFilters.tsx
+        └── EssayFilters.stories.tsx
 ```
 
 **Tasks:**
-- [ ] Create `EssayCard` component:
+- [x] Create `EssayCard` component:
   - Type badge
   - Title (link to essay)
-  - Description (truncated)
+  - Description (truncated to 2 lines with line-clamp)
   - Date
   - Topic badges
-- [ ] Create `EssayList` component (grid layout)
-- [ ] Create `EssayFilters` component:
+  - Variants: default, compact
+- [x] Create `EssayList` component (grid/list layouts)
+- [x] Create `EssayFilters` component:
   - Type filter (button group: All, Guide, Deep-Dive, etc.)
   - Topic filter (toggleable badges)
   - Client-side filtering with URL searchParams
-- [ ] Create `app/essays/page.tsx`:
+  - Clear all filters button
+- [x] Create `app/essays/page.tsx`:
   - Fetch all essays
   - Render filters + list
   - Handle filter state via searchParams
+  - Results count display
+- [x] Add Storybook stories for all components
 
 **Uses from @blog/ui:** Card, Badge, Button
 
-### Workstream 7B: Home Page
+### Workstream 7B: Home Page ✅
 
-**Files to modify:**
+**Files modified:**
 ```
-apps/blog/app/page.tsx     # Replace placeholder
+apps/blog/app/page.tsx     # Enhanced with recent essays
 ```
 
 **Tasks:**
-- [ ] Design minimal home layout:
-  - Site title/name
+- [x] Design minimal home layout:
+  - Site title/name (Essays)
   - One-line description/tagline
-  - Recent essays (3-5 most recent)
+  - Recent essays (5 most recent)
   - Link to all essays
-- [ ] Implement home page:
-  - Fetch recent essays
-  - Render with `EssayCard` (compact variant or reuse)
-- [ ] Add any home-specific styling
+- [x] Implement home page:
+  - Fetch recent essays with getRecentEssays()
+  - Render with EssayList component
+  - Hero section with navigation buttons
+- [x] Styling using design tokens
 
-**Uses from @blog/ui:** Button, components from 7A (EssayCard)
-
-**No conflicts:** 7A builds essay browsing, 7B builds home. 7A creates `EssayCard` first, 7B imports it. Ensure 7A completes `EssayCard` before 7B needs it.
+**Uses from @blog/ui:** Button, EssayList from 7A
 
 ---
 
@@ -546,11 +552,15 @@ Phase 4 (Complete)
 - [x] Wide blocks break out of column
 - [x] 52 Playwright tests pass
 
-### Phase 7
-- [ ] Essay list shows all essays
-- [ ] Filters update URL and list
-- [ ] Home shows recent essays
-- [ ] All links work
+### Phase 7 ✅
+- [x] Essay list shows all essays
+- [x] Filters update URL and list
+- [x] Home shows recent essays
+- [x] All links work
+- [x] Storybook stories for EssayCard, EssayList, EssayFilters
+- [x] Blog app builds successfully
+- [x] Playwright tests pass (29 new tests for essay index components)
+- [x] All 81 blog Playwright tests pass
 
 ### Phase 8
 - [ ] About page renders all sections

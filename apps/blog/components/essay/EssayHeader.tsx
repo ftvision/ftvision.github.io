@@ -1,6 +1,6 @@
-import * as React from 'react';
 import { Badge } from '@blog/ui';
 import { cn } from '@/lib/utils';
+import { ESSAY_TYPE_LABELS, TOPIC_LABELS } from '@/lib/constants';
 import type { EssayType, Topic } from '@/types/content';
 
 export interface EssayHeaderProps {
@@ -19,27 +19,6 @@ export interface EssayHeaderProps {
   /** Additional CSS classes */
   className?: string;
 }
-
-/**
- * Maps essay types to display labels
- */
-const typeLabels: Record<EssayType, string> = {
-  guide: 'Guide',
-  'deep-dive': 'Deep Dive',
-  opinion: 'Opinion',
-  review: 'Review',
-  narrative: 'Narrative',
-};
-
-/**
- * Maps topics to display labels
- */
-const topicLabels: Record<Topic, string> = {
-  technical: 'Technical',
-  ai: 'AI',
-  product: 'Product',
-  career: 'Career',
-};
 
 /**
  * Format date for display
@@ -78,7 +57,7 @@ export function EssayHeader({
       <div className="flex flex-wrap items-center gap-2">
         {/* Type badge - more prominent */}
         <Badge variant="primary" size="sm" className="uppercase tracking-wide">
-          {typeLabels[type]}
+          {ESSAY_TYPE_LABELS[type]}
         </Badge>
 
         {/* Separator */}
@@ -91,7 +70,7 @@ export function EssayHeader({
         {/* Topic badges */}
         {topics.map((topic) => (
           <Badge key={topic} variant="outline" size="sm">
-            {topicLabels[topic]}
+            {TOPIC_LABELS[topic]}
           </Badge>
         ))}
       </div>

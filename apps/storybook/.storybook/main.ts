@@ -42,6 +42,13 @@ const config: StorybookConfig = {
       'process.env': {},
     };
 
+    // Ensure JSX automatic runtime is used for blog components
+    // (which have jsx: "preserve" in their tsconfig)
+    config.esbuild = {
+      ...config.esbuild,
+      jsx: 'automatic',
+    };
+
     return config;
   },
 };

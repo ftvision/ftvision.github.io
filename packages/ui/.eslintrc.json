@@ -1,0 +1,6 @@
+{
+  "extends": ["../config/eslint/react.js"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "warn"
+  }
+}

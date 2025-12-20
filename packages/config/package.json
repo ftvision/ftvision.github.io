@@ -6,6 +6,10 @@
     "./tsconfig/base.json": "./tsconfig/base.json",
     "./tsconfig/react.json": "./tsconfig/react.json",
     "./tsconfig/nextjs.json": "./tsconfig/nextjs.json",
-    "./tailwind.config": "./tailwind.config.js"
+    "./tailwind.config": "./tailwind.config.js",
+    "./eslint/base": "./eslint/base.js",
+    "./eslint/react": "./eslint/react.js",
+    "./eslint/nextjs": "./eslint/nextjs.js",
+    "./eslint/storybook": "./eslint/storybook.js"
   }
 }

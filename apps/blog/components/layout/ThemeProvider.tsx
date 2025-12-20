@@ -45,7 +45,7 @@ export function ThemeProvider({
   const [mode, setModeState] = React.useState<ThemeMode>(defaultMode);
   const [themeName, setThemeNameState] =
     React.useState<ThemeName>(defaultThemeName);
-  const [mounted, setMounted] = React.useState(false);
+  const [_mounted, setMounted] = React.useState(false);
 
   // On mount, read the actual values from localStorage/system preference
   React.useEffect(() => {

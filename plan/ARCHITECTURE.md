@@ -226,12 +226,13 @@ Primitives (raw values)  →  Semantic (meaning)  →  Themes (variations)
 - [x] Storybook integration for blog components (with Playwright tests)
 - [x] Phase 6A: Essay Page & Layout (EssayLayout, EssayHeader, essay page route)
 - [x] Phase 6B: Content Components (Note, Marginnote, Reference, WideBlock)
+- [x] Phase 7A: Essay List & Filters (EssayCard, EssayList, EssayFilters, /essays page)
+- [x] Phase 7B: Home Page (Recent essays section)
 
 ### Current
-- [ ] Phase 7: Essay Index & Home
+- [ ] Phase 8: About & Polish
 
 ### Future
-- [ ] Phase 8: About & Polish
 - [ ] Phase 9: Content Migration
 - [ ] Phase 10: Deployment
 

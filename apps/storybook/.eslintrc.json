@@ -1,0 +1,11 @@
+{
+  "extends": ["../../packages/config/eslint/storybook.js"],
+  "overrides": [
+    {
+      "files": ["mocks/**/*.ts", "mocks/**/*.tsx"],
+      "rules": {
+        "storybook/prefer-pascal-case": "off"
+      }
+    }
+  ]
+}
