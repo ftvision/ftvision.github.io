@@ -12,6 +12,12 @@ export const metadata: Metadata = {
     locale: 'zh_CN',
     siteName: '文章',
   },
+  alternates: {
+    languages: {
+      'en': '/',
+      'zh': '/zh',
+    },
+  },
 };
 
 interface ZhLayoutProps {

@@ -5,6 +5,12 @@ export const metadata: Metadata = {
   title: 'Essays',
   description:
     'Essays on technology, AI, product thinking, and career development.',
+  alternates: {
+    languages: {
+      'en': '/essays',
+      'zh': '/zh/essays',
+    },
+  },
 };
 
 interface EssaysPageProps {

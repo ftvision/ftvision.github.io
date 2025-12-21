@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { Badge, Card, CardHeader, CardContent, CardFooter } from '@blog/ui';
 import { cn } from '@/lib/utils';
-import { ESSAY_TYPE_LABELS, TOPIC_LABELS } from '@/lib/constants';
-import type { EssayType, Topic } from '@/types/content';
+import { getEssayTypeLabel, getTopicLabel } from '@/lib/constants';
+import { formatDate, formatReadingTime } from '@/lib/i18n/translations';
+import type { EssayType, Topic, Language } from '@/types/content';
 
 export interface EssayCardProps {
   /** Essay slug for URL */
@@ -25,18 +26,8 @@ export interface EssayCardProps {
   className?: string;
   /** Base path for essay links (defaults to /essays) */
   basePath?: string;
-}
-
-/**
- * Format date for display
- */
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
+  /** Language for localized labels (defaults to en) */
+  language?: Language;
 }
 
 /**
@@ -60,6 +51,7 @@ export function EssayCard({
   variant = 'default',
   className,
   basePath = '/essays',
+  language = 'en',
 }: EssayCardProps) {
   const isCompact = variant === 'compact';
 
@@ -85,7 +77,7 @@ export function EssayCard({
         {/* Type and Topics row */}
         <div className="essay-card-meta flex flex-wrap items-center gap-2">
           <Badge variant="primary" size="sm" className="essay-card-type uppercase tracking-wide">
-            {ESSAY_TYPE_LABELS[type]}
+            {getEssayTypeLabel(type, language)}
           </Badge>
           {topics.length > 0 && !isCompact && (
             <>
@@ -94,7 +86,7 @@ export function EssayCard({
               </span>
               {topics.map((topic) => (
                 <Badge key={topic} variant="outline" size="sm" className="essay-card-topic">
-                  {TOPIC_LABELS[topic]}
+                  {getTopicLabel(topic, language)}
                 </Badge>
               ))}
             </>
@@ -119,11 +111,11 @@ export function EssayCard({
       <CardFooter className={cn('pt-0', isCompact && 'pb-inset-md')}>
         {/* Date and reading time */}
         <div className="essay-card-footer flex items-center gap-2 text-body-sm text-figure-muted">
-          <time dateTime={date} className="essay-card-date">{formatDate(date)}</time>
+          <time dateTime={date} className="essay-card-date">{formatDate(language, date)}</time>
           {readingTime && (
             <>
               <span aria-hidden="true">·</span>
-              <span className="essay-card-reading-time">{readingTime} min</span>
+              <span className="essay-card-reading-time">{formatReadingTime(language, readingTime)}</span>
             </>
           )}
         </div>

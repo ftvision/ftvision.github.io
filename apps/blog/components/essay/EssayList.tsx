@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { EssayCard } from './EssayCard';
-import type { EssayMeta } from '@/types/content';
+import type { EssayMeta, Language } from '@/types/content';
 
 export interface EssayListProps {
   /** Array of essays to display */
@@ -16,6 +16,8 @@ export interface EssayListProps {
   emptyMessage?: string;
   /** Base path for essay links (defaults to /essays) */
   basePath?: string;
+  /** Language for localized labels (defaults to en) */
+  language?: Language;
 }
 
 /**
@@ -32,6 +34,7 @@ export function EssayList({
   className,
   emptyMessage = 'No essays found.',
   basePath = '/essays',
+  language = 'en',
 }: EssayListProps) {
   if (essays.length === 0) {
     return (
@@ -66,6 +69,7 @@ export function EssayList({
             readingTime={essay.readingTime}
             variant={variant}
             basePath={basePath}
+            language={language}
           />
         </div>
       ))}

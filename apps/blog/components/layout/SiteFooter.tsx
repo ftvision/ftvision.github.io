@@ -2,7 +2,9 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { cn, Separator } from '@blog/ui';
+import { cn } from '@blog/ui';
+import { useLanguage } from '@/lib/i18n';
+import { translate } from '@/lib/i18n/translations';
 
 export interface SocialLink {
   href: string;
@@ -11,7 +13,7 @@ export interface SocialLink {
 }
 
 export interface SiteFooterProps {
-  /** Copyright text */
+  /** Copyright text (overrides localized default) */
   copyright?: string;
   /** Social media links */
   socialLinks?: SocialLink[];
@@ -22,16 +24,19 @@ export interface SiteFooterProps {
 const currentYear = new Date().getFullYear();
 
 export function SiteFooter({
-  copyright = `© ${currentYear} All rights reserved.`,
+  copyright,
   socialLinks,
   className,
 }: SiteFooterProps) {
+  const { language } = useLanguage();
+  const copyrightText = copyright || translate(language, 'footer.copyright', { year: currentYear });
+
   return (
     <footer className={cn('border-t border-border bg-ground-primary', className)}>
       <div className="container mx-auto px-4 py-8 md:px-6">
         <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
           {/* Copyright */}
-          <p className="text-body-sm text-figure-muted">{copyright}</p>
+          <p className="text-body-sm text-figure-muted">{copyrightText}</p>
 
           {/* Social links */}
           {socialLinks && socialLinks.length > 0 && (
@@ -55,25 +60,6 @@ export function SiteFooter({
           )}
         </div>
 
-        {/* Optional: Navigation links in footer */}
-        <Separator spacing="md" variant="muted" className="mt-6 mb-4" />
-        <nav
-          className="flex flex-wrap justify-center gap-4 md:gap-6"
-          aria-label="Footer navigation"
-        >
-          <Link
-            href="/essays"
-            className="text-body-sm text-figure-muted hover:text-figure-primary transition-hover"
-          >
-            Essays
-          </Link>
-          <Link
-            href="/about"
-            className="text-body-sm text-figure-muted hover:text-figure-primary transition-hover"
-          >
-            About
-          </Link>
-        </nav>
       </div>
     </footer>
   );

@@ -24,6 +24,12 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: 'Essays',
   },
+  alternates: {
+    languages: {
+      'en': '/',
+      'zh': '/zh',
+    },
+  },
 };
 
 interface RootLayoutProps {

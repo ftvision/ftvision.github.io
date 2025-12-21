@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { getEssayBySlug, getEssaySlugsByLanguage } from '@/lib/essays';
+import { getEssayBySlug, getEssaySlugsByLanguage, getTranslation } from '@/lib/essays';
 import { getMDXComponents } from '@/components/mdx/MDXComponents';
 import { EssayLayout, EssayHeader } from '@/components/essay';
 
@@ -32,6 +32,19 @@ export async function generateMetadata({
     };
   }
 
+  // Build hreflang alternates
+  const alternates: Metadata['alternates'] = {
+    languages: {
+      'zh': `/zh/essays/${slug}`,
+    },
+  };
+
+  // Check for English translation
+  const enTranslation = getTranslation(slug, 'en');
+  if (enTranslation && enTranslation.slug !== slug) {
+    alternates.languages!['en'] = `/essays/${enTranslation.slug}`;
+  }
+
   return {
     title: essay.title,
     description: essay.description,
@@ -43,6 +56,7 @@ export async function generateMetadata({
       tags: essay.topics,
       locale: 'zh_CN',
     },
+    alternates,
   };
 }
 

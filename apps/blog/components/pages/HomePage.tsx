@@ -64,6 +64,7 @@ export function HomePage({ language = 'en' }: HomePageProps) {
             layout="list"
             variant="default"
             basePath={`${basePath}/essays`}
+            language={language}
           />
         </section>
       )}
