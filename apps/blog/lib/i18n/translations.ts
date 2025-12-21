@@ -18,7 +18,7 @@ export const translations = {
     'nav.home': 'Home',
 
     // Site
-    'site.name': 'Essays',
+    'site.name': 'Algo Mind',
     'site.tagline': 'Thoughts on technology, AI, product, and career',
 
     // Essay types
@@ -90,7 +90,7 @@ export const translations = {
     'nav.home': '首页',
 
     // Site
-    'site.name': '文章',
+    'site.name': '思算',
     'site.tagline': '关于技术、AI、产品和职业的思考',
 
     // Essay types

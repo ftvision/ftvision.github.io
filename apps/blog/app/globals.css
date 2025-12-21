@@ -91,3 +91,53 @@ body {
   padding: var(--spacing-inset-md);
   font-style: italic;
 }
+
+/* Chinese typography styles */
+:root {
+  --font-serif-zh: "Noto Serif SC", "Source Han Serif CN", "Songti SC", serif;
+}
+
+/* Apply Chinese typography when lang is zh */
+[lang="zh"],
+[data-language="zh"] {
+  font-family: var(--font-serif-zh);
+}
+
+/* Chinese prose styles - increased line height for better readability */
+[lang="zh"] .prose,
+[data-language="zh"] .prose,
+.prose[lang="zh"] {
+  line-height: 1.9;
+}
+
+[lang="zh"] .prose p,
+[data-language="zh"] .prose p,
+.prose[lang="zh"] p {
+  line-height: 1.9;
+  margin-bottom: 1.5em;
+}
+
+[lang="zh"] .prose h1,
+[lang="zh"] .prose h2,
+[lang="zh"] .prose h3,
+[lang="zh"] .prose h4,
+[data-language="zh"] .prose h1,
+[data-language="zh"] .prose h2,
+[data-language="zh"] .prose h3,
+[data-language="zh"] .prose h4 {
+  font-family: var(--font-serif-zh);
+  line-height: 1.4;
+}
+
+/* Chinese blockquote - no italic since Chinese doesn't have true italics */
+[lang="zh"] .prose blockquote,
+[data-language="zh"] .prose blockquote {
+  font-style: normal;
+}
+
+/* Adjust list spacing for Chinese */
+[lang="zh"] .prose li,
+[data-language="zh"] .prose li {
+  line-height: 1.8;
+  margin-bottom: 0.5em;
+}

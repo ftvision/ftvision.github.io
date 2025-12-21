@@ -4,6 +4,8 @@ import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@blog/ui';
+import { useLanguage } from '@/lib/i18n';
+import { translate } from '@/lib/i18n/translations';
 
 // ============================================================================
 // Types
@@ -15,9 +17,9 @@ export interface NavLink {
 }
 
 export interface SiteHeaderProps {
-  /** Site name/logo text */
+  /** Site name/logo text (overrides localized default) */
   siteName?: string;
-  /** Navigation links */
+  /** Navigation links (overrides localized defaults) */
   links?: NavLink[];
   /** Optional slot for actions (e.g., theme toggle) */
   actions?: React.ReactNode;
@@ -26,13 +28,23 @@ export interface SiteHeaderProps {
 }
 
 // ============================================================================
-// Constants
+// Hook for localized navigation
 // ============================================================================
 
-const DEFAULT_LINKS: NavLink[] = [
-  { href: '/essays', label: 'Essays' },
-  { href: '/about', label: 'About' },
-];
+function useLocalizedNav() {
+  const { language } = useLanguage();
+  const basePath = language === 'zh' ? '/zh' : '';
+
+  const links: NavLink[] = [
+    { href: `${basePath}/essays`, label: translate(language, 'nav.essays') },
+    { href: `${basePath}/about`, label: translate(language, 'nav.about') },
+  ];
+
+  const siteName = translate(language, 'site.name');
+  const homePath = basePath || '/';
+
+  return { links, siteName, homePath, basePath };
+}
 
 // ============================================================================
 // Internal Components
@@ -264,13 +276,19 @@ function MobileMenuPanel({
 // ============================================================================
 
 export function SiteHeader({
-  siteName = 'Essays',
-  links = DEFAULT_LINKS,
+  siteName: siteNameProp,
+  links: linksProp,
   actions,
   className,
 }: SiteHeaderProps) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const localizedNav = useLocalizedNav();
+
+  // Use props if provided, otherwise use localized defaults
+  const siteName = siteNameProp ?? localizedNav.siteName;
+  const links = linksProp ?? localizedNav.links;
+  const homePath = localizedNav.homePath;
 
   const toggleMobileMenu = React.useCallback(() => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -298,7 +316,7 @@ export function SiteHeader({
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           {/* Logo / Site name */}
           <Link
-            href="/"
+            href={homePath}
             className={cn(
               'flex items-center gap-2',
               'text-heading-sm font-semibold tracking-tight',

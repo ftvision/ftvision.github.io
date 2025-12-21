@@ -102,6 +102,7 @@ export function EssaysIndexPage({
         layout="list"
         emptyMessage={t('essays.emptyFiltered')}
         basePath={basePath}
+        language={language}
       />
     </main>
   );
