@@ -148,4 +148,118 @@ test.describe('Blog: Layout Components', () => {
       await expect(menu.locator('text=Chinese Aesthetic')).toBeVisible();
     });
   });
+
+  test.describe('LanguageToggle', () => {
+    test('default story renders correctly with EN label', async ({ page }) => {
+      await page.goto(
+        '/iframe.html?id=blog-layout-languagetoggle--default&viewMode=story'
+      );
+
+      // Wait for the component to mount
+      await page.waitForTimeout(500);
+
+      // Verify dropdown trigger renders with "Select language" aria-label
+      const button = page.locator('button[aria-label="Select language"]');
+      await expect(button).toBeVisible();
+
+      // Verify it shows EN for English language
+      await expect(button).toContainText('EN');
+    });
+
+    test('dropdown shows language options', async ({ page }) => {
+      await page.goto(
+        '/iframe.html?id=blog-layout-languagetoggle--default&viewMode=story'
+      );
+
+      // Wait for the component to mount
+      await page.waitForTimeout(500);
+
+      const button = page.locator('button[aria-label="Select language"]');
+      await expect(button).toBeVisible();
+
+      // Click to open dropdown
+      await button.click();
+
+      // Verify dropdown menu appears with options
+      const menu = page.locator('[role="menu"]');
+      await expect(menu).toBeVisible();
+
+      // Verify language options are available
+      await expect(menu.locator('text=English')).toBeVisible();
+      await expect(menu.locator('text=中文')).toBeVisible();
+    });
+
+    test('shows check icon for current language', async ({ page }) => {
+      await page.goto(
+        '/iframe.html?id=blog-layout-languagetoggle--default&viewMode=story'
+      );
+
+      // Wait for the component to mount
+      await page.waitForTimeout(500);
+
+      const button = page.locator('button[aria-label="Select language"]');
+      await button.click();
+
+      // Verify dropdown menu appears
+      const menu = page.locator('[role="menu"]');
+      await expect(menu).toBeVisible();
+
+      // The English option should have a check icon (SVG)
+      const englishItem = menu.locator('[role="menuitem"]').filter({ hasText: 'English' });
+      await expect(englishItem).toBeVisible();
+      const checkIcon = englishItem.locator('svg');
+      await expect(checkIcon).toBeVisible();
+    });
+
+    test('chinese language story renders with 中 label', async ({ page }) => {
+      await page.goto(
+        '/iframe.html?id=blog-layout-languagetoggle--chinese-language&viewMode=story'
+      );
+
+      // Wait for the component to mount
+      await page.waitForTimeout(500);
+
+      // Verify dropdown trigger renders
+      const button = page.locator('button[aria-label="Select language"]');
+      await expect(button).toBeVisible();
+
+      // Verify it shows 中 for Chinese language
+      await expect(button).toContainText('中');
+    });
+
+    test('in header story shows toggle in context', async ({ page }) => {
+      await page.goto(
+        '/iframe.html?id=blog-layout-languagetoggle--in-header&viewMode=story'
+      );
+
+      // Wait for the component to mount
+      await page.waitForTimeout(500);
+
+      // Verify header renders with language toggle
+      const header = page.locator('header');
+      await expect(header).toBeVisible();
+
+      // Verify language toggle is in the header
+      const button = header.locator('button[aria-label="Select language"]');
+      await expect(button).toBeVisible();
+    });
+
+    test('with theme controls story shows all toggles together', async ({ page }) => {
+      await page.goto(
+        '/iframe.html?id=blog-layout-languagetoggle--with-theme-controls&viewMode=story'
+      );
+
+      // Wait for the component to mount
+      await page.waitForTimeout(500);
+
+      // Verify all controls are visible
+      const languageToggle = page.locator('button[aria-label="Select language"]');
+      const themeSelector = page.locator('button[aria-label="Select theme"]');
+      const modeToggle = page.locator('button[aria-label="Select mode"]');
+
+      await expect(languageToggle).toBeVisible();
+      await expect(themeSelector).toBeVisible();
+      await expect(modeToggle).toBeVisible();
+    });
+  });
 });

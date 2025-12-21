@@ -1,0 +1,58 @@
+{
+  "nav.essays": "Essays",
+  "nav.about": "About",
+  "nav.home": "Home",
+
+  "site.name": "Algo Mind",
+  "site.tagline": "Thoughts on technology, AI, product, and career",
+
+  "type.guide": "Guide",
+  "type.deep-dive": "Deep Dive",
+  "type.opinion": "Opinion",
+  "type.review": "Review",
+  "type.narrative": "Narrative",
+
+  "topic.technical": "Technical",
+  "topic.ai": "AI",
+  "topic.product": "Product",
+  "topic.career": "Career",
+
+  "filter.all": "All",
+  "filter.type": "Type",
+  "filter.topics": "Topics",
+  "filter.clear": "Clear filters",
+  "filter.results": "{count} essays",
+  "filter.results.singular": "1 essay",
+  "filter.noResults": "No essays found",
+
+  "essay.readingTime": "{minutes} min read",
+  "essay.draft": "Draft",
+
+  "home.recentEssays": "Recent Essays",
+  "home.viewAll": "View all essays",
+  "home.browseAll": "Browse All Essays",
+
+  "about.title": "About",
+  "about.readEssays": "Read My Essays",
+
+  "essays.matchingFilters": "matching filters",
+  "essays.emptyFiltered": "No essays match the selected filters. Try adjusting your filters.",
+
+  "footer.copyright": "© {year} All rights reserved.",
+  "footer.builtWith": "Built with Next.js",
+
+  "language.switch": "Switch language",
+  "language.current": "Current language: {language}",
+
+  "theme.switch": "Toggle theme",
+  "theme.light": "Switch to light mode",
+  "theme.dark": "Switch to dark mode",
+
+  "menu.open": "Open menu",
+  "menu.close": "Close menu",
+  "menu.theme": "Theme",
+  "menu.language": "Language",
+
+  "loading": "Loading...",
+  "error": "Something went wrong"
+}

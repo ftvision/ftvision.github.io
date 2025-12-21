@@ -17,7 +17,7 @@ export interface HomePageProps {
  */
 export function HomePage({ language = 'en' }: HomePageProps) {
   const basePath = language === 'zh' ? '/zh' : '';
-  const recentEssays = getRecentEssays(5, { language });
+  const recentEssays = getRecentEssays(5, { language, includeDrafts: false });
 
   const t = (key: Parameters<typeof translate>[1]) => translate(language, key);
 
