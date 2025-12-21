@@ -34,7 +34,7 @@ export function HomePage({ language = 'en' }: HomePageProps) {
         <nav className="flex justify-center gap-4">
           <Link href={`${basePath}/essays`}>
             <Button variant="primary" size="md">
-              {language === 'zh' ? '浏览全部文章' : 'Browse All Essays'}
+              {t('home.browseAll')}
             </Button>
           </Link>
           <Link href={`${basePath}/about`}>

@@ -50,9 +50,15 @@ export const translations = {
     // Home page
     'home.recentEssays': 'Recent Essays',
     'home.viewAll': 'View all essays',
+    'home.browseAll': 'Browse All Essays',
 
     // About page
     'about.title': 'About',
+    'about.readEssays': 'Read My Essays',
+
+    // Essays page
+    'essays.matchingFilters': 'matching filters',
+    'essays.emptyFiltered': 'No essays match the selected filters. Try adjusting your filters.',
 
     // Footer
     'footer.copyright': '© {year} All rights reserved.',
@@ -116,9 +122,15 @@ export const translations = {
     // Home page
     'home.recentEssays': '最近文章',
     'home.viewAll': '查看全部文章',
+    'home.browseAll': '浏览全部文章',
 
     // About page
     'about.title': '关于',
+    'about.readEssays': '阅读我的文章',
+
+    // Essays page
+    'essays.matchingFilters': '符合筛选条件',
+    'essays.emptyFiltered': '没有符合筛选条件的文章。请尝试调整筛选条件。',
 
     // Footer
     'footer.copyright': '© {year} 版权所有',

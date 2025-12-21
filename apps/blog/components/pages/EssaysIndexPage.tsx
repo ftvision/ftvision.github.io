@@ -66,7 +66,7 @@ export function EssaysIndexPage({
 
   const hasActiveFilters = selectedType !== null || selectedTopics.length > 0;
   const resultsText = formatResultsCount(language, filteredEssays.length);
-  const matchingText = language === 'zh' ? '符合筛选条件' : 'matching filters';
+  const matchingText = t('essays.matchingFilters');
 
   return (
     <main className="mx-auto max-w-5xl px-inset-lg py-12">
@@ -100,11 +100,7 @@ export function EssaysIndexPage({
       <EssayList
         essays={filteredEssays}
         layout="list"
-        emptyMessage={
-          language === 'zh'
-            ? '没有符合筛选条件的文章。请尝试调整筛选条件。'
-            : 'No essays match the selected filters. Try adjusting your filters.'
-        }
+        emptyMessage={t('essays.emptyFiltered')}
         basePath={basePath}
       />
     </main>

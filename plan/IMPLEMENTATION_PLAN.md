@@ -511,15 +511,21 @@ apps/blog/
 **Files created/modified:**
 ```
 apps/blog/content/essays/
-├── 10k-code.zh.mdx            # Chinese: 10000行代码
+├── 10k-code-zh.mdx             # Chinese: 10000行代码 (slug: 10k-code-zh)
+├── 10k-cpp-zh.mdx              # Chinese: 10000行C++ (slug: 10k-cpp-zh)
 ├── job-search-reflection.mdx   # English: Job Search Reflection
 ├── offer-negotiation.mdx       # English: Offer Negotiation
-├── meeting-how-to.zh.mdx       # Chinese: 开会指南
-├── programmer-quality.zh.mdx   # Chinese: 程序员素质
-├── short-pr.zh.mdx             # Chinese: PR简短
-├── reverse-interview.zh.mdx    # Chinese: 反向面试
+├── meeting-how-to-zh.mdx       # Chinese: 开会指南 (slug: meeting-how-to-zh)
+├── programmer-quality-zh.mdx   # Chinese: 程序员素质 (slug: programmer-quality-zh)
+├── short-pr-zh.mdx             # Chinese: PR简短 (slug: short-pr-zh)
+├── reverse-interview-zh.mdx    # Chinese: 反向面试 (slug: reverse-interview-zh)
 └── ...
 ```
+
+**Naming Convention:**
+- Chinese essays: use `-zh` suffix (e.g., `10k-code-zh.mdx` → slug `10k-code-zh`)
+- English essays: no suffix (e.g., `job-search-reflection.mdx` → slug `job-search-reflection`)
+- The `lang` field in frontmatter is authoritative for language detection
 
 **Tasks:**
 - [ ] Audit existing Hugo content (69 files):
@@ -543,15 +549,15 @@ apps/blog/content/essays/
 
 | File | Language | Type | Topics | New Slug |
 |------|----------|------|--------|----------|
-| `10k-code.md` | zh | narrative | technical, career | `10k-code.zh` |
-| `10k-cpp.md` | zh | guide | technical | `10k-cpp.zh` |
+| `10k-code.md` | zh | narrative | technical, career | `10k-code-zh` |
+| `10k-cpp.md` | zh | guide | technical | `10k-cpp-zh` |
 | `job_search_reflection.en.md` | en | narrative | career | `job-search-reflection` |
 | `offer_negotiation.en.md` | en | guide | career | `offer-negotiation` |
-| `meeting-how-to.md` | zh | guide | career | `meeting-how-to.zh` |
-| `programmer_quality.md` | zh | opinion | technical, career | `programmer-quality.zh` |
-| `programming_augmenting_intelligence.md` | zh | opinion | technical, ai | `programming-ai.zh` |
-| `reverse-interview.md` | zh | guide | career | `reverse-interview.zh` |
-| `short_pr.md` | zh | guide | technical | `short-pr.zh` |
+| `meeting-how-to.md` | zh | guide | career | `meeting-how-to-zh` |
+| `programmer_quality.md` | zh | opinion | technical, career | `programmer-quality-zh` |
+| `programming_augmenting_intelligence.md` | zh | opinion | technical, ai | `programming-ai-zh` |
+| `reverse-interview.md` | zh | guide | career | `reverse-interview-zh` |
+| `short_pr.md` | zh | guide | technical | `short-pr-zh` |
 | `_index.md` | zh | - | - | (skip - index file) |
 | `_index.en.md` | en | - | - | (skip - index file) |
 

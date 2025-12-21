@@ -72,21 +72,31 @@ Essays are categorized by **type** (how it's written) and **topics** (what it's 
 
 ### Content File Naming
 
-Essays use Hugo-style language suffix:
+Essays use language-suffix naming convention with `lang` in frontmatter:
 ```
 content/essays/
-├── 10k-code.mdx           # Chinese (no suffix = default Chinese for this content)
-├── 10k-code.en.mdx        # English translation (if exists)
-├── job-search.mdx         # English original
-├── job-search.zh.mdx      # Chinese translation (if exists)
+├── 10k-code-zh.mdx           # Chinese essay (lang: zh in frontmatter)
+├── 10k-cpp-zh.mdx            # Chinese essay (lang: zh in frontmatter)
+├── job-search-reflection.mdx  # English essay (lang: en in frontmatter)
+├── offer-negotiation.mdx      # English essay (lang: en in frontmatter)
 ```
+
+**Naming Convention:**
+- Use `-zh` suffix for Chinese essays (e.g., `10k-code-zh.mdx`)
+- No suffix needed for English essays (e.g., `job-search-reflection.mdx`)
+- The `lang` field in frontmatter is authoritative for language detection
+- Slug is the filename without `.mdx` (e.g., `10k-code-zh`, `job-search-reflection`)
+
+**URL Examples:**
+- Chinese essay: `/zh/essays/10k-code-zh`
+- English essay: `/essays/job-search-reflection`
 
 Each file has `lang` in frontmatter for explicit declaration:
 ```yaml
 ---
 title: "10000行代码后对软件工程的思考"
 lang: zh
-translationOf: 10k-code.en  # Links to English version (optional)
+translationOf: 10k-code-en  # Links to English version (optional)
 ---
 ```
 

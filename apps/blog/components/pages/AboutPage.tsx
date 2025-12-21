@@ -21,7 +21,7 @@ import {
   failedPublications,
   sectionLabels,
 } from '@/components/about';
-import type { Language } from '@/lib/i18n';
+import { translate, type Language } from '@/lib/i18n';
 
 export interface AboutPageProps {
   /** Language for the page content */
@@ -176,6 +176,7 @@ function buildFailuresSections(locale: Locale) {
 export function AboutPage({ language = 'en' }: AboutPageProps) {
   const locale: Locale = language;
   const basePath = language === 'zh' ? '/zh' : '';
+  const t = (key: Parameters<typeof translate>[1]) => translate(language, key);
 
   const intro = introContent[locale];
   const labels = sectionLabels[locale];
@@ -197,7 +198,7 @@ export function AboutPage({ language = 'en' }: AboutPageProps) {
       <nav className="mt-6 flex gap-4">
         <Link href={`${basePath}/essays`}>
           <Button variant="primary" size="md">
-            {language === 'zh' ? '阅读我的文章' : 'Read My Essays'}
+            {t('about.readEssays')}
           </Button>
         </Link>
         <a
