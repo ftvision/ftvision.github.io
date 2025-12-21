@@ -46,11 +46,58 @@ Essays are categorized by **type** (how it's written) and **topics** (what it's 
 
 ### URL Structure
 
+**English (default):**
 ```
-/                     → Home
-/essays               → Essay index (filterable by type/topic)
-/essays/[slug]        → Individual essay
-/about                → About page
+/                     → English home
+/essays               → English essay index (shows all, English first)
+/essays/[slug]        → English essay
+/about                → English about page
+```
+
+**Chinese (`/zh` prefix):**
+```
+/zh                   → Chinese home
+/zh/essays            → Chinese essay index (shows all, Chinese first)
+/zh/essays/[slug]     → Chinese essay
+/zh/about             → Chinese about page
+```
+
+**Language Behavior:**
+- Default is English (no prefix)
+- Chinese uses `/zh` prefix for all routes
+- Language preference stored in localStorage
+- When user selects language, all navigation uses that language's routes
+- Essay lists show all essays with language badges (preferred language sorted first)
+- Language switcher navigates to translation if exists, otherwise to language's index
+
+### Content File Naming
+
+Essays use language-suffix naming convention with `lang` in frontmatter:
+```
+content/essays/
+├── 10k-code-zh.mdx           # Chinese essay (lang: zh in frontmatter)
+├── 10k-cpp-zh.mdx            # Chinese essay (lang: zh in frontmatter)
+├── job-search-reflection.mdx  # English essay (lang: en in frontmatter)
+├── offer-negotiation.mdx      # English essay (lang: en in frontmatter)
+```
+
+**Naming Convention:**
+- Use `-zh` suffix for Chinese essays (e.g., `10k-code-zh.mdx`)
+- No suffix needed for English essays (e.g., `job-search-reflection.mdx`)
+- The `lang` field in frontmatter is authoritative for language detection
+- Slug is the filename without `.mdx` (e.g., `10k-code-zh`, `job-search-reflection`)
+
+**URL Examples:**
+- Chinese essay: `/zh/essays/10k-code-zh`
+- English essay: `/essays/job-search-reflection`
+
+Each file has `lang` in frontmatter for explicit declaration:
+```yaml
+---
+title: "10000行代码后对软件工程的思考"
+lang: zh
+translationOf: 10k-code-en  # Links to English version (optional)
+---
 ```
 
 ---
@@ -114,7 +161,8 @@ Primitives (raw values)  →  Semantic (meaning)  →  Themes (variations)
 | `SiteFooter` | Links, copyright |
 | `SiteNav` | Navigation links |
 | `ThemeToggle` | Light/dark mode switch |
-| `LanguageToggle` | en/zh switch |
+| `LanguageToggle` | en/zh dropdown with globe icon |
+| `LanguageProvider` | Language context + localStorage persistence |
 | `MobileMenu` | Responsive navigation |
 
 ### Essay Components
@@ -211,6 +259,68 @@ Primitives (raw values)  →  Semantic (meaning)  →  Themes (variations)
 | Dark mode | data-mode attribute | Works with existing token system |
 | Token generation | Style Dictionary | Multi-format output |
 | MDX processing | next-mdx-remote | Proven solution |
+| i18n routing | Manual subdirectory | Works with static export, no i18n library needed |
+| Language persistence | localStorage | Simple, no server needed |
+
+---
+
+## Internationalization (i18n) Architecture
+
+### Design Decisions
+
+1. **Subdirectory routing** (`/zh/*`) instead of subdomain or parameters
+   - Better SEO (accumulates domain authority)
+   - Works with static export
+   - Clear URL structure for users
+
+2. **No i18n library** - manual implementation
+   - Next.js i18n doesn't work with `output: 'export'`
+   - Simple enough to implement manually
+   - Full control over behavior
+
+3. **File-based language detection** with frontmatter override
+   - Filename suffix: `essay.zh.mdx` indicates Chinese
+   - Frontmatter `lang` field is authoritative
+   - `translationOf` field links translations
+
+### Language Context
+
+```typescript
+interface LanguageContextValue {
+  language: 'en' | 'zh';
+  setLanguage: (lang: 'en' | 'zh') => void;
+  t: (key: string) => string;  // Simple translation function
+}
+```
+
+### UI Localization
+
+Localized strings stored in `lib/i18n/translations.ts`:
+```typescript
+const translations = {
+  en: {
+    'nav.essays': 'Essays',
+    'nav.about': 'About',
+    'essay.readingTime': '{minutes} min read',
+    'filter.all': 'All',
+    // ...
+  },
+  zh: {
+    'nav.essays': '文章',
+    'nav.about': '关于',
+    'essay.readingTime': '阅读时间 {minutes} 分钟',
+    'filter.all': '全部',
+    // ...
+  },
+};
+```
+
+### Chinese Typography
+
+Chinese content uses adjusted typography:
+- Font: `"Noto Serif SC", "Source Han Serif CN", serif`
+- Line height: 1.8-2.0 (vs 1.6 for English)
+- Paragraph spacing adjusted for Chinese reading flow
 
 ---
 
@@ -232,7 +342,7 @@ Primitives (raw values)  →  Semantic (meaning)  →  Themes (variations)
 - [x] Phase 8B: Mobile Navigation & Accessibility (MobileMenu, responsive SiteHeader)
 
 ### Current
-- [ ] Phase 9: Content Migration
+- [ ] Phase 9: Internationalization & Content Migration
 
 ### Future
 - [ ] Phase 10: Deployment

@@ -17,8 +17,8 @@ This document outlines the step-by-step implementation plan for rebuilding the b
 | 5 | Layout & Theme | ✅ Complete | ✅ Complete | Phase 4 |
 | 6 | Essay Core | ✅ Complete | ✅ Complete | Phase 5 |
 | 7 | Essay Index & Home | ✅ Complete | ✅ Complete | Phase 6 |
-| **8** | About & Polish | About page | Mobile & a11y | Phase 7 |
-| **9** | Content Migration | Single stream | - | Phase 8 |
+| **8** | About & Polish | ✅ Complete | ✅ Complete | Phase 7 |
+| **9** | i18n & Content | ✅ 9A Complete | Content migration | Phase 8 |
 | **10** | Deployment | Single stream | - | Phase 9 |
 
 ---
@@ -418,40 +418,227 @@ apps/blog/components/layout/
 
 ---
 
-## Phase 9: Content Migration
+## Phase 9: Internationalization & Content Migration
 
-**Goal:** Migrate existing content from Hugo format to MDX.
+**Goal:** Add bilingual support (English default, Chinese at `/zh`) and migrate Hugo content to MDX.
 
-**Single workstream** - content work is sequential.
+### Workstream 9A: Language Infrastructure ✅
+
+**Files created:**
+```
+apps/blog/
+├── lib/
+│   └── i18n/
+│       ├── language.ts        # Language utilities (storage, path helpers)
+│       ├── translations.ts    # UI string translations
+│       ├── context.tsx        # LanguageProvider context
+│       └── index.ts
+├── components/
+│   └── layout/
+│       ├── LanguageToggle.tsx
+│       └── LanguageToggle.stories.tsx
+├── app/
+│   └── zh/
+│       ├── layout.tsx         # Chinese layout wrapper
+│       ├── page.tsx           # Chinese home
+│       ├── essays/
+│       │   ├── page.tsx       # Chinese essay index
+│       │   └── [slug]/
+│       │       └── page.tsx   # Chinese essay page
+│       └── about/
+│           └── page.tsx       # Chinese about page
+└── types/
+    └── content.ts             # Updated with translationOf field
+```
 
 **Tasks:**
-- [ ] Audit existing content in `content/` folder
-- [ ] Prioritize posts to migrate (start with blog/, defer digest/)
-- [ ] Create migration checklist per post:
-  - [ ] Update frontmatter to new schema
-  - [ ] Add `type` field
-  - [ ] Add `topics` array
-  - [ ] Convert Hugo shortcodes to MDX components
-  - [ ] Review/update formatting
-- [ ] Migrate priority posts:
+- [x] Create `lib/i18n/language.ts` with language utilities:
+  - `getStoredLanguage()`, `setStoredLanguage()`, `applyLanguage()`
+  - `getLanguageFromPath()`, `localizePathname()`
+  - `LANGUAGE_CODES`, `LANGUAGE_NAMES`, `DEFAULT_LANGUAGE`
+- [x] Create `lib/i18n/translations.ts` with UI strings:
+  - Navigation labels (Essays, About)
+  - Filter labels (All, Guide, Deep-Dive, etc.)
+  - Date formatting
+  - Reading time format
+  - Footer text
+  - `translate()` function with interpolation
+- [x] Create `LanguageProvider` context:
+  - Store language preference in localStorage (`language-preference`)
+  - Provide `language`, `setLanguage`, `toggleLanguage`, `t()` function
+  - Read from URL path (`/zh/*` → Chinese)
+  - Handle hydration safely (like ThemeProvider)
+  - `useLanguage()` and `useLanguageMounted()` hooks
+- [x] Create `LanguageToggle` component:
+  - Globe icon + target language code (EN/中文)
+  - Click navigates to equivalent route in selected language
+  - Hydration-safe rendering
+- [x] Update `types/content.ts`:
+  - Add `translationOf?: string` field to EssayMeta
+  - Update validation function
+- [x] Update `lib/essays.ts`:
+  - Add `getEssaysByLanguage(lang: Language)` function
+  - Add `getTranslation(slug: string, targetLang: Language)` function
+  - Add `getEssaySlugsByLanguage(lang)` function
+  - Update `getAllEssays()` with optional `language` filter
+- [x] Create `/zh` route group:
+  - `/zh/layout.tsx` - sets Chinese metadata
+  - `/zh/page.tsx` - Chinese home page
+  - `/zh/essays/page.tsx` - Chinese essay index
+  - `/zh/essays/[slug]/page.tsx` - Chinese essay page
+  - `/zh/about/page.tsx` - Chinese about page
+- [x] Update `SiteHeader`:
+  - Add LanguageToggle alongside ThemeToggle in HeaderActions
+- [x] Update essay components for language support:
+  - `EssayCard` - add `basePath` prop
+  - `EssayList` - add `basePath` prop
+  - `EssayFilters` - add `language` prop, localized labels
+  - `EssayHeader` - add `language` prop, localized date/time
+- [x] Update `lib/constants.ts`:
+  - Add localized labels (`ESSAY_TYPE_LABELS_ZH`, `TOPIC_LABELS_ZH`)
+  - Add `getEssayTypeLabel(type, lang)`, `getTopicLabel(topic, lang)` functions
+- [x] Update `app/layout.tsx`:
+  - Add anti-flash script for language
+  - Wrap with LanguageProvider
+  - HeaderActions with both toggles
+- [x] Add Storybook stories for LanguageToggle
+- [x] Verify build passes and Playwright tests pass
 
-| Post | Type | Topics | Status |
-|------|------|--------|--------|
-| `10k-code.md` | narrative | technical, career | Pending |
-| `10k-cpp.md` | guide | technical | Pending |
-| `job_search_reflection.en.md` | narrative | career | Pending |
-| `offer_negotiation.en.md` | guide | career | Pending |
-| `meeting-how-to.md` | guide | career | Pending |
+**Uses from @blog/ui:** Button, Tooltip
 
-- [ ] Set up redirects if URLs change
-- [ ] Archive old Hugo content folder
+### Workstream 9B: Content Migration
 
-**Validation:**
-- [ ] All migrated content renders correctly
-- [ ] Links work
-- [ ] Images display
-- [ ] Code blocks highlight
-- [ ] Notes and references work
+**Files created/modified:**
+```
+apps/blog/content/essays/
+├── 10k-code-zh.mdx             # Chinese: 10000行代码 (slug: 10k-code-zh)
+├── 10k-cpp-zh.mdx              # Chinese: 10000行C++ (slug: 10k-cpp-zh)
+├── job-search-reflection.mdx   # English: Job Search Reflection
+├── offer-negotiation.mdx       # English: Offer Negotiation
+├── meeting-how-to-zh.mdx       # Chinese: 开会指南 (slug: meeting-how-to-zh)
+├── programmer-quality-zh.mdx   # Chinese: 程序员素质 (slug: programmer-quality-zh)
+├── short-pr-zh.mdx             # Chinese: PR简短 (slug: short-pr-zh)
+├── reverse-interview-zh.mdx    # Chinese: 反向面试 (slug: reverse-interview-zh)
+└── ...
+```
+
+**Naming Convention:**
+- Chinese essays: use `-zh` suffix (e.g., `10k-code-zh.mdx` → slug `10k-code-zh`)
+- English essays: no suffix (e.g., `job-search-reflection.mdx` → slug `job-search-reflection`)
+- The `lang` field in frontmatter is authoritative for language detection
+
+**Tasks:**
+- [ ] Audit existing Hugo content (69 files):
+  - `blog/` - 11 files (priority: migrate all)
+  - `digest/` - 23 files (defer to Phase 11)
+  - `library/` - 17 files (defer to Phase 11)
+  - `about/` - 6 files (integrate into About page)
+  - `collection/` - 6 files (defer to Phase 11)
+- [ ] Create migration script or checklist per post:
+  - Convert `.md` to `.mdx`
+  - Update frontmatter to new schema:
+    - Add `description` field
+    - Add `type` field (guide/narrative/opinion/review/deep-dive)
+    - Add `topics` array (technical/ai/product/career)
+    - Add `lang` field (en/zh)
+    - Add `translationOf` if translation exists
+  - Convert Hugo shortcodes to MDX components
+  - Update internal links
+  - Verify code blocks work
+- [ ] Migrate blog posts (11 files):
+
+| File | Language | Type | Topics | New Slug |
+|------|----------|------|--------|----------|
+| `10k-code.md` | zh | narrative | technical, career | `10k-code-zh` |
+| `10k-cpp.md` | zh | guide | technical | `10k-cpp-zh` |
+| `job_search_reflection.en.md` | en | narrative | career | `job-search-reflection` |
+| `offer_negotiation.en.md` | en | guide | career | `offer-negotiation` |
+| `meeting-how-to.md` | zh | guide | career | `meeting-how-to-zh` |
+| `programmer_quality.md` | zh | opinion | technical, career | `programmer-quality-zh` |
+| `programming_augmenting_intelligence.md` | zh | opinion | technical, ai | `programming-ai-zh` |
+| `reverse-interview.md` | zh | guide | career | `reverse-interview-zh` |
+| `short_pr.md` | zh | guide | technical | `short-pr-zh` |
+| `_index.md` | zh | - | - | (skip - index file) |
+| `_index.en.md` | en | - | - | (skip - index file) |
+
+- [ ] Update About page content:
+  - Integrate `about/_index.md` (Chinese) into `/zh/about`
+  - Integrate `about/_index.en.md` (English) into `/about`
+  - Migrate resume content if applicable
+- [ ] Link translations where both versions exist
+- [ ] Test all migrated content renders correctly
+- [ ] Remove/archive old Hugo `content/` folder after migration
+
+### Workstream 9C: UI Localization & Polish
+
+**Tasks:**
+- [ ] Localize EssayFilters:
+  - Type labels (Guide → 指南, Deep-Dive → 深度分析, etc.)
+  - Topic labels (Technical → 技术, Career → 职业, etc.)
+  - "All" button text
+  - Results count text
+- [ ] Localize EssayCard:
+  - Date format (Jan 15, 2024 → 2024年1月15日)
+  - Reading time (5 min read → 阅读时间约5分钟)
+- [ ] Localize EssayHeader:
+  - Type/Topic badges
+  - Date and reading time
+- [ ] Localize SiteFooter:
+  - Copyright text
+  - Links text
+- [ ] Localize Home page:
+  - Tagline/description
+  - "View all essays" link
+  - Section headers
+- [ ] Localize About page:
+  - Section headers
+  - Timeline content (may need separate data)
+- [ ] Add Chinese font stack:
+  ```css
+  --font-serif-zh: "Noto Serif SC", "Source Han Serif CN", "Songti SC", serif;
+  ```
+- [ ] Add language-specific typography styles:
+  - Chinese: line-height 1.8-2.0
+  - Chinese: adjusted paragraph spacing
+- [ ] Add hreflang tags for SEO:
+  ```html
+  <link rel="alternate" hreflang="en" href="https://example.com/essays/foo" />
+  <link rel="alternate" hreflang="zh" href="https://example.com/zh/essays/foo" />
+  ```
+
+### Workstream 9D: Testing & Validation
+
+**Tasks:**
+- [ ] Add Playwright tests for language switching:
+  - Toggle changes URL prefix
+  - Preference persists across page loads
+  - Navigation links respect language
+  - Correct content loads for each language
+- [ ] Add tests for essay filtering by language
+- [ ] Add tests for translation linking
+- [ ] Verify all migrated content renders:
+  - Chinese essays at `/zh/essays/[slug]`
+  - English essays at `/essays/[slug]`
+  - Code blocks highlight correctly
+  - Images display
+  - Internal links work
+- [ ] Test mobile menu with language toggle
+- [ ] Test language toggle in Storybook
+
+**Validation Checklist:**
+- [ ] Language toggle appears in header
+- [ ] Selecting Chinese navigates to `/zh/*`
+- [ ] Selecting English navigates to `/*` (no prefix)
+- [ ] Preference persists in localStorage
+- [ ] All blog posts migrated and rendering
+- [ ] Chinese typography (font, line-height) applied
+- [ ] Date/time formatted per language
+- [ ] Filter labels localized
+- [ ] Essay list shows language badges
+- [ ] Translation links work where applicable
+- [ ] hreflang tags present in HTML head
+- [ ] All Playwright tests pass
+- [ ] No hydration errors
 
 ---
 
@@ -516,14 +703,17 @@ Phase 4 (Complete)
        │
        ▼
 ┌──────┴──────┐
-│  Phase 8    │
+│  Phase 8    │  ✅ Complete
 │ 8A ←──→ 8B  │  (parallel)
 └──────┬──────┘
        │
        ▼
-   Phase 9
-   (sequential)
-       │
+┌──────────────────┐
+│     Phase 9      │
+│ 9A: i18n infra   │──→ 9C: UI localization
+│ 9B: Content      │──→ 9D: Testing
+└──────┬───────────┘
+       │  (9A/9B parallel, 9C/9D depend on them)
        ▼
    Phase 10
    (sequential)
@@ -575,10 +765,23 @@ Phase 4 (Complete)
 - [x] Playwright tests pass (29 new tests: 19 About + 10 MobileMenu)
 - [x] All 184 Playwright tests pass across all projects
 
-### Phase 9
-- [ ] Priority posts migrated
-- [ ] No broken links
-- [ ] Content renders correctly
+### Phase 9A (Language Infrastructure) ✅
+- [x] LanguageProvider and LanguageToggle working
+- [x] `/zh/*` routes created and functional
+- [x] Language preference persists in localStorage
+- [x] Navigation links are language-aware via basePath prop
+- [x] UI strings localized (filters, dates, reading time)
+- [x] Build passes, Playwright tests pass
+
+### Phase 9B (Content Migration) - Pending
+- [ ] Content files migrated from Hugo to MDX
+- [ ] Chinese typography applied (font, line-height)
+- [ ] All blog posts migrated to MDX
+- [ ] Content renders correctly in both languages
+- [ ] Translation links work where applicable
+- [ ] hreflang SEO tags present
+- [ ] Playwright tests pass for language switching
+- [ ] No hydration errors
 
 ### Phase 10
 - [ ] Static export succeeds
@@ -602,10 +805,12 @@ Phase 4 (Complete)
 
 ## Open Questions
 
-1. **Language toggle**: Same page with content switch, or separate URL paths (`/zh/essays/...`)?
-2. **Search**: Add in Phase 8 or defer to post-launch?
-3. **RSS feed**: Add in Phase 8 or defer?
+1. ~~**Language toggle**: Same page with content switch, or separate URL paths (`/zh/essays/...`)?~~
+   - **Resolved**: Separate URL paths with `/zh` prefix for Chinese
+2. **Search**: Add in Phase 9 or defer to post-launch?
+3. **RSS feed**: Add in Phase 9 or defer?
 4. **Interactive diagrams (D3)**: Defer to post-Phase 10?
+5. **Digest/Library content**: Migrate in Phase 11 or different content type?
 
 ---
 
@@ -616,4 +821,5 @@ Phase 4 (Complete)
 3. **Performance**: Lighthouse score > 90
 4. **Accessibility**: No critical a11y errors
 5. **Mobile**: Responsive design works at all breakpoints
-6. **Deployment**: Site live on GitHub Pages
+6. **Internationalization**: English/Chinese switching works seamlessly
+7. **Deployment**: Site live on GitHub Pages

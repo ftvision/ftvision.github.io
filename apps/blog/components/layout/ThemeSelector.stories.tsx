@@ -1,11 +1,12 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeToggle } from './ThemeToggle';
+import { ThemeSelector } from './ThemeSelector';
 import { ThemeProvider } from './ThemeProvider';
+import { ModeToggle } from './ModeToggle';
 
-const meta: Meta<typeof ThemeToggle> = {
-  title: 'Blog / Layout / ThemeToggle',
-  component: ThemeToggle,
+const meta: Meta<typeof ThemeSelector> = {
+  title: 'Blog / Layout / ThemeSelector',
+  component: ThemeSelector,
   parameters: {
     layout: 'centered',
   },
@@ -22,7 +23,7 @@ const meta: Meta<typeof ThemeToggle> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ThemeToggle>;
+type Story = StoryObj<typeof ThemeSelector>;
 
 export const Default: Story = {
   args: {},
@@ -39,8 +40,21 @@ export const InContext: Story = {
     (Story) => (
       <ThemeProvider>
         <div className="flex items-center gap-4 p-4 bg-ground-secondary rounded-lg">
-          <span className="text-body text-figure-secondary">Toggle theme:</span>
+          <span className="text-body text-figure-secondary">Select theme:</span>
           <Story />
+        </div>
+      </ThemeProvider>
+    ),
+  ],
+};
+
+export const WithModeToggle: Story = {
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <div className="flex items-center gap-2 p-4 bg-ground-primary rounded-lg border border-border">
+          <Story />
+          <ModeToggle />
         </div>
       </ThemeProvider>
     ),
@@ -55,14 +69,21 @@ export const InHeader: Story = {
           <span className="text-heading-sm font-semibold">Essays</span>
           <div className="flex items-center gap-4">
             <nav className="flex items-center gap-6">
-              <a href="#" className="text-body text-figure-secondary hover:text-figure-primary">
+              <a
+                href="#"
+                className="text-body text-figure-secondary hover:text-figure-primary"
+              >
                 Essays
               </a>
-              <a href="#" className="text-body text-figure-secondary hover:text-figure-primary">
+              <a
+                href="#"
+                className="text-body text-figure-secondary hover:text-figure-primary"
+              >
                 About
               </a>
             </nav>
             <Story />
+            <ModeToggle />
           </div>
         </header>
       </ThemeProvider>

@@ -23,6 +23,8 @@ export interface EssayCardProps {
   variant?: 'default' | 'compact';
   /** Additional CSS classes */
   className?: string;
+  /** Base path for essay links (defaults to /essays) */
+  basePath?: string;
 }
 
 /**
@@ -57,6 +59,7 @@ export function EssayCard({
   readingTime,
   variant = 'default',
   className,
+  basePath = '/essays',
 }: EssayCardProps) {
   const isCompact = variant === 'compact';
 
@@ -71,7 +74,7 @@ export function EssayCard({
       data-variant={variant}
     >
       <Link
-        href={`/essays/${slug}`}
+        href={`${basePath}/${slug}`}
         className="essay-card-link absolute inset-0 z-10"
         aria-label={`Read "${title}"`}
       >

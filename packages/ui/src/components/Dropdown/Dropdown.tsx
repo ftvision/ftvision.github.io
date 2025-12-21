@@ -4,9 +4,22 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@ui/lib/utils';
 
+// Global registry for dropdown close functions
+// This ensures only one dropdown is open at a time
+const dropdownRegistry = new Set<() => void>();
+
+function registerDropdown(closeHandler: () => void): () => void {
+  dropdownRegistry.add(closeHandler);
+  return () => dropdownRegistry.delete(closeHandler);
+}
+
+function closeAllDropdowns(): void {
+  dropdownRegistry.forEach((close) => close());
+}
+
 const dropdownMenuVariants = cva(
   [
-    'absolute z-50 min-w-[8rem] overflow-hidden rounded-md border bg-ground-primary p-1 shadow-lg',
+    'absolute z-50 min-w-[12rem] overflow-hidden rounded-md border bg-ground-primary p-1 shadow-lg',
     'animate-in fade-in-0 zoom-in-95',
   ],
   {
@@ -69,7 +82,27 @@ const Dropdown: React.FC<DropdownProps> = ({
   align = 'start',
   side = 'bottom',
 }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpenState] = React.useState(false);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  // Create a stable close handler for this dropdown
+  const closeHandler = React.useCallback(() => {
+    setOpenState(false);
+  }, []);
+
+  // Register this dropdown's close handler
+  React.useEffect(() => {
+    return registerDropdown(closeHandler);
+  }, [closeHandler]);
+
+  // Custom setOpen that closes other dropdowns first
+  const setOpen = React.useCallback((newOpen: boolean) => {
+    if (newOpen) {
+      // Close all other dropdowns before opening this one
+      closeAllDropdowns();
+    }
+    setOpenState(newOpen);
+  }, []);
 
   // Close on escape
   React.useEffect(() => {
@@ -77,7 +110,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setOpen(false);
+        setOpenState(false);
       }
     };
 
@@ -91,18 +124,26 @@ const Dropdown: React.FC<DropdownProps> = ({
 
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (!target.closest('[data-dropdown]')) {
-        setOpen(false);
+      // Check if click is outside THIS specific dropdown
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
+        setOpenState(false);
       }
     };
 
-    document.addEventListener('click', handleClick);
-    return () => document.removeEventListener('click', handleClick);
+    // Use setTimeout to avoid closing immediately from the trigger click
+    const timeoutId = setTimeout(() => {
+      document.addEventListener('click', handleClick);
+    }, 0);
+
+    return () => {
+      clearTimeout(timeoutId);
+      document.removeEventListener('click', handleClick);
+    };
   }, [open]);
 
   return (
     <DropdownContext.Provider value={{ open, setOpen, align, side }}>
-      <div className="relative inline-block" data-dropdown>
+      <div ref={dropdownRef} className="relative inline-block" data-dropdown>
         {children}
       </div>
     </DropdownContext.Provider>

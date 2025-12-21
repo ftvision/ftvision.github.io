@@ -3,7 +3,15 @@
  */
 
 export type ThemeMode = 'light' | 'dark';
-export type ThemeName = 'nyt' | 'brutalism';
+export type ThemeName = 'nyt' | 'brutalism' | 'chinese-aesthetic';
+
+export const THEME_NAMES: ThemeName[] = ['nyt', 'brutalism', 'chinese-aesthetic'];
+
+export const THEME_NAME_LABELS: Record<ThemeName, string> = {
+  'nyt': 'Default',
+  'brutalism': 'Brutalism',
+  'chinese-aesthetic': 'Chinese Aesthetic',
+};
 
 export const THEME_MODE_KEY = 'theme-mode';
 export const THEME_NAME_KEY = 'theme-name';
@@ -34,8 +42,8 @@ export function getStoredThemeName(): ThemeName | null {
   if (typeof window === 'undefined') return null;
   try {
     const stored = localStorage.getItem(THEME_NAME_KEY);
-    if (stored === 'nyt' || stored === 'brutalism') {
-      return stored;
+    if (THEME_NAMES.includes(stored as ThemeName)) {
+      return stored as ThemeName;
     }
     return null;
   } catch {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { SiteHeader } from './SiteHeader';
 import { ThemeProvider } from './ThemeProvider';
-import { ThemeToggle } from './ThemeToggle';
+import { ModeToggle } from './ModeToggle';
 
 const meta: Meta<typeof SiteHeader> = {
   title: 'Blog / Layout / SiteHeader',
@@ -31,14 +31,14 @@ export const Default: Story = {
 export const WithThemeToggle: Story = {
   args: {
     siteName: 'Essays',
-    actions: <ThemeToggle />,
+    actions: <ModeToggle />,
   },
 };
 
 export const CustomSiteName: Story = {
   args: {
     siteName: 'My Blog',
-    actions: <ThemeToggle />,
+    actions: <ModeToggle />,
   },
 };
 
@@ -51,6 +51,6 @@ export const CustomLinks: Story = {
       { href: '/projects', label: 'Projects' },
       { href: '/about', label: 'About' },
     ],
-    actions: <ThemeToggle />,
+    actions: <ModeToggle />,
   },
 };

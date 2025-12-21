@@ -1,7 +1,7 @@
 import { Badge } from '@blog/ui';
 import { cn } from '@/lib/utils';
-import { ESSAY_TYPE_LABELS, TOPIC_LABELS } from '@/lib/constants';
-import type { EssayType, Topic } from '@/types/content';
+import { getEssayTypeLabel, getTopicLabel } from '@/lib/constants';
+import type { EssayType, Topic, Language } from '@/types/content';
 
 export interface EssayHeaderProps {
   /** Essay type (guide, deep-dive, opinion, review, narrative) */
@@ -18,18 +18,37 @@ export interface EssayHeaderProps {
   readingTime?: number;
   /** Additional CSS classes */
   className?: string;
+  /** Language for labels (defaults to en) */
+  language?: Language;
 }
 
 /**
  * Format date for display
  */
-function formatDate(dateString: string): string {
+function formatDate(dateString: string, language: Language = 'en'): string {
   const date = new Date(dateString);
+  if (language === 'zh') {
+    return date.toLocaleDateString('zh-CN', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  }
   return date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
   });
+}
+
+/**
+ * Format reading time
+ */
+function formatReadingTime(minutes: number, language: Language = 'en'): string {
+  if (language === 'zh') {
+    return `阅读时间 ${minutes} 分钟`;
+  }
+  return `${minutes} min read`;
 }
 
 /**
@@ -50,6 +69,7 @@ export function EssayHeader({
   date,
   readingTime,
   className,
+  language = 'en',
 }: EssayHeaderProps) {
   return (
     <div className={cn('essay-header space-y-4', className)}>
@@ -57,7 +77,7 @@ export function EssayHeader({
       <div className="flex flex-wrap items-center gap-2">
         {/* Type badge - more prominent */}
         <Badge variant="primary" size="sm" className="uppercase tracking-wide">
-          {ESSAY_TYPE_LABELS[type]}
+          {getEssayTypeLabel(type, language)}
         </Badge>
 
         {/* Separator */}
@@ -70,7 +90,7 @@ export function EssayHeader({
         {/* Topic badges */}
         {topics.map((topic) => (
           <Badge key={topic} variant="outline" size="sm">
-            {TOPIC_LABELS[topic]}
+            {getTopicLabel(topic, language)}
           </Badge>
         ))}
       </div>
@@ -89,11 +109,11 @@ export function EssayHeader({
 
       {/* Date and reading time */}
       <div className="flex items-center gap-2 text-body-sm text-figure-muted">
-        <time dateTime={date}>{formatDate(date)}</time>
+        <time dateTime={date}>{formatDate(date, language)}</time>
         {readingTime && (
           <>
             <span aria-hidden="true">·</span>
-            <span>{readingTime} min read</span>
+            <span>{formatReadingTime(readingTime, language)}</span>
           </>
         )}
       </div>

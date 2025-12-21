@@ -32,11 +32,9 @@ test.describe('Blog: Layout Components', () => {
       const header = page.locator('header');
       await expect(header).toBeVisible();
 
-      // Verify theme toggle button exists (look for aria-label containing "mode")
-      const themeToggle = page.locator(
-        'button[aria-label*="mode"], button[aria-label="Toggle theme"]'
-      );
-      await expect(themeToggle.first()).toBeVisible();
+      // Verify mode toggle dropdown trigger exists (now a dropdown with "Select mode" aria-label)
+      const modeToggle = page.locator('button[aria-label="Select mode"]');
+      await expect(modeToggle.first()).toBeVisible();
     });
   });
 
@@ -66,44 +64,88 @@ test.describe('Blog: Layout Components', () => {
     });
   });
 
-  test.describe('ThemeToggle', () => {
+  test.describe('ModeToggle', () => {
     test('default story renders correctly', async ({ page }) => {
       await page.goto(
-        '/iframe.html?id=blog-layout-themetoggle--default&viewMode=story'
+        '/iframe.html?id=blog-layout-modetoggle--default&viewMode=story'
       );
 
-      // Wait for the component to mount (ThemeToggle has a mounting state)
+      // Wait for the component to mount (ModeToggle has a mounting state)
       await page.waitForTimeout(500);
 
-      // Verify toggle button renders - look for the theme toggle by aria-label
-      const button = page.locator(
-        'button[aria-label*="mode"], button[aria-label="Toggle theme"]'
-      );
+      // Verify dropdown trigger renders - uses "Select mode" aria-label
+      const button = page.locator('button[aria-label="Select mode"]');
       await expect(button.first()).toBeVisible();
 
-      // Verify it has an icon
+      // Verify it has icon (sun or moon - icon-only trigger)
       const icon = button.first().locator('svg');
       await expect(icon).toBeVisible();
     });
 
-    test('toggle changes theme', async ({ page }) => {
+    test('dropdown shows mode options', async ({ page }) => {
       await page.goto(
-        '/iframe.html?id=blog-layout-themetoggle--default&viewMode=story'
+        '/iframe.html?id=blog-layout-modetoggle--default&viewMode=story'
       );
 
       // Wait for the component to mount
       await page.waitForTimeout(500);
 
-      const button = page.locator(
-        'button[aria-label*="mode"], button[aria-label="Toggle theme"]'
-      );
+      const button = page.locator('button[aria-label="Select mode"]');
       await expect(button.first()).toBeVisible();
 
-      // Click to toggle theme
+      // Click to open dropdown
       await button.first().click();
 
-      // The button should still be visible after toggle (we're testing it doesn't crash)
+      // Verify dropdown menu appears with options
+      const menu = page.locator('[role="menu"]');
+      await expect(menu).toBeVisible();
+
+      // Verify Light and Dark options are available
+      await expect(menu.locator('text=Light')).toBeVisible();
+      await expect(menu.locator('text=Dark')).toBeVisible();
+    });
+  });
+
+  test.describe('ThemeSelector', () => {
+    test('default story renders correctly', async ({ page }) => {
+      await page.goto(
+        '/iframe.html?id=blog-layout-themeselector--default&viewMode=story'
+      );
+
+      // Wait for the component to mount
+      await page.waitForTimeout(500);
+
+      // Verify dropdown trigger renders - uses "Select theme" aria-label
+      const button = page.locator('button[aria-label="Select theme"]');
       await expect(button.first()).toBeVisible();
+
+      // Verify it has icon (theme icon - icon-only trigger)
+      const icon = button.first().locator('svg');
+      await expect(icon).toBeVisible();
+    });
+
+    test('dropdown shows theme options', async ({ page }) => {
+      await page.goto(
+        '/iframe.html?id=blog-layout-themeselector--default&viewMode=story'
+      );
+
+      // Wait for the component to mount
+      await page.waitForTimeout(500);
+
+      const button = page.locator('button[aria-label="Select theme"]');
+      await expect(button.first()).toBeVisible();
+
+      // Click to open dropdown
+      await button.first().click();
+
+      // Verify dropdown menu appears with options
+      const menu = page.locator('[role="menu"]');
+      await expect(menu).toBeVisible();
+
+      // Verify all theme options are available
+      await expect(menu.locator('text=Default')).toBeVisible();
+      await expect(menu.locator('text=Brutalism')).toBeVisible();
+      await expect(menu.locator('text=Chinese Aesthetic')).toBeVisible();
     });
   });
 });
