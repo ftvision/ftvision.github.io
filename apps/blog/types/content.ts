@@ -54,6 +54,8 @@ export interface EssayMeta {
   draft?: boolean;
   /** Calculated reading time in minutes */
   readingTime?: number;
+  /** Slug of the translation (links to translated version) */
+  translationOf?: string;
 }
 
 /**
@@ -92,6 +94,7 @@ export interface Frontmatter {
   topics: Topic[];
   lang: Language;
   draft?: boolean;
+  translationOf?: string;
 }
 
 /**
@@ -145,6 +148,9 @@ export function validateFrontmatter(data: Record<string, unknown>): Frontmatter 
   if (data.draft !== undefined && typeof data.draft !== 'boolean') {
     errors.push('draft must be a boolean');
   }
+  if (data.translationOf !== undefined && typeof data.translationOf !== 'string') {
+    errors.push('translationOf must be a string');
+  }
 
   if (errors.length > 0) {
     throw new Error(`Invalid frontmatter:\n${errors.join('\n')}`);
@@ -158,5 +164,6 @@ export function validateFrontmatter(data: Record<string, unknown>): Frontmatter 
     topics: data.topics as Topic[],
     lang: (data.lang as Language) ?? 'en',
     draft: data.draft as boolean | undefined,
+    translationOf: data.translationOf as string | undefined,
   };
 }

@@ -5,8 +5,11 @@ import {
   SiteHeader,
   SiteFooter,
   ThemeProvider,
-  ThemeToggle,
+  ModeToggle,
+  ThemeSelector,
+  LanguageToggle,
 } from '../components/layout';
+import { LanguageProvider } from '@/lib/i18n';
 
 export const metadata: Metadata = {
   title: {
@@ -27,6 +30,19 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
+/**
+ * Header actions component - Language, Theme, and Mode selectors
+ */
+function HeaderActions() {
+  return (
+    <div className="flex items-center gap-1">
+      <LanguageToggle />
+      <ThemeSelector />
+      <ModeToggle />
+    </div>
+  );
+}
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" data-theme="nyt" data-mode="light" suppressHydrationWarning>
@@ -45,6 +61,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     document.documentElement.dataset.mode = 'dark';
                   }
                   document.documentElement.dataset.theme = theme;
+
+                  // Language detection
+                  const lang = localStorage.getItem('language-preference');
+                  if (lang) {
+                    document.documentElement.lang = lang;
+                    document.documentElement.dataset.language = lang;
+                  }
                 } catch (e) {}
               })();
             `,
@@ -53,9 +76,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body className="flex min-h-screen flex-col bg-ground-primary text-figure-primary antialiased">
         <ThemeProvider>
-          <SiteHeader actions={<ThemeToggle />} />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
+          <LanguageProvider>
+            <SiteHeader actions={<HeaderActions />} />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

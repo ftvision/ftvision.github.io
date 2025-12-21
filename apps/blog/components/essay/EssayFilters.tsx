@@ -1,11 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { Button, Badge } from '@blog/ui';
 import { cn } from '@/lib/utils';
-import { ESSAY_TYPES, ESSAY_TYPE_LABELS, TOPICS, TOPIC_LABELS } from '@/lib/constants';
-import type { EssayType, Topic } from '@/types/content';
+import { ESSAY_TYPES, TOPICS, getEssayTypeLabels, getTopicLabels } from '@/lib/constants';
+import type { EssayType, Topic, Language } from '@/types/content';
 
 export interface EssayFiltersProps {
   /** Currently selected type filter */
@@ -14,23 +14,9 @@ export interface EssayFiltersProps {
   selectedTopics?: Topic[];
   /** Additional CSS classes */
   className?: string;
+  /** Language for labels (defaults to en) */
+  language?: Language;
 }
-
-/**
- * Essay type options for filtering (with "All" option)
- */
-const essayTypeOptions: { value: EssayType | null; label: string }[] = [
-  { value: null, label: 'All' },
-  ...ESSAY_TYPES.map((type) => ({ value: type, label: ESSAY_TYPE_LABELS[type] })),
-];
-
-/**
- * Topic options for filtering
- */
-const topicOptions = TOPICS.map((topic) => ({
-  value: topic,
-  label: TOPIC_LABELS[topic],
-}));
 
 /**
  * EssayFilters - Filter controls for essay listings
@@ -44,9 +30,29 @@ export function EssayFilters({
   selectedType = null,
   selectedTopics = [],
   className,
+  language = 'en',
 }: EssayFiltersProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  // Get localized labels
+  const typeLabels = getEssayTypeLabels(language);
+  const topicLabelMap = getTopicLabels(language);
+
+  // Build options with localized labels
+  const essayTypeOptions: { value: EssayType | null; label: string }[] = [
+    { value: null, label: language === 'zh' ? '全部' : 'All' },
+    ...ESSAY_TYPES.map((type) => ({ value: type, label: typeLabels[type] })),
+  ];
+
+  const topicOptions = TOPICS.map((topic) => ({
+    value: topic,
+    label: topicLabelMap[topic],
+  }));
+
+  // Determine base path from current pathname
+  const basePath = pathname.startsWith('/zh') ? '/zh/essays' : '/essays';
 
   /**
    * Update URL with new filter values
@@ -71,11 +77,11 @@ export function EssayFilters({
 
       // Navigate with new params
       const queryString = params.toString();
-      router.push(queryString ? `/essays?${queryString}` : '/essays', {
+      router.push(queryString ? `${basePath}?${queryString}` : basePath, {
         scroll: false,
       });
     },
-    [router, searchParams]
+    [router, searchParams, basePath]
   );
 
   /**
@@ -103,12 +109,15 @@ export function EssayFilters({
   };
 
   const hasActiveFilters = selectedType !== null || selectedTopics.length > 0;
+  const typeLabel = language === 'zh' ? '类型:' : 'Type:';
+  const topicsLabel = language === 'zh' ? '主题:' : 'Topics:';
+  const clearLabel = language === 'zh' ? '清除筛选' : 'Clear all filters';
 
   return (
     <div className={cn('essay-filters space-y-4', className)} data-has-filters={hasActiveFilters}>
       {/* Type filter - button group */}
       <div className="essay-filters-type flex flex-wrap items-center gap-2">
-        <span className="essay-filters-label text-body-sm text-figure-muted">Type:</span>
+        <span className="essay-filters-label text-body-sm text-figure-muted">{typeLabel}</span>
         <div
           className="essay-filters-type-group flex flex-wrap gap-1"
           role="group"
@@ -136,7 +145,7 @@ export function EssayFilters({
 
       {/* Topic filter - toggleable badges */}
       <div className="essay-filters-topics flex flex-wrap items-center gap-2">
-        <span className="essay-filters-label text-body-sm text-figure-muted">Topics:</span>
+        <span className="essay-filters-label text-body-sm text-figure-muted">{topicsLabel}</span>
         <div
           className="essay-filters-topics-group flex flex-wrap gap-2"
           role="group"
@@ -175,7 +184,7 @@ export function EssayFilters({
             onClick={handleClearAll}
             className="essay-filters-clear-btn text-figure-muted hover:text-figure-primary"
           >
-            Clear all filters
+            {clearLabel}
           </Button>
         </div>
       )}

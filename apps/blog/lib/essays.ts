@@ -14,6 +14,7 @@ import {
   type EssayMeta,
   type EssayType,
   type Topic,
+  type Language,
 } from '@/types/content';
 
 /** Directory where essay MDX files are stored */
@@ -25,6 +26,8 @@ const ESSAYS_DIRECTORY = path.join(process.cwd(), 'content', 'essays');
 export interface GetEssaysOptions {
   /** Include draft essays (default: false in production, true in development) */
   includeDrafts?: boolean;
+  /** Filter by language */
+  language?: Language;
 }
 
 /**
@@ -50,9 +53,13 @@ export function getEssaySlugs(): string[] {
  * Get all essays with metadata
  *
  * Returns essays sorted by date (newest first).
+ * Optionally filtered by language.
  */
 export function getAllEssays(options: GetEssaysOptions = {}): EssayMeta[] {
-  const { includeDrafts = process.env.NODE_ENV === 'development' } = options;
+  const {
+    includeDrafts = process.env.NODE_ENV === 'development',
+    language,
+  } = options;
 
   const slugs = getEssaySlugs();
   const essays: EssayMeta[] = [];
@@ -62,6 +69,10 @@ export function getAllEssays(options: GetEssaysOptions = {}): EssayMeta[] {
     if (essay) {
       // Filter drafts based on options
       if (!includeDrafts && essay.draft) {
+        continue;
+      }
+      // Filter by language if specified
+      if (language && essay.lang !== language) {
         continue;
       }
       essays.push(essay);
@@ -110,7 +121,7 @@ export function getEssayBySlug(slug: string): Essay | null {
  *
  * Useful for listing essays without loading full content.
  */
-function getEssayMeta(slug: string): EssayMeta | null {
+export function getEssayMeta(slug: string): EssayMeta | null {
   const filePath = path.join(ESSAYS_DIRECTORY, `${slug}.mdx`);
 
   try {
@@ -158,4 +169,60 @@ export function getRecentEssays(
   options: GetEssaysOptions = {}
 ): EssayMeta[] {
   return getAllEssays(options).slice(0, count);
+}
+
+/**
+ * Get essays filtered by language
+ */
+export function getEssaysByLanguage(
+  lang: Language,
+  options: GetEssaysOptions = {}
+): EssayMeta[] {
+  return getAllEssays({ ...options, language: lang });
+}
+
+/**
+ * Get the translation of an essay (if it exists)
+ *
+ * Looks for an essay that:
+ * 1. Has a translationOf field pointing to this slug
+ * 2. OR is pointed to by this essay's translationOf field
+ *
+ * Returns null if no translation exists.
+ */
+export function getTranslation(
+  slug: string,
+  targetLang: Language
+): EssayMeta | null {
+  const currentEssay = getEssayMeta(slug);
+  if (!currentEssay) return null;
+
+  // If current essay's lang matches target, no translation needed
+  if (currentEssay.lang === targetLang) return currentEssay;
+
+  // Check if current essay has a translationOf field pointing to target
+  if (currentEssay.translationOf) {
+    const translation = getEssayMeta(currentEssay.translationOf);
+    if (translation && translation.lang === targetLang) {
+      return translation;
+    }
+  }
+
+  // Search all essays for one that points to this slug and matches target language
+  const allEssays = getAllEssays({ includeDrafts: true });
+  for (const essay of allEssays) {
+    if (essay.translationOf === slug && essay.lang === targetLang) {
+      return essay;
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Get all essay slugs for a specific language (for static path generation)
+ */
+export function getEssaySlugsByLanguage(lang: Language): string[] {
+  const essays = getEssaysByLanguage(lang);
+  return essays.map((essay) => essay.slug);
 }

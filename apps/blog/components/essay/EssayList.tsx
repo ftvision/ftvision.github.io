@@ -14,6 +14,8 @@ export interface EssayListProps {
   className?: string;
   /** Message to show when no essays */
   emptyMessage?: string;
+  /** Base path for essay links (defaults to /essays) */
+  basePath?: string;
 }
 
 /**
@@ -29,6 +31,7 @@ export function EssayList({
   layout = 'grid',
   className,
   emptyMessage = 'No essays found.',
+  basePath = '/essays',
 }: EssayListProps) {
   if (essays.length === 0) {
     return (
@@ -62,6 +65,7 @@ export function EssayList({
             date={essay.date}
             readingTime={essay.readingTime}
             variant={variant}
+            basePath={basePath}
           />
         </div>
       ))}
