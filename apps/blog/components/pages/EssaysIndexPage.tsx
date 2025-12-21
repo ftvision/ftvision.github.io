@@ -46,8 +46,8 @@ export function EssaysIndexPage({
   const basePath = language === 'zh' ? '/zh/essays' : '/essays';
   const t = (key: Parameters<typeof translate>[1]) => translate(language, key);
 
-  // Get all essays for this language
-  const allEssays = getAllEssays({ language });
+  // Get all essays for this language (exclude drafts)
+  const allEssays = getAllEssays({ language, includeDrafts: false });
 
   // Filter essays based on selected filters
   let filteredEssays = allEssays;

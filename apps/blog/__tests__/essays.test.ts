@@ -5,6 +5,9 @@ import {
   getEssaySlugs,
   getEssaysByType,
   getEssaysByTopic,
+  getEssaysByLanguage,
+  getTranslation,
+  getEssaySlugsByLanguage,
 } from '@/lib/essays';
 import type { EssayMeta } from '@/types/content';
 
@@ -268,6 +271,193 @@ Content`;
       const aiEssays = getEssaysByTopic('ai');
       expect(aiEssays).toHaveLength(1);
       expect(aiEssays[0].topics).toContain('ai');
+    });
+  });
+
+  describe('getEssaysByLanguage', () => {
+    const mockEnglishEssay = `---
+title: English Essay
+description: An English essay
+date: 2024-01-15
+type: guide
+topics: ['technical']
+lang: en
+---
+Content`;
+
+    const mockChineseEssay = `---
+title: Chinese Essay
+description: A Chinese essay
+date: 2024-01-10
+type: narrative
+topics: ['career']
+lang: zh
+---
+Content`;
+
+    beforeEach(() => {
+      vi.mocked(fs.readdirSync).mockReturnValue([
+        'english-essay.mdx',
+        'chinese-essay.mdx',
+      ] as unknown as ReturnType<typeof fs.readdirSync>);
+
+      vi.mocked(fs.readFileSync).mockImplementation((path) => {
+        if (String(path).includes('english')) {
+          return mockEnglishEssay;
+        }
+        return mockChineseEssay;
+      });
+    });
+
+    it('filters essays by English language', () => {
+      const essays = getEssaysByLanguage('en');
+      expect(essays).toHaveLength(1);
+      expect(essays[0].lang).toBe('en');
+      expect(essays[0].title).toBe('English Essay');
+    });
+
+    it('filters essays by Chinese language', () => {
+      const essays = getEssaysByLanguage('zh');
+      expect(essays).toHaveLength(1);
+      expect(essays[0].lang).toBe('zh');
+      expect(essays[0].title).toBe('Chinese Essay');
+    });
+  });
+
+  describe('getEssaySlugsByLanguage', () => {
+    beforeEach(() => {
+      vi.mocked(fs.readdirSync).mockReturnValue([
+        'english-essay.mdx',
+        'chinese-essay.mdx',
+      ] as unknown as ReturnType<typeof fs.readdirSync>);
+
+      vi.mocked(fs.readFileSync).mockImplementation((path) => {
+        if (String(path).includes('english')) {
+          return `---
+title: English Essay
+description: An English essay
+date: 2024-01-15
+type: guide
+topics: ['technical']
+lang: en
+---
+Content`;
+        }
+        return `---
+title: Chinese Essay
+description: A Chinese essay
+date: 2024-01-10
+type: narrative
+topics: ['career']
+lang: zh
+---
+Content`;
+      });
+    });
+
+    it('returns slugs for English essays only', () => {
+      const slugs = getEssaySlugsByLanguage('en');
+      expect(slugs).toEqual(['english-essay']);
+    });
+
+    it('returns slugs for Chinese essays only', () => {
+      const slugs = getEssaySlugsByLanguage('zh');
+      expect(slugs).toEqual(['chinese-essay']);
+    });
+  });
+
+  describe('getTranslation', () => {
+    const mockEnglishEssay = `---
+title: English Article
+description: Original English
+date: 2024-01-15
+type: guide
+topics: ['technical']
+lang: en
+---
+Content`;
+
+    const mockChineseTranslation = `---
+title: Chinese Translation
+description: Translation of the English article
+date: 2024-01-10
+type: guide
+topics: ['technical']
+lang: zh
+translationOf: english-article
+---
+Content`;
+
+    beforeEach(() => {
+      vi.mocked(fs.readdirSync).mockReturnValue([
+        'english-article.mdx',
+        'chinese-translation.mdx',
+      ] as unknown as ReturnType<typeof fs.readdirSync>);
+
+      vi.mocked(fs.existsSync).mockReturnValue(true);
+
+      vi.mocked(fs.readFileSync).mockImplementation((path) => {
+        if (String(path).includes('english-article')) {
+          return mockEnglishEssay;
+        }
+        return mockChineseTranslation;
+      });
+    });
+
+    it('finds Chinese translation from English essay', () => {
+      const translation = getTranslation('english-article', 'zh');
+      expect(translation).not.toBeNull();
+      expect(translation?.lang).toBe('zh');
+      expect(translation?.title).toBe('Chinese Translation');
+    });
+
+    it('finds English essay from Chinese translation (via translationOf)', () => {
+      const translation = getTranslation('chinese-translation', 'en');
+      expect(translation).not.toBeNull();
+      expect(translation?.lang).toBe('en');
+      expect(translation?.title).toBe('English Article');
+    });
+
+    it('returns same essay if target lang matches current', () => {
+      const essay = getTranslation('english-article', 'en');
+      expect(essay).not.toBeNull();
+      expect(essay?.slug).toBe('english-article');
+    });
+
+    it('returns null if no translation exists', () => {
+      vi.mocked(fs.readdirSync).mockReturnValue([
+        'standalone-essay.mdx',
+      ] as unknown as ReturnType<typeof fs.readdirSync>);
+
+      vi.mocked(fs.readFileSync).mockReturnValue(`---
+title: Standalone Essay
+description: No translation
+date: 2024-01-15
+type: guide
+topics: ['technical']
+lang: en
+---
+Content`);
+
+      const translation = getTranslation('standalone-essay', 'zh');
+      expect(translation).toBeNull();
+    });
+
+    it('returns null for non-existent essay', () => {
+      // Reset mocks and set up for a non-existent file
+      vi.mocked(fs.readdirSync).mockReturnValue([
+        'english-article.mdx',
+      ] as unknown as ReturnType<typeof fs.readdirSync>);
+
+      vi.mocked(fs.readFileSync).mockImplementation((path) => {
+        if (String(path).includes('english-article')) {
+          return mockEnglishEssay;
+        }
+        throw new Error('File not found');
+      });
+
+      const translation = getTranslation('non-existent', 'zh');
+      expect(translation).toBeNull();
     });
   });
 });

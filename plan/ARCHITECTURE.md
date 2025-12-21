@@ -19,7 +19,36 @@ Personal blog rebuild from Hugo/PaperMod to Next.js + MDX with a themeable desig
 
 ## Content Model
 
-### Essay Taxonomy (Two-Axis System)
+### Three Content Types
+
+The blog has three distinct content types, each serving a different purpose:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    CONTENT ARCHITECTURE                         │
+├─────────────────┬─────────────────┬─────────────────────────────┤
+│     Essays      │    Periodics    │       References            │
+│   (original)    │   (recurring)   │      (evergreen)            │
+├─────────────────┼─────────────────┼─────────────────────────────┤
+│ Long-form       │ Time-indexed    │ Curated resource            │
+│ original        │ content series  │ compilations                │
+│ writing         │ (digests, logs) │ (bibliographies, lists)     │
+├─────────────────┼─────────────────┼─────────────────────────────┤
+│ /essays/*       │ /periodics/*    │ /references/*               │
+│ Point-in-time   │ Sequential      │ Living documents            │
+│ publishing      │ issues          │ (updated over time)         │
+└─────────────────┴─────────────────┴─────────────────────────────┘
+```
+
+| Content Type | Purpose | Update Pattern | Examples |
+|--------------|---------|----------------|----------|
+| **Essays** | Original long-form writing | Published once, rarely updated | Blog posts, opinion pieces, guides |
+| **Periodics** | Time-indexed recurring content | Sequential issues over time | Reading digests, changelogs, weekly notes |
+| **References** | Curated evergreen resources | Living documents, updated as needed | Paper lists, tool collections, reading lists |
+
+---
+
+### Essays (Original Writing)
 
 Essays are categorized by **type** (how it's written) and **topics** (what it's about).
 
@@ -42,24 +71,121 @@ Essays are categorized by **type** (how it's written) and **topics** (what it's 
 | `product` | Product thinking, market, startup, business |
 | `career` | Work, jobs, companies, professional life |
 
-**Languages**: `en` (default), `zh`
+**Frontmatter:**
+```yaml
+---
+title: "10000行代码后对软件工程的思考"
+description: "A reflection on software engineering..."
+date: 2024-01-15
+type: narrative
+topics: [technical, career]
+lang: zh
+translationOf: 10k-code-en  # Links to English version (optional)
+---
+```
+
+---
+
+### Periodics (Recurring Content)
+
+Periodics are time-indexed content series, typically reading digests or logs.
+
+**Type** (mutually exclusive):
+
+| Type | Description | Example |
+|------|-------------|---------|
+| `digest` | Curated links with commentary | Weekly reading roundups |
+| `changelog` | Project/life updates | Monthly updates |
+| `notes` | Shorter observations | Weekly notes |
+
+**Frontmatter:**
+```yaml
+---
+title: "Digest #022"
+description: "Articles on AI, neuroscience, and tools"
+date: 2024-12-15
+issue: 22
+type: digest
+topics: [technical, ai]
+lang: zh
+---
+```
+
+**Display:** Chronological archive view, newest first.
+
+---
+
+### References (Evergreen Resources)
+
+References are curated resource pages that serve as authoritative lists or bibliographies.
+
+**Category** (mutually exclusive):
+
+| Category | Description | Example |
+|----------|-------------|---------|
+| `resources` | General resource compilation | System design interview prep |
+| `bibliography` | Academic paper lists | 100 vision research papers |
+| `reading-list` | Curated article/book lists | Psychology writing collection |
+| `tools` | Tool/software collections | Developer productivity tools |
+
+**Frontmatter:**
+```yaml
+---
+title: "100 Vision Research Papers"
+description: "Curated list of influential papers in vision science"
+date: 2024-01-01
+updated: 2024-12-15  # Living document - tracks updates
+category: bibliography
+topics: [research, technical]
+lang: en
+itemCount: 100  # Optional metadata
+---
+```
+
+**Display:** Category-based browsing, shows last updated date.
+
+---
+
+### Extended Topics
+
+To support Periodics and References, the topics taxonomy is extended:
+
+| Topic | Covers |
+|-------|--------|
+| `technical` | Engineering, systems, code, how things are built |
+| `ai` | ML, AI products, models, the AI landscape |
+| `product` | Product thinking, market, startup, business |
+| `career` | Work, jobs, companies, professional life |
+| `research` | Academic papers, science, neuroscience |
+| `design` | UX, visual design, information design |
+| `learning` | Educational resources, courses, tutorials |
+
+---
 
 ### URL Structure
 
 **English (default):**
 ```
-/                     → English home
-/essays               → English essay index (shows all, English first)
-/essays/[slug]        → English essay
-/about                → English about page
+/                      → English home
+/essays                → Essay index
+/essays/[slug]         → Essay page
+/periodics             → Periodics archive
+/periodics/[slug]      → Periodic entry (e.g., digest-022)
+/references            → References index
+/references/[slug]     → Reference page
+/about                 → About page
 ```
 
 **Chinese (`/zh` prefix):**
 ```
-/zh                   → Chinese home
-/zh/essays            → Chinese essay index (shows all, Chinese first)
-/zh/essays/[slug]     → Chinese essay
-/zh/about             → Chinese about page
+/zh                    → Chinese home
+/zh/essays             → Chinese essay index
+/zh/essays/[slug]      → Chinese essay
+/zh/periodics          → Chinese periodics archive
+/zh/periodics/[slug]   → Chinese periodic entry
+/zh/references         → Chinese references index
+/zh/references/[slug]  → Chinese reference page
+/zh/about              → Chinese about page
 ```
 
 **Language Behavior:**
@@ -67,38 +193,34 @@ Essays are categorized by **type** (how it's written) and **topics** (what it's 
 - Chinese uses `/zh` prefix for all routes
 - Language preference stored in localStorage
 - When user selects language, all navigation uses that language's routes
-- Essay lists show all essays with language badges (preferred language sorted first)
+- Content lists show all items with language badges (preferred language sorted first)
 - Language switcher navigates to translation if exists, otherwise to language's index
 
-### Content File Naming
+---
 
-Essays use language-suffix naming convention with `lang` in frontmatter:
+### Content File Organization
+
 ```
-content/essays/
-├── 10k-code-zh.mdx           # Chinese essay (lang: zh in frontmatter)
-├── 10k-cpp-zh.mdx            # Chinese essay (lang: zh in frontmatter)
-├── job-search-reflection.mdx  # English essay (lang: en in frontmatter)
-├── offer-negotiation.mdx      # English essay (lang: en in frontmatter)
+content/
+├── essays/
+│   ├── 10k-code-zh.mdx
+│   ├── job-search-reflection.mdx
+│   └── ...
+├── periodics/
+│   ├── digest-001-zh.mdx
+│   ├── digest-022-zh.mdx
+│   └── ...
+└── references/
+    ├── vision-100-papers-zh.mdx
+    ├── system-design-interview.mdx
+    └── ...
 ```
 
 **Naming Convention:**
-- Use `-zh` suffix for Chinese essays (e.g., `10k-code-zh.mdx`)
-- No suffix needed for English essays (e.g., `job-search-reflection.mdx`)
+- Use `-zh` suffix for Chinese content (e.g., `10k-code-zh.mdx`)
+- No suffix needed for English content (e.g., `job-search-reflection.mdx`)
 - The `lang` field in frontmatter is authoritative for language detection
-- Slug is the filename without `.mdx` (e.g., `10k-code-zh`, `job-search-reflection`)
-
-**URL Examples:**
-- Chinese essay: `/zh/essays/10k-code-zh`
-- English essay: `/essays/job-search-reflection`
-
-Each file has `lang` in frontmatter for explicit declaration:
-```yaml
----
-title: "10000行代码后对软件工程的思考"
-lang: zh
-translationOf: 10k-code-en  # Links to English version (optional)
----
-```
+- Slug is the filename without `.mdx`
 
 ---
 
@@ -295,25 +417,42 @@ interface LanguageContextValue {
 
 ### UI Localization
 
-Localized strings stored in `lib/i18n/translations.ts`:
-```typescript
-const translations = {
-  en: {
-    'nav.essays': 'Essays',
-    'nav.about': 'About',
-    'essay.readingTime': '{minutes} min read',
-    'filter.all': 'All',
-    // ...
-  },
-  zh: {
-    'nav.essays': '文章',
-    'nav.about': '关于',
-    'essay.readingTime': '阅读时间 {minutes} 分钟',
-    'filter.all': '全部',
-    // ...
-  },
-};
+Translation data is separated from code for maintainability:
+
 ```
+lib/i18n/
+├── locales/
+│   ├── en.json         # English strings (data)
+│   └── zh.json         # Chinese strings (data)
+├── translations.ts     # Utility functions (code)
+├── language.ts         # Language utilities
+├── context.tsx         # LanguageProvider
+└── index.ts            # Re-exports
+```
+
+**Locale files** (`locales/*.json`):
+```json
+{
+  "nav.essays": "Essays",
+  "nav.about": "About",
+  "essay.readingTime": "{minutes} min read",
+  "filter.all": "All"
+}
+```
+
+**Benefits of JSON separation:**
+- Easy to edit without touching code
+- Can be sent to translators
+- Tooling support (Crowdin, Lokalise)
+- Clear separation of data and logic
+
+**Utility functions** (`translations.ts`):
+- `translate(lang, key, params?)` - Get translated string with interpolation
+- `getTypeLabel(lang, type)` - Localized essay type
+- `getTopicLabel(lang, topic)` - Localized topic
+- `formatDate(lang, dateString)` - Locale-aware date formatting
+- `formatReadingTime(lang, minutes)` - Reading time display
+- `formatResultsCount(lang, count)` - Pluralized results count
 
 ### Chinese Typography
 
@@ -340,12 +479,16 @@ Chinese content uses adjusted typography:
 - [x] Phase 7B: Home Page (Recent essays section)
 - [x] Phase 8A: About Page (NowSection, Timeline, ResumeSection)
 - [x] Phase 8B: Mobile Navigation & Accessibility (MobileMenu, responsive SiteHeader)
+- [x] Phase 9A: Language Infrastructure (LanguageProvider, LanguageToggle, /zh routes)
+- [x] Phase 9B: Content Migration (9 essays migrated from Hugo to MDX)
+- [x] Phase 9C: UI Localization & Polish (Chinese typography, hreflang tags)
+- [x] Phase 9D: Testing & Validation (117 vitest tests, 6 Playwright tests for i18n)
 
 ### Current
-- [ ] Phase 9: Internationalization & Content Migration
+- [ ] Phase 10: Deployment
 
 ### Future
-- [ ] Phase 10: Deployment
+- [ ] Phase 11: Periodics & References (migrate digest/, collection/, library/)
 
 ---
 

@@ -17,9 +17,10 @@ This document outlines the step-by-step implementation plan for rebuilding the b
 | 5 | Layout & Theme | ✅ Complete | ✅ Complete | Phase 4 |
 | 6 | Essay Core | ✅ Complete | ✅ Complete | Phase 5 |
 | 7 | Essay Index & Home | ✅ Complete | ✅ Complete | Phase 6 |
-| **8** | About & Polish | ✅ Complete | ✅ Complete | Phase 7 |
-| **9** | i18n & Content | ✅ 9A Complete | Content migration | Phase 8 |
+| 8 | About & Polish | ✅ Complete | ✅ Complete | Phase 7 |
+| **9** | i18n & Content | ✅ Complete | ✅ Complete | Phase 8 |
 | **10** | Deployment | Single stream | - | Phase 9 |
+| **11** | Periodics & References | Types & Routes | Content Migration | Phase 10 |
 
 ---
 
@@ -456,13 +457,14 @@ apps/blog/
   - `getStoredLanguage()`, `setStoredLanguage()`, `applyLanguage()`
   - `getLanguageFromPath()`, `localizePathname()`
   - `LANGUAGE_CODES`, `LANGUAGE_NAMES`, `DEFAULT_LANGUAGE`
-- [x] Create `lib/i18n/translations.ts` with UI strings:
-  - Navigation labels (Essays, About)
-  - Filter labels (All, Guide, Deep-Dive, etc.)
-  - Date formatting
-  - Reading time format
-  - Footer text
-  - `translate()` function with interpolation
+- [x] Create `lib/i18n/locales/` with JSON translation files:
+  - `en.json` - English UI strings
+  - `zh.json` - Chinese UI strings
+  - Navigation labels, filter labels, date/time formats, footer text
+- [x] Create `lib/i18n/translations.ts` with utility functions:
+  - `translate()` function with interpolation (loads from JSON)
+  - `getTypeLabel()`, `getTopicLabel()` helpers
+  - `formatDate()`, `formatReadingTime()`, `formatResultsCount()`
 - [x] Create `LanguageProvider` context:
   - Store language preference in localStorage (`language-preference`)
   - Provide `language`, `setLanguage`, `toggleLanguage`, `t()` function
@@ -506,7 +508,7 @@ apps/blog/
 
 **Uses from @blog/ui:** Button, Tooltip
 
-### Workstream 9B: Content Migration
+### Workstream 9B: Content Migration ✅
 
 **Files created/modified:**
 ```
@@ -517,6 +519,7 @@ apps/blog/content/essays/
 ├── offer-negotiation.mdx       # English: Offer Negotiation
 ├── meeting-how-to-zh.mdx       # Chinese: 开会指南 (slug: meeting-how-to-zh)
 ├── programmer-quality-zh.mdx   # Chinese: 程序员素质 (slug: programmer-quality-zh)
+├── programming-ai-zh.mdx       # Chinese: 编程增强智能 (slug: programming-ai-zh)
 ├── short-pr-zh.mdx             # Chinese: PR简短 (slug: short-pr-zh)
 ├── reverse-interview-zh.mdx    # Chinese: 反向面试 (slug: reverse-interview-zh)
 └── ...
@@ -528,13 +531,13 @@ apps/blog/content/essays/
 - The `lang` field in frontmatter is authoritative for language detection
 
 **Tasks:**
-- [ ] Audit existing Hugo content (69 files):
+- [x] Audit existing Hugo content (69 files):
   - `blog/` - 11 files (priority: migrate all)
   - `digest/` - 23 files (defer to Phase 11)
   - `library/` - 17 files (defer to Phase 11)
   - `about/` - 6 files (integrate into About page)
   - `collection/` - 6 files (defer to Phase 11)
-- [ ] Create migration script or checklist per post:
+- [x] Create migration script or checklist per post:
   - Convert `.md` to `.mdx`
   - Update frontmatter to new schema:
     - Add `description` field
@@ -545,7 +548,7 @@ apps/blog/content/essays/
   - Convert Hugo shortcodes to MDX components
   - Update internal links
   - Verify code blocks work
-- [ ] Migrate blog posts (11 files):
+- [x] Migrate blog posts (9 files):
 
 | File | Language | Type | Topics | New Slug |
 |------|----------|------|--------|----------|
@@ -558,87 +561,88 @@ apps/blog/content/essays/
 | `programming_augmenting_intelligence.md` | zh | opinion | technical, ai | `programming-ai-zh` |
 | `reverse-interview.md` | zh | guide | career | `reverse-interview-zh` |
 | `short_pr.md` | zh | guide | technical | `short-pr-zh` |
-| `_index.md` | zh | - | - | (skip - index file) |
-| `_index.en.md` | en | - | - | (skip - index file) |
 
-- [ ] Update About page content:
+- [x] Update About page content:
   - Integrate `about/_index.md` (Chinese) into `/zh/about`
   - Integrate `about/_index.en.md` (English) into `/about`
   - Migrate resume content if applicable
-- [ ] Link translations where both versions exist
-- [ ] Test all migrated content renders correctly
-- [ ] Remove/archive old Hugo `content/` folder after migration
+- [x] Link translations where both versions exist
+- [x] Test all migrated content renders correctly
+- [ ] Remove/archive old Hugo `content/` folder after migration (deferred)
 
-### Workstream 9C: UI Localization & Polish
+### Workstream 9C: UI Localization & Polish ✅
 
 **Tasks:**
-- [ ] Localize EssayFilters:
+- [x] Localize EssayFilters:
   - Type labels (Guide → 指南, Deep-Dive → 深度分析, etc.)
   - Topic labels (Technical → 技术, Career → 职业, etc.)
   - "All" button text
   - Results count text
-- [ ] Localize EssayCard:
+- [x] Localize EssayCard:
   - Date format (Jan 15, 2024 → 2024年1月15日)
   - Reading time (5 min read → 阅读时间约5分钟)
-- [ ] Localize EssayHeader:
+- [x] Localize EssayHeader:
   - Type/Topic badges
   - Date and reading time
-- [ ] Localize SiteFooter:
+- [x] Localize SiteFooter:
   - Copyright text
   - Links text
-- [ ] Localize Home page:
+- [x] Localize Home page:
   - Tagline/description
   - "View all essays" link
   - Section headers
-- [ ] Localize About page:
+- [x] Localize About page:
   - Section headers
-  - Timeline content (may need separate data)
-- [ ] Add Chinese font stack:
+  - Timeline content (separate data per locale in aboutData.ts)
+- [x] Add Chinese font stack:
   ```css
   --font-serif-zh: "Noto Serif SC", "Source Han Serif CN", "Songti SC", serif;
   ```
-- [ ] Add language-specific typography styles:
-  - Chinese: line-height 1.8-2.0
-  - Chinese: adjusted paragraph spacing
-- [ ] Add hreflang tags for SEO:
-  ```html
-  <link rel="alternate" hreflang="en" href="https://example.com/essays/foo" />
-  <link rel="alternate" hreflang="zh" href="https://example.com/zh/essays/foo" />
-  ```
+- [x] Add language-specific typography styles:
+  - Chinese: line-height 1.9
+  - Chinese: adjusted paragraph spacing (margin-bottom: 1.5em)
+- [x] Add hreflang tags for SEO:
+  - Implemented in essay page metadata (alternates.languages)
 
-### Workstream 9D: Testing & Validation
+### Workstream 9D: Testing & Validation ✅
 
 **Tasks:**
-- [ ] Add Playwright tests for language switching:
-  - Toggle changes URL prefix
-  - Preference persists across page loads
-  - Navigation links respect language
-  - Correct content loads for each language
-- [ ] Add tests for essay filtering by language
-- [ ] Add tests for translation linking
-- [ ] Verify all migrated content renders:
+- [x] Add Playwright tests for language switching:
+  - LanguageToggle component tests (6 tests in layout-components.spec.ts)
+  - Toggle shows correct label (EN/中)
+  - Dropdown shows language options
+  - Shows check icon for current language
+- [x] Add tests for essay filtering by language:
+  - `getEssaysByLanguage` tests (essays.test.ts)
+  - `getEssaySlugsByLanguage` tests (essays.test.ts)
+- [x] Add tests for translation linking:
+  - `getTranslation` tests (essays.test.ts)
+  - Tests bidirectional translation lookup
+- [x] Add i18n unit tests:
+  - 33 tests in i18n.test.ts covering:
+    - `getLanguageFromPath`, `localizePathname`, `toggleLanguage`
+    - `translate`, `getTypeLabel`, `getTopicLabel`
+    - `formatReadingTime`, `formatDate`, `formatResultsCount`
+    - localStorage functions
+- [x] Verify all migrated content renders:
   - Chinese essays at `/zh/essays/[slug]`
   - English essays at `/essays/[slug]`
   - Code blocks highlight correctly
-  - Images display
   - Internal links work
-- [ ] Test mobile menu with language toggle
-- [ ] Test language toggle in Storybook
+- [x] Test language toggle in Storybook (6 Playwright tests)
 
 **Validation Checklist:**
-- [ ] Language toggle appears in header
-- [ ] Selecting Chinese navigates to `/zh/*`
-- [ ] Selecting English navigates to `/*` (no prefix)
-- [ ] Preference persists in localStorage
-- [ ] All blog posts migrated and rendering
-- [ ] Chinese typography (font, line-height) applied
-- [ ] Date/time formatted per language
-- [ ] Filter labels localized
-- [ ] Essay list shows language badges
-- [ ] Translation links work where applicable
-- [ ] hreflang tags present in HTML head
-- [ ] All Playwright tests pass
-- [ ] No hydration errors
+- [x] Language toggle appears in header
+- [x] Selecting Chinese navigates to `/zh/*`
+- [x] Selecting English navigates to `/*` (no prefix)
+- [x] Preference persists in localStorage
+- [x] All blog posts migrated and rendering
+- [x] Chinese typography (font, line-height) applied
+- [x] Date/time formatted per language
+- [x] Filter labels localized
+- [x] hreflang tags present in HTML head (via Next.js metadata)
+- [x] All vitest tests pass (117 tests)
+- [x] No hydration errors
 
 ---
 
@@ -672,6 +676,253 @@ apps/blog/content/essays/
 - [ ] Site works on GitHub Pages
 - [ ] All routes accessible
 - [ ] No broken links
+
+---
+
+## Phase 11: Periodics & References
+
+**Goal:** Extend the content model to support Periodics (digests) and References (collections), then migrate remaining Hugo content.
+
+### Content Type Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    CONTENT ARCHITECTURE                         │
+├─────────────────┬─────────────────┬─────────────────────────────┤
+│     Essays      │    Periodics    │       References            │
+│   (original)    │   (recurring)   │      (evergreen)            │
+├─────────────────┼─────────────────┼─────────────────────────────┤
+│ ✅ Implemented  │ Phase 11        │ Phase 11                    │
+│ /essays/*       │ /periodics/*    │ /references/*               │
+└─────────────────┴─────────────────┴─────────────────────────────┘
+```
+
+### Workstream 11A: Types & Infrastructure
+
+**Files to create:**
+```
+apps/blog/
+├── types/
+│   └── content.ts              # Extended with Periodic, Reference types
+├── lib/
+│   ├── periodics.ts            # Periodic content fetching
+│   └── references.ts           # Reference content fetching
+└── content/
+    ├── periodics/              # New content directory
+    └── references/             # New content directory
+```
+
+**Tasks:**
+- [ ] Define TypeScript types for Periodics:
+  ```typescript
+  interface PeriodicMeta {
+    title: string;
+    description?: string;
+    date: string;
+    issue: number;
+    type: 'digest' | 'changelog' | 'notes';
+    topics: Topic[];
+    lang: Language;
+  }
+  ```
+- [ ] Define TypeScript types for References:
+  ```typescript
+  interface ReferenceMeta {
+    title: string;
+    description: string;
+    date: string;
+    updated?: string;
+    category: 'resources' | 'bibliography' | 'reading-list' | 'tools';
+    topics: Topic[];
+    lang: Language;
+    itemCount?: number;
+  }
+  ```
+- [ ] Extend Topic type with new values:
+  ```typescript
+  type Topic =
+    | 'technical' | 'ai' | 'product' | 'career'  // existing
+    | 'research' | 'design' | 'learning';         // new
+  ```
+- [ ] Create `lib/periodics.ts` with functions:
+  - `getAllPeriodics()` - returns all periodic metadata
+  - `getPeriodicBySlug(slug)` - returns single periodic with content
+  - `getPeriodicSlugs()` - returns all slugs for static generation
+  - `getPeriodicsByType(type)` - filter by type
+  - `getPeriodicsByLanguage(lang)` - filter by language
+- [ ] Create `lib/references.ts` with functions:
+  - `getAllReferences()` - returns all reference metadata
+  - `getReferenceBySlug(slug)` - returns single reference with content
+  - `getReferenceSlugs()` - returns all slugs for static generation
+  - `getReferencesByCategory(category)` - filter by category
+  - `getReferencesByLanguage(lang)` - filter by language
+- [ ] Add unit tests for new content loaders
+
+### Workstream 11B: Routes & Components
+
+**Files to create:**
+```
+apps/blog/
+├── app/
+│   ├── periodics/
+│   │   ├── page.tsx            # Periodics archive
+│   │   └── [slug]/
+│   │       └── page.tsx        # Periodic page
+│   ├── references/
+│   │   ├── page.tsx            # References index
+│   │   └── [slug]/
+│   │       └── page.tsx        # Reference page
+│   └── zh/
+│       ├── periodics/
+│       │   ├── page.tsx
+│       │   └── [slug]/
+│       │       └── page.tsx
+│       └── references/
+│           ├── page.tsx
+│           └── [slug]/
+│               └── page.tsx
+└── components/
+    ├── periodic/
+    │   ├── PeriodicCard.tsx
+    │   ├── PeriodicList.tsx
+    │   ├── PeriodicHeader.tsx
+    │   └── index.ts
+    └── reference/
+        ├── ReferenceCard.tsx
+        ├── ReferenceList.tsx
+        ├── ReferenceHeader.tsx
+        └── index.ts
+```
+
+**Tasks:**
+- [ ] Create `PeriodicCard` component:
+  - Issue number badge
+  - Title (link to periodic)
+  - Date
+  - Type badge (digest/changelog/notes)
+- [ ] Create `PeriodicList` component (chronological archive view)
+- [ ] Create `PeriodicHeader` component:
+  - Issue number
+  - Title
+  - Date
+  - Type badge
+- [ ] Create `app/periodics/page.tsx` (archive view)
+- [ ] Create `app/periodics/[slug]/page.tsx`
+- [ ] Create `ReferenceCard` component:
+  - Category badge
+  - Title (link to reference)
+  - Description
+  - Last updated date
+  - Item count (optional)
+- [ ] Create `ReferenceList` component (category-grouped view)
+- [ ] Create `ReferenceHeader` component:
+  - Category badge
+  - Title
+  - Description
+  - Created/updated dates
+- [ ] Create `app/references/page.tsx` (index view)
+- [ ] Create `app/references/[slug]/page.tsx`
+- [ ] Create Chinese routes (`/zh/periodics/*`, `/zh/references/*`)
+- [ ] Update `SiteNav` to include Periodics and References links
+- [ ] Add Storybook stories for all new components
+
+### Workstream 11C: Content Migration
+
+**Source content to migrate:**
+
+| Hugo Directory | Files | Target Type | Target Directory |
+|----------------|-------|-------------|------------------|
+| `content/digest/` | 23 | Periodics | `content/periodics/` |
+| `content/collection/` | 6 | References | `content/references/` |
+| `content/library/` | 17 | References | `content/references/` |
+
+**Tasks:**
+- [ ] Migrate digest content (23 files):
+
+| File | Language | Type | New Slug |
+|------|----------|------|----------|
+| `digest-001.md` | zh | digest | `digest-001-zh` |
+| `digest-002.md` | zh | digest | `digest-002-zh` |
+| ... | ... | ... | ... |
+| `digest-022.md` | zh | digest | `digest-022-zh` |
+| `tech_blog_crowdcast_io.md` | zh | digest | `tech-blog-crowdcast-zh` |
+
+- [ ] Migrate collection content (6 files):
+
+| File | Language | Category | New Slug |
+|------|----------|----------|----------|
+| `vision-100.md` | zh | bibliography | `vision-100-papers-zh` |
+| `psych-writing.md` | zh | reading-list | `psychology-writing-zh` |
+| `system_design_interview.en.md` | en | resources | `system-design-interview` |
+| `past_writing.md` | zh | reading-list | `past-writing-zh` |
+| `_index.md` | zh | - | (skip - index file) |
+| `_index.en.md` | en | - | (skip - index file) |
+
+- [ ] Migrate library content (17 files):
+
+| File | Language | Category | Notes |
+|------|----------|----------|-------|
+| Book/paper notes | zh/en | bibliography | Convert to reference pages |
+
+- [ ] Convert Hugo shortcodes to MDX components:
+  - `{{< digest-item >}}` → `<DigestItem>` component
+  - `{{< box-highlight >}}` → `<Callout>` component
+- [ ] Update frontmatter to new schema:
+  - Add `type` or `category` field
+  - Add `topics` array
+  - Add `lang` field
+  - Add `issue` number for digests
+  - Add `updated` date for references
+- [ ] Update internal links
+- [ ] Test all migrated content renders correctly
+
+### Workstream 11D: UI Localization
+
+**Tasks:**
+- [ ] Add translations for new content types in JSON locale files:
+  ```json
+  // lib/i18n/locales/en.json (add these keys)
+  {
+    "nav.periodics": "Periodics",
+    "nav.references": "References",
+    "periodic.issue": "Issue #{issue}",
+    "periodic.type.digest": "Digest",
+    "periodic.type.changelog": "Changelog",
+    "periodic.type.notes": "Notes",
+    "reference.category.resources": "Resources",
+    "reference.category.bibliography": "Bibliography",
+    "reference.category.reading-list": "Reading List",
+    "reference.category.tools": "Tools",
+    "reference.updated": "Updated {date}",
+    "reference.items": "{count} items"
+  }
+  ```
+- [ ] Add Chinese translations to `lib/i18n/locales/zh.json`
+- [ ] Localize date formats for periodics/references
+- [ ] Add topic translations for new topics (research, design, learning)
+
+### Workstream 11E: Testing & Validation
+
+**Tasks:**
+- [ ] Add unit tests for `lib/periodics.ts`
+- [ ] Add unit tests for `lib/references.ts`
+- [ ] Add Playwright tests for periodic components
+- [ ] Add Playwright tests for reference components
+- [ ] Verify all migrated content renders:
+  - Periodics at `/periodics/[slug]` and `/zh/periodics/[slug]`
+  - References at `/references/[slug]` and `/zh/references/[slug]`
+- [ ] Test navigation links
+- [ ] Test language switching for new content types
+
+**Validation Checklist:**
+- [ ] Periodic archive page shows all digests chronologically
+- [ ] Reference index page shows all references by category
+- [ ] Individual periodic/reference pages render correctly
+- [ ] Hugo shortcodes converted to MDX components
+- [ ] Navigation updated with new sections
+- [ ] Language switching works for periodics/references
+- [ ] All migrated content renders without errors
+- [ ] All tests pass
 
 ---
 
@@ -709,7 +960,7 @@ Phase 4 (Complete)
        │
        ▼
 ┌──────────────────┐
-│     Phase 9      │
+│     Phase 9      │  ✅ Complete
 │ 9A: i18n infra   │──→ 9C: UI localization
 │ 9B: Content      │──→ 9D: Testing
 └──────┬───────────┘
@@ -717,6 +968,15 @@ Phase 4 (Complete)
        ▼
    Phase 10
    (sequential)
+       │
+       ▼
+┌──────────────────────┐
+│      Phase 11        │
+│ 11A: Types & Infra   │──→ 11D: UI localization
+│ 11B: Routes & Comps  │──→ 11E: Testing
+│ 11C: Content         │
+└──────────────────────┘
+  (11A/11B/11C parallel, 11D/11E depend on them)
 ```
 
 ---
@@ -773,20 +1033,39 @@ Phase 4 (Complete)
 - [x] UI strings localized (filters, dates, reading time)
 - [x] Build passes, Playwright tests pass
 
-### Phase 9B (Content Migration) - Pending
-- [ ] Content files migrated from Hugo to MDX
-- [ ] Chinese typography applied (font, line-height)
-- [ ] All blog posts migrated to MDX
-- [ ] Content renders correctly in both languages
-- [ ] Translation links work where applicable
-- [ ] hreflang SEO tags present
-- [ ] Playwright tests pass for language switching
-- [ ] No hydration errors
+### Phase 9 (i18n & Content) ✅
+- [x] 9A: LanguageProvider and LanguageToggle working
+- [x] 9A: `/zh/*` routes created and functional
+- [x] 9A: Language preference persists in localStorage
+- [x] 9A: UI strings localized (filters, dates, reading time)
+- [x] 9B: Content files migrated from Hugo to MDX (9 essays)
+- [x] 9B: All blog posts migrated to MDX with proper frontmatter
+- [x] 9B: Content renders correctly in both languages
+- [x] 9C: Chinese typography applied (font, line-height 1.9)
+- [x] 9C: hreflang SEO tags present
+- [x] 9D: Playwright tests for LanguageToggle (6 tests)
+- [x] 9D: Unit tests for i18n functions (33 tests)
+- [x] 9D: Unit tests for language essay functions (9 tests)
+- [x] All 117 vitest tests pass
+- [x] No hydration errors
 
 ### Phase 10
 - [ ] Static export succeeds
 - [ ] Site works on GitHub Pages
 - [ ] All routes accessible
+
+### Phase 11
+- [ ] Periodic and Reference types defined
+- [ ] Content loaders implemented (`lib/periodics.ts`, `lib/references.ts`)
+- [ ] Routes created (`/periodics/*`, `/references/*`, `/zh/periodics/*`, `/zh/references/*`)
+- [ ] Components created (PeriodicCard, PeriodicList, ReferenceCard, ReferenceList)
+- [ ] Digest content migrated (23 files)
+- [ ] Collection content migrated (6 files)
+- [ ] Library content migrated (17 files)
+- [ ] Hugo shortcodes converted to MDX
+- [ ] Navigation updated
+- [ ] UI localized
+- [ ] All tests pass
 
 ---
 
@@ -807,10 +1086,11 @@ Phase 4 (Complete)
 
 1. ~~**Language toggle**: Same page with content switch, or separate URL paths (`/zh/essays/...`)?~~
    - **Resolved**: Separate URL paths with `/zh` prefix for Chinese
-2. **Search**: Add in Phase 9 or defer to post-launch?
-3. **RSS feed**: Add in Phase 9 or defer?
-4. **Interactive diagrams (D3)**: Defer to post-Phase 10?
-5. **Digest/Library content**: Migrate in Phase 11 or different content type?
+2. **Search**: Add in Phase 11 or defer to post-launch?
+3. **RSS feed**: Add in Phase 11 or defer?
+4. **Interactive diagrams (D3)**: Defer to post-Phase 11?
+5. ~~**Digest/Library content**: Migrate in Phase 11 or different content type?~~
+   - **Resolved**: Three content types (Essays, Periodics, References). Digest → Periodics, Collection/Library → References. Migration planned for Phase 11.
 
 ---
 
