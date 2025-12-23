@@ -158,7 +158,7 @@ export function EssayFilters({
                 key={value}
                 onClick={() => handleTopicToggle(value)}
                 aria-pressed={isSelected}
-                className="essay-filters-topic-btn focus:outline-none focus:ring-2 focus:ring-action-primary focus:ring-offset-2 rounded-full"
+                className="essay-filters-topic-btn focus:outline-none focus-visible:ring-2 focus-visible:ring-action-primary focus-visible:ring-offset-2 rounded-full"
                 data-topic={value}
                 data-selected={isSelected}
               >
