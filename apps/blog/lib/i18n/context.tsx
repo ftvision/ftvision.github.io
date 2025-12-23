@@ -1,14 +1,14 @@
 'use client';
 
 import * as React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   type Language,
-  getResolvedLanguage,
+  getStoredLanguage,
   setStoredLanguage,
   applyLanguage,
   getLanguageFromPath,
   localizePathname,
-  DEFAULT_LANGUAGE,
 } from './language';
 import {
   translate,
@@ -57,19 +57,39 @@ export function LanguageProvider({
   children,
   initialLanguage,
 }: LanguageProviderProps) {
-  // Initialize with URL-based language or default to avoid hydration mismatch
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Get language from URL path - this is the source of truth for content
+  const pathLanguage = getLanguageFromPath(pathname);
+
+  // Initialize with path-based language to avoid hydration mismatch
   const [language, setLanguageState] = React.useState<Language>(
-    initialLanguage ?? DEFAULT_LANGUAGE
+    initialLanguage ?? pathLanguage
   );
   const [_mounted, setMounted] = React.useState(false);
 
-  // On mount, sync with localStorage preference
+  // On mount, check if stored preference differs from URL and redirect if needed
   React.useEffect(() => {
     setMounted(true);
-    const resolved = getResolvedLanguage();
-    setLanguageState(resolved);
-    applyLanguage(resolved);
-  }, []);
+    const storedLanguage = getStoredLanguage();
+
+    // If user has a stored preference that differs from current URL, redirect
+    if (storedLanguage && storedLanguage !== pathLanguage) {
+      const newPath = localizePathname(pathname, storedLanguage);
+      router.replace(newPath);
+    } else {
+      // Otherwise, sync state with path language
+      setLanguageState(pathLanguage);
+      applyLanguage(pathLanguage);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Keep language in sync with URL path changes
+  React.useEffect(() => {
+    setLanguageState(pathLanguage);
+    applyLanguage(pathLanguage);
+  }, [pathLanguage]);
 
   const setLanguage = React.useCallback((newLang: Language) => {
     setLanguageState(newLang);

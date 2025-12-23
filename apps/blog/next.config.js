@@ -2,6 +2,15 @@ const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable static export for GitHub Pages
+  output: 'export',
+
+  // Output directory for static files
+  distDir: 'out',
+
+  // Add trailing slashes for GitHub Pages compatibility
+  trailingSlash: true,
+
   // Transpile workspace packages
   transpilePackages: ['@blog/ui', '@blog/tokens'],
 
@@ -13,8 +22,8 @@ const nextConfig = {
 
   // Image optimization configuration
   images: {
-    // For static export, images need to be unoptimized
-    unoptimized: process.env.NODE_ENV === 'production',
+    // Static export requires unoptimized images
+    unoptimized: true,
   },
 
   // Webpack configuration to resolve @ui/* path alias from @blog/ui package

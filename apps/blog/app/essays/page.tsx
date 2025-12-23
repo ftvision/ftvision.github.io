@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { EssaysIndexPage, parseTypeParam, parseTopicsParam } from '@/components/pages';
+import { EssaysIndexPage } from '@/components/pages';
 
 export const metadata: Metadata = {
   title: 'Essays',
@@ -13,20 +13,6 @@ export const metadata: Metadata = {
   },
 };
 
-interface EssaysPageProps {
-  searchParams: Promise<{ type?: string; topics?: string }>;
-}
-
-export default async function EssaysPage({ searchParams }: EssaysPageProps) {
-  const params = await searchParams;
-  const selectedType = parseTypeParam(params.type);
-  const selectedTopics = parseTopicsParam(params.topics);
-
-  return (
-    <EssaysIndexPage
-      language="en"
-      selectedType={selectedType}
-      selectedTopics={selectedTopics}
-    />
-  );
+export default function EssaysPage() {
+  return <EssaysIndexPage language="en" />;
 }
