@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { EssaysIndexPage, parseTypeParam, parseTopicsParam } from '@/components/pages';
+import { EssaysIndexPage } from '@/components/pages';
 
 export const metadata: Metadata = {
   title: '文章',
@@ -12,20 +12,6 @@ export const metadata: Metadata = {
   },
 };
 
-interface ZhEssaysPageProps {
-  searchParams: Promise<{ type?: string; topics?: string }>;
-}
-
-export default async function ZhEssaysPage({ searchParams }: ZhEssaysPageProps) {
-  const params = await searchParams;
-  const selectedType = parseTypeParam(params.type);
-  const selectedTopics = parseTopicsParam(params.topics);
-
-  return (
-    <EssaysIndexPage
-      language="zh"
-      selectedType={selectedType}
-      selectedTopics={selectedTopics}
-    />
-  );
+export default function ZhEssaysPage() {
+  return <EssaysIndexPage language="zh" />;
 }
