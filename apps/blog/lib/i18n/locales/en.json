@@ -1,5 +1,7 @@
 {
   "nav.essays": "Essays",
+  "nav.periodics": "Periodics",
+  "nav.references": "References",
   "nav.about": "About",
   "nav.home": "Home",
 
@@ -12,14 +14,27 @@
   "type.review": "Review",
   "type.narrative": "Narrative",
 
+  "periodic.type.digest": "Digest",
+  "periodic.type.changelog": "Changelog",
+  "periodic.type.notes": "Notes",
+
+  "reference.category.resources": "Resources",
+  "reference.category.bibliography": "Bibliography",
+  "reference.category.reading-list": "Reading List",
+  "reference.category.tools": "Tools",
+
   "topic.technical": "Technical",
   "topic.ai": "AI",
   "topic.product": "Product",
   "topic.career": "Career",
+  "topic.research": "Research",
+  "topic.design": "Design",
+  "topic.learning": "Learning",
 
   "filter.all": "All",
   "filter.type": "Type",
   "filter.topics": "Topics",
+  "filter.category": "Category",
   "filter.clear": "Clear filters",
   "filter.results": "{count} essays",
   "filter.results.singular": "1 essay",
@@ -27,6 +42,23 @@
 
   "essay.readingTime": "{minutes} min read",
   "essay.draft": "Draft",
+
+  "periodic.issue": "Issue #{issue}",
+  "periodic.readingTime": "{minutes} min read",
+  "periodics.title": "Periodics",
+  "periodics.description": "Curated digests, changelogs, and notes",
+  "periodics.empty": "No periodics found",
+  "periodics.results": "{count} periodics",
+  "periodics.results.singular": "1 periodic",
+
+  "reference.updated": "Updated {date}",
+  "reference.created": "Created {date}",
+  "reference.items": "{count} items",
+  "references.title": "References",
+  "references.description": "Curated resources, bibliographies, and reading lists",
+  "references.empty": "No references found",
+  "references.results": "{count} references",
+  "references.results.singular": "1 reference",
 
   "home.recentEssays": "Recent Essays",
   "home.viewAll": "View all essays",
