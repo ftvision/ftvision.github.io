@@ -1,5 +1,7 @@
 {
   "nav.essays": "文章",
+  "nav.periodics": "文摘",
+  "nav.references": "参考",
   "nav.about": "关于",
   "nav.home": "首页",
 
@@ -12,14 +14,27 @@
   "type.review": "评测",
   "type.narrative": "叙事",
 
+  "periodic.type.digest": "文摘",
+  "periodic.type.changelog": "更新日志",
+  "periodic.type.notes": "笔记",
+
+  "reference.category.resources": "资源",
+  "reference.category.bibliography": "文献",
+  "reference.category.reading-list": "阅读清单",
+  "reference.category.tools": "工具",
+
   "topic.technical": "技术",
   "topic.ai": "AI",
   "topic.product": "产品",
   "topic.career": "职业",
+  "topic.research": "研究",
+  "topic.design": "设计",
+  "topic.learning": "学习",
 
   "filter.all": "全部",
   "filter.type": "类型",
   "filter.topics": "主题",
+  "filter.category": "分类",
   "filter.clear": "清除筛选",
   "filter.results": "{count} 篇文章",
   "filter.results.singular": "1 篇文章",
@@ -27,6 +42,23 @@
 
   "essay.readingTime": "阅读时间 {minutes} 分钟",
   "essay.draft": "草稿",
+
+  "periodic.issue": "第 {issue} 期",
+  "periodic.readingTime": "阅读时间 {minutes} 分钟",
+  "periodics.title": "文摘",
+  "periodics.description": "精选文摘、更新日志和笔记",
+  "periodics.empty": "没有找到文摘",
+  "periodics.results": "{count} 篇文摘",
+  "periodics.results.singular": "1 篇文摘",
+
+  "reference.updated": "更新于 {date}",
+  "reference.created": "创建于 {date}",
+  "reference.items": "{count} 项",
+  "references.title": "参考",
+  "references.description": "精选资源、文献和阅读清单",
+  "references.empty": "没有找到参考",
+  "references.results": "{count} 个参考",
+  "references.results.singular": "1 个参考",
 
   "home.recentEssays": "最近文章",
   "home.viewAll": "查看全部文章",

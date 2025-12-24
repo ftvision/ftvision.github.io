@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getEssayBySlug, getEssaySlugs, getTranslation } from '@/lib/essays';
 import { getMDXComponents } from '@/components/mdx/MDXComponents';
+import { mdxOptions } from '@/lib/mdx-options';
 import { EssayLayout, EssayHeader } from '@/components/essay';
 
 interface EssayPageProps {
@@ -86,7 +87,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
         />
       }
     >
-      <MDXRemote source={content} components={getMDXComponents()} />
+      <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
     </EssayLayout>
   );
 }

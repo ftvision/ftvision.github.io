@@ -9,3 +9,9 @@ export type { EssaysPageContentProps } from './EssaysPageContent';
 
 export { AboutPage } from './AboutPage';
 export type { AboutPageProps } from './AboutPage';
+
+export { PeriodicsIndexPage } from './PeriodicsIndexPage';
+export type { PeriodicsIndexPageProps } from './PeriodicsIndexPage';
+
+export { ReferencesIndexPage } from './ReferencesIndexPage';
+export type { ReferencesIndexPageProps } from './ReferencesIndexPage';
