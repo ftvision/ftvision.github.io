@@ -485,10 +485,11 @@ Chinese content uses adjusted typography:
 - [x] Phase 9D: Testing & Validation (117 vitest tests, 6 Playwright tests for i18n)
 
 ### Current
-- [ ] Phase 10: Deployment
+- All phases complete! Ready for ongoing content creation.
 
-### Future
-- [ ] Phase 11: Periodics & References (migrate digest/, collection/, library/)
+### Completed (continued)
+- [x] Phase 10: Static Export for GitHub Pages
+- [x] Phase 11: Periodics & References (22 periodics, 4 references migrated)
 
 ---
 
