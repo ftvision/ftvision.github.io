@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { SiteHeader } from './SiteHeader';
 import { ThemeProvider } from './ThemeProvider';
 import { ModeToggle } from './ModeToggle';
+import { LanguageProvider } from '@/lib/i18n';
 
 const meta: Meta<typeof SiteHeader> = {
   title: 'Blog / Layout / SiteHeader',
@@ -12,7 +13,9 @@ const meta: Meta<typeof SiteHeader> = {
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <Story />
+        <LanguageProvider initialLanguage="en">
+          <Story />
+        </LanguageProvider>
       </ThemeProvider>
     ),
   ],

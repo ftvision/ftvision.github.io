@@ -1,6 +1,8 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { SiteFooter } from './SiteFooter';
+import { ThemeProvider } from './ThemeProvider';
+import { LanguageProvider } from '@/lib/i18n';
 
 const meta: Meta<typeof SiteFooter> = {
   title: 'Blog / Layout / SiteFooter',
@@ -8,6 +10,15 @@ const meta: Meta<typeof SiteFooter> = {
   parameters: {
     layout: 'fullscreen',
   },
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <LanguageProvider initialLanguage="en">
+          <Story />
+        </LanguageProvider>
+      </ThemeProvider>
+    ),
+  ],
   tags: ['autodocs'],
 };
 
