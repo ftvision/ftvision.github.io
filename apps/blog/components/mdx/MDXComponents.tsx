@@ -23,6 +23,9 @@ import {
 // Content components
 import { Note, Marginnote, Reference, References, WideBlock, TimelineMap } from '../content';
 
+// Editorial components for magazine-style layouts
+import { EditorialGrid, EditorialSection, FeaturedCard, Item } from '../editorial';
+
 // Vision100 subway map visualization
 import { Vision100Map } from '../vision100';
 
@@ -278,6 +281,12 @@ export function getMDXComponents(): MDXComponentMap {
 
     // Generic timeline visualization
     TimelineMap,
+
+    // Editorial components for magazine-style curated content
+    EditorialGrid,
+    EditorialSection,
+    FeaturedCard,
+    Item,
   };
 }
 
