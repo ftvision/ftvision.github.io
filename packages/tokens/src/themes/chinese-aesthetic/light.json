@@ -250,5 +250,22 @@
     "handscroll": { "value": "{primitive.aspect.handscroll}" },
     "hanging": { "value": "{primitive.aspect.hanging}" },
     "album": { "value": "{primitive.aspect.album}" }
+  },
+  "navigation": {
+    "toc": {
+      "border": {
+        "width": { "value": "0" },
+        "color": { "value": "transparent" }
+      },
+      "item": {
+        "bg": { "value": "transparent" },
+        "text": { "value": "{primitive.color.chinese.ink.medium}" }
+      },
+      "active": {
+        "bg": { "value": "{primitive.color.chinese.paper.xuan}" },
+        "text": { "value": "{primitive.color.chinese.seal.red}" },
+        "border": { "value": "{primitive.color.chinese.seal.red}" }
+      }
+    }
   }
 }

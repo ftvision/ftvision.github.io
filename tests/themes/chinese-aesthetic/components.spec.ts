@@ -558,14 +558,15 @@ test.describe('Chinese Aesthetic: ScrollLandscape', () => {
 });
 
 // =============================================================================
-// TABLE OF CONTENTS (目录)
+// TABLE OF CONTENTS (目录) - Now in Navigation Components
 // =============================================================================
 test.describe('Chinese Aesthetic: TableOfContents', () => {
   test.describe('Variants', () => {
     test('default variant renders with proper spacing', async ({ page }) => {
-      const iframe = await navigateToStory(
+      const iframe = await navigateToStoryWithTheme(
         page,
-        'components-themes-chinese-aesthetic-tableofcontents--default'
+        'components-navigation-tableofcontents--default',
+        'chinese-aesthetic'
       );
 
       await iframe.locator('body').waitFor({ state: 'visible' });
@@ -576,10 +577,11 @@ test.describe('Chinese Aesthetic: TableOfContents', () => {
       await expect(iframe.locator('text=目录')).toBeVisible();
     });
 
-    test('scroll variant has left border', async ({ page }) => {
-      const iframe = await navigateToStory(
+    test('scroll variant has left border via navigation tokens', async ({ page }) => {
+      const iframe = await navigateToStoryWithTheme(
         page,
-        'components-themes-chinese-aesthetic-tableofcontents--scroll-variant'
+        'components-navigation-tableofcontents--scroll-variant',
+        'chinese-aesthetic'
       );
 
       await iframe.locator('body').waitFor({ state: 'visible' });
@@ -588,18 +590,19 @@ test.describe('Chinese Aesthetic: TableOfContents', () => {
       const toc = iframe.locator('nav[aria-label="卷轴目录"]');
       await expect(toc).toBeVisible();
 
-      const hasBorderLeft = await toc.evaluate((el) => {
-        return el.className.includes('border-l');
+      // Chinese aesthetic theme has no border (border-width: 0)
+      const borderWidth = await toc.evaluate((el) => {
+        return getComputedStyle(el).borderLeftWidth;
       });
-      expect(hasBorderLeft).toBe(true);
+      expect(borderWidth).toBe('0px');
     });
   });
 
   test.describe('Active Item Styling', () => {
-    test('active item has accent color', async ({ page }) => {
+    test('active item has accent color from navigation tokens', async ({ page }) => {
       const iframe = await navigateToStoryWithTheme(
         page,
-        'components-themes-chinese-aesthetic-tableofcontents--default',
+        'components-navigation-tableofcontents--default',
         'chinese-aesthetic'
       );
 
@@ -612,7 +615,7 @@ test.describe('Chinese Aesthetic: TableOfContents', () => {
       const textColor = await getComputedStyleProperty(activeItem, 'color');
       const parsedColor = parseColor(textColor);
 
-      // Should be seal red
+      // Should be seal red (accent-primary for chinese-aesthetic)
       expect(parsedColor).not.toBeNull();
       expect(parsedColor!.r).toBeGreaterThan(150);
     });
@@ -620,9 +623,10 @@ test.describe('Chinese Aesthetic: TableOfContents', () => {
 
   test.describe('Marker Styles', () => {
     test('seal marker displays square indicator', async ({ page }) => {
-      const iframe = await navigateToStory(
+      const iframe = await navigateToStoryWithTheme(
         page,
-        'components-themes-chinese-aesthetic-tableofcontents--seal-marker'
+        'components-navigation-tableofcontents--seal-marker',
+        'chinese-aesthetic'
       );
 
       await iframe.locator('body').waitFor({ state: 'visible' });
@@ -942,7 +946,7 @@ test.describe('Chinese Aesthetic: Dark Mode Components', () => {
     test('renders with proper contrast on dark background', async ({ page }) => {
       const iframe = await navigateToStoryWithTheme(
         page,
-        'components-themes-chinese-aesthetic-tableofcontents--default',
+        'components-navigation-tableofcontents--default',
         'chinese-aesthetic',
         'dark'
       );
@@ -967,7 +971,7 @@ test.describe('Chinese Aesthetic: Dark Mode Components', () => {
     test('active item accent color adapts to dark mode', async ({ page }) => {
       const iframe = await navigateToStoryWithTheme(
         page,
-        'components-themes-chinese-aesthetic-tableofcontents--default',
+        'components-navigation-tableofcontents--default',
         'chinese-aesthetic',
         'dark'
       );

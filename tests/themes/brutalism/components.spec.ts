@@ -255,6 +255,108 @@ test.describe('Brutalism Theme: Components', () => {
   });
 });
 
+// =============================================================================
+// TABLE OF CONTENTS - Theme-specific styling
+// =============================================================================
+test.describe('Brutalism Theme: TableOfContents', () => {
+  test('has thick left border (4px)', async ({ page }) => {
+    const iframe = await navigateToStoryWithTheme(
+      page,
+      'components-navigation-tableofcontents--default',
+      'brutalism',
+      'light'
+    );
+
+    await iframe.locator('body').waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    const toc = iframe.locator('nav').first();
+    await expect(toc).toBeVisible();
+
+    const borderLeftWidth = await getComputedStyleProperty(toc, 'border-left-width');
+    expect(parsePixelValue(borderLeftWidth)).toBe(4);
+  });
+
+  test('has black border color (high contrast)', async ({ page }) => {
+    const iframe = await navigateToStoryWithTheme(
+      page,
+      'components-navigation-tableofcontents--default',
+      'brutalism',
+      'light'
+    );
+
+    await iframe.locator('body').waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    const toc = iframe.locator('nav').first();
+    const borderColor = await getComputedStyleProperty(toc, 'border-left-color');
+    const parsedColor = parseColor(borderColor);
+
+    // Border should be black or very dark
+    expect(parsedColor).not.toBeNull();
+    if (parsedColor) {
+      expect(parsedColor.r).toBeLessThan(50);
+      expect(parsedColor.g).toBeLessThan(50);
+      expect(parsedColor.b).toBeLessThan(50);
+    }
+  });
+
+  test('active item has inverted colors (white on black)', async ({ page }) => {
+    const iframe = await navigateToStoryWithTheme(
+      page,
+      'components-navigation-tableofcontents--default',
+      'brutalism',
+      'light'
+    );
+
+    await iframe.locator('body').waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    const activeItem = iframe.locator('[aria-current="location"]');
+    await expect(activeItem).toBeVisible();
+
+    const bgColor = await getComputedStyleProperty(activeItem, 'background-color');
+    const textColor = await getComputedStyleProperty(activeItem, 'color');
+
+    const bgParsed = parseColor(bgColor);
+    const textParsed = parseColor(textColor);
+
+    // Background should be dark/black (inverted)
+    expect(bgParsed).not.toBeNull();
+    if (bgParsed) {
+      expect(bgParsed.r).toBeLessThan(50);
+      expect(bgParsed.g).toBeLessThan(50);
+      expect(bgParsed.b).toBeLessThan(50);
+    }
+
+    // Text should be light/white (inverted)
+    expect(textParsed).not.toBeNull();
+    if (textParsed) {
+      expect(textParsed.r).toBeGreaterThan(200);
+      expect(textParsed.g).toBeGreaterThan(200);
+      expect(textParsed.b).toBeGreaterThan(200);
+    }
+  });
+
+  test('uses monospace font', async ({ page }) => {
+    const iframe = await navigateToStoryWithTheme(
+      page,
+      'components-navigation-tableofcontents--default',
+      'brutalism',
+      'light'
+    );
+
+    await iframe.locator('body').waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    const link = iframe.locator('nav a').first();
+    await expect(link).toBeVisible();
+
+    const fontFamily = await getComputedStyleProperty(link, 'font-family');
+    expect(fontFamily.toLowerCase()).toMatch(/mono|menlo|consolas|sf mono|ui-monospace/);
+  });
+});
+
 test.describe('Brutalism Theme: Design Tokens', () => {
   test('has correct accent color (red)', async ({ page }) => {
     const iframe = await navigateToStoryWithTheme(

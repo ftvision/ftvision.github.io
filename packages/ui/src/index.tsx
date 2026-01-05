@@ -108,12 +108,7 @@ export {
 export { Byline, bylineVariants, type BylineProps, type Author } from '@ui/components/Byline';
 export { CodeBlock, InlineCode, type CodeBlockProps, type InlineCodeProps } from '@ui/components/CodeBlock';
 
-// Chinese Aesthetic Theme Components
-export { SealStamp, sealStampVariants, type SealStampProps } from '@ui/components/SealStamp';
-export { BrushDivider, brushDividerVariants, type BrushDividerProps } from '@ui/components/BrushDivider';
-export { MarginNote, marginNoteVariants, type MarginNoteProps } from '@ui/components/MarginNote';
-export { MoonGate, moonGateVariants, type MoonGateProps } from '@ui/components/MoonGate';
-export { ScrollLandscape, scrollLandscapeVariants, type ScrollLandscapeProps } from '@ui/components/ScrollLandscape';
+// Navigation Components
 export {
   TableOfContents,
   tableOfContentsVariants,
@@ -122,6 +117,13 @@ export {
   type TableOfContentsProps,
   type TocItem,
 } from '@ui/components/TableOfContents';
+
+// Chinese Aesthetic Theme Components
+export { SealStamp, sealStampVariants, type SealStampProps } from '@ui/components/SealStamp';
+export { BrushDivider, brushDividerVariants, type BrushDividerProps } from '@ui/components/BrushDivider';
+export { MarginNote, marginNoteVariants, type MarginNoteProps } from '@ui/components/MarginNote';
+export { MoonGate, moonGateVariants, type MoonGateProps } from '@ui/components/MoonGate';
+export { ScrollLandscape, scrollLandscapeVariants, type ScrollLandscapeProps } from '@ui/components/ScrollLandscape';
 export {
   SeasonSelector,
   seasonSelectorVariants,
