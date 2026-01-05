@@ -14,6 +14,14 @@ const meta: Meta<typeof Callout> = {
       control: 'select',
       options: ['info', 'success', 'warning', 'danger', 'note'],
     },
+    border: {
+      control: 'select',
+      options: ['bold', 'subtle', 'full'],
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+    },
   },
 };
 
@@ -100,6 +108,58 @@ export const AllTypes: Story = {
       <Callout type="note" title="Note">
         Additional context for the reader.
       </Callout>
+    </div>
+  ),
+};
+
+export const AllBorderStyles: Story = {
+  render: () => (
+    <div className="space-y-4 max-w-2xl">
+      <Callout type="info" border="bold" title="Bold Border (Default)">
+        Thick left border for maximum emphasis. Great for editorial asides.
+      </Callout>
+      <Callout type="info" border="subtle" title="Subtle Border">
+        Thin left border for a lighter touch. Good for less prominent notes.
+      </Callout>
+      <Callout type="info" border="full" title="Full Border">
+        Border on all sides for a boxed appearance.
+      </Callout>
+    </div>
+  ),
+};
+
+export const AllSizes: Story = {
+  render: () => (
+    <div className="space-y-4 max-w-2xl">
+      <Callout type="info" size="sm" title="Small Size">
+        Compact callout with smaller padding and text.
+      </Callout>
+      <Callout type="info" size="md" title="Medium Size (Default)">
+        Standard callout with balanced padding and text.
+      </Callout>
+      <Callout type="info" size="lg" title="Large Size">
+        Prominent callout with larger padding and text for emphasis.
+      </Callout>
+    </div>
+  ),
+};
+
+export const BorderAndTypesCombined: Story = {
+  render: () => (
+    <div className="space-y-4 max-w-2xl">
+      <h3 className="font-semibold text-lg mb-2">Bold Border (Default)</h3>
+      <div className="space-y-2">
+        <Callout type="info" border="bold">Info with bold border</Callout>
+        <Callout type="warning" border="bold">Warning with bold border</Callout>
+        <Callout type="danger" border="bold">Danger with bold border</Callout>
+      </div>
+
+      <h3 className="font-semibold text-lg mb-2 mt-6">Full Border</h3>
+      <div className="space-y-2">
+        <Callout type="info" border="full">Info with full border</Callout>
+        <Callout type="warning" border="full">Warning with full border</Callout>
+        <Callout type="danger" border="full">Danger with full border</Callout>
+      </div>
     </div>
   ),
 };
