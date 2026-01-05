@@ -16,11 +16,14 @@ export {
   compileMDX,
   getMDXComponents,
   extractHeadings,
+  generateHeadingSlug,
   stripFrontmatter,
   type MDXScope,
   type CompiledMDX,
   type CompileMDXOptions,
   type MDXComponents,
+  type TocItem,
+  type ExtractHeadingsOptions,
 } from './mdx';
 
 export {

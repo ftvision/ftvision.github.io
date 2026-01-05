@@ -24,11 +24,12 @@ export type EssayType = 'guide' | 'deep-dive' | 'opinion' | 'review' | 'narrativ
  * - ai: ML, AI products, models, the AI landscape
  * - product: Product thinking, market, startup, business
  * - career: Work, jobs, companies, professional life
- * - research: Academic papers, science, neuroscience
+ * - research: Academic papers, methodology
+ * - science: Natural sciences, neuroscience, vision science
  * - design: UX, visual design, information design
  * - learning: Educational resources, courses, tutorials
  */
-export type Topic = 'technical' | 'ai' | 'product' | 'career' | 'research' | 'design' | 'learning';
+export type Topic = 'technical' | 'ai' | 'product' | 'career' | 'research' | 'science' | 'design' | 'learning';
 
 /**
  * Periodic type - describes the type of recurring content
@@ -279,7 +280,7 @@ export function isValidEssayType(value: unknown): value is EssayType {
 export function isValidTopic(value: unknown): value is Topic {
   return (
     typeof value === 'string' &&
-    ['technical', 'ai', 'product', 'career', 'research', 'design', 'learning'].includes(value)
+    ['technical', 'ai', 'product', 'career', 'research', 'science', 'design', 'learning'].includes(value)
   );
 }
 

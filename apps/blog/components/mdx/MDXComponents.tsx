@@ -21,7 +21,10 @@ import {
 } from '@blog/ui';
 
 // Content components
-import { Note, Marginnote, Reference, References, WideBlock } from '../content';
+import { Note, Marginnote, Reference, References, WideBlock, TimelineMap } from '../content';
+
+// Vision100 subway map visualization
+import { Vision100Map } from '../vision100';
 
 /**
  * Props type for MDX HTML elements
@@ -269,6 +272,12 @@ export function getMDXComponents(): MDXComponentMap {
     AccordionItem,
     AccordionTrigger,
     AccordionContent,
+
+    // Vision100 subway map
+    Vision100Map,
+
+    // Generic timeline visualization
+    TimelineMap,
   };
 }
 
