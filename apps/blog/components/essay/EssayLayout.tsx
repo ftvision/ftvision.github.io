@@ -157,8 +157,8 @@ export function EssayLayout({ header, children, toc, className }: EssayLayoutPro
                 className={cn(
                   'essay-header-container',
                   'mb-8 lg:mb-12',
-                  // Match content width for consistency
-                  'max-w-[65ch] lg:max-w-[80ch] xl:max-w-prose'
+                  // Match content width for consistency (fixed rem for cross-theme consistency)
+                  'max-w-[38rem] lg:max-w-[42rem] xl:max-w-[42rem]'
                 )}
               >
                 {header}
@@ -170,8 +170,8 @@ export function EssayLayout({ header, children, toc, className }: EssayLayoutPro
             <div
               className={cn(
                 'essay-content',
-                // Responsive max-width: wider on large screens for more characters per line
-                'max-w-[65ch] lg:max-w-[80ch] xl:max-w-prose',
+                // Responsive max-width: fixed rem values for cross-theme consistency
+                'max-w-[38rem] lg:max-w-[42rem] xl:max-w-[42rem]',
                 // Base typography
                 'text-body text-figure-primary',
                 // Vertical rhythm

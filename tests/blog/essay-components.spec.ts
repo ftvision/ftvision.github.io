@@ -210,7 +210,7 @@ test.describe('Blog: Essay Components', () => {
 
       // Verify layout has right padding for sidenote margin space on tablet
       const article = page.locator('article.essay-layout');
-      await expect(article).toHaveClass(/lg:pr-\[340px\]/);
+      await expect(article).toHaveClass(/lg:pr-\[250px\]/);
     });
 
     test('layout content has max-width for readability', async ({ page }) => {
@@ -222,9 +222,9 @@ test.describe('Blog: Essay Components', () => {
 
       await page.waitForSelector('.essay-layout', { timeout: 10000 });
 
-      // Content area should have max-width prose class
+      // Content area should have fixed max-width (42rem = 672px on xl screens)
       const contentArea = page.locator('.essay-content');
-      await expect(contentArea).toHaveClass(/max-w-prose/);
+      await expect(contentArea).toHaveClass(/max-w-\[42rem\]/);
     });
 
     test('sidenotes use float positioning on desktop', async ({ page }) => {

@@ -379,9 +379,9 @@ module.exports = {
           outline: 'var(--focus-ring-width) solid var(--color-focus-ring)',
           outlineOffset: 'var(--focus-ring-offset)',
         },
-        // Prose container for optimal reading
+        // Prose container for optimal reading (fixed width for cross-theme consistency)
         '.prose': {
-          maxWidth: '65ch',
+          maxWidth: '42rem', // 672px
         },
       });
     }),
