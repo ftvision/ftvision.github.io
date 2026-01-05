@@ -70,8 +70,8 @@ export function Marginnote({ children, className }: MarginnoteProps) {
           // The parent container should have right padding to create the margin space
           'lg:block lg:max-h-none lg:opacity-100',
           'lg:float-right lg:clear-right',
-          // Width is ~55% of prose width, negative margin pulls it into the padding
-          'lg:w-[280px] lg:mr-[-320px]',
+          // Width fits in 250px margin column, negative margin pulls it into the padding
+          'lg:w-[210px] lg:mr-[-250px]',
           'lg:mt-0 lg:mb-4 lg:ml-4 lg:p-0 lg:bg-transparent lg:rounded-none',
           'lg:text-caption lg:text-figure-muted lg:italic lg:leading-snug'
         )}

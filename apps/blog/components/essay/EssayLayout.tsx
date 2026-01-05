@@ -94,8 +94,8 @@ export function EssayLayout({ header, children, toc, className }: EssayLayoutPro
             'essay-layout-wrapper',
             // Mobile/Tablet: single column
             'px-4 py-8 md:px-6 md:py-12',
-            // Desktop (xl): CSS Grid with ToC | Content | Sidenotes
-            'xl:grid xl:grid-cols-[200px_1fr_340px] xl:gap-8',
+            // Desktop (xl): CSS Grid with ToC | Content | Sidenotes (symmetric widths)
+            'xl:grid xl:grid-cols-[250px_1fr_250px] xl:gap-8',
             'xl:max-w-[1400px] xl:mx-auto xl:px-8',
             className
           )}
@@ -146,7 +146,7 @@ export function EssayLayout({ header, children, toc, className }: EssayLayoutPro
             className={cn(
               'essay-layout',
               // Tablet (lg): add right padding for sidenotes
-              'lg:pr-[340px]',
+              'lg:pr-[250px]',
               // Desktop (xl): no padding needed, grid handles it
               'xl:pr-0'
             )}
@@ -157,7 +157,8 @@ export function EssayLayout({ header, children, toc, className }: EssayLayoutPro
                 className={cn(
                   'essay-header-container',
                   'mb-8 lg:mb-12',
-                  'max-w-prose'
+                  // Match content width for consistency
+                  'max-w-[65ch] lg:max-w-[80ch] xl:max-w-prose'
                 )}
               >
                 {header}
@@ -169,7 +170,8 @@ export function EssayLayout({ header, children, toc, className }: EssayLayoutPro
             <div
               className={cn(
                 'essay-content',
-                'max-w-prose',
+                // Responsive max-width: wider on large screens for more characters per line
+                'max-w-[65ch] lg:max-w-[80ch] xl:max-w-prose',
                 // Base typography
                 'text-body text-figure-primary',
                 // Vertical rhythm

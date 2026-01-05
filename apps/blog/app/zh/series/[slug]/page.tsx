@@ -1,86 +1,86 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { getReferenceBySlug, getReferenceSlugs, getReferenceTranslation } from '@/lib/references';
+import { getSeriesBySlug, getSeriesSlugsByLanguage, getSeriesTranslation } from '@/lib/series';
 import { getMDXComponents } from '@/components/mdx/MDXComponents';
 import { mdxOptions } from '@/lib/mdx-options';
 import { EssayLayout } from '@/components/essay';
-import { ReferenceHeader } from '@/components/reference';
+import { SeriesHeader } from '@/components/series';
 
-interface ReferencePageProps {
+interface SeriesPageProps {
   params: Promise<{ slug: string }>;
 }
 
 /**
- * Generate static paths for all references
+ * Generate static paths for all Chinese series
  */
 export async function generateStaticParams() {
-  const slugs = getReferenceSlugs();
+  const slugs = getSeriesSlugsByLanguage('zh');
   return slugs.map((slug) => ({ slug }));
 }
 
 /**
- * Generate metadata for the reference page
+ * Generate metadata for the series page
  */
 export async function generateMetadata({
   params,
-}: ReferencePageProps): Promise<Metadata> {
+}: SeriesPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const reference = getReferenceBySlug(slug);
+  const series = getSeriesBySlug(slug);
 
-  if (!reference) {
+  if (!series) {
     return {
-      title: 'Reference Not Found',
+      title: '系列未找到',
     };
   }
 
   // Build hreflang alternates
   const alternates: Metadata['alternates'] = {
     languages: {
-      'en': `/references/${slug}`,
+      'zh': `/zh/series/${slug}`,
     },
   };
 
-  // Check for Chinese translation
-  const zhTranslation = getReferenceTranslation(slug, 'zh');
-  if (zhTranslation && zhTranslation.slug !== slug) {
-    alternates.languages!['zh'] = `/zh/references/${zhTranslation.slug}`;
+  // Check for English translation
+  const enTranslation = getSeriesTranslation(slug, 'en');
+  if (enTranslation && enTranslation.slug !== slug) {
+    alternates.languages!['en'] = `/series/${enTranslation.slug}`;
   }
 
   return {
-    title: reference.title,
-    description: reference.description,
+    title: series.title,
+    description: series.description,
     openGraph: {
-      title: reference.title,
-      description: reference.description,
+      title: series.title,
+      description: series.description,
       type: 'article',
-      publishedTime: reference.date,
-      modifiedTime: reference.updated,
-      tags: reference.topics,
+      publishedTime: series.date,
+      modifiedTime: series.updated,
+      tags: series.topics,
     },
     alternates,
   };
 }
 
 /**
- * Reference page component
+ * Chinese series page component
  */
-export default async function ReferencePage({ params }: ReferencePageProps) {
+export default async function ZhSeriesItemPage({ params }: SeriesPageProps) {
   const { slug } = await params;
-  const reference = getReferenceBySlug(slug);
+  const series = getSeriesBySlug(slug);
 
-  if (!reference) {
+  if (!series) {
     notFound();
   }
 
   const { title, description, date, updated, category, topics, itemCount, readingTime, content, toc } =
-    reference;
+    series;
 
   return (
     <EssayLayout
       toc={toc}
       header={
-        <ReferenceHeader
+        <SeriesHeader
           category={category}
           topics={topics}
           title={title}
@@ -89,6 +89,7 @@ export default async function ReferencePage({ params }: ReferencePageProps) {
           updated={updated}
           itemCount={itemCount}
           readingTime={readingTime}
+          language="zh"
         />
       }
     >

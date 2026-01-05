@@ -24,7 +24,7 @@ export function EssaysIndexPage({ language = 'en' }: EssaysIndexPageProps) {
   const allEssays = getAllEssays({ language, includeDrafts: false });
 
   return (
-    <main className="mx-auto max-w-5xl px-inset-lg py-12">
+    <main className="mx-auto max-w-5xl lg:max-w-6xl px-inset-lg py-12">
       {/* Page header - static content */}
       <header className="mb-8">
         <h1 className="text-display font-serif text-figure-primary mb-2">

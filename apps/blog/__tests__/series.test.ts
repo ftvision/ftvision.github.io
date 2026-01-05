@@ -1,16 +1,16 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import {
-  getAllReferences,
-  getReferenceBySlug,
-  getReferenceSlugs,
-  getReferencesByCategory,
-  getReferencesByTopic,
-  getReferencesByLanguage,
-  getReferenceTranslation,
-  getReferenceSlugsByLanguage,
-  getReferencesGroupedByCategory,
-} from '@/lib/references';
-import type { ReferenceMeta } from '@/types/content';
+  getAllSeries,
+  getSeriesBySlug,
+  getSeriesSlugs,
+  getSeriesByCategory,
+  getSeriesByTopic,
+  getSeriesByLanguage,
+  getSeriesTranslation,
+  getSeriesSlugsByLanguage,
+  getSeriesGroupedByCategory,
+} from '@/lib/series';
+import type { SeriesMeta } from '@/types/content';
 
 // Mock the fs module
 vi.mock('fs', async (importOriginal) => {
@@ -68,12 +68,12 @@ vi.mock('reading-time', () => ({
 
 import fs from 'fs';
 
-describe('References Library', () => {
+describe('Series Library', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  describe('getReferenceSlugs', () => {
+  describe('getSeriesSlugs', () => {
     it('returns slugs from mdx files', () => {
       vi.mocked(fs.readdirSync).mockReturnValue([
         'vision-100-papers-zh.mdx',
@@ -82,18 +82,18 @@ describe('References Library', () => {
         '_draft.mdx', // should be ignored (starts with _)
       ] as unknown as ReturnType<typeof fs.readdirSync>);
 
-      const slugs = getReferenceSlugs();
+      const slugs = getSeriesSlugs();
       expect(slugs).toEqual(['vision-100-papers-zh', 'system-design-interview']);
     });
 
-    it('returns empty array when no references exist', () => {
+    it('returns empty array when no series exist', () => {
       vi.mocked(fs.readdirSync).mockReturnValue([]);
-      expect(getReferenceSlugs()).toEqual([]);
+      expect(getSeriesSlugs()).toEqual([]);
     });
   });
 
-  describe('getAllReferences', () => {
-    const mockRef1Content = `---
+  describe('getAllSeries', () => {
+    const mockSeries1Content = `---
 title: Vision 100 Papers
 description: 100 influential papers in vision science
 date: 2024-01-01
@@ -106,7 +106,7 @@ itemCount: 100
 
 Content of vision papers`;
 
-    const mockRef2Content = [
+    const mockSeries2Content = [
       '---',
       'title: System Design Interview',
       'description: Resources for system design interviews',
@@ -128,50 +128,50 @@ Content of vision papers`;
 
       vi.mocked(fs.readFileSync).mockImplementation((path) => {
         if (String(path).includes('vision')) {
-          return mockRef1Content;
+          return mockSeries1Content;
         }
-        return mockRef2Content;
+        return mockSeries2Content;
       });
     });
 
-    it('returns all reference metadata sorted by updated/date descending', () => {
-      const references = getAllReferences({ includeDrafts: true });
-      expect(references).toHaveLength(2);
+    it('returns all series metadata sorted by updated/date descending', () => {
+      const series = getAllSeries({ includeDrafts: true });
+      expect(series).toHaveLength(2);
       // Vision paper has updated: 2024-12-15, system design has date: 2024-01-10
-      expect(references[0].slug).toBe('vision-100-papers-zh');
-      expect(references[1].slug).toBe('system-design-interview');
+      expect(series[0].slug).toBe('vision-100-papers-zh');
+      expect(series[1].slug).toBe('system-design-interview');
     });
 
     it('parses frontmatter correctly', () => {
-      const references = getAllReferences({ includeDrafts: true });
-      const visionRef = references.find((r) => r.slug === 'vision-100-papers-zh');
+      const series = getAllSeries({ includeDrafts: true });
+      const visionSeries = series.find((s) => s.slug === 'vision-100-papers-zh');
 
-      expect(visionRef).toBeDefined();
-      expect(visionRef?.title).toBe('Vision 100 Papers');
-      expect(visionRef?.description).toBe('100 influential papers in vision science');
-      expect(visionRef?.category).toBe('bibliography');
-      expect(visionRef?.topics).toContain('research');
-      expect(visionRef?.lang).toBe('zh');
-      expect(visionRef?.itemCount).toBe(100);
-      expect(visionRef?.updated).toBe('2024-12-15');
+      expect(visionSeries).toBeDefined();
+      expect(visionSeries?.title).toBe('Vision 100 Papers');
+      expect(visionSeries?.description).toBe('100 influential papers in vision science');
+      expect(visionSeries?.category).toBe('bibliography');
+      expect(visionSeries?.topics).toContain('research');
+      expect(visionSeries?.lang).toBe('zh');
+      expect(visionSeries?.itemCount).toBe(100);
+      expect(visionSeries?.updated).toBe('2024-12-15');
     });
 
     it('calculates reading time', () => {
-      const references = getAllReferences({ includeDrafts: true });
-      expect(references[0].readingTime).toBe(10);
+      const series = getAllSeries({ includeDrafts: true });
+      expect(series[0].readingTime).toBe(10);
     });
 
     it('respects includeDrafts option', () => {
-      // With includeDrafts: true, we should get both references
-      const allRefs = getAllReferences({ includeDrafts: true });
-      expect(allRefs).toHaveLength(2);
+      // With includeDrafts: true, we should get both series
+      const allSeries = getAllSeries({ includeDrafts: true });
+      expect(allSeries).toHaveLength(2);
 
       // Note: Draft filtering behavior is tested via the essays library tests.
-      // The reference library uses the same pattern.
+      // The series library uses the same pattern.
     });
   });
 
-  describe('getReferenceBySlug', () => {
+  describe('getSeriesBySlug', () => {
     const mockContent = `---
 title: Test Bibliography
 description: Test description
@@ -181,38 +181,38 @@ topics: ['research']
 lang: en
 ---
 
-This is the reference content.`;
+This is the series content.`;
 
     beforeEach(() => {
       vi.mocked(fs.existsSync).mockReturnValue(true);
       vi.mocked(fs.readFileSync).mockReturnValue(mockContent);
     });
 
-    it('returns reference with content', () => {
-      const reference = getReferenceBySlug('test-bibliography');
-      expect(reference).toBeDefined();
-      expect(reference?.slug).toBe('test-bibliography');
-      expect(reference?.content).toContain('This is the reference content');
+    it('returns series with content', () => {
+      const series = getSeriesBySlug('test-bibliography');
+      expect(series).toBeDefined();
+      expect(series?.slug).toBe('test-bibliography');
+      expect(series?.content).toContain('This is the series content');
     });
 
-    it('returns null for non-existent reference', () => {
+    it('returns null for non-existent series', () => {
       vi.mocked(fs.existsSync).mockReturnValue(false);
-      const reference = getReferenceBySlug('non-existent');
-      expect(reference).toBeNull();
+      const series = getSeriesBySlug('non-existent');
+      expect(series).toBeNull();
     });
   });
 
-  describe('getReferencesByCategory', () => {
+  describe('getSeriesByCategory', () => {
     beforeEach(() => {
       vi.mocked(fs.readdirSync).mockReturnValue([
-        'bibliography-ref.mdx',
-        'tools-ref.mdx',
+        'bibliography-series.mdx',
+        'tools-series.mdx',
       ] as unknown as ReturnType<typeof fs.readdirSync>);
 
       vi.mocked(fs.readFileSync).mockImplementation((path) => {
         if (String(path).includes('bibliography')) {
           return `---
-title: Bibliography Reference
+title: Bibliography Series
 description: A bibliography
 date: 2024-01-15
 category: bibliography
@@ -222,7 +222,7 @@ lang: en
 Content`;
         }
         return `---
-title: Tools Reference
+title: Tools Series
 description: A tools list
 date: 2024-01-10
 category: tools
@@ -233,24 +233,24 @@ Content`;
       });
     });
 
-    it('filters references by category', () => {
-      const bibliographies = getReferencesByCategory('bibliography');
+    it('filters series by category', () => {
+      const bibliographies = getSeriesByCategory('bibliography');
       expect(bibliographies).toHaveLength(1);
       expect(bibliographies[0].category).toBe('bibliography');
     });
   });
 
-  describe('getReferencesByTopic', () => {
+  describe('getSeriesByTopic', () => {
     beforeEach(() => {
       vi.mocked(fs.readdirSync).mockReturnValue([
-        'research-ref.mdx',
-        'tools-ref.mdx',
+        'research-series.mdx',
+        'tools-series.mdx',
       ] as unknown as ReturnType<typeof fs.readdirSync>);
 
       vi.mocked(fs.readFileSync).mockImplementation((path) => {
         if (String(path).includes('research')) {
           return `---
-title: Research Reference
+title: Research Series
 description: Research content
 date: 2024-01-15
 category: bibliography
@@ -260,7 +260,7 @@ lang: en
 Content`;
         }
         return `---
-title: Tools Reference
+title: Tools Series
 description: Tools list
 date: 2024-01-10
 category: tools
@@ -271,17 +271,17 @@ Content`;
       });
     });
 
-    it('filters references by topic', () => {
-      const researchRefs = getReferencesByTopic('research');
-      expect(researchRefs).toHaveLength(1);
-      expect(researchRefs[0].topics).toContain('research');
+    it('filters series by topic', () => {
+      const researchSeries = getSeriesByTopic('research');
+      expect(researchSeries).toHaveLength(1);
+      expect(researchSeries[0].topics).toContain('research');
     });
   });
 
-  describe('getReferencesByLanguage', () => {
-    const mockEnglishRef = `---
-title: English Reference
-description: An English reference
+  describe('getSeriesByLanguage', () => {
+    const mockEnglishSeries = `---
+title: English Series
+description: An English series
 date: 2024-01-15
 category: resources
 topics: ['technical']
@@ -289,9 +289,9 @@ lang: en
 ---
 Content`;
 
-    const mockChineseRef = `---
-title: Chinese Reference
-description: A Chinese reference
+    const mockChineseSeries = `---
+title: Chinese Series
+description: A Chinese series
 date: 2024-01-10
 category: bibliography
 topics: ['research']
@@ -301,45 +301,45 @@ Content`;
 
     beforeEach(() => {
       vi.mocked(fs.readdirSync).mockReturnValue([
-        'english-ref.mdx',
-        'chinese-ref.mdx',
+        'english-series.mdx',
+        'chinese-series.mdx',
       ] as unknown as ReturnType<typeof fs.readdirSync>);
 
       vi.mocked(fs.readFileSync).mockImplementation((path) => {
         if (String(path).includes('english')) {
-          return mockEnglishRef;
+          return mockEnglishSeries;
         }
-        return mockChineseRef;
+        return mockChineseSeries;
       });
     });
 
-    it('filters references by English language', () => {
-      const references = getReferencesByLanguage('en');
-      expect(references).toHaveLength(1);
-      expect(references[0].lang).toBe('en');
-      expect(references[0].title).toBe('English Reference');
+    it('filters series by English language', () => {
+      const series = getSeriesByLanguage('en');
+      expect(series).toHaveLength(1);
+      expect(series[0].lang).toBe('en');
+      expect(series[0].title).toBe('English Series');
     });
 
-    it('filters references by Chinese language', () => {
-      const references = getReferencesByLanguage('zh');
-      expect(references).toHaveLength(1);
-      expect(references[0].lang).toBe('zh');
-      expect(references[0].title).toBe('Chinese Reference');
+    it('filters series by Chinese language', () => {
+      const series = getSeriesByLanguage('zh');
+      expect(series).toHaveLength(1);
+      expect(series[0].lang).toBe('zh');
+      expect(series[0].title).toBe('Chinese Series');
     });
   });
 
-  describe('getReferenceSlugsByLanguage', () => {
+  describe('getSeriesSlugsByLanguage', () => {
     beforeEach(() => {
       vi.mocked(fs.readdirSync).mockReturnValue([
-        'english-ref.mdx',
-        'chinese-ref.mdx',
+        'english-series.mdx',
+        'chinese-series.mdx',
       ] as unknown as ReturnType<typeof fs.readdirSync>);
 
       vi.mocked(fs.readFileSync).mockImplementation((path) => {
         if (String(path).includes('english')) {
           return `---
-title: English Reference
-description: An English reference
+title: English Series
+description: An English series
 date: 2024-01-15
 category: resources
 topics: ['technical']
@@ -348,8 +348,8 @@ lang: en
 Content`;
         }
         return `---
-title: Chinese Reference
-description: A Chinese reference
+title: Chinese Series
+description: A Chinese series
 date: 2024-01-10
 category: bibliography
 topics: ['research']
@@ -359,19 +359,19 @@ Content`;
       });
     });
 
-    it('returns slugs for English references only', () => {
-      const slugs = getReferenceSlugsByLanguage('en');
-      expect(slugs).toEqual(['english-ref']);
+    it('returns slugs for English series only', () => {
+      const slugs = getSeriesSlugsByLanguage('en');
+      expect(slugs).toEqual(['english-series']);
     });
 
-    it('returns slugs for Chinese references only', () => {
-      const slugs = getReferenceSlugsByLanguage('zh');
-      expect(slugs).toEqual(['chinese-ref']);
+    it('returns slugs for Chinese series only', () => {
+      const slugs = getSeriesSlugsByLanguage('zh');
+      expect(slugs).toEqual(['chinese-series']);
     });
   });
 
-  describe('getReferenceTranslation', () => {
-    const mockEnglishRef = `---
+  describe('getSeriesTranslation', () => {
+    const mockEnglishSeries = `---
 title: English Resources
 description: Original English
 date: 2024-01-15
@@ -402,39 +402,39 @@ Content`;
 
       vi.mocked(fs.readFileSync).mockImplementation((path) => {
         if (String(path).includes('english-resources')) {
-          return mockEnglishRef;
+          return mockEnglishSeries;
         }
         return mockChineseTranslation;
       });
     });
 
-    it('finds Chinese translation from English reference', () => {
-      const translation = getReferenceTranslation('english-resources', 'zh');
+    it('finds Chinese translation from English series', () => {
+      const translation = getSeriesTranslation('english-resources', 'zh');
       expect(translation).not.toBeNull();
       expect(translation?.lang).toBe('zh');
       expect(translation?.title).toBe('Chinese Translation');
     });
 
-    it('finds English reference from Chinese translation (via translationOf)', () => {
-      const translation = getReferenceTranslation('chinese-translation', 'en');
+    it('finds English series from Chinese translation (via translationOf)', () => {
+      const translation = getSeriesTranslation('chinese-translation', 'en');
       expect(translation).not.toBeNull();
       expect(translation?.lang).toBe('en');
       expect(translation?.title).toBe('English Resources');
     });
 
-    it('returns same reference if target lang matches current', () => {
-      const reference = getReferenceTranslation('english-resources', 'en');
-      expect(reference).not.toBeNull();
-      expect(reference?.slug).toBe('english-resources');
+    it('returns same series if target lang matches current', () => {
+      const series = getSeriesTranslation('english-resources', 'en');
+      expect(series).not.toBeNull();
+      expect(series?.slug).toBe('english-resources');
     });
 
     it('returns null if no translation exists', () => {
       vi.mocked(fs.readdirSync).mockReturnValue([
-        'standalone-ref.mdx',
+        'standalone-series.mdx',
       ] as unknown as ReturnType<typeof fs.readdirSync>);
 
       vi.mocked(fs.readFileSync).mockReturnValue(`---
-title: Standalone Reference
+title: Standalone Series
 description: No translation
 date: 2024-01-15
 category: resources
@@ -443,17 +443,17 @@ lang: en
 ---
 Content`);
 
-      const translation = getReferenceTranslation('standalone-ref', 'zh');
+      const translation = getSeriesTranslation('standalone-series', 'zh');
       expect(translation).toBeNull();
     });
   });
 
-  describe('getReferencesGroupedByCategory', () => {
+  describe('getSeriesGroupedByCategory', () => {
     beforeEach(() => {
       vi.mocked(fs.readdirSync).mockReturnValue([
-        'bib-ref.mdx',
-        'tools-ref.mdx',
-        'resources-ref.mdx',
+        'bib-series.mdx',
+        'tools-series.mdx',
+        'resources-series.mdx',
       ] as unknown as ReturnType<typeof fs.readdirSync>);
 
       vi.mocked(fs.readFileSync).mockImplementation((path) => {
@@ -491,8 +491,8 @@ Content`;
       });
     });
 
-    it('groups references by category', () => {
-      const grouped = getReferencesGroupedByCategory();
+    it('groups series by category', () => {
+      const grouped = getSeriesGroupedByCategory();
 
       expect(grouped.bibliography).toHaveLength(1);
       expect(grouped.tools).toHaveLength(1);

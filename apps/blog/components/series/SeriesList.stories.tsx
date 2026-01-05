@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ReferenceList } from './ReferenceList';
-import type { ReferenceMeta } from '@/types/content';
+import { SeriesList } from './SeriesList';
+import type { SeriesMeta } from '@/types/content';
 
-const sampleReferences: ReferenceMeta[] = [
+const sampleSeries: SeriesMeta[] = [
   {
     slug: 'vision-100-papers',
     category: 'bibliography',
@@ -81,9 +81,9 @@ const sampleReferences: ReferenceMeta[] = [
   },
 ];
 
-const meta: Meta<typeof ReferenceList> = {
-  title: 'Blog / Reference / ReferenceList',
-  component: ReferenceList,
+const meta: Meta<typeof SeriesList> = {
+  title: 'Blog / Series / SeriesList',
+  component: SeriesList,
   parameters: {
     layout: 'padded',
   },
@@ -105,11 +105,11 @@ const meta: Meta<typeof ReferenceList> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ReferenceList>;
+type Story = StoryObj<typeof SeriesList>;
 
 export const GridLayout: Story = {
   args: {
-    references: sampleReferences,
+    series: sampleSeries,
     layout: 'grid',
     variant: 'default',
   },
@@ -117,7 +117,7 @@ export const GridLayout: Story = {
 
 export const ListLayout: Story = {
   args: {
-    references: sampleReferences,
+    series: sampleSeries,
     layout: 'list',
     variant: 'default',
   },
@@ -125,7 +125,7 @@ export const ListLayout: Story = {
 
 export const CompactGrid: Story = {
   args: {
-    references: sampleReferences.slice(0, 3),
+    series: sampleSeries.slice(0, 3),
     layout: 'grid',
     variant: 'compact',
   },
@@ -133,15 +133,15 @@ export const CompactGrid: Story = {
 
 export const CompactList: Story = {
   args: {
-    references: sampleReferences.slice(0, 3),
+    series: sampleSeries.slice(0, 3),
     layout: 'list',
     variant: 'compact',
   },
 };
 
-export const SingleReference: Story = {
+export const SingleSeries: Story = {
   args: {
-    references: [sampleReferences[0]],
+    series: [sampleSeries[0]],
     layout: 'grid',
     variant: 'default',
   },
@@ -149,23 +149,23 @@ export const SingleReference: Story = {
 
 export const Empty: Story = {
   args: {
-    references: [],
+    series: [],
     layout: 'grid',
-    emptyMessage: 'No references found matching your criteria.',
+    emptyMessage: 'No series found matching your criteria.',
   },
 };
 
 export const CustomEmptyMessage: Story = {
   args: {
-    references: [],
+    series: [],
     layout: 'list',
     emptyMessage: 'Nothing here yet. Check back soon!',
   },
 };
 
-export const ChineseReferences: Story = {
+export const ChineseSeries: Story = {
   args: {
-    references: [
+    series: [
       {
         slug: 'vision-100-papers-zh',
         category: 'bibliography',
@@ -193,20 +193,20 @@ export const ChineseReferences: Story = {
     ],
     layout: 'grid',
     language: 'zh',
-    basePath: '/zh/references',
+    basePath: '/zh/series',
   },
 };
 
 export const MixedCategories: Story = {
   args: {
-    references: sampleReferences,
+    series: sampleSeries,
     layout: 'grid',
     variant: 'default',
   },
   parameters: {
     docs: {
       description: {
-        story: 'Showing references from different categories in a grid layout.',
+        story: 'Showing series from different categories in a grid layout.',
       },
     },
   },

@@ -23,7 +23,7 @@ export function PeriodicsIndexPage({ language = 'en' }: PeriodicsIndexPageProps)
   const allPeriodics = getAllPeriodics({ language, includeDrafts: false });
 
   return (
-    <main className="mx-auto max-w-5xl px-inset-lg py-12">
+    <main className="mx-auto max-w-5xl lg:max-w-6xl px-inset-lg py-12">
       {/* Page header */}
       <header className="mb-8">
         <h1 className="text-display font-serif text-figure-primary mb-2">

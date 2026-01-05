@@ -467,7 +467,7 @@ const accessibilityPlugin = plugin(function({ addUtilities, addBase }) {
       outlineOffset: 'var(--focus-ring-offset)',
     },
     '.prose': {
-      maxWidth: '65ch',
+      maxWidth: '80ch',
     },
   });
 });

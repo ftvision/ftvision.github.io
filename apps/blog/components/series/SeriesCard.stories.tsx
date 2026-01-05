@@ -1,10 +1,10 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { ReferenceCard } from './ReferenceCard';
+import { SeriesCard } from './SeriesCard';
 
-const meta: Meta<typeof ReferenceCard> = {
-  title: 'Blog / Reference / ReferenceCard',
-  component: ReferenceCard,
+const meta: Meta<typeof SeriesCard> = {
+  title: 'Blog / Series / SeriesCard',
+  component: SeriesCard,
   parameters: {
     layout: 'padded',
   },
@@ -12,11 +12,11 @@ const meta: Meta<typeof ReferenceCard> = {
   argTypes: {
     category: {
       control: 'select',
-      options: ['resources', 'bibliography', 'reading-list', 'tools'],
+      options: ['resources', 'bibliography', 'reading-list', 'tools', 'writing-series'],
     },
     topics: {
       control: 'check',
-      options: ['technical', 'ai', 'product', 'career', 'research', 'design', 'learning'],
+      options: ['technical', 'ai', 'product', 'career', 'research', 'design', 'learning', 'writing'],
     },
     variant: {
       control: 'radio',
@@ -37,7 +37,7 @@ const meta: Meta<typeof ReferenceCard> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ReferenceCard>;
+type Story = StoryObj<typeof SeriesCard>;
 
 export const Default: Story = {
   args: {
@@ -129,9 +129,24 @@ export const Tools: Story = {
   },
 };
 
+export const WritingSeries: Story = {
+  args: {
+    slug: 'writing-better-code',
+    category: 'writing-series',
+    topics: ['writing', 'technical'],
+    title: 'Writing Better Code',
+    description:
+      'A multi-part series exploring best practices for writing clean, maintainable code.',
+    date: '2024-08-01',
+    updated: '2024-12-20',
+    itemCount: 12,
+    readingTime: 60,
+  },
+};
+
 export const WithoutUpdated: Story = {
   args: {
-    slug: 'original-reference',
+    slug: 'original-series',
     category: 'resources',
     topics: ['learning'],
     title: 'Getting Started with Machine Learning',
@@ -170,17 +185,17 @@ export const Chinese: Story = {
     itemCount: 100,
     readingTime: 45,
     language: 'zh',
-    basePath: '/zh/references',
+    basePath: '/zh/series',
   },
 };
 
 export const LongTitle: Story = {
   args: {
-    slug: 'long-title-reference',
+    slug: 'long-title-series',
     category: 'bibliography',
     topics: ['research', 'ai', 'technical'],
     title:
-      'A Very Long Reference Title That Might Need to Wrap Across Multiple Lines in the Card',
+      'A Very Long Series Title That Might Need to Wrap Across Multiple Lines in the Card',
     description:
       'This tests how the card handles longer titles that may need to wrap.',
     date: '2024-07-01',
@@ -191,7 +206,7 @@ export const LongTitle: Story = {
 
 export const LongDescription: Story = {
   args: {
-    slug: 'long-description-reference',
+    slug: 'long-description-series',
     category: 'resources',
     topics: ['learning'],
     title: 'Short Title',

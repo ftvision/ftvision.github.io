@@ -38,7 +38,7 @@ function useLocalizedNav() {
   const links: NavLink[] = [
     { href: `${basePath}/essays`, label: translate(language, 'nav.essays') },
     { href: `${basePath}/periodics`, label: translate(language, 'nav.periodics') },
-    { href: `${basePath}/references`, label: translate(language, 'nav.references') },
+    { href: `${basePath}/series`, label: translate(language, 'nav.series') },
     { href: `${basePath}/about`, label: translate(language, 'nav.about') },
   ];
 

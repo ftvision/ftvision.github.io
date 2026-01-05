@@ -1,7 +1,7 @@
 {
   "nav.essays": "文章",
   "nav.periodics": "文摘",
-  "nav.references": "参考",
+  "nav.series": "系列",
   "nav.about": "关于",
   "nav.home": "首页",
 
@@ -18,11 +18,11 @@
   "periodic.type.changelog": "更新日志",
   "periodic.type.notes": "笔记",
 
-  "reference.category.resources": "资源",
-  "reference.category.bibliography": "文献",
-  "reference.category.reading-list": "阅读清单",
-  "reference.category.tools": "工具",
-  "reference.category.writing-series": "写作系列",
+  "series.category.resources": "资源",
+  "series.category.bibliography": "文献",
+  "series.category.reading-list": "阅读清单",
+  "series.category.tools": "工具",
+  "series.category.writing-series": "写作系列",
 
   "topic.technical": "技术",
   "topic.ai": "AI",
@@ -53,14 +53,14 @@
   "periodics.results": "{count} 篇文摘",
   "periodics.results.singular": "1 篇文摘",
 
-  "reference.updated": "更新于 {date}",
-  "reference.created": "创建于 {date}",
-  "reference.items": "{count} 项",
-  "references.title": "参考",
-  "references.description": "精选资源、文献和阅读清单",
-  "references.empty": "没有找到参考",
-  "references.results": "{count} 个参考",
-  "references.results.singular": "1 个参考",
+  "series.updated": "更新于 {date}",
+  "series.created": "创建于 {date}",
+  "series.items": "{count} 项",
+  "series.title": "系列",
+  "series.description": "精选资源、文献和阅读清单",
+  "series.empty": "没有找到系列",
+  "series.results": "{count} 个系列",
+  "series.results.singular": "1 个系列",
 
   "home.recentEssays": "最近文章",
   "home.viewAll": "查看全部文章",

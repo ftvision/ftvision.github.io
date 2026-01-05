@@ -1,18 +1,18 @@
 import Link from 'next/link';
 import { Badge, Card, CardHeader, CardContent, CardFooter } from '@blog/ui';
 import { cn } from '@/lib/utils';
-import { getReferenceCategoryLabel, getTopicLabel } from '@/lib/constants';
+import { getSeriesCategoryLabel, getTopicLabel } from '@/lib/constants';
 import { formatDate, formatReadingTime } from '@/lib/i18n/translations';
-import type { ReferenceCategory, Topic, Language } from '@/types/content';
+import type { SeriesCategory, Topic, Language } from '@/types/content';
 
-export interface ReferenceCardProps {
-  /** Reference slug for URL */
+export interface SeriesCardProps {
+  /** Series slug for URL */
   slug: string;
-  /** Reference category (resources, bibliography, reading-list, tools) */
-  category: ReferenceCategory;
+  /** Series category (resources, bibliography, reading-list, tools) */
+  category: SeriesCategory;
   /** Topics covered */
   topics: Topic[];
-  /** Reference title */
+  /** Series title */
   title: string;
   /** Description (will be truncated if too long) */
   description: string;
@@ -28,24 +28,24 @@ export interface ReferenceCardProps {
   variant?: 'default' | 'compact';
   /** Additional CSS classes */
   className?: string;
-  /** Base path for reference links (defaults to /references) */
+  /** Base path for series links (defaults to /series) */
   basePath?: string;
   /** Language for localized labels (defaults to en) */
   language?: Language;
 }
 
 /**
- * ReferenceCard - Preview card for reference listings
+ * SeriesCard - Preview card for series listings
  *
- * Displays reference metadata in a card format suitable for index views.
+ * Displays series metadata in a card format suitable for index views.
  * Shows category, title, description, and last updated date.
- * Links to the full reference page.
+ * Links to the full series page.
  *
  * Variants:
  * - default: Full card with description
  * - compact: Smaller card without description
  */
-export function ReferenceCard({
+export function SeriesCard({
   slug,
   category,
   topics,
@@ -57,9 +57,9 @@ export function ReferenceCard({
   readingTime,
   variant = 'default',
   className,
-  basePath = '/references',
+  basePath = '/series',
   language = 'en',
-}: ReferenceCardProps) {
+}: SeriesCardProps) {
   const isCompact = variant === 'compact';
   // Use updated date if available, otherwise use date
   const displayDate = updated || date;
@@ -68,28 +68,28 @@ export function ReferenceCard({
     <Card
       variant="ghost"
       className={cn(
-        'reference-card group relative transition-colors hover:bg-ground-secondary',
-        isCompact && 'reference-card--compact',
+        'series-card group relative transition-colors hover:bg-ground-secondary',
+        isCompact && 'series-card--compact',
         className
       )}
       data-variant={variant}
     >
       <Link
         href={`${basePath}/${slug}`}
-        className="reference-card-link absolute inset-0 z-10"
+        className="series-card-link absolute inset-0 z-10"
         aria-label={`View "${title}"`}
       >
-        <span className="sr-only">View reference</span>
+        <span className="sr-only">View series</span>
       </Link>
 
       <CardHeader className={cn(isCompact && 'pb-0')}>
         {/* Category and Topics row */}
-        <div className="reference-card-meta flex flex-wrap items-center gap-2">
-          <Badge variant="primary" size="sm" className="reference-card-category uppercase tracking-wide">
-            {getReferenceCategoryLabel(category, language)}
+        <div className="series-card-meta flex flex-wrap items-center gap-2">
+          <Badge variant="primary" size="sm" className="series-card-category uppercase tracking-wide">
+            {getSeriesCategoryLabel(category, language)}
           </Badge>
           {itemCount && !isCompact && (
-            <Badge variant="secondary" size="sm" className="reference-card-count font-mono">
+            <Badge variant="secondary" size="sm" className="series-card-count font-mono">
               {itemCount} {language === 'zh' ? '项' : 'items'}
             </Badge>
           )}
@@ -99,7 +99,7 @@ export function ReferenceCard({
                 ·
               </span>
               {topics.map((topic) => (
-                <Badge key={topic} variant="outline" size="sm" className="reference-card-topic">
+                <Badge key={topic} variant="outline" size="sm" className="series-card-topic">
                   {getTopicLabel(topic, language)}
                 </Badge>
               ))}
@@ -108,7 +108,7 @@ export function ReferenceCard({
         </div>
 
         {/* Title */}
-        <h3 className="reference-card-title font-serif text-xl font-semibold leading-tight text-figure-primary group-hover:text-link">
+        <h3 className="series-card-title font-serif text-xl font-semibold leading-tight text-figure-primary group-hover:text-link">
           {title}
         </h3>
       </CardHeader>
@@ -116,7 +116,7 @@ export function ReferenceCard({
       {!isCompact && (
         <CardContent className="pt-0">
           {/* Description - truncated to 2 lines */}
-          <p className="reference-card-description line-clamp-2 text-body text-figure-secondary">
+          <p className="series-card-description line-clamp-2 text-body text-figure-secondary">
             {description}
           </p>
         </CardContent>
@@ -124,19 +124,19 @@ export function ReferenceCard({
 
       <CardFooter className={cn('pt-0', isCompact && 'pb-inset-md')}>
         {/* Updated date and reading time */}
-        <div className="reference-card-footer flex items-center gap-2 text-body-sm text-figure-muted">
+        <div className="series-card-footer flex items-center gap-2 text-body-sm text-figure-muted">
           {updated ? (
-            <span className="reference-card-updated">
+            <span className="series-card-updated">
               {language === 'zh' ? '更新于 ' : 'Updated '}
               <time dateTime={displayDate}>{formatDate(language, displayDate)}</time>
             </span>
           ) : (
-            <time dateTime={displayDate} className="reference-card-date">{formatDate(language, displayDate)}</time>
+            <time dateTime={displayDate} className="series-card-date">{formatDate(language, displayDate)}</time>
           )}
           {readingTime && (
             <>
               <span aria-hidden="true">·</span>
-              <span className="reference-card-reading-time">{formatReadingTime(language, readingTime)}</span>
+              <span className="series-card-reading-time">{formatReadingTime(language, readingTime)}</span>
             </>
           )}
         </div>

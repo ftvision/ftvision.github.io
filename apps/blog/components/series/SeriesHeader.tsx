@@ -1,14 +1,14 @@
 import { Badge } from '@blog/ui';
 import { cn } from '@/lib/utils';
-import { getReferenceCategoryLabel, getTopicLabel } from '@/lib/constants';
-import type { ReferenceCategory, Topic, Language } from '@/types/content';
+import { getSeriesCategoryLabel, getTopicLabel } from '@/lib/constants';
+import type { SeriesCategory, Topic, Language } from '@/types/content';
 
-export interface ReferenceHeaderProps {
-  /** Reference category (resources, bibliography, reading-list, tools) */
-  category: ReferenceCategory;
+export interface SeriesHeaderProps {
+  /** Series category (resources, bibliography, reading-list, tools) */
+  category: SeriesCategory;
   /** Topics covered */
   topics: Topic[];
-  /** Reference title */
+  /** Series title */
   title: string;
   /** Description/subtitle */
   description: string;
@@ -56,7 +56,7 @@ function formatReadingTime(minutes: number, language: Language = 'en'): string {
 }
 
 /**
- * ReferenceHeader - Displays reference metadata including category, topics, title, and dates
+ * SeriesHeader - Displays series metadata including category, topics, title, and dates
  *
  * Layout:
  * - Category badge (prominent, uppercase)
@@ -66,7 +66,7 @@ function formatReadingTime(minutes: number, language: Language = 'en'): string {
  * - Description
  * - Date and updated date (with "Updated" prefix if updated)
  */
-export function ReferenceHeader({
+export function SeriesHeader({
   category,
   topics,
   title,
@@ -77,14 +77,14 @@ export function ReferenceHeader({
   readingTime,
   className,
   language = 'en',
-}: ReferenceHeaderProps) {
+}: SeriesHeaderProps) {
   return (
-    <div className={cn('reference-header space-y-4', className)}>
+    <div className={cn('series-header space-y-4', className)}>
       {/* Category and Topics row */}
       <div className="flex flex-wrap items-center gap-2">
         {/* Category badge - prominent */}
         <Badge variant="primary" size="sm" className="uppercase tracking-wide">
-          {getReferenceCategoryLabel(category, language)}
+          {getSeriesCategoryLabel(category, language)}
         </Badge>
 
         {/* Item count badge */}

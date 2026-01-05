@@ -42,7 +42,7 @@ export type Topic = 'technical' | 'ai' | 'product' | 'career' | 'research' | 'sc
 export type PeriodicType = 'digest' | 'changelog' | 'notes';
 
 /**
- * Reference category - describes the type of evergreen resource
+ * Series category - describes the type of evergreen resource
  *
  * - resources: General resource compilation
  * - bibliography: Academic paper lists
@@ -50,7 +50,7 @@ export type PeriodicType = 'digest' | 'changelog' | 'notes';
  * - tools: Tool/software collections
  * - writing-series: Multi-part writing series
  */
-export type ReferenceCategory = 'resources' | 'bibliography' | 'reading-list' | 'tools' | 'writing-series';
+export type SeriesCategory = 'resources' | 'bibliography' | 'reading-list' | 'tools' | 'writing-series';
 
 /**
  * Language - supported languages
@@ -171,16 +171,16 @@ export interface PeriodicFrontmatter {
 }
 
 // ============================================================================
-// REFERENCES
+// SERIES
 // ============================================================================
 
 /**
- * Reference metadata from frontmatter
+ * Series metadata from frontmatter
  */
-export interface ReferenceMeta {
+export interface SeriesMeta {
   /** Unique identifier derived from filename */
   slug: string;
-  /** Reference title */
+  /** Series title */
   title: string;
   /** Brief description for previews and SEO */
   description: string;
@@ -188,8 +188,8 @@ export interface ReferenceMeta {
   date: string;
   /** Last updated date in ISO format (YYYY-MM-DD) - for living documents */
   updated?: string;
-  /** Reference category (resources, bibliography, reading-list, tools) */
-  category: ReferenceCategory;
+  /** Series category (resources, bibliography, reading-list, tools) */
+  category: SeriesCategory;
   /** Topics covered (can be multiple) */
   topics: Topic[];
   /** Content language */
@@ -205,9 +205,9 @@ export interface ReferenceMeta {
 }
 
 /**
- * Full reference with content
+ * Full series with content
  */
-export interface Reference extends ReferenceMeta {
+export interface Series extends SeriesMeta {
   /** Raw MDX content */
   content: string;
   /** Table of contents extracted from headings */
@@ -215,22 +215,22 @@ export interface Reference extends ReferenceMeta {
 }
 
 /**
- * Reference with compiled MDX source (for rendering)
+ * Series with compiled MDX source (for rendering)
  */
-export interface CompiledReference extends ReferenceMeta {
+export interface CompiledSeries extends SeriesMeta {
   /** Compiled MDX source for next-mdx-remote */
   mdxSource: MDXCompiledSource;
 }
 
 /**
- * Frontmatter as parsed from reference MDX files
+ * Frontmatter as parsed from series MDX files
  */
-export interface ReferenceFrontmatter {
+export interface SeriesFrontmatter {
   title: string;
   description: string;
   date: string;
   updated?: string;
-  category: ReferenceCategory;
+  category: SeriesCategory;
   topics: Topic[];
   lang: Language;
   draft?: boolean;
@@ -293,7 +293,7 @@ export function isValidPeriodicType(value: unknown): value is PeriodicType {
   );
 }
 
-export function isValidReferenceCategory(value: unknown): value is ReferenceCategory {
+export function isValidSeriesCategory(value: unknown): value is SeriesCategory {
   return (
     typeof value === 'string' &&
     ['resources', 'bibliography', 'reading-list', 'tools', 'writing-series'].includes(value)
@@ -409,9 +409,9 @@ export function validatePeriodicFrontmatter(data: Record<string, unknown>): Peri
 }
 
 /**
- * Validates reference frontmatter and returns typed result
+ * Validates series frontmatter and returns typed result
  */
-export function validateReferenceFrontmatter(data: Record<string, unknown>): ReferenceFrontmatter {
+export function validateSeriesFrontmatter(data: Record<string, unknown>): SeriesFrontmatter {
   const errors: string[] = [];
 
   // Required fields
@@ -424,7 +424,7 @@ export function validateReferenceFrontmatter(data: Record<string, unknown>): Ref
   if (typeof data.date !== 'string' || !data.date) {
     errors.push('date is required and must be a string');
   }
-  if (!isValidReferenceCategory(data.category)) {
+  if (!isValidSeriesCategory(data.category)) {
     errors.push(`category must be one of: resources, bibliography, reading-list, tools, writing-series`);
   }
   if (!Array.isArray(data.topics) || !data.topics.every(isValidTopic)) {
@@ -449,7 +449,7 @@ export function validateReferenceFrontmatter(data: Record<string, unknown>): Ref
   }
 
   if (errors.length > 0) {
-    throw new Error(`Invalid reference frontmatter:\n${errors.join('\n')}`);
+    throw new Error(`Invalid series frontmatter:\n${errors.join('\n')}`);
   }
 
   return {
@@ -457,7 +457,7 @@ export function validateReferenceFrontmatter(data: Record<string, unknown>): Ref
     description: data.description as string,
     date: data.date as string,
     updated: data.updated as string | undefined,
-    category: data.category as ReferenceCategory,
+    category: data.category as SeriesCategory,
     topics: data.topics as Topic[],
     lang: (data.lang as Language) ?? 'en',
     draft: data.draft as boolean | undefined,

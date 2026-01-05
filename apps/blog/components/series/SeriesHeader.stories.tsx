@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ReferenceHeader } from './ReferenceHeader';
+import { SeriesHeader } from './SeriesHeader';
 
-const meta: Meta<typeof ReferenceHeader> = {
-  title: 'Blog / Reference / ReferenceHeader',
-  component: ReferenceHeader,
+const meta: Meta<typeof SeriesHeader> = {
+  title: 'Blog / Series / SeriesHeader',
+  component: SeriesHeader,
   parameters: {
     layout: 'padded',
   },
@@ -11,11 +11,11 @@ const meta: Meta<typeof ReferenceHeader> = {
   argTypes: {
     category: {
       control: 'select',
-      options: ['resources', 'bibliography', 'reading-list', 'tools'],
+      options: ['resources', 'bibliography', 'reading-list', 'tools', 'writing-series'],
     },
     topics: {
       control: 'check',
-      options: ['technical', 'ai', 'product', 'career', 'research', 'design', 'learning'],
+      options: ['technical', 'ai', 'product', 'career', 'research', 'design', 'learning', 'writing'],
     },
     language: {
       control: 'radio',
@@ -25,7 +25,7 @@ const meta: Meta<typeof ReferenceHeader> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ReferenceHeader>;
+type Story = StoryObj<typeof SeriesHeader>;
 
 export const Bibliography: Story = {
   args: {
@@ -82,6 +82,20 @@ export const Tools: Story = {
   },
 };
 
+export const WritingSeries: Story = {
+  args: {
+    category: 'writing-series',
+    topics: ['writing', 'technical'],
+    title: 'Writing Better Code',
+    description:
+      'A multi-part series exploring best practices for writing clean, maintainable code.',
+    date: '2024-08-01',
+    updated: '2024-12-20',
+    itemCount: 12,
+    readingTime: 60,
+  },
+};
+
 export const WithoutUpdated: Story = {
   args: {
     category: 'resources',
@@ -121,7 +135,7 @@ export const SingleTopic: Story = {
 export const AllTopics: Story = {
   args: {
     category: 'resources',
-    topics: ['technical', 'ai', 'product', 'career', 'research', 'design', 'learning'],
+    topics: ['technical', 'ai', 'product', 'career', 'research', 'design', 'learning', 'writing'],
     title: 'Comprehensive Tech Resources',
     description:
       'A comprehensive resource covering all aspects of technology, AI, product development, and career growth.',
