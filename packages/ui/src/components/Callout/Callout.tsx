@@ -4,9 +4,7 @@ import { cn } from '@ui/lib/utils';
 
 const calloutVariants = cva(
   // Base styles: bordered container with semantic spacing
-  // Using arbitrary values with CSS variables to ensure proper theming
-  // Set each border side individually to ensure left border is thicker
-  '[border-top-width:var(--border-width-default)] [border-right-width:var(--border-width-default)] [border-bottom-width:var(--border-width-default)] [border-left-width:var(--border-width-thick)] [border-radius:var(--radius-default)] p-inset-md my-stack-md border-solid',
+  'rounded-[var(--radius-default)] my-stack-md border-solid',
   {
     variants: {
       type: {
@@ -16,20 +14,24 @@ const calloutVariants = cva(
         danger: 'bg-status-danger-bg border-status-danger text-figure-primary',
         note: 'bg-ground-secondary border-border-strong text-figure-primary',
       },
+      border: {
+        bold: 'border-l-4 border-t-0 border-r-0 border-b-0',
+        subtle: 'border-l border-t-0 border-r-0 border-b-0',
+        full: 'border',
+      },
+      size: {
+        sm: 'p-inset-sm text-body-sm',
+        md: 'p-inset-md text-body',
+        lg: 'p-inset-lg text-body-lg',
+      },
     },
     defaultVariants: {
       type: 'info',
+      border: 'bold',
+      size: 'md',
     },
   }
 );
-
-const calloutIcons: Record<string, string> = {
-  info: 'ℹ️',
-  success: '✅',
-  warning: '⚠️',
-  danger: '🚫',
-  note: '📝',
-};
 
 export interface CalloutProps
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -38,26 +40,17 @@ export interface CalloutProps
 }
 
 const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
-  ({ className, type = 'info', title, children, ...props }, ref) => {
-    const icon = calloutIcons[type || 'info'];
-
+  ({ className, type, border, size, title, children, ...props }, ref) => {
     return (
       <div
         ref={ref}
-        className={cn(calloutVariants({ type }), className)}
+        className={cn(calloutVariants({ type, border, size }), className)}
         {...props}
       >
-        <div className="flex items-start gap-inline-sm">
-          <span className="text-xl flex-shrink-0" aria-hidden="true">
-            {icon}
-          </span>
-          <div className="flex-1 min-w-0">
-            {title && (
-              <p className="font-semibold mb-stack-xs font-heading uppercase tracking-wide">{title}</p>
-            )}
-            <div className="text-body-sm">{children}</div>
-          </div>
-        </div>
+        {title && (
+          <p className="font-semibold mb-stack-xs font-heading">{title}</p>
+        )}
+        <div>{children}</div>
       </div>
     );
   }
