@@ -43,23 +43,43 @@ export function WideBlock({
   className,
   width = 'wide',
 }: WideBlockProps) {
+  const screenRef = React.useRef<HTMLDivElement>(null);
+  const [screenOffset, setScreenOffset] = React.useState(0);
+
+  // Calculate offset for screen-width mode
+  React.useLayoutEffect(() => {
+    if (width === 'screen' && screenRef.current) {
+      const updateOffset = () => {
+        const rect = screenRef.current?.getBoundingClientRect();
+        if (rect) {
+          setScreenOffset(-rect.left);
+        }
+      };
+      updateOffset();
+      window.addEventListener('resize', updateOffset);
+      return () => window.removeEventListener('resize', updateOffset);
+    }
+  }, [width]);
+
   const widthClasses = {
     // Wide: extends into the right margin area (uses the 300px margin space)
     wide: 'lg:w-[calc(100%+280px)]',
     // Full: extends into both margins for maximum content width
     full: 'lg:w-[calc(100%+400px)] lg:-ml-[50px]',
-    // Screen: full viewport width using the standard viewport trick
-    screen: 'relative left-1/2 right-1/2 -ml-[50vw] w-screen',
+    // Screen: full viewport width - uses JS-calculated offset
+    screen: 'w-screen',
   };
 
   return (
     <div
+      ref={width === 'screen' ? screenRef : undefined}
       className={cn(
         'wide-block',
         'my-8',
         widthClasses[width],
         className
       )}
+      style={width === 'screen' ? { marginLeft: screenOffset } : undefined}
     >
       {children}
     </div>

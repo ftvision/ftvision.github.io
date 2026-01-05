@@ -35,6 +35,7 @@ export const TOPIC_LABELS: Record<Topic, string> = {
   product: 'Product',
   career: 'Career',
   research: 'Research',
+  science: 'Science',
   design: 'Design',
   learning: 'Learning',
 };
@@ -48,6 +49,7 @@ export const TOPIC_LABELS_ZH: Record<Topic, string> = {
   product: '产品',
   career: '职业',
   research: '研究',
+  science: '科学',
   design: '设计',
   learning: '学习',
 };

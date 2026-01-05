@@ -24,3 +24,33 @@ export type { ReferencesProps } from './References';
 
 export { WideBlock } from './WideBlock';
 export type { WideBlockProps } from './WideBlock';
+
+// Timeline components
+export {
+  TimelineMap,
+  TimelineSubwayMap,
+  TimelineTable,
+  TimelineNode,
+  TimelineLine,
+  TimelineTooltip,
+  createDecadePeriodAssigner,
+  createYearPeriodAssigner,
+  createMonthPeriodAssigner,
+  createDefaultPeriodAssigner,
+  resolveCategories,
+  getCategoryColor,
+  getCategoryName,
+} from './timeline';
+
+export type {
+  TimelineItem,
+  TimelineCategory,
+  TimelineCategoryInternal,
+  TimelinePeriod,
+  TimelineTableColumn,
+  TimelineMapProps,
+  TimelineSubwayMapProps,
+  TimelineTableProps,
+  NodePosition,
+  PeriodAssigner,
+} from './timeline';

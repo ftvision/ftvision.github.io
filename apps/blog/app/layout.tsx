@@ -80,7 +80,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           }}
         />
       </head>
-      <body className="flex min-h-screen flex-col bg-ground-primary text-figure-primary antialiased">
+      <body className="flex min-h-screen flex-col overflow-x-clip bg-ground-primary text-figure-primary antialiased">
         <ThemeProvider>
           <LanguageProvider>
             <SiteHeader actions={<HeaderActions />} />
