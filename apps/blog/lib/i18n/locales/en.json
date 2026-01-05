@@ -22,6 +22,7 @@
   "reference.category.bibliography": "Bibliography",
   "reference.category.reading-list": "Reading List",
   "reference.category.tools": "Tools",
+  "reference.category.writing-series": "Writing Series",
 
   "topic.technical": "Technical",
   "topic.ai": "AI",
@@ -30,6 +31,7 @@
   "topic.research": "Research",
   "topic.design": "Design",
   "topic.learning": "Learning",
+  "topic.writing": "Writing",
 
   "filter.all": "All",
   "filter.type": "Type",

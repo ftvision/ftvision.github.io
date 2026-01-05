@@ -38,6 +38,7 @@ export const TOPIC_LABELS: Record<Topic, string> = {
   science: 'Science',
   design: 'Design',
   learning: 'Learning',
+  writing: 'Writing',
 };
 
 /**
@@ -52,6 +53,7 @@ export const TOPIC_LABELS_ZH: Record<Topic, string> = {
   science: '科学',
   design: '设计',
   learning: '学习',
+  writing: '写作',
 };
 
 /**
@@ -80,6 +82,7 @@ export const REFERENCE_CATEGORY_LABELS: Record<ReferenceCategory, string> = {
   bibliography: 'Bibliography',
   'reading-list': 'Reading List',
   tools: 'Tools',
+  'writing-series': 'Writing Series',
 };
 
 /**
@@ -90,6 +93,7 @@ export const REFERENCE_CATEGORY_LABELS_ZH: Record<ReferenceCategory, string> = {
   bibliography: '文献',
   'reading-list': '阅读清单',
   tools: '工具',
+  'writing-series': '写作系列',
 };
 
 /**

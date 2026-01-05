@@ -28,8 +28,9 @@ export type EssayType = 'guide' | 'deep-dive' | 'opinion' | 'review' | 'narrativ
  * - science: Natural sciences, neuroscience, vision science
  * - design: UX, visual design, information design
  * - learning: Educational resources, courses, tutorials
+ * - writing: Writing craft, style, communication
  */
-export type Topic = 'technical' | 'ai' | 'product' | 'career' | 'research' | 'science' | 'design' | 'learning';
+export type Topic = 'technical' | 'ai' | 'product' | 'career' | 'research' | 'science' | 'design' | 'learning' | 'writing';
 
 /**
  * Periodic type - describes the type of recurring content
@@ -47,8 +48,9 @@ export type PeriodicType = 'digest' | 'changelog' | 'notes';
  * - bibliography: Academic paper lists
  * - reading-list: Curated article/book lists
  * - tools: Tool/software collections
+ * - writing-series: Multi-part writing series
  */
-export type ReferenceCategory = 'resources' | 'bibliography' | 'reading-list' | 'tools';
+export type ReferenceCategory = 'resources' | 'bibliography' | 'reading-list' | 'tools' | 'writing-series';
 
 /**
  * Language - supported languages
@@ -280,7 +282,7 @@ export function isValidEssayType(value: unknown): value is EssayType {
 export function isValidTopic(value: unknown): value is Topic {
   return (
     typeof value === 'string' &&
-    ['technical', 'ai', 'product', 'career', 'research', 'science', 'design', 'learning'].includes(value)
+    ['technical', 'ai', 'product', 'career', 'research', 'science', 'design', 'learning', 'writing'].includes(value)
   );
 }
 
@@ -294,7 +296,7 @@ export function isValidPeriodicType(value: unknown): value is PeriodicType {
 export function isValidReferenceCategory(value: unknown): value is ReferenceCategory {
   return (
     typeof value === 'string' &&
-    ['resources', 'bibliography', 'reading-list', 'tools'].includes(value)
+    ['resources', 'bibliography', 'reading-list', 'tools', 'writing-series'].includes(value)
   );
 }
 
@@ -423,7 +425,7 @@ export function validateReferenceFrontmatter(data: Record<string, unknown>): Ref
     errors.push('date is required and must be a string');
   }
   if (!isValidReferenceCategory(data.category)) {
-    errors.push(`category must be one of: resources, bibliography, reading-list, tools`);
+    errors.push(`category must be one of: resources, bibliography, reading-list, tools, writing-series`);
   }
   if (!Array.isArray(data.topics) || !data.topics.every(isValidTopic)) {
     errors.push(`topics must be an array of valid topics`);

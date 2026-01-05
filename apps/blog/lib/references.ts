@@ -249,6 +249,7 @@ export function getReferencesGroupedByCategory(
     bibliography: [],
     'reading-list': [],
     tools: [],
+    'writing-series': [],
   };
 
   for (const reference of allReferences) {

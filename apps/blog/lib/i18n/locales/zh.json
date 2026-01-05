@@ -22,6 +22,7 @@
   "reference.category.bibliography": "文献",
   "reference.category.reading-list": "阅读清单",
   "reference.category.tools": "工具",
+  "reference.category.writing-series": "写作系列",
 
   "topic.technical": "技术",
   "topic.ai": "AI",
@@ -30,6 +31,7 @@
   "topic.research": "研究",
   "topic.design": "设计",
   "topic.learning": "学习",
+  "topic.writing": "写作",
 
   "filter.all": "全部",
   "filter.type": "类型",
