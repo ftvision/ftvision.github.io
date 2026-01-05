@@ -1,4 +1,4 @@
-export { EssayLayout, type EssayLayoutProps } from './EssayLayout';
+export { EssayLayout, type EssayLayoutProps, type TocItem } from './EssayLayout';
 export { EssayHeader, type EssayHeaderProps } from './EssayHeader';
 export { EssayCard, type EssayCardProps } from './EssayCard';
 export { EssayList, type EssayListProps } from './EssayList';

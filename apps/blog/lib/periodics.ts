@@ -17,6 +17,7 @@ import {
   type Topic,
   type Language,
 } from '@/types/content';
+import { extractHeadings } from './mdx';
 
 /** Directory where periodic MDX files are stored */
 const PERIODICS_DIRECTORY = path.join(process.cwd(), 'content', 'periodics');
@@ -108,12 +109,15 @@ export function getPeriodicBySlug(slug: string): Periodic | null {
   try {
     const frontmatter = validatePeriodicFrontmatter(data);
     const stats = readingTime(content);
+    // Extract table of contents from h2 and h3 headings
+    const toc = extractHeadings(content, { minLevel: 2, maxLevel: 3 });
 
     return {
       slug,
       ...frontmatter,
       content,
       readingTime: Math.ceil(stats.minutes),
+      toc,
     };
   } catch (error) {
     console.error(`Error parsing periodic ${slug}:`, error);

@@ -73,11 +73,12 @@ export default async function ReferencePage({ params }: ReferencePageProps) {
     notFound();
   }
 
-  const { title, description, date, updated, category, topics, itemCount, readingTime, content } =
+  const { title, description, date, updated, category, topics, itemCount, readingTime, content, toc } =
     reference;
 
   return (
     <EssayLayout
+      toc={toc}
       header={
         <ReferenceHeader
           category={category}

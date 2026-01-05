@@ -77,11 +77,12 @@ export default async function ZhEssayPage({ params }: ZhEssayPageProps) {
     notFound();
   }
 
-  const { title, description, date, type, topics, readingTime, content } =
+  const { title, description, date, type, topics, readingTime, content, toc } =
     essay;
 
   return (
     <EssayLayout
+      toc={toc}
       header={
         <EssayHeader
           type={type}

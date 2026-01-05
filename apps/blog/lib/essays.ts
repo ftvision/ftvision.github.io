@@ -16,6 +16,7 @@ import {
   type Topic,
   type Language,
 } from '@/types/content';
+import { extractHeadings } from './mdx';
 
 /** Directory where essay MDX files are stored */
 const ESSAYS_DIRECTORY = path.join(process.cwd(), 'content', 'essays');
@@ -103,12 +104,15 @@ export function getEssayBySlug(slug: string): Essay | null {
   try {
     const frontmatter = validateFrontmatter(data);
     const stats = readingTime(content);
+    // Extract table of contents from h2 and h3 headings
+    const toc = extractHeadings(content, { minLevel: 2, maxLevel: 3 });
 
     return {
       slug,
       ...frontmatter,
       content,
       readingTime: Math.ceil(stats.minutes),
+      toc,
     };
   } catch (error) {
     console.error(`Error parsing essay ${slug}:`, error);
