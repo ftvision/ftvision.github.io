@@ -1,7 +1,7 @@
 {
   "nav.essays": "Essays",
   "nav.periodics": "Periodics",
-  "nav.references": "References",
+  "nav.series": "Series",
   "nav.about": "About",
   "nav.home": "Home",
 
@@ -18,11 +18,11 @@
   "periodic.type.changelog": "Changelog",
   "periodic.type.notes": "Notes",
 
-  "reference.category.resources": "Resources",
-  "reference.category.bibliography": "Bibliography",
-  "reference.category.reading-list": "Reading List",
-  "reference.category.tools": "Tools",
-  "reference.category.writing-series": "Writing Series",
+  "series.category.resources": "Resources",
+  "series.category.bibliography": "Bibliography",
+  "series.category.reading-list": "Reading List",
+  "series.category.tools": "Tools",
+  "series.category.writing-series": "Writing Series",
 
   "topic.technical": "Technical",
   "topic.ai": "AI",
@@ -53,14 +53,14 @@
   "periodics.results": "{count} periodics",
   "periodics.results.singular": "1 periodic",
 
-  "reference.updated": "Updated {date}",
-  "reference.created": "Created {date}",
-  "reference.items": "{count} items",
-  "references.title": "References",
-  "references.description": "Curated resources, bibliographies, and reading lists",
-  "references.empty": "No references found",
-  "references.results": "{count} references",
-  "references.results.singular": "1 reference",
+  "series.updated": "Updated {date}",
+  "series.created": "Created {date}",
+  "series.items": "{count} items",
+  "series.title": "Series",
+  "series.description": "Curated resources, bibliographies, and reading lists",
+  "series.empty": "No series found",
+  "series.results": "{count} series",
+  "series.results.singular": "1 series",
 
   "home.recentEssays": "Recent Essays",
   "home.viewAll": "View all essays",

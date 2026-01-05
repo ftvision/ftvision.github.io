@@ -198,7 +198,7 @@ export const HeroMode: Story = {
     (Story) => (
       // Simulate EssayLayout's CSS Grid structure
       <div className="min-h-screen bg-ground-primary">
-        <div className="xl:grid xl:grid-cols-[200px_1fr_340px] xl:gap-8 max-w-screen-2xl mx-auto px-4 xl:px-8">
+        <div className="xl:grid xl:grid-cols-[250px_1fr_250px] xl:gap-8 max-w-screen-2xl mx-auto px-4 xl:px-8">
           {/* Left sidebar (ToC) */}
           <aside className="hidden xl:block pt-8">
             <div className="bg-ground-secondary p-4 rounded text-figure-muted text-sm">

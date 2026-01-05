@@ -2,7 +2,7 @@
  * Shared constants for the blog application
  */
 
-import type { EssayType, Topic, Language, PeriodicType, ReferenceCategory } from '@/types/content';
+import type { EssayType, Topic, Language, PeriodicType, SeriesCategory } from '@/types/content';
 
 /**
  * Maps essay types to display labels (English)
@@ -75,9 +75,9 @@ export const PERIODIC_TYPE_LABELS_ZH: Record<PeriodicType, string> = {
 };
 
 /**
- * Maps reference categories to display labels (English)
+ * Maps series categories to display labels (English)
  */
-export const REFERENCE_CATEGORY_LABELS: Record<ReferenceCategory, string> = {
+export const SERIES_CATEGORY_LABELS: Record<SeriesCategory, string> = {
   resources: 'Resources',
   bibliography: 'Bibliography',
   'reading-list': 'Reading List',
@@ -86,9 +86,9 @@ export const REFERENCE_CATEGORY_LABELS: Record<ReferenceCategory, string> = {
 };
 
 /**
- * Maps reference categories to display labels (Chinese)
+ * Maps series categories to display labels (Chinese)
  */
-export const REFERENCE_CATEGORY_LABELS_ZH: Record<ReferenceCategory, string> = {
+export const SERIES_CATEGORY_LABELS_ZH: Record<SeriesCategory, string> = {
   resources: '资源',
   bibliography: '文献',
   'reading-list': '阅读清单',
@@ -112,9 +112,9 @@ export const TOPICS = Object.keys(TOPIC_LABELS) as Topic[];
 export const PERIODIC_TYPES = Object.keys(PERIODIC_TYPE_LABELS) as PeriodicType[];
 
 /**
- * All reference categories for iteration
+ * All series categories for iteration
  */
-export const REFERENCE_CATEGORIES = Object.keys(REFERENCE_CATEGORY_LABELS) as ReferenceCategory[];
+export const SERIES_CATEGORIES = Object.keys(SERIES_CATEGORY_LABELS) as SeriesCategory[];
 
 /**
  * Helper to get essay type label
@@ -159,15 +159,15 @@ export function getPeriodicTypeLabels(language: Language = 'en'): Record<Periodi
 }
 
 /**
- * Helper to get reference category label
+ * Helper to get series category label
  */
-export function getReferenceCategoryLabel(category: ReferenceCategory, language: Language = 'en'): string {
-  return language === 'zh' ? REFERENCE_CATEGORY_LABELS_ZH[category] : REFERENCE_CATEGORY_LABELS[category];
+export function getSeriesCategoryLabel(category: SeriesCategory, language: Language = 'en'): string {
+  return language === 'zh' ? SERIES_CATEGORY_LABELS_ZH[category] : SERIES_CATEGORY_LABELS[category];
 }
 
 /**
- * Get all reference category labels for a language
+ * Get all series category labels for a language
  */
-export function getReferenceCategoryLabels(language: Language = 'en'): Record<ReferenceCategory, string> {
-  return language === 'zh' ? REFERENCE_CATEGORY_LABELS_ZH : REFERENCE_CATEGORY_LABELS;
+export function getSeriesCategoryLabels(language: Language = 'en'): Record<SeriesCategory, string> {
+  return language === 'zh' ? SERIES_CATEGORY_LABELS_ZH : SERIES_CATEGORY_LABELS;
 }

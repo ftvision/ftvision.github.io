@@ -13,5 +13,5 @@ export type { AboutPageProps } from './AboutPage';
 export { PeriodicsIndexPage } from './PeriodicsIndexPage';
 export type { PeriodicsIndexPageProps } from './PeriodicsIndexPage';
 
-export { ReferencesIndexPage } from './ReferencesIndexPage';
-export type { ReferencesIndexPageProps } from './ReferencesIndexPage';
+export { SeriesIndexPage } from './SeriesIndexPage';
+export type { SeriesIndexPageProps } from './SeriesIndexPage';

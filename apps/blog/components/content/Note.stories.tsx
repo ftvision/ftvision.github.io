@@ -14,7 +14,7 @@ const meta: Meta<typeof Note> = {
           Sidenotes use float + negative margin to position in the padding space.
           On mobile (<1024px), notes are expandable inline elements.
         */}
-        <div className="p-4 lg:p-8 lg:pr-[340px] lg:max-w-[1100px] lg:mx-auto">
+        <div className="p-4 lg:p-8 lg:pr-[250px] lg:max-w-[1100px] lg:mx-auto">
           <div className="max-w-prose">
             <Story />
           </div>
