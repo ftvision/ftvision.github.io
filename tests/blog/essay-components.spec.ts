@@ -198,9 +198,9 @@ test.describe('Blog: Essay Components', () => {
       expect(texts[1]).toBe('2');
     });
 
-    test('layout has proper structure with right margin space on desktop', async ({ page }) => {
-      // Set desktop viewport
-      await page.setViewportSize({ width: 1280, height: 800 });
+    test('layout has proper structure with right margin space on tablet', async ({ page }) => {
+      // Set tablet viewport (lg breakpoint, before xl grid kicks in)
+      await page.setViewportSize({ width: 1024, height: 800 });
 
       await page.goto(
         '/iframe.html?id=blog-essay-essaylayout--default&viewMode=story'
@@ -208,7 +208,7 @@ test.describe('Blog: Essay Components', () => {
 
       await page.waitForSelector('.essay-layout', { timeout: 10000 });
 
-      // Verify layout has right padding for sidenote margin space
+      // Verify layout has right padding for sidenote margin space on tablet
       const article = page.locator('article.essay-layout');
       await expect(article).toHaveClass(/lg:pr-\[340px\]/);
     });
@@ -339,6 +339,207 @@ test.describe('Blog: Essay Components', () => {
       expect(refTexts).toContain('[1]');
       expect(refTexts).toContain('[2]');
       expect(refTexts).toContain('[3]');
+    });
+  });
+
+  test.describe('EssayLayout Table of Contents', () => {
+    test('ToC is hidden on mobile/tablet viewports', async ({ page }) => {
+      // Test mobile viewport
+      await page.setViewportSize({ width: 375, height: 667 });
+
+      await page.goto(
+        '/iframe.html?id=blog-essay-essaylayout--with-table-of-contents&viewMode=story'
+      );
+
+      await page.waitForSelector('.essay-layout', { timeout: 10000 });
+
+      // ToC nav should not be visible on mobile
+      const tocNav = page.locator('nav[aria-label="Table of contents"]');
+      await expect(tocNav).not.toBeVisible();
+    });
+
+    test('ToC is hidden on tablet viewport (1024px)', async ({ page }) => {
+      // Test tablet viewport (below xl breakpoint of 1280px)
+      await page.setViewportSize({ width: 1024, height: 768 });
+
+      await page.goto(
+        '/iframe.html?id=blog-essay-essaylayout--with-table-of-contents&viewMode=story'
+      );
+
+      await page.waitForSelector('.essay-layout', { timeout: 10000 });
+
+      // ToC nav should not be visible on tablet
+      const tocNav = page.locator('nav[aria-label="Table of contents"]');
+      await expect(tocNav).not.toBeVisible();
+    });
+
+    test('ToC is visible on desktop viewport (xl: 1280px+)', async ({ page }) => {
+      // Set desktop viewport (xl breakpoint)
+      await page.setViewportSize({ width: 1440, height: 900 });
+
+      await page.goto(
+        '/iframe.html?id=blog-essay-essaylayout--with-table-of-contents&viewMode=story'
+      );
+
+      await page.waitForSelector('.essay-layout', { timeout: 10000 });
+
+      // ToC nav should be visible on desktop
+      const tocNav = page.locator('nav[aria-label="Table of contents"]');
+      await expect(tocNav).toBeVisible();
+    });
+
+    test('ToC displays all heading items from toc prop', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+
+      await page.goto(
+        '/iframe.html?id=blog-essay-essaylayout--with-table-of-contents&viewMode=story'
+      );
+
+      await page.waitForSelector('.essay-layout', { timeout: 10000 });
+
+      const tocNav = page.locator('nav[aria-label="Table of contents"]');
+
+      // Verify all ToC items are present
+      await expect(tocNav.getByText('Introduction')).toBeVisible();
+      await expect(tocNav.getByText('The Key Innovation: Self-Attention')).toBeVisible();
+      await expect(tocNav.getByText('Parallel Processing')).toBeVisible();
+      await expect(tocNav.getByText('Architecture Overview')).toBeVisible();
+      await expect(tocNav.getByText('The Encoder')).toBeVisible();
+      await expect(tocNav.getByText('The Decoder')).toBeVisible();
+      await expect(tocNav.getByText('Conclusion')).toBeVisible();
+    });
+
+    test('ToC is in a separate column from content (not overlapping)', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+
+      await page.goto(
+        '/iframe.html?id=blog-essay-essaylayout--with-table-of-contents&viewMode=story'
+      );
+
+      await page.waitForSelector('.essay-layout', { timeout: 10000 });
+
+      // Get bounding boxes of ToC and content
+      const tocNav = page.locator('nav[aria-label="Table of contents"]');
+      const essayHeader = page.locator('.essay-header-container');
+
+      const tocBox = await tocNav.boundingBox();
+      const headerBox = await essayHeader.boundingBox();
+
+      expect(tocBox).not.toBeNull();
+      expect(headerBox).not.toBeNull();
+
+      if (tocBox && headerBox) {
+        // ToC should be entirely to the left of the header
+        // ToC right edge should be less than or equal to header left edge
+        expect(tocBox.x + tocBox.width).toBeLessThanOrEqual(headerBox.x);
+      }
+    });
+
+    test('ToC uses CSS Grid layout on desktop', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+
+      await page.goto(
+        '/iframe.html?id=blog-essay-essaylayout--with-table-of-contents&viewMode=story'
+      );
+
+      await page.waitForSelector('.essay-layout', { timeout: 10000 });
+
+      // The wrapper should use CSS Grid on desktop
+      const wrapper = page.locator('.essay-layout-wrapper');
+      const display = await wrapper.evaluate((el) =>
+        window.getComputedStyle(el).display
+      );
+
+      expect(display).toBe('grid');
+    });
+
+    test('ToC is sticky when scrolling', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+
+      await page.goto(
+        '/iframe.html?id=blog-essay-essaylayout--with-table-of-contents&viewMode=story'
+      );
+
+      await page.waitForSelector('.essay-layout', { timeout: 10000 });
+
+      const tocNav = page.locator('nav[aria-label="Table of contents"]');
+
+      // Verify ToC has sticky positioning
+      const position = await tocNav.evaluate((el) =>
+        window.getComputedStyle(el).position
+      );
+      expect(position).toBe('sticky');
+    });
+
+    test('ToC items have proper indentation for nested headings', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+
+      await page.goto(
+        '/iframe.html?id=blog-essay-essaylayout--with-table-of-contents&viewMode=story'
+      );
+
+      await page.waitForSelector('.essay-layout', { timeout: 10000 });
+
+      const tocNav = page.locator('nav[aria-label="Table of contents"]');
+
+      // h2 items should not have left padding (or have pl-0)
+      const h2Button = tocNav.getByText('Introduction');
+      const h2PaddingLeft = await h2Button.evaluate((el) =>
+        window.getComputedStyle(el).paddingLeft
+      );
+
+      // h3 items should have left padding (pl-3 = 0.75rem = 12px)
+      const h3Button = tocNav.getByText('Parallel Processing');
+      const h3PaddingLeft = await h3Button.evaluate((el) =>
+        window.getComputedStyle(el).paddingLeft
+      );
+
+      // h3 should have more padding than h2
+      const h2Padding = parseFloat(h2PaddingLeft);
+      const h3Padding = parseFloat(h3PaddingLeft);
+      expect(h3Padding).toBeGreaterThan(h2Padding);
+    });
+
+    test('clicking ToC item scrolls to heading', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+
+      await page.goto(
+        '/iframe.html?id=blog-essay-essaylayout--with-table-of-contents&viewMode=story'
+      );
+
+      await page.waitForSelector('.essay-layout', { timeout: 10000 });
+
+      // Get initial scroll position
+      const initialScroll = await page.evaluate(() => window.scrollY);
+
+      // Click on "Conclusion" in ToC
+      const tocNav = page.locator('nav[aria-label="Table of contents"]');
+      await tocNav.getByText('Conclusion').click();
+
+      // Wait for smooth scroll to complete
+      await page.waitForTimeout(500);
+
+      // Verify scroll position changed (scrolled down to conclusion)
+      const finalScroll = await page.evaluate(() => window.scrollY);
+      expect(finalScroll).toBeGreaterThan(initialScroll);
+    });
+
+    test('layout without toc prop does not show ToC sidebar', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+
+      await page.goto(
+        '/iframe.html?id=blog-essay-essaylayout--default&viewMode=story'
+      );
+
+      await page.waitForSelector('.essay-layout', { timeout: 10000 });
+
+      // ToC nav should not exist when no toc prop is provided
+      const tocNav = page.locator('nav[aria-label="Table of contents"]');
+      const tocContent = page.locator('nav[aria-label="Table of contents"] ul');
+
+      // The nav element might exist but be empty
+      const itemCount = await tocContent.locator('li').count();
+      expect(itemCount).toBe(0);
     });
   });
 });

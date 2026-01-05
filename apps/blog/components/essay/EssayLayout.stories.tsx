@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { EssayLayout } from './EssayLayout';
+import { EssayLayout, TocItem } from './EssayLayout';
 import { EssayHeader } from './EssayHeader';
 import { Note } from '../content/Note';
 import { Reference } from '../content/Reference';
@@ -204,6 +204,126 @@ export const WithMultipleNotes: Story = {
     ),
   },
 };
+
+/**
+ * Demonstrates the Table of Contents feature with a minimal sticky sidebar on desktop.
+ * On tablet/mobile, the ToC is hidden to prioritize content.
+ */
+const tocItems: TocItem[] = [
+  { id: 'introduction', title: 'Introduction', level: 2 },
+  { id: 'the-key-innovation-self-attention', title: 'The Key Innovation: Self-Attention', level: 2 },
+  { id: 'parallel-processing', title: 'Parallel Processing', level: 3 },
+  { id: 'architecture-overview', title: 'Architecture Overview', level: 2 },
+  { id: 'the-encoder', title: 'The Encoder', level: 3 },
+  { id: 'the-decoder', title: 'The Decoder', level: 3 },
+  { id: 'conclusion', title: 'Conclusion', level: 2 },
+];
+
+const tocContentWithIds = (
+  <>
+    <h2 id="introduction">Introduction</h2>
+    <p>
+      The transformer architecture changed everything in machine learning. Before
+      transformers, we relied heavily on recurrent neural networks (RNNs) and
+      convolutional neural networks (CNNs) for sequence-to-sequence tasks.
+    </p>
+
+    <p>
+      In 2017, the paper &quot;Attention Is All You Need&quot; introduced a novel
+      architecture that would revolutionize the field.
+      <Note>
+        This refers to the seminal paper by Vaswani et al., published at NeurIPS
+        2017. The paper has been cited over 100,000 times.
+      </Note>
+    </p>
+
+    <h2 id="the-key-innovation-self-attention">The Key Innovation: Self-Attention</h2>
+
+    <p>
+      The core innovation of the transformer is the self-attention mechanism.
+      Unlike RNNs, which process sequences one element at a time, self-attention
+      allows the model to look at all positions in the input sequence
+      simultaneously.
+      <Note>
+        This parallel processing is what makes transformers so efficient to
+        train on modern GPUs.
+      </Note>
+    </p>
+
+    <h3 id="parallel-processing">Parallel Processing</h3>
+
+    <p>
+      This has profound implications for how we build language models today. The
+      ability to capture long-range dependencies efficiently is what enables
+      models like GPT-4 and Claude to maintain coherent conversations over
+      thousands of tokens.
+    </p>
+
+    <h2 id="architecture-overview">Architecture Overview</h2>
+
+    <p>
+      A transformer consists of an encoder and a decoder, though many modern
+      applications use only one of these components. GPT models, for example,
+      use only the decoder portion.
+    </p>
+
+    <h3 id="the-encoder">The Encoder</h3>
+
+    <p>
+      The encoder processes the input sequence and produces a representation
+      that captures the meaning of the input. It consists of multiple identical
+      layers, each containing multi-head self-attention and feed-forward networks.
+    </p>
+
+    <h3 id="the-decoder">The Decoder</h3>
+
+    <p>
+      The decoder generates the output sequence one token at a time. In addition
+      to self-attention, it includes cross-attention layers that attend to the
+      encoder&apos;s output.
+    </p>
+
+    <p>
+      The key components of each layer are:
+    </p>
+
+    <ul>
+      <li>Multi-head self-attention</li>
+      <li>Feed-forward neural networks</li>
+      <li>Layer normalization</li>
+      <li>Residual connections</li>
+    </ul>
+
+    <h2 id="conclusion">Conclusion</h2>
+
+    <p>
+      Understanding transformers is essential for anyone working in modern
+      machine learning. They form the backbone of virtually all state-of-the-art
+      language models and are increasingly being applied to other domains like
+      vision and audio.
+    </p>
+  </>
+);
+
+export const WithTableOfContents: Story = {
+  args: {
+    header: sampleHeader,
+    children: tocContentWithIds,
+    toc: tocItems,
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'desktop',
+    },
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 600,
+      },
+    },
+  },
+};
+
 
 /**
  * Tests that ReferenceProvider is properly integrated into EssayLayout.

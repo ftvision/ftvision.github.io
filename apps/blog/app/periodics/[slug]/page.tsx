@@ -72,11 +72,12 @@ export default async function PeriodicPage({ params }: PeriodicPageProps) {
     notFound();
   }
 
-  const { title, description, date, issue, type, topics, readingTime, content } =
+  const { title, description, date, issue, type, topics, readingTime, content, toc } =
     periodic;
 
   return (
     <EssayLayout
+      toc={toc}
       header={
         <PeriodicHeader
           issue={issue}

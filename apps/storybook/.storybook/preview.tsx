@@ -21,6 +21,30 @@ const preview: Preview = {
         { name: 'dark', value: '#09090b' },
       ],
     },
+    viewport: {
+      viewports: {
+        mobile1: {
+          name: 'Mobile (320px)',
+          styles: { width: '320px', height: '568px' },
+        },
+        mobile2: {
+          name: 'Mobile (375px)',
+          styles: { width: '375px', height: '667px' },
+        },
+        tablet: {
+          name: 'Tablet (768px)',
+          styles: { width: '768px', height: '1024px' },
+        },
+        laptop: {
+          name: 'Laptop (1024px)',
+          styles: { width: '1024px', height: '768px' },
+        },
+        desktop: {
+          name: 'Desktop (1440px)',
+          styles: { width: '1440px', height: '900px' },
+        },
+      },
+    },
   },
   globalTypes: {
     theme: {

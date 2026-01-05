@@ -7,6 +7,7 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import type { ComponentType } from 'react';
+import GithubSlugger from 'github-slugger';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RemarkRehypePlugin = [any, any?] | any;
@@ -86,25 +87,68 @@ export function getMDXComponents(
 }
 
 /**
+ * Table of contents item (matches EssayLayout.TocItem)
+ */
+export interface TocItem {
+  /** Unique identifier (the heading slug) */
+  id: string;
+  /** Display text for the ToC entry */
+  title: string;
+  /** Heading level (2 = h2, 3 = h3, etc.) */
+  level: number;
+}
+
+/**
+ * Options for extracting headings
+ */
+export interface ExtractHeadingsOptions {
+  /** Minimum heading level to include (default: 2) */
+  minLevel?: number;
+  /** Maximum heading level to include (default: 3) */
+  maxLevel?: number;
+}
+
+/**
+ * Generate a slug from heading text
+ *
+ * Uses github-slugger to match the behavior of rehype-slug for consistent IDs.
+ * Each call to extractHeadings creates a new slugger instance to ensure
+ * consistent slug generation within a single document.
+ */
+export function generateHeadingSlug(text: string, slugger: GithubSlugger): string {
+  return slugger.slug(text);
+}
+
+/**
  * Extract headings from MDX content for table of contents
+ *
+ * @param content - Raw MDX content string
+ * @param options - Filtering options for heading levels
+ * @returns Array of TocItem for use with EssayLayout
  */
 export function extractHeadings(
-  content: string
-): Array<{ level: number; text: string; id: string }> {
+  content: string,
+  options: ExtractHeadingsOptions = {}
+): TocItem[] {
+  const { minLevel = 2, maxLevel = 3 } = options;
   const headingRegex = /^(#{1,6})\s+(.+)$/gm;
-  const headings: Array<{ level: number; text: string; id: string }> = [];
+  const headings: TocItem[] = [];
+  // Create a new slugger instance for each document to match rehype-slug behavior
+  const slugger = new GithubSlugger();
   let match;
 
   while ((match = headingRegex.exec(content)) !== null) {
     const level = match[1].length;
-    const text = match[2].trim();
-    // Generate slug-like ID
-    const id = text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-');
 
-    headings.push({ level, text, id });
+    // Filter by level range
+    if (level < minLevel || level > maxLevel) {
+      continue;
+    }
+
+    const title = match[2].trim();
+    const id = generateHeadingSlug(title, slugger);
+
+    headings.push({ id, title, level });
   }
 
   return headings;

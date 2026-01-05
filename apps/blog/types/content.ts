@@ -81,11 +81,25 @@ export interface EssayMeta {
 }
 
 /**
+ * Table of contents item for essay navigation
+ */
+export interface TocItem {
+  /** Unique identifier (the heading slug) */
+  id: string;
+  /** Display text for the ToC entry */
+  title: string;
+  /** Heading level (2 = h2, 3 = h3, etc.) */
+  level: number;
+}
+
+/**
  * Full essay with content
  */
 export interface Essay extends EssayMeta {
   /** Raw MDX content */
   content: string;
+  /** Table of contents extracted from headings */
+  toc: TocItem[];
 }
 
 // ============================================================================
@@ -126,6 +140,8 @@ export interface PeriodicMeta {
 export interface Periodic extends PeriodicMeta {
   /** Raw MDX content */
   content: string;
+  /** Table of contents extracted from headings */
+  toc: TocItem[];
 }
 
 /**
@@ -191,6 +207,8 @@ export interface ReferenceMeta {
 export interface Reference extends ReferenceMeta {
   /** Raw MDX content */
   content: string;
+  /** Table of contents extracted from headings */
+  toc: TocItem[];
 }
 
 /**

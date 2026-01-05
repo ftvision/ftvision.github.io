@@ -3,7 +3,7 @@ import { extractHeadings, stripFrontmatter } from '@/lib/mdx';
 
 describe('MDX Helper Functions', () => {
   describe('extractHeadings', () => {
-    it('extracts headings with correct levels', () => {
+    it('extracts h2 and h3 headings by default', () => {
       const content = `
 # Heading 1
 Some text
@@ -13,17 +13,35 @@ More text
 `;
       const headings = extractHeadings(content);
 
-      expect(headings).toHaveLength(3);
-      expect(headings[0]).toEqual({ level: 1, text: 'Heading 1', id: 'heading-1' });
-      expect(headings[1]).toEqual({ level: 2, text: 'Heading 2', id: 'heading-2' });
-      expect(headings[2]).toEqual({ level: 3, text: 'Heading 3', id: 'heading-3' });
+      // Default filters to h2-h3 only (excludes h1)
+      expect(headings).toHaveLength(2);
+      expect(headings[0]).toEqual({ level: 2, title: 'Heading 2', id: 'heading-2' });
+      expect(headings[1]).toEqual({ level: 3, title: 'Heading 3', id: 'heading-3' });
+    });
+
+    it('respects minLevel and maxLevel options', () => {
+      const content = `
+# H1
+## H2
+### H3
+#### H4
+`;
+      // Include all levels
+      const allHeadings = extractHeadings(content, { minLevel: 1, maxLevel: 6 });
+      expect(allHeadings).toHaveLength(4);
+      expect(allHeadings.map((h) => h.level)).toEqual([1, 2, 3, 4]);
+
+      // Only h2
+      const h2Only = extractHeadings(content, { minLevel: 2, maxLevel: 2 });
+      expect(h2Only).toHaveLength(1);
+      expect(h2Only[0].level).toBe(2);
     });
 
     it('handles special characters in headings', () => {
       const content = `## What's New in 2024?`;
       const headings = extractHeadings(content);
 
-      expect(headings[0].text).toBe("What's New in 2024?");
+      expect(headings[0].title).toBe("What's New in 2024?");
       expect(headings[0].id).toBe('whats-new-in-2024');
     });
 
@@ -34,7 +52,7 @@ More text
       expect(headings).toEqual([]);
     });
 
-    it('handles all heading levels', () => {
+    it('handles all heading levels when configured', () => {
       const content = `
 # H1
 ## H2
@@ -43,7 +61,7 @@ More text
 ##### H5
 ###### H6
 `;
-      const headings = extractHeadings(content);
+      const headings = extractHeadings(content, { minLevel: 1, maxLevel: 6 });
 
       expect(headings).toHaveLength(6);
       expect(headings.map((h) => h.level)).toEqual([1, 2, 3, 4, 5, 6]);

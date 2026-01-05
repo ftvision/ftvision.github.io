@@ -17,6 +17,7 @@ import {
   type Topic,
   type Language,
 } from '@/types/content';
+import { extractHeadings } from './mdx';
 
 /** Directory where reference MDX files are stored */
 const REFERENCES_DIRECTORY = path.join(process.cwd(), 'content', 'references');
@@ -108,12 +109,15 @@ export function getReferenceBySlug(slug: string): Reference | null {
   try {
     const frontmatter = validateReferenceFrontmatter(data);
     const stats = readingTime(content);
+    // Extract table of contents from h2 and h3 headings
+    const toc = extractHeadings(content, { minLevel: 2, maxLevel: 3 });
 
     return {
       slug,
       ...frontmatter,
       content,
       readingTime: Math.ceil(stats.minutes),
+      toc,
     };
   } catch (error) {
     console.error(`Error parsing reference ${slug}:`, error);
