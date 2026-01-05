@@ -110,7 +110,7 @@ test.describe('Chinese Aesthetic: Focus Indicators', () => {
   test('interactive components show focus state', async ({ page }) => {
     const iframe = await navigateToStoryWithTheme(
       page,
-      'components-themes-chinese-aesthetic-tableofcontents--default',
+      'components-navigation-tableofcontents--default',
       'chinese-aesthetic',
       'light'
     );
@@ -197,7 +197,7 @@ test.describe('Chinese Aesthetic: Keyboard Navigation', () => {
   test('TableOfContents links are focusable', async ({ page }) => {
     const iframe = await navigateToStoryWithTheme(
       page,
-      'components-themes-chinese-aesthetic-tableofcontents--default',
+      'components-navigation-tableofcontents--default',
       'chinese-aesthetic',
       'light'
     );
@@ -345,7 +345,7 @@ test.describe('Chinese Aesthetic: Screen Reader', () => {
   test('TableOfContents has navigation role', async ({ page }) => {
     const iframe = await navigateToStoryWithTheme(
       page,
-      'components-themes-chinese-aesthetic-tableofcontents--default',
+      'components-navigation-tableofcontents--default',
       'chinese-aesthetic',
       'light'
     );
@@ -440,7 +440,7 @@ test.describe('Chinese Aesthetic: Typography Accessibility', () => {
   test('body text meets minimum size for CJK (16px+)', async ({ page }) => {
     const iframe = await navigateToStoryWithTheme(
       page,
-      'components-themes-chinese-aesthetic-tableofcontents--default',
+      'components-navigation-tableofcontents--default',
       'chinese-aesthetic',
       'light'
     );
@@ -516,7 +516,7 @@ test.describe('Chinese Aesthetic: Color Independence', () => {
   test('TableOfContents active state has multiple indicators', async ({ page }) => {
     const iframe = await navigateToStoryWithTheme(
       page,
-      'components-themes-chinese-aesthetic-tableofcontents--default',
+      'components-navigation-tableofcontents--default',
       'chinese-aesthetic',
       'light'
     );

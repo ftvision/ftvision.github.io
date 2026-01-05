@@ -3,7 +3,7 @@ import * as React from 'react';
 import { TableOfContents, useActiveHeading, type TocItem } from './TableOfContents';
 
 const meta: Meta<typeof TableOfContents> = {
-  title: 'Components/Themes/Chinese Aesthetic/TableOfContents',
+  title: 'Components/Navigation/TableOfContents',
   component: TableOfContents,
   tags: ['autodocs'],
   parameters: {
@@ -11,7 +11,12 @@ const meta: Meta<typeof TableOfContents> = {
     docs: {
       description: {
         component: `
-Table of Contents (目录) - Article navigation component for the Chinese Aesthetic theme.
+Table of Contents - Theme-aware article navigation component.
+
+Automatically adapts to the current theme:
+- **NYT**: Thin left border, classic newspaper style
+- **Chinese Aesthetic**: No border, seal-stamp markers
+- **Brutalism**: Thick border, inverted active state
 
 ## Features
 - Vertical list with hierarchical indentation
@@ -20,15 +25,16 @@ Table of Contents (目录) - Article navigation component for the Chinese Aesthe
 - Multiple marker styles: dot, seal, line
 - Optional sticky/fixed positioning
 - useActiveHeading hook for scroll-based tracking
+- Theme-aware styling via navigation tokens
 
 ## Usage
 \`\`\`tsx
-import { TableOfContents, useActiveHeading } from '@ui/components/TableOfContents';
+import { TableOfContents, useActiveHeading } from '@blog/ui';
 
 const items = [
-  { id: 'intro', title: '引言', level: 1 },
-  { id: 'chapter-1', title: '第一章', level: 1 },
-  { id: 'section-1-1', title: '第一节', level: 2 },
+  { id: 'intro', title: 'Introduction', level: 1 },
+  { id: 'chapter-1', title: 'Chapter 1', level: 1 },
+  { id: 'section-1-1', title: 'Section 1.1', level: 2 },
 ];
 
 function ArticleToc() {

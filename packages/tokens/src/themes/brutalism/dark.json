@@ -190,5 +190,22 @@
   "focus": {
     "ring-width": { "value": "3px" },
     "ring-offset": { "value": "3px" }
+  },
+  "navigation": {
+    "toc": {
+      "border": {
+        "width": { "value": "{border.width.thick}" },
+        "color": { "value": "{color.border.strong}" }
+      },
+      "item": {
+        "bg": { "value": "transparent" },
+        "text": { "value": "{color.text.secondary}" }
+      },
+      "active": {
+        "bg": { "value": "{color.bg.inverse}" },
+        "text": { "value": "{color.text.inverse}" },
+        "border": { "value": "{color.accent.primary}" }
+      }
+    }
   }
 }

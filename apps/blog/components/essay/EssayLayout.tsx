@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { cn } from '@/lib/utils';
+import { TableOfContents, type TocItem as SharedTocItem } from '@blog/ui';
 import { NoteProvider } from '../content/NoteContext';
 import { ReferenceProvider } from '../content/ReferenceContext';
 
@@ -107,38 +108,21 @@ export function EssayLayout({ header, children, toc, className }: EssayLayoutPro
               'relative'
             )}
           >
-            <nav
-              className={cn(
-                'sticky top-24',
-                'pt-12' // Align with content top
-              )}
-              aria-label="Table of contents"
-            >
-              {toc && toc.length > 0 && (
-                <ul className="space-y-2">
-                  {toc.map((item) => (
-                    <li key={item.id}>
-                      <button
-                        type="button"
-                        onClick={() => handleTocClick(item.id)}
-                        className={cn(
-                          'block w-full text-left',
-                          'text-caption leading-snug',
-                          'transition-colors duration-150',
-                          item.level === 3 && 'pl-3',
-                          item.level === 4 && 'pl-6',
-                          activeId === item.id
-                            ? 'text-figure-primary font-medium'
-                            : 'text-figure-muted hover:text-figure-primary'
-                        )}
-                      >
-                        {item.title}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </nav>
+            {toc && toc.length > 0 && (
+              <TableOfContents
+                items={toc.map((item) => ({
+                  id: item.id,
+                  title: item.title,
+                  // Map level: EssayLayout uses 2/3/4, TableOfContents uses 1/2/3
+                  level: Math.min(Math.max(item.level - 1, 1), 3) as 1 | 2 | 3,
+                }))}
+                activeId={activeId || undefined}
+                onItemClick={handleTocClick}
+                position="sticky"
+                showTitle={false}
+                className="top-24 pt-12"
+              />
+            )}
           </aside>
 
           {/* Main content column */}

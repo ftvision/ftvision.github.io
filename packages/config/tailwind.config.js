@@ -102,6 +102,19 @@ const colors = {
     'seq-4': 'var(--color-data-sequential-4)',
     'seq-5': 'var(--color-data-sequential-5)',
   },
+  // Navigation component colors
+  toc: {
+    border: 'var(--navigation-toc-border-color)',
+    item: {
+      bg: 'var(--navigation-toc-item-bg)',
+      text: 'var(--navigation-toc-item-text)',
+    },
+    active: {
+      bg: 'var(--navigation-toc-active-bg)',
+      text: 'var(--navigation-toc-active-text)',
+      border: 'var(--navigation-toc-active-border)',
+    },
+  },
 };
 
 /**
@@ -200,6 +213,7 @@ const borders = {
   borderWidth: {
     DEFAULT: 'var(--border-width-default)',
     thick: 'var(--border-width-thick)',
+    toc: 'var(--navigation-toc-border-width)',
   },
 };
 

@@ -1,0 +1,19 @@
+{
+  "navigation": {
+    "toc": {
+      "border": {
+        "width": { "value": "{border.width.default}" },
+        "color": { "value": "{color.border.muted}" }
+      },
+      "item": {
+        "bg": { "value": "transparent" },
+        "text": { "value": "{color.text.secondary}" }
+      },
+      "active": {
+        "bg": { "value": "{color.bg.secondary}" },
+        "text": { "value": "{color.accent.primary}" },
+        "border": { "value": "{color.accent.primary}" }
+      }
+    }
+  }
+}

@@ -6,13 +6,17 @@ const tableOfContentsVariants = cva(
   [
     'flex flex-col',
     'transition-all duration-normal',
+    // Use navigation tokens for border (theme-aware)
+    '[border-left-width:var(--navigation-toc-border-width)]',
+    '[border-left-color:var(--navigation-toc-border-color)]',
+    '[border-left-style:solid]',
   ],
   {
     variants: {
       variant: {
-        default: 'space-y-2',
-        scroll: 'space-y-3 border-l-2 border-ground-secondary pl-4',
-        compact: 'space-y-1',
+        default: 'space-y-2 pl-4',
+        scroll: 'space-y-3 pl-4',
+        compact: 'space-y-1 pl-4',
       },
       position: {
         inline: '',
@@ -35,16 +39,19 @@ const tocItemVariants = cva(
     'cursor-pointer',
     'hover:bg-ground-secondary',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary',
+    // Use navigation tokens for item colors (theme-aware)
+    '[color:var(--navigation-toc-item-text)]',
   ],
   {
     variants: {
       level: {
-        1: 'font-medium text-text-primary',
-        2: 'pl-4 text-text-secondary',
-        3: 'pl-8 text-text-muted text-caption',
+        1: 'font-medium',
+        2: 'pl-4',
+        3: 'pl-8 text-caption',
       },
       active: {
-        true: 'bg-ground-secondary text-accent-primary font-medium',
+        // Use navigation tokens for active state (theme-aware)
+        true: '[background-color:var(--navigation-toc-active-bg)] [color:var(--navigation-toc-active-text)] font-medium',
         false: '',
       },
     },
@@ -95,7 +102,7 @@ const TableOfContents = React.forwardRef<HTMLElement, TableOfContentsProps>(
       label = '目录',
       showTitle = true,
       smoothScroll = true,
-      markerStyle = 'dot',
+      markerStyle = 'line',
       ...props
     },
     ref
@@ -119,7 +126,7 @@ const TableOfContents = React.forwardRef<HTMLElement, TableOfContentsProps>(
           return (
             <span
               className="inline-block w-1.5 h-1.5 rounded-full mr-2"
-              style={{ backgroundColor: 'var(--color-accent-primary)' }}
+              style={{ backgroundColor: 'var(--navigation-toc-active-border)' }}
               aria-hidden="true"
             />
           );
@@ -127,7 +134,7 @@ const TableOfContents = React.forwardRef<HTMLElement, TableOfContentsProps>(
           return (
             <span
               className="inline-block w-2 h-2 rounded-sm mr-2"
-              style={{ backgroundColor: 'var(--color-accent-primary)' }}
+              style={{ backgroundColor: 'var(--navigation-toc-active-border)' }}
               aria-hidden="true"
             />
           );
@@ -135,7 +142,7 @@ const TableOfContents = React.forwardRef<HTMLElement, TableOfContentsProps>(
           return (
             <span
               className="absolute left-0 top-0 bottom-0 w-0.5"
-              style={{ backgroundColor: 'var(--color-accent-primary)' }}
+              style={{ backgroundColor: 'var(--navigation-toc-active-border)' }}
               aria-hidden="true"
             />
           );

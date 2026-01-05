@@ -1,4 +1,11 @@
 import { test, expect } from '@playwright/test';
+import {
+  navigateToStoryWithTheme,
+  getComputedStyleProperty,
+  parsePixelValue,
+  parseColor,
+  getCSSVariable,
+} from '../../utils';
 
 /**
  * NYT Theme Typography Tests
@@ -344,5 +351,89 @@ test.describe('NYT Theme: Typography', () => {
       expect(tokens.h1.trim()).toBe('700');
       expect(tokens.h2.trim()).toBe('600');
     });
+  });
+});
+
+// =============================================================================
+// TABLE OF CONTENTS - NYT Theme-specific styling
+// =============================================================================
+test.describe('NYT Theme: TableOfContents', () => {
+  test('has thin left border (1px classic newspaper style)', async ({ page }) => {
+    const iframe = await navigateToStoryWithTheme(
+      page,
+      'components-navigation-tableofcontents--default',
+      'nyt',
+      'light'
+    );
+
+    await iframe.locator('body').waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    const toc = iframe.locator('nav').first();
+    await expect(toc).toBeVisible();
+
+    const borderLeftWidth = await getComputedStyleProperty(toc, 'border-left-width');
+    expect(parsePixelValue(borderLeftWidth)).toBe(1);
+  });
+
+  test('uses serif font family (Georgia)', async ({ page }) => {
+    const iframe = await navigateToStoryWithTheme(
+      page,
+      'components-navigation-tableofcontents--default',
+      'nyt',
+      'light'
+    );
+
+    await iframe.locator('body').waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    const link = iframe.locator('nav a').first();
+    await expect(link).toBeVisible();
+
+    const fontFamily = await getComputedStyleProperty(link, 'font-family');
+    expect(fontFamily.toLowerCase()).toContain('georgia');
+  });
+
+  test('active item has accent color text', async ({ page }) => {
+    const iframe = await navigateToStoryWithTheme(
+      page,
+      'components-navigation-tableofcontents--default',
+      'nyt',
+      'light'
+    );
+
+    await iframe.locator('body').waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    const activeItem = iframe.locator('[aria-current="location"]');
+    await expect(activeItem).toBeVisible();
+
+    const textColor = await getComputedStyleProperty(activeItem, 'color');
+    const parsedColor = parseColor(textColor);
+
+    // NYT accent is blue (#1a73e8), so should have prominent blue component
+    expect(parsedColor).not.toBeNull();
+    if (parsedColor) {
+      // Blue component should be significant
+      expect(parsedColor.b).toBeGreaterThan(100);
+    }
+  });
+
+  test('navigation tokens are correctly applied', async ({ page }) => {
+    const iframe = await navigateToStoryWithTheme(
+      page,
+      'components-navigation-tableofcontents--default',
+      'nyt',
+      'light'
+    );
+
+    await iframe.locator('body').waitFor({ state: 'visible' });
+    await page.waitForTimeout(500);
+
+    // Check navigation-specific CSS variables
+    const borderWidth = await getCSSVariable(iframe, '--navigation-toc-border-width');
+
+    // NYT uses default border width which should be 1px
+    expect(parsePixelValue(borderWidth)).toBe(1);
   });
 });
