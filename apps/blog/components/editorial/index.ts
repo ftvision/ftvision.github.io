@@ -11,3 +11,6 @@ export type { FeaturedCardProps } from './FeaturedCard';
 
 export { EditorialGrid } from './EditorialGrid';
 export type { EditorialGridProps } from './EditorialGrid';
+
+export { DigestEntry } from './DigestEntry';
+export type { DigestEntryProps } from './DigestEntry';

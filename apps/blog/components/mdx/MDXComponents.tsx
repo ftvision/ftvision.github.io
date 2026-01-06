@@ -24,7 +24,7 @@ import {
 import { Note, Marginnote, Reference, References, WideBlock, TimelineMap } from '../content';
 
 // Editorial components for magazine-style layouts
-import { EditorialGrid, EditorialSection, FeaturedCard, Item } from '../editorial';
+import { EditorialGrid, EditorialSection, FeaturedCard, Item, DigestEntry } from '../editorial';
 
 // Vision100 subway map visualization
 import { Vision100Map } from '../vision100';
@@ -264,6 +264,16 @@ export function getMDXComponents(): MDXComponentMap {
     Figure,
     FigureImage,
 
+    // Image component alias (for compatibility with common MDX patterns)
+    Image: ({ src, alt }: { src?: string; alt?: string }) => {
+      if (!src) return null;
+      return (
+        <Figure caption={alt} className="my-6">
+          <FigureImage src={src} alt={alt || ''} />
+        </Figure>
+      );
+    },
+
     // Tabs
     Tabs,
     TabsList,
@@ -287,6 +297,7 @@ export function getMDXComponents(): MDXComponentMap {
     EditorialSection,
     FeaturedCard,
     Item,
+    DigestEntry,
   };
 }
 
