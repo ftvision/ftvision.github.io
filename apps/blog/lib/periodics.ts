@@ -109,8 +109,8 @@ export function getPeriodicBySlug(slug: string): Periodic | null {
   try {
     const frontmatter = validatePeriodicFrontmatter(data);
     const stats = readingTime(content);
-    // Extract table of contents from h2 and h3 headings
-    const toc = extractHeadings(content, { minLevel: 2, maxLevel: 3 });
+    // Extract table of contents from h2 headings only (top-level categories)
+    const toc = extractHeadings(content, { minLevel: 2, maxLevel: 2 });
 
     return {
       slug,
