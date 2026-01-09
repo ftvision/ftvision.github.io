@@ -1,5 +1,5 @@
-import { HomePage } from '@/components/pages';
+import { LandingPage } from '@/components/pages';
 
 export default function Page() {
-  return <HomePage language="en" />;
+  return <LandingPage language="en" />;
 }

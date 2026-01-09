@@ -1,5 +1,5 @@
-import { HomePage } from '@/components/pages';
+import { LandingPage } from '@/components/pages';
 
 export default function ZhPage() {
-  return <HomePage language="zh" />;
+  return <LandingPage language="zh" />;
 }
