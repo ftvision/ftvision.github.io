@@ -1,6 +1,9 @@
 export { HomePage } from './HomePage';
 export type { HomePageProps } from './HomePage';
 
+export { LandingPage } from './LandingPage';
+export type { LandingPageProps } from './LandingPage';
+
 export { EssaysIndexPage } from './EssaysIndexPage';
 export type { EssaysIndexPageProps } from './EssaysIndexPage';
 
