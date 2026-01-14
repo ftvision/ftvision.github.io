@@ -15,7 +15,6 @@ storybook-static/
 *.tsbuildinfo
 
 # Package manager
-pnpm-lock.yaml
 
 # Environment
 .env
