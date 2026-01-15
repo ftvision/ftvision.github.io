@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getSeriesBySlug, getSeriesSlugs, getSeriesTranslation } from '@/lib/series';
@@ -135,6 +135,11 @@ export default async function ZhSeriesItemPage({ params }: SeriesPageProps) {
 
   // Content exists but is in English, not Chinese
   if (series.lang === 'en') {
+    // Check if there's a Chinese translation we can redirect to
+    const zhTranslation = getSeriesTranslation(slug, 'zh');
+    if (zhTranslation && zhTranslation.slug !== slug) {
+      redirect(`/zh/series/${zhTranslation.slug}`);
+    }
     return <EnglishVersionAvailable />;
   }
 

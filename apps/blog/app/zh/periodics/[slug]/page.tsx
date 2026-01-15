@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getPeriodicBySlug, getPeriodicSlugs, getPeriodicTranslation } from '@/lib/periodics';
@@ -134,6 +134,11 @@ export default async function ZhPeriodicPage({ params }: PeriodicPageProps) {
 
   // Content exists but is in English, not Chinese
   if (periodic.lang === 'en') {
+    // Check if there's a Chinese translation we can redirect to
+    const zhTranslation = getPeriodicTranslation(slug, 'zh');
+    if (zhTranslation && zhTranslation.slug !== slug) {
+      redirect(`/zh/periodics/${zhTranslation.slug}`);
+    }
     return <EnglishVersionAvailable />;
   }
 
