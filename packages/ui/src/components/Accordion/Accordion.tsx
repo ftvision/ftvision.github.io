@@ -127,7 +127,7 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
         <div
           ref={ref}
           data-state={isOpen ? 'open' : 'closed'}
-          className={cn('border-b border-border', className)}
+          className={cn('border-b border-border last:border-b-0', className)}
           {...props}
         >
           {children}

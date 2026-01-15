@@ -110,7 +110,7 @@ export function SeriesHeader({
       </div>
 
       {/* Title */}
-      <h1 className="text-display font-serif text-figure-primary leading-tight">
+      <h1 className="type-display text-figure-primary">
         {title}
       </h1>
 

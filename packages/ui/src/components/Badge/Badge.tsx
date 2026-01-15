@@ -10,9 +10,10 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-ground-tertiary text-figure-primary',
+        default: 'bg-ground-tertiary text-figure-primary border border-ground-tertiary',
         // Use arbitrary value for inverse text color to ensure it works across themes
-        primary: 'bg-action-primary [color:var(--color-text-inverse)]',
+        // Border matches background to ensure consistent sizing with outline variant
+        primary: 'bg-action-primary [color:var(--color-text-inverse)] border border-action-primary',
         secondary: 'bg-ground-secondary text-figure-secondary border border-border',
         success: 'bg-status-success-bg text-status-success',
         warning: 'bg-status-warning-bg text-status-warning',
