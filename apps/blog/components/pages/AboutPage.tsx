@@ -1,7 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { Button, Separator } from '@blog/ui';
+import {
+  Button,
+  Separator,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from '@blog/ui';
 import {
   ResumeSection,
   FailuresSection,
@@ -29,15 +36,12 @@ export interface AboutPageProps {
 }
 
 /**
- * Build resume sections from data for the given locale
+ * Build industry resume sections (Work Experience + Education only)
  */
-function buildResumeSections(locale: Locale) {
+function buildIndustrySections(locale: Locale) {
   const labels = sectionLabels[locale];
   const work = workExperience[locale];
   const edu = education[locale];
-  const research = researchExperience[locale];
-  const awards = grantsAndAwards[locale];
-  const courses = teaching[locale];
 
   return [
     {
@@ -60,6 +64,19 @@ function buildResumeSections(locale: Locale) {
         location: item.location,
       })),
     },
+  ];
+}
+
+/**
+ * Build academic resume sections (Research, Publications, Talks, Posters, Awards, Teaching)
+ */
+function buildAcademicSections(locale: Locale) {
+  const labels = sectionLabels[locale];
+  const research = researchExperience[locale];
+  const awards = grantsAndAwards[locale];
+  const courses = teaching[locale];
+
+  return [
     {
       id: 'research',
       title: labels.researchExperience,
@@ -121,13 +138,11 @@ function buildResumeSections(locale: Locale) {
 }
 
 /**
- * Build failures sections from data for the given locale
+ * Build industry failures sections (failed job applications only)
  */
-function buildFailuresSections(locale: Locale) {
+function buildIndustryFailuresSections(locale: Locale) {
   const labels = sectionLabels[locale];
   const jobs = failedJobs[locale];
-  const edu = failedEducation[locale];
-  const pubs = failedPublications[locale];
 
   return [
     {
@@ -141,6 +156,18 @@ function buildFailuresSections(locale: Locale) {
         result: job.result,
       })),
     },
+  ];
+}
+
+/**
+ * Build academic failures sections (failed education and publications)
+ */
+function buildAcademicFailuresSections(locale: Locale) {
+  const labels = sectionLabels[locale];
+  const edu = failedEducation[locale];
+  const pubs = failedPublications[locale];
+
+  return [
     {
       id: 'education',
       title: labels.failedEducation,
@@ -170,7 +197,7 @@ function buildFailuresSections(locale: Locale) {
 /**
  * Shared AboutPage component
  *
- * Displays the about page with intro, resume, and failures sections.
+ * Displays the about page with intro, tabbed resume sections, and failures sections.
  * Used by both `/about` (English) and `/zh/about` (Chinese) routes.
  */
 export function AboutPage({ language = 'en' }: AboutPageProps) {
@@ -180,8 +207,10 @@ export function AboutPage({ language = 'en' }: AboutPageProps) {
 
   const intro = introContent[locale];
   const labels = sectionLabels[locale];
-  const resumeSections = buildResumeSections(locale);
-  const failuresSections = buildFailuresSections(locale);
+  const industrySections = buildIndustrySections(locale);
+  const academicSections = buildAcademicSections(locale);
+  const industryFailuresSections = buildIndustryFailuresSections(locale);
+  const academicFailuresSections = buildAcademicFailuresSections(locale);
 
   return (
     <div className="mx-auto max-w-3xl px-inset-lg py-12">
@@ -223,23 +252,71 @@ export function AboutPage({ language = 'en' }: AboutPageProps) {
 
       <Separator className="my-12" />
 
-      {/* Resume section */}
-      <ResumeSection
-        heading={labels.resume}
-        sections={resumeSections}
-        defaultExpanded={['work', 'education']}
-        className="mb-12"
-      />
+      {/* Tabbed Resume section */}
+      <section aria-labelledby="resume-heading" className="mb-12">
+        <h2
+          id="resume-heading"
+          className="mb-6 font-serif text-2xl font-semibold text-figure-primary"
+        >
+          {labels.resume}
+        </h2>
 
-      <Separator className="my-12" />
+        <Tabs defaultValue="industry" variant="pills">
+          <TabsList className="w-full justify-center">
+            <TabsTrigger value="industry">{labels.industryExperience}</TabsTrigger>
+            <TabsTrigger value="academic">{labels.academicExperience}</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="industry">
+            <ResumeSection
+              sections={industrySections}
+              defaultExpanded={['work', 'education']}
+            />
+          </TabsContent>
+
+          <TabsContent value="academic">
+            <ResumeSection
+              sections={academicSections}
+              defaultExpanded={['research', 'publications']}
+            />
+          </TabsContent>
+        </Tabs>
+      </section>
 
       {/* Resume of Failures section */}
-      <FailuresSection
-        heading={labels.resumeOfFailures}
-        intro={labels.failuresIntro}
-        sections={failuresSections}
-        defaultExpanded={['jobs']}
-      />
+      <section aria-labelledby="failures-heading" className="mb-12">
+        <h2
+          id="failures-heading"
+          className="mb-4 font-serif text-2xl font-semibold text-figure-primary"
+        >
+          {labels.resumeOfFailures}
+        </h2>
+
+        <p className="mb-6 text-body text-figure-secondary leading-relaxed">
+          {labels.failuresIntro}
+        </p>
+
+        <Tabs defaultValue="industry" variant="pills">
+          <TabsList className="w-full justify-center">
+            <TabsTrigger value="industry">{labels.industryExperience}</TabsTrigger>
+            <TabsTrigger value="academic">{labels.academicExperience}</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="industry">
+            <FailuresSection
+              sections={industryFailuresSections}
+              defaultExpanded={['jobs']}
+            />
+          </TabsContent>
+
+          <TabsContent value="academic">
+            <FailuresSection
+              sections={academicFailuresSections}
+              defaultExpanded={['education']}
+            />
+          </TabsContent>
+        </Tabs>
+      </section>
     </div>
   );
 }

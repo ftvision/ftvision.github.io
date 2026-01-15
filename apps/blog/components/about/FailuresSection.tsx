@@ -69,7 +69,7 @@ function getResultVariant(
  * in collapsible accordion sections.
  */
 export function FailuresSection({
-  heading = 'Resume of Failures',
+  heading,
   intro,
   sections,
   defaultExpanded = [],
@@ -78,14 +78,16 @@ export function FailuresSection({
   return (
     <section
       className={cn('failures-section', className)}
-      aria-labelledby="failures-heading"
+      aria-labelledby={heading ? 'failures-heading' : undefined}
     >
-      <h2
-        id="failures-heading"
-        className="failures-section-heading mb-4 font-serif text-2xl font-semibold text-figure-primary"
-      >
-        {heading}
-      </h2>
+      {heading && (
+        <h2
+          id="failures-heading"
+          className="failures-section-heading mb-4 font-serif text-2xl font-semibold text-figure-primary"
+        >
+          {heading}
+        </h2>
+      )}
 
       {intro && (
         <p className="failures-section-intro mb-6 text-body text-figure-secondary leading-relaxed">
@@ -104,11 +106,8 @@ export function FailuresSection({
             value={section.id}
             className="failures-category"
           >
-            <AccordionTrigger className="failures-category-trigger font-serif text-lg">
+            <AccordionTrigger className="failures-category-trigger font-serif text-lg font-semibold">
               {section.title}
-              <span className="ml-2 text-body-sm text-figure-muted">
-                ({section.items.length})
-              </span>
             </AccordionTrigger>
             <AccordionContent className="failures-category-content">
               <div className="space-y-4">

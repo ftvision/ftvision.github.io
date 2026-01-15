@@ -752,6 +752,8 @@ export const sectionLabels = {
   en: {
     resume: 'Resume',
     resumeOfFailures: 'Resume of Failures',
+    industryExperience: 'Industry',
+    academicExperience: 'Academia',
     workExperience: 'Working Experience',
     education: 'Education',
     researchExperience: 'Research Experience',
@@ -769,6 +771,8 @@ export const sectionLabels = {
   zh: {
     resume: '简历',
     resumeOfFailures: '失败简历',
+    industryExperience: '工业界',
+    academicExperience: '学术界',
     workExperience: '工作经验',
     education: '教育背景',
     researchExperience: '研究经验',
