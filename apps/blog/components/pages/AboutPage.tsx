@@ -52,6 +52,7 @@ function buildIndustrySections(locale: Locale) {
         organization: item.organization,
         dateRange: item.dateRange,
         location: item.location,
+        bullets: item.description,
       })),
     },
     {
