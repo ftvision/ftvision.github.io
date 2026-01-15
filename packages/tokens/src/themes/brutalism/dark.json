@@ -2,7 +2,7 @@
   "color": {
     "bg": {
       "primary": { "value": "{primitive.color.black}" },
-      "secondary": { "value": "{primitive.color.gray.950}" },
+      "secondary": { "value": "{primitive.color.gray.800}" },
       "tertiary": { "value": "{primitive.color.gray.900}" },
       "inverse": { "value": "{primitive.color.white}" }
     },

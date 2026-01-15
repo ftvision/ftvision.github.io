@@ -295,7 +295,7 @@ export function TimelineSubwayMap<T extends TimelineItem>({
                 style={{
                   fontSize: '12px',
                   fontWeight: isSelected ? 600 : 400,
-                  fill: isSelected ? category.resolvedColor : 'var(--color-figure-secondary)',
+                  fill: isSelected ? category.resolvedColor : 'var(--color-text-secondary)',
                 }}
               >
                 {category.name}

@@ -224,7 +224,7 @@ export function AboutPage({ language = 'en' }: AboutPageProps) {
         </p>
       </header>
 
-      <nav className="mt-6 flex gap-4">
+      <nav className="mt-6 flex flex-wrap gap-3">
         <Link href={`${basePath}/essays`}>
           <Button variant="primary" size="md">
             {t('about.readEssays')}

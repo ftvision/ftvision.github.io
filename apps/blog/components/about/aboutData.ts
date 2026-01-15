@@ -9,7 +9,7 @@ export type Locale = 'en' | 'zh';
 export const introContent = {
   en: {
     title: 'About',
-    description: `I am a Founding Engineer @ Altera, Menlo Park, CA. Prior to that, I was a Software Engineer @ Citadel and Google. I received my Ph.D. training from the Johns Hopkins University.`,
+    description: `I am a Founding Engineer @ Fundamental Research Labs, Menlo Park, CA. Prior to that, I was a Software Engineer @ Citadel and Google. I received my Ph.D. training from the Johns Hopkins University.`,
     quotes: [
       'Removing the delusion of a separate self and the desires it produces, and concentrating upon the subject until there is a direct communion with it.',
       'Successes are only rare spikes among background noises of failures in daily life. Achieving more successes comes from failing faster, failing more often, then learning more and keeping on.',
@@ -19,7 +19,7 @@ export const introContent = {
   },
   zh: {
     title: '关于作者',
-    description: `我现在是Altera的一名创始工程师。在此之前，我在Citadel和Google工作过。在那之前，我在Johns Hopkins获得了认知心理学的博士学位。`,
+    description: `我现在是Fundamental Research Labs的一名创始工程师。在此之前，我在Citadel和Google工作过。在那之前，我在约翰霍普金斯大学获得了认知心理学的博士学位。`,
     quotes: [],
     findMeOnline: '我的网络足迹',
     onlineLinks: `我的[Linkedin](https://www.linkedin.com/in/feitong-yang-88088a55/)页面介绍了跟这里差不多的工作经历。[Google Scholar](http://scholar.google.com/citations?user=94Xx9u0AAAAJ)和[NeuroTree](http://neurotree.org/neurotree/tree.php?pid=65050)页面介绍了一些我的学术训练的背景。以下的几个页面有更细节的简历。老实说，我的简历没什么好看的，倒是"失败简历"可能有点意思。`,
@@ -43,7 +43,7 @@ export const workExperience = {
   en: [
     {
       title: 'Founding Engineer',
-      organization: 'Altera',
+      organization: 'Fundamental Research Labs',
       location: 'Menlo Park, CA',
       dateRange: '03/2024 - present',
       description: [
@@ -100,7 +100,7 @@ export const workExperience = {
   zh: [
     {
       title: '创始工程师',
-      organization: 'Altera',
+      organization: 'Fundamental Research Labs',
       location: 'Menlo Park, CA',
       dateRange: '03/2024 至今',
       description: [
@@ -187,20 +187,20 @@ export const education = {
   zh: [
     {
       title: '认知心理学博士',
-      organization: 'Johns Hopkins University',
-      location: 'Baltimore, MD',
+      organization: '约翰霍普金斯大学',
+      location: '美国马里兰州巴尔的摩',
       dateRange: '08/2013 - 05/2018',
     },
     {
       title: '应用数学与统计硕士',
-      organization: 'Johns Hopkins University',
-      location: 'Baltimore, MD',
+      organization: '约翰霍普金斯大学',
+      location: '美国马里兰州巴尔的摩',
       dateRange: '01/2017 - 05/2018',
     },
     {
       title: '认知心理学硕士',
-      organization: 'Johns Hopkins University',
-      location: 'Baltimore, MD',
+      organization: '约翰霍普金斯大学',
+      location: '美国马里兰州巴尔的摩',
       dateRange: '08/2013 - 05/2015',
     },
     {
@@ -321,7 +321,7 @@ export const grantsAndAwards = {
   zh: [
     {
       title: 'Robert S. and Dorothy L. Waldrop Graduate Fellowship',
-      organization: 'Johns Hopkins University',
+      organization: '约翰霍普金斯大学',
       dateRange: '2014 - 2015',
     },
     {
