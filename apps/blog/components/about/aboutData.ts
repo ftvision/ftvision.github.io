@@ -53,7 +53,7 @@ export const workExperience = {
       ],
     },
     {
-      title: 'Software Engineer',
+      title: 'Software Engineer, Commodity Trading Platform',
       organization: 'Citadel',
       location: 'New York, NY',
       dateRange: '06/2021 - 03/2024',
@@ -110,7 +110,7 @@ export const workExperience = {
       ],
     },
     {
-      title: '软件工程师',
+      title: '软件工程师，大宗商品交易平台',
       organization: 'Citadel',
       location: 'New York, NY',
       dateRange: '06/2021 - 03/2024',
