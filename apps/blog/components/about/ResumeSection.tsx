@@ -52,7 +52,7 @@ export interface ResumeItem {
  * Uses the Accordion component from @blog/ui.
  */
 export function ResumeSection({
-  heading = 'Resume',
+  heading,
   sections,
   defaultExpanded = [],
   className,
@@ -60,14 +60,16 @@ export function ResumeSection({
   return (
     <section
       className={cn('resume-section', className)}
-      aria-labelledby="resume-heading"
+      aria-labelledby={heading ? 'resume-heading' : undefined}
     >
-      <h2
-        id="resume-heading"
-        className="resume-section-heading mb-6 font-serif text-2xl font-semibold text-figure-primary"
-      >
-        {heading}
-      </h2>
+      {heading && (
+        <h2
+          id="resume-heading"
+          className="resume-section-heading mb-6 font-serif text-2xl font-semibold text-figure-primary"
+        >
+          {heading}
+        </h2>
+      )}
 
       <Accordion
         type="multiple"
@@ -80,11 +82,8 @@ export function ResumeSection({
             value={section.id}
             className="resume-category"
           >
-            <AccordionTrigger className="resume-category-trigger font-serif text-lg">
+            <AccordionTrigger className="resume-category-trigger font-serif text-lg font-semibold">
               {section.title}
-              <span className="ml-2 text-body-sm text-figure-muted">
-                ({section.items.length})
-              </span>
             </AccordionTrigger>
             <AccordionContent className="resume-category-content">
               <div className="space-y-6">
