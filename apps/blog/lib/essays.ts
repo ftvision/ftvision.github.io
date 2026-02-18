@@ -37,13 +37,25 @@ export interface GetEssaysOptions {
  * Returns slugs from .mdx files, excluding:
  * - Files starting with underscore (e.g., _template.mdx)
  * - Non-.mdx files
+ * - Draft essays (in production)
  */
-export function getEssaySlugs(): string[] {
+export function getEssaySlugs(options: { includeDrafts?: boolean } = {}): string[] {
+  const { includeDrafts = process.env.NODE_ENV === 'development' } = options;
+
   try {
     const files = fs.readdirSync(ESSAYS_DIRECTORY);
-    return files
+    const slugs = files
       .filter((file) => file.endsWith('.mdx') && !file.startsWith('_'))
       .map((file) => file.replace(/\.mdx$/, ''));
+
+    if (includeDrafts) {
+      return slugs;
+    }
+
+    return slugs.filter((slug) => {
+      const meta = getEssayMeta(slug);
+      return meta && !meta.draft;
+    });
   } catch {
     // Directory doesn't exist yet
     return [];
@@ -62,7 +74,7 @@ export function getAllEssays(options: GetEssaysOptions = {}): EssayMeta[] {
     language,
   } = options;
 
-  const slugs = getEssaySlugs();
+  const slugs = getEssaySlugs({ includeDrafts: true });
   const essays: EssayMeta[] = [];
 
   for (const slug of slugs) {
@@ -89,9 +101,10 @@ export function getAllEssays(options: GetEssaysOptions = {}): EssayMeta[] {
 /**
  * Get a single essay by slug (with full content)
  *
- * Returns null if essay doesn't exist.
+ * Returns null if essay doesn't exist or is a draft in production.
  */
-export function getEssayBySlug(slug: string): Essay | null {
+export function getEssayBySlug(slug: string, options: { includeDrafts?: boolean } = {}): Essay | null {
+  const { includeDrafts = process.env.NODE_ENV === 'development' } = options;
   const filePath = path.join(ESSAYS_DIRECTORY, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
@@ -103,6 +116,11 @@ export function getEssayBySlug(slug: string): Essay | null {
 
   try {
     const frontmatter = validateFrontmatter(data);
+
+    if (!includeDrafts && frontmatter.draft) {
+      return null;
+    }
+
     const stats = readingTime(content);
     // Extract table of contents from h2 and h3 headings
     const toc = extractHeadings(content, { minLevel: 2, maxLevel: 3 });
