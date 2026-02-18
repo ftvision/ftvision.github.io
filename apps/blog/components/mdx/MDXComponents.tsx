@@ -259,6 +259,7 @@ export function getMDXComponents(): MDXComponentMap {
     WideBlock,
 
     // UI components exposed to MDX
+    Blockquote,
     Callout,
     Badge,
     Figure,
