@@ -166,9 +166,3 @@ Themes applied via data attributes:
 ```
 
 To test themes in Storybook, use the toolbar dropdowns.
-
-## Legacy Content
-
-- `content/` - Original Hugo markdown (reference only)
-- `docs/` - Static export output (will be overwritten)
-- `config.yml` - Hugo config (legacy)
