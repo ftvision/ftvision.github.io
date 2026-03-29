@@ -25,6 +25,9 @@ export type { ReferencesProps } from './References';
 export { WideBlock } from './WideBlock';
 export type { WideBlockProps } from './WideBlock';
 
+// Embed components
+export { XEmbed } from './XEmbed';
+
 // Timeline components
 export {
   TimelineMap,
