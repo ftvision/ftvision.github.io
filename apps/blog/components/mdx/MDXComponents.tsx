@@ -21,13 +21,16 @@ import {
 } from '@blog/ui';
 
 // Content components
-import { Note, Marginnote, Reference, References, WideBlock, TimelineMap } from '../content';
+import { Note, Marginnote, Reference, References, WideBlock, TimelineMap, XEmbed } from '../content';
 
 // Editorial components for magazine-style layouts
 import { EditorialGrid, EditorialSection, FeaturedCard, Item, DigestEntry } from '../editorial';
 
 // Vision100 subway map visualization
 import { Vision100Map } from '../vision100';
+
+// Econ100 timeline map visualization
+import { Econ100Map } from '../econ100';
 
 /**
  * Props type for MDX HTML elements
@@ -289,6 +292,12 @@ export function getMDXComponents(): MDXComponentMap {
 
     // Vision100 subway map
     Vision100Map,
+
+    // X (Twitter) post embed
+    XEmbed,
+
+    // Econ100 timeline map
+    Econ100Map,
 
     // Generic timeline visualization
     TimelineMap,
