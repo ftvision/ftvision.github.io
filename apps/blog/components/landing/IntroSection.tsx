@@ -8,6 +8,8 @@ interface IntroSectionProps {
   language: Language;
   /** Whether to render as overlay on 3D canvas (dark background) */
   variant?: 'default' | 'overlay';
+  /** Heading element for the displayed name */
+  headingLevel?: 'h1' | 'h2';
 }
 
 const content = {
@@ -44,6 +46,7 @@ const content = {
 export function IntroSection({
   language,
   variant = 'default',
+  headingLevel = 'h2',
 }: IntroSectionProps) {
   const t = content[language];
   const basePath = language === 'zh' ? '/zh' : '';
@@ -53,8 +56,8 @@ export function IntroSection({
   // Overlay styles for dark background
   const overlayStyles = {
     container:
-      'pointer-events-auto absolute inset-0 flex items-center justify-center px-inset-lg',
-    // Semi-transparent backdrop to separate content from 3D background
+      'pointer-events-auto relative z-10 flex min-h-screen items-start justify-center overflow-y-auto px-inset-lg py-8 sm:items-center',
+    // Frosted backdrop separates the card from the animating particle field.
     backdrop:
       'rounded-2xl bg-black/50 backdrop-blur-md border border-white/10 p-8 md:p-12',
     wrapper: 'grid gap-8 md:grid-cols-2 md:items-center md:gap-12 max-w-4xl',
@@ -91,13 +94,14 @@ export function IntroSection({
   };
 
   const styles = isOverlay ? overlayStyles : defaultStyles;
+  const NameHeading = headingLevel;
 
   const sectionContent = (
     <div className={styles.wrapper}>
       {/* Bio */}
       <div>
         <p className={styles.greeting}>{t.greeting}</p>
-        <h2 className={styles.name}>{t.name}</h2>
+        <NameHeading className={styles.name}>{t.name}</NameHeading>
         <p className={styles.bio}>{t.bio}</p>
         <Link href={`${basePath}/about`} className={styles.link}>
           {t.aboutLink}

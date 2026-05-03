@@ -186,7 +186,7 @@ export function TimelineTable<T extends TimelineItem>({
           placeholder="Search by title, subtitle, or description..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full rounded-md border border-border bg-ground-primary px-3 py-2 text-sm text-figure-primary placeholder:text-figure-muted focus:border-action-primary focus:outline-none focus:ring-1 focus:ring-action-primary"
+          className="min-h-11 w-full rounded-md border border-border bg-ground-primary px-3 py-2 text-sm text-figure-primary placeholder:text-figure-muted focus:border-action-primary focus:outline-none focus:ring-1 focus:ring-action-primary"
         />
       </div>
 
@@ -251,16 +251,16 @@ export function TimelineTable<T extends TimelineItem>({
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
+        <div className="mt-4 flex flex-col gap-3 border-t border-border pt-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="text-sm text-figure-secondary">
             Page {currentPage} of {totalPages}
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={() => setCurrentPage(1)}
               disabled={currentPage === 1}
-              className="rounded px-2 py-1 text-sm transition-colors hover:bg-ground-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="min-h-11 min-w-11 rounded px-3 py-2 text-sm transition-colors hover:bg-ground-secondary disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="First page"
             >
               «
@@ -269,12 +269,12 @@ export function TimelineTable<T extends TimelineItem>({
               type="button"
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="rounded px-2 py-1 text-sm transition-colors hover:bg-ground-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="min-h-11 rounded px-3 py-2 text-sm transition-colors hover:bg-ground-secondary disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="Previous page"
             >
               ‹ Prev
             </button>
-            <div className="flex items-center gap-1">
+            <div className="flex flex-wrap items-center gap-1">
               {Array.from({ length: totalPages }, (_, i) => i + 1)
                 .filter((page) => {
                   // Show first, last, current, and pages around current
@@ -294,7 +294,7 @@ export function TimelineTable<T extends TimelineItem>({
                       <button
                         type="button"
                         onClick={() => setCurrentPage(page)}
-                        className={`min-w-[28px] rounded px-2 py-1 text-sm transition-colors ${
+                        className={`min-h-11 min-w-11 rounded px-3 py-2 text-sm transition-colors ${
                           currentPage === page
                             ? 'bg-action-primary text-white'
                             : 'hover:bg-ground-secondary'
@@ -310,7 +310,7 @@ export function TimelineTable<T extends TimelineItem>({
               type="button"
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="rounded px-2 py-1 text-sm transition-colors hover:bg-ground-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="min-h-11 rounded px-3 py-2 text-sm transition-colors hover:bg-ground-secondary disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="Next page"
             >
               Next ›
@@ -319,7 +319,7 @@ export function TimelineTable<T extends TimelineItem>({
               type="button"
               onClick={() => setCurrentPage(totalPages)}
               disabled={currentPage === totalPages}
-              className="rounded px-2 py-1 text-sm transition-colors hover:bg-ground-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="min-h-11 min-w-11 rounded px-3 py-2 text-sm transition-colors hover:bg-ground-secondary disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="Last page"
             >
               »

@@ -99,7 +99,7 @@ function MobileMenuButton({ isOpen, onClick }: MobileMenuButtonProps) {
       className={cn(
         'md:hidden',
         'inline-flex items-center justify-center',
-        'h-10 w-10 rounded-md',
+        'h-11 w-11 rounded-md',
         'text-figure-secondary hover:text-figure-primary hover:bg-action-secondary',
         'transition-hover',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action-primary focus-visible:ring-offset-2'
@@ -197,14 +197,17 @@ function MobileMenuPanel({
     };
   }, [isOpen]);
 
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <div className="md:hidden">
       {/* Backdrop overlay */}
       <div
         className={cn(
           'fixed inset-0 z-30 bg-ground-inverse/50 backdrop-blur-sm',
-          'transition-opacity duration-normal',
-          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          'transition-opacity duration-normal opacity-100'
         )}
         aria-hidden="true"
         onClick={onClose}
@@ -222,7 +225,7 @@ function MobileMenuPanel({
           className={cn(
             'bg-ground-primary border-b border-border shadow-lg',
             'transform transition-transform duration-normal ease-out',
-            isOpen ? 'translate-y-0 pointer-events-auto' : '-translate-y-full'
+            'translate-y-0 pointer-events-auto'
           )}
         >
         <nav

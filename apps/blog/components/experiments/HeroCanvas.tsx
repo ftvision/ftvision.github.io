@@ -26,6 +26,8 @@ function LoadingFallback() {
 interface HeroCanvasProps {
   language: Language;
   children?: React.ReactNode;
+  className?: string;
+  ariaHidden?: boolean;
 }
 
 /**
@@ -34,22 +36,47 @@ interface HeroCanvasProps {
  * This component handles the Three.js Canvas setup entirely on the client side.
  * It uses dynamic imports to prevent Three.js from being bundled for SSR.
  */
-export function HeroCanvas({ language, children }: HeroCanvasProps) {
+export function HeroCanvas({
+  language,
+  children,
+  className = '',
+  ariaHidden = false,
+}: HeroCanvasProps) {
   const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
   const [hoveredNav, setHoveredNav] = useState<NavigationTarget | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [pageVisible, setPageVisible] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [Canvas, setCanvas] = useState<React.ComponentType<any> | null>(null);
 
-  // Only render on the client
   useEffect(() => {
     setIsMounted(true);
-    // Dynamically import Canvas from @react-three/fiber
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setReducedMotion(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, [isMounted]);
+
+  useEffect(() => {
+    if (!isMounted || reducedMotion) return;
     import('@react-three/fiber').then((mod) => {
       setCanvas(() => mod.Canvas);
     });
-  }, []);
+  }, [isMounted, reducedMotion]);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    const update = () => setPageVisible(!document.hidden);
+    document.addEventListener('visibilitychange', update);
+    return () => document.removeEventListener('visibilitychange', update);
+  }, [isMounted]);
 
   // Detect mobile
   useEffect(() => {
@@ -83,16 +110,19 @@ export function HeroCanvas({ language, children }: HeroCanvasProps) {
   }, []);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-black">
-      {/* Three.js Canvas - only render on client */}
-      {isMounted && Canvas ? (
+    <div
+      className={`${className || 'relative'} h-screen w-full overflow-hidden bg-black`}
+      aria-hidden={ariaHidden || undefined}
+    >
+      {isMounted && !reducedMotion && Canvas ? (
         <Suspense fallback={<LoadingFallback />}>
           <Canvas
             className="absolute inset-0"
             camera={{ position: [0, 0, 5], fov: 75 }}
-            dpr={[1, isMobile ? 1.5 : 2]}
+            dpr={[1, 1.5]}
+            frameloop={pageVisible ? 'always' : 'never'}
             gl={{
-              antialias: !isMobile,
+              antialias: false,
               alpha: true,
               powerPreference: 'high-performance',
             }}
@@ -107,9 +137,7 @@ export function HeroCanvas({ language, children }: HeroCanvasProps) {
             </Suspense>
           </Canvas>
         </Suspense>
-      ) : (
-        <LoadingFallback />
-      )}
+      ) : null}
 
       {/* Hovered navigation label */}
       {hoveredNav && (

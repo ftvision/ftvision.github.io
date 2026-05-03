@@ -1,22 +1,7 @@
-'use client';
-
-import dynamic from 'next/dynamic';
+import { HeroCanvas } from '@/components/experiments/HeroCanvas';
 import { NavigationOverlay } from '@/components/experiments/NavigationOverlay';
 import { IntroSection } from '@/components/landing';
 import type { Language } from '@/types/content';
-
-// Dynamically import HeroCanvas with SSR disabled
-const HeroCanvas = dynamic(
-  () => import('@/components/experiments/HeroCanvas').then((mod) => mod.HeroCanvas),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex h-screen w-full items-center justify-center bg-black">
-        <div className="text-white/50 text-body-sm animate-pulse">Loading...</div>
-      </div>
-    ),
-  }
-);
 
 export interface LandingPageProps {
   /** Current language */
@@ -28,14 +13,12 @@ export interface LandingPageProps {
  */
 export function LandingPage({ language }: LandingPageProps) {
   return (
-    <section className="relative h-screen">
-      <HeroCanvas language={language}>
-        {/* Introduction overlay on top of 3D canvas */}
-        <IntroSection language={language} variant="overlay" />
+    <section className="relative min-h-screen overflow-hidden bg-ground-inverse">
+      {/* Three.js enhancement. The writing/navigation below remains useful before JS hydrates. */}
+      <HeroCanvas language={language} className="absolute inset-0" ariaHidden />
 
-        {/* Accessible navigation overlay (screen reader only) */}
-        <NavigationOverlay language={language} visible={false} />
-      </HeroCanvas>
+      <IntroSection language={language} variant="overlay" headingLevel="h1" />
+      <NavigationOverlay language={language} visible={false} />
     </section>
   );
 }

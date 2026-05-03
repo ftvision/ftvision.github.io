@@ -22,6 +22,13 @@ import { extractHeadings } from './mdx';
 /** Directory where periodic MDX files are stored */
 const PERIODICS_DIRECTORY = path.join(process.cwd(), 'content', 'periodics');
 
+// In production builds the content set is frozen for the lifetime of the
+// process, so we memoize file reads. Dev/test bypass the cache.
+const CACHE_ENABLED = process.env.NODE_ENV === 'production';
+const slugsCache = new Map<string, string[]>();
+const metaCache = new Map<string, PeriodicMeta | null>();
+const bySlugCache = new Map<string, Periodic | null>();
+
 /**
  * Options for fetching periodics
  */
@@ -40,15 +47,24 @@ export interface GetPeriodicsOptions {
  * - Non-.mdx files
  */
 export function getPeriodicSlugs(): string[] {
+  if (CACHE_ENABLED) {
+    const cached = slugsCache.get('all');
+    if (cached) return cached;
+  }
+
+  let result: string[];
   try {
     const files = fs.readdirSync(PERIODICS_DIRECTORY);
-    return files
+    result = files
       .filter((file) => file.endsWith('.mdx') && !file.startsWith('_'))
       .map((file) => file.replace(/\.mdx$/, ''));
   } catch {
     // Directory doesn't exist yet
-    return [];
+    result = [];
   }
+
+  if (CACHE_ENABLED) slugsCache.set('all', result);
+  return result;
 }
 
 /**
@@ -97,6 +113,16 @@ export function getAllPeriodics(options: GetPeriodicsOptions = {}): PeriodicMeta
  * Returns null if periodic doesn't exist.
  */
 export function getPeriodicBySlug(slug: string): Periodic | null {
+  if (CACHE_ENABLED && bySlugCache.has(slug)) {
+    return bySlugCache.get(slug) ?? null;
+  }
+
+  const result = readPeriodicFile(slug);
+  if (CACHE_ENABLED) bySlugCache.set(slug, result);
+  return result;
+}
+
+function readPeriodicFile(slug: string): Periodic | null {
   const filePath = path.join(PERIODICS_DIRECTORY, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
@@ -109,7 +135,6 @@ export function getPeriodicBySlug(slug: string): Periodic | null {
   try {
     const frontmatter = validatePeriodicFrontmatter(data);
     const stats = readingTime(content);
-    // Extract table of contents from h2 headings only (top-level categories)
     const toc = extractHeadings(content, { minLevel: 2, maxLevel: 2 });
 
     return {
@@ -131,23 +156,30 @@ export function getPeriodicBySlug(slug: string): Periodic | null {
  * Useful for listing periodics without loading full content.
  */
 export function getPeriodicMeta(slug: string): PeriodicMeta | null {
-  const filePath = path.join(PERIODICS_DIRECTORY, `${slug}.mdx`);
+  if (CACHE_ENABLED && metaCache.has(slug)) {
+    return metaCache.get(slug) ?? null;
+  }
 
+  const filePath = path.join(PERIODICS_DIRECTORY, `${slug}.mdx`);
+  let result: PeriodicMeta | null;
   try {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(fileContent);
     const frontmatter = validatePeriodicFrontmatter(data);
     const stats = readingTime(content);
 
-    return {
+    result = {
       slug,
       ...frontmatter,
       readingTime: Math.ceil(stats.minutes),
     };
   } catch (error) {
     console.error(`Error parsing periodic meta ${slug}:`, error);
-    return null;
+    result = null;
   }
+
+  if (CACHE_ENABLED) metaCache.set(slug, result);
+  return result;
 }
 
 /**

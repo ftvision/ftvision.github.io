@@ -67,7 +67,7 @@ export function LanguageToggle({ className }: LanguageToggleProps) {
   return (
     <Dropdown align="end">
       <DropdownTrigger
-        className={`inline-flex items-center justify-center rounded-md p-2 min-w-[36px] text-sm font-medium transition-colors hover:bg-ground-secondary hover:text-figure-primary ${className || ''}`}
+        className={`inline-flex h-11 min-w-11 items-center justify-center rounded-md px-3 text-sm font-medium transition-colors hover:bg-ground-secondary hover:text-figure-primary ${className || ''}`}
         aria-label="Select language"
       >
         <span>{currentLabel}</span>

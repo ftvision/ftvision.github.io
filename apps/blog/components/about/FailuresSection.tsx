@@ -114,7 +114,7 @@ export function FailuresSection({
                 {section.items.map((item, index) => (
                   <div
                     key={`${item.title}-${item.year}-${index}`}
-                    className="failures-item border-l-2 border-border pl-4"
+                    className="failures-item border-l border-border pl-4"
                   >
                     {/* Title and year */}
                     <div className="failures-item-header flex flex-wrap items-start justify-between gap-2">

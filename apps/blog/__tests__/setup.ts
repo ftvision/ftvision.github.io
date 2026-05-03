@@ -4,6 +4,22 @@ import '@testing-library/jest-dom';
 import { vi } from 'vitest';
 import React from 'react';
 
+// jsdom doesn't ship matchMedia; components that read prefers-reduced-motion
+// or other media queries call it during effects.
+if (typeof window !== 'undefined' && !window.matchMedia) {
+  window.matchMedia = (query: string) =>
+    ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    }) as MediaQueryList;
+}
+
 // Mock next/navigation
 vi.mock('next/navigation', () => ({
   useRouter: () => ({
