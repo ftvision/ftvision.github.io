@@ -21,7 +21,18 @@ import {
 } from '@blog/ui';
 
 // Content components
-import { Note, Marginnote, Reference, References, WideBlock, TimelineMap, XEmbed } from '../content';
+import {
+  Note,
+  Marginnote,
+  Reference,
+  References,
+  WideBlock,
+  TimelineMap,
+  XEmbed,
+  ContrastPair,
+  ContrastPositive,
+  ContrastNegative,
+} from '../content';
 
 // Editorial components for magazine-style layouts
 import { EditorialGrid, EditorialSection, FeaturedCard, Item, DigestEntry } from '../editorial';
@@ -260,6 +271,11 @@ export function getMDXComponents(): MDXComponentMap {
 
     // Layout
     WideBlock,
+
+    // Paired examples
+    ContrastPair,
+    ContrastPositive,
+    ContrastNegative,
 
     // UI components exposed to MDX
     Blockquote,

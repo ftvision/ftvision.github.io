@@ -25,6 +25,16 @@ export type { ReferencesProps } from './References';
 export { WideBlock } from './WideBlock';
 export type { WideBlockProps } from './WideBlock';
 
+export {
+  ContrastPair,
+  ContrastPositive,
+  ContrastNegative,
+} from './ContrastPair';
+export type {
+  ContrastPairProps,
+  ContrastBlockProps,
+} from './ContrastPair';
+
 // Embed components
 export { XEmbed } from './XEmbed';
 
