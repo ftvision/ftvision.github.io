@@ -5,6 +5,8 @@ import { getEssayBySlug, getEssaySlugs, getTranslation } from '@/lib/essays';
 import { getMDXComponents } from '@/components/mdx/MDXComponents';
 import { mdxOptions } from '@/lib/mdx-options';
 import { EssayLayout, EssayHeader } from '@/components/essay';
+import { JsonLd } from '@/components/seo';
+import { breadcrumbSchema, essayPostingSchema } from '@/lib/jsonld';
 
 interface ZhEssayPageProps {
   params: Promise<{ slug: string }>;
@@ -151,23 +153,34 @@ export default async function ZhEssayPage({ params }: ZhEssayPageProps) {
 
   const { title, description, date, type, topics, readingTime, content, toc } =
     essay;
+  const urlPath = `/zh/essays/${slug}`;
 
   return (
-    <EssayLayout
-      toc={toc}
-      header={
-        <EssayHeader
-          type={type}
-          topics={topics}
-          title={title}
-          description={description}
-          date={date}
-          readingTime={readingTime}
-          language="zh"
-        />
-      }
-    >
-      <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
-    </EssayLayout>
+    <>
+      <JsonLd data={essayPostingSchema(essay, urlPath)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: '首页', url: '/zh' },
+          { name: '文章', url: '/zh/essays' },
+          { name: title, url: urlPath },
+        ])}
+      />
+      <EssayLayout
+        toc={toc}
+        header={
+          <EssayHeader
+            type={type}
+            topics={topics}
+            title={title}
+            description={description}
+            date={date}
+            readingTime={readingTime}
+            language="zh"
+          />
+        }
+      >
+        <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
+      </EssayLayout>
+    </>
   );
 }

@@ -6,6 +6,8 @@ import { getMDXComponents } from '@/components/mdx/MDXComponents';
 import { mdxOptions } from '@/lib/mdx-options';
 import { EssayLayout } from '@/components/essay';
 import { PeriodicHeader } from '@/components/periodic';
+import { JsonLd } from '@/components/seo';
+import { breadcrumbSchema, periodicPostingSchema } from '@/lib/jsonld';
 
 interface PeriodicPageProps {
   params: Promise<{ slug: string }>;
@@ -155,24 +157,35 @@ export default async function ZhPeriodicPage({ params }: PeriodicPageProps) {
 
   const { title, description, date, issue, type, topics, readingTime, content, toc } =
     periodic;
+  const urlPath = `/zh/periodics/${slug}`;
 
   return (
-    <EssayLayout
-      toc={toc}
-      header={
-        <PeriodicHeader
-          issue={issue}
-          type={type}
-          topics={topics}
-          title={title}
-          description={description}
-          date={date}
-          readingTime={readingTime}
-          language="zh"
-        />
-      }
-    >
-      <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
-    </EssayLayout>
+    <>
+      <JsonLd data={periodicPostingSchema(periodic, urlPath)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: '首页', url: '/zh' },
+          { name: '文摘', url: '/zh/periodics' },
+          { name: title, url: urlPath },
+        ])}
+      />
+      <EssayLayout
+        toc={toc}
+        header={
+          <PeriodicHeader
+            issue={issue}
+            type={type}
+            topics={topics}
+            title={title}
+            description={description}
+            date={date}
+            readingTime={readingTime}
+            language="zh"
+          />
+        }
+      >
+        <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
+      </EssayLayout>
+    </>
   );
 }

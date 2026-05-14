@@ -11,6 +11,8 @@ import {
 } from '@/components/layout';
 import { LanguageProvider } from '@/lib/i18n';
 import { SITE_AUTHOR, SITE_URL } from '@/lib/constants';
+import { JsonLd } from '@/components/seo';
+import { siteGraph } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -58,6 +60,13 @@ export default function EnRootLayout({ children }: EnRootLayoutProps) {
   return (
     <html lang="en" data-theme="nyt" data-mode="light" suppressHydrationWarning>
       <head>
+        <link
+          rel="alternate"
+          type="application/atom+xml"
+          title="Algo Mind — Essays"
+          href="/feed.xml"
+        />
+        <JsonLd data={siteGraph('en')} />
         <script
           dangerouslySetInnerHTML={{
             __html: `

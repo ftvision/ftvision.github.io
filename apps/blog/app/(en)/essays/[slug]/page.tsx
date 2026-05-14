@@ -5,6 +5,8 @@ import { getEssayBySlug, getEssaySlugs, getTranslation } from '@/lib/essays';
 import { getMDXComponents } from '@/components/mdx/MDXComponents';
 import { mdxOptions } from '@/lib/mdx-options';
 import { EssayLayout, EssayHeader } from '@/components/essay';
+import { JsonLd } from '@/components/seo';
+import { breadcrumbSchema, essayPostingSchema } from '@/lib/jsonld';
 
 interface EssayPageProps {
   params: Promise<{ slug: string }>;
@@ -150,22 +152,33 @@ export default async function EssayPage({ params }: EssayPageProps) {
 
   const { title, description, date, type, topics, readingTime, content, toc } =
     essay;
+  const urlPath = `/essays/${slug}`;
 
   return (
-    <EssayLayout
-      toc={toc}
-      header={
-        <EssayHeader
-          type={type}
-          topics={topics}
-          title={title}
-          description={description}
-          date={date}
-          readingTime={readingTime}
-        />
-      }
-    >
-      <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
-    </EssayLayout>
+    <>
+      <JsonLd data={essayPostingSchema(essay, urlPath)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Essays', url: '/essays' },
+          { name: title, url: urlPath },
+        ])}
+      />
+      <EssayLayout
+        toc={toc}
+        header={
+          <EssayHeader
+            type={type}
+            topics={topics}
+            title={title}
+            description={description}
+            date={date}
+            readingTime={readingTime}
+          />
+        }
+      >
+        <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
+      </EssayLayout>
+    </>
   );
 }
