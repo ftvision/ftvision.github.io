@@ -118,6 +118,8 @@ export function essayPostingSchema(essay: EssayMeta, urlPath: string) {
     description: essay.description,
     url: urlPath,
     datePublished: essay.date,
+    dateModified: essay.updated,
+    image: essay.image,
     topics: essay.topics as string[],
     locale: essay.lang,
   });
@@ -133,6 +135,8 @@ export function periodicPostingSchema(periodic: PeriodicMeta, urlPath: string) {
         : `${periodic.title} - Issue #${periodic.issue}`),
     url: urlPath,
     datePublished: periodic.date,
+    dateModified: periodic.updated,
+    image: periodic.image,
     topics: periodic.topics as string[],
     locale: periodic.lang,
   });

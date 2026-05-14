@@ -69,6 +69,8 @@ export interface EssayMeta {
   description: string;
   /** Publication date in ISO format (YYYY-MM-DD) */
   date: string;
+  /** Last updated date in ISO format (YYYY-MM-DD). Surfaces as `dateModified` in JSON-LD and as `lastmod` in the sitemap. */
+  updated?: string;
   /** Essay type (how it's written) */
   type: EssayType;
   /** Topics covered (can be multiple) */
@@ -130,6 +132,8 @@ export interface PeriodicMeta {
   description?: string;
   /** Publication date in ISO format (YYYY-MM-DD) */
   date: string;
+  /** Last updated date in ISO format (YYYY-MM-DD). Surfaces as `dateModified` in JSON-LD and as `lastmod` in the sitemap. */
+  updated?: string;
   /** Issue number (for sequential content) */
   issue: number;
   /** Periodic type (digest, changelog, notes) */
@@ -173,6 +177,7 @@ export interface PeriodicFrontmatter {
   title: string;
   description?: string;
   date: string;
+  updated?: string;
   issue: number;
   type: PeriodicType;
   topics: Topic[];
@@ -277,6 +282,7 @@ export interface Frontmatter {
   title: string;
   description: string;
   date: string;
+  updated?: string;
   type: EssayType;
   topics: Topic[];
   lang: Language;
@@ -344,6 +350,9 @@ export function validateFrontmatter(data: Record<string, unknown>): Frontmatter 
   if (typeof data.date !== 'string' || !data.date) {
     errors.push('date is required and must be a string');
   }
+  if (data.updated !== undefined && typeof data.updated !== 'string') {
+    errors.push('updated must be a string');
+  }
   if (!isValidEssayType(data.type)) {
     errors.push(`type must be one of: guide, deep-dive, opinion, review, narrative`);
   }
@@ -380,6 +389,7 @@ export function validateFrontmatter(data: Record<string, unknown>): Frontmatter 
     title: data.title as string,
     description: (data.description as string | undefined) ?? '',
     date: data.date as string,
+    updated: data.updated as string | undefined,
     type: data.type as EssayType,
     topics: data.topics as Topic[],
     lang: (data.lang as Language) ?? 'en',
@@ -417,6 +427,9 @@ export function validatePeriodicFrontmatter(data: Record<string, unknown>): Peri
   if (data.description !== undefined && typeof data.description !== 'string') {
     errors.push('description must be a string');
   }
+  if (data.updated !== undefined && typeof data.updated !== 'string') {
+    errors.push('updated must be a string');
+  }
   if (data.lang !== undefined && !isValidLanguage(data.lang)) {
     errors.push(`lang must be one of: en, zh`);
   }
@@ -438,6 +451,7 @@ export function validatePeriodicFrontmatter(data: Record<string, unknown>): Peri
     title: data.title as string,
     description: data.description as string | undefined,
     date: data.date as string,
+    updated: data.updated as string | undefined,
     issue: data.issue as number,
     type: data.type as PeriodicType,
     topics: data.topics as Topic[],

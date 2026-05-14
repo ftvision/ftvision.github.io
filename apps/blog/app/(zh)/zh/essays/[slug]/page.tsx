@@ -45,6 +45,9 @@ export async function generateMetadata({
     languages: {
       zh: `/zh/essays/${slug}`,
     },
+    types: {
+      'text/markdown': `/zh/essays/${slug}/raw.md`,
+    },
   };
 
   const enTranslation = getTranslation(slug, 'en');
