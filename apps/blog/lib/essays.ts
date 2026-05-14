@@ -21,6 +21,14 @@ import { extractHeadings } from './mdx';
 /** Directory where essay MDX files are stored */
 const ESSAYS_DIRECTORY = path.join(process.cwd(), 'content', 'essays');
 
+// In production builds the content set is frozen for the lifetime of the
+// process, so we memoize file reads. In dev/test the cache is bypassed so
+// edits are picked up immediately.
+const CACHE_ENABLED = process.env.NODE_ENV === 'production';
+const slugsCache = new Map<string, string[]>();
+const metaCache = new Map<string, EssayMeta | null>();
+const bySlugCache = new Map<string, Essay | null>();
+
 /**
  * Options for fetching essays
  */
@@ -40,26 +48,31 @@ export interface GetEssaysOptions {
  * - Draft essays (in production)
  */
 export function getEssaySlugs(options: { includeDrafts?: boolean } = {}): string[] {
-  const { includeDrafts = process.env.NODE_ENV === 'development' } = options;
+  const { includeDrafts = process.env.NODE_ENV !== 'production' } = options;
+  const cacheKey = includeDrafts ? 'with-drafts' : 'no-drafts';
 
+  if (CACHE_ENABLED) {
+    const cached = slugsCache.get(cacheKey);
+    if (cached) return cached;
+  }
+
+  let result: string[];
   try {
     const files = fs.readdirSync(ESSAYS_DIRECTORY);
     const slugs = files
       .filter((file) => file.endsWith('.mdx') && !file.startsWith('_'))
       .map((file) => file.replace(/\.mdx$/, ''));
 
-    if (includeDrafts) {
-      return slugs;
-    }
-
-    return slugs.filter((slug) => {
-      const meta = getEssayMeta(slug);
-      return meta && !meta.draft;
-    });
+    result = includeDrafts
+      ? slugs
+      : slugs.filter((slug) => !getEssayMeta(slug)?.draft);
   } catch {
     // Directory doesn't exist yet
-    return [];
+    result = [];
   }
+
+  if (CACHE_ENABLED) slugsCache.set(cacheKey, result);
+  return result;
 }
 
 /**
@@ -105,6 +118,21 @@ export function getAllEssays(options: GetEssaysOptions = {}): EssayMeta[] {
  */
 export function getEssayBySlug(slug: string, options: { includeDrafts?: boolean } = {}): Essay | null {
   const { includeDrafts = process.env.NODE_ENV === 'development' } = options;
+
+  let essay: Essay | null;
+  if (CACHE_ENABLED && bySlugCache.has(slug)) {
+    essay = bySlugCache.get(slug) ?? null;
+  } else {
+    essay = readEssayFile(slug);
+    if (CACHE_ENABLED) bySlugCache.set(slug, essay);
+  }
+
+  if (!essay) return null;
+  if (!includeDrafts && essay.draft) return null;
+  return essay;
+}
+
+function readEssayFile(slug: string): Essay | null {
   const filePath = path.join(ESSAYS_DIRECTORY, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
@@ -116,13 +144,7 @@ export function getEssayBySlug(slug: string, options: { includeDrafts?: boolean 
 
   try {
     const frontmatter = validateFrontmatter(data);
-
-    if (!includeDrafts && frontmatter.draft) {
-      return null;
-    }
-
     const stats = readingTime(content);
-    // Extract table of contents from h2 and h3 headings
     const toc = extractHeadings(content, { minLevel: 2, maxLevel: 3 });
 
     return {
@@ -144,23 +166,34 @@ export function getEssayBySlug(slug: string, options: { includeDrafts?: boolean 
  * Useful for listing essays without loading full content.
  */
 export function getEssayMeta(slug: string): EssayMeta | null {
-  const filePath = path.join(ESSAYS_DIRECTORY, `${slug}.mdx`);
+  if (CACHE_ENABLED && metaCache.has(slug)) {
+    return metaCache.get(slug) ?? null;
+  }
 
+  const filePath = path.join(ESSAYS_DIRECTORY, `${slug}.mdx`);
+  let result: EssayMeta | null;
   try {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(fileContent);
     const frontmatter = validateFrontmatter(data);
     const stats = readingTime(content);
 
-    return {
+    result = {
       slug,
       ...frontmatter,
       readingTime: Math.ceil(stats.minutes),
     };
   } catch (error) {
-    console.error(`Error parsing essay meta ${slug}:`, error);
-    return null;
+    if (error instanceof Error && /not found|ENOENT/i.test(error.message)) {
+      result = null;
+    } else {
+      console.error(`Error parsing essay meta ${slug}:`, error);
+      result = null;
+    }
   }
+
+  if (CACHE_ENABLED) metaCache.set(slug, result);
+  return result;
 }
 
 /**

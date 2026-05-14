@@ -20,14 +20,10 @@ export interface FeaturedCardProps {
 }
 
 /**
- * FeaturedCard - Large hero card for featured/highlighted content
+ * FeaturedCard - Large hero card for featured/highlighted content.
  *
- * Displays a prominent card with:
- * - Optional "Editor's Pick" style label badge
- * - Large serif title (underlined on hover)
- * - Description paragraph (no underline)
- * - Source attribution (no underline)
- * - Left accent border for visual emphasis
+ * Emphasis comes from the optional label badge, the larger serif title,
+ * and the panel's background tint, not from a decorative accent stripe.
  */
 export function FeaturedCard({
   title,
@@ -44,10 +40,9 @@ export function FeaturedCard({
       className={cn(
         'featured-card group',
         'p-6 md:p-8',
-        'border-l-4 border-accent-primary',
         'bg-ground-secondary/40 hover:bg-ground-secondary',
         'transition-colors duration-200',
-        'rounded-r-sm',
+        'rounded-sm',
         className
       )}
     >

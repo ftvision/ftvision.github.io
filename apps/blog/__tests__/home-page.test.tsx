@@ -4,7 +4,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import HomePage from '@/app/page';
+import HomePage from '@/app/(en)/page';
 
 describe('HomePage', () => {
   it('renders the page title', () => {
@@ -18,16 +18,16 @@ describe('HomePage', () => {
   it('renders a description or tagline', () => {
     render(<HomePage />);
 
-    // The home page should have the tagline text
-    const description = screen.getByText(/Thoughts on technology, AI, product, and career/i);
+    // The home page should have resilient intro copy before the canvas hydrates
+    const description = screen.getByText(/long-form thinking, curated discoveries/i);
     expect(description).toBeInTheDocument();
   });
 
   it('has a link to essays page', () => {
     render(<HomePage />);
 
-    // The essays link is a button with "Browse All Essays" text
-    const essaysLink = screen.getByRole('link', { name: /browse all essays/i });
+    // The essays link is present in the server-rendered navigation
+    const essaysLink = screen.getByRole('link', { name: /essays long-form pieces/i });
     expect(essaysLink).toBeInTheDocument();
     expect(essaysLink).toHaveAttribute('href', '/essays');
   });
@@ -45,16 +45,16 @@ describe('HomePage', () => {
   it('uses semantic HTML structure', () => {
     const { container } = render(<HomePage />);
 
-    // Should have a main landmark
-    const main = container.querySelector('main');
-    expect(main).toBeInTheDocument();
+    // The app layout provides <main>; the page segment should expose one primary section.
+    const section = container.querySelector('section');
+    expect(section).toBeInTheDocument();
   });
 
   it('uses design token classes for styling', () => {
     const { container } = render(<HomePage />);
 
-    // Check that design token classes are applied (px-inset-lg for horizontal padding)
-    const main = container.querySelector('main');
-    expect(main?.className).toContain('px-inset-lg');
+    // The hardened landing shell keeps a tokenized background fallback.
+    const section = container.querySelector('section');
+    expect(section?.className).toContain('bg-ground-inverse');
   });
 });

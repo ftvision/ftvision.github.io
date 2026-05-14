@@ -43,7 +43,7 @@ const dropdownMenuVariants = cva(
 
 const dropdownItemVariants = cva(
   [
-    'relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5',
+    'relative flex min-h-11 cursor-pointer select-none items-center rounded-sm px-3 py-2',
     'text-body-sm text-figure-primary outline-none',
     'transition-colors duration-fast',
     'hover:bg-ground-secondary hover:text-figure-primary',
@@ -57,6 +57,8 @@ interface DropdownContextValue {
   setOpen: (open: boolean) => void;
   align: 'start' | 'center' | 'end';
   side: 'top' | 'bottom';
+  dropdownRef: React.MutableRefObject<HTMLDivElement | null>;
+  triggerRef: React.MutableRefObject<HTMLButtonElement | null>;
 }
 
 const DropdownContext = React.createContext<DropdownContextValue | null>(null);
@@ -84,6 +86,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const [open, setOpenState] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
 
   // Create a stable close handler for this dropdown
   const closeHandler = React.useCallback(() => {
@@ -142,7 +145,9 @@ const Dropdown: React.FC<DropdownProps> = ({
   }, [open]);
 
   return (
-    <DropdownContext.Provider value={{ open, setOpen, align, side }}>
+    <DropdownContext.Provider
+      value={{ open, setOpen, align, side, dropdownRef, triggerRef }}
+    >
       <div ref={dropdownRef} className="relative inline-block" data-dropdown>
         {children}
       </div>
@@ -153,22 +158,52 @@ const Dropdown: React.FC<DropdownProps> = ({
 export interface DropdownTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const DropdownTrigger = React.forwardRef<HTMLButtonElement, DropdownTriggerProps>(
-  ({ className, children, onClick, ...props }, ref) => {
-    const { open, setOpen } = useDropdownContext();
+  ({ className, children, onClick, onKeyDown, ...props }, ref) => {
+    const { open, setOpen, dropdownRef, triggerRef } = useDropdownContext();
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(e);
       setOpen(!open);
     };
 
+    const setRefs = (node: HTMLButtonElement | null) => {
+      triggerRef.current = node;
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    };
+
+    const focusFirstItem = () => {
+      window.requestAnimationFrame(() => {
+        const firstItem = dropdownRef.current?.querySelector<HTMLElement>(
+          '[role="menuitem"]:not([data-disabled="true"])'
+        );
+        firstItem?.focus();
+      });
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      onKeyDown?.(e);
+      if (e.defaultPrevented) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setOpen(true);
+        focusFirstItem();
+      }
+    };
+
     return (
       <button
-        ref={ref}
+        ref={setRefs}
         type="button"
         aria-expanded={open}
         aria-haspopup="menu"
         className={className}
         onClick={handleClick}
+        onKeyDown={handleKeyDown}
         {...props}
       >
         {children}
@@ -181,16 +216,70 @@ DropdownTrigger.displayName = 'DropdownTrigger';
 export interface DropdownMenuProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
-  ({ className, children, ...props }, ref) => {
-    const { open, align, side } = useDropdownContext();
+  ({ className, children, onKeyDown, ...props }, ref) => {
+    const { open, align, side, dropdownRef, triggerRef, setOpen } =
+      useDropdownContext();
 
     if (!open) return null;
 
+    const setRefs = (node: HTMLDivElement | null) => {
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    };
+
+    const getItems = () =>
+      Array.from(
+        dropdownRef.current?.querySelectorAll<HTMLElement>(
+          '[role="menuitem"]:not([data-disabled="true"])'
+        ) ?? []
+      );
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+      onKeyDown?.(e);
+      if (e.defaultPrevented) return;
+
+      const items = getItems();
+      const currentIndex = items.indexOf(document.activeElement as HTMLElement);
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setOpen(false);
+        triggerRef.current?.focus();
+        return;
+      }
+
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const direction = e.key === 'ArrowDown' ? 1 : -1;
+        const nextIndex =
+          currentIndex === -1
+            ? 0
+            : (currentIndex + direction + items.length) % items.length;
+        items[nextIndex]?.focus();
+        return;
+      }
+
+      if (e.key === 'Home') {
+        e.preventDefault();
+        items[0]?.focus();
+        return;
+      }
+
+      if (e.key === 'End') {
+        e.preventDefault();
+        items[items.length - 1]?.focus();
+      }
+    };
+
     return (
       <div
-        ref={ref}
+        ref={setRefs}
         role="menu"
         className={cn(dropdownMenuVariants({ align, side, className }))}
+        onKeyDown={handleKeyDown}
         {...props}
       >
         {children}

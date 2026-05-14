@@ -15,7 +15,7 @@ const calloutVariants = cva(
         note: 'bg-ground-secondary border-border-strong text-figure-primary',
       },
       border: {
-        bold: 'border-l-4 border-t-0 border-r-0 border-b-0',
+        bold: 'border-2',
         subtle: 'border-l border-t-0 border-r-0 border-b-0',
         full: 'border',
       },

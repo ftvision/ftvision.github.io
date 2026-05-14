@@ -89,7 +89,7 @@ export function ModeToggle({ className }: ModeToggleProps) {
   return (
     <Dropdown align="end">
       <DropdownTrigger
-        className={`inline-flex items-center justify-center rounded-md p-2 transition-colors hover:bg-ground-secondary hover:text-figure-primary ${className || ''}`}
+        className={`inline-flex h-11 w-11 items-center justify-center rounded-md transition-colors hover:bg-ground-secondary hover:text-figure-primary ${className || ''}`}
         aria-label="Select mode"
       >
         <CurrentIcon size={18} />

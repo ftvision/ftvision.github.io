@@ -22,6 +22,13 @@ import { extractHeadings } from './mdx';
 /** Directory where series MDX files are stored */
 const SERIES_DIRECTORY = path.join(process.cwd(), 'content', 'series');
 
+// In production builds the content set is frozen for the lifetime of the
+// process, so we memoize file reads. Dev/test bypass the cache.
+const CACHE_ENABLED = process.env.NODE_ENV === 'production';
+const slugsCache = new Map<string, string[]>();
+const metaCache = new Map<string, SeriesMeta | null>();
+const bySlugCache = new Map<string, Series | null>();
+
 /**
  * Options for fetching series
  */
@@ -40,15 +47,24 @@ export interface GetSeriesOptions {
  * - Non-.mdx files
  */
 export function getSeriesSlugs(): string[] {
+  if (CACHE_ENABLED) {
+    const cached = slugsCache.get('all');
+    if (cached) return cached;
+  }
+
+  let result: string[];
   try {
     const files = fs.readdirSync(SERIES_DIRECTORY);
-    return files
+    result = files
       .filter((file) => file.endsWith('.mdx') && !file.startsWith('_'))
       .map((file) => file.replace(/\.mdx$/, ''));
   } catch {
     // Directory doesn't exist yet
-    return [];
+    result = [];
   }
+
+  if (CACHE_ENABLED) slugsCache.set('all', result);
+  return result;
 }
 
 /**
@@ -97,6 +113,16 @@ export function getAllSeries(options: GetSeriesOptions = {}): SeriesMeta[] {
  * Returns null if series doesn't exist.
  */
 export function getSeriesBySlug(slug: string): Series | null {
+  if (CACHE_ENABLED && bySlugCache.has(slug)) {
+    return bySlugCache.get(slug) ?? null;
+  }
+
+  const result = readSeriesFile(slug);
+  if (CACHE_ENABLED) bySlugCache.set(slug, result);
+  return result;
+}
+
+function readSeriesFile(slug: string): Series | null {
   const filePath = path.join(SERIES_DIRECTORY, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
@@ -109,7 +135,6 @@ export function getSeriesBySlug(slug: string): Series | null {
   try {
     const frontmatter = validateSeriesFrontmatter(data);
     const stats = readingTime(content);
-    // Extract table of contents from h2 and h3 headings
     const toc = extractHeadings(content, { minLevel: 2, maxLevel: 3 });
 
     return {
@@ -131,23 +156,30 @@ export function getSeriesBySlug(slug: string): Series | null {
  * Useful for listing series without loading full content.
  */
 export function getSeriesMeta(slug: string): SeriesMeta | null {
-  const filePath = path.join(SERIES_DIRECTORY, `${slug}.mdx`);
+  if (CACHE_ENABLED && metaCache.has(slug)) {
+    return metaCache.get(slug) ?? null;
+  }
 
+  const filePath = path.join(SERIES_DIRECTORY, `${slug}.mdx`);
+  let result: SeriesMeta | null;
   try {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data, content } = matter(fileContent);
     const frontmatter = validateSeriesFrontmatter(data);
     const stats = readingTime(content);
 
-    return {
+    result = {
       slug,
       ...frontmatter,
       readingTime: Math.ceil(stats.minutes),
     };
   } catch (error) {
     console.error(`Error parsing series meta ${slug}:`, error);
-    return null;
+    result = null;
   }
+
+  if (CACHE_ENABLED) metaCache.set(slug, result);
+  return result;
 }
 
 /**
