@@ -23,6 +23,13 @@ export interface EssayLayoutProps {
   header?: React.ReactNode;
   /** Main essay content */
   children: React.ReactNode;
+  /**
+   * Footer content rendered after the main essay body, outside the
+   * `.essay-content` typography cascade. Use this for blocks like
+   * "Related essays" that need a different visual register than the
+   * article body.
+   */
+  footer?: React.ReactNode;
   /** Table of contents items */
   toc?: TocItem[];
   /** Additional CSS classes for the layout container */
@@ -46,7 +53,7 @@ export interface EssayLayoutProps {
  * The layout wraps content in NoteProvider and ReferenceProvider for
  * sidenote numbering and citation management.
  */
-export function EssayLayout({ header, children, toc, className }: EssayLayoutProps) {
+export function EssayLayout({ header, children, footer, toc, className }: EssayLayoutProps) {
   const [activeId, setActiveId] = React.useState<string | null>(null);
 
   // Track active heading via Intersection Observer
@@ -164,6 +171,15 @@ export function EssayLayout({ header, children, toc, className }: EssayLayoutPro
             >
               {children}
             </div>
+
+            {/* Footer slot — sits OUTSIDE .essay-content so its typography
+                is not overridden by the article's cascading h2/a/ol styles.
+                Width matches the article body so the block aligns visually. */}
+            {footer && (
+              <div className="max-w-[38rem] lg:max-w-[42rem] xl:max-w-[42rem]">
+                {footer}
+              </div>
+            )}
           </article>
 
           {/* Right column placeholder for sidenotes (they float into this space) */}

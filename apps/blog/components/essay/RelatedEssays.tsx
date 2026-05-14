@@ -43,22 +43,16 @@ export function RelatedEssays({ essays, language, className }: RelatedEssaysProp
         {heading}
       </h2>
 
-      <ol className="flex flex-col">
-        {essays.map((essay, i) => (
+      <ol className="flex list-decimal flex-col pl-6 marker:text-figure-muted marker:font-serif">
+        {essays.map((essay) => (
           <li
             key={essay.slug}
-            className="border-b border-border last:border-b-0"
+            className="border-b border-border pl-2 last:border-b-0"
           >
             <Link
               href={`${basePath}/${essay.slug}`}
-              className="group flex items-baseline gap-6 py-4 transition-colors"
+              className="group flex items-baseline gap-6 py-4 no-underline transition-colors"
             >
-              <span
-                aria-hidden="true"
-                className="font-serif text-body-sm tabular-nums text-figure-muted"
-              >
-                {String(i + 1).padStart(2, '0')}
-              </span>
               <span className="flex-1 font-serif text-figure-primary transition-colors group-hover:text-link">
                 {essay.title}
               </span>

@@ -188,9 +188,9 @@ export default async function ZhEssayPage({ params }: ZhEssayPageProps) {
             language="zh"
           />
         }
+        footer={<RelatedEssays essays={related} language="zh" />}
       >
         <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
-        <RelatedEssays essays={related} language="zh" />
       </EssayLayout>
     </>
   );

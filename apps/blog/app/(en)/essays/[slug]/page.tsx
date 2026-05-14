@@ -189,9 +189,9 @@ export default async function EssayPage({ params }: EssayPageProps) {
             readingTime={readingTime}
           />
         }
+        footer={<RelatedEssays essays={related} language="en" />}
       >
         <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
-        <RelatedEssays essays={related} language="en" />
       </EssayLayout>
     </>
   );
