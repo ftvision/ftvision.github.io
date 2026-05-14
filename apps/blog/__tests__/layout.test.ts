@@ -6,37 +6,46 @@ import { describe, it, expect } from 'vitest';
 // Note: Next.js App Router layouts are server components that render html/body tags
 // These cannot be rendered in jsdom. Instead, we test the module exports.
 
-describe('RootLayout', () => {
+const layoutPaths = {
+  en: '../app/(en)/layout',
+  zh: '../app/(zh)/layout',
+} as const;
+
+describe.each(Object.entries(layoutPaths))('%s root layout', (_locale, path) => {
   it('exports a default function component', async () => {
-    const layoutModule = await import('../app/layout');
-    expect(typeof layoutModule.default).toBe('function');
+    const mod = await import(path);
+    expect(typeof mod.default).toBe('function');
   });
 
   it('exports metadata with required fields', async () => {
-    const layoutModule = await import('../app/layout');
-
-    expect(layoutModule.metadata).toBeDefined();
-    expect(layoutModule.metadata.title).toBeDefined();
-    expect(layoutModule.metadata.description).toBeDefined();
-    expect(typeof layoutModule.metadata.description).toBe('string');
+    const mod = await import(path);
+    expect(mod.metadata).toBeDefined();
+    expect(mod.metadata.title).toBeDefined();
+    expect(mod.metadata.description).toBeDefined();
+    expect(typeof mod.metadata.description).toBe('string');
   });
 
-  it('has correct metadata title structure', async () => {
-    const layoutModule = await import('../app/layout');
-
-    // Title can be a string or an object with default/template
-    const title = layoutModule.metadata.title;
-    if (typeof title === 'object' && title !== null) {
-      expect(title).toHaveProperty('default');
-    } else {
-      expect(typeof title).toBe('string');
-    }
+  it('has title with default and template', async () => {
+    const mod = await import(path);
+    const title = mod.metadata.title;
+    expect(typeof title).toBe('object');
+    expect(title).toHaveProperty('default');
+    expect(title).toHaveProperty('template');
   });
 
   it('has OpenGraph metadata configured', async () => {
-    const layoutModule = await import('../app/layout');
+    const mod = await import(path);
+    expect(mod.metadata.openGraph).toBeDefined();
+    expect(mod.metadata.openGraph?.type).toBe('website');
+  });
 
-    expect(layoutModule.metadata.openGraph).toBeDefined();
-    expect(layoutModule.metadata.openGraph?.type).toBe('website');
+  it('sets metadataBase', async () => {
+    const mod = await import(path);
+    expect(mod.metadata.metadataBase).toBeInstanceOf(URL);
+  });
+
+  it('declares x-default hreflang', async () => {
+    const mod = await import(path);
+    expect(mod.metadata.alternates?.languages?.['x-default']).toBeDefined();
   });
 });
