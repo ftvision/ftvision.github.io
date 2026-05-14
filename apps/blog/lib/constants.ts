@@ -4,6 +4,14 @@
 
 import type { EssayType, Topic, Language, PeriodicType, SeriesCategory } from '@/types/content';
 
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.feitong.phd';
+
+export const SITE_AUTHOR = {
+  name: 'Feitong Yang',
+  url: `${SITE_URL}/about`,
+} as const;
+
 /**
  * Maps essay types to display labels (English)
  */

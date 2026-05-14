@@ -1,21 +1,28 @@
 import type { Metadata } from 'next';
+import { SITE_AUTHOR, SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: {
-    default: '文章',
-    template: '%s | 文章',
+    default: '思算 — 关于 AI、产品与工程的随笔',
+    template: '%s | 思算',
   },
-  description: '关于技术、AI、产品和职业的个人文章。',
-  keywords: ['文章', '博客', '技术', 'AI', '产品', '职业'],
+  description: '思算 — Feitong Yang 关于 AI、软件工程、产品思考与职业的随笔。',
+  keywords: ['思算', 'Algo Mind', 'Feitong Yang', '随笔', '博客', 'AI', '技术', '产品', '职业'],
+  authors: [{ name: SITE_AUTHOR.name, url: SITE_AUTHOR.url }],
+  creator: SITE_AUTHOR.name,
+  publisher: '思算',
   openGraph: {
     type: 'website',
     locale: 'zh_CN',
-    siteName: '文章',
+    siteName: '思算',
+    url: `${SITE_URL}/zh`,
   },
   alternates: {
+    canonical: '/zh',
     languages: {
       'en': '/',
       'zh': '/zh',
+      'x-default': '/',
     },
   },
 };
