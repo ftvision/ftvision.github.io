@@ -281,3 +281,98 @@ export function getEssaySlugsByLanguage(lang: Language): string[] {
   const essays = getEssaysByLanguage(lang);
   return essays.map((essay) => essay.slug);
 }
+
+/**
+ * Get essays related to a given essay.
+ *
+ * Two paths:
+ *
+ *   A. **Author-curated**: when the source has a `relatedTo: [slug, …]`
+ *      frontmatter list, use exactly those slugs (in order). Slugs that
+ *      don't resolve, that point at the source itself, or that point at
+ *      a cross-language essay are dropped silently. Cap at `limit`.
+ *      Manual curation is the strongest editorial signal — both for
+ *      readers and for AI engines weighing relevance.
+ *
+ *   B. **Auto**: when no `relatedTo` is set, score candidates by Jaccard
+ *      topic similarity plus a small same-`type` bonus. Candidates that
+ *      share zero topics with the source are dropped — no recency
+ *      fallback. Better to show 1 strong related essay (or none) than
+ *      3 weak ones, since irrelevant links read as automated content
+ *      to both search engines and AI answer engines.
+ *
+ * In both paths, drafts, the source itself, and the source's translation
+ * (in either direction) are excluded.
+ */
+
+/** Bonus added to the Jaccard score when source and candidate share a type. */
+const TYPE_MATCH_BONUS = 0.15;
+
+function jaccard<T>(a: T[], b: T[]): number {
+  if (a.length === 0 && b.length === 0) return 0;
+  const setA = new Set(a);
+  const setB = new Set(b);
+  let intersection = 0;
+  for (const item of setA) if (setB.has(item)) intersection += 1;
+  const union = setA.size + setB.size - intersection;
+  return union === 0 ? 0 : intersection / union;
+}
+
+function sharedCount<T>(a: T[], b: T[]): number {
+  const setB = new Set(b);
+  let count = 0;
+  for (const item of a) if (setB.has(item)) count += 1;
+  return count;
+}
+
+export function getRelatedEssays(
+  slug: string,
+  options: { limit?: number } = {},
+): EssayMeta[] {
+  const { limit = 3 } = options;
+  const source = getEssayMeta(slug);
+  if (!source) return [];
+
+  // translationOf points either way; exclude both directions.
+  const translationSlug = source.translationOf;
+  const isSelfOrTranslation = (essay: EssayMeta) =>
+    essay.slug === slug ||
+    essay.slug === translationSlug ||
+    essay.translationOf === slug;
+
+  // Path A — author-curated
+  if (source.relatedTo && source.relatedTo.length > 0) {
+    const curated: EssayMeta[] = [];
+    for (const targetSlug of source.relatedTo) {
+      if (curated.length >= limit) break;
+      const target = getEssayMeta(targetSlug);
+      if (!target) continue;
+      if (target.lang !== source.lang) continue;
+      if (isSelfOrTranslation(target)) continue;
+      if (target.draft) continue;
+      curated.push(target);
+    }
+    return curated;
+  }
+
+  // Path B — auto-rank, no recency fallback
+  const candidates = getAllEssays({ language: source.lang }).filter(
+    (essay) => !isSelfOrTranslation(essay),
+  );
+
+  return candidates
+    .map((essay) => {
+      const shared = sharedCount(source.topics, essay.topics);
+      const score =
+        jaccard(source.topics, essay.topics) +
+        (essay.type === source.type ? TYPE_MATCH_BONUS : 0);
+      return { essay, shared, score };
+    })
+    .filter((entry) => entry.shared > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return new Date(b.essay.date).getTime() - new Date(a.essay.date).getTime();
+    })
+    .slice(0, limit)
+    .map((entry) => entry.essay);
+}

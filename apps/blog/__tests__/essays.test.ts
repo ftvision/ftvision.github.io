@@ -6,6 +6,7 @@ import {
   getEssaysByType,
   getEssaysByTopic,
   getEssaysByLanguage,
+  getRelatedEssays,
   getTranslation,
   getEssaySlugsByLanguage,
 } from '@/lib/essays';
@@ -271,6 +272,299 @@ Content`;
       const aiEssays = getEssaysByTopic('ai');
       expect(aiEssays).toHaveLength(1);
       expect(aiEssays[0].topics).toContain('ai');
+    });
+  });
+
+  describe('getRelatedEssays', () => {
+    beforeEach(() => {
+      vi.mocked(fs.readdirSync).mockReturnValue([
+        'source.mdx',
+        'shares-two-topics.mdx',
+        'shares-one-topic.mdx',
+        'unrelated.mdx',
+        'other-language.mdx',
+      ] as unknown as ReturnType<typeof fs.readdirSync>);
+
+      vi.mocked(fs.existsSync).mockImplementation((p) => {
+        const file = String(p);
+        return [
+          'source.mdx',
+          'shares-two-topics.mdx',
+          'shares-one-topic.mdx',
+          'unrelated.mdx',
+          'other-language.mdx',
+        ].some((name) => file.endsWith(name));
+      });
+
+      vi.mocked(fs.readFileSync).mockImplementation((p) => {
+        const file = String(p);
+        if (file.includes('source.mdx')) {
+          return `---
+title: Source
+description: Source
+date: 2024-03-01
+type: guide
+topics: ['technical', 'ai']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('shares-two-topics.mdx')) {
+          return `---
+title: Shares Two
+description: Two
+date: 2024-01-01
+type: guide
+topics: ['technical', 'ai']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('shares-one-topic.mdx')) {
+          return `---
+title: Shares One
+description: One
+date: 2024-02-01
+type: guide
+topics: ['ai']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('unrelated.mdx')) {
+          return `---
+title: Unrelated
+description: Unrelated
+date: 2024-02-15
+type: narrative
+topics: ['career']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('other-language.mdx')) {
+          return `---
+title: Other Language
+description: zh
+date: 2024-02-20
+type: guide
+topics: ['technical', 'ai']
+lang: zh
+---
+Content`;
+        }
+        const err = new Error(`ENOENT: no such file or directory, open '${file}'`);
+        (err as NodeJS.ErrnoException).code = 'ENOENT';
+        throw err;
+      });
+    });
+
+    it('ranks by Jaccard similarity, type bonus, then recency', () => {
+      const related = getRelatedEssays('source', { limit: 3 });
+      // shares-two-topics: Jaccard 2/2=1.0, same type +0.15 → 1.15
+      // shares-one-topic:  Jaccard 1/2=0.5,  same type +0.15 → 0.65
+      // unrelated:         shared=0 → dropped (no recency fallback)
+      expect(related.map((e) => e.slug)).toEqual([
+        'shares-two-topics',
+        'shares-one-topic',
+      ]);
+    });
+
+    it('drops candidates with zero shared topics (no recency fallback)', () => {
+      const related = getRelatedEssays('source', { limit: 5 });
+      expect(related.map((e) => e.slug)).not.toContain('unrelated');
+    });
+
+    it('excludes the source essay itself', () => {
+      const related = getRelatedEssays('source', { limit: 5 });
+      expect(related.map((e) => e.slug)).not.toContain('source');
+    });
+
+    it('excludes other-language essays', () => {
+      const related = getRelatedEssays('source', { limit: 5 });
+      expect(related.map((e) => e.slug)).not.toContain('other-language');
+    });
+
+    it('respects the limit', () => {
+      const related = getRelatedEssays('source', { limit: 1 });
+      expect(related).toHaveLength(1);
+      expect(related[0].slug).toBe('shares-two-topics');
+    });
+
+    it('returns empty when the source essay does not exist', () => {
+      expect(getRelatedEssays('nonexistent')).toEqual([]);
+    });
+  });
+
+  describe('getRelatedEssays — type-match tiebreaker', () => {
+    beforeEach(() => {
+      vi.mocked(fs.readdirSync).mockReturnValue([
+        'src.mdx',
+        'same-topic-different-type.mdx',
+        'same-topic-same-type.mdx',
+      ] as unknown as ReturnType<typeof fs.readdirSync>);
+      vi.mocked(fs.existsSync).mockImplementation((p) =>
+        ['src.mdx', 'same-topic-different-type.mdx', 'same-topic-same-type.mdx'].some((n) =>
+          String(p).endsWith(n),
+        ),
+      );
+      vi.mocked(fs.readFileSync).mockImplementation((p) => {
+        const file = String(p);
+        if (file.includes('src.mdx')) {
+          return `---
+title: Source
+description: Source
+date: 2024-03-01
+type: guide
+topics: ['ai']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('same-topic-different-type.mdx')) {
+          return `---
+title: Different type
+description: x
+date: 2024-02-15
+type: narrative
+topics: ['ai']
+lang: en
+---
+Content`;
+        }
+        // same-topic-same-type — older but same type
+        return `---
+title: Same type
+description: y
+date: 2024-01-01
+type: guide
+topics: ['ai']
+lang: en
+---
+Content`;
+      });
+    });
+
+    it('boosts same-type candidates above different-type ones with equal Jaccard', () => {
+      const related = getRelatedEssays('src', { limit: 2 });
+      expect(related.map((e) => e.slug)).toEqual([
+        'same-topic-same-type', // older, but +0.15 type bonus puts it first
+        'same-topic-different-type',
+      ]);
+    });
+  });
+
+  describe('getRelatedEssays — author-curated relatedTo', () => {
+    beforeEach(() => {
+      vi.mocked(fs.readdirSync).mockReturnValue([
+        'curator.mdx',
+        'picked-1.mdx',
+        'picked-2.mdx',
+        'not-picked.mdx',
+        'wrong-lang.mdx',
+        'draft-pick.mdx',
+      ] as unknown as ReturnType<typeof fs.readdirSync>);
+      vi.mocked(fs.existsSync).mockImplementation((p) =>
+        [
+          'curator.mdx',
+          'picked-1.mdx',
+          'picked-2.mdx',
+          'not-picked.mdx',
+          'wrong-lang.mdx',
+          'draft-pick.mdx',
+        ].some((n) => String(p).endsWith(n)),
+      );
+      vi.mocked(fs.readFileSync).mockImplementation((p) => {
+        const file = String(p);
+        if (file.includes('curator.mdx')) {
+          return `---
+title: Curator
+description: x
+date: 2024-03-01
+type: guide
+topics: ['ai']
+lang: en
+relatedTo: ['picked-2', 'nonexistent', 'wrong-lang', 'draft-pick', 'picked-1']
+---
+Content`;
+        }
+        if (file.includes('picked-1.mdx')) {
+          return `---
+title: Picked 1
+description: x
+date: 2024-01-01
+type: narrative
+topics: ['career']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('picked-2.mdx')) {
+          return `---
+title: Picked 2
+description: x
+date: 2024-02-01
+type: narrative
+topics: ['career']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('not-picked.mdx')) {
+          return `---
+title: Not picked
+description: x
+date: 2024-02-15
+type: guide
+topics: ['ai']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('wrong-lang.mdx')) {
+          return `---
+title: ZH version
+description: x
+date: 2024-02-20
+type: guide
+topics: ['ai']
+lang: zh
+---
+Content`;
+        }
+        // draft-pick
+        return `---
+title: Draft pick
+description: x
+date: 2024-02-25
+type: guide
+topics: ['ai']
+lang: en
+draft: true
+---
+Content`;
+      });
+    });
+
+    it('uses the curated list in order, ignoring auto-rank', () => {
+      const related = getRelatedEssays('curator', { limit: 5 });
+      // Order respected: picked-2 first, then picked-1.
+      // 'not-picked' is excluded even though it shares topics + type.
+      expect(related.map((e) => e.slug)).toEqual(['picked-2', 'picked-1']);
+    });
+
+    it('silently drops cross-language, draft, and missing slugs from the curated list', () => {
+      const related = getRelatedEssays('curator', { limit: 5 });
+      const slugs = related.map((e) => e.slug);
+      expect(slugs).not.toContain('wrong-lang');
+      expect(slugs).not.toContain('draft-pick');
+      expect(slugs).not.toContain('nonexistent');
+    });
+
+    it('caps curated output at limit', () => {
+      const related = getRelatedEssays('curator', { limit: 1 });
+      expect(related).toHaveLength(1);
+      expect(related[0].slug).toBe('picked-2');
     });
   });
 

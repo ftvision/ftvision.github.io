@@ -1,10 +1,10 @@
 import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { getEssayBySlug, getEssaySlugs, getTranslation } from '@/lib/essays';
+import { getEssayBySlug, getEssaySlugs, getRelatedEssays, getTranslation } from '@/lib/essays';
 import { getMDXComponents } from '@/components/mdx/MDXComponents';
 import { mdxOptions } from '@/lib/mdx-options';
-import { EssayLayout, EssayHeader } from '@/components/essay';
+import { EssayLayout, EssayHeader, RelatedEssays } from '@/components/essay';
 import { JsonLd } from '@/components/seo';
 import { breadcrumbSchema, essayPostingSchema } from '@/lib/jsonld';
 
@@ -165,6 +165,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
   const { title, description, date, type, topics, readingTime, content, toc } =
     essay;
   const urlPath = `/essays/${slug}`;
+  const related = getRelatedEssays(slug, { limit: 3 });
 
   return (
     <>
@@ -188,6 +189,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
             readingTime={readingTime}
           />
         }
+        footer={<RelatedEssays essays={related} language="en" />}
       >
         <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
       </EssayLayout>
