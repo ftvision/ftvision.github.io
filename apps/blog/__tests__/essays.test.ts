@@ -6,6 +6,7 @@ import {
   getEssaysByType,
   getEssaysByTopic,
   getEssaysByLanguage,
+  getRelatedEssays,
   getTranslation,
   getEssaySlugsByLanguage,
 } from '@/lib/essays';
@@ -271,6 +272,120 @@ Content`;
       const aiEssays = getEssaysByTopic('ai');
       expect(aiEssays).toHaveLength(1);
       expect(aiEssays[0].topics).toContain('ai');
+    });
+  });
+
+  describe('getRelatedEssays', () => {
+    beforeEach(() => {
+      vi.mocked(fs.readdirSync).mockReturnValue([
+        'source.mdx',
+        'shares-two-topics.mdx',
+        'shares-one-topic.mdx',
+        'unrelated.mdx',
+        'other-language.mdx',
+      ] as unknown as ReturnType<typeof fs.readdirSync>);
+
+      vi.mocked(fs.existsSync).mockImplementation((p) => {
+        const file = String(p);
+        return [
+          'source.mdx',
+          'shares-two-topics.mdx',
+          'shares-one-topic.mdx',
+          'unrelated.mdx',
+          'other-language.mdx',
+        ].some((name) => file.endsWith(name));
+      });
+
+      vi.mocked(fs.readFileSync).mockImplementation((p) => {
+        const file = String(p);
+        if (file.includes('source.mdx')) {
+          return `---
+title: Source
+description: Source
+date: 2024-03-01
+type: guide
+topics: ['technical', 'ai']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('shares-two-topics.mdx')) {
+          return `---
+title: Shares Two
+description: Two
+date: 2024-01-01
+type: guide
+topics: ['technical', 'ai']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('shares-one-topic.mdx')) {
+          return `---
+title: Shares One
+description: One
+date: 2024-02-01
+type: guide
+topics: ['ai']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('unrelated.mdx')) {
+          return `---
+title: Unrelated
+description: Unrelated
+date: 2024-02-15
+type: narrative
+topics: ['career']
+lang: en
+---
+Content`;
+        }
+        if (file.includes('other-language.mdx')) {
+          return `---
+title: Other Language
+description: zh
+date: 2024-02-20
+type: guide
+topics: ['technical', 'ai']
+lang: zh
+---
+Content`;
+        }
+        const err = new Error(`ENOENT: no such file or directory, open '${file}'`);
+        (err as NodeJS.ErrnoException).code = 'ENOENT';
+        throw err;
+      });
+    });
+
+    it('ranks by shared-topic count, then by recency', () => {
+      const related = getRelatedEssays('source', { limit: 3 });
+      expect(related.map((e) => e.slug)).toEqual([
+        'shares-two-topics',
+        'shares-one-topic',
+        'unrelated', // recency fallback after the topic-matching candidates
+      ]);
+    });
+
+    it('excludes the source essay itself', () => {
+      const related = getRelatedEssays('source', { limit: 5 });
+      expect(related.map((e) => e.slug)).not.toContain('source');
+    });
+
+    it('excludes other-language essays', () => {
+      const related = getRelatedEssays('source', { limit: 5 });
+      expect(related.map((e) => e.slug)).not.toContain('other-language');
+    });
+
+    it('respects the limit', () => {
+      const related = getRelatedEssays('source', { limit: 1 });
+      expect(related).toHaveLength(1);
+      expect(related[0].slug).toBe('shares-two-topics');
+    });
+
+    it('returns empty when the source essay does not exist', () => {
+      expect(getRelatedEssays('nonexistent')).toEqual([]);
     });
   });
 

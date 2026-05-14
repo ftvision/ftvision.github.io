@@ -281,3 +281,55 @@ export function getEssaySlugsByLanguage(lang: Language): string[] {
   const essays = getEssaysByLanguage(lang);
   return essays.map((essay) => essay.slug);
 }
+
+/**
+ * Get essays related to a given essay.
+ *
+ * Algorithm:
+ *  1. Filter to same language, non-draft, not the essay itself, not a
+ *     translation of the essay.
+ *  2. Score each candidate by count of topics it shares with the source.
+ *  3. Sort by score descending, then by date descending.
+ *  4. Take the top `limit`.
+ *  5. If fewer than `limit` candidates share a topic, fill the rest with
+ *     the most recent essays in the same language. Avoids an empty block
+ *     for essays with niche topics.
+ */
+export function getRelatedEssays(
+  slug: string,
+  options: { limit?: number } = {},
+): EssayMeta[] {
+  const { limit = 3 } = options;
+  const source = getEssayMeta(slug);
+  if (!source) return [];
+
+  // translationOf points either way; exclude both directions.
+  const translationSlug = source.translationOf;
+  const isSelfOrTranslation = (essay: EssayMeta) =>
+    essay.slug === slug ||
+    essay.slug === translationSlug ||
+    essay.translationOf === slug;
+
+  const sameLanguage = getAllEssays({ language: source.lang }).filter(
+    (essay) => !isSelfOrTranslation(essay),
+  );
+
+  const sourceTopics = new Set(source.topics);
+  const scored = sameLanguage
+    .map((essay) => ({
+      essay,
+      score: essay.topics.reduce(
+        (acc, topic) => acc + (sourceTopics.has(topic) ? 1 : 0),
+        0,
+      ),
+    }))
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return new Date(b.essay.date).getTime() - new Date(a.essay.date).getTime();
+    });
+
+  const withScore = scored.filter((entry) => entry.score > 0);
+  const fallback = scored.filter((entry) => entry.score === 0);
+
+  return [...withScore, ...fallback].slice(0, limit).map((entry) => entry.essay);
+}

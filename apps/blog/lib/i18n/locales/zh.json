@@ -44,6 +44,7 @@
 
   "essay.readingTime": "阅读时间 {minutes} 分钟",
   "essay.draft": "草稿",
+  "essay.related.heading": "相关文章",
 
   "periodic.issue": "第 {issue} 期",
   "periodic.readingTime": "阅读时间 {minutes} 分钟",
