@@ -285,16 +285,46 @@ export function getEssaySlugsByLanguage(lang: Language): string[] {
 /**
  * Get essays related to a given essay.
  *
- * Algorithm:
- *  1. Filter to same language, non-draft, not the essay itself, not a
- *     translation of the essay.
- *  2. Score each candidate by count of topics it shares with the source.
- *  3. Sort by score descending, then by date descending.
- *  4. Take the top `limit`.
- *  5. If fewer than `limit` candidates share a topic, fill the rest with
- *     the most recent essays in the same language. Avoids an empty block
- *     for essays with niche topics.
+ * Two paths:
+ *
+ *   A. **Author-curated**: when the source has a `relatedTo: [slug, …]`
+ *      frontmatter list, use exactly those slugs (in order). Slugs that
+ *      don't resolve, that point at the source itself, or that point at
+ *      a cross-language essay are dropped silently. Cap at `limit`.
+ *      Manual curation is the strongest editorial signal — both for
+ *      readers and for AI engines weighing relevance.
+ *
+ *   B. **Auto**: when no `relatedTo` is set, score candidates by Jaccard
+ *      topic similarity plus a small same-`type` bonus. Candidates that
+ *      share zero topics with the source are dropped — no recency
+ *      fallback. Better to show 1 strong related essay (or none) than
+ *      3 weak ones, since irrelevant links read as automated content
+ *      to both search engines and AI answer engines.
+ *
+ * In both paths, drafts, the source itself, and the source's translation
+ * (in either direction) are excluded.
  */
+
+/** Bonus added to the Jaccard score when source and candidate share a type. */
+const TYPE_MATCH_BONUS = 0.15;
+
+function jaccard<T>(a: T[], b: T[]): number {
+  if (a.length === 0 && b.length === 0) return 0;
+  const setA = new Set(a);
+  const setB = new Set(b);
+  let intersection = 0;
+  for (const item of setA) if (setB.has(item)) intersection += 1;
+  const union = setA.size + setB.size - intersection;
+  return union === 0 ? 0 : intersection / union;
+}
+
+function sharedCount<T>(a: T[], b: T[]): number {
+  const setB = new Set(b);
+  let count = 0;
+  for (const item of a) if (setB.has(item)) count += 1;
+  return count;
+}
+
 export function getRelatedEssays(
   slug: string,
   options: { limit?: number } = {},
@@ -310,26 +340,39 @@ export function getRelatedEssays(
     essay.slug === translationSlug ||
     essay.translationOf === slug;
 
-  const sameLanguage = getAllEssays({ language: source.lang }).filter(
+  // Path A — author-curated
+  if (source.relatedTo && source.relatedTo.length > 0) {
+    const curated: EssayMeta[] = [];
+    for (const targetSlug of source.relatedTo) {
+      if (curated.length >= limit) break;
+      const target = getEssayMeta(targetSlug);
+      if (!target) continue;
+      if (target.lang !== source.lang) continue;
+      if (isSelfOrTranslation(target)) continue;
+      if (target.draft) continue;
+      curated.push(target);
+    }
+    return curated;
+  }
+
+  // Path B — auto-rank, no recency fallback
+  const candidates = getAllEssays({ language: source.lang }).filter(
     (essay) => !isSelfOrTranslation(essay),
   );
 
-  const sourceTopics = new Set(source.topics);
-  const scored = sameLanguage
-    .map((essay) => ({
-      essay,
-      score: essay.topics.reduce(
-        (acc, topic) => acc + (sourceTopics.has(topic) ? 1 : 0),
-        0,
-      ),
-    }))
+  return candidates
+    .map((essay) => {
+      const shared = sharedCount(source.topics, essay.topics);
+      const score =
+        jaccard(source.topics, essay.topics) +
+        (essay.type === source.type ? TYPE_MATCH_BONUS : 0);
+      return { essay, shared, score };
+    })
+    .filter((entry) => entry.shared > 0)
     .sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score;
       return new Date(b.essay.date).getTime() - new Date(a.essay.date).getTime();
-    });
-
-  const withScore = scored.filter((entry) => entry.score > 0);
-  const fallback = scored.filter((entry) => entry.score === 0);
-
-  return [...withScore, ...fallback].slice(0, limit).map((entry) => entry.essay);
+    })
+    .slice(0, limit)
+    .map((entry) => entry.essay);
 }

@@ -83,6 +83,13 @@ export interface EssayMeta {
   translationOf?: string;
   /** Optional path or URL to an image to use as the social/OG card */
   image?: string;
+  /**
+   * Author-curated list of related essay slugs. When present, overrides
+   * the automatic topic-based selection for the "Related essays" footer.
+   * Slugs that don't resolve, or that point at cross-language essays, are
+   * dropped silently.
+   */
+  relatedTo?: string[];
 }
 
 /**
@@ -276,6 +283,7 @@ export interface Frontmatter {
   draft?: boolean;
   translationOf?: string;
   image?: string;
+  relatedTo?: string[];
 }
 
 /**
@@ -349,6 +357,13 @@ export function validateFrontmatter(data: Record<string, unknown>): Frontmatter 
   if (data.image !== undefined && typeof data.image !== 'string') {
     errors.push('image must be a string');
   }
+  if (
+    data.relatedTo !== undefined &&
+    (!Array.isArray(data.relatedTo) ||
+      !data.relatedTo.every((slug) => typeof slug === 'string'))
+  ) {
+    errors.push('relatedTo must be an array of strings');
+  }
 
   if (errors.length > 0) {
     throw new Error(`Invalid frontmatter:\n${errors.join('\n')}`);
@@ -364,6 +379,7 @@ export function validateFrontmatter(data: Record<string, unknown>): Frontmatter 
     draft: data.draft as boolean | undefined,
     translationOf: data.translationOf as string | undefined,
     image: data.image as string | undefined,
+    relatedTo: data.relatedTo as string[] | undefined,
   };
 }
 
