@@ -1,12 +1,14 @@
 /**
- * Open Graph card template.
+ * Open Graph card — editorial composition.
  *
- * Rendered by Satori (via next/og's ImageResponse) into a 1200x630 PNG.
+ * Visual lineage: The New Yorker social cards adapted to Algo Mind's
+ * brand tokens. Cream surface, restrained palette, dominant serif title,
+ * italic byline, hairline rules in the site's accent color
+ * (color.accent.primary = nyt-blue #326891).
  *
- * Satori implements a subset of CSS — only flexbox layout, basic typography,
- * solid colors, gradients, borders, transforms. No grid, no media queries,
- * no pseudo-elements. Use inline style props (not className) because no
- * stylesheet is loaded.
+ * Rendered by Satori (via next/og ImageResponse) into a 1200×630 PNG
+ * at build time. Satori supports a subset of CSS: flexbox, basic
+ * typography, solid colors, gradients, borders. All styles are inline.
  */
 
 export const OG_WIDTH = 1200;
@@ -14,28 +16,45 @@ export const OG_HEIGHT = 630;
 
 export interface OgCardProps {
   title: string;
-  /** Optional eyebrow / kicker text (e.g. "Essay", "Series", or topic) */
+  /** Eyebrow text — topic, issue, category. Rendered small-caps. */
   kicker?: string;
-  /** Author / publisher byline shown at the bottom */
+  /** Byline rendered below the title. Italic in EN, regular in ZH. */
   byline: string;
-  /** Brand mark text shown in the corner */
+  /** Brand wordmark rendered top-left. */
   brand: string;
-  /** "en" tunes typography for Latin, "zh" for CJK */
+  /** Locale tunes typography: italic in EN, no italics in ZH. */
   locale: 'en' | 'zh';
 }
 
+/**
+ * Palette sampled from packages/tokens/src/themes/nyt/light.json.
+ * Slight warmth on neutrals (cream / softened ink) for printed feel.
+ */
 const COLORS = {
-  bg: '#0a0a0a',
-  bgGradient: 'radial-gradient(circle at 30% 20%, #1f1f1f 0%, #0a0a0a 70%)',
-  text: '#fafafa',
-  muted: '#999999',
-  accent: '#d4a017',
-  rule: '#262626',
-};
+  /** Warm cream, tinted toward yellow. Not pure white. */
+  surface: '#f5f1e8',
+  /** Softened near-black with a hint of warmth. Not pure black. */
+  ink: '#1a1814',
+  /** Muted ink for kickers and footer. */
+  muted: '#6b6457',
+  /** Accent from color.accent.primary (NYT light theme). */
+  accent: '#326891',
+  /** Hairline color — accent at low presence (≈ accent at 35% on cream). */
+  rule: '#b6c3d4',
+} as const;
+
+const SERIF_LATIN = '"Source Serif Pro", serif';
+const SERIF_CJK = '"Noto Serif SC", "Source Serif Pro", serif';
+
+const PAD_X = 88;
+const INNER_WIDTH = OG_WIDTH - PAD_X * 2;
 
 export function OgCard({ title, kicker, byline, brand, locale }: OgCardProps) {
-  // Long titles wrap; keep within ~3 lines visually.
-  const titleSize = title.length > 80 ? 64 : title.length > 50 ? 76 : 88;
+  const fontFamily = locale === 'zh' ? SERIF_CJK : SERIF_LATIN;
+
+  // Title scales by length so it always fits ~3 visual lines.
+  const len = title.length;
+  const titleSize = len > 80 ? 64 : len > 50 ? 76 : 92;
 
   return (
     <div
@@ -44,82 +63,107 @@ export function OgCard({ title, kicker, byline, brand, locale }: OgCardProps) {
         height: OG_HEIGHT,
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
-        background: COLORS.bgGradient,
-        color: COLORS.text,
-        padding: '72px',
-        fontFamily: locale === 'zh' ? 'serif' : 'serif',
+        background: COLORS.surface,
+        color: COLORS.ink,
+        padding: `72px ${PAD_X}px`,
+        fontFamily,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-        <div
-          style={{
-            width: 12,
-            height: 12,
-            background: COLORS.accent,
-            borderRadius: 2,
-          }}
-        />
+      {/* Top: masthead + kicker. Bottom border of this row is the hairline. */}
+      <div
+        style={{
+          display: 'flex',
+          width: INNER_WIDTH,
+          alignItems: 'center',
+          gap: 18,
+          paddingBottom: 22,
+          borderBottom: `1px solid ${COLORS.rule}`,
+        }}
+      >
         <span
           style={{
-            fontSize: 24,
-            letterSpacing: 4,
-            textTransform: 'uppercase',
-            color: COLORS.muted,
+            fontFamily,
+            fontWeight: 700,
+            fontSize: 22,
+            letterSpacing: locale === 'zh' ? 4 : 6,
+            textTransform: locale === 'zh' ? 'none' : 'uppercase',
+            color: COLORS.accent,
           }}
         >
           {brand}
         </span>
         {kicker ? (
-          <>
-            <span
-              style={{
-                width: 1,
-                height: 24,
-                background: COLORS.rule,
-                marginLeft: 8,
-                marginRight: 8,
-              }}
-            />
-            <span
-              style={{
-                fontSize: 22,
-                letterSpacing: 2,
-                textTransform: 'uppercase',
-                color: COLORS.muted,
-              }}
-            >
-              {kicker}
-            </span>
-          </>
+          <span
+            style={{
+              fontFamily,
+              fontSize: 20,
+              letterSpacing: locale === 'zh' ? 3 : 4,
+              textTransform: locale === 'zh' ? 'none' : 'uppercase',
+              color: COLORS.muted,
+              borderLeft: `1px solid ${COLORS.rule}`,
+              paddingLeft: 18,
+            }}
+          >
+            {kicker}
+          </span>
         ) : null}
       </div>
 
+      {/* Middle: dominant serif title, centered vertically. */}
       <div
         style={{
-          display: 'flex',
-          fontSize: titleSize,
-          fontWeight: 700,
-          lineHeight: 1.1,
-          letterSpacing: -1,
-          color: COLORS.text,
-          maxWidth: OG_WIDTH - 144,
-        }}
-      >
-        {title}
-      </div>
-
-      <div
-        style={{
+          flex: 1,
           display: 'flex',
           alignItems: 'center',
+          width: INNER_WIDTH,
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            fontFamily,
+            fontWeight: 700,
+            fontSize: titleSize,
+            lineHeight: 1.08,
+            letterSpacing: locale === 'zh' ? 0 : -1,
+            color: COLORS.ink,
+            maxWidth: INNER_WIDTH,
+          }}
+        >
+          {title}
+        </div>
+      </div>
+
+      {/* Bottom: italic byline, domain footer. Top border is the hairline. */}
+      <div
+        style={{
+          display: 'flex',
+          width: INNER_WIDTH,
+          alignItems: 'center',
           justifyContent: 'space-between',
-          paddingTop: 24,
+          paddingTop: 22,
           borderTop: `1px solid ${COLORS.rule}`,
         }}
       >
-        <span style={{ fontSize: 28, color: COLORS.text }}>{byline}</span>
-        <span style={{ fontSize: 22, color: COLORS.muted }}>
+        <span
+          style={{
+            fontFamily,
+            fontStyle: locale === 'zh' ? 'normal' : 'italic',
+            fontSize: 28,
+            color: COLORS.ink,
+          }}
+        >
+          {locale === 'zh' ? byline : `by ${byline}`}
+        </span>
+        <span
+          style={{
+            fontFamily,
+            fontSize: 18,
+            letterSpacing: 3,
+            textTransform: 'uppercase',
+            color: COLORS.muted,
+          }}
+        >
           www.feitong.phd
         </span>
       </div>

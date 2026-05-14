@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 import { OgCard, OG_WIDTH, OG_HEIGHT } from '@/components/seo/og-card';
+import { ogFontsFor } from '@/lib/og-fonts';
 
 export const dynamic = 'force-static';
 
@@ -17,6 +18,6 @@ export default function OgImage() {
         locale="zh"
       />
     ),
-    size,
+    { ...size, fonts: ogFontsFor('zh') },
   );
 }

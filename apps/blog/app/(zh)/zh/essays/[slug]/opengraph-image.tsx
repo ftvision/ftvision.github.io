@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { getEssayBySlug, getEssaySlugs } from '@/lib/essays';
 import { OgCard, OG_WIDTH, OG_HEIGHT } from '@/components/seo/og-card';
+import { ogFontsFor } from '@/lib/og-fonts';
 import { TOPIC_LABELS_ZH } from '@/lib/constants';
 
 export const dynamic = 'force-static';
@@ -18,18 +19,19 @@ interface RouteProps {
 }
 
 export default async function OgImage({ params }: RouteProps) {
+  const fonts = ogFontsFor('zh');
   const essay = getEssayBySlug(params.slug);
   if (!essay || essay.lang !== 'zh') {
     return new ImageResponse(
       (
         <OgCard
           title="思算"
-          byline="Feitong Yang 的随笔"
+          byline="Feitong Yang"
           brand="思算"
           locale="zh"
         />
       ),
-      size,
+      { ...size, fonts },
     );
   }
 
@@ -45,6 +47,6 @@ export default async function OgImage({ params }: RouteProps) {
         locale="zh"
       />
     ),
-    size,
+    { ...size, fonts },
   );
 }

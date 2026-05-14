@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { getEssayBySlug, getEssaySlugs } from '@/lib/essays';
 import { OgCard, OG_WIDTH, OG_HEIGHT } from '@/components/seo/og-card';
+import { ogFontsFor } from '@/lib/og-fonts';
 import { TOPIC_LABELS } from '@/lib/constants';
 
 export const dynamic = 'force-static';
@@ -18,18 +19,19 @@ interface RouteProps {
 }
 
 export default async function OgImage({ params }: RouteProps) {
+  const fonts = ogFontsFor('en');
   const essay = getEssayBySlug(params.slug);
   if (!essay || essay.lang !== 'en') {
     return new ImageResponse(
       (
         <OgCard
           title="Algo Mind"
-          byline="Essays by Feitong Yang"
+          byline="Feitong Yang"
           brand="Algo Mind"
           locale="en"
         />
       ),
-      size,
+      { ...size, fonts },
     );
   }
 
@@ -45,6 +47,6 @@ export default async function OgImage({ params }: RouteProps) {
         locale="en"
       />
     ),
-    size,
+    { ...size, fonts },
   );
 }
