@@ -331,8 +331,15 @@ export function validateFrontmatter(data: Record<string, unknown>): Frontmatter 
   if (typeof data.title !== 'string' || !data.title) {
     errors.push('title is required and must be a string');
   }
-  if (typeof data.description !== 'string' || !data.description) {
-    errors.push('description is required and must be a string');
+  const isDraft = data.draft === true;
+  // Drafts are work-in-progress — description may not be filled yet. For
+  // published essays, description is required and must be non-empty.
+  if (!isDraft) {
+    if (typeof data.description !== 'string' || !data.description) {
+      errors.push('description is required and must be a string');
+    }
+  } else if (data.description !== undefined && typeof data.description !== 'string') {
+    errors.push('description must be a string when provided');
   }
   if (typeof data.date !== 'string' || !data.date) {
     errors.push('date is required and must be a string');
@@ -371,7 +378,7 @@ export function validateFrontmatter(data: Record<string, unknown>): Frontmatter 
 
   return {
     title: data.title as string,
-    description: data.description as string,
+    description: (data.description as string | undefined) ?? '',
     date: data.date as string,
     type: data.type as EssayType,
     topics: data.topics as Topic[],
@@ -451,8 +458,13 @@ export function validateSeriesFrontmatter(data: Record<string, unknown>): Series
   if (typeof data.title !== 'string' || !data.title) {
     errors.push('title is required and must be a string');
   }
-  if (typeof data.description !== 'string' || !data.description) {
-    errors.push('description is required and must be a string');
+  const isSeriesDraft = data.draft === true;
+  if (!isSeriesDraft) {
+    if (typeof data.description !== 'string' || !data.description) {
+      errors.push('description is required and must be a string');
+    }
+  } else if (data.description !== undefined && typeof data.description !== 'string') {
+    errors.push('description must be a string when provided');
   }
   if (typeof data.date !== 'string' || !data.date) {
     errors.push('date is required and must be a string');
@@ -490,7 +502,7 @@ export function validateSeriesFrontmatter(data: Record<string, unknown>): Series
 
   return {
     title: data.title as string,
-    description: data.description as string,
+    description: (data.description as string | undefined) ?? '',
     date: data.date as string,
     updated: data.updated as string | undefined,
     category: data.category as SeriesCategory,

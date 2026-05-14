@@ -92,9 +92,31 @@ describe('Content Types', () => {
       expect(() => validateFrontmatter(rest)).toThrow('title is required');
     });
 
-    it('throws for missing description', () => {
+    it('throws for missing description on a non-draft', () => {
       const { description, ...rest } = validFrontmatter;
       expect(() => validateFrontmatter(rest)).toThrow('description is required');
+    });
+
+    it('throws for empty-string description on a non-draft', () => {
+      expect(() =>
+        validateFrontmatter({ ...validFrontmatter, description: '' })
+      ).toThrow('description is required');
+    });
+
+    it('allows missing description on a draft', () => {
+      const { description, ...rest } = validFrontmatter;
+      const result = validateFrontmatter({ ...rest, draft: true });
+      expect(result.draft).toBe(true);
+      expect(result.description).toBe('');
+    });
+
+    it('allows empty-string description on a draft', () => {
+      const result = validateFrontmatter({
+        ...validFrontmatter,
+        description: '',
+        draft: true,
+      });
+      expect(result.description).toBe('');
     });
 
     it('throws for missing date', () => {
