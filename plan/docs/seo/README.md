@@ -11,6 +11,7 @@ The audit reads the App Router metadata, layouts, MDX content frontmatter, and `
 | [p1-high-impact.md](./p1-high-impact.md) | Structured data, OG/Twitter cards, hreflang `x-default`, canonical, RSS, fallback page noindex. |
 | [p2-polish.md](./p2-polish.md) | Alt text, internal linking, analytics, manifest, redirect/static-export gotchas. |
 | [order-of-operations.md](./order-of-operations.md) | Suggested PR sequencing. |
+| [measurement.md](./measurement.md) | How to measure SEO — Search Console, lab tools, crawl audits, analytics, monthly metrics. |
 
 ## TL;DR
 

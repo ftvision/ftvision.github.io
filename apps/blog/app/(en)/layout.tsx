@@ -1,0 +1,97 @@
+import type { Metadata } from 'next';
+import '@blog/tokens/css';
+import '../globals.css';
+import {
+  SiteHeader,
+  SiteFooter,
+  ThemeProvider,
+  ModeToggle,
+  ThemeSelector,
+  LanguageToggle,
+} from '@/components/layout';
+import { LanguageProvider } from '@/lib/i18n';
+import { SITE_AUTHOR, SITE_URL } from '@/lib/constants';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Algo Mind — Essays on AI, Product, Engineering',
+    template: '%s | Algo Mind',
+  },
+  description:
+    'Algo Mind — essays by Feitong Yang on AI, software engineering, product thinking, and career.',
+  keywords: ['Algo Mind', 'Feitong Yang', 'essays', 'AI', 'engineering', 'product', 'career'],
+  authors: [{ name: SITE_AUTHOR.name, url: SITE_AUTHOR.url }],
+  creator: SITE_AUTHOR.name,
+  publisher: 'Algo Mind',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Algo Mind',
+    url: SITE_URL,
+  },
+  alternates: {
+    canonical: '/',
+    languages: {
+      en: '/',
+      zh: '/zh',
+      'x-default': '/',
+    },
+  },
+};
+
+interface EnRootLayoutProps {
+  children: React.ReactNode;
+}
+
+function HeaderActions() {
+  return (
+    <div className="flex items-center gap-1">
+      <LanguageToggle />
+      <ThemeSelector />
+      <ModeToggle />
+    </div>
+  );
+}
+
+export default function EnRootLayout({ children }: EnRootLayoutProps) {
+  return (
+    <html lang="en" data-theme="nyt" data-mode="light" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const mode = localStorage.getItem('theme-mode');
+                  const theme = localStorage.getItem('theme-name') || 'nyt';
+                  if (mode) {
+                    document.documentElement.dataset.mode = mode;
+                  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.dataset.mode = 'dark';
+                  }
+                  document.documentElement.dataset.theme = theme;
+
+                  const lang = localStorage.getItem('language-preference');
+                  if (lang) {
+                    document.documentElement.lang = lang;
+                    document.documentElement.dataset.language = lang;
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="flex min-h-screen flex-col overflow-x-clip bg-ground-primary text-figure-primary antialiased">
+        <ThemeProvider>
+          <LanguageProvider initialLanguage="en">
+            <SiteHeader actions={<HeaderActions />} />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+          </LanguageProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
