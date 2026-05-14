@@ -81,6 +81,8 @@ export interface EssayMeta {
   readingTime?: number;
   /** Slug of the translation (links to translated version) */
   translationOf?: string;
+  /** Optional path or URL to an image to use as the social/OG card */
+  image?: string;
 }
 
 /**
@@ -135,6 +137,8 @@ export interface PeriodicMeta {
   readingTime?: number;
   /** Slug of the translation (links to translated version) */
   translationOf?: string;
+  /** Optional path or URL to an image to use as the social/OG card */
+  image?: string;
 }
 
 /**
@@ -168,6 +172,7 @@ export interface PeriodicFrontmatter {
   lang: Language;
   draft?: boolean;
   translationOf?: string;
+  image?: string;
 }
 
 // ============================================================================
@@ -202,6 +207,8 @@ export interface SeriesMeta {
   readingTime?: number;
   /** Slug of the translation (links to translated version) */
   translationOf?: string;
+  /** Optional path or URL to an image to use as the social/OG card */
+  image?: string;
 }
 
 /**
@@ -236,6 +243,7 @@ export interface SeriesFrontmatter {
   draft?: boolean;
   itemCount?: number;
   translationOf?: string;
+  image?: string;
 }
 
 /**
@@ -267,6 +275,7 @@ export interface Frontmatter {
   lang: Language;
   draft?: boolean;
   translationOf?: string;
+  image?: string;
 }
 
 /**
@@ -337,6 +346,9 @@ export function validateFrontmatter(data: Record<string, unknown>): Frontmatter 
   if (data.translationOf !== undefined && typeof data.translationOf !== 'string') {
     errors.push('translationOf must be a string');
   }
+  if (data.image !== undefined && typeof data.image !== 'string') {
+    errors.push('image must be a string');
+  }
 
   if (errors.length > 0) {
     throw new Error(`Invalid frontmatter:\n${errors.join('\n')}`);
@@ -351,6 +363,7 @@ export function validateFrontmatter(data: Record<string, unknown>): Frontmatter 
     lang: (data.lang as Language) ?? 'en',
     draft: data.draft as boolean | undefined,
     translationOf: data.translationOf as string | undefined,
+    image: data.image as string | undefined,
   };
 }
 
@@ -390,6 +403,9 @@ export function validatePeriodicFrontmatter(data: Record<string, unknown>): Peri
   if (data.translationOf !== undefined && typeof data.translationOf !== 'string') {
     errors.push('translationOf must be a string');
   }
+  if (data.image !== undefined && typeof data.image !== 'string') {
+    errors.push('image must be a string');
+  }
 
   if (errors.length > 0) {
     throw new Error(`Invalid periodic frontmatter:\n${errors.join('\n')}`);
@@ -405,6 +421,7 @@ export function validatePeriodicFrontmatter(data: Record<string, unknown>): Peri
     lang: (data.lang as Language) ?? 'zh',
     draft: data.draft as boolean | undefined,
     translationOf: data.translationOf as string | undefined,
+    image: data.image as string | undefined,
   };
 }
 
@@ -447,6 +464,9 @@ export function validateSeriesFrontmatter(data: Record<string, unknown>): Series
   if (data.translationOf !== undefined && typeof data.translationOf !== 'string') {
     errors.push('translationOf must be a string');
   }
+  if (data.image !== undefined && typeof data.image !== 'string') {
+    errors.push('image must be a string');
+  }
 
   if (errors.length > 0) {
     throw new Error(`Invalid series frontmatter:\n${errors.join('\n')}`);
@@ -463,5 +483,6 @@ export function validateSeriesFrontmatter(data: Record<string, unknown>): Series
     draft: data.draft as boolean | undefined,
     itemCount: data.itemCount as number | undefined,
     translationOf: data.translationOf as string | undefined,
+    image: data.image as string | undefined,
   };
 }
