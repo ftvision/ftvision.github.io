@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { translate, formatDate, formatReadingTime } from '@/lib/i18n/translations';
-import { getTopicLabel } from '@/lib/constants';
+import { translate, formatReadingTime } from '@/lib/i18n/translations';
 import type { EssayMeta, Language } from '@/types/content';
 
 export interface RelatedEssaysProps {
@@ -16,11 +15,12 @@ export interface RelatedEssaysProps {
 /**
  * "Related essays" footer rendered at the bottom of essay detail pages.
  *
- * Editorial composition (hairline rule above heading, restrained typography)
- * intentionally matches the OG card so the on-page block and the social
- * card share a visual idiom. Distributes internal link equity to topically
- * adjacent essays, which is the single most undervalued SEO/GEO lever for
- * a long-tail blog.
+ * Composition: a small uppercase eyebrow followed by a numbered list of
+ * essay titles, each with reading time on the right and a hairline rule
+ * between rows. Modeled on the back-of-book "Further Reading" appendix
+ * in printed essay collections — quiet, typographic, easy to skim, no
+ * card boxes. The visual register matches the OG card so the on-page
+ * footer and the social card share an idiom.
  */
 export function RelatedEssays({ essays, language, className }: RelatedEssaysProps) {
   if (essays.length === 0) return null;
@@ -31,53 +31,46 @@ export function RelatedEssays({ essays, language, className }: RelatedEssaysProp
   return (
     <aside
       className={cn(
-        'mx-auto mt-16 max-w-[42rem] border-t border-border pt-10',
+        'mx-auto mt-16 max-w-[42rem] border-t border-border pt-8',
         className,
       )}
       aria-labelledby="related-essays-heading"
     >
       <h2
         id="related-essays-heading"
-        className="type-h4 text-figure-primary mb-6"
+        className="text-body-sm uppercase tracking-widest text-figure-muted mb-2"
       >
         {heading}
       </h2>
 
-      <ul className="flex flex-col divide-y divide-border">
-        {essays.map((essay) => (
-          <li key={essay.slug} className="py-5 first:pt-0 last:pb-0">
+      <ol className="flex flex-col">
+        {essays.map((essay, i) => (
+          <li
+            key={essay.slug}
+            className="border-b border-border last:border-b-0"
+          >
             <Link
               href={`${basePath}/${essay.slug}`}
-              className="group block"
+              className="group flex items-baseline gap-6 py-4 transition-colors"
             >
-              <p className="text-body-sm uppercase tracking-wide text-figure-muted">
-                {essay.topics.length > 0
-                  ? getTopicLabel(essay.topics[0], language)
-                  : null}
-              </p>
-              <h3 className="type-h5 mt-1 font-serif text-figure-primary transition-colors group-hover:text-link">
+              <span
+                aria-hidden="true"
+                className="font-serif text-body-sm tabular-nums text-figure-muted"
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span className="flex-1 font-serif text-figure-primary transition-colors group-hover:text-link">
                 {essay.title}
-              </h3>
-              {essay.description ? (
-                <p className="mt-2 line-clamp-2 text-body text-figure-secondary">
-                  {essay.description}
-                </p>
+              </span>
+              {essay.readingTime ? (
+                <span className="shrink-0 text-body-sm text-figure-muted">
+                  {formatReadingTime(language, essay.readingTime)}
+                </span>
               ) : null}
-              <p className="mt-2 flex items-center gap-2 text-body-sm text-figure-muted">
-                <time dateTime={essay.date}>
-                  {formatDate(language, essay.date)}
-                </time>
-                {essay.readingTime ? (
-                  <>
-                    <span aria-hidden="true">·</span>
-                    <span>{formatReadingTime(language, essay.readingTime)}</span>
-                  </>
-                ) : null}
-              </p>
             </Link>
           </li>
         ))}
-      </ul>
+      </ol>
     </aside>
   );
 }
