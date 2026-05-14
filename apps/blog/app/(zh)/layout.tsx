@@ -12,6 +12,7 @@ import {
 import { LanguageProvider } from '@/lib/i18n';
 import { SITE_AUTHOR, SITE_URL } from '@/lib/constants';
 import { JsonLd } from '@/components/seo';
+import { CloudflareAnalytics } from '@/components/analytics';
 import { siteGraph } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
@@ -66,6 +67,7 @@ export default function ZhRootLayout({ children }: ZhRootLayoutProps) {
           href="/zh/feed.xml"
         />
         <JsonLd data={siteGraph('zh')} />
+        <CloudflareAnalytics />
         <script
           dangerouslySetInnerHTML={{
             __html: `
