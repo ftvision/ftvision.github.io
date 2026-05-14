@@ -6,6 +6,8 @@ import { getMDXComponents } from '@/components/mdx/MDXComponents';
 import { mdxOptions } from '@/lib/mdx-options';
 import { EssayLayout } from '@/components/essay';
 import { SeriesHeader } from '@/components/series';
+import { JsonLd } from '@/components/seo';
+import { breadcrumbSchema, seriesPageSchema } from '@/lib/jsonld';
 
 interface SeriesPageProps {
   params: Promise<{ slug: string }>;
@@ -153,25 +155,36 @@ export default async function ZhSeriesItemPage({ params }: SeriesPageProps) {
 
   const { title, description, date, updated, category, topics, itemCount, readingTime, content, toc } =
     series;
+  const urlPath = `/zh/series/${slug}`;
 
   return (
-    <EssayLayout
-      toc={toc}
-      header={
-        <SeriesHeader
-          category={category}
-          topics={topics}
-          title={title}
-          description={description}
-          date={date}
-          updated={updated}
-          itemCount={itemCount}
-          readingTime={readingTime}
-          language="zh"
-        />
-      }
-    >
-      <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
-    </EssayLayout>
+    <>
+      <JsonLd data={seriesPageSchema(series, urlPath)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: '首页', url: '/zh' },
+          { name: '系列', url: '/zh/series' },
+          { name: title, url: urlPath },
+        ])}
+      />
+      <EssayLayout
+        toc={toc}
+        header={
+          <SeriesHeader
+            category={category}
+            topics={topics}
+            title={title}
+            description={description}
+            date={date}
+            updated={updated}
+            itemCount={itemCount}
+            readingTime={readingTime}
+            language="zh"
+          />
+        }
+      >
+        <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
+      </EssayLayout>
+    </>
   );
 }

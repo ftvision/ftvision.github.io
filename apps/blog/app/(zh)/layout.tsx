@@ -11,6 +11,8 @@ import {
 } from '@/components/layout';
 import { LanguageProvider } from '@/lib/i18n';
 import { SITE_AUTHOR, SITE_URL } from '@/lib/constants';
+import { JsonLd } from '@/components/seo';
+import { siteGraph } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -57,6 +59,13 @@ export default function ZhRootLayout({ children }: ZhRootLayoutProps) {
   return (
     <html lang="zh" data-theme="nyt" data-mode="light" data-language="zh" suppressHydrationWarning>
       <head>
+        <link
+          rel="alternate"
+          type="application/atom+xml"
+          title="思算 — 随笔"
+          href="/zh/feed.xml"
+        />
+        <JsonLd data={siteGraph('zh')} />
         <script
           dangerouslySetInnerHTML={{
             __html: `
