@@ -55,6 +55,10 @@ export async function generateMetadata({
     alternates.languages!['x-default'] = `/zh/essays/${slug}`;
   }
 
+  const ogOverride = essay.image
+    ? { openGraph: { images: [essay.image] }, twitter: { images: [essay.image] } }
+    : {};
+
   return {
     title: essay.title,
     description: essay.description,
@@ -65,6 +69,11 @@ export async function generateMetadata({
       publishedTime: essay.date,
       tags: essay.topics,
       locale: 'zh_CN',
+      ...ogOverride.openGraph,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      ...ogOverride.twitter,
     },
     alternates,
   };

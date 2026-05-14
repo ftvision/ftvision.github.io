@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/postbuild-og.mjs",
+    "build:next": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
@@ -31,6 +32,8 @@
   },
   "devDependencies": {
     "@blog/config": "workspace:*",
+    "@fontsource/noto-serif-sc": "^5.2.9",
+    "@fontsource/source-serif-pro": "^5.2.5",
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^14.0.0",
     "@types/node": "^20.0.0",
