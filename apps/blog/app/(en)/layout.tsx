@@ -12,6 +12,7 @@ import {
 import { LanguageProvider } from '@/lib/i18n';
 import { SITE_AUTHOR, SITE_URL } from '@/lib/constants';
 import { JsonLd } from '@/components/seo';
+import { CloudflareAnalytics } from '@/components/analytics';
 import { siteGraph } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
@@ -67,6 +68,7 @@ export default function EnRootLayout({ children }: EnRootLayoutProps) {
           href="/feed.xml"
         />
         <JsonLd data={siteGraph('en')} />
+        <CloudflareAnalytics />
         <script
           dangerouslySetInnerHTML={{
             __html: `
