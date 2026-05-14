@@ -2,9 +2,10 @@
  * Open Graph card — editorial composition.
  *
  * Visual lineage: The New Yorker social cards adapted to Algo Mind's
- * brand tokens. Cream surface, restrained palette, dominant serif title,
- * italic byline, hairline rules in the site's accent color
- * (color.accent.primary = nyt-blue #326891).
+ * brand tokens. Every color in COLORS below maps to a real token in
+ * packages/tokens/src/themes/nyt/light.json — no eyeballed values.
+ * Composition is restrained, with a dominant serif title and hairline
+ * rules in the site's neutral border color.
  *
  * Rendered by Satori (via next/og ImageResponse) into a 1200×630 PNG
  * at build time. Satori supports a subset of CSS: flexbox, basic
@@ -28,19 +29,19 @@ export interface OgCardProps {
 
 /**
  * Palette sampled from packages/tokens/src/themes/nyt/light.json.
- * Slight warmth on neutrals (cream / softened ink) for printed feel.
+ * Each value here maps to a real token, not an eyeballed color.
  */
 const COLORS = {
-  /** Warm cream, tinted toward yellow. Not pure white. */
-  surface: '#f5f1e8',
-  /** Softened near-black with a hint of warmth. Not pure black. */
-  ink: '#1a1814',
-  /** Muted ink for kickers and footer. */
-  muted: '#6b6457',
-  /** Accent from color.accent.primary (NYT light theme). */
+  /** color.bg.primary → primitive.color.white */
+  surface: '#ffffff',
+  /** color.text.primary → primitive.color.gray.900 */
+  ink: '#18181b',
+  /** color.text.muted → primitive.color.gray.500 */
+  muted: '#71717a',
+  /** color.accent.primary → primitive.color.nyt-blue.DEFAULT */
   accent: '#326891',
-  /** Hairline color — accent at low presence (≈ accent at 35% on cream). */
-  rule: '#b6c3d4',
+  /** color.border.default → primitive.color.gray.200 */
+  rule: '#e4e4e7',
 } as const;
 
 const SERIF_LATIN = '"Source Serif Pro", serif';

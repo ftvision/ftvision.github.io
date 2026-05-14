@@ -48,7 +48,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Open Graph social-share card. Editorial composition inspired by The New Yorker — cream surface, Source Serif Pro (EN) or Noto Serif SC (ZH), centered classical layout with nyt-blue (`#326891`) hairlines. Rendered at 1200×630 by Satori at build time. This story shows the JSX in the browser at scaled sizes; the live PNG output may differ slightly in font rendering.',
+          'Open Graph social-share card. Editorial composition inspired by The New Yorker, palette pulled from the NYT light theme tokens — `bg.primary` (white) surface, `text.primary` (gray-900) ink, `border.default` (gray-200) hairlines, `accent.primary` (nyt-blue `#326891`) brand mark. Source Serif Pro (EN) or Noto Serif SC (ZH). Rendered at 1200×630 by Satori at build time. This story shows the JSX in the browser at scaled sizes; the live PNG output may differ slightly in font rendering.',
       },
     },
   },
