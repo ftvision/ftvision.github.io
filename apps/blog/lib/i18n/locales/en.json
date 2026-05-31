@@ -38,6 +38,8 @@
   "filter.topics": "Topics",
   "filter.category": "Category",
   "filter.clear": "Clear filters",
+  "filter.byType": "Filter by type",
+  "filter.byTopic": "Filter by topic",
   "filter.results": "{count} essays",
   "filter.results.singular": "1 essay",
   "filter.noResults": "No essays found",
@@ -72,6 +74,8 @@
 
   "essays.matchingFilters": "matching filters",
   "essays.emptyFiltered": "No essays match the selected filters. Try adjusting your filters.",
+  "essays.read": "Read \"{title}\"",
+  "essays.listLabel": "Essays",
 
   "footer.copyright": "© {year} All rights reserved.",
   "footer.builtWith": "Built with Next.js",

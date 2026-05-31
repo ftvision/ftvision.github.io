@@ -12,35 +12,27 @@ export interface EssayFiltersSkeletonProps {
  */
 export function EssayFiltersSkeleton({ className }: EssayFiltersSkeletonProps) {
   return (
-    <div className={cn('essay-filters-skeleton space-y-4 animate-pulse', className)}>
-      {/* Type filter skeleton */}
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="h-4 w-10 bg-ground-secondary rounded" />
-        <div className="flex flex-wrap gap-1">
-          {/* 6 type buttons: All, Guide, Deep Dive, Opinion, Review, Narrative */}
-          {[40, 48, 72, 56, 52, 64].map((width, i) => (
-            <div
-              key={i}
-              className="h-8 bg-ground-secondary rounded"
-              style={{ width: `${width}px` }}
-            />
-          ))}
-        </div>
+    <div className={cn('essay-filters-skeleton space-y-3 animate-pulse', className)}>
+      {/* Type chips: All, Guide, Deep Dive, Opinion, Review, Narrative */}
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        {[28, 40, 64, 48, 44, 56].map((width, i) => (
+          <div
+            key={i}
+            className="h-6 rounded bg-ground-secondary"
+            style={{ width: `${width}px` }}
+          />
+        ))}
       </div>
 
-      {/* Topic filter skeleton */}
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="h-4 w-12 bg-ground-secondary rounded" />
-        <div className="flex flex-wrap gap-2">
-          {/* 4 topic badges: Technical, AI, Product, Career */}
-          {[72, 32, 56, 52].map((width, i) => (
-            <div
-              key={i}
-              className="h-7 bg-ground-secondary rounded-full"
-              style={{ width: `${width}px` }}
-            />
-          ))}
-        </div>
+      {/* Topic chips: 8 topics */}
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        {[48, 24, 44, 40, 48, 40, 44, 44].map((width, i) => (
+          <div
+            key={i}
+            className="h-6 rounded bg-ground-secondary"
+            style={{ width: `${width}px` }}
+          />
+        ))}
       </div>
     </div>
   );

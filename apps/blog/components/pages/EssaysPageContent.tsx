@@ -75,7 +75,11 @@ function EssaysContentInner({ essays, language, basePath }: EssaysPageContentPro
         language={language}
       />
 
-      <div className="mb-6 text-body-sm text-figure-muted">
+      <div
+        className="mb-2 text-caption text-figure-muted"
+        role="status"
+        aria-live="polite"
+      >
         {resultsText}
         {hasActiveFilters && <span> {matchingText}</span>}
       </div>
@@ -96,14 +100,17 @@ function EssaysContentInner({ essays, language, basePath }: EssaysPageContentPro
  */
 function EssaysLoadingSkeleton() {
   return (
-    <div className="space-y-4">
+    <div className="animate-pulse">
       <EssayFiltersSkeleton className="mb-8" />
-      <div className="mb-6">
-        <div className="h-4 w-24 bg-ground-secondary rounded animate-pulse" />
-      </div>
-      <div className="space-y-4">
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="h-32 bg-ground-secondary rounded-lg animate-pulse" />
+      <div className="mb-2 h-3 w-20 rounded bg-ground-secondary" />
+      <div className="-mx-4 flex flex-col">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="flex flex-col gap-2 border-t border-border px-4 py-7">
+            <div className="h-3 w-28 rounded bg-ground-secondary" />
+            <div className="h-6 w-3/4 rounded bg-ground-secondary" />
+            <div className="h-4 w-full rounded bg-ground-secondary" />
+            <div className="h-3 w-32 rounded bg-ground-secondary" />
+          </div>
         ))}
       </div>
     </div>

@@ -24,13 +24,13 @@ export function EssaysIndexPage({ language = 'en' }: EssaysIndexPageProps) {
   const allEssays = getAllEssays({ language, includeDrafts: false });
 
   return (
-    <main className="mx-auto max-w-5xl lg:max-w-6xl px-inset-lg py-12">
+    <main className="mx-auto max-w-3xl px-inset-lg py-16">
       {/* Page header - static content */}
-      <header className="mb-8">
-        <h1 className="text-display font-serif text-figure-primary mb-2">
+      <header className="mb-10">
+        <h1 className="type-display text-balance text-figure-primary">
           {t('nav.essays')}
         </h1>
-        <p className="text-body-lg text-figure-secondary">
+        <p className="mt-3 type-body text-figure-secondary">
           {t('site.tagline')}
         </p>
       </header>

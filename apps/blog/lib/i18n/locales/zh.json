@@ -38,6 +38,8 @@
   "filter.topics": "主题",
   "filter.category": "分类",
   "filter.clear": "清除筛选",
+  "filter.byType": "按类型筛选",
+  "filter.byTopic": "按主题筛选",
   "filter.results": "{count} 篇文章",
   "filter.results.singular": "1 篇文章",
   "filter.noResults": "没有找到文章",
@@ -72,6 +74,8 @@
 
   "essays.matchingFilters": "符合筛选条件",
   "essays.emptyFiltered": "没有符合筛选条件的文章。请尝试调整筛选条件。",
+  "essays.read": "阅读《{title}》",
+  "essays.listLabel": "文章列表",
 
   "footer.copyright": "© {year} 版权所有",
   "footer.builtWith": "使用 Next.js 构建",

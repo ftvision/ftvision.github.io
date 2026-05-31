@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { Button, Badge } from '@blog/ui';
 import { cn } from '@/lib/utils';
 import { ESSAY_TYPES, TOPICS, getEssayTypeLabels, getTopicLabels } from '@/lib/constants';
+import { translate } from '@/lib/i18n/translations';
 import type { EssayType, Topic, Language } from '@/types/content';
 
 export interface EssayFiltersProps {
@@ -18,13 +18,21 @@ export interface EssayFiltersProps {
   language?: Language;
 }
 
+/** Shared chip styling: quiet text toggle, active = accent underline. */
+const CHIP_BASE =
+  'essay-chip inline-flex min-h-[44px] items-center px-2 text-body-sm leading-none ' +
+  'border-b-2 border-transparent transition-colors ' +
+  'focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring ' +
+  'focus-visible:ring-offset-2 focus-visible:ring-offset-ground-primary';
+const CHIP_INACTIVE = 'text-figure-muted hover:text-figure-primary';
+const CHIP_ACTIVE = 'text-figure-primary font-medium border-accent-primary';
+
 /**
  * EssayFilters - Filter controls for essay listings
  *
- * Features:
- * - Type filter (button group, mutually exclusive)
- * - Topic filter (toggleable badges, can select multiple)
- * - URL-based state via searchParams
+ * One quiet chip language across two logical groups (type is exclusive,
+ * topics are additive). No heavy borders or filled buttons; the active chip
+ * is marked with an accent underline. State lives in the URL via searchParams.
  */
 export function EssayFilters({
   selectedType = null,
@@ -36,13 +44,11 @@ export function EssayFilters({
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  // Get localized labels
   const typeLabels = getEssayTypeLabels(language);
   const topicLabelMap = getTopicLabels(language);
 
-  // Build options with localized labels
   const essayTypeOptions: { value: EssayType | null; label: string }[] = [
-    { value: null, label: language === 'zh' ? '全部' : 'All' },
+    { value: null, label: translate(language, 'filter.all') },
     ...ESSAY_TYPES.map((type) => ({ value: type, label: typeLabels[type] })),
   ];
 
@@ -51,31 +57,24 @@ export function EssayFilters({
     label: topicLabelMap[topic],
   }));
 
-  // Determine base path from current pathname
   const basePath = pathname.startsWith('/zh') ? '/zh/essays' : '/essays';
 
-  /**
-   * Update URL with new filter values
-   */
   const updateFilters = React.useCallback(
     (type: EssayType | null, topicsList: Topic[]) => {
       const params = new URLSearchParams(searchParams.toString());
 
-      // Update type param
       if (type) {
         params.set('type', type);
       } else {
         params.delete('type');
       }
 
-      // Update topics param (comma-separated)
       if (topicsList.length > 0) {
         params.set('topics', topicsList.join(','));
       } else {
         params.delete('topics');
       }
 
-      // Navigate with new params
       const queryString = params.toString();
       router.push(queryString ? `${basePath}?${queryString}` : basePath, {
         scroll: false,
@@ -84,16 +83,10 @@ export function EssayFilters({
     [router, searchParams, basePath]
   );
 
-  /**
-   * Handle type filter change
-   */
   const handleTypeChange = (type: EssayType | null) => {
     updateFilters(type, selectedTopics);
   };
 
-  /**
-   * Handle topic toggle
-   */
   const handleTopicToggle = (topic: Topic) => {
     const newTopics = selectedTopics.includes(topic)
       ? selectedTopics.filter((t) => t !== topic)
@@ -101,92 +94,77 @@ export function EssayFilters({
     updateFilters(selectedType, newTopics);
   };
 
-  /**
-   * Clear all filters
-   */
   const handleClearAll = () => {
     updateFilters(null, []);
   };
 
   const hasActiveFilters = selectedType !== null || selectedTopics.length > 0;
-  const typeLabel = language === 'zh' ? '类型:' : 'Type:';
-  const topicsLabel = language === 'zh' ? '主题:' : 'Topics:';
-  const clearLabel = language === 'zh' ? '清除筛选' : 'Clear all filters';
 
   return (
-    <div className={cn('essay-filters space-y-4', className)} data-has-filters={hasActiveFilters}>
-      {/* Type filter - button group */}
-      <div className="essay-filters-type flex flex-wrap items-center gap-2">
-        <span className="essay-filters-label text-body-sm text-figure-muted">{typeLabel}</span>
-        <div
-          className="essay-filters-type-group flex flex-wrap gap-1"
-          role="group"
-          aria-label="Filter by essay type"
-        >
-          {essayTypeOptions.map(({ value, label }) => {
-            const isSelected = selectedType === value;
-            return (
-              <Button
-                key={label}
-                variant={isSelected ? 'primary' : 'ghost'}
-                size="sm"
-                onClick={() => handleTypeChange(value)}
-                aria-pressed={isSelected}
-                className="essay-filters-type-btn"
-                data-type={value ?? 'all'}
-                data-selected={isSelected}
-              >
-                {label}
-              </Button>
-            );
-          })}
-        </div>
+    <div className={cn('essay-filters space-y-3', className)} data-has-filters={hasActiveFilters}>
+      {/* Type filter - exclusive */}
+      <div
+        className="essay-filters-type flex flex-wrap items-center gap-x-2 gap-y-1"
+        role="group"
+        aria-label={translate(language, 'filter.byType')}
+      >
+        {essayTypeOptions.map(({ value, label }) => {
+          const isSelected = selectedType === value;
+          return (
+            <button
+              key={label}
+              type="button"
+              onClick={() => handleTypeChange(value)}
+              aria-pressed={isSelected}
+              className={cn(CHIP_BASE, isSelected ? CHIP_ACTIVE : CHIP_INACTIVE)}
+              data-type={value ?? 'all'}
+              data-selected={isSelected}
+            >
+              {label}
+            </button>
+          );
+        })}
       </div>
 
-      {/* Topic filter - toggleable badges */}
-      <div className="essay-filters-topics flex flex-wrap items-center gap-2">
-        <span className="essay-filters-label text-body-sm text-figure-muted">{topicsLabel}</span>
-        <div
-          className="essay-filters-topics-group flex flex-wrap gap-2"
-          role="group"
-          aria-label="Filter by topic"
-        >
-          {topicOptions.map(({ value, label }) => {
-            const isSelected = selectedTopics.includes(value);
-            return (
-              <button
-                key={value}
-                onClick={() => handleTopicToggle(value)}
-                aria-pressed={isSelected}
-                className="essay-filters-topic-btn focus:outline-none focus-visible:ring-2 focus-visible:ring-action-primary focus-visible:ring-offset-2 rounded-full"
-                data-topic={value}
-                data-selected={isSelected}
-              >
-                <Badge
-                  variant={isSelected ? 'primary' : 'outline'}
-                  size="md"
-                  className="cursor-pointer transition-colors"
-                >
-                  {label}
-                </Badge>
-              </button>
-            );
-          })}
-        </div>
+      {/* Topic filter - additive */}
+      <div
+        className="essay-filters-topics flex flex-wrap items-center gap-x-2 gap-y-1"
+        role="group"
+        aria-label={translate(language, 'filter.byTopic')}
+      >
+        {topicOptions.map(({ value, label }) => {
+          const isSelected = selectedTopics.includes(value);
+          return (
+            <button
+              key={value}
+              type="button"
+              onClick={() => handleTopicToggle(value)}
+              aria-pressed={isSelected}
+              className={cn(CHIP_BASE, isSelected ? CHIP_ACTIVE : CHIP_INACTIVE)}
+              data-topic={value}
+              data-selected={isSelected}
+            >
+              {label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Clear filters */}
       {hasActiveFilters && (
-        <div className="essay-filters-clear pt-2">
-          <Button
-            variant="link"
-            size="sm"
-            onClick={handleClearAll}
-            className="essay-filters-clear-btn text-figure-muted hover:text-figure-primary"
-          >
-            {clearLabel}
-          </Button>
-        </div>
+        <button
+          type="button"
+          onClick={handleClearAll}
+          className={cn(
+            'essay-filters-clear-btn inline-flex min-h-[44px] items-center text-body-sm text-figure-muted',
+            'underline decoration-border underline-offset-4 transition-colors',
+            'hover:text-figure-primary hover:decoration-figure-primary',
+            'focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring',
+            'focus-visible:ring-offset-2 focus-visible:ring-offset-ground-primary'
+          )}
+        >
+          {translate(language, 'filter.clear')}
+        </button>
       )}
     </div>
   );
