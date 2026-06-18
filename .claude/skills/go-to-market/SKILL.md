@@ -25,6 +25,13 @@ Turn one finished essay into platform-native distribution, and keep the publishi
 
 ## Distribute pipeline
 
+Universal rules before drafting:
+1. Start with the blog URL as canonical. Every channel either sends readers back to the blog or builds audience for the next blog post.
+2. Pick one payload per channel. A claim, demo, diagram, scar, question, or practical takeaway beats a generic "new post is live."
+3. Make the asset before writing the copy when the essay is visual, interactive, technical, or product-shaped. Good assets: a screenshot, tiny demo GIF, diagram, quote card, before/after frame, table, or code/trace crop.
+4. Keep a learning record in `dist/<slug>/checklist.md`: channel, post URL, asset used, hook, date, and result after 24h / 7d.
+5. Do not chase every channel for every essay. If a channel has no native angle, skip it.
+
 ### 1. Read & classify
 Read `apps/blog/content/essays/<slug>.mdx` (and the `-zh` variant if present). Pull `title`, `description`, `date`, `topics`, `lang`; skim the body. Classify — the type drives every choice below:
 
@@ -52,14 +59,13 @@ Note language(s): EN, ZH, or both.
 The blog is **always** canonical. **Don't** seed Substack with career pieces — wrong signal for the masthead.
 
 ### 3. Format per channel
-- **Substack** — full text + canonical line + subscribe CTA (template below).
+- **Substack** — full text + canonical line + subscribe CTA (template below). Follow [references/substack-playbook.md](references/substack-playbook.md).
 - **X** — default to a sharp, self-contained **single post**: one topic, a real hook in line 1, close with a genuine question, image + link fine inline. Threads only when every post stands alone; for a multi-facet essay, publish several sharp posts spread over days, not one long thread. **Follow [references/x-playbook.md](references/x-playbook.md)** — the source-anchored rules for what X actually rewards (no format tricks; dwell/reply/recall; avoid clickbait; links are *not* penalized).
-- **Notes** — 2–3 standalone insights re-cut from the thread's best lines.
-- **LinkedIn** — one reflective, professional-framed post; put the link in the first comment (reach).
-- **HN** — submit the canonical URL with a plain, non-clickbait title; add a first comment with context. Best on weekday US mornings.
-- **知乎/小红书** — adapt, don't translate; lead with the takeaway.
-
-Before drafting, read **[references/channel-playbook.md](references/channel-playbook.md)** for channel-specific packaging, assets, skip rules, and source anchors.
+- **Notes** — 2–3 standalone insights re-cut from the thread's best lines. Follow [references/substack-notes-playbook.md](references/substack-notes-playbook.md).
+- **LinkedIn** — one reflective, professional-framed post; put the link in the first comment (reach). Follow [references/linkedin-playbook.md](references/linkedin-playbook.md).
+- **HN** — submit the canonical URL with a plain, non-clickbait title; add a first comment with context. Best on weekday US mornings. Follow [references/hacker-news-playbook.md](references/hacker-news-playbook.md).
+- **知乎** — adapt, don't translate; lead with the takeaway. Follow [references/zhihu-playbook.md](references/zhihu-playbook.md).
+- **小红书** — turn the idea into a visual, concrete carousel or short video. Follow [references/rednote-playbook.md](references/rednote-playbook.md).
 
 Templates:
 
@@ -119,8 +125,13 @@ To make it a true reminder, schedule it — a weekly cron, or a scheduled Claude
 ---
 
 ## References
-- [references/channel-playbook.md](references/channel-playbook.md) — channel-specific packaging rules for Substack, X, Notes, LinkedIn, HN, 知乎, and 小红书. **Read this before drafting channel copy.**
+- [references/substack-playbook.md](references/substack-playbook.md) — Substack email and writer-network packaging.
 - [references/x-playbook.md](references/x-playbook.md) — building high-quality X posts/assets, reverse-engineered from the open-sourced X algorithm (cclank/x-algorithm-wiki → xai-org/x-algorithm). **Read this before drafting any X copy.**
+- [references/substack-notes-playbook.md](references/substack-notes-playbook.md) — Substack Notes as insight testing and relationship-building.
+- [references/linkedin-playbook.md](references/linkedin-playbook.md) — professional framing, assets, engagement, and measurement.
+- [references/hacker-news-playbook.md](references/hacker-news-playbook.md) — HN submission, Show HN, titles, and comments.
+- [references/zhihu-playbook.md](references/zhihu-playbook.md) — Q&A-native Chinese adaptation.
+- [references/rednote-playbook.md](references/rednote-playbook.md) — 小红书 / RedNote visual packaging.
 
 ## Notes
 - This skill is canonical at `.claude/skills/go-to-market/` and symlinked to `.codex/skills/go-to-market` (for Codex). Edit the canonical copy — the symlink follows. Mirror to other harness dirs the same way: `ln -s ../../.claude/skills/go-to-market <dir>/go-to-market`.
