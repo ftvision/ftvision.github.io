@@ -1,0 +1,48 @@
+---
+title: "Ship The Core First"
+description: ""
+date: "2026-06-16"
+type: narrative 
+topics:
+  - product
+lang: en
+draft: true
+---
+
+We have been building our idea of a letter radio station during the AI era. Qian and I are fed up with the AI being a productivity tool; we want to build the AI to our daily lives, so we go all the way back to the old, pre-computer age, when users are listening to radio on a radio player. This ends up as [echofm](https://echofm.live) and [huisheng.live](https://huisheng.live). 
+
+The product idea was to create this radio station, but this essay is not about the product itself, but about the mistake I think we have made.
+
+The core of this product is to generate a stream of audio content, taking user's letter in, select the good letters to reply, and draft a letter response that bring the warmth and humanity to the users who want to heard. Also, to write and create a song that matches the letter and the scenario. There are actually only three problems to solve:
+
+1. how to collect user's letter and invite user's to write
+2. generate that audio epsiode
+3. publish that audio episode to let the writer and the world listen. 
+
+In the old days, we probably won't do this because each step is very time-consuming and manually, but now we have LLMs and other models for generating speech and music. We even have coding agents, such as Claude Code and Codex, so we can vibe code our entire tech stack that allows use to building every part of the product. 
+
+That's exactly what I did. As of now, when the product finally has one episode, the entire repo has merged 350+ PRs. I have made a frontend, a backend server, an show editing agent, an eval process that checks the quality of my radio program, a set of worker nodes that generate audios etc. It's been three months since I generated my first line of code. 
+
+## a few mistakes 
+
+in retrospect, what the frontend really needs is a place where users can submit letters. It may not even need to be able to play the audio, because it doesn't have the distribution channel at the beginning. The generated audios should be published at different platforms and gradually attract people to this website. Until then, the frontend should be simple and provide what needs from the users and just try its best to invite users to submit letters.
+
+the backend admin dashboard was another story: the goal was to make the episode management easier, because the data in DB is not directly readable by us. That being said, a wrong admin dashboard data model brings up trouble than help as I needed to iterate a lot on showing the correct data for us to decide if we want to rerun, edit. etc. The UI was built to automate the entire pipeline, but we haven't had a clear, error less pipeline that generates end to end yet.
+
+a third lesson was the audio generation pipeline. I not only build one, but actually two. the good part is the pipelien is actually modularized, and it would work locally on our computer if we just hook up with a remote database. Now  the problem is I want, again, to automate everything, so I built a worker pool that remotely generate audios for me. It worked when there were two letters, but then the machine was not provisioned with enough resource to hand 6 letters. In fact, the entire generation pipeline is much easier to try and with better control if I just launch a local codex session and ask codex to run the pipeline locally for me, than scheduling a worker pool remotely.
+
+## other mistakes
+
+UI is really time consuming, yet, there is no finally best UI. it takes a lot of iteration that doesn't matter during our initial product offering.
+
+
+## lesssons
+
+1. yeah, we should actually focus on what is the most important thing, and bring our essence to users and test the market earlier, instead of building all those "features" and "infrastructures" that delay our test the product.
+2. whatever you planned at the beginnign will change, as you can't really predict how your product actually would grow. so trying to spec everything out is against the nature of the product building and you are working as if you are in 80s or 90s when you ship product with flat disk or CDs, and your users don't have an easy way to get update.
+3. figuring out what is the core is not easy. it is tempting to think some features are quite important. all features you built have a reason to be there, for sure. but are those brings your product to more success? 
+4. for building a product, it needs a lot of practices to learn what is NOT important, and what NOT to do at the each stage. I am still learning, and I am planning to build more products to try. After all, coding agents is so empowering
+5. Learning to let AI write songs and read/talk reasonably like human is a lot of fun. it is not trivial and it makes those models more interesting to me. Suno is great, and ElevenLabs are better than many other providers for my case. Doing eval and comparison is fun and there's a lot to learn and think about.
+
+
+(may need to add a few assets and reorganize)
