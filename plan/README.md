@@ -12,6 +12,7 @@ This directory contains the planning documentation for rebuilding the personal b
 | [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) | Phase-by-phase implementation plan with tasks and validation checklists |
 | [CONTENT_MIGRATION.md](./CONTENT_MIGRATION.md) | Content inventory, transformation rules, migration scripts |
 | [MDX_COMPONENTS.md](./MDX_COMPONENTS.md) | Custom MDX component specifications and usage examples |
+| [writing-workflow/README.md](./writing-workflow/README.md) | Editorial workflow for turning ideas into essays and distribution assets |
 
 ## Quick Summary
 
