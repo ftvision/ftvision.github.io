@@ -59,6 +59,29 @@
   color: var(--color-link-hover);
 }
 
+.essay-content .reference-link {
+  display: inline !important;
+  vertical-align: baseline;
+  text-decoration: none;
+}
+
+.essay-content .note-wrapper,
+.essay-content .marginnote-wrapper {
+  display: inline;
+}
+
+.essay-content .note-toggle,
+.essay-content .marginnote-toggle {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  line-height: 1;
+  vertical-align: baseline;
+}
+
 .essay-content strong {
   font-weight: 600;
 }
