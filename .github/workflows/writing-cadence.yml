@@ -60,8 +60,6 @@ jobs:
             echo '```'
             cat report.txt
             echo '```'
-            echo ''
-            echo 'Editorial plan: #128'
           } > body.md
           EXISTING="$(gh issue list --label writing-cadence --state open --json number --jq '.[0].number')"
           if [ -n "$EXISTING" ]; then

@@ -110,7 +110,7 @@ Run:
 node .claude/skills/go-to-market/scripts/cadence-check.mjs
 ```
 
-It reports days since the last published essay and the next write-first piece from the backlog (keep that list in sync with the editorial-plan issue, #128). Thresholds: ≤14d on pace · ≤28d quiet · >28d overdue.
+It reports days since the last non-draft essay and gives a few lightweight backlog nudges. Thresholds: ≤14d on pace · ≤28d quiet · >28d overdue.
 
 To make it a true reminder, schedule it — a weekly cron, or a scheduled Claude agent that runs the check and messages the result. Offer to wire this up.
 
@@ -121,4 +121,4 @@ To make it a true reminder, schedule it — a weekly cron, or a scheduled Claude
 
 ## Notes
 - This skill is canonical at `.claude/skills/go-to-market/` and symlinked to `.codex/skills/go-to-market` (for Codex). Edit the canonical copy — the symlink follows. Mirror to other harness dirs the same way: `ln -s ../../.claude/skills/go-to-market <dir>/go-to-market`.
-- Positioning, channel logic, and the backlog all trace back to issue #128 and the writing workflow — update them together.
+- Positioning, channel logic, and the backlog are intentionally lightweight. Update them when the writing direction changes.
