@@ -1,0 +1,62 @@
+---
+title: "Learning System Design with AI"
+description: ""
+date: "2026-06-16"
+type: guide
+topics:
+  - technical
+  - design
+lang: en
+draft: true
+---
+
+System design is an interesting category of interview. In the daily world, people usually just talk about the design, but not really abstract that out into a concrete process of discussion.
+
+Learning system design from interview process to real world is actually a pretty good path, because it gives you are playground to think and to learn the basic concepts. When I was early in my careet, system design feels very abstract and vague -- because i never designed system before, I only solved competitve programming problem sets. There was no need of sql database, not need to worry about reliability, no need to worry about the network, avaiability, or consistency.
+
+Anyway. Recently I have failed a system design interview, epically, when I was interviewing Cursor. Now that blocked my way of [getting into SpaceX and equity](). Joke aside, I was thinking if there's a way to get my system design skill better, if I ever want to pass other company's interview.
+
+# learning system design with Claude Code
+
+Claude has a lots of software knowledge and can make a lot of good architectural decisions. it is fair to say that ever since Opus 4.5, claude and claude code are fully capable of conducting complicated system design discussions. In many cases, claude is more knowledgeable than an average software engineer. The caveat is you need to know what you are asking and decide if Claude's proposal is suitable to your project. 
+
+But if you just want to learn the system design and conduct thought process, they are more than a good. For example, you can claude code to design a distributed rate limiter or a URL shortener. It not only would help you come up with ideas, but also possibly help you implement in your codebase
+
+<add an example of conversation>
+
+# Make the learning process reproduciable and replicable with an agent skill.
+
+chat with Claude Code is just one off experience. If you want to learn system design, you need to have a way to repeat this process, and consolidate your learning. In this case, you need 
+
+1. a replicable starting point for an exercise
+2. a good agent role-playing who knows the context is about a system design interview instead of a coding question or a real project.
+3. a way to save your learning progress and allow your future sessions to be able to help you strenghthen you weakness or help you delibratively practices. i.e. a memory
+
+To meet these three requirements, I made an agent skill that you can run with your claude code and codex easily. It can
+
+- generate a new questions to prepare
+- mock interview from the perspective of an interviewer
+- help you learn by act as an interviewee
+- have a two-agent interaction so that you can see how they interact with each other during an interview session.
+
+The last feature is my favorite, especially in the field or topic that I am not familiar with. The interactive process doesn't match exactly your experience, but it is informative, help you to think and pay attention to what the agent thinks important.
+
+# The structure of thinking
+
+Ultimately, learning about system design is not about just memorize knowledges such as in-memory cache or worker queues. The most important thing is to form a structured way of thinking, a problem solving approach. 
+
+Thus, I asked Claude code to give me hints on how to structure my thinking and what are the principles I can start with. From there, I can iteratively enrich and improve my knowledge and make my answers better. Here is what Claude suggest:
+
+<quote on claude structured thinking>
+
+
+You also need to know that system design interview is a curated interview setup, it has its uniqueness as a setup, a way of communication and collaborative problem solving. Even if you are doing lots of system design in your real work, you still may need to adapt to this setup, with time constraints and abstract. 
+
+
+# After using this skill.
+
+In the end, I passed system design interviews at OpenAI. so I guess this skill did help me.
+
+# Appendix
+
+I recently added a TTS functionality, now you can listen two agents talking to each other during the mock interview. I am thinking maybe I should also add a STT to my skill so during your practice, you can also interact with the agent using your voice.
