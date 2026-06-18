@@ -1,0 +1,75 @@
+name: Writing cadence
+
+# Weekly nudge to keep publishing. Runs the zero-dependency cadence check from
+# the go-to-market skill; when overdue, opens (or updates) a reminder issue.
+# Scheduled workflows run from the default branch only — this starts firing
+# once merged to master. Use "Run workflow" to trigger it manually anytime.
+
+on:
+  schedule:
+    # Mondays 16:00 UTC (~9am Pacific)
+    - cron: '0 16 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  cadence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run cadence check
+        id: check
+        run: |
+          node .claude/skills/go-to-market/scripts/cadence-check.mjs | tee report.txt
+          if grep -q '\[overdue\]' report.txt; then
+            echo "overdue=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "overdue=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Write job summary
+        run: |
+          {
+            echo '## Algo Mind — writing cadence'
+            echo ''
+            echo '```'
+            cat report.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open or update reminder issue
+        if: steps.check.outputs.overdue == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          gh label create writing-cadence --color FBCA04 --description "Weekly writing nudge" --force
+          {
+            echo 'Time to ship the next essay.'
+            echo ''
+            echo '```'
+            cat report.txt
+            echo '```'
+            echo ''
+            echo 'Editorial plan: #128'
+          } > body.md
+          EXISTING="$(gh issue list --label writing-cadence --state open --json number --jq '.[0].number')"
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body-file body.md
+          else
+            gh issue create \
+              --label writing-cadence \
+              --title "Writing cadence: time to ship the next essay" \
+              --assignee "$OWNER" \
+              --body-file body.md
+          fi
