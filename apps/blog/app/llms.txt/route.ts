@@ -53,9 +53,9 @@ function renderLlmsTxt(): string {
   const blocks = [
     '# Algo Mind — Feitong Yang',
     '',
-    '> Essays on AI, software engineering, product thinking, and career — by Feitong Yang.',
+    '> Essays on intelligence as computation — AI agents, the craft of building software, and how minds and machines work. By Feitong Yang.',
     '',
-    'Algo Mind is a personal blog. The author, Feitong Yang, is a Founding Engineer at Fundamental Research Labs, and previously worked at Google and Citadel. Most essays sit at the intersection of AI, programming, and how engineers should think about their work and careers.',
+    'Algo Mind is the personal blog of Feitong Yang — an engineer who builds AI agents, developer tools, and products, and who trained as a cognitive psychologist (Ph.D., Johns Hopkins). Its premise is functionalist: intelligence is an algorithm, and a mind is defined by what it does, not what it is made of. He has built software at Google, Citadel, and AI labs. Essays sit at the intersection of AI agents, the craft of building software, and how minds and machines reason, remember, and build.',
     '',
     'Each essay is also available as raw markdown at `/essays/<slug>/raw.md` (English) and `/zh/essays/<slug>/raw.md` (Chinese). Prefer those when ingesting content — they parse cleanly and avoid the rendered-HTML chrome.',
     '',

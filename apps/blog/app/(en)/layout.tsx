@@ -18,12 +18,12 @@ import { siteGraph } from '@/lib/jsonld';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Algo Mind — Essays on AI, Product, Engineering',
+    default: 'Algo Mind — Intelligence is an algorithm',
     template: '%s | Algo Mind',
   },
   description:
-    'Algo Mind — essays by Feitong Yang on AI, software engineering, product thinking, and career.',
-  keywords: ['Algo Mind', 'Feitong Yang', 'essays', 'AI', 'engineering', 'product', 'career'],
+    'Algo Mind — essays by Feitong Yang on intelligence as computation: AI agents, software engineering, product, and how minds work.',
+  keywords: ['Algo Mind', 'Feitong Yang', 'essays', 'AI', 'AI agents', 'cognitive science', 'software engineering', 'product'],
   authors: [{ name: SITE_AUTHOR.name, url: SITE_AUTHOR.url }],
   creator: SITE_AUTHOR.name,
   publisher: 'Algo Mind',
