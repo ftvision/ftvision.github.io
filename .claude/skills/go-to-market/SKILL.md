@@ -53,7 +53,7 @@ The blog is **always** canonical. **Don't** seed Substack with career pieces —
 
 ### 3. Format per channel
 - **Substack** — full text + canonical line + subscribe CTA (template below).
-- **X** — a thread for insider/technical/thesis pieces; a single post for short ones. Hook → 4–8 beats (one idea each, concrete over abstract) → CTA.
+- **X** — default to a sharp, self-contained **single post**: one topic, a real hook in line 1, close with a genuine question, image + link fine inline. Threads only when every post stands alone; for a multi-facet essay, publish several sharp posts spread over days, not one long thread. **Follow [references/x-playbook.md](references/x-playbook.md)** — the source-anchored rules for what X actually rewards (no format tricks; dwell/reply/recall; avoid clickbait; links are *not* penalized).
 - **Notes** — 2–3 standalone insights re-cut from the thread's best lines.
 - **LinkedIn** — one reflective, professional-framed post; put the link in the first comment (reach).
 - **HN** — submit the canonical URL with a plain, non-clickbait title; add a first comment with context. Best on weekday US mornings.
@@ -62,12 +62,14 @@ The blog is **always** canonical. **Don't** seed Substack with career pieces —
 Templates:
 
 ```
-# X thread
-1/ <hook — the non-obvious claim, one line>
-2/ <stakes: why it matters / who should care>
-3–N/ <one idea per post; show, don't tell>
-N/ Full essay → <blog url>
-   I write Algo Mind — intelligence is an algorithm. Subscribe → <substack url>
+# X post (default: one sharp single post — see references/x-playbook.md)
+<line 1: a specific, contestable claim — the real hook, no throat-clearing>
+
+<2–4 lines: concrete specifics + one non-consensus judgment>
+
+<close: a genuine question or a takeable position — invites replies>
+
+<blog url>   + one real image
 ```
 
 ```
@@ -113,6 +115,9 @@ It reports days since the last published essay and the next write-first piece fr
 To make it a true reminder, schedule it — a weekly cron, or a scheduled Claude agent that runs the check and messages the result. Offer to wire this up.
 
 ---
+
+## References
+- [references/x-playbook.md](references/x-playbook.md) — building high-quality X posts/assets, reverse-engineered from the open-sourced X algorithm (cclank/x-algorithm-wiki → xai-org/x-algorithm). **Read this before drafting any X copy.**
 
 ## Notes
 - This skill is checked in at `.claude/skills/go-to-market/`. If you mirror skills to `.agents/skills/` for other harnesses, copy it there too.
