@@ -2,6 +2,10 @@
 
 This file provides guidance for Claude Code when working with this repository.
 
+For shared, tool-agnostic agent guidance, start with [AGENTS.md](./AGENTS.md).
+Keep durable cross-agent instructions there; use this file only for
+Claude-specific or detailed repository notes.
+
 ## Repository Overview
 
 This is a monorepo for a personal blog with a 5-layer design system architecture.
