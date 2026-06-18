@@ -1,0 +1,125 @@
+---
+title: "Access Denied Is Not a Moat"
+description: ""
+date: "2026-06-14"
+type: opinion
+topics:
+  - ai
+lang: en
+draft: true
+---
+
+Now, Anthropic is required to stop providing access of Fable 5 to anyone who is not American.
+
+Anthropic has repeatedly called for and executed access control, including asking U.S. government and society to work together to stop exporting GPUs to China, as well as stopping Claude acesss to OpenAI and previously XAI. In their recent essays, two themes have appeared
+
+1. they are tired of neck-to-neck competitions from other labs to build LLMs
+2. they think the only way they would be willing to conduct a conversation with other labs is to maintain a significant competitive advantage over the LLMs built by other groups
+
+they seems to believe Access Control would brings a competitive moat, and the competitive moat gives them not only the leadership, but also the negotiation stake on the table. 
+
+It is true that Claude has been doing very well on the coding and coding agent, and it is fair to say they are a leading edge. It is also fair to say they have defined multiple industrial standard and protocols, including Model Context Protocol (MCP) and Skills. 
+
+However, I want to argue: Access Denial is not your moat, and you should start conversations now instead of waiting for a sweet period when you are comfortably ahead and everyone else. Because you will never have that comfortable period.
+
+
+## holding the access to coding model
+
+It was clear, in retrospect, that Anthropic has betted on the coding model quite early. Ever since sonnot 3.6, it was my favorite coding model and that didn't change until Opus 4.6 vs GPT 5.5. There are two interesting facts: 
+a) OpenAI was the first company who demonstrated the coding capability via Codex model, way way back at 2022 (TODO:check). Somehow they didn't pursue this line and it was not until GPT 5.3 when they broung codex back (TODO: check)
+b) OpenAI's employees were using Claude and Claude Code happily and doesn't seem to be motivated to focus on their coding-specific model training until ANthropic cut their access.
+
+In a sense, from the perspective of outsider. It is the exact action of access control that prioritized the coding model capability improvement in OpenAI and gave anthropic neck-to-neck competition. While they stopped access to Openai, they also stopped their access to Xai, which forced Xai to also prioritze training their coding model. Of course, XAI didn't deliver, and they brought Cursor in, now Cursor does have a very good Composer 2.5
+
+## holding the access to GPU
+
+Anthropic repeatedly calls for stop exporting GPUs to China, with quite a long essay on the dystopic future of having Chinese companies who are able to deliver frontier-like model to the world. The are two interesting facts as well
+a) Turns out the world is benefiting from Chinese open-weight model a lot and many American companies and people are using Chinese open weight model. It is not clear what the alternative universe would look like, but we don't see any other American companies publishing open weight models that is able to catch up with them close-weight frontier model, nor do we see any other country has published open weight models, yet, to benefit the rest of the world. 
+b) It is exactly the repeated call for access control that prioritize and force the entire Chinese industrial supplychain to accelerate their work on providing the entire stack for model training, including chips, memories, and algorithms. It is possible that this force from U.S. has put the schedule five years earlier than it would have planned. Jensen Huang, in his interviews, has clearly understood this: Providing the GPU access to China may actually delay them from building their own chips while maintaining U.S. leadership and monopoly on the tech-stack ecosystem. (need a snippet)
+
+
+Regardless, this view of trying to access deny as a moat has some serious problem in the underlying assumptionts.
+
+### 1) The AGI is a short-term game with clear end line.
+
+It appears that there is a clear "AGI" endpoint, where one company rush to the end, and would be able to maintain a constant, clear competitive edge against other companies. If you ever wonder, this is definitely wrong. 
+
+OpenAI was way ahead during the chatgpt time, and that gave Google a very hard time, not to mention other companies like Amazon, Meta. However, if you look at the horizon of 3 years, Google has caught up successfully, and even imposed threats on OpenAI. Similarly, anthropic seemed to be leading coding for more than a year, but if you look at a longer horizon, you see GPT 5.5 has caught up and Codex has got a lot of users praise than Claude Code recently. Gemini, though is lagging behind, should not be treated as failed already. 
+
+Somehow I feel people are quite short-sighted and want to declare victory quickly. It happens a lot in the Sillcon Valley nowadays. The narratives seem to be we need to have a headsstart and leading. Startups want to lead 3-month performence over big labs, claiming their competitive advantage. But heads-start doesn't necessarily consolidate into your moat, you just happen to start a bit earlier. if you have ever watched an ordinary person try to swim competition agains a professional swimmer, you may have seen that the professional swimmer would just let the ordinary person start earlier for even more than 10 seconds, then you see they just very quickly close the gap and then win. 
+
+The human society has last for tens of thousand years and it will continue to last for tens of thousands years. one or two years leading may give you a good feeling and temporary advantage, but you couldn't and shouldn't pretend that there is a crossing-bar and you can rest. for hte observers, you should also not expect any single company will hold an absolute edge constantly. That will be a very sad world.
+
+
+### 2) The information 
+
+People not living in a vacuum. No society lives in a vaccum either. It is an arrogant view to think people in one group are the only people who knows the secret of building soem single most important invention for the humanity, and holding the people and the resource will prevent other people to independently figure out the secret. 
+
+It was never the case. All inventions in the human history have been independently discovered more than once, even in the ancient time when information flows much slower, in narrower range. Nowadays, information flows at the speed of light. People also moves around. It is the nature and basic principles of how market works. 
+
+With information flowing, the knowledge of how to build large models will be broadcast in a large range. Ambitious people exist around the world, even though America does attract a good amount of it.
+
+### 3) Start the conversation early
+
+It appears that Anthropic has built on a strong distrust of OpenAI, but at the same time, the way they want to start the conversation doesn't help the conversation get started. Why not starting the conversation now? if you continue to distrust OpenAI, when would you ever want to sit down on the same table and engage your peels? 
+
+The human history has seen enough tradegy that delay the conversation, also have seen enough great things when the conversations are conducted, even tho the process is difficult and has lots of back and force. No negotion is easy, no matter how advanced you are, no matter how stronger you are against the counterpart. No one would be happily enter a conversation where the other side declares an unfair advantage -- that is not an fair negotiation in the first place. Certainly, chinese people won't be happy to be that position.
+
+{/* ===================================================================
+WORKING OUTLINE — not for publication. Delete before shipping.
+=================================================================== */}
+
+{/*
+
+# Access Denied Is Not a Moat — Outline & Topic Sentences
+
+## Arc 0 — The Setup
+Goal: state the situation, steelman it, then turn.
+
+- Opening (hook): As of this month, Anthropic may no longer give anyone outside America access to Fable 5.
+- The pattern: This is not an isolated rule but the latest move in a consistent strategy — Anthropic has cut API access to OpenAI and xAI, and has urged the U.S. government to halt GPU exports to China.
+- Their reasoning: Behind these moves sit two beliefs: that they are tired of neck-and-neck competition, and that they should only negotiate with rival labs from a position of significant advantage.
+- Steelman: It would be unfair to pretend this lead is imaginary — Claude genuinely leads in coding and agents, and Anthropic has defined real standards like MCP and Skills.
+- Thesis (the turn): But access denial is not a moat — it is a catalyst dressed as a strategy: it fails to freeze a rival's capabilities, and worse, it destroys the gatekeeper's own leverage by forcing the competitor to build an alternative no one can control.
+
+---
+
+## Movement I — The moat is an illusion
+
+### Arc 1 — The Principle of Reaction
+- Topic sentence: When you deny a competitor access, you do not freeze them — you change their priorities, converting a convenient dependency into an urgent vulnerability.
+- Coding evidence: OpenAI and xAI were content to build on Claude until the day access was cut; only then did they prioritize coding models of their own.
+- Hardware evidence: The same reaction played out at national scale — export bans did not stall China, they forced it to accelerate an entire domestic stack, from chips to memory to algorithms.
+
+### Arc 2 — The Finite-Game Fallacy
+- Topic sentence: This strategy only makes sense if AGI is a race with a finish line you can cross and then rest behind — and there is no such line.
+- Evidence: Every "insurmountable" lead has closed, from ChatGPT's over Google to Anthropic's own in coding.
+- Mechanism: The follower runs a path already proven to exist, and as the frontier slows against the limits of data and physics, the gap always narrows.
+
+### Arc 3 — The Isolation Fallacy
+- Topic sentence: Denial also assumes a single group can hoard the secret of a fundamental technology, and history has never once allowed it.
+- Evidence: Major inventions have always been discovered independently and nearly at once, even when information moved slowly.
+- Today: Now that knowledge travels at the speed of light, the proof is already visible — the world runs on Chinese open-weight models, while no American lab releases weights that rival its own frontier.
+
+---
+
+## Movement II — Even if it worked, it's a bad trade
+
+### Arc 4 — Denial buys time. Time for what?
+- Topic sentence: Grant the strongest version of the case — that denial really does buy a temporary lead — and the decisive question becomes what that time is actually for.
+- The fork: Every honest answer — a safety buffer, negotiating leverage, commercial runway, standard-setting — either does not require denial or is actively poisoned by it.
+- Synthesis: Denial buys time in the currency of competition, while every reason Anthropic gives for wanting it is denominated in cooperation — and the two trade against each other.
+
+### Arc 5 — Leverage you spend is leverage you lose
+- Topic sentence: A dependency is a dial you can turn; denial does not turn it, it snaps it off.
+- Honesty checkpoint: It is true that scarcity slowed China's access to top-end chips — but that time came with a bill, turning a dependent customer into a self-sufficient rival and forcing the efficiency gains that now flow back to the world as open weights.
+- The larger cost: Worse, weaponizing access teaches everyone watching — allies included — that depending on you is dangerous, eroding the very chokepoint that made denial worth anything.
+
+---
+
+## Conclusion — Start the conversation now
+- Topic sentence: If the lead never consolidates and the leverage destroys itself in the using, then the comfortable margin Anthropic is waiting for will never arrive.
+- The trap: To demand a position of advantage before sitting down is not a proposal to negotiate — it is a demand for surrender, and no one, China included, accepts those terms.
+- Closing line: The moat is already melting; the only thing that lasts is the trust you build before it is gone — so start the conversation now.
+
+*/}
