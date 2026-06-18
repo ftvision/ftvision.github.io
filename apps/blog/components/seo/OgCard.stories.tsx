@@ -113,7 +113,7 @@ export const EnglishSeries: Story = {
 
 export const EnglishHome: Story = {
   args: {
-    title: 'Essays on AI, Product, Engineering',
+    title: 'Intelligence is an algorithm',
     byline: 'Feitong Yang',
     brand: 'Algo Mind',
     locale: 'en',
@@ -154,7 +154,7 @@ export const ChinesePeriodic: Story = {
 
 export const ChineseHome: Story = {
   args: {
-    title: '关于 AI、产品与工程的随笔',
+    title: '智能即算法',
     byline: 'Feitong Yang',
     brand: '思算',
     locale: 'zh',

@@ -61,8 +61,8 @@ export function buildAtomFeed(locale: Language): string {
   const title = locale === 'zh' ? '思算 — 随笔' : 'Algo Mind — Essays';
   const subtitle =
     locale === 'zh'
-      ? '思算 — Feitong Yang 关于 AI、软件工程、产品思考与职业的随笔。'
-      : 'Essays by Feitong Yang on AI, software engineering, product thinking, and career.';
+      ? '思算 — Feitong Yang 关于“智能即算法”的随笔：AI agent、软件工程、产品，以及心智如何运作。'
+      : 'Essays by Feitong Yang on intelligence as computation: AI agents, software engineering, product, and how minds work.';
 
   const entries = entriesFor(locale);
   const updated = entries[0]?.date

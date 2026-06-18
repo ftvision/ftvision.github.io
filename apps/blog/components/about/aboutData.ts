@@ -9,7 +9,7 @@ export type Locale = 'en' | 'zh';
 export const introContent = {
   en: {
     title: 'About',
-    description: `I am a Founding Engineer @ Fundamental Research Labs, Menlo Park, CA. Prior to that, I was a Software Engineer @ Citadel and Google. I received my Ph.D. training from the Johns Hopkins University.`,
+    description: `I'm an engineer who builds AI agents, developer tools, and the products around them. I trained as a cognitive psychologist (Ph.D., Johns Hopkins), and I hold one stubborn belief: intelligence is an algorithm, and a mind is defined by what it does, not what it's made of. So building machine intelligence and understanding human intelligence are, to me, the same project. I write here about both — agents, the craft of building software, and how minds and machines reason, remember, and build.`,
     quotes: [
       'Removing the delusion of a separate self and the desires it produces, and concentrating upon the subject until there is a direct communion with it.',
       'Successes are only rare spikes among background noises of failures in daily life. Achieving more successes comes from failing faster, failing more often, then learning more and keeping on.',
@@ -19,7 +19,7 @@ export const introContent = {
   },
   zh: {
     title: '关于作者',
-    description: `我现在是Fundamental Research Labs的一名创始工程师。在此之前，我在Citadel和Google工作过。在那之前，我在约翰霍普金斯大学获得了认知心理学的博士学位。`,
+    description: `我是一名工程师，构建 AI agent、开发者工具和围绕它们的产品。我在约翰霍普金斯大学接受了认知心理学的博士训练，并且抱有一个固执的信念：智能本质上是一种算法，心智由它的功能定义，而非由它的载体决定。因此在我看来，构建机器智能与理解人类智能，其实是同一件事。我在这里写这两者——agent、构建软件的手艺，以及心智与机器如何推理、记忆与创造。`,
     quotes: [],
     findMeOnline: '我的网络足迹',
     onlineLinks: `我的[Linkedin](https://www.linkedin.com/in/feitong-yang-88088a55/)页面介绍了跟这里差不多的工作经历。[Google Scholar](http://scholar.google.com/citations?user=94Xx9u0AAAAJ)和[NeuroTree](http://neurotree.org/neurotree/tree.php?pid=65050)页面介绍了一些我的学术训练的背景。以下的几个页面有更细节的简历。老实说，我的简历没什么好看的，倒是"失败简历"可能有点意思。`,

@@ -18,11 +18,11 @@ import { siteGraph } from '@/lib/jsonld';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: '思算 — 关于 AI、产品与工程的随笔',
+    default: '思算 — 智能即算法',
     template: '%s | 思算',
   },
-  description: '思算 — Feitong Yang 关于 AI、软件工程、产品思考与职业的随笔。',
-  keywords: ['思算', 'Algo Mind', 'Feitong Yang', '随笔', '博客', 'AI', '技术', '产品', '职业'],
+  description: '思算 — Feitong Yang 关于“智能即算法”的随笔：AI agent、软件工程、产品，以及心智如何运作。',
+  keywords: ['思算', 'Algo Mind', 'Feitong Yang', '随笔', '博客', 'AI', 'AI agent', '认知科学', '产品'],
   authors: [{ name: SITE_AUTHOR.name, url: SITE_AUTHOR.url }],
   creator: SITE_AUTHOR.name,
   publisher: '思算',
