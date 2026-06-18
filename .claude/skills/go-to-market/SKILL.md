@@ -20,6 +20,7 @@ Turn one finished essay into platform-native distribution, and keep the publishi
 ## Modes
 - **Distribute** — `distribute <essay-slug>`: run the per-essay pipeline below.
 - **Cadence** — `cadence`: run the cadence check and nudge the next essay.
+- **Learn** — `learn`: record local channel metrics and summarize what worked.
 
 ---
 
@@ -127,6 +128,20 @@ Write generated drafts to `dist/<slug>/` (add `dist/` to `.gitignore`) with a `c
 
 ---
 
+## Learn mode
+Follow [references/local-metrics-playbook.md](references/local-metrics-playbook.md). Use the local scripts to create UTM links, record publish events, add manual snapshots, and summarize channel results:
+
+```bash
+node .claude/skills/go-to-market/scripts/make-tracked-url.mjs <essay-slug> <channel> --content <variant>
+node .claude/skills/go-to-market/scripts/record-publish.mjs <essay-slug> <channel> --url <platform-url> --tracked-url <utm-url> --asset <asset-type> --hook <hook-type>
+node .claude/skills/go-to-market/scripts/record-snapshot.mjs <essay-slug> <channel> --url <platform-url> --impressions <n> --likes <n> --comments <n>
+node .claude/skills/go-to-market/scripts/summarize-metrics.mjs --slug <essay-slug>
+```
+
+Metrics are written to `dist/go-to-market/metrics.jsonl`, which is ignored by git.
+
+---
+
 ## Cadence mode
 Run:
 
@@ -141,6 +156,7 @@ To make it a true reminder, schedule it — a weekly cron, or a scheduled Claude
 ---
 
 ## References
+- [references/local-metrics-playbook.md](references/local-metrics-playbook.md) — local-first channel metrics tracking and summary loop.
 - [references/substack-playbook.md](references/substack-playbook.md) — Substack email and writer-network packaging.
 - [references/x-playbook.md](references/x-playbook.md) — building high-quality X posts/assets, reverse-engineered from the open-sourced X algorithm (cclank/x-algorithm-wiki → xai-org/x-algorithm). **Read this before drafting any X copy.**
 - [references/substack-notes-playbook.md](references/substack-notes-playbook.md) — Substack Notes as insight testing and relationship-building.
