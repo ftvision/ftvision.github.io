@@ -120,5 +120,5 @@ To make it a true reminder, schedule it — a weekly cron, or a scheduled Claude
 - [references/x-playbook.md](references/x-playbook.md) — building high-quality X posts/assets, reverse-engineered from the open-sourced X algorithm (cclank/x-algorithm-wiki → xai-org/x-algorithm). **Read this before drafting any X copy.**
 
 ## Notes
-- This skill is checked in at `.claude/skills/go-to-market/`. If you mirror skills to `.agents/skills/` for other harnesses, copy it there too.
+- This skill is canonical at `.claude/skills/go-to-market/` and symlinked to `.codex/skills/go-to-market` (for Codex). Edit the canonical copy — the symlink follows. Mirror to other harness dirs the same way: `ln -s ../../.claude/skills/go-to-market <dir>/go-to-market`.
 - Positioning, channel logic, and the backlog all trace back to issue #128 and the writing workflow — update them together.
