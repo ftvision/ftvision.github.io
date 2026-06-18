@@ -59,6 +59,8 @@ The blog is **always** canonical. **Don't** seed Substack with career pieces —
 - **HN** — submit the canonical URL with a plain, non-clickbait title; add a first comment with context. Best on weekday US mornings.
 - **知乎/小红书** — adapt, don't translate; lead with the takeaway.
 
+Before drafting, read **[references/channel-playbook.md](references/channel-playbook.md)** for channel-specific packaging, assets, skip rules, and source anchors.
+
 Templates:
 
 ```
@@ -117,6 +119,7 @@ To make it a true reminder, schedule it — a weekly cron, or a scheduled Claude
 ---
 
 ## References
+- [references/channel-playbook.md](references/channel-playbook.md) — channel-specific packaging rules for Substack, X, Notes, LinkedIn, HN, 知乎, and 小红书. **Read this before drafting channel copy.**
 - [references/x-playbook.md](references/x-playbook.md) — building high-quality X posts/assets, reverse-engineered from the open-sourced X algorithm (cclank/x-algorithm-wiki → xai-org/x-algorithm). **Read this before drafting any X copy.**
 
 ## Notes
