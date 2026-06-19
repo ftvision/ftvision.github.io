@@ -21,24 +21,30 @@ export function XEmbed({ tweetId, className }: XEmbedProps) {
 
   React.useEffect(() => {
     const container = containerRef.current;
-    if (!container || renderedRef.current) return;
-    renderedRef.current = true;
+    if (!container) return;
+    let cancelled = false;
+    let interval: ReturnType<typeof setInterval> | undefined;
 
     function render() {
-      if (!container) return;
+      if (cancelled || !container || renderedRef.current || !window.twttr?.widgets) {
+        return;
+      }
+      renderedRef.current = true;
       // Clear any leftover content from prior attempts
       container.innerHTML = "";
       window.twttr?.widgets
         ?.createTweet(tweetId, container, { align: "center" })
         .then((el: HTMLElement | undefined) => {
-          if (!el) setError(true);
+          if (!el && !cancelled) setError(true);
+        })
+        .catch(() => {
+          if (!cancelled) setError(true);
         });
     }
 
     // If twttr is already loaded, render immediately
     if (window.twttr?.widgets) {
       render();
-      return;
     }
 
     // Only append the script if it hasn't been added yet
@@ -50,16 +56,20 @@ export function XEmbed({ tweetId, className }: XEmbedProps) {
       script.onload = render;
       script.onerror = () => setError(true);
       document.head.appendChild(script);
-    } else {
-      // Script tag exists but hasn't loaded yet — poll for it
-      const interval = setInterval(() => {
-        if (window.twttr?.widgets) {
-          clearInterval(interval);
-          render();
-        }
-      }, 100);
-      return () => clearInterval(interval);
     }
+
+    // Script tag may exist before widgets are ready, especially in React Strict Mode.
+    interval = setInterval(() => {
+      if (window.twttr?.widgets) {
+        if (interval) clearInterval(interval);
+        render();
+      }
+    }, 100);
+
+    return () => {
+      cancelled = true;
+      if (interval) clearInterval(interval);
+    };
   }, [tweetId]);
 
   if (error) {

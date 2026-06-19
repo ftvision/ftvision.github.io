@@ -115,7 +115,7 @@ const Tooltip: React.FC<TooltipProps> = ({
   });
 
   return (
-    <span className="relative inline-flex">
+    <span className="relative inline-block align-baseline">
       {trigger}
       {isOpen && (
         <div

@@ -1,0 +1,293 @@
+---
+title: "Access Denied Is Not a Moat"
+description: "Access denial can buy time, but it also teaches rivals that dependency is a vulnerability."
+date: "2026-06-14T12:00:00-07:00"
+type: opinion
+topics:
+  - ai
+lang: en
+---
+
+On June 12, 2026, Anthropic said the U.S. government had directed it to suspend access to Fable 5 and Mythos 5 for all foreign nationals, including foreign-national Anthropic employees<Reference
+  id="anthropic-fable-mythos-access"
+  citation="Anthropic. (2026). Statement on the US government directive to suspend access to Fable 5 and Mythos 5."
+  url="https://www.anthropic.com/news/fable-mythos-access"
+/>.<Note>Anthropic's announcement uses the legal category "foreign national," not the casual phrase "non-American." The distinction matters because the directive applied even to foreign-national Anthropic employees inside the company. It also means the category can catch people who are obviously central to the U.S. AI ecosystem. On X, commentators pointed to <a href="https://x.com/sarbjeetjohal/status/2065926429385318683" target="_blank" rel="noopener noreferrer">Andrej Karpathy</a>, a Slovak-Canadian AI researcher who had joined Anthropic, as an example of someone who could be covered by the rule if he is not a U.S. citizen.</Note>
+
+<XEmbed tweetId="2065597531644743999" className="my-8" />
+
+This incident differs from Anthropic's own commercial access decisions. The immediate order came from the government, not from Anthropic's product team. But Anthropic invited this reading: it has proactively shaped the narrative and the belief that frontier AI advantage can, and should, be protected by controlling access.
+
+To be clear, "moat" is not Anthropic's slogan. It is my reading of what this strategy is trying to do. The target is the strategic premise underneath its public argument: that controlling access to models, chips, and the American AI stack can preserve a lead long enough to create safety, leverage, and better terms of engagement.
+
+Anthropic has argued that a neck-and-neck U.S.-China AI race would make safety and governance harder<Reference
+  id="anthropic-2028-ai-leadership"
+  citation="Anthropic. (2026). 2028: Two scenarios for global AI leadership."
+  url="https://www.anthropic.com/research/2028-ai-leadership"
+/><Reference
+  id="anthropic-2028-x"
+  citation="Anthropic. (2026). X post announcing its paper on U.S.-China AI competition."
+  url="https://x.com/AnthropicAI/status/2054987444664377374"
+/><Note>Anthropic's own phrasing is: "A neck-and-neck race between American and Chinese AI labs could make industry and government-led safety and governance efforts more difficult, and less likely."</Note>. It has argued for maintaining and strengthening export controls on advanced semiconductors<Reference
+  id="anthropic-diffusion-rule"
+  citation="Anthropic. (2025). Securing America's compute advantage: Anthropic's position on the diffusion rule."
+  url="https://www.anthropic.com/news/securing-america-s-compute-advantage-anthropic-s-position-on-the-diffusion-rule"
+/><Reference
+  id="amodei-deepseek-export-controls"
+  citation="Dario Amodei. (2025). On DeepSeek and Export Controls."
+  url="https://darioamodei.com/post/on-deepseek-and-export-controls"
+/>. It has also restricted access to Claude in cases where competitors allegedly used the model in ways that violated its terms.
+
+The hardline position is not baseless. Claude has been genuinely strong in coding and agentic workflows. Anthropic helped define important pieces of the agent ecosystem, including the Model Context Protocol and Skills<Reference
+  id="anthropic-mcp"
+  citation="Anthropic. (2024). Introducing the Model Context Protocol."
+  url="https://www.anthropic.com/news/model-context-protocol"
+/><Reference
+  id="anthropic-skills"
+  citation="Anthropic. (2025). Equipping agents for the real world with Agent Skills."
+  url="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills"
+/>. Claude Code was the coding-agent product to beat. If you believe frontier AI is a short-window national-security race, and if you believe your lead is one of the few things preventing the world from breaking, then access control becomes tempting.
+
+But that logic does not create a moat. At most, it creates delay. Sometimes it does something worse: it helps rivals see the cost of dependence faster. Access denial does not freeze competitors in place. It turns replacement from an optional roadmap item into a strategic emergency.
+
+## The Model Access Lesson
+
+The clearest version of the pattern appeared in coding models.
+
+OpenAI had proved the basic promise of code-specialized models early. Its Codex research was published in July 2021, describing a GPT model fine-tuned on public GitHub code<Reference
+  id="openai-codex-2021"
+  citation="OpenAI. (2021). Evaluating large language models trained on code."
+  url="https://openai.com/index/evaluating-large-language-models-trained-on-code/"
+/>. But after that, OpenAI's public product center of gravity did not stay on coding. Anthropic kept pressing on that line, and Claude Code and Claude's API became the coding models many developers trusted most.
+
+WIRED later reported that Anthropic revoked OpenAI's Claude API access, saying OpenAI had violated Anthropic's terms of service while using Claude ahead of GPT-5<Reference
+  id="wired-openai-claude-access"
+  citation="WIRED. (2025). Anthropic Revokes OpenAI's Access to Claude."
+  url="https://www.wired.com/story/anthropic-revokes-openais-access-to-claude/"
+/>. Reporting also indicated that xAI staff had been using Anthropic models through Cursor until that access was cut off<Reference
+  id="sherwood-xai-claude"
+  citation="Sherwood News. (2026). Report: Anthropic cuts off xAI's access to its models for coding."
+  url="https://sherwood.news/tech/report-anthropic-cuts-off-xais-access-to-its-models-for-coding/"
+/>. That does not prove any particular cutoff directly produced any particular model. But the situation is more serious than ordinary replacement: once access becomes unreliable, self-reliance and self-sufficiency become urgent strategic priorities.
+
+<XEmbed tweetId="2009686466746822731" className="my-8" />
+
+Still, the strategic lesson is obvious enough. As long as a rival depends on you, you can still shape its choices. Price, speed, terms, and availability are all forms of leverage. Once you cut that dependence, the rival's goal becomes much simpler: escape you as quickly as possible.
+
+OpenAI's modern Codex is the proof. Codex returned in 2025 as a cloud-based software engineering agent, then evolved into GPT-5-Codex and later GPT-5.3-Codex, a model OpenAI described as the most capable agentic coding model it had released to date<Reference
+  id="openai-codex-2025"
+  citation="OpenAI. (2025). Introducing Codex."
+  url="https://openai.com/index/introducing-codex/"
+/><Reference
+  id="openai-gpt-5-codex"
+  citation="OpenAI. (2025). Introducing upgrades to Codex."
+  url="https://openai.com/index/introducing-upgrades-to-codex/"
+/><Reference
+  id="openai-gpt-5-3-codex"
+  citation="OpenAI. (2026). Introducing GPT-5.3-Codex."
+  url="https://openai.com/index/introducing-gpt-5-3-codex/"
+/>.
+
+That comeback did not stop at GPT-5.3-Codex. OpenAI later made GPT-5.5 the default starting point for most Codex tasks, describing it as its strongest option for complex coding, computer use, knowledge work, and research workflows<Reference
+  id="openai-gpt-5-5"
+  citation="OpenAI. (2026). Introducing GPT-5.5."
+  url="https://openai.com/index/introducing-gpt-5-5/"
+/><Reference
+  id="openai-codex-models-gpt-5-5"
+  citation="OpenAI Developers. (2026). Codex models."
+  url="https://developers.openai.com/codex/models"
+/>. More importantly, user reception no longer supports the story that Claude owns an unreachable coding lead<Reference
+  id="reddit-codex-best-gpt-5-5"
+  citation="r/OpenAI. (2026). Is Codex the best right now?"
+  url="https://www.reddit.com/r/OpenAI/comments/1t3pqc6/is_codex_the_best_right_now/"
+/><Reference
+  id="reddit-opus-4-8-complaints"
+  citation="r/ClaudeAI. (2026). What's happening, Opus 4.8?"
+  url="https://www.reddit.com/r/ClaudeAI/comments/1trs0gt/whats_happening_opus_48/"
+/><Reference
+  id="businessinsider-opus-4-7-backlash"
+  citation="Business Insider. (2026). The Claude backlash is here: Anthropic's Opus 4.7 draws complaints."
+  url="https://www.businessinsider.com/anthropic-claude-opus-4-7-backlash-tokens-2026-4"
+/>.<Note>In the linked discussions, Codex users describe GPT-5.5 as a strong default for real coding work, while Claude users complain about Opus token burn, latency, hanging sessions, instability, and regressions. The Business Insider piece reports the same backlash around Opus 4.7.</Note> That is the reversal: the company that lagged in coding agents now has a coding model users love, while Anthropic's lead no longer looks uncontested.
+
+Anthropic did not single-handedly create OpenAI's coding push. The point is that OpenAI had been visibly slow to return to coding. After proving the category with the original Codex, it let the public Codex API fade out and only returned with a cloud software-engineering agent in 2025. In the meantime, Anthropic had made coding one of Claude's central identities for a long stretch: from the upgraded Claude 3.5 Sonnet era that many users treated as "Sonnet 3.6," through Claude 3.7 Sonnet and Claude Code, and later through Sonnet 4.6 and Opus 4.6<Reference
+  id="anthropic-upgraded-3-5-sonnet"
+  citation="Anthropic. (2024). Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku."
+  url="https://www.anthropic.com/news/3-5-models-and-computer-use"
+/><Reference
+  id="anthropic-claude-3-7-sonnet-code"
+  citation="Anthropic. (2025). Claude 3.7 Sonnet and Claude Code."
+  url="https://www.anthropic.com/news/claude-3-7-sonnet"
+/><Reference
+  id="anthropic-sonnet-4-6"
+  citation="Anthropic. (2026). Introducing Claude Sonnet 4.6."
+  url="https://www.anthropic.com/news/claude-sonnet-4-6"
+/><Reference
+  id="anthropic-opus-4-6"
+  citation="Anthropic. (2026). Introducing Claude Opus 4.6."
+  url="https://www.anthropic.com/news/claude-opus-4-6"
+/>. My hypothesis is that the cutoff did not create OpenAI's replacement plan from nothing, but it likely shortened OpenAI's reaction time. We do not need to prove that the cutoff was the only cause to see how it could become strategically self-defeating. If it turns a postponable internal project into an urgent dependency problem, the backlash has already begun.
+
+As long as the dependency exists, so does the leverage. Once the dependency is cut, the leverage starts burning down.
+
+## The Stack-Independence Lesson
+
+The same pattern appears at national scale, but the mechanism is more complicated than any slogan.
+
+Anthropic's export-control argument is that compute advantage matters. If advanced chips are necessary for frontier training, then limiting access to those chips can slow an adversary and preserve a democratic lead. This is the cleanest version of the case, and it has real force. Chips are physical. Supply chains are observable. Export controls can bite in a way that model-output secrecy often cannot.
+
+But even here, denial has a second-order effect: it helps substitution gather consensus. The hard question is not whether export controls create friction. They do. The hard question is whether the friction preserves dependence or accelerates independence.
+
+Jensen Huang has been unusually blunt on this point. He argued in 2025 that U.S. chip export controls had failed by giving Chinese firms "the spirit, the energy and the government support" to accelerate domestic development<Reference
+  id="semafor-jensen-export-controls"
+  citation="Semafor. (2025). Nvidia CEO says US chip export controls on China are a failure."
+  url="https://www.semafor.com/article/05/21/2025/nvidia-ceo-says-us-chip-export-controls-on-china-are-a-failure"
+/><Reference
+  id="guardian-jensen-export-controls"
+  citation="The Guardian. (2025). US chip export controls are a failure because they spur Chinese development, Nvidia boss says."
+  url="https://www.theguardian.com/technology/2025/may/21/us-chip-export-controls-a-failure-spur-chinese-development-nvidia-boss-says"
+/>. In a later interview, he pushed a related argument: if the next few years are critical, the United States should want the world's AI development to happen on the American technology stack<Reference
+  id="dwarkesh-jensen"
+  citation="Dwarkesh Patel. (2026). Jensen Huang - TPU competition, why we should sell chips to China, and Nvidia's supply chain moat."
+  url="https://www.dwarkesh.com/p/jensen-huang"
+/>.<Note>Huang's point is about dependency as the practical form of U.S. leadership. Leadership lives not only in chip shipments, but in CUDA, libraries, developer habits, vendor relationships, and the decision to stay on the American stack instead of building around it.</Note>
+
+That distinction matters because dependence is a system property, not a shipment count. If Chinese labs can buy Nvidia chips, they remain tied to the American stack: GPUs, CUDA, libraries, debugging tools, deployment assumptions, vendor relationships, and the tacit knowledge around all of it. If they are denied those chips, the whole industrial system gets a different instruction: make the denied path less important.
+
+The DeepSeek-Huawei story shows both sides of this. First, the friction is real. Earlier reporting said DeepSeek tried to train R2 on Huawei's Ascend chips and hit problems with stability, interconnect, and the software stack. It fell back to Nvidia for training and kept Ascend only for inference<Reference
+  id="tomshardware-deepseek-r2-huawei-training"
+  citation="Tom's Hardware. (2025). DeepSeek reportedly urged by Chinese authorities to train new model on Huawei hardware."
+  url="https://www.tomshardware.com/tech-industry/artificial-intelligence/deepseek-reportedly-urged-by-chinese-authorities-to-train-new-model-on-huawei-hardware-after-multiple-failures-r2-training-to-switch-back-to-nvidia-hardware-while-ascend-gpus-handle-inference"
+/>. Then the picture changed. Newer reports say a Huawei-linked team completed full-parameter post-training of DeepSeek's 1.6-trillion-parameter V4-Pro on more than a thousand Ascend 910C chips, and that V4-Pro was built around Ascend from the start<Reference
+  id="tomshardware-deepseek-huawei-posttrain"
+  citation="Tom's Hardware. (2026). Huawei-led team claims it post-trained DeepSeek's 1.6-trillion-parameter model."
+  url="https://www.tomshardware.com/tech-industry/artificial-intelligence/huawei-led-team-claims-it-post-trained-deepseeks-1-6-trillion-parameter-models-on-ascend-910c-chips"
+/>.<Note>This was full-parameter post-training, not frontier pre-training from scratch. Its significance is that Ascend is moving from inference and experiments into training-class workloads that once looked out of reach.</Note> This does not mean Ascend has fully replaced Nvidia. It means substitution is no longer theoretical.
+
+Huawei is making the same point at the infrastructure layer. Its Ascend roadmap promises the 950DT in late 2026 for training and inference, the 960 in late 2027 with double the computing power, memory bandwidth, memory capacity, and interconnect ports of the 950 generation, and the 970 in late 2028 with another intended jump<Reference
+  id="huawei-ascend-roadmap"
+  citation="Huawei. (2025). Groundbreaking SuperPoD Interconnect: Leading a New Paradigm for AI Infrastructure."
+  url="https://www.huawei.com/en/news/2025/9/hc-xu-keynote-speech"
+/>.<Note>The roadmap matters as a coordination signal. Customers, labs, ministries, and suppliers can plan around the promised Ascend generations even before every chip ships at scale.</Note>
+
+This is why the access-control question cannot stop at "did the policy slow training this year?" It has to ask a harder question: did the policy preserve long-term dependence on the American stack, or did it help turn stack independence into a national industrial priority?
+
+The model layer points in the same direction. DeepSeek released R1 in January 2025 with open model weights and a permissive license for broad use<Reference
+  id="deepseek-r1-release"
+  citation="DeepSeek. (2025). DeepSeek-R1 Release."
+  url="https://api-docs.deepseek.com/news/news250120"
+/><Reference
+  id="deepseek-r1-x"
+  citation="DeepSeek. (2025). X announcement that DeepSeek-R1 is MIT licensed for clear open access."
+  url="https://x.com/deepseek_ai/status/1881318130334814301"
+/>. Stanford HAI later described Chinese open-weight models, including Qwen and DeepSeek, as globally significant and widely adopted<Reference
+  id="stanford-china-open-weight"
+  citation="Stanford HAI. (2025). Beyond DeepSeek: China's Diverse Open-Weight AI Ecosystem and Its Policy Implications."
+  url="https://hai.stanford.edu/policy/beyond-deepseek-chinas-diverse-open-weight-ai-ecosystem-and-its-policy-implications"
+/>. Hugging Face's 2026 report similarly described a rapidly growing open-weight and open-source model ecosystem, with Chinese models accounting for a large share of recent download activity<Reference
+  id="huggingface-open-source-2026"
+  citation="Hugging Face. (2026). State of Open Source on Hugging Face: Spring 2026."
+  url="https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026"
+/>.<Note>Stanford HAI says Chinese open-weight LLMs "seem to have caught up or even pulled ahead" in capabilities and adoption. Hugging Face's report says China surpassed the U.S. in monthly and overall downloads, with Chinese models accounting for a plurality, 41%, of downloads.</Note>
+
+Dario Amodei's counterargument is serious: DeepSeek does not show controls are useless; it shows that controls need to be stronger and better enforced, especially at the scale of millions of chips<Reference
+  id="amodei-deepseek-controls-later"
+  citation="Dario Amodei. (2025). On DeepSeek and Export Controls."
+  url="https://darioamodei.com/post/on-deepseek-and-export-controls"
+/>.
+
+But the open-weight wave does prove something else: capabilities do not stay bottled up just because a gatekeeper wants them to. Z.ai's GLM-5.2 is the newest exhibit. Z.ai describes it as a long-horizon, coding-oriented, MIT-licensed open model with a 1M-token context window<Reference
+  id="zai-glm-5-2"
+  citation="Z.ai. (2026). GLM-5.2: Built for Long-Horizon Tasks."
+  url="https://huggingface.co/blog/zai-org/glm-52-blog"
+/>. Artificial Analysis ranked GLM-5.2 as the leading open-weight model on its Intelligence Index and effectively level with GPT-5.5 on GDPval-AA v2<Reference
+  id="artificial-analysis-glm-5-2"
+  citation="Artificial Analysis. (2026). GLM-5.2 is the new leading open weights model on the Artificial Analysis Intelligence Index."
+  url="https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index"
+/>. Arena reported that GLM-5.2 Max ranked number two in Code Arena: Frontend, behind only Fable 5 and ahead of Claude Opus 4.7 Thinking<Reference
+  id="arena-glm-5-2-code"
+  citation="Arena. (2026). X post on GLM-5.2 Max ranking number two in Code Arena: Frontend."
+  url="https://x.com/arena/status/2066957802741043641"
+/>. Then Z.ai founder Jie Tang replied to Elon Musk's estimate of how long a Chinese Fable-class model would take by saying it "won't take that long"<Reference
+  id="jietang-fable-class"
+  citation="Jie Tang. (2026). X reply on the timing of a Chinese Fable-class model."
+  url="https://x.com/jietang/status/2067580270078030088"
+/>.
+
+<XEmbed tweetId="2066957802741043641" className="my-8" />
+
+<XEmbed tweetId="2067580270078030088" className="my-8" />
+
+Together, those signals weaken the moat logic. A frontier lead can be real and still temporary. A model can be closed and still teach the market what is possible. A constrained country can still discover efficiency paths unconstrained competitors did not prioritize. That is the core mistake in treating access denial as durable leverage: it assumes the denied party will stand still. In reality, denial changes the denied party.
+
+## The Finite-Game Fallacy
+
+The access-control strategy makes the most sense if AI is a finite race: one lab or one country crosses the line, gets far enough ahead, and then negotiates from a position no one else can challenge.
+
+The strongest version of this story is recursive self-improvement, or RSI. If the first lab to build a system capable of materially accelerating AI research can use that system to build the next one, then the lead might compound. Compute advantage becomes model advantage. Model advantage becomes research advantage. Research advantage becomes a bigger model advantage. In that world, crossing the bar could create an expanding gap rather than a temporary lead.
+
+That is a powerful vision. It may even be true. The question is not whether compounding is possible. The question is whether everyone else will peacefully behave as though Anthropic, or any one lab, should be allowed to compound first. Anthropic's public policy paper points in this direction when it argues that a 12-24 month lead by 2028 would be enormously advantageous, would help democracies avoid a destabilizing neck-and-neck race, and would make engagement with Chinese AI experts more likely to succeed<Reference
+  id="anthropic-2028-ai-leadership"
+  citation="Anthropic. (2026). 2028: Two scenarios for global AI leadership."
+  url="https://www.anthropic.com/research/2028-ai-leadership"
+/>. It also argues that compute advantage can compound into algorithmic advantage and then into a durable AI lead. This is the real steelman: if RSI is close, then a small lead is not small. It is the seed of a much larger lead.
+
+But the political conclusion does not follow. If everyone believes the first actor across the line gets a compounding advantage, why would everyone else calmly allow that actor to cross? Why would China accept it? Why would open-weight labs accept it? Why would other U.S. labs accept it? The closer the prize looks to recursive self-improvement, the less likely rivals are to treat access denial as a reason to slow down. They will treat it as proof that the window is closing.
+
+This is the Cold War lesson. If one side describes the race as existential, builds controls to preserve a lead, and says it will talk seriously after that lead is comfortable, the other side does not hear "safety." It hears "arms race." The promise of later conversation can easily become the reason everyone accelerates now.
+
+The last few years of AI have not looked like winner-take-all.
+
+OpenAI looked untouchable after ChatGPT. Google caught up faster than many people expected. Anthropic looked dominant in coding. OpenAI came back with Codex. Chinese open-weight models looked like a sideshow until they were suddenly central to the global model ecosystem. The pattern is not permanent dominance. The pattern is leap, panic, imitation, compression, and leap again. History is not moving in a flat circle; it is spiraling upward. Each round of catch-up raises the baseline for the next round of competition.
+
+There are two reasons this keeps happening.
+
+First, the follower's job is easier than the pioneer's. The pioneer must prove that a path exists. The follower gets to run down a path whose existence has already been demonstrated. Once the market knows that coding agents matter, every serious lab can justify spending on coding agents. Once the market knows that reasoning traces excite users, every serious lab can test the same surface. And once the market knows that smaller, cheaper, good-enough open models can win adoption, the denied party has another route out of dependence: it does not need to beat the frontier model everywhere to make the gatekeeper less necessary.
+
+Second, information flows too quickly. Researchers move. Engineers talk. Users compare. Benchmarks leak signal even when model weights do not. Papers omit details but reveal enough. Product behavior teaches competitors what users value. The secret is rarely a single secret. It is a bundle of decisions, and enough of those decisions become legible through use.
+
+This is why a one-year lead should not be confused with ownership of the future. A lead is useful. A lead can matter. A lead can give time. But a lead is not a crossing bar where the winner gets to rest.
+
+## Time For What?
+
+The more defensible case for access denial is not that denial creates a permanent moat. Anthropic does not need to claim that. What it can really defend is simpler: denial buys time.
+
+Fine. Then the decisive question is: time for what?
+
+If the answer is safety, then denial alone is insufficient. Safety requires coordination, evaluations, incident reporting, standards, and some level of mutual visibility. You do not get those by teaching every rival that your platform can disappear the moment politics or competition turns against them.
+
+If the answer is standards, denial is self-defeating. Standards win by adoption. MCP became important because it was useful across the ecosystem, not because Anthropic kept it behind a wall. The more a standard becomes a shared substrate, the more leverage its originator has. The more it becomes a permissioned club, the more rivals are pushed to build substitutes.
+
+If the answer is negotiation, denial poisons the table. A dependency can create leverage, but leverage has to be spent carefully. If the other side believes you will use access as a weapon whenever the balance shifts, it will treat independence as the first condition of negotiation.
+
+If the answer is commercial runway, then say that plainly. There is nothing mysterious about wanting more time to monetize a lead. But commercial runway is not the same argument as safety. It should not be smuggled into the moral language of global governance.
+
+The contradiction is that many of the stated reasons for access denial require cooperation, while access denial teaches everyone to reduce cooperation. It buys time in the currency of competition while claiming to spend that time on goals denominated in trust.
+
+## Start The Conversation Early
+
+Anthropic's fear of a reckless race is not imaginary. A world where every frontier lab and every major country rushes deployment because it is afraid of falling behind is a bad world. The company is right to worry about that.
+
+But if your solution to a race is to wait until you are comfortably ahead before you sit down with everyone else, you are not really proposing a conversation. You are waiting for surrender.
+
+This is where Anthropic's own "neck-and-neck race" sentence deserves to be revisited. The company says such a race would make safety and governance efforts harder. But in the same public argument, the practical prescription is not to begin with dialogue. It is to restrict compute, restrict model access, close loopholes, deter distillation, export the American stack, and then engage from a position of overwhelming advantage<Reference
+  id="anthropic-2028-ai-leadership"
+  citation="Anthropic. (2026). 2028: Two scenarios for global AI leadership."
+  url="https://www.anthropic.com/research/2028-ai-leadership"
+/>. That may be a coherent theory of leverage. It is not yet evidence of a serious attempt at conversation.
+
+That is the missing empirical step. Anthropic's essay gives many reasons to distrust the CCP, and some of those reasons are real. But it slides too easily from distrust of a political system to the presumption that Chinese AI practitioners, policy researchers, and frontier labs are not available for meaningful safety dialogue. I do not see that established in the public record. If the claim is that conversation will fail unless the United States first obtains a commanding lead, then the burden is to show that the other side has explicitly rejected conversation, not merely that the other side is strategically competitive.
+
+No serious competitor accepts that. No serious country accepts that. Certainly China will not accept it. OpenAI will not accept it either. Nor will xAI, Google, Meta, Mistral, DeepSeek, Qwen, or the next lab that discovers it can win adoption by being cheaper, open, or merely good enough.
+
+Access denial can be a tactic. It can slow. It can punish. It can protect a narrow entry point for a while. In some cases, it may even be justified.
+
+But it is not a moat.
+
+A moat makes dependence durable. Access denial teaches the dependent party to escape. A moat preserves leverage. Access denial spends leverage. A moat gives you time to build trust. Access denial tells everyone watching that trust is dangerous.
+
+If Anthropic wants the world to coordinate before the race becomes uncontrollable, it should start the conversation while it still has real technical credibility and real ecosystem influence. Waiting for a comfortable lead is waiting for a world that will not arrive.
+
+The moat is already melting. The only question is whether the trust melts first.
+
+<References />

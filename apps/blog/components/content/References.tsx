@@ -20,7 +20,6 @@ export interface ReferencesProps {
  *
  * Usage in MDX:
  * ```mdx
- * ## References
  * <References />
  * ```
  */

@@ -44,6 +44,7 @@ export function Reference({ id, citation, url, className }: ReferenceProps) {
       href={`#ref-${id}`}
       className={cn(
         'reference-link',
+        'align-baseline',
         'text-link hover:text-link-hover',
         'transition-colors no-underline',
         className
