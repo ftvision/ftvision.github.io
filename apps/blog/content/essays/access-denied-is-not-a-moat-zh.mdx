@@ -1,0 +1,295 @@
+---
+title: "断供不是护城河"
+description: "断供可以争取时间，但也会教会对手：依赖本身就是脆弱性。"
+date: "2026-06-14T12:00:00-07:00"
+type: opinion
+topics:
+  - ai
+lang: zh
+translationOf: "access-denied-is-not-a-moat"
+draft: true
+---
+
+2026 年 6 月 12 日，Anthropic 表示，美国政府要求它暂停向所有 foreign national 提供 Fable 5 和 Mythos 5 的访问权限，其中也包括 Anthropic 公司内部的 foreign-national 员工<Reference
+  id="anthropic-fable-mythos-access"
+  citation="Anthropic. (2026). Statement on the US government directive to suspend access to Fable 5 and Mythos 5."
+  url="https://www.anthropic.com/news/fable-mythos-access"
+/>。<Note>Anthropic 的公告使用的是法律意义上的 "foreign national"，而不是日常语境里的“非美国人”。这个区别很重要，因为这项指令甚至适用于 Anthropic 公司内部的 foreign-national 员工。它也意味着，这个类别可能覆盖一些显然已经深度参与美国 AI 生态的人。X 上有人就提到 <a href="https://x.com/sarbjeetjohal/status/2065926429385318683" target="_blank" rel="noopener noreferrer">Andrej Karpathy</a>：他是 Slovak-Canadian AI 研究者，已经加入 Anthropic，如果他不是美国公民，也可能被这条规则覆盖。</Note>
+
+<XEmbed tweetId="2065597531644743999" className="my-8" />
+
+这件事和 Anthropic 自己在商业层面的断供并不完全一样。直接命令来自美国政府，而不是 Anthropic 的产品团队。但这是 Anthropic 自找的：它一直在塑造一种叙事，即前沿 AI 优势可以、也需要通过控制供给来保护。
+
+先说清楚：“护城河”不是 Anthropic 的原话，而是我对它这套做法目的的判断。批评对象是它公开论述背后的战略前提：通过控制模型、芯片和美国 AI 技术栈的供给，可以把领先优势维持到足够久，从而换来安全、杠杆和更好的谈判条件。
+
+Anthropic 认为，美国和中国 AI 实验室之间如果进入白热化竞争，会让安全和治理变得更难<Reference
+  id="anthropic-2028-ai-leadership"
+  citation="Anthropic. (2026). 2028: Two scenarios for global AI leadership."
+  url="https://www.anthropic.com/research/2028-ai-leadership"
+/><Reference
+  id="anthropic-2028-x"
+  citation="Anthropic. (2026). X post announcing its paper on U.S.-China AI competition."
+  url="https://x.com/AnthropicAI/status/2054987444664377374"
+/><Note>Anthropic 的原话是："A neck-and-neck race between American and Chinese AI labs could make industry and government-led safety and governance efforts more difficult, and less likely."</Note>。它也主张维持并强化对先进半导体的出口管制<Reference
+  id="anthropic-diffusion-rule"
+  citation="Anthropic. (2025). Securing America's compute advantage: Anthropic's position on the diffusion rule."
+  url="https://www.anthropic.com/news/securing-america-s-compute-advantage-anthropic-s-position-on-the-diffusion-rule"
+/><Reference
+  id="amodei-deepseek-export-controls"
+  citation="Dario Amodei. (2025). On DeepSeek and Export Controls."
+  url="https://darioamodei.com/post/on-deepseek-and-export-controls"
+/>。它还限制过竞争对手对 Claude 的访问，理由是竞争对手涉嫌以违反服务条款的方式使用模型。
+
+这个强硬立场并不是没有道理。Claude 在 coding 和 agentic workflow 上确实很强。Anthropic 也定义了 agent 生态里一些重要组件，包括 Model Context Protocol 和 Skills<Reference
+  id="anthropic-mcp"
+  citation="Anthropic. (2024). Introducing the Model Context Protocol."
+  url="https://www.anthropic.com/news/model-context-protocol"
+/><Reference
+  id="anthropic-skills"
+  citation="Anthropic. (2025). Equipping agents for the real world with Agent Skills."
+  url="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills"
+/>。Claude Code 就是 coding agent 产品里的标杆。如果你相信前沿 AI 是一个窗口很短的国家安全竞赛，如果你相信自己的领先是阻止世界崩溃的少数手段之一，那么断供就会变得很有诱惑力。
+
+但这个逻辑造不出护城河。它最多制造延迟；有时候，它还会让对手更快看清依赖的代价。断供不会把竞争对手冻结在原地。它会把“替换依赖”从一个可选 roadmap 项目，变成一个战略紧急事项。
+
+## 模型断供的教训
+
+这个模式最清楚的版本，出现在 coding model 上。
+
+OpenAI 很早就证明了专门为代码训练的模型有价值。它在 2021 年 7 月发表 Codex 研究，介绍了一个在公开 GitHub 代码上 fine-tune 的 GPT 模型<Reference
+  id="openai-codex-2021"
+  citation="OpenAI. (2021). Evaluating large language models trained on code."
+  url="https://openai.com/index/evaluating-large-language-models-trained-on-code/"
+/>。但后来，OpenAI 的公开产品重心没有继续放在 coding 上。Anthropic 倒是一直专注这条线，结果 Claude Code 和 Claude API 成了很多开发者最信任的 coding 模型。
+
+WIRED 后来报道说，Anthropic 撤销了 OpenAI 的 Claude API 访问权限，称 OpenAI 在 GPT-5 发布前使用 Claude 时违反了 Anthropic 的服务条款<Reference
+  id="wired-openai-claude-access"
+  citation="WIRED. (2025). Anthropic Revokes OpenAI's Access to Claude."
+  url="https://www.wired.com/story/anthropic-revokes-openais-access-to-claude/"
+/>。另有报道显示，xAI 员工曾通过 Cursor 使用 Anthropic 模型，直到这条访问路径被切断<Reference
+  id="sherwood-xai-claude"
+  citation="Sherwood News. (2026). Report: Anthropic cuts off xAI's access to its models for coding."
+  url="https://sherwood.news/tech/report-anthropic-cuts-off-xais-access-to-its-models-for-coding/"
+/>。这未必能证明某一次切断直接导致了某一个模型。但情况比“替换依赖很合理”更严重：一旦访问变得不可靠，自食其力、自给自足就不再是口号，而是重要且紧急的任务。
+
+<XEmbed tweetId="2009686466746822731" className="my-8" />
+
+这里的战略教训足够明显。如果竞争对手只是因为方便而使用你的模型，那么这种依赖就是你的优势。在此之前，对方可以继续推迟内部替代方案。之后，替代方案会有负责人、有 deadline，也有拿到资源的理由。
+
+OpenAI 现在的 Codex 就是证据。Codex 在 2025 年以云端软件工程 agent 的形式回归，后来演化成 GPT-5-Codex，再后来是 GPT-5.3-Codex。OpenAI 称 GPT-5.3-Codex 是它当时发布过的最强 agentic coding model<Reference
+  id="openai-codex-2025"
+  citation="OpenAI. (2025). Introducing Codex."
+  url="https://openai.com/index/introducing-codex/"
+/><Reference
+  id="openai-gpt-5-codex"
+  citation="OpenAI. (2025). Introducing upgrades to Codex."
+  url="https://openai.com/index/introducing-upgrades-to-codex/"
+/><Reference
+  id="openai-gpt-5-3-codex"
+  citation="OpenAI. (2026). Introducing GPT-5.3-Codex."
+  url="https://openai.com/index/introducing-gpt-5-3-codex/"
+/>。
+
+这个回归没有停在 GPT-5.3-Codex。OpenAI 后来把 GPT-5.5 设为大多数 Codex 任务的默认起点，并称它是复杂 coding、computer use、知识工作和研究工作流里的最强选项<Reference
+  id="openai-gpt-5-5"
+  citation="OpenAI. (2026). Introducing GPT-5.5."
+  url="https://openai.com/index/introducing-gpt-5-5/"
+/><Reference
+  id="openai-codex-models-gpt-5-5"
+  citation="OpenAI Developers. (2026). Codex models."
+  url="https://developers.openai.com/codex/models"
+/>。更重要的是，用户反馈已经不再支持“Claude 拥有不可追赶的 coding lead”这个叙事<Reference
+  id="reddit-codex-best-gpt-5-5"
+  citation="r/OpenAI. (2026). Is Codex the best right now?"
+  url="https://www.reddit.com/r/OpenAI/comments/1t3pqc6/is_codex_the_best_right_now/"
+/><Reference
+  id="reddit-opus-4-8-complaints"
+  citation="r/ClaudeAI. (2026). What's happening, Opus 4.8?"
+  url="https://www.reddit.com/r/ClaudeAI/comments/1trs0gt/whats_happening_opus_48/"
+/><Reference
+  id="businessinsider-opus-4-7-backlash"
+  citation="Business Insider. (2026). The Claude backlash is here: Anthropic's Opus 4.7 draws complaints."
+  url="https://www.businessinsider.com/anthropic-claude-opus-4-7-backlash-tokens-2026-4"
+/>。<Note>在链接里的讨论中，Codex 用户把 GPT-5.5 描述成真实 coding 工作里的强默认选项；Claude 用户则抱怨 Opus 的 token burn、延迟、卡住的 session、不稳定和 regression。Business Insider 那篇文章也报道了围绕 Opus 4.7 的类似反弹。</Note> 这就是反转：曾经在 coding agent 上落后的公司，现在拥有了一个大众热爱的 coding model，而 Anthropic 的领先不再显得不可争议。
+
+Anthropic 当然不是单独促成了 OpenAI 重回 coding。重点是，OpenAI 曾经明显慢了下来。它用最早的 Codex 证明了这个品类之后，让公开 Codex API 慢慢淡出，直到 2025 年才以云端软件工程 agent 的形式回归。与此同时，Anthropic 在很长一段时间里把 coding 变成 Claude 的核心身份之一：从很多用户口中所谓的 "Sonnet 3.6"（官方是升级版 Claude 3.5 Sonnet）时代，到 Claude 3.7 Sonnet 和 Claude Code，再到 Sonnet 4.6 和 Opus 4.6<Reference
+  id="anthropic-upgraded-3-5-sonnet"
+  citation="Anthropic. (2024). Introducing computer use, a new Claude 3.5 Sonnet, and Claude 3.5 Haiku."
+  url="https://www.anthropic.com/news/3-5-models-and-computer-use"
+/><Reference
+  id="anthropic-claude-3-7-sonnet-code"
+  citation="Anthropic. (2025). Claude 3.7 Sonnet and Claude Code."
+  url="https://www.anthropic.com/news/claude-3-7-sonnet"
+/><Reference
+  id="anthropic-sonnet-4-6"
+  citation="Anthropic. (2026). Introducing Claude Sonnet 4.6."
+  url="https://www.anthropic.com/news/claude-sonnet-4-6"
+/><Reference
+  id="anthropic-opus-4-6"
+  citation="Anthropic. (2026). Introducing Claude Opus 4.6."
+  url="https://www.anthropic.com/news/claude-opus-4-6"
+/>。我的假设是，断供并没有凭空制造 OpenAI 的替代计划，但它很可能缩短了 OpenAI 的反应时间。不必证明断供是唯一原因，才能说明它在战略上可能反噬自己。只要它把一个可以继续推迟的内部项目，变成一个必须立刻解决的依赖问题，这个反噬就已经开始了。
+
+只要竞争对手还依赖你，你就仍然能影响它的选择。价格、速度、条款、可用性，都可以成为杠杆。一旦你把这条依赖切断，对方的目标就会变得简单得多：尽快摆脱你。
+
+## 技术栈独立的教训
+
+同样的模式也出现在国家尺度上，只是机制更复杂，也更不适合用一句口号概括。
+
+Anthropic 关于出口管制的论点是：算力优势很重要。如果先进芯片是前沿模型训练的必要条件，那么限制这些芯片的供给，就可以拖慢对手，并维持民主国家的领先。这是这个论点最干净的版本，而且确实有力量。芯片是物理的。供应链是可观察的。出口管制能造成模型输出保密常常做不到的硬约束。
+
+但即使在这里，断供也有二阶效应：它会让替代方案迅速获得共识。真正难的问题不是出口管制会不会制造摩擦。它当然会。真正的问题是，这种摩擦是在保留依赖，还是在加速独立。
+
+黄仁勋在这一点上说得很直白。他在 2025 年说，美国芯片出口管制失败了，因为它给了中国公司 "the spirit, the energy and the government support" 去加速本土发展<Reference
+  id="semafor-jensen-export-controls"
+  citation="Semafor. (2025). Nvidia CEO says US chip export controls on China are a failure."
+  url="https://www.semafor.com/article/05/21/2025/nvidia-ceo-says-us-chip-export-controls-on-china-are-a-failure"
+/><Reference
+  id="guardian-jensen-export-controls"
+  citation="The Guardian. (2025). US chip export controls are a failure because they spur Chinese development, Nvidia boss says."
+  url="https://www.theguardian.com/technology/2025/may/21/us-chip-export-controls-a-failure-spur-chinese-development-nvidia-boss-says"
+/>。在之后的一次访谈里，他又提出了相关观点：如果接下来几年很关键，美国就应该希望全世界的 AI 发展都发生在美国技术栈上<Reference
+  id="dwarkesh-jensen"
+  citation="Dwarkesh Patel. (2026). Jensen Huang - TPU competition, why we should sell chips to China, and Nvidia's supply chain moat."
+  url="https://www.dwarkesh.com/p/jensen-huang"
+/>。<Note>黄仁勋的重点是：依赖本身就是美国领导力的实际形态。领导力不只存在于芯片出货量里，也存在于 CUDA、库、开发者习惯、供应商关系，以及继续留在美国技术栈上而不是绕开它的决定里。</Note>
+
+这个区别很重要。依赖是一个系统状态，不只是出货量。如果中国实验室可以买 Nvidia 芯片，它们就仍然被绑在美国技术栈上：GPU、CUDA、库、调试工具、部署假设、供应商关系，以及围绕这一切形成的默会知识。如果这些芯片被断供，整个产业系统收到的指令就会变成另一件事：让这条被卡住的路径变得不那么重要。
+
+DeepSeek-华为的故事同时展示了这两面。先看摩擦。早期报道说，DeepSeek 曾试图在华为昇腾芯片上训练 R2，但遇到了稳定性、互联和软件栈问题。它后来退回 Nvidia 做训练，只把昇腾留给推理<Reference
+  id="tomshardware-deepseek-r2-huawei-training"
+  citation="Tom's Hardware. (2025). DeepSeek reportedly urged by Chinese authorities to train new model on Huawei hardware."
+  url="https://www.tomshardware.com/tech-industry/artificial-intelligence/deepseek-reportedly-urged-by-chinese-authorities-to-train-new-model-on-huawei-hardware-after-multiple-failures-r2-training-to-switch-back-to-nvidia-hardware-while-ascend-gpus-handle-inference"
+/>。然后局面开始变化。较新的报道说，一个华为相关团队在一千多块昇腾 910C 芯片上完成了 DeepSeek 1.6 万亿参数 V4-Pro 的全参数后训练，而且 V4-Pro 从一开始就是围绕昇腾构建的<Reference
+  id="tomshardware-deepseek-huawei-posttrain"
+  citation="Tom's Hardware. (2026). Huawei-led team claims it post-trained DeepSeek's 1.6-trillion-parameter model."
+  url="https://www.tomshardware.com/tech-industry/artificial-intelligence/huawei-led-team-claims-it-post-trained-deepseeks-1-6-trillion-parameter-models-on-ascend-910c-chips"
+/>。<Note>这里说的是 full-parameter post-training，不是从零开始 pre-train 一个 frontier model。它的重要性在于，昇腾正在从 inference 和实验，进入过去看起来够不到的 training-class workload。</Note> 这不是说昇腾已经完全取代 Nvidia。它说明的是另一件事：替代不再只是理论。
+
+华为在基础设施层面也发出了同一个信号。它的昇腾路线图规划了 2026 年底用于训练和推理的 950DT、2027 年底在算力、内存带宽、内存容量和互联端口上比 950 一代翻倍的 960，以及 2028 年底的 970<Reference
+  id="huawei-ascend-roadmap"
+  citation="Huawei. (2025). Groundbreaking SuperPoD Interconnect: Leading a New Paradigm for AI Infrastructure."
+  url="https://www.huawei.com/en/news/2025/9/hc-xu-keynote-speech"
+/>。<Note>Roadmap 的意义在于协调。即使每一代芯片还没有大规模交付，客户、实验室、部委和供应商也可以围绕这些承诺的昇腾世代来计划。</Note>
+
+所以，断供问题不能停在“这项政策今年有没有拖慢训练”上。它必须问一个更难的问题：这项政策是在保留对美国技术栈的长期依赖，还是在帮助把技术栈独立变成国家级产业目标？
+
+模型层也指向同一个方向。DeepSeek 在 2025 年 1 月发布 R1，开放模型权重，并使用宽松许可证方便广泛使用<Reference
+  id="deepseek-r1-release"
+  citation="DeepSeek. (2025). DeepSeek-R1 Release."
+  url="https://api-docs.deepseek.com/news/news250120"
+/><Reference
+  id="deepseek-r1-x"
+  citation="DeepSeek. (2025). X announcement that DeepSeek-R1 is MIT licensed for clear open access."
+  url="https://x.com/deepseek_ai/status/1881318130334814301"
+/>。Stanford HAI 后来把包括 Qwen 和 DeepSeek 在内的中国开放权重模型描述为具有全球意义，并且被广泛采用<Reference
+  id="stanford-china-open-weight"
+  citation="Stanford HAI. (2025). Beyond DeepSeek: China's Diverse Open-Weight AI Ecosystem and Its Policy Implications."
+  url="https://hai.stanford.edu/policy/beyond-deepseek-chinas-diverse-open-weight-ai-ecosystem-and-its-policy-implications"
+/>。Hugging Face 的 2026 年报告也描述了一个快速增长的开放权重和开源模型生态，其中中国模型占据了近期下载活动的很大份额<Reference
+  id="huggingface-open-source-2026"
+  citation="Hugging Face. (2026). State of Open Source on Hugging Face: Spring 2026."
+  url="https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026"
+/>。<Note>Stanford HAI 说，中国 open-weight LLM 在能力和采用上 "seem to have caught up or even pulled ahead"。Hugging Face 的报告说，中国在月下载量和总下载量上都超过了美国，中国模型占下载量的 plurality，即 41%。</Note>
+
+Dario Amodei 的反驳很严肃：DeepSeek 并不说明出口管制没用；它说明管制需要更强、执行得更好，尤其是在数百万芯片的规模上<Reference
+  id="amodei-deepseek-controls-later"
+  citation="Dario Amodei. (2025). On DeepSeek and Export Controls."
+  url="https://darioamodei.com/post/on-deepseek-and-export-controls"
+/>。
+
+但开放权重浪潮确实证明了另一件事：能力不会因为守门人想把它关进瓶子里，就真的停在那里。Z.ai 的 GLM-5.2 是最新例子。Z.ai 把它描述成一个面向长周期任务、偏 coding、MIT 许可、拥有 100 万 token 上下文窗口的开放模型<Reference
+  id="zai-glm-5-2"
+  citation="Z.ai. (2026). GLM-5.2: Built for Long-Horizon Tasks."
+  url="https://huggingface.co/blog/zai-org/glm-52-blog"
+/>。Artificial Analysis 把 GLM-5.2 排为 Intelligence Index 上领先的开放权重模型，并认为它在 GDPval-AA v2 上基本与 GPT-5.5 持平<Reference
+  id="artificial-analysis-glm-5-2"
+  citation="Artificial Analysis. (2026). GLM-5.2 is the new leading open weights model on the Artificial Analysis Intelligence Index."
+  url="https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index"
+/>。Arena 报告说，GLM-5.2 Max 在 Code Arena: Frontend 上排名第二，只落后 Fable 5，并领先 Claude Opus 4.7 Thinking<Reference
+  id="arena-glm-5-2-code"
+  citation="Arena. (2026). X post on GLM-5.2 Max ranking number two in Code Arena: Frontend."
+  url="https://x.com/arena/status/2066957802741043641"
+/>。随后，Z.ai 创始人唐杰在回应马斯克关于中国还要多久才能出现 Fable-class 模型的估计时说，"won't take that long"<Reference
+  id="jietang-fable-class"
+  citation="Jie Tang. (2026). X reply on the timing of a Chinese Fable-class model."
+  url="https://x.com/jietang/status/2067580270078030088"
+/>。
+
+<XEmbed tweetId="2066957802741043641" className="my-8" />
+
+<XEmbed tweetId="2067580270078030088" className="my-8" />
+
+这些信号合在一起，削弱了“护城河逻辑”。前沿领先可以是真实的，同时也可能是暂时的。闭源模型仍然会教会市场什么是可能的。被限制的一方仍然可能发现那些不受限制的竞争者没有优先探索的效率路径。把断供当作持久杠杆，核心错误就在这里：它假设被断供的一方会停在原地。但现实中，断供会改变被断供的一方。
+
+## 有限游戏谬误
+
+断供战略最说得通的前提，是把 AI 看成一个有限竞赛：某一个实验室或者某一个国家先跨过终点，领先到没有人可以挑战，然后从这个位置开始谈判。
+
+这个故事最强的版本，是递归自我改进（recursive self-improvement, RSI）。如果第一个做出能够实质加速 AI 研究的系统的实验室，可以用这个系统造出下一个系统，那么领先可能会复利。算力优势变成模型优势。模型优势变成研究优势。研究优势又变成更大的模型优势。在这个世界里，跨过那条线创造的可能不是临时领先，而是不断扩大的差距。
+
+这是一个强大的愿景。它甚至可能是真的。问题不在于复利是否可能。问题在于，其他人是否会平静地接受 Anthropic，或者任何一个实验室，应该被允许第一个复利。Anthropic 的公共政策文章也指向这个方向：它认为，到 2028 年拥有 12-24 个月领先会极其有利，可以帮助民主国家避免具有破坏性的白热化竞争，也会让与中国 AI 专家的接触更可能成功<Reference
+  id="anthropic-2028-ai-leadership"
+  citation="Anthropic. (2026). 2028: Two scenarios for global AI leadership."
+  url="https://www.anthropic.com/research/2028-ai-leadership"
+/>。它还认为算力优势可以复利成算法优势，再复利成持久的 AI 领先。这是真正强版本的论证：如果 RSI 很近，那么一个小领先就不是小领先。它是更大领先的种子。
+
+但政治结论并不跟着成立。如果所有人都相信第一个跨线者会获得复利优势，为什么其他人会平静地允许它跨线？为什么中国会接受？为什么开放权重实验室会接受？为什么其他美国实验室会接受？奖励越像递归自我改进，竞争者就越不会把断供当成放慢脚步的理由。他们会把它当成窗口正在关闭的证明。
+
+这就是冷战教训。如果一方把竞赛描述成 existential，建立控制来维持领先，并说自己会在领先足够舒服之后认真对话，另一方听到的不是“安全”。它听到的是“军备竞赛”。稍后再谈的承诺，很容易变成所有人现在加速的理由。
+
+过去几年，AI 领域的实际节奏也不像“赢家通吃”。
+
+ChatGPT 之后，OpenAI 看起来不可触碰。Google 比很多人预期更快地追了上来。Anthropic 在编程上看起来占优。OpenAI 又用 Codex 回来了。中国开放权重模型（open-weight models）曾经像旁支，后来突然成为全球模型生态的中心部分。模式不是永久支配。模式是跃迁、恐慌、模仿、压缩，然后再次跃迁。历史不是原地打转，而是螺旋上升：每一轮追赶都会把下一轮竞争的基线抬高。
+
+这种事反复发生，有两个原因。
+
+第一，追随者的任务比开拓者更容易。开拓者必须证明一条路存在。追随者是在一条已经被证明存在的路上奔跑。一旦市场知道编程代理（coding agents）很重要，每个严肃实验室都可以为它投入资源。一旦市场知道推理轨迹（reasoning traces）会让用户兴奋，每个严肃实验室都可以测试同一种产品形态。而一旦市场知道更小、更便宜、足够好（good-enough）的开放模型也可以赢得采用，被断供的一方就有了另一条摆脱依赖的路径：它不需要在所有方面击败前沿模型（frontier model），就可以让守门人（gatekeeper）变得不那么必要。
+
+第二，信息流动太快。研究者会流动。工程师会交流。用户会比较。即使模型权重不公开，基准测试（benchmark）也会泄露信号。论文会省略细节，但仍然透露足够多。产品行为会教会竞争对手用户真正看重什么。秘密很少是单个秘密。它是一组决策，而足够多的决策会通过使用变得可见。
+
+所以，一年的领先不应该被误认为拥有未来。领先有用。领先可以重要。领先可以争取时间。但领先不是让赢家可以休息的终点线。
+
+## 争取时间，然后呢？
+
+断供更容易成立的辩护，不是说断供会创造永久护城河。Anthropic 不需要这么说。它真正能辩护的是：断供可以争取时间。
+
+好。那决定性问题就是：争取时间，用来做什么？
+
+如果答案是安全，那么仅仅断供是不够的。安全需要协调、评测、事故报告（incident reporting）、标准，以及某种程度的相互可见性（mutual visibility）。你不可能一边教所有竞争者：只要政治或竞争态势变化，你的平台就可能消失，一边期待他们信任你。
+
+如果答案是标准，那么断供是自我挫败。标准靠采用（adoption）获胜。MCP 之所以重要，是因为它在整个生态里有用，而不是因为 Anthropic 把它锁在墙后。一个标准越成为共享底座（shared substrate），它的发明者越有杠杆。它越像一个许可制俱乐部（permissioned club），竞争者就越会被推去构建替代品。
+
+如果答案是谈判，那么断供会毒化谈判桌。依赖可以创造杠杆，但杠杆必须谨慎使用。如果对方相信，只要力量平衡变化，你就会把访问当作武器，它就会把独立当成谈判的第一条件。
+
+如果答案是商业缓冲期（commercial runway），那就直说。想要更多时间变现（monetization）并不神秘。但商业缓冲期不是安全论证。它不应该被偷渡进全球治理的道德语言里。
+
+矛盾在于，断供的许多公开理由都需要合作，但断供教会所有人减少合作。它用竞争的货币购买时间，却声称要把这段时间花在以信任计价的目标上。
+
+## 尽早展开对话
+
+Anthropic 对白热化竞赛的恐惧不是虚构的。一个每个前沿实验室、每个主要国家都因为害怕落后而仓促部署的世界，确实会很糟。Anthropic 担心这一点是对的。
+
+但如果你对竞赛的解决方案是：等到自己足够领先之后，再坐下来和其他人谈，那么你提出的其实不是对话。你是在等待投降。
+
+这里应该回到 Anthropic 自己那句“白热化竞争”。它说这种竞争会让安全和治理努力更难。但在同一套公开论述里，实际处方并不是先开始对话，而是限制算力、限制模型访问、堵漏洞、阻止蒸馏（distillation）、输出美国技术栈，然后从压倒性优势的位置进行接触<Reference
+  id="anthropic-2028-ai-leadership"
+  citation="Anthropic. (2026). 2028: Two scenarios for global AI leadership."
+  url="https://www.anthropic.com/research/2028-ai-leadership"
+/>。这也许是一套连贯的杠杆理论。但它还不是严肃尝试对话的证据。
+
+缺失的就是这个经验证据。Anthropic 的文章给出了很多不信任中共的理由，其中一些理由是真实的。但它太容易从“不信任一个政治系统”，滑到“中国 AI 从业者、政策研究者和前沿实验室不可能参与有意义的安全对话”这个预设。我没有在公共记录里看到这一点被建立起来。如果主张是：除非美国先获得压倒性领先，否则对话会失败，那么举证责任应该是说明另一方已经明确拒绝对话，而不仅仅是说明另一方在战略上有竞争性。
+
+没有严肃竞争者会接受这一点。没有严肃国家会接受这一点。中国当然不会接受。OpenAI 也不会接受。xAI、Google、Meta、Mistral、DeepSeek、Qwen，或者下一个发现自己可以凭借更便宜、更开放、或者只是足够好（good enough）而赢得采用的实验室，也都不会接受。
+
+断供可以是一种战术。它可以减速。它可以惩罚。它可以在一段时间里保护某个狭窄入口。在某些情况下，它甚至可能是正当的。
+
+但它不是护城河。
+
+护城河让依赖变得持久。断供教会依赖者逃离。护城河保存杠杆。断供消耗杠杆。护城河给你时间建立信任。断供告诉所有旁观者：信任是危险的。
+
+如果 Anthropic 想让世界在竞赛失控之前协调起来，它就应该趁自己仍然有真实技术信誉和生态影响力的时候开始对话。等待一个舒服的领先，就是等待一个不会到来的世界。
+
+护城河已经在融化。唯一的问题是，信任会不会先融化。
+
+<References />
