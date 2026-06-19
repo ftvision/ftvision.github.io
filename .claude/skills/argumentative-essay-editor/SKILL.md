@@ -1,15 +1,17 @@
 ---
 name: argumentative-essay-editor
-description: Strengthen argumentative essays by steelmanning the opposition, tightening the thesis spine, assigning citations clear jobs, moving supporting detail into notes, and checking the rendered reading experience. Use when editing opinion essays, public arguments, policy critiques, strategic essays, or bilingual essay drafts where structure, evidence, and reader objections matter.
+description: Strengthen argumentative essays by steelmanning the opposition, tightening the thesis spine, assigning citations clear jobs, moving supporting detail into notes, and checking the rendered reading experience. Use when editing opinion essays, public arguments, policy critiques, strategic essays, or bilingual essay drafts — or any narrative, reflective, or explanatory essay whose thesis a skeptical reader could push back on — where structure, evidence, and reader objections matter.
 ---
 
 # Argumentative Essay Editor
 
-Use this skill when the user wants to sharpen an essay's argument rather than merely line-edit prose. The goal is to make the essay harder to dismiss by hostile but serious readers.
+Use this skill when the user wants to sharpen an essay's argument rather than merely line-edit prose. The goal is to make the essay harder to dismiss by hostile but serious readers. "Argument" is broad here: any essay that asks the reader to accept a thesis is making one — a policy critique, a strategic memo, or a personal narrative carrying a lesson — whether or not it names an opponent.
 
 ## Core Principles
 
 ### Make The Opponent Harder To Beat
+
+"Opponent" is broader than a named adversary. Most essays are not rebuttals of a specific party. In a narrative, a reflection, or an explainer, the opponent is the strongest objection a skeptical reader would raise, or the conventional story the essay pushes against. Find that objection first and state it in the reader's own words; the rest of this skill then applies unchanged. The most common failure is hunting for an "opposing view" when the real opponent is the obvious counterargument the essay never answers — the rebuttal the reader is already forming.
 
 Do not attack the most convenient version of the opposing view. First identify the opponent's strongest actual premise, preferably in language they would recognize. Then attack that. A credible essay makes the reader feel the author has understood the other side at full strength.
 
@@ -24,6 +26,8 @@ Notes should help readers who will not click the source. Good notes provide dire
 ### Concede The Strongest Case
 
 A strong essay can grant the parts of the opposing view that are true or plausible. The point is not to win every factual skirmish. The point is to show that after granting the opponent's best evidence, the essay's central conclusion still holds.
+
+Concede in one breath. Steelmanning and conceding are the most common source of bloat — the moment you grant the other side, the prose wants to keep explaining itself. A concession is the shortest statement that grants the point and redraws the line: concede, reframe, state the rule. If it runs past a few sentences, it has become an essay inside the essay. Cut it back.
 
 ### Separate Concession From Surrender
 
@@ -43,6 +47,8 @@ Avoid brittle causal claims like "X caused Y" unless the evidence is strong. Oft
 
 Every citation should have a purpose. It can establish an event, quote an opponent's claim, document public reaction, support a trend, show a benchmark, or preserve a primary source. If a citation does not change the reader's confidence in a sentence, remove it or replace it.
 
+Make every claim traceable, and verify it at the source. A citation's job is unfinished if the words it supposedly anchors are not visible to the reader: when the essay says a source "all but said X," the phrase being paraphrased must appear somewhere checkable — quoted in the text, shown in a screenshot, or carried in a note. And confirm quotes, numbers, and specifics against the primary artifact itself, not a search summary or a secondary write-up; a note that asserts an equity percentage, a date, or who said what to whom must trace to the original. If the author cannot find the source of their own claim, this check has already failed.
+
 ### Keep Main Text On The Spine
 
 The main essay should carry the thesis, opposition, turn, and conclusion. Supporting texture belongs in notes. Background, caveats, source details, and secondary examples should not interrupt the argument unless they are load-bearing.
@@ -58,6 +64,10 @@ After editing source text, read the rendered page when possible. Notes, referenc
 ## Chinese And Bilingual Essay Polish
 
 Use this section when editing a Chinese version of an argumentative essay, or when syncing an English essay and a Chinese essay.
+
+### Mirror Meaning, Not Phrasing
+
+Two instincts collide when syncing versions: mirror structural changes across versions, and write Chinese as Chinese. Resolve them this way — mirror the meaning and the structure across languages; let the surface phrasing diverge. Chinese that reads nothing like the English sentence is good. The two versions making different claims is drift, and drift needs a decision, not a silent edit. A line that merely rephrases is fine; a line that drops a hedge the other version keeps, changes a number, or asserts something the other version does not, is a divergence to flag and resolve.
 
 ### Write Chinese As Chinese, Not Translated English
 
@@ -148,29 +158,33 @@ For Chinese drafts, review one section at a time. In each section:
 ## Workflow
 
 1. State the essay's thesis in one sentence.
-2. State the opponent's strongest position in one sentence.
+2. State the opponent's strongest position in one sentence — or, if there is no named opponent, the strongest objection a skeptical reader would raise.
 3. Identify any framing that belongs to the author rather than the opponent.
 4. Mark where the essay overclaims causality, certainty, motive, or evidence.
 5. Identify the main argument spine: setup, opposition, turn, proof, implication, ending.
 6. Move source detail, caveats, quotes, and secondary evidence into notes when they slow the spine.
-7. For each citation, name its job. Delete citations with no job.
-8. Add or tighten concessions where they make the argument more credible.
+7. For each citation, name its job. Delete citations with no job. Confirm each surviving claim traces to a source the reader can see, verified against the primary artifact.
+8. Add or tighten concessions where they make the argument more credible — and keep each one to its shortest form.
 9. Convert weak causal claims into incentive-chain claims when the evidence supports sequence and pressure but not proof.
-10. If the essay has translations, mirror structural changes across versions.
+10. If the essay has translations, mirror meaning and structure across versions; let surface phrasing read naturally in each language, and flag any place the versions drift into different claims.
 11. Render locally and inspect the reading experience before finishing.
 
 ## Review Checklist
 
 - Does the essay attack the opponent's real premise rather than a convenient label?
+- If there is no named opponent, does the essay still answer the strongest objection a skeptical reader would raise?
 - Does it acknowledge when a key phrase is the author's framing?
 - Does each note add evidence, quote, context, or source detail?
 - Do any notes sound like editorial self-criticism?
 - Does the essay concede what must be conceded?
+- Is each concession as short as it can be — concede, reframe, rule — without swelling into its own essay?
 - Does it distinguish a plausible mechanism from the conclusion drawn from that mechanism?
 - Are causal claims supported, or should they become incentive claims?
 - Does every citation have a clear job?
+- Does every framing claim trace to a source the reader can see, verified against the primary artifact?
 - Is the main text still readable without opening the notes?
 - Does the rendered page look and read cleanly?
+- Across translations, do the versions make the same claims (phrasing may differ; meaning must not)?
 
 ## Output Style
 
