@@ -1,6 +1,6 @@
 ---
 name: go-to-market
-description: Distribute an Algo Mind essay across channels and keep a writing cadence. Use when the user wants to promote, distribute, "go to market", or seed a published or draft essay (Substack, X, LinkedIn, Hacker News, Substack Notes, 知乎/小红书), generate platform-native copy and share assets, or check whether they are overdue to publish. Operationalizes the Distribute and Learn stages of plan/writing-workflow/README.md.
+description: Distribute an Algo Mind essay across channels and keep a writing cadence. Use when the user wants to promote, distribute, "go to market", or seed a published or draft essay (Substack, X, LinkedIn, Hacker News, Substack Notes, Reddit, LessWrong, 知乎/小红书), generate platform-native copy and share assets, or check whether they are overdue to publish. Operationalizes the Distribute and Learn stages of plan/writing-workflow/README.md.
 ---
 
 # Go-to-market for Algo Mind
@@ -39,24 +39,38 @@ Read `apps/blog/content/essays/<slug>.mdx` (and the `-zh` variant if present). P
 |------|----------|
 | Insider / agents | Minecraft + Fairies, agent I/O history, why agents fail |
 | Thesis / cog-sci | intelligence-as-algorithm, context-as-memory |
+| Opinion / discussion | access-denied-is-not-a-moat (AI strategy, field-coordination takes) |
 | Craft / build | ship-the-core, why software is hard, product principles |
 | Tooling / teaching | ds4 / local inference, system-design-interview tool |
 | Career / personal | job reflections, Silicon Valley |
+
+For an **Opinion / discussion** piece, the goal is *the quality of the conversation it
+provokes*, not reach or subscribers. Spine for every channel: **lead with the steelman**
+(the strongest case *against* your position) → the turn → **close on a genuine question you
+don't already know the answer to.** Leading good-faith is what buys a real thread instead of
+a dunk-fest. Keep it field-level (vendor-neutral guardrail) — let the essay carry the
+specifics.
 
 Note language(s): EN, ZH, or both.
 
 ### 2. Pick channels
 `✓` do · `◐` optional / if it fits · `✗` skip
 
-| Type | Substack | X | Notes | HN | LinkedIn | 知乎/小红书 |
-|------|:---:|:---:|:---:|:---:|:---:|:---:|
-| Insider / agents | ✓ | ✓ | ✓ | ✓ | ◐ | ZH only |
-| Thesis / cog-sci | ✓ | ✓ | ✓ | ◐ | ◐ | ZH only |
-| Craft / build | ✓ | ✓ | ✓ | ◐ | ✓ | ZH only |
-| Tooling / teaching | ✓ | ✓ | ✓ | ✓ | ◐ | ZH only |
-| Career / personal | ◐ (keep on blog) | ✓ | ◐ | ✗ | ✓ | ZH only |
+| Type | Substack | X | Notes | HN | LinkedIn | 知乎/小红书 | Reddit | Forums (LW) |
+|------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Insider / agents | ✓ | ✓ | ✓ | ✓ | ◐ | ZH only | ◐ | ◐ |
+| Thesis / cog-sci | ✓ | ✓ | ✓ | ◐ | ◐ | ZH only | ◐ | ✓ |
+| Opinion / discussion | ✓ | ✓ | ✓ | ✓ | ✓ | ZH only | ◐ | ✓ |
+| Craft / build | ✓ | ✓ | ✓ | ◐ | ✓ | ZH only | ◐ | ✗ |
+| Tooling / teaching | ✓ | ✓ | ✓ | ✓ | ◐ | ZH only | ◐ | ✗ |
+| Career / personal | ◐ (keep on blog) | ✓ | ◐ | ✗ | ✓ | ZH only | ✗ | ✗ |
 
 The blog is **always** canonical. **Don't** seed Substack with career pieces — wrong signal for the masthead.
+
+**Reddit and Forums are *discussion* venues, not broadcast — and they're gated:**
+- **Reddit** is *participation, not launch*: comment in live threads or post a text self-post with the link secondary; it punishes self-promo and the tribal product subs (`r/ClaudeAI`, `r/OpenAI`) light up the COI — prefer the least-tribal sub that fits (`r/LocalLLaMA` for model/infra takes). `◐` = only via participation.
+- **Forums (LessWrong)** only when the piece is **argument-shaped AND you can answer ~3 comments in 48h.** Start with LW; skip EA Forum/Alignment Forum unless you'll tend a second thread.
+- Both are the **most COI/disclosure-sensitive** channels — disclose affiliations or hold the post. If engagement bandwidth is zero, put it on X instead.
 
 ### 3. Format per channel
 - **Substack** — full text + canonical line + subscribe CTA (template below). Follow [references/substack-playbook.md](references/substack-playbook.md).
@@ -66,6 +80,8 @@ The blog is **always** canonical. **Don't** seed Substack with career pieces —
 - **HN** — submit the canonical URL with a plain, non-clickbait title; add a first comment with context. Best on weekday US mornings. Follow [references/hacker-news-playbook.md](references/hacker-news-playbook.md).
 - **知乎** — adapt, don't translate; lead with the takeaway. Follow [references/zhihu-playbook.md](references/zhihu-playbook.md).
 - **小红书** — turn the idea into a visual, concrete carousel or short video. Follow [references/rednote-playbook.md](references/rednote-playbook.md).
+- **Reddit** — *participation, not launch*: argument first, link secondary; pick the least-tribal sub that fits. Follow [references/reddit-playbook.md](references/reddit-playbook.md).
+- **Forums (LessWrong)** — full-text crosspost + canonical link; epistemic status, steelman-first, name your cruxes, close on a real question. Only if you'll engage. Follow [references/forums-playbook.md](references/forums-playbook.md).
 
 Templates:
 
@@ -132,6 +148,8 @@ To make it a true reminder, schedule it — a weekly cron, or a scheduled Claude
 - [references/hacker-news-playbook.md](references/hacker-news-playbook.md) — HN submission, Show HN, titles, and comments.
 - [references/zhihu-playbook.md](references/zhihu-playbook.md) — Q&A-native Chinese adaptation.
 - [references/rednote-playbook.md](references/rednote-playbook.md) — 小红书 / RedNote visual packaging.
+- [references/reddit-playbook.md](references/reddit-playbook.md) — participation-not-launch, self-promo norms, sub selection. Read before posting to Reddit.
+- [references/forums-playbook.md](references/forums-playbook.md) — LessWrong (+ EA Forum / Alignment Forum): crosspost format, steelman/cruxes bar, engagement gate, COI/disclosure. Best venue for opinion/discussion pieces.
 
 ## Notes
 - This skill is canonical at `.claude/skills/go-to-market/` and symlinked to `.codex/skills/go-to-market` (for Codex). Edit the canonical copy — the symlink follows. Mirror to other harness dirs the same way: `ln -s ../../.claude/skills/go-to-market <dir>/go-to-market`.
