@@ -38,6 +38,9 @@ export type {
 // Embed components
 export { XEmbed } from './XEmbed';
 
+// Media components
+export { ZoomableImage } from './ZoomableImage';
+
 // Timeline components
 export {
   TimelineMap,
