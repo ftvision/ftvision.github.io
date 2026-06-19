@@ -23,7 +23,6 @@ export function XEmbed({ tweetId, className }: XEmbedProps) {
     const container = containerRef.current;
     if (!container) return;
     let cancelled = false;
-    let interval: ReturnType<typeof setInterval> | undefined;
 
     function render() {
       if (cancelled || !container || renderedRef.current || !window.twttr?.widgets) {
@@ -59,9 +58,9 @@ export function XEmbed({ tweetId, className }: XEmbedProps) {
     }
 
     // Script tag may exist before widgets are ready, especially in React Strict Mode.
-    interval = setInterval(() => {
+    const interval = setInterval(() => {
       if (window.twttr?.widgets) {
-        if (interval) clearInterval(interval);
+        clearInterval(interval);
         render();
       }
     }, 100);
