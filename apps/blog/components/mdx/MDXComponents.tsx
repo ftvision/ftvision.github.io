@@ -29,6 +29,7 @@ import {
   WideBlock,
   TimelineMap,
   XEmbed,
+  ZoomableImage,
   ContrastPair,
   ContrastPositive,
   ContrastNegative,
@@ -311,6 +312,9 @@ export function getMDXComponents(): MDXComponentMap {
 
     // X (Twitter) post embed
     XEmbed,
+
+    // Click-to-zoom image
+    ZoomableImage,
 
     // Econ100 timeline map
     Econ100Map,
