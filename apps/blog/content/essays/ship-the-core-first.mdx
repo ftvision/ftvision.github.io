@@ -1,48 +1,63 @@
 ---
-title: "Ship The Core First"
-description: ""
+title: "Ship the Core First"
+description: "Three months, 300+ pull requests, one episode, and no idea if anyone wanted it. What coding agents make too easy to forget when you are building a product from zero."
 date: "2026-06-16"
-type: narrative 
+type: narrative
 topics:
   - product
 lang: en
-draft: true
 ---
 
-We have been building our idea of a letter radio station during the AI era. Qian and I are fed up with the AI being a productivity tool; we want to build the AI to our daily lives, so we go all the way back to the old, pre-computer age, when users are listening to radio on a radio player. This ends up as [echofm](https://echofm.live) and [huisheng.live](https://huisheng.live). 
+Lately I've been using AI to rebuild a pre-digital idea: a radio station you simply sit and listen to. That became [echofm](https://echofm.live) and [huisheng.live](https://huisheng.live). The idea is small and human. You write a letter, the station picks the good ones, writes a warm reply, and composes a song to match, so the person who wrote in feels heard.
 
-The product idea was to create this radio station, but this essay is not about the product itself, but about the mistake I think we have made.
+Three months. More than 300 merged pull requests. One episode. And I still haven't tested how many people would actually want to engage with this idea.
 
-The core of this product is to generate a stream of audio content, taking user's letter in, select the good letters to reply, and draft a letter response that bring the warmth and humanity to the users who want to heard. Also, to write and create a song that matches the letter and the scenario. There are actually only three problems to solve:
+<Marginnote>I did scroll Reddit to see the kinds of letters people write. I have never interviewed a single potential listener.</Marginnote>
 
-1. how to collect user's letter and invite user's to write
-2. generate that audio epsiode
-3. publish that audio episode to let the writer and the world listen. 
+This essay isn't about the product. It's about that gap, and how a coding agent helped me build my way straight into it.
 
-In the old days, we probably won't do this because each step is very time-consuming and manually, but now we have LLMs and other models for generating speech and music. We even have coding agents, such as Claude Code and Codex, so we can vibe code our entire tech stack that allows use to building every part of the product. 
+## The build that felt like progress
 
-That's exactly what I did. As of now, when the product finally has one episode, the entire repo has merged 350+ PRs. I have made a frontend, a backend server, an show editing agent, an eval process that checks the quality of my radio program, a set of worker nodes that generate audios etc. It's been three months since I generated my first line of code. 
+Building the thing felt wonderful. Coding agents like Claude Code and Codex made every piece fast. I wrote a frontend. I wrote a backend and worker nodes to generate audio remotely. I wrote an admin dashboard so we could manage episodes the database couldn't show us readably. I built not one generation pipeline but two. I added an eval process to grade episode quality.
 
-## a few mistakes 
+Most of those 300 pull requests were machines: machines for making episodes, machines for managing them, machines for grading them, all at a scale I had no evidence I would ever reach. Every merge felt like a win. The repo grew. The architecture got cleaner. By every measure I was watching, I was extremely productive.
 
-in retrospect, what the frontend really needs is a place where users can submit letters. It may not even need to be able to play the audio, because it doesn't have the distribution channel at the beginning. The generated audios should be published at different platforms and gradually attract people to this website. Until then, the frontend should be simple and provide what needs from the users and just try its best to invite users to submit letters.
+## The reckoning
 
-the backend admin dashboard was another story: the goal was to make the episode management easier, because the data in DB is not directly readable by us. That being said, a wrong admin dashboard data model brings up trouble than help as I needed to iterate a lot on showing the correct data for us to decide if we want to rerun, edit. etc. The UI was built to automate the entire pipeline, but we haven't had a clear, error less pipeline that generates end to end yet.
+The cracks showed up in the machine I was proudest of. The worker pool generated audio remotely, and it worked beautifully when there were two letters. At six, the machines didn't have the resources to keep up.
 
-a third lesson was the audio generation pipeline. I not only build one, but actually two. the good part is the pipelien is actually modularized, and it would work locally on our computer if we just hook up with a remote database. Now  the problem is I want, again, to automate everything, so I built a worker pool that remotely generate audios for me. It worked when there were two letters, but then the machine was not provisioned with enough resource to hand 6 letters. In fact, the entire generation pipeline is much easier to try and with better control if I just launch a local codex session and ask codex to run the pipeline locally for me, than scheduling a worker pool remotely.
+<Note>The fix was almost insulting. The same pipeline was far easier to run, and far easier to control, when I just opened a local Codex session and asked it to run the letters for me. Weeks of remote infrastructure, beaten by a thing I could do by hand.</Note>
 
-## other mistakes
+Running it by hand made me ask a question I had been too busy building to ask: what is all of this *for*?
 
-UI is really time consuming, yet, there is no finally best UI. it takes a lot of iteration that doesn't matter during our initial product offering.
+A radio station is a media company, and a media company is simple to describe and hard to build. It lives on two flows. Supply: letters worth answering. Demand: people who want to listen. Everything else, the code, the servers, the pipelines, exists only to connect the two. Success is not a working system. Success is a venue people come back to: somewhere they drop a letter, somewhere they return to listen.
 
+I had spent three months on everything except those two flows. I had never found out if strangers would write in. I had never found out if anyone would listen, or share. I had built the connective machinery for a supply and a demand that did not yet exist.
 
-## lesssons
+## The core I skipped
 
-1. yeah, we should actually focus on what is the most important thing, and bring our essence to users and test the market earlier, instead of building all those "features" and "infrastructures" that delay our test the product.
-2. whatever you planned at the beginnign will change, as you can't really predict how your product actually would grow. so trying to spec everything out is against the nature of the product building and you are working as if you are in 80s or 90s when you ship product with flat disk or CDs, and your users don't have an easy way to get update.
-3. figuring out what is the core is not easy. it is tempting to think some features are quite important. all features you built have a reason to be there, for sure. but are those brings your product to more success? 
-4. for building a product, it needs a lot of practices to learn what is NOT important, and what NOT to do at the each stage. I am still learning, and I am planning to build more products to try. After all, coding agents is so empowering
-5. Learning to let AI write songs and read/talk reasonably like human is a lot of fun. it is not trivial and it makes those models more interesting to me. Suno is great, and ElevenLabs are better than many other providers for my case. Doing eval and comparison is fun and there's a lot to learn and think about.
+Here is what I should have built, and it is small. A page where someone can submit a letter. A pipeline that turns a letter into an episode. That's it.
 
+It didn't even need to be automated. I could have collected real letters by hand, run them through the pipeline myself one at a time, used AI to polish the audio and write the marketing copy, and uploaded the result to YouTube or Spotify with my own hands. That is the entire business, run manually, in about a week. And it tests both flows at once: do people write, and do people listen?
 
-(may need to add a few assets and reorganize)
+So here is the mistake, and the factory makes it obvious. I built a beautiful, automated factory, with machines and conveyor belts and a control room, before I had produced a single good or found out whether anyone wanted to buy it. Automation is how you scale something that works. I used it as a way to avoid finding out whether it works. A factory is the reward for proven demand, not a substitute for testing it.
+
+And I fell for it for one reason: building the factory was cheap. In the old days I would never have attempted any of this. Each piece would have cost too much time, and that cost would have forced me to choose. The agents removed the cost. When the friction that makes you prioritize disappears, nothing stops you from building everything. So I built everything, and called the motion progress.
+
+## What I learned
+
+If you're building with an agent right now, this is the part I'd ask you to sit with.
+
+Shipping with an agent feels like the most productive you have ever been, and that feeling isn't fake. The tools really are that powerful. But the same ease that makes them feel great removes the friction that used to force you to choose what to build. Vibe coding can become the most comfortable procrastination ever invented. It looks like the hard work, so you don't notice you are using it to avoid the harder work: finding out whether anyone wants the thing at all.
+
+Code was never the real bottleneck, and now it really isn't. So stop scoring yourself by it. In the 0-to-1 stage, productivity is how fast you learn about the market. Point the agent at producing the good and shipping it, and let the market, not your backlog, decide the next PR.
+
+People will tell you to "do things that don't scale," and they're right, but it's usually taught as a trick, a phase you pass through on the way to the real thing.
+
+<Note>Paul Graham, [Do Things That Don't Scale](https://paulgraham.com/ds.html) (2013).</Note>
+
+That is not what I learned. I learned that it points at where the real work of building a product actually lives. The factory is not the product. The product is the fit between what you make and who wants it, letters on one side and listeners on the other, and that fit can only be found through contact with the market.
+
+His lesson was true in 2013. In 2026 it matters more, not less, because agents have made the wrong path, building the machine, nearly free and genuinely fun. The discipline of keeping your eyes on supply and demand has never been easier to lose.
+
+I'm still learning it. Next, I'm going to ship the core, by hand, and go find out if anyone writes back. The rest, I'll build when the market asks me to.
