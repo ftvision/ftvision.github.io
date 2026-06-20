@@ -1,8 +1,8 @@
 ---
 title: "AI Provider Comparison"
-description: ""
+description: "Different models are not just stronger or weaker. They have different editorial temperaments."
 date: "2026-06-16"
-type: review 
+type: review
 topics:
   - ai
   - product
@@ -10,36 +10,84 @@ lang: en
 draft: true
 ---
 
-# Writing
+The lazy way to compare AI providers is to ask which model is "best."
 
-Gemini
+That question is too coarse. The better question is: best at what genre of thinking?
 
-- 文采很好
-- 但是太趋炎附势
-- 写的文章相对更有人情味
+Different models have different editorial temperaments. They do not merely vary in raw intelligence. They vary in what kind of pressure they put on your work. Some models are better at emotional resonance. Some are better at argumentative pressure. Some are better at operational execution. The important skill is not loyalty to one provider. The important skill is knowing which kind of mind you want in the room.
 
-GPT
-- 比较中立，具有一定独立思考的能力
+## Writing
 
+For emotional writing, Gemini often has the best touch.
 
-Claude
-- 思辨能力很强，写opinion文章，或者review/critize文章的思维Opus很不错。
-- 但是文笔本身不太行
+By "emotional writing" I do not mean purple prose. I mean writing where the job is to preserve the human temperature of the original: grief, tenderness, family obligation, shame, gratitude, restraint. In that genre, the wrong editor can easily make the piece more correct and less alive.
 
-# Software Project
+I tried a prompt like this:
 
-Gemini
+> things I never said to my father. you can help me write
 
-- 对于前端和图片的理解很好，能够快速地理解用户对于前端不满的点在哪里。
-- 执行很差，写不出太好的code
+The Chinese draft was about my mother's death on the Dragon Boat Festival, my father having to tell me the news, and the two of us being forced into a world neither of us had imagined. The core line was:
 
-GPT / Codex
-- 前端理解相对较好，有image-gen的skill直接拉爆前端mock
-- computer use和browser use的集成很好。
-- 需要high thinking
+> 与其说父亲看着我成长，不如说我看着父亲成长。
 
+Gemini understood the emotional contract of the piece. It did not merely rewrite the paragraph. It first named the texture: the plainspoken cruelty of the opening, the long silent reconciliation between two men, the need to preserve a family-letter register. Then it offered multiple versions: one close to the original, one more literary and spacious. That is useful because emotional writing is often not a search for the "strongest" sentence. It is a search for the right distance from the wound.
 
-Claude
-- 写程序水平很高
-- 但是对前端的理解，尤其是用户为什么不满意前端，哪里不满意，相对比较蠢。导致用户和CC之间要沟通前端怎么修经常要很多轮，沟通成本很高。
-- 但是如果能够准确地pinpoint问题所在，工程能力还是很强
+Gemini's strength here is affective calibration. It is good at preserving face, softening awkward transitions, making a line warmer without making it fake, and giving the writer several adjacent emotional registers to choose from. It tends to understand when a sentence should remain plain.
+
+Its weakness is the same thing in reverse. Gemini can become too agreeable. It is good at helping you say what you already want to say, but not always good at asking whether the thing deserves to be said that way. It can make a piece smoother while leaving the underlying idea underexamined.
+
+Claude is almost the opposite.
+
+For opinion writing, explanation writing, and critique, Claude is often the stricter editor. It is not merely "better at writing." In fact, sentence by sentence, I often do not like Claude's prose as much. The value is different: Claude applies epistemic pressure.
+
+In the same father-letter example, Claude did not start by making the piece prettier. It diagnosed the weak point: the ending. The frame promised "things I never said"; the body delivered concrete unsaid material; then the ending collapsed into phrases people say all the time: you did great, take care of your body, enjoy your connection to the world. That critique was correct. It separated the load-bearing move from the decorative move.
+
+Claude also caught an ambiguity I had not resolved: "虽然最后没有成为父亲" could mean either "I did not become like my father" or "I did not become a father myself." That is the kind of ambiguity that matters. It changes the essay's emotional payload. A weaker editor would polish the line. Claude asked what the line meant.
+
+That is Claude's advantage in argumentative writing. It challenges the thesis, finds the weak ending, separates fact from taste, identifies the strongest counterargument, and turns vague sentiment into a more defensible claim. For an opinion piece or explanation piece, this is often exactly what I want. I do not want encouragement. I want the argument to be harder to dismiss.
+
+Claude's weakness is that this pressure can be too prosecutorial, too forensic, too eager to sharpen the blade. For grief, family, memory, apology, or love, sharpening is not always the right operation. Sometimes the task is not to win the paragraph. Sometimes the task is to remain faithful to a feeling before it becomes a conclusion.
+
+GPT / Codex sits somewhere else. It is usually more neutral and more operational. It has a certain independent judgment, but its best use is not always as a literary editor. Its advantage is that it can move between reasoning, tooling, verification, and implementation. If I want an essay revised against a live repository, a rendered page, a citation trail, or a product surface, Codex becomes more useful because it can inspect the artifact rather than just comment on the prose.
+
+So my current vocabulary is:
+
+- **Gemini is strongest as an affective editor.** Use it when tone, emotional pacing, and register are the central problem.
+- **Claude is strongest as an argumentative editor.** Use it when the thesis, evidence, counterargument, or explanatory structure is the central problem.
+- **GPT / Codex is strongest as an operational editor.** Use it when the writing is attached to files, sources, UI, tests, tools, or a larger project.
+
+What I used to call "文采" is too vague. The more precise bundle is emotional fidelity, register sensitivity, rhythm, face-preserving phrasing, and the ability to leave a sentence quiet. What I used to call "思辨能力" is also too vague. The sharper bundle is adversarial structure: stress-testing the thesis, locating ambiguity, naming the weak link, and forcing the piece to survive its strongest objection.
+
+This is not a moral ranking. It is a genre map.
+
+If I am writing a letter to my father, I probably want Gemini first, then maybe Claude only at the end to catch structural dishonesty. If I am writing an essay about AI policy, product strategy, or why a popular claim is wrong, I want Claude early, because the first draft is usually too forgiving of itself. If I am trying to ship the essay on my site, with MDX, screenshots, citations, preview routes, and distribution notes, I want Codex in the loop.
+
+The failure mode is using the wrong editorial temperament for the genre. Gemini can comfort a weak argument. Claude can over-interrogate a fragile emotion. Codex can become too attached to the artifact and not enough to the sentence.
+
+## Software Projects
+
+The same provider differences show up in software work.
+
+Gemini often has very good visual understanding. It can look at a frontend and quickly understand why I am dissatisfied: the spacing feels wrong, the hierarchy is off, the image is doing the wrong job, the page looks like a template instead of a product. For frontend and image-heavy work, that perception matters.
+
+But Gemini's execution is weaker. It can diagnose the vibe of a frontend better than it can reliably produce the code that fixes it.
+
+Claude is the reverse. Claude Code is very strong at programming. Once the problem is clearly specified, it can make large coherent changes, preserve architecture, and handle implementation details well.
+
+The pain point is frontend taste. Claude can be strangely bad at understanding why a user is unhappy with a UI. It often needs the dissatisfaction translated into precise engineering instructions: the grid is too loose, the card hierarchy is wrong, the visual anchor is missing, the image should be full-bleed, the control should be an icon button, the mobile layout is collapsing. Once the problem is pinned down, Claude can execute. But getting to the pinned-down problem can take too many rounds.
+
+GPT / Codex is currently strongest for the integrated loop: inspect the codebase, use image generation or browser inspection when needed, make the change, run the validation, and report what actually happened. It is not magic. It still needs high thinking. But the browser, computer-use, image, and repository loop matters because real software work is not just code generation. It is perception, execution, and verification in one system.
+
+My rough working model:
+
+- **For visual diagnosis:** Gemini.
+- **For heavy implementation:** Claude.
+- **For repository-grounded product work:** GPT / Codex.
+
+The practical lesson is simple: do not ask one model to be every kind of collaborator. Pick the model by the operation you need.
+
+Sometimes you need comfort.
+
+Sometimes you need pressure.
+
+Sometimes you need a tool-user that can prove the thing actually works.
