@@ -25,7 +25,7 @@ export type { ReferencesProps } from "./References";
 export { WideBlock } from "./WideBlock";
 export type { WideBlockProps } from "./WideBlock";
 
-export { ModelTemperamentMap } from "./ModelTemperamentMap";
+export { ProviderEvalCollections } from "./ProviderEvalCollections";
 
 export {
   ContrastPair,

@@ -1,8 +1,8 @@
 ---
-title: "Editorial Temperaments"
-description: "Different models are not just stronger or weaker. They have different editorial temperaments, and the skill is knowing which kind of mind you want in the room."
+title: "AI Provider Evals"
+description: "A working framework for comparing AI providers by task, genre, evidence, and failure mode instead of asking which model is best."
 date: "2026-06-16"
-type: opinion
+type: review
 topics:
   - ai
   - product
@@ -12,13 +12,15 @@ draft: true
 
 The lazy way to compare AI providers is to ask which model is "best."
 
-That question is too coarse. A better one is: best at what genre of thinking?
+That question is too coarse. A better one is: best at what kind of work, under what prompt, with what evidence?
 
-Models do not only differ in raw intelligence. They differ in editorial temperament, the kind of pressure they put on your work. One is good at emotional resonance. One is good at argumentative pressure. One is good at operational execution. The skill that matters is not loyalty to a provider. It is knowing which kind of mind you want in the room.
+This is my attempt to build a small, personal eval set for AI providers. Not a benchmark. Not a leaderboard. A set of concrete tasks I actually care about, with the original input, the prompt, the model outputs, and a human reading of what each model thought the job was.
 
-I learned this from a single prompt, run through three models.
+The first collection is writing. The second should be programming. Writing exposes tone, argument, ambiguity, and voice. Programming exposes perception, implementation, repo navigation, debugging, and verification. The high-level essay should summarize the patterns. The collections should carry the evidence.
 
-## One prompt, three temperaments
+<ProviderEvalCollections />
+
+## First test: writing temperament
 
 The prompt was a hard one: a letter to my father, the things I never said to him. The draft was in Chinese. It was about my mother's death on the Dragon Boat Festival, about him having to compose himself before he could get the news out, and about the two of us being pushed into a world neither of us had imagined. The spine of the piece was one inversion:
 
@@ -38,9 +40,7 @@ Claude also caught an ambiguity I had left in. 虽然最后没有成为父亲 ca
 
 **GPT / Codex treated it as a delivery problem.** It produced one clean rewrite, explicitly trying to keep the original plainness and not turn grief into a polished eulogy. No multi-register menu, no adversarial diagnosis. Just a competent, faithful pass. That neutrality is its own signature. Codex is the least interested in being a literary critic and the most interested in handing back something finished. Its real edge shows up later, when the writing is attached to files, a rendered page, or a citation trail it can actually inspect.
 
-Three models, one prompt, three different theories of the job. That gap is the whole point.
-
-<ModelTemperamentMap />
+Three models, one prompt, three different theories of the job. That gap is the first useful result.
 
 ## The vocabulary I was missing
 

@@ -27,7 +27,7 @@ import {
   Reference,
   References,
   WideBlock,
-  ModelTemperamentMap,
+  ProviderEvalCollections,
   TimelineMap,
   XEmbed,
   ContrastPair,
@@ -272,7 +272,7 @@ export function getMDXComponents(): MDXComponentMap {
 
     // Layout
     WideBlock,
-    ModelTemperamentMap,
+    ProviderEvalCollections,
 
     // Paired examples
     ContrastPair,
