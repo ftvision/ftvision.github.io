@@ -2,9 +2,11 @@ import { notFound, redirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getEssayBySlug, getEssaySlugs, getRelatedEssays, getTranslation } from '@/lib/essays';
+import { getEssayReadingDepth } from '@/lib/essay-reading';
 import { getMDXComponents } from '@/components/mdx/MDXComponents';
 import { mdxOptions } from '@/lib/mdx-options';
 import { EssayLayout, EssayHeader, RelatedEssays } from '@/components/essay';
+import { EssayReadingDepth } from '@/components/essay/EssayReadingDepth';
 import { JsonLd } from '@/components/seo';
 import { breadcrumbSchema, essayPostingSchema } from '@/lib/jsonld';
 
@@ -169,6 +171,10 @@ export default async function EssayPage({ params }: EssayPageProps) {
     essay;
   const urlPath = `/essays/${slug}`;
   const related = getRelatedEssays(slug, { limit: 3 });
+  const readingDepth = getEssayReadingDepth(slug);
+  const fullContent = (
+    <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
+  );
 
   return (
     <>
@@ -194,7 +200,11 @@ export default async function EssayPage({ params }: EssayPageProps) {
         }
         footer={<RelatedEssays essays={related} language="en" />}
       >
-        <MDXRemote source={content} components={getMDXComponents()} options={{ mdxOptions }} />
+        {readingDepth ? (
+          <EssayReadingDepth readingDepth={readingDepth} full={fullContent} />
+        ) : (
+          fullContent
+        )}
       </EssayLayout>
     </>
   );

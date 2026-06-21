@@ -33,6 +33,11 @@ import {
   ContrastPair,
   ContrastPositive,
   ContrastNegative,
+  ReadingDepth,
+  ReadingDepthExcerpt,
+  ReadingDepthList,
+  PassContent,
+  ReadingDepthPoint,
 } from '../content';
 
 // Editorial components for magazine-style layouts
@@ -277,6 +282,13 @@ export function getMDXComponents(): MDXComponentMap {
     ContrastPair,
     ContrastPositive,
     ContrastNegative,
+
+    // Progressive reading
+    ReadingDepth,
+    ReadingDepthExcerpt,
+    ReadingDepthList,
+    PassContent,
+    ReadingDepthPoint,
 
     // UI components exposed to MDX
     Blockquote,

@@ -35,6 +35,21 @@ export type {
   ContrastBlockProps,
 } from './ContrastPair';
 
+export {
+  ReadingDepth,
+  ReadingDepthExcerpt,
+  ReadingDepthList,
+  PassContent,
+  ReadingDepthPoint,
+} from './ReadingDepth';
+export type {
+  ReadingDepthProps,
+  ReadingDepthExcerptProps,
+  ReadingDepthListProps,
+  PassContentProps,
+  ReadingDepthPointProps,
+} from './ReadingDepth';
+
 // Embed components
 export { XEmbed } from './XEmbed';
 

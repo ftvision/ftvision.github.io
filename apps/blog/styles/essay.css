@@ -131,3 +131,8 @@
   background-color: transparent;
   padding: 0;
 }
+
+html[data-reading-pass='spine'] .essay-layout-wrapper > aside:first-child,
+html[data-reading-pass='argument'] .essay-layout-wrapper > aside:first-child {
+  visibility: hidden;
+}
