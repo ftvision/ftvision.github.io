@@ -15,6 +15,13 @@
   margin-bottom: 1.5rem;
 }
 
+.essay-content h1,
+.essay-content h2,
+.essay-content h3,
+.essay-content h4 {
+  scroll-margin-top: 12rem;
+}
+
 .essay-content h2 {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-h2);
@@ -98,6 +105,54 @@
 .essay-content ol {
   list-style-type: decimal;
   padding-left: 1.5rem;
+}
+
+.essay-content .commandment-index {
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: commandment;
+  border-top: 1px solid var(--color-border-default);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.essay-content .commandment-index li {
+  counter-increment: commandment;
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0.875rem 0;
+  border-top: 1px solid var(--color-border-subtle);
+  line-height: 1.45;
+}
+
+.essay-content .commandment-index li:first-child {
+  border-top: 0;
+}
+
+.essay-content .commandment-index li::before {
+  content: counter(commandment);
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-body-sm);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.essay-content .commandment-index a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  text-underline-offset: 0.18em;
+}
+
+.essay-content .commandment-index a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
 }
 
 .essay-content li {

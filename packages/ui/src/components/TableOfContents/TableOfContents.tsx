@@ -62,6 +62,30 @@ const tocItemVariants = cva(
   }
 );
 
+function getVisibleHeading(id: string) {
+  const escapedId = window.CSS?.escape ? window.CSS.escape(id) : id;
+  const candidates = Array.from(
+    document.querySelectorAll<HTMLElement>(`[id="${escapedId}"]`)
+  );
+
+  return (
+    candidates.find((candidate) => candidate.getClientRects().length > 0) ??
+    document.getElementById(id)
+  );
+}
+
+function scrollToHeading(element: HTMLElement, behavior: ScrollBehavior = 'smooth') {
+  const stickyControl = document.querySelector('.reading-depth > div');
+  const stickyBottom =
+    stickyControl instanceof HTMLElement
+      ? stickyControl.getBoundingClientRect().bottom
+      : 0;
+  const offset = Math.max(96, stickyBottom + 24);
+  const top = element.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({ top, behavior });
+}
+
 export interface TocItem {
   /** Unique identifier for the heading */
   id: string;
@@ -110,9 +134,10 @@ const TableOfContents = React.forwardRef<HTMLElement, TableOfContentsProps>(
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
       if (smoothScroll) {
         e.preventDefault();
-        const element = document.getElementById(id);
+        const element = getVisibleHeading(id);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, '', `#${id}`);
+          window.requestAnimationFrame(() => scrollToHeading(element));
         }
       }
       onItemClick?.(id);

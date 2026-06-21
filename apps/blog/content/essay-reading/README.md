@@ -13,6 +13,7 @@ only composed into the rendered essay page.
 ```mdx
 ---
 defaultPass: full
+heading: "Reading depth"
 passes:
   spine:
     time: "5 min"

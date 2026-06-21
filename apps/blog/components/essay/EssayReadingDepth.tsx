@@ -16,6 +16,8 @@ export function EssayReadingDepth({ readingDepth, full }: EssayReadingDepthProps
   return (
     <ReadingDepth
       defaultPass={readingDepth.defaultPass}
+      heading={readingDepth.heading}
+      ariaLabel={readingDepth.ariaLabel}
       passCopy={readingDepth.passCopy}
     >
       {readingDepth.passes.spine ? (
