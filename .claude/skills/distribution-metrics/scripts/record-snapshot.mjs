@@ -29,7 +29,7 @@ const NUMERIC_FIELDS = [
 
 function usage() {
   console.error(`Usage:
-  node .claude/skills/go-to-market/scripts/record-snapshot.mjs <essay-slug> <channel> [options]
+  node .claude/skills/distribution-metrics/scripts/record-snapshot.mjs <essay-slug> <channel> [options]
 
 Identify the item with --url and/or --id, then pass any available metrics.
 

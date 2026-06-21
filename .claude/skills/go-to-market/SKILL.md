@@ -1,11 +1,11 @@
 ---
 name: go-to-market
-description: Distribute an Algo Mind essay across channels and keep a writing cadence. Use when the user wants to promote, distribute, "go to market", or seed a published or draft essay (Substack, X, LinkedIn, Hacker News, Substack Notes, Reddit, LessWrong, 知乎/小红书), generate platform-native copy and share assets, or check whether they are overdue to publish. Operationalizes the Distribute and Learn stages of plan/writing-workflow/README.md.
+description: Distribute an Algo Mind essay across channels and keep a writing cadence. Use when the user wants to promote, distribute, "go to market", or seed a published or draft essay (Substack, X, LinkedIn, Hacker News, Substack Notes, Reddit, LessWrong, 知乎/小红书), generate platform-native copy and share assets, or check whether they are overdue to publish. Operationalizes the Distribute stage of plan/writing-workflow/README.md.
 ---
 
 # Go-to-market for Algo Mind
 
-Turn one finished essay into platform-native distribution, and keep the publishing rhythm. This is the operational form of the **Distribute** and **Learn** stages in `plan/writing-workflow/README.md`.
+Turn one finished essay into platform-native distribution, and keep the publishing rhythm. This is the operational form of the **Distribute** stage in `plan/writing-workflow/README.md`.
 
 ## Positioning every generated piece must fit
 - **Brand:** Algo Mind / 思算 — *intelligence is an algorithm* (functionalist: a mind is defined by what it does, not its substrate).
@@ -20,7 +20,6 @@ Turn one finished essay into platform-native distribution, and keep the publishi
 ## Modes
 - **Distribute** — `distribute <essay-slug>`: run the per-essay pipeline below.
 - **Cadence** — `cadence`: run the cadence check and nudge the next essay.
-- **Learn** — `learn`: record local channel metrics and summarize what worked.
 
 ---
 
@@ -126,19 +125,7 @@ If this resonated, I write Algo Mind — intelligence is an algorithm. Subscribe
 
 Write generated drafts to `dist/<slug>/` (add `dist/` to `.gitignore`) with a `checklist.md`, or output them inline — never commit draft social copy.
 
----
-
-## Learn mode
-Follow [references/local-metrics-playbook.md](references/local-metrics-playbook.md). Use the local scripts to create UTM links, record publish events, add manual snapshots, and summarize channel results:
-
-```bash
-node .claude/skills/go-to-market/scripts/make-tracked-url.mjs <essay-slug> <channel> --content <variant>
-node .claude/skills/go-to-market/scripts/record-publish.mjs <essay-slug> <channel> --url <platform-url> --tracked-url <utm-url> --asset <asset-type> --hook <hook-type>
-node .claude/skills/go-to-market/scripts/record-snapshot.mjs <essay-slug> <channel> --url <platform-url> --impressions <n> --likes <n> --comments <n>
-node .claude/skills/go-to-market/scripts/summarize-metrics.mjs --slug <essay-slug>
-```
-
-Metrics are written to `dist/go-to-market/metrics.jsonl`, which is ignored by git.
+After publishing, use the separate `distribution-metrics` skill to create tracked links, record channel snapshots, and summarize what worked.
 
 ---
 
@@ -156,7 +143,6 @@ To make it a true reminder, schedule it — a weekly cron, or a scheduled Claude
 ---
 
 ## References
-- [references/local-metrics-playbook.md](references/local-metrics-playbook.md) — local-first channel metrics tracking and summary loop.
 - [references/substack-playbook.md](references/substack-playbook.md) — Substack email and writer-network packaging.
 - [references/x-playbook.md](references/x-playbook.md) — building high-quality X posts/assets, reverse-engineered from the open-sourced X algorithm (cclank/x-algorithm-wiki → xai-org/x-algorithm). **Read this before drafting any X copy.**
 - [references/substack-notes-playbook.md](references/substack-notes-playbook.md) — Substack Notes as insight testing and relationship-building.

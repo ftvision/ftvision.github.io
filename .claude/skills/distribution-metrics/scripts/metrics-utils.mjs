@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 export const repoRoot = resolve(here, '..', '..', '..', '..');
-export const defaultMetricsPath = resolve(repoRoot, 'dist', 'go-to-market', 'metrics.jsonl');
+export const defaultMetricsPath = resolve(repoRoot, 'dist', 'distribution-metrics', 'metrics.jsonl');
 
 export function parseArgs(argv) {
   const positional = [];

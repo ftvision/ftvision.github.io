@@ -11,7 +11,7 @@ import {
 
 function usage() {
   console.error(`Usage:
-  node .claude/skills/go-to-market/scripts/record-publish.mjs <essay-slug> <channel> [options]
+  node .claude/skills/distribution-metrics/scripts/record-publish.mjs <essay-slug> <channel> [options]
 
 Options:
   --url <url>              Platform post URL

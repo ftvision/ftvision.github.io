@@ -22,7 +22,7 @@ const METRICS = [
 
 function usage() {
   console.error(`Usage:
-  node .claude/skills/go-to-market/scripts/summarize-metrics.mjs [options]
+  node .claude/skills/distribution-metrics/scripts/summarize-metrics.mjs [options]
 
 Options:
   --slug <essay-slug>      Filter to one essay

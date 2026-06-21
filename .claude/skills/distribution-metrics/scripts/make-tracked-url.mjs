@@ -19,7 +19,7 @@ const CHANNEL_MEDIUM = {
 
 function usage() {
   console.error(`Usage:
-  node .claude/skills/go-to-market/scripts/make-tracked-url.mjs <essay-slug> <channel> [options]
+  node .claude/skills/distribution-metrics/scripts/make-tracked-url.mjs <essay-slug> <channel> [options]
 
 Options:
   --url <url>          Canonical URL. Defaults to https://feitong.phd/essays/<slug>

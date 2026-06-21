@@ -2,7 +2,7 @@
 
 This is the local-first measurement loop for distribution. It avoids platform
 API setup, dashboards, scraping, and committed private data. Everything writes to
-`dist/go-to-market/metrics.jsonl`, which is ignored by git.
+`dist/distribution-metrics/metrics.jsonl`, which is ignored by git.
 
 ## What to track
 
@@ -23,13 +23,13 @@ For every distributed essay, record:
 Create a tracked blog URL:
 
 ```bash
-node .claude/skills/go-to-market/scripts/make-tracked-url.mjs ship-the-core-first x --content scar-1
+node .claude/skills/distribution-metrics/scripts/make-tracked-url.mjs ship-the-core-first x --content scar-1
 ```
 
 Record that a post was published:
 
 ```bash
-node .claude/skills/go-to-market/scripts/record-publish.mjs ship-the-core-first x \
+node .claude/skills/distribution-metrics/scripts/record-publish.mjs ship-the-core-first x \
   --url https://x.com/example/status/123 \
   --tracked-url "https://feitong.phd/essays/ship-the-core-first?utm_source=x&utm_medium=social&utm_campaign=ship-the-core-first&utm_content=scar-1" \
   --asset diagram \
@@ -39,7 +39,7 @@ node .claude/skills/go-to-market/scripts/record-publish.mjs ship-the-core-first 
 Record a manual snapshot:
 
 ```bash
-node .claude/skills/go-to-market/scripts/record-snapshot.mjs ship-the-core-first x \
+node .claude/skills/distribution-metrics/scripts/record-snapshot.mjs ship-the-core-first x \
   --url https://x.com/example/status/123 \
   --impressions 1200 \
   --likes 32 \
@@ -52,7 +52,7 @@ node .claude/skills/go-to-market/scripts/record-snapshot.mjs ship-the-core-first
 Summarize the current local file:
 
 ```bash
-node .claude/skills/go-to-market/scripts/summarize-metrics.mjs
+node .claude/skills/distribution-metrics/scripts/summarize-metrics.mjs
 ```
 
 ## Minimal manual metrics by channel
