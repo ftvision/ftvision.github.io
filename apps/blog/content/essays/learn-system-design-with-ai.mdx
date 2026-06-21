@@ -1,6 +1,6 @@
 ---
 title: "Learning System Design with AI"
-description: ""
+description: "I failed a system design interview, so I built an agent that runs the interview back at me. It taught me what the whiteboard never did."
 date: "2026-06-16"
 type: guide
 topics:
@@ -10,53 +10,116 @@ lang: en
 draft: true
 ---
 
-System design is an interesting category of interview. In the daily world, people usually just talk about the design, but not really abstract that out into a concrete process of discussion.
+I failed a system design interview at Cursor. Not a near miss. I had no structured way of thinking going into it, so it failed epically.
 
-Learning system design from interview process to real world is actually a pretty good path, because it gives you are playground to think and to learn the basic concepts. When I was early in my careet, system design feels very abstract and vague -- because i never designed system before, I only solved competitve programming problem sets. There was no need of sql database, not need to worry about reliability, no need to worry about the network, avaiability, or consistency.
+And the timing made it sting. SpaceX is buying Cursor for $60 billion<Note>SpaceX announced it will acquire Anysphere, the company behind Cursor, in a $60 billion all-stock deal expected to close in Q3 2026. <a href="https://www.cbsnews.com/news/spacex-cursor-60-billion-ai-acquisition/" target="_blank" rel="noopener noreferrer">CBS News</a>.</Note>, so the offer I fumbled wasn't just a job. It was a fistful of SpaceX stock. Joke aside, the failure left me with a question worth more than any offer. If I ever wanted to pass one of these, could I get *better* at system design on purpose? Not just read about it, but practice it the way you practice anything hard.
 
-Anyway. Recently I have failed a system design interview, epically, when I was interviewing Cursor. Now that blocked my way of [getting into SpaceX and equity](). Joke aside, I was thinking if there's a way to get my system design skill better, if I ever want to pass other company's interview.
+This is the story of the tool I built to answer that, and the one lesson it kept teaching me until it stuck.
 
-# learning system design with Claude Code
+## Why system design is hard to practice
 
-Claude has a lots of software knowledge and can make a lot of good architectural decisions. it is fair to say that ever since Opus 4.5, claude and claude code are fully capable of conducting complicated system design discussions. In many cases, claude is more knowledgeable than an average software engineer. The caveat is you need to know what you are asking and decide if Claude's proposal is suitable to your project. 
+System design is a strange category of interview, for three reasons.
 
-But if you just want to learn the system design and conduct thought process, they are more than a good. For example, you can claude code to design a distributed rate limiter or a URL shortener. It not only would help you come up with ideas, but also possibly help you implement in your codebase
+First, there is nowhere good to practice. LeetCode gives you thousands of algorithm problems and an instant verdict on each one. System design has no equivalent. You read a few books, watch a few talks, and then you are expected to perform.
 
-<add an example of conversation>
+Second, it doesn't exist in the real world. Nobody at work hands you a blank board and forty-five minutes to design a system from nothing. Real design happens slowly, with context, spread across many conversations and months.
 
-# Make the learning process reproduciable and replicable with an agent skill.
+Third, it is an entirely constructed scenario: a curated setup for discussing systems topics under a clock, with an interviewer probing on cue. It is a bit unnatural. Which is exactly why you have to practice the format itself. Even if you design systems every day at work, the thing being graded is your performance in this artificial setup, not your résumé.
 
-chat with Claude Code is just one off experience. If you want to learn system design, you need to have a way to repeat this process, and consolidate your learning. In this case, you need 
+Early in my career it all felt abstract and vague. I had never designed a system, I had only solved competitive-programming problem sets. There was no SQL database to choose, no reliability to defend, nothing to say about networks, availability, or consistency. The interview is the one place those ideas get rehearsed before you meet them, painfully, in production.
 
-1. a replicable starting point for an exercise
-2. a good agent role-playing who knows the context is about a system design interview instead of a coding question or a real project.
-3. a way to save your learning progress and allow your future sessions to be able to help you strenghthen you weakness or help you delibratively practices. i.e. a memory
+So after Cursor, I didn't start by re-reading a textbook. I started by diagnosing the wreck.
 
-To meet these three requirements, I made an agent skill that you can run with your claude code and codex easily. It can
+## Step one: postmortem the failure
 
-- generate a new questions to prepare
-- mock interview from the perspective of an interviewer
-- help you learn by act as an interviewee
-- have a two-agent interaction so that you can see how they interact with each other during an interview session.
+The most expensive data you will ever generate is a real interview you just failed. It also decays fast. What feels vivid today is unrecoverable next week. So the first thing I built was a way to capture it.
 
-The last feature is my favorite, especially in the field or topic that I am not familiar with. The interactive process doesn't match exactly your experience, but it is informative, help you to think and pay attention to what the agent thinks important.
+I gave the agent my notes and asked it to run a *postmortem*. It diagnosed the round across five dimensions (requirements scoping, high-level structure, deep-dive depth, tradeoff reasoning, and communication), scored each one against the staff bar, and grounded every score in something I had actually said.
 
-# The structure of thinking
+{/* TODO: replace the three weaknesses below with the real entries from Feitong's weaknesses.md once he pastes them. The current three are placeholders. */}
+The verdict was not flattering, and it was specific. I had drawn boxes before doing any math. I had named technologies without defending them. I had deflected a depth probe by calling it a product question. Each weakness landed in a file the tool keeps, `weaknesses.md`, with a one-line quote of the moment it happened.
 
-Ultimately, learning about system design is not about just memorize knowledges such as in-memory cache or worker queues. The most important thing is to form a structured way of thinking, a problem solving approach. 
+That file is the whole point. It meant my worst interview wasn't just a bad memory. It was now the seed data for everything I would practice next.
 
-Thus, I asked Claude code to give me hints on how to structure my thinking and what are the principles I can start with. From there, I can iteratively enrich and improve my knowledge and make my answers better. Here is what Claude suggest:
+## Claude and Codex can actually do system design
 
-<quote on claude structured thinking>
+Before building anything elaborate, I checked the obvious thing. Can a frontier coding agent hold a real system-design conversation? By 2026, with models like Claude and Codex, the answer is plainly yes. On the architecture topics that show up in interviews, they are often more knowledgeable than the average engineer in the room.
 
+Ask it to design a distributed rate limiter or a URL shortener, and a competent answer assembles in front of you:
 
-You also need to know that system design interview is a curated interview setup, it has its uniqueness as a setup, a way of communication and collaborative problem solving. Even if you are doing lots of system design in your real work, you still may need to adapt to this setup, with time constraints and abstract. 
+{/* TODO: replace this synthesized exchange with a real transcript from one of your own sessions. */}
 
+> **Me:** Design a distributed rate limiter. 1M QPS, limits enforced per-API-key.
+>
+> **Claude:** First, the numbers. At 1M QPS across, say, 100k keys, that's ~10 QPS/key on average but heavily skewed, since a few hot keys will dominate, so per-key state can't live on one node. Token bucket over fixed-window, because it absorbs bursts without the boundary spike that fixed windows have. State in Redis, sharded by key, with the counter mutation pushed into a Lua script so check-and-decrement is atomic and you avoid a read-modify-write race. The tradeoff is that a cross-region request pays one Redis round trip. If that latency is unacceptable, you move to local token buckets with async reconciliation, which is cheaper but makes limits approximate near the boundary. Which matters more here, exactness or tail latency?
 
-# After using this skill.
+That last move, naming the tradeoff and handing it back to you, is the thing I kept failing to do myself. Watching it modeled on demand is its own kind of training.
 
-In the end, I passed system design interviews at OpenAI. so I guess this skill did help me.
+There is a caveat worth taking seriously. An agent without real context can go off track, the same way it does on any task. It will sometimes state something with total confidence that is subtly wrong, or correct for a different scale than the one you care about. So the burden sits with you, the learner, to check and verify. Don't assume the agent is always right. Assume it isn't, and find a way to test what it tells you.
 
-# Appendix
+That sounds like a flaw. It is actually the point. What the agent hands you is hints and worked examples: some things you didn't know, some you half-knew, some you can already see are wrong. Sorting them is the exercise. You are learning the boundary between what you know and what you don't, and the difference between the decisions that matter and the ones that don't. The skill leans into this, since every mock closes with one final pass that names what was missing and what was strong. But the aim is never to memorize the agent's answer. It is to learn the way of thinking that produced it, so you can produce your own.
 
-I recently added a TTS functionality, now you can listen two agents talking to each other during the mock interview. I am thinking maybe I should also add a STT to my skill so during your practice, you can also interact with the agent using your voice.
+## Making the practice repeatable
+
+A one-off chat is not a practice regimen. To actually improve, I needed three things: a repeatable starting point for an exercise, an agent that knows it is running an *interview* and not a coding task or a real project, and a memory that lets future sessions sharpen the weaknesses earlier sessions exposed.
+
+So I packaged it into an agent skill that runs in both Claude Code and Codex. It has four modes.
+
+- **`generate`** authors a fresh question with a rubric and assumptions. I ran it every other day while practicing, just *reading*, never solving, as a way to sample what kinds of problems are out there. After ten of them you have absorbed what good answers and common failures look like across domains.
+- **`mock`** turns the agent into a strict staff-level interviewer. Phases enforced, time-boxed, a scored debrief at the end. This is where you find the gap between *knowing* you should batch your clarifying questions and *reflexively* doing it under pressure.
+- **`learn`** runs it in reverse. You interview the agent, so you can see what a strong answer actually sounds like. With `--auto`, it runs two sub-agents: an interviewer and a candidate. They conduct a full session while you just watch and learn.
+- **`postmortem`** is the mode that started all this. It diagnoses a real round you took.
+
+That two-agent mode in `learn --auto` is my favorite, especially in domains I don't know well. The session won't mirror your own experience exactly, but watching where a strong candidate spends their attention, and where even a good run has holes, teaches you what to pay attention to. With the ElevenLabs voices turned on, it stops being a transcript you read and becomes an interview you overhear:
+
+{/* DEMO PLACEHOLDER: once recorded, replace this blockquote with the embed:
+     <YouTube id="YOUTUBE_ID" title="Two agents run a full staff-level mock, designing X.com's timeline feed, voiced with ElevenLabs" />
+     Capture: `learn --auto "design X.com's timeline feed" --say=elevenlabs --level=staff --exchanges=10`, uploaded unlisted to YouTube. */}
+
+> 🎬 **[ Demo coming: a full `learn --auto` session designing X.com's timeline feed, two agents interviewing each other, voiced with ElevenLabs. ]**
+
+And the memory closes the loop. Every scored session writes a row to `runs.md`: the date, the problem, the five scores, and the one drill to do next time.
+
+{/* TODO: Feitong will provide real runs.md rows. Placeholder below; replace with his actual rows. Format: date | slug | mode | level | direction | scoping,structure,depth,tradeoffs,comms | next-action */}
+```
+2026-MM-DD | <topic-slug> | mock | staff | general | 2,3,2,2,3 | open with numbers before any box
+2026-MM-DD | <topic-slug> | mock | staff | general | 3,4,3,3,4 | defend every named component
+```
+
+Weak dimensions also pile up in `weaknesses.md`, and the next `mock` reads them first, biasing its deep-dives toward the dimensions I keep failing. The Cursor postmortem didn't just diagnose one interview. It quietly aimed the next month of practice.
+
+## The structure of thinking
+
+Here is the thing the tool kept teaching me, session after session. System design is not about memorizing components. In-memory caches, worker queues, consensus protocols: that knowledge is necessary, and it is also the cheap part. The expensive part, the part actually being graded, is a *structured way of thinking*.
+
+When I asked the agent to name the principles I should start from, the answer compressed into one sentence I now can't unsee:
+
+<Blockquote variant="pullquote">
+
+Numbers force architecture.<br />
+Architecture forces tradeoffs.<br />
+Tradeoffs reveal seniority.
+
+</Blockquote>
+
+The chain only runs one direction. Skip the first link, requirements without scale numbers, and everything downstream collapses. Your architecture has no forcing function, your tradeoffs become preferences, and the interviewer has nothing left to grade. Most of my Cursor failure was just me starting in the middle of that chain.
+
+A handful of moves follow from it, and once they are reflexive the design mostly writes itself.
+
+1. **Pin or default.** Batch five to eight clarifying questions up front, *each with the assumption you will make if the interviewer doesn't pin it.* You scope without blocking.
+2. **Math before boxes.** QPS, payload size, peak fanout, all *before* drawing anything. 95% cache hit means a CDN. 60k peak writes means sharding. The numbers choose the architecture, you don't.
+3. **"X over Y because Z," every time.** Not "we'll use a queue." Instead: "Kafka over Redis Streams because we need durable replay and per-key ordering, and the latency cost is acceptable." Every named technology earns its place in one sentence.
+4. **Engage, then note the product input.** When a depth probe touches policy, never escape into "that's a product question." Give the two real technical options, pick one with a reason, *then* name the product input you would want. Product framing is the finishing move, not the exit.
+5. **Volunteer the deep dive.** End the high-level pass with "want me to go deeper on the fanout, the merge engine, or the write path?" Knowing where your own design is load-bearing is half the grade.
+
+None of this is exotic. But there is a real distance between reading it and having it fire automatically when the clock is running, and closing that distance is exactly what the repetition is for.
+
+## After the skill
+
+In the end, I passed system design interviews at OpenAI.
+
+I won't claim a tool passed them for me. I sat in those rooms. But the failure that sent me there became the first row in `weaknesses.md`, and everything I drilled afterward was aimed by it. That loop is the part I would have struggled to build by hand: fail, diagnose, target, repeat.
+
+## Appendix: giving the agents a voice
+
+I recently added text-to-speech, so you can *listen* to the two agents interview each other during a `learn --auto` run. Two distinct voices, one for the interviewer and one for the candidate, make it a genuinely listenable dialog. I am now thinking about the other half, speech-to-text, so during your own practice you could answer the interviewer out loud, the way you actually will on the day.
