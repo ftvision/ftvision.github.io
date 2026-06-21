@@ -42,6 +42,8 @@ export interface ReadingDepthProps {
   children: React.ReactNode;
   className?: string;
   defaultPass?: ReadingPass;
+  heading?: string;
+  ariaLabel?: string;
   passCopy?: Partial<Record<ReadingPass, Partial<ReadingPassCopy>>>;
   storageKey?: string;
 }
@@ -86,6 +88,8 @@ export function ReadingDepth({
   children,
   className,
   defaultPass = 'full',
+  heading = 'Reading depth',
+  ariaLabel,
   passCopy,
   storageKey,
 }: ReadingDepthProps) {
@@ -139,7 +143,7 @@ export function ReadingDepth({
         <div className="sticky top-4 z-10 mb-8 border border-border bg-ground-primary/95 p-3 shadow-sm backdrop-blur">
           <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
             <div>
-              <p className="type-overline text-figure-muted">Reading depth</p>
+              <p className="type-overline text-figure-muted">{heading}</p>
               <p className="mt-1 text-body-sm text-figure-secondary">
                 {copy[activePass].summary}
               </p>
@@ -152,7 +156,7 @@ export function ReadingDepth({
           <div
             className="grid grid-cols-3 gap-1 border border-border bg-ground-secondary p-1"
             role="tablist"
-            aria-label="Reading depth"
+            aria-label={ariaLabel ?? heading}
           >
             {(['spine', 'argument', 'full'] as ReadingPass[]).map((pass) => {
               const isActive = activePass === pass;

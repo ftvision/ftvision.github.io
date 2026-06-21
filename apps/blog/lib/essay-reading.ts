@@ -10,12 +10,16 @@ type CondensedReadingPass = Exclude<ReadingPass, 'full'>;
 export interface EssayReadingDepth {
   slug: string;
   defaultPass: ReadingPass;
+  heading?: string;
+  ariaLabel?: string;
   passCopy: Partial<Record<ReadingPass, Partial<ReadingPassCopy>>>;
   passes: Partial<Record<CondensedReadingPass, string>>;
 }
 
 interface EssayReadingFrontmatter {
   defaultPass?: ReadingPass;
+  heading?: string;
+  ariaLabel?: string;
   passes?: Partial<Record<ReadingPass, Partial<ReadingPassCopy>>>;
 }
 
@@ -41,6 +45,8 @@ export function getEssayReadingDepth(slug: string): EssayReadingDepth | null {
     return {
       slug,
       defaultPass: frontmatter.defaultPass ?? 'full',
+      heading: frontmatter.heading,
+      ariaLabel: frontmatter.ariaLabel,
       passCopy: frontmatter.passes ?? {},
       passes,
     };
