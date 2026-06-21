@@ -84,6 +84,34 @@ function useReadingDepth() {
   return context;
 }
 
+function getVisibleHashTarget(id: string) {
+  const escapedId = window.CSS?.escape ? window.CSS.escape(id) : id;
+  const candidates = Array.from(
+    document.querySelectorAll<HTMLElement>(`[id="${escapedId}"]`)
+  );
+
+  return (
+    candidates.find((candidate) => candidate.getClientRects().length > 0) ??
+    document.getElementById(id)
+  );
+}
+
+function scrollToHashTarget(id: string, behavior: ScrollBehavior = 'smooth') {
+  const element = getVisibleHashTarget(id);
+  if (!element) return false;
+
+  const stickyControl = document.querySelector('.reading-depth > div');
+  const stickyBottom =
+    stickyControl instanceof HTMLElement
+      ? stickyControl.getBoundingClientRect().bottom
+      : 0;
+  const offset = Math.max(96, stickyBottom + 24);
+  const top = element.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({ top, behavior });
+  return true;
+}
+
 export function ReadingDepth({
   children,
   className,
@@ -93,6 +121,7 @@ export function ReadingDepth({
   passCopy,
   storageKey,
 }: ReadingDepthProps) {
+  const sectionRef = React.useRef<HTMLElement>(null);
   const [activePass, setActivePassState] = React.useState<ReadingPass>(defaultPass);
   const copy = React.useMemo(
     () => ({
@@ -137,9 +166,50 @@ export function ReadingDepth({
     };
   }, [activePass]);
 
+  React.useEffect(() => {
+    if (!window.location.hash) return;
+
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    const frame = window.requestAnimationFrame(() => {
+      scrollToHashTarget(id, 'auto');
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [activePass]);
+
+  const handleClickCapture = React.useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const anchor = target.closest('a[href^="#"]');
+      if (
+        !(anchor instanceof HTMLAnchorElement) ||
+        !sectionRef.current?.contains(anchor)
+      ) {
+        return;
+      }
+
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#') return;
+
+      const id = decodeURIComponent(href.slice(1));
+      if (!getVisibleHashTarget(id)) return;
+
+      event.preventDefault();
+      window.history.pushState(null, '', href);
+      window.requestAnimationFrame(() => scrollToHashTarget(id));
+    },
+    []
+  );
+
   return (
     <ReadingDepthContext.Provider value={value}>
-      <section className={cn('reading-depth my-8', className)}>
+      <section
+        ref={sectionRef}
+        className={cn('reading-depth my-8', className)}
+        onClickCapture={handleClickCapture}
+      >
         <div className="sticky top-4 z-10 mb-8 border border-border bg-ground-primary/95 p-3 shadow-sm backdrop-blur">
           <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
             <div>
