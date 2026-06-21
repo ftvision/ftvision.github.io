@@ -53,6 +53,9 @@ export type {
 // Embed components
 export { XEmbed } from './XEmbed';
 
+export { YouTube } from './YouTube';
+export type { YouTubeProps } from './YouTube';
+
 // Media components
 export { ZoomableImage } from './ZoomableImage';
 

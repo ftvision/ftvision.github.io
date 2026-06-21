@@ -29,6 +29,7 @@ import {
   WideBlock,
   TimelineMap,
   XEmbed,
+  YouTube,
   ZoomableImage,
   ContrastPair,
   ContrastPositive,
@@ -324,6 +325,9 @@ export function getMDXComponents(): MDXComponentMap {
 
     // X (Twitter) post embed
     XEmbed,
+
+    // YouTube video embed
+    YouTube,
 
     // Click-to-zoom image
     ZoomableImage,
