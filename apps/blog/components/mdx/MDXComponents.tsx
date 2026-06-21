@@ -1,5 +1,5 @@
-import * as React from 'react';
-import Link from 'next/link';
+import * as React from "react";
+import Link from "next/link";
 
 // UI components from @blog/ui
 import {
@@ -18,7 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@blog/ui';
+} from "@blog/ui";
 
 // Content components
 import {
@@ -27,22 +27,29 @@ import {
   Reference,
   References,
   WideBlock,
+  ProviderEvalCollections,
   TimelineMap,
   XEmbed,
   ZoomableImage,
   ContrastPair,
   ContrastPositive,
   ContrastNegative,
-} from '../content';
+} from "../content";
 
 // Editorial components for magazine-style layouts
-import { EditorialGrid, EditorialSection, FeaturedCard, Item, DigestEntry } from '../editorial';
+import {
+  EditorialGrid,
+  EditorialSection,
+  FeaturedCard,
+  Item,
+  DigestEntry,
+} from "../editorial";
 
 // Vision100 subway map visualization
-import { Vision100Map } from '../vision100';
+import { Vision100Map } from "../vision100";
 
 // Econ100 timeline map visualization
-import { Econ100Map } from '../econ100';
+import { Econ100Map } from "../econ100";
 
 /**
  * Props type for MDX HTML elements
@@ -111,12 +118,8 @@ export function getMDXComponents(): MDXComponentMap {
     ),
 
     // Links
-    a: ({
-      href,
-      children,
-      ...props
-    }: HTMLProps & { href?: string }) => {
-      const isExternal = href?.startsWith('http');
+    a: ({ href, children, ...props }: HTMLProps & { href?: string }) => {
+      const isExternal = href?.startsWith("http");
       if (isExternal) {
         return (
           <a
@@ -132,7 +135,7 @@ export function getMDXComponents(): MDXComponentMap {
       }
       return (
         <Link
-          href={href || '#'}
+          href={href || "#"}
           className="text-link hover:text-link-hover transition-colors underline underline-offset-2"
           {...props}
         >
@@ -178,9 +181,9 @@ export function getMDXComponents(): MDXComponentMap {
       ...props
     }: HTMLProps & { className?: string }) => {
       // Check if this is a code block (has language class) or inline code
-      const isCodeBlock = className?.startsWith('language-');
+      const isCodeBlock = className?.startsWith("language-");
       if (isCodeBlock) {
-        const language = className?.replace('language-', '') || 'text';
+        const language = className?.replace("language-", "") || "text";
         return (
           <CodeBlock language={language} {...props}>
             {String(children).trim()}
@@ -197,9 +200,7 @@ export function getMDXComponents(): MDXComponentMap {
     },
 
     // Horizontal rule
-    hr: (props: HTMLProps) => (
-      <hr className="my-8 border-border" {...props} />
-    ),
+    hr: (props: HTMLProps) => <hr className="my-8 border-border" {...props} />,
 
     // Strong and emphasis
     strong: ({ children, ...props }: HTMLProps) => (
@@ -218,7 +219,7 @@ export function getMDXComponents(): MDXComponentMap {
       if (!src) return null;
       return (
         <Figure caption={alt} className="my-6">
-          <FigureImage src={src} alt={alt || ''} />
+          <FigureImage src={src} alt={alt || ""} />
         </Figure>
       );
     },
@@ -272,6 +273,7 @@ export function getMDXComponents(): MDXComponentMap {
 
     // Layout
     WideBlock,
+    ProviderEvalCollections,
 
     // Paired examples
     ContrastPair,
@@ -290,7 +292,7 @@ export function getMDXComponents(): MDXComponentMap {
       if (!src) return null;
       return (
         <Figure caption={alt} className="my-6">
-          <FigureImage src={src} alt={alt || ''} />
+          <FigureImage src={src} alt={alt || ""} />
         </Figure>
       );
     },

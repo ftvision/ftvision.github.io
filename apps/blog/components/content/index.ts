@@ -1,42 +1,41 @@
 // Context providers
-export { NoteProvider, useNotes, useNotesOptional } from './NoteContext';
-export type { NoteData } from './NoteContext';
+export { NoteProvider, useNotes, useNotesOptional } from "./NoteContext";
+export type { NoteData } from "./NoteContext";
 
 export {
   ReferenceProvider,
   useReferences,
   useReferencesOptional,
-} from './ReferenceContext';
-export type { ReferenceData } from './ReferenceContext';
+} from "./ReferenceContext";
+export type { ReferenceData } from "./ReferenceContext";
 
 // Content components
-export { Note } from './Note';
-export type { NoteProps } from './Note';
+export { Note } from "./Note";
+export type { NoteProps } from "./Note";
 
-export { Marginnote } from './Marginnote';
-export type { MarginnoteProps } from './Marginnote';
+export { Marginnote } from "./Marginnote";
+export type { MarginnoteProps } from "./Marginnote";
 
-export { Reference } from './Reference';
-export type { ReferenceProps } from './Reference';
+export { Reference } from "./Reference";
+export type { ReferenceProps } from "./Reference";
 
-export { References } from './References';
-export type { ReferencesProps } from './References';
+export { References } from "./References";
+export type { ReferencesProps } from "./References";
 
-export { WideBlock } from './WideBlock';
-export type { WideBlockProps } from './WideBlock';
+export { WideBlock } from "./WideBlock";
+export type { WideBlockProps } from "./WideBlock";
+
+export { ProviderEvalCollections } from "./ProviderEvalCollections";
 
 export {
   ContrastPair,
   ContrastPositive,
   ContrastNegative,
-} from './ContrastPair';
-export type {
-  ContrastPairProps,
-  ContrastBlockProps,
-} from './ContrastPair';
+} from "./ContrastPair";
+export type { ContrastPairProps, ContrastBlockProps } from "./ContrastPair";
 
 // Embed components
-export { XEmbed } from './XEmbed';
+export { XEmbed } from "./XEmbed";
 
 // Media components
 export { ZoomableImage } from './ZoomableImage';
@@ -56,7 +55,7 @@ export {
   resolveCategories,
   getCategoryColor,
   getCategoryName,
-} from './timeline';
+} from "./timeline";
 
 export type {
   TimelineItem,
@@ -69,4 +68,4 @@ export type {
   TimelineTableProps,
   NodePosition,
   PeriodAssigner,
-} from './timeline';
+} from "./timeline";

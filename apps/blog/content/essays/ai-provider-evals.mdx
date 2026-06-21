@@ -1,0 +1,87 @@
+---
+title: "AI Provider Evals"
+description: "A working framework for comparing AI providers by task, genre, evidence, and failure mode instead of asking which model is best."
+date: "2026-06-16"
+type: review
+topics:
+  - ai
+  - product
+lang: en
+draft: true
+---
+
+The lazy way to compare AI providers is to ask which model is "best."
+
+That question is too coarse. A better one is: best at what kind of work, under what prompt, with what evidence?
+
+This is my attempt to build a small, personal eval set for AI providers. Not a benchmark. Not a leaderboard. A set of concrete tasks I actually care about, with the original input, the prompt, the model outputs, and a human reading of what each model thought the job was.
+
+The first collection is writing. The second should be programming. Writing exposes tone, argument, ambiguity, and voice. Programming exposes perception, implementation, repo navigation, debugging, and verification. The high-level essay should summarize the patterns. The collections should carry the evidence.
+
+<ProviderEvalCollections />
+
+## First test: writing temperament
+
+The prompt was a hard one: a letter to my father, the things I never said to him. The draft was in Chinese. It was about my mother's death on the Dragon Boat Festival, about him having to compose himself before he could get the news out, and about the two of us being pushed into a world neither of us had imagined. The spine of the piece was one inversion:
+
+> 与其说父亲看着我成长，不如说我看着父亲成长。
+>
+> _It was less that my father watched me grow up than that I watched my father grow up._
+
+I gave the same draft to Gemini, to GPT / Codex, and to Claude. The interesting thing was not which rewrite came out best. It was that the three models disagreed about what the job even was.
+
+**Gemini treated it as a tone problem.** It did not start rewriting. It first named the texture of the piece: the plainspoken cruelty of the opening, the long wordless reconciliation between two men, the register of a family letter. Then it gave me registers to choose from instead of a single verdict. One version it labeled 微调微雕, a light polish that kept my own cadence. Another it labeled 克制与留白, more spacious and literary. It closed by asking which one matched how my father and I actually talk to each other.
+
+That is the right instinct for this genre. Emotional writing is usually not a search for the strongest sentence. It is a search for the right distance from the wound. Gemini handed me a palette of distances.
+
+**Claude treated it as a structural problem.** Its first move was neither a compliment nor a rewrite. It was a diagnosis: the body is doing the real work, the ending is not. The frame promised "things I never said." The body delivered concrete unsaid material. Then the ending collapsed into the things everyone says: you did great, take care of your body, enjoy your connection to the world. That critique was correct, and no other model made it.
+
+Claude also caught an ambiguity I had left in. 虽然最后没有成为父亲 can mean "I never became like my father" or "I never became a father myself." Those are two different essays. A gentler editor would have smoothed the line. Claude refused to resolve it for me and told me the choice was load-bearing. It also separated grammar from taste, flagging two small slips as plain corrections (过的 → 过得, 我带来了 → 我带来的) while marking the ending as a judgment call that was mine to make.
+
+**GPT / Codex treated it as a delivery problem.** It produced one clean rewrite, explicitly trying to keep the original plainness and not turn grief into a polished eulogy. No multi-register menu, no adversarial diagnosis. Just a competent, faithful pass. That neutrality is its own signature. Codex is the least interested in being a literary critic and the most interested in handing back something finished. Its real edge shows up later, when the writing is attached to files, a rendered page, or a citation trail it can actually inspect.
+
+Three models, one prompt, three different theories of the job. That gap is the first useful result.
+
+## The vocabulary I was missing
+
+I used to reach for two vague Chinese words: 文采 for "good writing," 思辨能力 for "sharp thinking." Both are too coarse to pick a tool with. Here is the more precise map.
+
+What I was calling 文采 is really **fidelity**: emotional fidelity, register sensitivity, rhythm, face-preserving phrasing, and the discipline to leave a sentence quiet when it should stay quiet. The test of a fidelity editor is whether it knows when _not_ to improve a line. Gemini is the strongest fidelity editor I have used.
+
+What I was calling 思辨能力 is really **force**: adversarial structure. Stress-testing the thesis, locating the ambiguity, naming the weak link, forcing the piece to survive its strongest objection. The test of a force editor is whether it refuses to let a sentence off easy. Claude is the strongest force editor I have used.
+
+There is a third axis my old vocabulary did not even have a word for: **verification**. Not how the sentence reads, but whether the artifact it lives in actually works. Inspect the repo, render the page, run the check, report what happened. GPT / Codex is the strongest verification editor I have used.
+
+Each strength is also the shape of its matching weakness. Gemini's fidelity can slide into agreeableness: it is good at helping you say what you already want to say, less good at asking whether it deserves to be said that way. Claude's force can turn prosecutorial: for grief, memory, or apology, sharpening is not always the right operation, and sometimes the task is to stay faithful to a feeling before it hardens into a conclusion. Codex's neutrality can leave it more attached to the artifact than to the sentence.
+
+One irony is worth naming. Using my mother's death as a benchmark for three AI vendors is itself a register problem, the exact kind of judgment the emotional genre is about. I kept the example because the discomfort is the lesson. The model that knew to handle it gently and the model that knew to interrogate its structure were not the same model. Pretending one tool does both is how you get comfort where you needed pressure, or a scalpel where you needed silence.
+
+This is not a moral ranking. It is a genre map.
+
+If I am writing a letter to my father, I want Gemini first, and maybe Claude only at the very end to catch structural dishonesty. If I am writing about AI policy or product strategy or why a popular claim is wrong, I want Claude early, because a first draft is usually too forgiving of itself. If I am shipping the essay on my site, with MDX, screenshots, citations, and preview routes, I want Codex in the loop.
+
+The failure mode is always the same: the wrong temperament for the genre.
+
+## Software projects
+
+The same three temperaments show up in software work, just renamed.
+
+Gemini has the best visual perception. It can look at a frontend and tell me why I am dissatisfied before I can: the spacing is wrong, the hierarchy is off, the image is doing the wrong job, the page looks like a template instead of a product. That is fidelity again, pointed at a screen instead of a sentence. Its weakness is also the same. It diagnoses the vibe of a frontend better than it produces the code that fixes it.
+
+Claude is the reverse. Claude Code is very strong at implementation. Once the problem is specified clearly, it makes large coherent changes, preserves architecture, and handles the details. Its weak spot is frontend taste. It is oddly bad at feeling why a user dislikes a UI, and it often needs the dissatisfaction translated into engineering instructions first: the grid is too loose, the card hierarchy is wrong, the visual anchor is missing, the image should be full-bleed. Once the problem is pinned down, it executes. Getting it pinned down can take too many rounds.
+
+GPT / Codex is strongest at the integrated loop: inspect the codebase, use browser or image tools when needed, make the change, run the validation, and report what actually happened. That is verification as a working system, not just code generation. Real software work is perception, execution, and proof in one place, and Codex is the one currently built to close that loop.
+
+The rough model:
+
+- **Visual diagnosis:** Gemini.
+- **Heavy implementation:** Claude.
+- **Repository-grounded product work:** GPT / Codex.
+
+The practical lesson is the same in both halves of this essay. Do not ask one model to be every kind of collaborator. Pick the model by the operation you need.
+
+Sometimes you need comfort.
+
+Sometimes you need pressure.
+
+Sometimes you need a tool-user who can prove the thing actually works.
