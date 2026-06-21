@@ -122,6 +122,7 @@ export function getMDXComponents(): MDXComponentMap {
       ...props
     }: HTMLProps & { href?: string }) => {
       const isExternal = href?.startsWith('http');
+      const isHashLink = href?.startsWith('#');
       if (isExternal) {
         return (
           <a
@@ -129,6 +130,17 @@ export function getMDXComponents(): MDXComponentMap {
             className="text-link hover:text-link-hover transition-colors underline underline-offset-2"
             target="_blank"
             rel="noopener noreferrer"
+            {...props}
+          >
+            {children}
+          </a>
+        );
+      }
+      if (isHashLink) {
+        return (
+          <a
+            href={href}
+            className="text-link hover:text-link-hover transition-colors underline underline-offset-2"
             {...props}
           >
             {children}
