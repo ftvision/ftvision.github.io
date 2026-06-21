@@ -1,11 +1,11 @@
 ---
 name: go-to-market
-description: Distribute an Algo Mind essay across channels and keep a writing cadence. Use when the user wants to promote, distribute, "go to market", or seed a published or draft essay (Substack, X, LinkedIn, Hacker News, Substack Notes, Reddit, LessWrong, 知乎/小红书), generate platform-native copy and share assets, or check whether they are overdue to publish. Operationalizes the Distribute and Learn stages of plan/writing-workflow/README.md.
+description: Distribute an Algo Mind essay across channels and keep a writing cadence. Use when the user wants to promote, distribute, "go to market", or seed a published or draft essay (Substack, X, LinkedIn, Hacker News, Substack Notes, Reddit, LessWrong, 知乎/小红书), generate platform-native copy and share assets, or check whether they are overdue to publish. Operationalizes the Distribute stage of plan/writing-workflow/README.md.
 ---
 
 # Go-to-market for Algo Mind
 
-Turn one finished essay into platform-native distribution, and keep the publishing rhythm. This is the operational form of the **Distribute** and **Learn** stages in `plan/writing-workflow/README.md`.
+Turn one finished essay into platform-native distribution, and keep the publishing rhythm. This is the operational form of the **Distribute** stage in `plan/writing-workflow/README.md`.
 
 ## Positioning every generated piece must fit
 - **Brand:** Algo Mind / 思算 — *intelligence is an algorithm* (functionalist: a mind is defined by what it does, not its substrate).
@@ -124,6 +124,8 @@ If this resonated, I write Algo Mind — intelligence is an algorithm. Subscribe
 | HN | Manual submit. |
 
 Write generated drafts to `dist/<slug>/` (add `dist/` to `.gitignore`) with a `checklist.md`, or output them inline — never commit draft social copy.
+
+After publishing, use the separate `distribution-metrics` skill to create tracked links, record channel snapshots, and summarize what worked.
 
 ---
 
