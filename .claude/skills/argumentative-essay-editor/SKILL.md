@@ -81,12 +81,43 @@ Prefer natural Chinese argumentation over literal translation. Watch for English
 
 If a sentence feels like it was translated from English, rewrite the relationship in Chinese first, then restore any necessary technical term.
 
+### Product And AI Translation Conventions
+
+Use stable Chinese terms in AI/product essays unless the local passage clearly needs a different register:
+
+- "agent" -> "智能体"; "coding agent" -> "编程智能体."
+- "coplayer" -> "陪玩"; "coworker" -> "同事" when the product metaphor is a collaborator, not an employee title.
+- Product names stay in English: "Shortcut", "Cursor", "Claude Code", "OpenClaw."
+- "line count" -> "代码行数"; "LOC" in a measurement -> "行代码."
+- "viral moment" -> "出圈时刻"; avoid leaving "viral moment" in Chinese body prose.
+- "retention" -> "留存"; "daily actives" -> "日活"; "signups" -> "注册数"; "vanity counts" -> "虚荣指标."
+- "people coming back" -> "持续使用" or "留存"; avoid the literal "回来" unless the physical return is the point.
+- "alpha" / "beta" -> "内测" / "早期公开测试" when they mean early testing, not formal release labels.
+- "affordance" -> "可供性"; "functional affordance" -> "功能可供性."
+- "ship" -> "发布" or "推出"; avoid "发货" unless the slang is intentional.
+- "demo" as a verb -> "演示" or "展示"; do not leave "demo 出" in polished Chinese.
+- "market verdict" / "face the verdict" -> "市场检验" or "面对现实"; avoid "裁决" unless the judicial metaphor is intentional.
+- "commitment to the product" is often better as "真心想做成一个产品" than a literal "承诺."
+- "build" / "building" in product essays often means "做产品", "创造产品", or "产品建设"; do not default to "构建" everywhere. "builder" is usually "创造产品的人" or "做产品的人", not "构建者."
+- "infrastructure" in product-engineering context can be "工程基建." "Build for a million users" should often become "追求能服务一百万用户的工程基建", not "为一百万用户而构建."
+
+### Common Chinese Failure Modes
+
+Watch for these recurring translation problems and fix the mechanism, not just the word:
+
+- Pronoun drift: English "it", "this", "that", and "the work" often become unclear in Chinese. Restate the noun: "这个产品", "这种信念", "真正要做的事", "这次曝光."
+- Abstract literalism: words like "防御", "裁决", "合法", "材料", "涂满", "很窄", "昂贵地挣来", or "承受用户" may be accurate to the English skeleton but unnatural in Chinese. Replace them with the concrete action or judgment the sentence means.
+- Dangling contrast: if a sentence says "但..." or "相反..." after a translated claim, make the contrast explicit in Chinese. Do not assume the English paragraph rhythm will carry it.
+- Unintroduced examples: if a condensed passage mentions a diamond pickaxe, a launch video, a benchmark, or a product codename, include enough local context for the example to make sense on its own.
+- English metaphor leakage: "spark/fuel", "machine in the room", "muscle", and similar images may need replacement or expansion. Prefer the Chinese mechanism when the metaphor distracts.
+- Nominalized English: phrases like "the proof is", "the job is", "the translation is", or "the test is" often become stiff. Convert them into Chinese causal or action sentences.
+
 ### Use Chinese Main Text With English Term Anchors
 
 When a term has technical precision, put Chinese first and English in parentheses on first use:
 
 - 开放权重模型（open-weight models）
-- 编程代理（coding agents）
+- 编程智能体（coding agents）
 - 推理轨迹（reasoning traces）
 - 前沿模型（frontier model）
 - 守门人（gatekeeper）
@@ -116,6 +147,16 @@ Keep original English inside citation titles, URLs, source metadata, and direct 
 For recurring concepts, pick the Chinese frame that carries the argument and keep it stable. If "access denial" functions like supply cutoff in the Chinese argument, use "断供" for the strategic concept, while preserving "访问权限" or "访问路径" for literal API or product-access mechanics.
 
 Avoid switching among near-synonyms such as "拒绝访问," "访问拒绝," "访问控制," and "断供" unless each one marks a real distinction.
+
+### MDX Notes And Citation Placement
+
+For MDX essays that use `<Note>`:
+
+- Put the note immediately after the claim, phrase, or clause it supports.
+- In Chinese body prose, when the note supports the preceding clause or sentence, place `<Note>` before the sentence punctuation and put the punctuation after `</Note>`. This keeps the rendered note number before the punctuation.
+- Do not leave English note prose such as "bloat, waste, and rookie mistakes" inside Chinese notes unless it is a direct quoted phrase that needs to stay in English.
+- A note should add evidence, source detail, or context. It should not merely confess uncertainty, narrate the editing process, or explain that the author is simplifying.
+- When moving a source detail into a note, make sure the main sentence still reads cleanly without opening the note.
 
 ### Explain Metaphors Or Replace Them
 
@@ -155,6 +196,17 @@ For Chinese drafts, review one section at a time. In each section:
 5. Keep direct quotes and citation metadata faithful to the source.
 6. Read the rendered paragraph as a Chinese reader would.
 
+### Maintain Condensed Reading Layers
+
+If an essay has multiple reading depths such as `Spine`, `Argument`, and `Full`, treat the condensed layers as editorial surfaces, not summaries generated from scratch:
+
+- Preserve canonical headings or commandments verbatim when the user has asked for exact wording.
+- `Argument` should be a close extraction from `Full`, with light stitching only where needed for readability. It is not a study guide, a rewrite, or a new outline.
+- Every condensed excerpt must be self-contained. Remove dangling phrases like "we learned this three times" if the excerpt only includes one example, or add the missing setup.
+- When terminology changes in `Full`, sync the matching `Argument` excerpt.
+- If source examples are too abrupt in `Argument`, either include the setup from `Full` or choose a different excerpt that already carries its own context.
+- Keep the default reading experience and selector order intentional; do not change reading-depth defaults while line-editing prose unless the user asks.
+
 ## Workflow
 
 1. State the essay's thesis in one sentence.
@@ -167,7 +219,8 @@ For Chinese drafts, review one section at a time. In each section:
 8. Add or tighten concessions where they make the argument more credible — and keep each one to its shortest form.
 9. Convert weak causal claims into incentive-chain claims when the evidence supports sequence and pressure but not proof.
 10. If the essay has translations, mirror meaning and structure across versions; let surface phrasing read naturally in each language, and flag any place the versions drift into different claims.
-11. Render locally and inspect the reading experience before finishing.
+11. If the essay has condensed reading layers, sync terminology and examples across `Spine`, `Argument`, and `Full`, and verify each condensed excerpt stands alone.
+12. Render locally and inspect the reading experience before finishing.
 
 ## Review Checklist
 
@@ -185,6 +238,8 @@ For Chinese drafts, review one section at a time. In each section:
 - Is the main text still readable without opening the notes?
 - Does the rendered page look and read cleanly?
 - Across translations, do the versions make the same claims (phrasing may differ; meaning must not)?
+- In Chinese MDX, do note markers render before sentence punctuation when they attach to the preceding claim?
+- If the essay has reading-depth layers, are `Spine` and `Argument` close to the canonical text, self-contained, and synchronized with `Full`?
 
 ## Output Style
 
