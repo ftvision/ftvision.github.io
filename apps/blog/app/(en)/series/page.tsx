@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   description:
     'Curated resources, bibliographies, and reading lists.',
   alternates: {
-    canonical: '/series',
+    canonical: '/series/',
     languages: {
-      en: '/series',
-      zh: '/zh/series',
-      'x-default': '/series',
+      en: '/series/',
+      zh: '/zh/series/',
+      'x-default': '/series/',
     },
   },
 };

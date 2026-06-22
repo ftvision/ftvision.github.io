@@ -7,7 +7,7 @@
  * so future fields can be added without rewriting consumers.
  */
 
-import { SITE_URL, SITE_AUTHOR } from './constants';
+import { SITE_URL, SITE_AUTHOR, canonicalUrl } from './constants';
 import type { EssayMeta, PeriodicMeta, SeriesMeta, Language } from '@/types/content';
 
 type Locale = Language;
@@ -59,7 +59,7 @@ export function publisherSchema(locale: Locale) {
 
 export function websiteSchema(locale: Locale) {
   const id = locale === 'zh' ? WEBSITE_ID_ZH : WEBSITE_ID_EN;
-  const url = locale === 'zh' ? `${SITE_URL}/zh` : SITE_URL;
+  const url = locale === 'zh' ? canonicalUrl('/zh') : canonicalUrl('/');
   return {
     '@type': 'WebSite',
     '@id': id,
@@ -100,13 +100,13 @@ export function blogPostingSchema(args: BlogPostingArgs) {
     '@type': 'BlogPosting',
     headline: args.title,
     description: args.description || undefined,
-    url: abs(args.url),
+    url: canonicalUrl(args.url),
     datePublished: args.datePublished,
     dateModified: args.dateModified || args.datePublished,
     inLanguage: args.locale === 'zh' ? 'zh-CN' : 'en-US',
     author: { '@id': PERSON_ID },
     publisher: { '@id': PUBLISHER_ID },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': abs(args.url) },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl(args.url) },
     image: args.image ? abs(args.image) : undefined,
     keywords: args.topics?.join(', ') || undefined,
   };
@@ -148,13 +148,13 @@ export function seriesPageSchema(series: SeriesMeta, urlPath: string) {
     '@type': 'CollectionPage',
     name: series.title,
     description: series.description || undefined,
-    url: abs(urlPath),
+    url: canonicalUrl(urlPath),
     datePublished: series.date,
     dateModified: series.updated || series.date,
     inLanguage: series.lang === 'zh' ? 'zh-CN' : 'en-US',
     author: { '@id': PERSON_ID },
     publisher: { '@id': PUBLISHER_ID },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': abs(urlPath) },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl(urlPath) },
     keywords: series.topics.join(', ') || undefined,
   };
 }
@@ -172,7 +172,7 @@ export function breadcrumbSchema(items: BreadcrumbItem[]) {
       '@type': 'ListItem',
       position: i + 1,
       name: item.name,
-      item: abs(item.url),
+      item: canonicalUrl(item.url),
     })),
   };
 }

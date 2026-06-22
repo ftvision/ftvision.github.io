@@ -19,9 +19,9 @@ const content = {
     bio: 'I write about technology, product design, and the intersection of human experience with digital tools. This is a space for long-form thinking, curated discoveries, and evergreen resources.',
     aboutLink: 'Learn more about me',
     navigation: [
-      { label: 'Essays', href: '/essays', description: 'Long-form pieces' },
-      { label: 'Series', href: '/series', description: 'Curated collections' },
-      { label: 'Periodics', href: '/periodics', description: 'Regular updates' },
+      { label: 'Essays', href: '/essays/', description: 'Long-form pieces' },
+      { label: 'Series', href: '/series/', description: 'Curated collections' },
+      { label: 'Periodics', href: '/periodics/', description: 'Regular updates' },
     ],
   },
   zh: {
@@ -30,9 +30,9 @@ const content = {
     bio: '我写关于技术、产品设计以及人类体验与数字工具交汇的文章。这里是深度思考、精选发现和常青资源的空间。',
     aboutLink: '了解更多关于我',
     navigation: [
-      { label: '文章', href: '/zh/essays', description: '深度长文' },
-      { label: '系列', href: '/zh/series', description: '主题合集' },
-      { label: '期刊', href: '/zh/periodics', description: '定期更新' },
+      { label: '文章', href: '/zh/essays/', description: '深度长文' },
+      { label: '系列', href: '/zh/series/', description: '主题合集' },
+      { label: '期刊', href: '/zh/periodics/', description: '定期更新' },
     ],
   },
 };
@@ -103,7 +103,7 @@ export function IntroSection({
         <p className={styles.greeting}>{t.greeting}</p>
         <NameHeading className={styles.name}>{t.name}</NameHeading>
         <p className={styles.bio}>{t.bio}</p>
-        <Link href={`${basePath}/about`} className={styles.link}>
+        <Link href={`${basePath}/about/`} className={styles.link}>
           {t.aboutLink}
           <span aria-hidden="true">→</span>
         </Link>

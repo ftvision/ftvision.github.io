@@ -26,13 +26,13 @@ export function NavigationOverlay({
   const basePath = language === 'zh' ? '/zh' : '';
 
   const navItems = [
-    { href: `${basePath}/essays`, label: language === 'zh' ? '文章' : 'Essays' },
+    { href: `${basePath}/essays/`, label: language === 'zh' ? '文章' : 'Essays' },
     {
-      href: `${basePath}/periodics`,
+      href: `${basePath}/periodics/`,
       label: language === 'zh' ? '周刊' : 'Periodics',
     },
-    { href: `${basePath}/series`, label: language === 'zh' ? '系列' : 'Series' },
-    { href: `${basePath}/about`, label: language === 'zh' ? '关于' : 'About' },
+    { href: `${basePath}/series/`, label: language === 'zh' ? '系列' : 'Series' },
+    { href: `${basePath}/about/`, label: language === 'zh' ? '关于' : 'About' },
   ];
 
   return (

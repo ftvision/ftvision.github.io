@@ -29,7 +29,7 @@ describe('HomePage', () => {
     // The essays link is present in the server-rendered navigation
     const essaysLink = screen.getByRole('link', { name: /essays long-form pieces/i });
     expect(essaysLink).toBeInTheDocument();
-    expect(essaysLink).toHaveAttribute('href', '/essays');
+    expect(essaysLink).toHaveAttribute('href', '/essays/');
   });
 
   it('has a link to about page', () => {
@@ -37,8 +37,8 @@ describe('HomePage', () => {
 
     // The about link is in the nav section with "About" button text
     const aboutLinks = screen.getAllByRole('link', { name: /about/i });
-    // Find the one that links to /about (nav button, not header nav)
-    const aboutLink = aboutLinks.find(link => link.getAttribute('href') === '/about');
+    // Find the one that links to /about/ (nav button, not header nav)
+    const aboutLink = aboutLinks.find(link => link.getAttribute('href') === '/about/');
     expect(aboutLink).toBeInTheDocument();
   });
 

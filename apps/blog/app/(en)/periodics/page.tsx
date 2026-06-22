@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   description:
     'Curated digests, changelogs, and notes on technology, AI, and more.',
   alternates: {
-    canonical: '/periodics',
+    canonical: '/periodics/',
     languages: {
-      en: '/periodics',
-      zh: '/zh/periodics',
-      'x-default': '/periodics',
+      en: '/periodics/',
+      zh: '/zh/periodics/',
+      'x-default': '/periodics/',
     },
   },
 };

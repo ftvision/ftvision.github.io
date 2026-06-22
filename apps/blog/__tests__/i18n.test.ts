@@ -44,27 +44,27 @@ describe('Language Utilities', () => {
 
   describe('localizePathname', () => {
     it('adds /zh prefix for Chinese language', () => {
-      expect(localizePathname('/', 'zh')).toBe('/zh');
-      expect(localizePathname('/essays', 'zh')).toBe('/zh/essays');
-      expect(localizePathname('/essays/my-post', 'zh')).toBe('/zh/essays/my-post');
-      expect(localizePathname('/about', 'zh')).toBe('/zh/about');
+      expect(localizePathname('/', 'zh')).toBe('/zh/');
+      expect(localizePathname('/essays', 'zh')).toBe('/zh/essays/');
+      expect(localizePathname('/essays/my-post', 'zh')).toBe('/zh/essays/my-post/');
+      expect(localizePathname('/about', 'zh')).toBe('/zh/about/');
     });
 
     it('removes /zh prefix for English language', () => {
       expect(localizePathname('/zh', 'en')).toBe('/');
       expect(localizePathname('/zh/', 'en')).toBe('/');
-      expect(localizePathname('/zh/essays', 'en')).toBe('/essays');
-      expect(localizePathname('/zh/essays/my-post', 'en')).toBe('/essays/my-post');
+      expect(localizePathname('/zh/essays', 'en')).toBe('/essays/');
+      expect(localizePathname('/zh/essays/my-post', 'en')).toBe('/essays/my-post/');
     });
 
     it('keeps English paths unchanged for English language', () => {
       expect(localizePathname('/', 'en')).toBe('/');
-      expect(localizePathname('/essays', 'en')).toBe('/essays');
-      expect(localizePathname('/about', 'en')).toBe('/about');
+      expect(localizePathname('/essays', 'en')).toBe('/essays/');
+      expect(localizePathname('/about', 'en')).toBe('/about/');
     });
 
     it('converts Chinese paths to Chinese format', () => {
-      expect(localizePathname('/zh/essays', 'zh')).toBe('/zh/essays');
+      expect(localizePathname('/zh/essays', 'zh')).toBe('/zh/essays/');
     });
   });
 

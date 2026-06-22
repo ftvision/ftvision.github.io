@@ -94,10 +94,10 @@ export function HeroCanvas({
     (target: NavigationTarget) => {
       const basePath = language === 'zh' ? '/zh' : '';
       const paths: Record<NavigationTarget, string> = {
-        essays: `${basePath}/essays`,
-        about: `${basePath}/about`,
-        periodics: `${basePath}/periodics`,
-        series: `${basePath}/series`,
+        essays: `${basePath}/essays/`,
+        about: `${basePath}/about/`,
+        periodics: `${basePath}/periodics/`,
+        series: `${basePath}/series/`,
       };
       router.push(paths[target]);
     },

@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   title: '系列',
   description: '精选资源、文献和阅读清单',
   alternates: {
-    canonical: '/zh/series',
+    canonical: '/zh/series/',
     languages: {
-      en: '/series',
-      zh: '/zh/series',
-      'x-default': '/series',
+      en: '/series/',
+      zh: '/zh/series/',
+      'x-default': '/series/',
     },
   },
 };

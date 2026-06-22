@@ -6,7 +6,7 @@
  * — all useful for AI engines that consume feeds.
  */
 
-import { SITE_URL, SITE_AUTHOR } from './constants';
+import { SITE_URL, SITE_AUTHOR, canonicalPath, canonicalUrl } from './constants';
 import { getAllEssays } from './essays';
 import { getAllPeriodics } from './periodics';
 import type { Language } from '@/types/content';
@@ -36,7 +36,10 @@ function entriesFor(locale: Language): FeedEntry[] {
   const essays = getAllEssays({ language: locale }).map((essay) => ({
     title: essay.title,
     description: essay.description,
-    url: locale === 'zh' ? `/zh/essays/${essay.slug}` : `/essays/${essay.slug}`,
+    url:
+      locale === 'zh'
+        ? canonicalPath(`/zh/essays/${essay.slug}`)
+        : canonicalPath(`/essays/${essay.slug}`),
     date: essay.date,
   }));
   const periodics = getAllPeriodics({ language: locale }).map((periodic) => ({
@@ -44,8 +47,8 @@ function entriesFor(locale: Language): FeedEntry[] {
     description: periodic.description,
     url:
       locale === 'zh'
-        ? `/zh/periodics/${periodic.slug}`
-        : `/periodics/${periodic.slug}`,
+        ? canonicalPath(`/zh/periodics/${periodic.slug}`)
+        : canonicalPath(`/periodics/${periodic.slug}`),
     date: periodic.date,
   }));
   return [...essays, ...periodics]
@@ -55,7 +58,7 @@ function entriesFor(locale: Language): FeedEntry[] {
 
 export function buildAtomFeed(locale: Language): string {
   const feedPath = locale === 'zh' ? '/zh/feed.xml' : '/feed.xml';
-  const homePath = locale === 'zh' ? '/zh' : '/';
+  const homePath = locale === 'zh' ? canonicalPath('/zh') : '/';
   const feedUrl = `${SITE_URL}${feedPath}`;
   const homeUrl = `${SITE_URL}${homePath}`;
   const title = locale === 'zh' ? '思算 — 随笔' : 'Algo Mind — Essays';
@@ -71,7 +74,7 @@ export function buildAtomFeed(locale: Language): string {
 
   const entryXml = entries
     .map((entry) => {
-      const entryUrl = `${SITE_URL}${entry.url}`;
+      const entryUrl = canonicalUrl(entry.url);
       return `  <entry>
     <id>${entryUrl}</id>
     <title>${escapeXml(entry.title)}</title>

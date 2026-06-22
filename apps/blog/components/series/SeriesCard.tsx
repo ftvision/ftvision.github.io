@@ -75,7 +75,7 @@ export function SeriesCard({
       data-variant={variant}
     >
       <Link
-        href={`${basePath}/${slug}`}
+        href={`${basePath}/${slug}/`}
         className="series-card-link absolute inset-0 z-10"
         aria-label={`View "${title}"`}
       >

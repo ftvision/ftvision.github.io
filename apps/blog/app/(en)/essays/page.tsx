@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   description:
     'Essays on technology, AI, product thinking, and career development.',
   alternates: {
-    canonical: '/essays',
+    canonical: '/essays/',
     languages: {
-      en: '/essays',
-      zh: '/zh/essays',
-      'x-default': '/essays',
+      en: '/essays/',
+      zh: '/zh/essays/',
+      'x-default': '/essays/',
     },
   },
 };

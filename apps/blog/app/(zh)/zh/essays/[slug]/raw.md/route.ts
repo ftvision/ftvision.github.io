@@ -19,7 +19,7 @@ export async function GET(_req: Request, { params }: Params) {
     return new Response('Not Found', { status: 404 });
   }
 
-  const canonical = `${SITE_URL}/zh/essays/${slug}`;
+  const canonical = `${SITE_URL}/zh/essays/${slug}/`;
   const header = [
     `# ${essay.title}`,
     '',

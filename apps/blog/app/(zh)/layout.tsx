@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'zh_CN',
     siteName: '思算',
-    url: `${SITE_URL}/zh`,
+    url: `${SITE_URL}/zh/`,
   },
   alternates: {
-    canonical: '/zh',
+    canonical: '/zh/',
     languages: {
       en: '/',
-      zh: '/zh',
+      zh: '/zh/',
       'x-default': '/',
     },
   },
