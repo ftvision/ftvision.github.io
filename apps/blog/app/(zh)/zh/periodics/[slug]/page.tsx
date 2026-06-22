@@ -42,18 +42,18 @@ export async function generateMetadata({
   }
 
   const alternates: Metadata['alternates'] = {
-    canonical: `/zh/periodics/${slug}`,
+    canonical: `/zh/periodics/${slug}/`,
     languages: {
-      zh: `/zh/periodics/${slug}`,
+      zh: `/zh/periodics/${slug}/`,
     },
   };
 
   const enTranslation = getPeriodicTranslation(slug, 'en');
   if (enTranslation && enTranslation.slug !== slug) {
-    alternates.languages!['en'] = `/periodics/${enTranslation.slug}`;
-    alternates.languages!['x-default'] = `/periodics/${enTranslation.slug}`;
+    alternates.languages!['en'] = `/periodics/${enTranslation.slug}/`;
+    alternates.languages!['x-default'] = `/periodics/${enTranslation.slug}/`;
   } else {
-    alternates.languages!['x-default'] = `/zh/periodics/${slug}`;
+    alternates.languages!['x-default'] = `/zh/periodics/${slug}/`;
   }
 
   const description =

@@ -1,4 +1,4 @@
-import { SITE_URL } from '@/lib/constants';
+import { SITE_URL, canonicalUrl } from '@/lib/constants';
 import { getAllEssays } from '@/lib/essays';
 import { getAllPeriodics } from '@/lib/periodics';
 import { getAllSeries } from '@/lib/series';
@@ -27,27 +27,27 @@ function renderLlmsTxt(): string {
   const essaysEn: Entry[] = getAllEssays({ language: 'en' }).map((e) => ({
     title: e.title,
     description: e.description,
-    url: `${SITE_URL}/essays/${e.slug}`,
+    url: canonicalUrl(`/essays/${e.slug}`),
     markdownUrl: `${SITE_URL}/essays/${e.slug}/raw.md`,
   }));
 
   const essaysZh: Entry[] = getAllEssays({ language: 'zh' }).map((e) => ({
     title: e.title,
     description: e.description,
-    url: `${SITE_URL}/zh/essays/${e.slug}`,
+    url: canonicalUrl(`/zh/essays/${e.slug}`),
     markdownUrl: `${SITE_URL}/zh/essays/${e.slug}/raw.md`,
   }));
 
   const periodics: Entry[] = getAllPeriodics().map((p) => ({
     title: p.title,
     description: p.description,
-    url: `${SITE_URL}${p.lang === 'zh' ? '/zh' : ''}/periodics/${p.slug}`,
+    url: canonicalUrl(`${p.lang === 'zh' ? '/zh' : ''}/periodics/${p.slug}`),
   }));
 
   const series: Entry[] = getAllSeries().map((s) => ({
     title: s.title,
     description: s.description,
-    url: `${SITE_URL}${s.lang === 'zh' ? '/zh' : ''}/series/${s.slug}`,
+    url: canonicalUrl(`${s.lang === 'zh' ? '/zh' : ''}/series/${s.slug}`),
   }));
 
   const blocks = [

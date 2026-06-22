@@ -32,12 +32,12 @@ export function HomePage({ language = 'en' }: HomePageProps) {
           {t('site.tagline')}
         </p>
         <nav className="flex justify-center gap-4">
-          <Link href={`${basePath}/essays`}>
+          <Link href={`${basePath}/essays/`}>
             <Button variant="primary" size="md">
               {t('home.browseAll')}
             </Button>
           </Link>
-          <Link href={`${basePath}/about`}>
+          <Link href={`${basePath}/about/`}>
             <Button variant="secondary" size="md">
               {t('nav.about')}
             </Button>
@@ -53,7 +53,7 @@ export function HomePage({ language = 'en' }: HomePageProps) {
               {t('home.recentEssays')}
             </h2>
             <Link
-              href={`${basePath}/essays`}
+              href={`${basePath}/essays/`}
               className="text-body-sm text-link hover:text-link-hover"
             >
               {t('home.viewAll')} →

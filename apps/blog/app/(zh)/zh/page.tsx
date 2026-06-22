@@ -3,10 +3,10 @@ import { LandingPage } from '@/components/pages';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/zh',
+    canonical: '/zh/',
     languages: {
       en: '/',
-      zh: '/zh',
+      zh: '/zh/',
       'x-default': '/',
     },
   },

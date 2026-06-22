@@ -5,11 +5,11 @@ export const metadata: Metadata = {
   title: 'About',
   description: 'About Feitong Yang - career, background, and interests.',
   alternates: {
-    canonical: '/about',
+    canonical: '/about/',
     languages: {
-      en: '/about',
-      zh: '/zh/about',
-      'x-default': '/about',
+      en: '/about/',
+      zh: '/zh/about/',
+      'x-default': '/about/',
     },
   },
 };

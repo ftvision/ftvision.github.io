@@ -43,9 +43,9 @@ export async function generateMetadata({
   }
 
   const alternates: Metadata['alternates'] = {
-    canonical: `/zh/essays/${slug}`,
+    canonical: `/zh/essays/${slug}/`,
     languages: {
-      zh: `/zh/essays/${slug}`,
+      zh: `/zh/essays/${slug}/`,
     },
     types: {
       'text/markdown': `/zh/essays/${slug}/raw.md`,
@@ -54,10 +54,10 @@ export async function generateMetadata({
 
   const enTranslation = getTranslation(slug, 'en');
   if (enTranslation && enTranslation.slug !== slug) {
-    alternates.languages!['en'] = `/essays/${enTranslation.slug}`;
-    alternates.languages!['x-default'] = `/essays/${enTranslation.slug}`;
+    alternates.languages!['en'] = `/essays/${enTranslation.slug}/`;
+    alternates.languages!['x-default'] = `/essays/${enTranslation.slug}/`;
   } else {
-    alternates.languages!['x-default'] = `/zh/essays/${slug}`;
+    alternates.languages!['x-default'] = `/zh/essays/${slug}/`;
   }
 
   const ogOverride = essay.image

@@ -57,7 +57,7 @@ export function EssayFilters({
     label: topicLabelMap[topic],
   }));
 
-  const basePath = pathname.startsWith('/zh') ? '/zh/essays' : '/essays';
+  const basePath = pathname.startsWith('/zh') ? '/zh/essays/' : '/essays/';
 
   const updateFilters = React.useCallback(
     (type: EssayType | null, topicsList: Topic[]) => {

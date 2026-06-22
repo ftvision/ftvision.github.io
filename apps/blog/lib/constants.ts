@@ -7,9 +7,18 @@ import type { EssayType, Topic, Language, PeriodicType, SeriesCategory } from '@
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.feitong.phd';
 
+export function canonicalPath(path: string): string {
+  const rootedPath = path.startsWith('/') ? path : `/${path}`;
+  return rootedPath === '/' || rootedPath.endsWith('/') ? rootedPath : `${rootedPath}/`;
+}
+
+export function canonicalUrl(path: string): string {
+  return `${SITE_URL}${canonicalPath(path)}`;
+}
+
 export const SITE_AUTHOR = {
   name: 'Feitong Yang',
-  url: `${SITE_URL}/about`,
+  url: canonicalUrl('/about'),
 } as const;
 
 /**

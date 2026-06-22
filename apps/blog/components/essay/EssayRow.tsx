@@ -59,7 +59,7 @@ export function EssayRow({
       data-type={type}
     >
       <Link
-        href={`${basePath}/${slug}`}
+        href={`${basePath}/${slug}/`}
         aria-label={translate(language, 'essays.read', { title })}
         className={cn(
           'essay-row-link absolute inset-0 z-10',

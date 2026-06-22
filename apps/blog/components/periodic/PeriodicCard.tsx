@@ -69,7 +69,7 @@ export function PeriodicCard({
       data-variant={variant}
     >
       <Link
-        href={`${basePath}/${slug}`}
+        href={`${basePath}/${slug}/`}
         className="periodic-card-link absolute inset-0 z-10"
         aria-label={`Read "${title}"`}
       >

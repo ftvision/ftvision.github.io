@@ -102,13 +102,14 @@ export function getLanguageBasePath(lang: Language): string {
  */
 export function localizePathname(pathname: string, lang: Language): string {
   // Remove existing /zh prefix if present
-  const cleanPath = pathname.replace(/^\/zh/, '') || '/';
+  const cleanPath = pathname.replace(/^\/zh(?=\/|$)/, '') || '/';
 
-  if (lang === 'zh') {
-    return `/zh${cleanPath === '/' ? '' : cleanPath}`;
-  }
+  const localizedPath =
+    lang === 'zh' ? `/zh${cleanPath === '/' ? '/' : cleanPath}` : cleanPath;
 
-  return cleanPath;
+  return localizedPath === '/' || localizedPath.endsWith('/')
+    ? localizedPath
+    : `${localizedPath}/`;
 }
 
 /**

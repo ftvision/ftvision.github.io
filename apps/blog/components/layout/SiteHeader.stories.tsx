@@ -50,9 +50,9 @@ export const CustomLinks: Story = {
     siteName: 'Essays',
     links: [
       { href: '/', label: 'Home' },
-      { href: '/essays', label: 'Essays' },
+      { href: '/essays/', label: 'Essays' },
       { href: '/projects', label: 'Projects' },
-      { href: '/about', label: 'About' },
+      { href: '/about/', label: 'About' },
     ],
     actions: <ModeToggle />,
   },

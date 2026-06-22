@@ -50,7 +50,7 @@ export function RelatedEssays({ essays, language, className }: RelatedEssaysProp
             className="border-b border-border pl-2 last:border-b-0"
           >
             <Link
-              href={`${basePath}/${essay.slug}`}
+              href={`${basePath}/${essay.slug}/`}
               className="group flex items-baseline gap-6 py-4 no-underline transition-colors"
             >
               <span className="flex-1 font-serif text-figure-primary transition-colors group-hover:text-link">

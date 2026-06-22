@@ -36,13 +36,13 @@ function useLocalizedNav() {
   const basePath = language === 'zh' ? '/zh' : '';
 
   const links: NavLink[] = [
-    { href: `${basePath}/essays`, label: translate(language, 'nav.essays') },
-    { href: `${basePath}/series`, label: translate(language, 'nav.series') },
-    { href: `${basePath}/about`, label: translate(language, 'nav.about') },
+    { href: `${basePath}/essays/`, label: translate(language, 'nav.essays') },
+    { href: `${basePath}/series/`, label: translate(language, 'nav.series') },
+    { href: `${basePath}/about/`, label: translate(language, 'nav.about') },
   ];
 
   const siteName = translate(language, 'site.name');
-  const homePath = basePath || '/';
+  const homePath = basePath ? `${basePath}/` : '/';
 
   return { links, siteName, homePath, basePath };
 }
@@ -57,6 +57,8 @@ interface DesktopNavProps {
 }
 
 function DesktopNav({ links, pathname }: DesktopNavProps) {
+  const currentPath = pathname === '/' || pathname.endsWith('/') ? pathname : `${pathname}/`;
+
   return (
     <nav
       className="hidden md:flex md:items-center md:gap-6"
@@ -64,7 +66,7 @@ function DesktopNav({ links, pathname }: DesktopNavProps) {
     >
       {links.map((link) => {
         const isActive =
-          pathname === link.href || pathname.startsWith(`${link.href}/`);
+          currentPath === link.href || currentPath.startsWith(link.href);
         return (
           <Link
             key={link.href}
@@ -151,6 +153,7 @@ function MobileMenuPanel({
 }: MobileMenuPanelProps) {
   const menuRef = React.useRef<HTMLDivElement>(null);
   const firstLinkRef = React.useRef<HTMLAnchorElement>(null);
+  const currentPath = pathname === '/' || pathname.endsWith('/') ? pathname : `${pathname}/`;
 
   // Focus first link when menu opens
   React.useEffect(() => {
@@ -235,7 +238,7 @@ function MobileMenuPanel({
           <ul className="space-y-1" role="list">
             {links.map((link, index) => {
               const isActive =
-                pathname === link.href || pathname.startsWith(`${link.href}/`);
+                currentPath === link.href || currentPath.startsWith(link.href);
               return (
                 <li key={link.href}>
                   <Link

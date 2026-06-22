@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/constants';
+import { canonicalUrl } from '@/lib/constants';
 import { getAllEssays } from '@/lib/essays';
 import { getAllPeriodics } from '@/lib/periodics';
 import { getAllSeries } from '@/lib/series';
@@ -14,7 +14,7 @@ interface ContentEntry {
 }
 
 function url(path: string): string {
-  return `${SITE_URL}${path}`;
+  return canonicalUrl(path);
 }
 
 function buildAlternates(
