@@ -1,0 +1,65 @@
+---
+title: "Ship the Core First"
+description: "Three months, 300+ pull requests, one episode, and no idea if anyone wanted it. What coding agents make too easy to forget when you are building a product from zero."
+date: "2026-06-16"
+type: narrative
+topics:
+  - product
+lang: en
+---
+
+Lately I've been using AI to rebuild a pre-digital idea: a radio station you simply sit and listen to. That became [echofm](https://echofm.live) and [huisheng.live](https://huisheng.live). The idea is small and human. You write a letter, the station picks the good ones, writes a warm reply, and composes a song to match, so the person who wrote in feels heard.
+
+<YouTube id="CEYphmWhriw" title="Ep 1 The thing I never said to my father" />
+
+Three months. More than 300 merged pull requests. One episode. And I still haven't tested how many people would actually want to engage with this idea. <Marginnote>I did scroll Reddit to see the kinds of letters people write. I have never interviewed a single potential listener.</Marginnote>
+
+This essay isn't about the product. It's about that gap, and how a coding agent helped me build my way straight into it. Agents removed the engineering pain that used to protect me from premature scale.
+
+## The build that felt like progress
+
+Building the thing felt wonderful. Coding agents like Claude Code and Codex made every piece fast. I wrote a frontend. I wrote a backend and worker nodes to generate audio remotely. I wrote an admin dashboard so we could manage episodes the database couldn't show us readably. I built not one generation pipeline but two. I added an eval process to grade episode quality.
+
+The trap is that none of those pieces sounded stupid. I did need a place for people to submit letters. I did need a basic pipeline that could turn one letter into one finished episode. I did need evals, because if the episode was bad, there was no product to test. The premature part was not "using AI to build the product." The premature part was building my own operating system around the product before the product had an operating rhythm.
+
+A remote worker pool, a custom admin dashboard, and a productized go-to-market workflow did not have to exist yet. At this stage, Codex itself could have been the operator. I could have asked it to run the pipeline, inspect the data, prepare the upload, draft the launch copy, and do the awkward manual work around the product.
+
+Most of those 300 pull requests were machines for doing work I had not yet earned the need to automate: machines for running episodes, machines for managing them, machines for distributing them, all at a scale I had no evidence I would ever reach. Every merge felt like a win. The repo grew. The architecture got cleaner. By every measure I was watching, I was extremely productive.
+
+## The reckoning
+
+The cracks showed up in the machine I was proudest of. The worker pool generated audio remotely, and it worked beautifully when there were two letters. At six, the machines didn't have the resources to keep up. <Note>The fix was almost insulting. The same pipeline was far easier to run, and far easier to control, when I just opened a local Codex session and asked it to run the letters for me. Weeks of remote infrastructure, beaten by a thing I could do by hand.</Note>
+
+That failure was clarifying. The obvious engineering response was to provision better machines, harden the queue, and keep polishing the infrastructure. But that would have been the same mistake again. The worker pool failed, but the deeper failure was that I was still treating infrastructure quality as the bottleneck. At this stage, the business was not "can I build a beautiful remote generation system?" The business was "can I get real letters, turn them into good episodes, and make strangers care enough to come back?"
+
+Running it by hand made me ask a question I had been too busy building to ask: what is all of this *for*?
+
+A radio station is a media company, and a media company is simple to describe and hard to build. It lives on two flows. Supply: letters worth answering. Demand: people who want to listen. Everything else, the code, the servers, the pipelines, exists only to connect the two. Success is not a working system. Success is a venue people come back to: somewhere they drop a letter, somewhere they return to listen.
+
+I had spent three months on everything except those two flows. I had never found out if ten strangers would submit letters without me explaining the whole vision one by one. I had never found out if ten people who did not know me would listen to one finished episode, share it, or ask when the next one was coming. I had built the connective machinery for a supply and a demand that did not yet exist.
+
+## The core I skipped
+
+Here is what I should have built, and it is small. A page where someone can submit a letter. A pipeline that turns a letter into an episode. Enough evaluation to know whether the episode is good. A manual way to publish it. That's it.
+
+It didn't need to be automated. I could have collected real letters by hand, run them through the pipeline myself one at a time, used AI to polish the audio and write the marketing copy, and uploaded the result to YouTube or Spotify with my own hands. That is the entire business, run manually, in about a week. And it tests both flows at once: do people write, and do people listen?
+
+So here is the mistake, and the factory makes it obvious. I built a beautiful, automated factory, with machines and conveyor belts and a control room, before I had produced a single good or found out whether anyone wanted to buy it. Automation is how you scale something that works. I used it as a way to avoid finding out whether it works. A factory is the reward for proven demand, not a substitute for testing it.
+
+And I fell for it for one reason: building the factory was cheap. In the old days I would never have attempted any of this. Each piece would have cost too much time, and that cost would have forced me to choose. The agents removed the cost. When the friction that makes you prioritize disappears, nothing stops you from building everything. So I built everything, and called the motion progress.
+
+## What I learned
+
+If you're building with an agent right now, this is the part I'd ask you to sit with.
+
+Shipping with an agent feels like the most productive you have ever been, and that feeling isn't fake. The tools really are that powerful. But the same ease that makes them feel great removes the engineering pain that used to protect you from premature scale. Vibe coding can become the most comfortable procrastination ever invented. It looks like the hard work, so you don't notice you are using it to avoid the harder work: finding out whether anyone wants the thing at all.
+
+Code was never the real bottleneck, and now it really isn't. So stop scoring yourself by it. In the 0-to-1 stage, productivity is how fast you learn about the market. Point the agent at producing the good, publishing it, and putting it in front of real people. Let the market, not your backlog, decide the next PR.
+
+People will tell you to "do things that don't scale," and they're right, but it's usually taught as a trick, a phase you pass through on the way to the real thing. <Note>Paul Graham, [Do Things That Don't Scale](https://paulgraham.com/ds.html) (2013).</Note>
+
+That is not what I learned. I learned that it points at where the real work of building a product actually lives. The factory is not the product. The product is the fit between what you make and who wants it, letters on one side and listeners on the other, and that fit can only be found through contact with the market.
+
+His lesson was true in 2013. In 2026 it matters more, not less, because agents have made the wrong path, building the machine, nearly free and genuinely fun. The discipline of keeping your eyes on supply and demand has never been easier to lose.
+
+I'm still learning it. Next, I'm going to ship the core by hand: get real letters, make one good episode, publish it where people can actually hear it, and see whether anyone writes back. The rest, I'll build when the market asks me to.
