@@ -1,0 +1,72 @@
+---
+title: "Dissecting Claude Science"
+description: "A local reverse-engineering pass over Claude Science 0.1.15 and what its runtime reveals about the product."
+date: "2026-07-06"
+type: deep-dive
+topics:
+  - technical
+  - ai
+  - science
+lang: en
+draft: true
+---
+
+Anthropic has released their new product for Scientific Research: Claude Science. It is an exciting product that has a lot of innovation. The data governance and background review agent is quite interesting.
+
+It turns out this product is more interesting and exciting than the function it advertise. With the help of your favorate coding agent, including Claude Code, it is not hard to dig into how the Claude Science is made. This essay is my guided tour to Claude Science.
+
+## HighLight
+
+There are a few highlight from the Claude Science product:
+
+1. It is a brand new agent harness. It doesn't depend on Claude Code at all
+2. The new main agent, operon, orchestrating the agent, the interaction with the world, the subagent workflow, all with code.
+3. agent as the judge to keep the main agent correct on course and prevent hallucinations
+4. It is iterated very often. The first version was 0.1.0, by Day 7, they already 0.1.15. By second Friday, it is 0.1.18.
+
+
+## Prediction
+
+I also have the following prediction
+
+1. it is likely anthropic will ship a specially trained model for life science, a special line other than the current general purpose, because now it has another harness. It is also possible that both claude code and claude science harness are going to be absorbed into the same next gneration model.
+2. It is possible that claude science will reach v1.0 together with one of next generation model release  -- just like Claude code got promoted to v1.0 with Opus 4 is released
+3. you should treat the current claude science as claude code before v1.0, so there's going to be a lot iteration and changes. but it sets a very unique foundation for this product iteration.
+4. if claude code represents a direction of exploring how to
+
+## The architecture
+
+The most surprising part of the Claude Science is that is a very thin SwiftUI + a React App run on a bun/typescript server. When you open it via the icon, it pops out your browser and launch a website at your localhost.
+
+![image of the open up]()
+
+This surprises me because it feels like a vibe coded prototype instead of a refined product. But it does have some unique strength:
+
+* it is local to your computer so it can access your local file
+* it is so simple so you can easily use it cross platfrom, including in Windows via WSL
+* it simplifies the developement and possibly allow developers to focus on [the core of the product](link to ship the core first) instead of doing lots of UI -- after all, its strength is the agent and the data governance and the current setup is good enough to demonstrate the power of that.
+
+there is another reason that this is a simple typescript server running as a daemon: it needs to orchestrate multiple runtime environements. There is a dedicated, stdlib-only python interactive runtime for the operon agent, there are one or more python analytics runtime that laods the scientific and data analyisis library, there are one or more R runtime doing the same thing (the python and R runtime comes from the micromamba, which is a simplfied conda environement)
+
+![image of the architecture component]
+
+This setup and the orchestration requirement is much more complicated than many other agent product, because secretly shipping a hermentic R & python runtime and keep it alive and healthy via the daemon is quite a lot of engineering work. Most agentic product doesn't maintain another persistent runtime, and they usually do one-shot script running, even though sometimes that one shot running for a while. (this is where you see claude code or codex spawns lots of subprocesses)
+
+## The initial package
+Before we proceed, it is actually interesting to know what is shipped to you when you download the claude science -- what is contained in the intial installtion package, and how it is unpacked to give you all the environemnt
+
+![image of the unpacking]
+
+> with some details of the unpacking
+
+## Agent Orchestration, the power of operon -- code is the language the LLM's thought to control its hand
+
+this is an aggressive code-centric orchetration
+
+## Agent as a judge on the background: Keep agent on track, keep user on track
+
+two agnets are running on the background. one, the review agent, monitors agent behavior trace and independently fact check the source. another, the bookmark agent, monitors agent behavior trace, and highlight the signals that users may want.
+
+> code sgements of the system prompt extraction
+
+## Data governance as the first class citizen
