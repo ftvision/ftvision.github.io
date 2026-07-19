@@ -4,1256 +4,336 @@ import * as React from "react";
 import { useReducedMotion } from "./AB-useReducedMotion";
 import { FigureScaffold } from "./FigureScaffold";
 
-type SystemId = "execution" | "verification" | "evidence";
-type SystemMode = "all" | SystemId;
+// Essay colour grammar: three systems, one hue each.
+const EXEC = "var(--color-data-1)"; // execution / kernels
+const SUPER = "var(--color-data-3)"; // supervision / reviewer
+const EVID = "var(--color-data-5)"; // evidence / artifacts
+const NEUTRAL = "var(--color-text-muted)";
+const QUERY = "var(--color-action-primary)"; // the traced query packet
 
-interface Point {
-  x: number;
-  y: number;
-}
+// Theme-safe tinted fill: mostly the page background, lightly system-coloured.
+const tint = (c: string) => `color-mix(in srgb, ${c} 14%, var(--color-bg-primary))`;
 
-const SYSTEMS: Array<{ id: SystemMode; label: string }> = [
-  { id: "all", label: "All paths" },
-  { id: "execution", label: "Execution" },
-  { id: "verification", label: "Verification" },
-  { id: "evidence", label: "Evidence" },
+const STEP_MS = 700;
+const DUR_S = STEP_MS / 1000;
+
+// One query's life. Each hop is one real edge the packet travels; between spokes
+// the packet returns to the daemon rather than cutting across the diagram.
+const JOURNEY_NODES = [
+  "daemon",
+  "repl",
+  "handoff",
+  "python",
+  "daemon",
+  "mcp",
+  "artifact",
+  "reviewer",
+] as const;
+const CAPTIONS = [
+  "A query arrives; the daemon takes authority.",
+  "The daemon starts the control kernel to orchestrate.",
+  "The control kernel writes a handoff file — shared cwd, not memory.",
+  "The data kernel reads the file and runs the analysis.",
+  "A privileged call returns across the host-call boundary to the daemon.",
+  "The daemon calls an external connector.",
+  "The daemon records the result as a versioned artifact.",
+  "At a checkpoint, a read-only reviewer wakes to check it.",
+];
+const N_HOPS = CAPTIONS.length;
+
+// Each edge is a real drawn connector (or its reverse); the packet stays on the
+// lines and always passes back through the daemon between spokes.
+const DESKTOP_EDGES = [
+  "M375 62 L375 110", // user -> daemon
+  "M300 150 L250 150", // daemon -> repl
+  "M145 176 L145 198", // repl -> handoff (write)
+  "M145 240 L145 260", // handoff -> python (read)
+  "M250 283 L300 272", // python -> daemon (host call back)
+  "M450 149 L468 149", // daemon -> mcp
+  "M450 300 L480 300", // daemon -> artifact
+  "M375 360 L375 408", // daemon -> reviewer
 ];
 
-const SYSTEM_COLORS: Record<SystemId, string> = {
-  execution: "var(--color-data-1)",
-  verification: "var(--color-data-3)",
-  evidence: "var(--color-data-5)",
-};
-
-const TRACE_STEPS = [
-  "Ready: the faint route shows one work unit crossing the harness.",
-  "1. The repl control kernel issues a governed host request.",
-  "2. The local daemon evaluates dispatch and permits.",
-  "3. A persistent data kernel, shell process, or compute provider performs the work.",
-  "4. The daemon records execution and privileged host-call evidence.",
-  "5. New activity reaches the checkpoint predicate.",
-  "6. A detached REVIEWER traces the recorded evidence.",
-  "7. Findings meet the terminal delivery barrier.",
-  "8. Artifact versions, dependencies, and verification state are persisted.",
-  "9. A replay export projects recorded host responses outside the daemon.",
+// Mobile is a daemon "spine" at x=64: every worker and record taps the spine
+// separately, so nothing chains to its neighbour. The packet rides the spine
+// out to each box and back.
+const MOBILE_EDGES = [
+  "M180 50 L180 82", // user -> daemon
+  "M64 168 L64 249 L100 249", // daemon spine -> repl
+  "M210 274 L210 310", // repl -> handoff (write)
+  "M210 354 L210 398", // handoff -> python (read)
+  "M100 423 L64 423", // python -> daemon spine
+  "M64 423 L64 583 L100 583", // daemon -> mcp
+  "M100 583 L64 583 L64 664 L100 664", // mcp -> daemon -> artifact
+  "M100 664 L64 664 L64 746 L100 746", // artifact -> daemon -> reviewer
 ];
 
-const DESKTOP_TRACE_POINTS: Point[] = [
-  { x: 155, y: 126 },
-  { x: 420, y: 291 },
-  { x: 475, y: 118 },
-  { x: 168, y: 560 },
-  { x: 778, y: 251 },
-  { x: 800, y: 348 },
-  { x: 780, y: 555 },
-  { x: 472, y: 555 },
-  { x: 815, y: 640 },
-];
-
-const MOBILE_TRACE_POINTS: Point[] = [
-  { x: 180, y: 104 },
-  { x: 112, y: 392 },
-  { x: 104, y: 199 },
-  { x: 100, y: 855 },
-  { x: 100, y: 603 },
-  { x: 260, y: 603 },
-  { x: 260, y: 697 },
-  { x: 260, y: 855 },
-  { x: 260, y: 940 },
-];
-
-function systemOpacity(mode: SystemMode, system: SystemId) {
-  return mode === "all" || mode === system ? 1 : 0.16;
-}
-
-function SvgNode({
-  x,
-  y,
-  width,
-  height,
-  system,
-  label,
-  title,
-  lines = [],
-  dashed = false,
-}: {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  system: SystemId;
-  label: string;
-  title: string;
-  lines?: string[];
-  dashed?: boolean;
-}) {
-  const color = SYSTEM_COLORS[system];
-
+function FlowKeyframes() {
   return (
-    <g>
-      <rect
-        x={x}
-        y={y}
-        width={width}
-        height={height}
-        fill="var(--color-bg-primary)"
-        stroke="var(--color-border-strong)"
-        strokeDasharray={dashed ? "5 4" : undefined}
-        strokeWidth="1.25"
-      />
-      <path d={`M${x} ${y}V${y + height}`} stroke={color} strokeWidth="3" />
-      <text
-        x={x + 12}
-        y={y + 18}
-        fill="var(--color-text-muted)"
-        fontFamily="var(--font-family-code)"
-        fontSize="9"
-      >
-        {label}
-      </text>
-      <text
-        x={x + 12}
-        y={y + 39}
-        fill="var(--color-text-primary)"
-        fontFamily="var(--font-family-body)"
-        fontSize="13"
-        fontWeight="500"
-      >
-        {title}
-      </text>
-      {lines.map((line, index) => (
-        <text
-          key={line}
-          x={x + 12}
-          y={y + 57 + index * 15}
-          fill="var(--color-text-secondary)"
-          fontFamily="var(--font-family-body)"
-          fontSize="10"
-        >
-          {line}
-        </text>
-      ))}
-    </g>
+    <style>{`@keyframes cs-arch-query{from{offset-distance:0%}to{offset-distance:100%}}`}</style>
   );
 }
 
-function FlowPath({
-  d,
-  label,
-  labelAt,
-  system,
-  markerId,
-  dashed = false,
-}: {
-  d: string;
-  label: string;
-  labelAt: Point;
-  system: SystemId;
-  markerId: string;
-  dashed?: boolean;
-}) {
-  const color = SYSTEM_COLORS[system];
-
+// One packet on one edge; the parent remounts it (via key) each hop.
+function QueryPacket({ path }: { path: string }) {
   return (
-    <g>
-      <path
-        d={d}
-        fill="none"
-        markerEnd={`url(#${markerId})`}
-        stroke={color}
-        strokeDasharray={dashed ? "5 4" : undefined}
-        strokeWidth="1.5"
-      />
-      {label ? (
-        <text
-          x={labelAt.x}
-          y={labelAt.y}
-          fill="var(--color-text-secondary)"
-          fontFamily="var(--font-family-body)"
-          fontSize="9"
-          textAnchor="middle"
-        >
-          {label}
-        </text>
-      ) : null}
-    </g>
-  );
-}
-
-function TraceSegment({
-  d,
-  active,
-  system,
-}: {
-  d: string;
-  active: boolean;
-  system: SystemId;
-}) {
-  return (
-    <path
-      d={d}
-      fill="none"
-      pathLength={1}
-      stroke={SYSTEM_COLORS[system]}
-      strokeDasharray={1}
-      strokeDashoffset={active ? 0 : 1}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="3"
-      className="transition-[stroke-dashoffset] duration-500 ease-out motion-reduce:transition-none"
+    <circle
+      r="5.5"
+      fill={QUERY}
+      stroke="var(--color-bg-primary)"
+      strokeWidth="1.5"
+      style={{
+        offsetPath: `path('${path}')`,
+        offsetRotate: "0deg",
+        animation: `cs-arch-query ${DUR_S}s linear both`,
+      }}
     />
   );
 }
 
-function ArrowMarkers({ suffix }: { suffix: string }) {
-  return (
-    <defs>
-      {(["execution", "verification", "evidence"] as SystemId[]).map(
-        (system) => (
-          <marker
-            key={system}
-            id={`architecture-${system}-${suffix}`}
-            markerWidth="7"
-            markerHeight="7"
-            refX="6"
-            refY="3.5"
-            orient="auto"
-          >
-            <path d="M0 0L7 3.5L0 7Z" fill={SYSTEM_COLORS[system]} />
-          </marker>
-        ),
-      )}
-    </defs>
-  );
-}
+const arrowMarker = (id: string) => (
+  <marker
+    id={id}
+    viewBox="0 0 10 10"
+    refX="8"
+    refY="5"
+    markerWidth="6"
+    markerHeight="6"
+    orient="auto-start-reverse"
+  >
+    <path d="M1 1 L8 5 L1 9" fill="none" stroke={NEUTRAL} strokeWidth="1.6" />
+  </marker>
+);
 
-function DesktopArchitectureGraphic({
-  mode,
-  traceStep,
-  reducedMotion,
+function DesktopArchitecture({
+  playing,
+  active,
+  hop,
+  runId,
+  titleId,
+  descId,
 }: {
-  mode: SystemMode;
-  traceStep: number;
-  reducedMotion: boolean;
+  playing: boolean;
+  active: string | null;
+  hop: number;
+  runId: number;
+  titleId: string;
+  descId: string;
 }) {
-  const point = DESKTOP_TRACE_POINTS[Math.max(0, traceStep - 1)];
-  const traceColor =
-    traceStep <= 3
-      ? SYSTEM_COLORS.execution
-      : traceStep <= 7
-        ? traceStep === 4
-          ? SYSTEM_COLORS.evidence
-          : SYSTEM_COLORS.verification
-        : SYSTEM_COLORS.evidence;
+  const t = "var(--color-text-primary)";
+  const sub = "var(--color-text-secondary)";
+  const mut = "var(--color-text-muted)";
+  const inv = "var(--color-bg-primary)";
+  const sw = (id: string, base = 1.4) => (active === id ? 3 : base);
 
   return (
     <svg
-      className="hidden h-auto w-full overflow-visible sm:block"
-      viewBox="0 0 960 690"
       role="img"
-      aria-labelledby="architecture-title-desktop architecture-desc-desktop"
+      aria-labelledby={`${titleId} ${descId}`}
+      viewBox="0 0 720 480"
+      className="hidden h-auto w-full md:block"
     >
-      <title id="architecture-title-desktop">
-        Daemon-centered Claude Science architecture
-      </title>
-      <desc id="architecture-desc-desktop">
-        The central local daemon owns dispatch and permits, identity and
-        approvals, persistence, and runtime lifecycle. An execution circuit
-        connects a repl control kernel to persistent Python and R kernels, shell
-        execution, and remote compute. A verification circuit connects a
-        checkpoint predicate, detached reviewer, optional bookmarker, and
-        terminal barrier. An evidence circuit stores execution and host-call
-        logs, artifact versions and dependencies, verification checks, and
-        replay exports. These paths are an analytical grouping of directly
-        observed components and flows.
+      <title id={titleId}>Daemon-centered Claude Science architecture</title>
+      <desc id={descId}>
+        The daemon is the central authority. A stdlib control-plane repl and
+        persistent Python and R data-plane kernels are subordinate workers that
+        exchange data through files in a shared workspace, not shared memory.
+        Every privileged call crosses a host-call boundary into the daemon,
+        which mediates external connectors and owns the versioned artifact store
+        whose lineage is observed from runtime tags before it is reconstructed. A
+        read-only reviewer wakes on checkpoints. Play traces one query, hop by
+        hop, always back through the daemon.
       </desc>
-      <ArrowMarkers suffix="desktop" />
+      <defs>
+        <FlowKeyframes />
+        {arrowMarker("cs-arch-arrow")}
+      </defs>
 
-      <g
-        style={{ opacity: systemOpacity(mode, "execution") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <rect
-          x="28"
-          y="38"
-          width="904"
-          height="160"
-          fill="none"
-          stroke={SYSTEM_COLORS.execution}
-          strokeDasharray="7 6"
-          strokeOpacity="0.55"
-        />
-        <text
-          x="44"
-          y="58"
-          fill="var(--color-text-primary)"
-          fontFamily="var(--font-family-code)"
-          fontSize="10"
-        >
-          EXECUTION / ANALYTICAL CIRCUIT
-        </text>
-        <SvgNode
-          x={52}
-          y={82}
-          width={206}
-          height={86}
-          system="execution"
-          label="CONTROL PLANE"
-          title="repl control kernel"
-          lines={["stdlib-only", "MCP / agents / skills / compute"]}
-        />
-        <SvgNode
-          x={335}
-          y={70}
-          width={280}
-          height={104}
-          system="execution"
-          label="DATA PLANE"
-          title="persistent Python / R"
-          lines={["shell process", "shared cwd; separate memory"]}
-        />
-        <SvgNode
-          x={690}
-          y={82}
-          width={220}
-          height={86}
-          system="execution"
-          label="EXTERNAL CAPABILITY"
-          title="remote compute provider"
-          lines={["available when configured"]}
-          dashed
-        />
-        <FlowPath
-          d="M258 126H335"
-          label="handoff files"
-          labelAt={{ x: 296, y: 117 }}
-          system="execution"
-          markerId="architecture-execution-desktop"
-        />
-        <FlowPath
-          d="M615 126H690"
-          label="dispatch"
-          labelAt={{ x: 652, y: 117 }}
-          system="execution"
-          markerId="architecture-execution-desktop"
-          dashed
-        />
-      </g>
+      {/* grouping panels */}
+      <rect x="24" y="96" width="252" height="332" rx="10" fill="none" stroke="var(--color-border-strong)" strokeDasharray="4 4" />
+      <text x="36" y="115" fontSize="10.5" fontWeight="600" fill={mut}>EXECUTION · workers</text>
+      <rect x="468" y="238" width="228" height="150" rx="10" fill="none" stroke="var(--color-border-strong)" strokeDasharray="4 4" />
+      <text x="480" y="257" fontSize="10.5" fontWeight="600" fill={mut}>EVIDENCE · durable records</text>
 
-      <g
-        style={{ opacity: systemOpacity(mode, "verification") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <rect
-          x="652"
-          y="210"
-          width="280"
-          height="270"
-          fill="none"
-          stroke={SYSTEM_COLORS.verification}
-          strokeDasharray="7 6"
-          strokeOpacity="0.55"
-        />
-        <text
-          x="668"
-          y="230"
-          fill="var(--color-text-primary)"
-          fontFamily="var(--font-family-code)"
-          fontSize="10"
-        >
-          SUPERVISION / ANALYTICAL CIRCUIT
-        </text>
-        <SvgNode
-          x={680}
-          y={248}
-          width={220}
-          height={70}
-          system="verification"
-          label="EVENT-TRIGGERED"
-          title="checkpoint predicate"
-          lines={["activity + interval gates"]}
-        />
-        <SvgNode
-          x={700}
-          y={342}
-          width={200}
-          height={70}
-          system="verification"
-          label="DETACHED / READ-ONLY"
-          title="REVIEWER"
-          lines={["trace; do not recompute"]}
-        />
-        <SvgNode
-          x={700}
-          y={426}
-          width={200}
-          height={42}
-          system="verification"
-          label="SHIPPED; DEFAULT OFF"
-          title="BOOKMARKER"
-          dashed
-        />
-        <path
-          d="M666 326V456M672 326V456"
-          stroke="var(--color-border-strong)"
-          strokeWidth="1.5"
-        />
-        <text
-          x="658"
-          y="391"
-          textAnchor="end"
-          fill="var(--color-text-secondary)"
-          fontFamily="var(--font-family-body)"
-          fontSize="9"
-        >
-          terminal barrier
-        </text>
-        <FlowPath
-          d="M790 318V342"
-          label="enqueue"
-          labelAt={{ x: 827, y: 334 }}
-          system="verification"
-          markerId="architecture-verification-desktop"
-        />
-        <FlowPath
-          d="M800 412V426"
-          label="optional"
-          labelAt={{ x: 839, y: 423 }}
-          system="verification"
-          markerId="architecture-verification-desktop"
-          dashed
-        />
-      </g>
+      {/* connectors */}
+      <path d="M375 62 L375 110" fill="none" stroke={NEUTRAL} strokeWidth="1.5" markerEnd="url(#cs-arch-arrow)" />
+      <path d="M250 150 L300 150" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow)" markerStart="url(#cs-arch-arrow)" />
+      <path d="M250 283 L300 272" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow)" markerStart="url(#cs-arch-arrow)" />
+      <path d="M250 345 L300 332" fill="none" stroke={EXEC} strokeWidth="1.5" strokeDasharray="5 4" markerEnd="url(#cs-arch-arrow)" markerStart="url(#cs-arch-arrow)" />
+      <path d="M145 176 L145 198" fill="none" stroke={NEUTRAL} strokeWidth="1.5" markerEnd="url(#cs-arch-arrow)" />
+      <path d="M145 240 L145 260" fill="none" stroke={NEUTRAL} strokeWidth="1.5" markerEnd="url(#cs-arch-arrow)" />
+      <path d="M450 149 L468 149" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow)" />
+      <path d="M450 300 L480 300" fill="none" stroke={EVID} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow)" />
+      <path d="M375 360 L375 408" fill="none" stroke={SUPER} strokeWidth="1.5" strokeDasharray="1 5" markerEnd="url(#cs-arch-arrow)" />
 
-      <g
-        style={{ opacity: systemOpacity(mode, "evidence") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <rect
-          x="28"
-          y="494"
-          width="904"
-          height="176"
-          fill="none"
-          stroke={SYSTEM_COLORS.evidence}
-          strokeDasharray="7 6"
-          strokeOpacity="0.55"
-        />
-        <text
-          x="44"
-          y="514"
-          fill="var(--color-text-primary)"
-          fontFamily="var(--font-family-code)"
-          fontSize="10"
-        >
-          EVIDENCE / ANALYTICAL CIRCUIT
-        </text>
-        <SvgNode
-          x={52}
-          y={530}
-          width={232}
-          height={78}
-          system="evidence"
-          label="EXECUTION INTERSECTION"
-          title="execution_log + host_call_log"
-          lines={["source / effects / errors"]}
-        />
-        <SvgNode
-          x={350}
-          y={530}
-          width={244}
-          height={78}
-          system="evidence"
-          label="DURABLE PRODUCT OUTPUT"
-          title="artifact_versions"
-          lines={["artifact_dependencies / lineage"]}
-        />
-        <SvgNode
-          x={660}
-          y={530}
-          width={240}
-          height={78}
-          system="evidence"
-          label="SUPERVISION INTERSECTION"
-          title="verification_checks + findings"
-          lines={["delivery state / invalidation"]}
-        />
-        <SvgNode
-          x={690}
-          y={622}
-          width={210}
-          height={38}
-          system="evidence"
-          label="PORTABLE PROJECTION"
-          title="replay export"
-        />
-        <FlowPath
-          d="M284 569H350"
-          label="produce"
-          labelAt={{ x: 317, y: 560 }}
-          system="evidence"
-          markerId="architecture-evidence-desktop"
-        />
-        <FlowPath
-          d="M594 569H660"
-          label="verify"
-          labelAt={{ x: 627, y: 560 }}
-          system="evidence"
-          markerId="architecture-evidence-desktop"
-        />
-        <FlowPath
-          d="M780 608V622"
-          label="replay"
-          labelAt={{ x: 816, y: 619 }}
-          system="evidence"
-          markerId="architecture-evidence-desktop"
-        />
-      </g>
+      <text x="152" y="192" fontSize="9.5" fill={mut}>write</text>
+      <text x="152" y="255" fontSize="9.5" fill={mut}>read</text>
+      <text x="384" y="150" fontSize="9.5" fill={mut} textAnchor="end">host call</text>
+      <text x="382" y="388" fontSize="9.5" fill={SUPER}>on checkpoint</text>
 
-      <g>
-        <rect
-          x="326"
-          y="216"
-          width="304"
-          height="232"
-          fill="var(--color-bg-primary)"
-          stroke="var(--color-border-strong)"
-          strokeWidth="1.5"
-        />
-        <rect
-          x="334"
-          y="224"
-          width="288"
-          height="216"
-          fill="var(--color-bg-secondary)"
-          stroke="var(--color-border-strong)"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M334 270H622M478 270V440M334 355H622"
-          stroke="var(--color-border-default)"
-        />
-        <path
-          d="M334 224H622"
-          stroke="var(--color-action-primary)"
-          strokeWidth="4"
-        />
-        <text
-          x="350"
-          y="248"
-          fill="var(--color-text-muted)"
-          fontFamily="var(--font-family-code)"
-          fontSize="10"
-        >
-          LOCAL DAEMON / OPERON AUTHORITY BOUNDARY
-        </text>
-        <text
-          x="350"
-          y="294"
-          fill="var(--color-text-primary)"
-          fontSize="13"
-          fontWeight="500"
-        >
-          dispatch + permits
-        </text>
-        <text
-          x="494"
-          y="294"
-          fill="var(--color-text-primary)"
-          fontSize="13"
-          fontWeight="500"
-        >
-          identity + approvals
-        </text>
-        <text
-          x="350"
-          y="380"
-          fill="var(--color-text-primary)"
-          fontSize="13"
-          fontWeight="500"
-        >
-          persistence
-        </text>
-        <text
-          x="494"
-          y="380"
-          fill="var(--color-text-primary)"
-          fontSize="13"
-          fontWeight="500"
-        >
-          runtime lifecycle
-        </text>
-        <text x="350" y="318" fill="var(--color-text-secondary)" fontSize="10">
-          profile gates
-        </text>
-        <text x="350" y="333" fill="var(--color-text-secondary)" fontSize="10">
-          handler validation
-        </text>
-        <text x="494" y="318" fill="var(--color-text-secondary)" fontSize="10">
-          capability decisions
-        </text>
-        <text x="350" y="404" fill="var(--color-text-secondary)" fontSize="10">
-          SQLite + artifact state
-        </text>
-        <text x="494" y="404" fill="var(--color-text-secondary)" fontSize="10">
-          kernels + runtime payload
-        </text>
-      </g>
+      {/* host-call boundary */}
+      <line x1="286" y1="122" x2="286" y2="352" stroke="var(--color-border-strong)" strokeDasharray="4 4" />
+      <text transform="rotate(-90 293 300)" x="293" y="300" textAnchor="middle" fontSize="10" fill={mut}>host-call boundary</text>
 
-      <g
-        style={{ opacity: systemOpacity(mode, "execution") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <FlowPath
-          d="M155 168V202H410V216"
-          label="request"
-          labelAt={{ x: 282, y: 193 }}
-          system="execution"
-          markerId="architecture-execution-desktop"
-        />
-        <FlowPath
-          d="M478 216V174"
-          label="permit / refuse"
-          labelAt={{ x: 530, y: 198 }}
-          system="execution"
-          markerId="architecture-execution-desktop"
-        />
-        <FlowPath
-          d="M622 306H650V126H690"
-          label="dispatch"
-          labelAt={{ x: 657, y: 188 }}
-          system="execution"
-          markerId="architecture-execution-desktop"
-          dashed
-        />
-      </g>
+      {/* user */}
+      <rect x="300" y="28" width="150" height="34" rx="8" fill="var(--color-bg-secondary)" stroke={active === "user" ? QUERY : "var(--color-border)"} strokeWidth={sw("user")} />
+      <text x="375" y="50" textAnchor="middle" fontSize="12" fill={t}>User · local web UI</text>
 
-      <g
-        style={{ opacity: systemOpacity(mode, "verification") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <FlowPath
-          d="M622 288H680"
-          label="trigger"
-          labelAt={{ x: 651, y: 279 }}
-          system="verification"
-          markerId="architecture-verification-desktop"
-        />
-        <FlowPath
-          d="M700 378H672"
-          label="finding / pass"
-          labelAt={{ x: 686, y: 369 }}
-          system="verification"
-          markerId="architecture-verification-desktop"
-        />
-        <FlowPath
-          d="M672 432H780V530"
-          label="delivery state"
-          labelAt={{ x: 735, y: 484 }}
-          system="verification"
-          markerId="architecture-verification-desktop"
-        />
-      </g>
+      {/* daemon */}
+      <rect x="300" y="110" width="150" height="250" rx="10" fill={t} stroke={active === "daemon" ? QUERY : "none"} strokeWidth={active === "daemon" ? 3 : 0} />
+      <text x="375" y="182" textAnchor="middle" fontSize="17" fontWeight="700" fill={inv}>Daemon</text>
+      <text x="375" y="202" textAnchor="middle" fontSize="11" fill={inv} opacity="0.72">the authority</text>
+      <line x1="322" y1="218" x2="428" y2="218" stroke={inv} strokeOpacity="0.2" />
+      <text x="375" y="242" textAnchor="middle" fontSize="11" fill={inv} opacity="0.86">permits · records</text>
+      <text x="375" y="260" textAnchor="middle" fontSize="11" fill={inv} opacity="0.86">review · connectors</text>
 
-      <g
-        style={{ opacity: systemOpacity(mode, "evidence") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <FlowPath
-          d="M390 440V470H168V530"
-          label="record"
-          labelAt={{ x: 280, y: 461 }}
-          system="evidence"
-          markerId="architecture-evidence-desktop"
-        />
-        <FlowPath
-          d="M530 440V530"
-          label="persist"
-          labelAt={{ x: 554, y: 487 }}
-          system="evidence"
-          markerId="architecture-evidence-desktop"
-        />
-      </g>
+      {/* repl */}
+      <rect x="40" y="126" width="210" height="50" rx="8" fill={tint(EXEC)} stroke={EXEC} strokeWidth={sw("repl")} />
+      <text x="145" y="150" textAnchor="middle" fontSize="12.5" fontWeight="600" fill={t}>repl — control plane</text>
+      <text x="145" y="167" textAnchor="middle" fontSize="10" fill={sub}>stdlib · connectors, agents</text>
 
-      <path
-        d="M155 126L420 291L475 118L168 560L778 251L800 348L780 555L472 555L815 640"
-        fill="none"
-        stroke="var(--color-border-strong)"
-        strokeDasharray="3 7"
-        strokeOpacity="0.16"
-        strokeWidth="1"
-      />
-      <TraceSegment
-        d="M155 126L420 291"
-        active={traceStep >= 2}
-        system="execution"
-      />
-      <TraceSegment
-        d="M420 291L475 118"
-        active={traceStep >= 3}
-        system="execution"
-      />
-      <TraceSegment
-        d="M475 118L168 560"
-        active={traceStep >= 4}
-        system="evidence"
-      />
-      <TraceSegment
-        d="M168 560L778 251"
-        active={traceStep >= 5}
-        system="verification"
-      />
-      <TraceSegment
-        d="M778 251L800 348"
-        active={traceStep >= 6}
-        system="verification"
-      />
-      <TraceSegment
-        d="M800 348L780 555"
-        active={traceStep >= 7}
-        system="verification"
-      />
-      <TraceSegment
-        d="M780 555L472 555"
-        active={traceStep >= 8}
-        system="evidence"
-      />
-      <TraceSegment
-        d="M472 555L815 640"
-        active={traceStep >= 9}
-        system="evidence"
-      />
+      {/* handoff */}
+      <rect x="66" y="198" width="158" height="42" rx="6" fill="var(--color-surface-code)" stroke={active === "handoff" ? QUERY : "var(--color-border-strong)"} strokeWidth={sw("handoff", 1)} />
+      <text x="145" y="216" textAnchor="middle" fontSize="11" fontWeight="600" fill={t} fontFamily="var(--font-code, monospace)">./handoff/*.json</text>
+      <text x="145" y="231" textAnchor="middle" fontSize="9" fill={mut}>shared cwd — files, not memory</text>
 
-      {traceStep > 0 ? (
-        <circle
-          cx={point.x}
-          cy={point.y}
-          r="7"
-          fill={traceColor}
-          stroke="var(--color-bg-primary)"
-          strokeWidth="2"
-          className="transition-[cx,cy,fill] duration-500 ease-out motion-reduce:transition-none"
-        />
-      ) : null}
+      {/* python */}
+      <rect x="40" y="260" width="210" height="50" rx="8" fill={tint(EXEC)} stroke={EXEC} strokeWidth={sw("python")} />
+      <text x="145" y="284" textAnchor="middle" fontSize="12.5" fontWeight="600" fill={t}>Python / R kernels</text>
+      <text x="145" y="301" textAnchor="middle" fontSize="10" fill={sub}>data plane · persistent state</text>
 
-      {reducedMotion && traceStep > 0 ? (
-        <g
-          fill="var(--color-bg-primary)"
-          stroke="var(--color-border-strong)"
-          textAnchor="middle"
-          fontFamily="var(--font-family-code)"
-          fontSize="8"
-        >
-          {DESKTOP_TRACE_POINTS.map((tracePoint, index) => (
-            <g key={`${tracePoint.x}-${tracePoint.y}`}>
-              <circle cx={tracePoint.x} cy={tracePoint.y} r="9" />
-              <text
-                x={tracePoint.x}
-                y={tracePoint.y + 3}
-                fill="var(--color-text-primary)"
-                stroke="none"
-              >
-                {index + 1}
-              </text>
-            </g>
-          ))}
-        </g>
+      {/* compute */}
+      <rect x="40" y="322" width="210" height="46" rx="8" fill="var(--color-bg-primary)" stroke={EXEC} strokeWidth="1.4" strokeDasharray="5 4" />
+      <text x="145" y="343" textAnchor="middle" fontSize="11.5" fontWeight="600" fill={t}>Compute provider</text>
+      <text x="145" y="358" textAnchor="middle" fontSize="9.5" fill={sub}>gated · remote</text>
+
+      {/* mcp */}
+      <rect x="468" y="122" width="228" height="54" rx="8" fill="var(--color-bg-secondary)" stroke={active === "mcp" ? QUERY : "var(--color-border)"} strokeWidth={sw("mcp")} />
+      <text x="582" y="146" textAnchor="middle" fontSize="12" fontWeight="600" fill={t}>MCP · connectors · app tiles</text>
+      <text x="582" y="163" textAnchor="middle" fontSize="10" fill={sub}>the external world</text>
+
+      {/* artifact + lineage */}
+      <rect x="480" y="264" width="204" height="52" rx="8" fill={tint(EVID)} stroke={EVID} strokeWidth={sw("artifact")} />
+      <text x="582" y="287" textAnchor="middle" fontSize="12.5" fontWeight="600" fill={t}>Artifact store</text>
+      <text x="582" y="304" textAnchor="middle" fontSize="10" fill={sub}>versioned records</text>
+      <text x="484" y="342" fontSize="10" fontWeight="600" fill={mut}>lineage</text>
+      <line x1="484" y1="356" x2="510" y2="356" stroke={EVID} strokeWidth="2" />
+      <text x="516" y="360" fontSize="9.5" fill={sub}>runtime tags → observed</text>
+      <line x1="484" y1="376" x2="510" y2="376" stroke={mut} strokeWidth="2" strokeDasharray="5 4" />
+      <text x="516" y="380" fontSize="9.5" fill={sub}>reconstruction → fallback</text>
+
+      {/* reviewer */}
+      <rect x="300" y="408" width="150" height="52" rx="8" fill={tint(SUPER)} stroke={SUPER} strokeWidth={sw("reviewer")} />
+      <text x="375" y="432" textAnchor="middle" fontSize="13" fontWeight="600" fill={t}>Reviewer</text>
+      <text x="375" y="449" textAnchor="middle" fontSize="10" fill={sub}>background · read-only</text>
+
+      {playing ? (
+        <QueryPacket key={`${runId}-${hop}`} path={DESKTOP_EDGES[hop]} />
       ) : null}
     </svg>
   );
 }
 
-function MobileArchitectureGraphic({
-  mode,
-  traceStep,
-  reducedMotion,
+function MobileArchitecture({
+  playing,
+  active,
+  hop,
+  runId,
 }: {
-  mode: SystemMode;
-  traceStep: number;
-  reducedMotion: boolean;
+  playing: boolean;
+  active: string | null;
+  hop: number;
+  runId: number;
 }) {
-  const point = MOBILE_TRACE_POINTS[Math.max(0, traceStep - 1)];
-  const traceColor =
-    traceStep <= 3
-      ? SYSTEM_COLORS.execution
-      : traceStep <= 7
-        ? traceStep === 4
-          ? SYSTEM_COLORS.evidence
-          : SYSTEM_COLORS.verification
-        : SYSTEM_COLORS.evidence;
+  const t = "var(--color-text-primary)";
+  const sub = "var(--color-text-secondary)";
+  const mut = "var(--color-text-muted)";
+  const inv = "var(--color-bg-primary)";
+  const sw = (id: string, base = 1.4) => (active === id ? 3 : base);
 
   return (
-    <svg
-      className="h-auto w-full overflow-visible sm:hidden"
-      viewBox="0 0 360 990"
-      role="img"
-      aria-labelledby="architecture-title-mobile architecture-desc-mobile"
-    >
-      <title id="architecture-title-mobile">
-        Daemon-centered Claude Science architecture
-      </title>
-      <desc id="architecture-desc-mobile">
-        A vertical map of the execution, daemon authority, verification, and
-        evidence circuits. The daemon remains the same authority boundary for
-        every section. A faint route crosses the harness once.
-      </desc>
-      <ArrowMarkers suffix="mobile" />
+    <svg viewBox="0 0 360 800" className="h-auto w-full md:hidden" aria-hidden="true">
+      <defs>
+        <FlowKeyframes />
+        {arrowMarker("cs-arch-arrow-m")}
+      </defs>
 
-      <g
-        style={{ opacity: systemOpacity(mode, "execution") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <rect
-          x="14"
-          y="26"
-          width="332"
-          height="236"
-          fill="none"
-          stroke={SYSTEM_COLORS.execution}
-          strokeDasharray="7 6"
-          strokeOpacity="0.55"
-        />
-        <text
-          x="28"
-          y="47"
-          fill="var(--color-text-primary)"
-          fontFamily="var(--font-family-code)"
-          fontSize="10"
-        >
-          EXECUTION / ANALYTICAL CIRCUIT
-        </text>
-        <SvgNode
-          x={30}
-          y={66}
-          width={300}
-          height={76}
-          system="execution"
-          label="CONTROL PLANE"
-          title="repl control kernel"
-          lines={["stdlib-only / governed host calls"]}
-        />
-        <SvgNode
-          x={30}
-          y={162}
-          width={144}
-          height={82}
-          system="execution"
-          label="DATA PLANE"
-          title="Python / R"
-          lines={["persistent state", "shared cwd"]}
-        />
-        <SvgNode
-          x={186}
-          y={162}
-          width={144}
-          height={82}
-          system="execution"
-          label="PROCESS LANES"
-          title="shell / compute"
-          lines={["provider-gated"]}
-          dashed
-        />
-        <FlowPath
-          d="M180 142V152H102V162"
-          label="handoff"
-          labelAt={{ x: 137, y: 155 }}
-          system="execution"
-          markerId="architecture-execution-mobile"
-        />
-        <FlowPath
-          d="M174 203H186"
-          label=""
-          labelAt={{ x: 180, y: 194 }}
-          system="execution"
-          markerId="architecture-execution-mobile"
-          dashed
-        />
-      </g>
+      {/* daemon authority spine: every box taps it separately */}
+      <line x1="64" y1="168" x2="64" y2="746" stroke="var(--color-border-strong)" strokeWidth="1.6" />
 
-      <g>
-        <rect
-          x="26"
-          y="292"
-          width="308"
-          height="216"
-          fill="var(--color-bg-primary)"
-          stroke="var(--color-border-strong)"
-          strokeWidth="1.5"
-        />
-        <rect
-          x="34"
-          y="300"
-          width="292"
-          height="200"
-          fill="var(--color-bg-secondary)"
-          stroke="var(--color-border-strong)"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M34 342H326M180 342V500M34 416H326"
-          stroke="var(--color-border-default)"
-        />
-        <path
-          d="M34 300H326"
-          stroke="var(--color-action-primary)"
-          strokeWidth="4"
-        />
-        <text
-          x="50"
-          y="325"
-          fill="var(--color-text-muted)"
-          fontFamily="var(--font-family-code)"
-          fontSize="10"
-        >
-          SAME LOCAL DAEMON BOUNDARY
-        </text>
-        <text
-          x="50"
-          y="370"
-          fill="var(--color-text-primary)"
-          fontSize="12"
-          fontWeight="500"
-        >
-          dispatch + permits
-        </text>
-        <text
-          x="194"
-          y="370"
-          fill="var(--color-text-primary)"
-          fontSize="12"
-          fontWeight="500"
-        >
-          identity + approvals
-        </text>
-        <text
-          x="50"
-          y="444"
-          fill="var(--color-text-primary)"
-          fontSize="12"
-          fontWeight="500"
-        >
-          persistence
-        </text>
-        <text
-          x="194"
-          y="444"
-          fill="var(--color-text-primary)"
-          fontSize="12"
-          fontWeight="500"
-        >
-          runtime lifecycle
-        </text>
-        <text x="50" y="391" fill="var(--color-text-secondary)" fontSize="9">
-          profile gates
-        </text>
-        <text x="194" y="391" fill="var(--color-text-secondary)" fontSize="9">
-          capability decisions
-        </text>
-        <text x="50" y="465" fill="var(--color-text-secondary)" fontSize="9">
-          SQLite + artifacts
-        </text>
-        <text x="194" y="465" fill="var(--color-text-secondary)" fontSize="9">
-          kernels + payload
-        </text>
-      </g>
+      {/* taps off the spine (each box connects to the daemon, not to its neighbour) */}
+      <path d="M64 249 L100 249" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow-m)" markerStart="url(#cs-arch-arrow-m)" />
+      <path d="M64 423 L100 423" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow-m)" markerStart="url(#cs-arch-arrow-m)" />
+      <path d="M64 500 L100 500" fill="none" stroke={EXEC} strokeWidth="1.5" strokeDasharray="5 4" markerEnd="url(#cs-arch-arrow-m)" markerStart="url(#cs-arch-arrow-m)" />
+      <path d="M64 583 L100 583" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow-m)" markerStart="url(#cs-arch-arrow-m)" />
+      <path d="M64 664 L100 664" fill="none" stroke={EVID} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow-m)" markerStart="url(#cs-arch-arrow-m)" />
+      <path d="M64 746 L100 746" fill="none" stroke={SUPER} strokeWidth="1.5" strokeDasharray="1 5" markerEnd="url(#cs-arch-arrow-m)" />
 
-      <g
-        style={{ opacity: systemOpacity(mode, "verification") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <rect
-          x="14"
-          y="536"
-          width="332"
-          height="218"
-          fill="none"
-          stroke={SYSTEM_COLORS.verification}
-          strokeDasharray="7 6"
-          strokeOpacity="0.55"
-        />
-        <text
-          x="28"
-          y="557"
-          fill="var(--color-text-primary)"
-          fontFamily="var(--font-family-code)"
-          fontSize="10"
-        >
-          SUPERVISION / ANALYTICAL CIRCUIT
-        </text>
-        <SvgNode
-          x={30}
-          y={574}
-          width={140}
-          height={70}
-          system="verification"
-          label="EVENT-TRIGGERED"
-          title="checkpoint"
-          lines={["predicate"]}
-        />
-        <SvgNode
-          x={190}
-          y={574}
-          width={140}
-          height={70}
-          system="verification"
-          label="DETACHED"
-          title="REVIEWER"
-          lines={["read-only trace"]}
-        />
-        <SvgNode
-          x={30}
-          y={672}
-          width={140}
-          height={54}
-          system="verification"
-          label="DEFAULT OFF"
-          title="BOOKMARKER"
-          dashed
-        />
-        <path
-          d="M181 660V730M187 660V730"
-          stroke="var(--color-border-strong)"
-          strokeWidth="1.5"
-        />
-        <text x="196" y="664" fill="var(--color-text-secondary)" fontSize="9">
-          terminal barrier
-        </text>
-        <SvgNode
-          x={190}
-          y={672}
-          width={140}
-          height={54}
-          system="verification"
-          label="DELIVERY STATE"
-          title="findings / pass"
-        />
-        <FlowPath
-          d="M170 609H190"
-          label="enqueue"
-          labelAt={{ x: 180, y: 600 }}
-          system="verification"
-          markerId="architecture-verification-mobile"
-        />
-        <FlowPath
-          d="M260 644V672"
-          label="review"
-          labelAt={{ x: 287, y: 662 }}
-          system="verification"
-          markerId="architecture-verification-mobile"
-        />
-      </g>
+      {/* internal handoff flow */}
+      <path d="M210 274 L210 310" fill="none" stroke={NEUTRAL} strokeWidth="1.5" markerEnd="url(#cs-arch-arrow-m)" />
+      <path d="M210 354 L210 398" fill="none" stroke={NEUTRAL} strokeWidth="1.5" markerEnd="url(#cs-arch-arrow-m)" />
+      <text x="222" y="296" fontSize="9.5" fill={mut}>write</text>
+      <text x="222" y="380" fontSize="9.5" fill={mut}>read</text>
+      <text x="150" y="742" fontSize="9.5" fill={SUPER}>on checkpoint</text>
+      <text x="150" y="496" fontSize="9.5" fill={mut}>gated</text>
 
-      <g
-        style={{ opacity: systemOpacity(mode, "evidence") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <rect
-          x="14"
-          y="782"
-          width="332"
-          height="192"
-          fill="none"
-          stroke={SYSTEM_COLORS.evidence}
-          strokeDasharray="7 6"
-          strokeOpacity="0.55"
-        />
-        <text
-          x="28"
-          y="803"
-          fill="var(--color-text-primary)"
-          fontFamily="var(--font-family-code)"
-          fontSize="10"
-        >
-          EVIDENCE / ANALYTICAL CIRCUIT
-        </text>
-        <SvgNode
-          x={30}
-          y={822}
-          width={140}
-          height={68}
-          system="evidence"
-          label="RECORDED"
-          title="execution_log"
-          lines={["+ host_call_log"]}
-        />
-        <SvgNode
-          x={190}
-          y={822}
-          width={140}
-          height={68}
-          system="evidence"
-          label="VERSIONED"
-          title="artifacts"
-          lines={["+ dependencies"]}
-        />
-        <SvgNode
-          x={30}
-          y={910}
-          width={140}
-          height={48}
-          system="evidence"
-          label="VERIFIED"
-          title="checks / findings"
-        />
-        <SvgNode
-          x={190}
-          y={910}
-          width={140}
-          height={48}
-          system="evidence"
-          label="PORTABLE"
-          title="replay export"
-        />
-        <FlowPath
-          d="M170 856H190"
-          label="persist"
-          labelAt={{ x: 180, y: 847 }}
-          system="evidence"
-          markerId="architecture-evidence-mobile"
-        />
-        <FlowPath
-          d="M260 890V910"
-          label="replay"
-          labelAt={{ x: 288, y: 905 }}
-          system="evidence"
-          markerId="architecture-evidence-mobile"
-        />
-      </g>
+      {/* user -> daemon */}
+      <path d="M180 50 L180 82" fill="none" stroke={NEUTRAL} strokeWidth="1.5" markerEnd="url(#cs-arch-arrow-m)" />
 
-      <g
-        style={{ opacity: systemOpacity(mode, "execution") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <FlowPath
-          d="M180 142V292"
-          label="request"
-          labelAt={{ x: 206, y: 277 }}
-          system="execution"
-          markerId="architecture-execution-mobile"
-        />
-        <FlowPath
-          d="M112 292V244"
-          label="permit / refuse"
-          labelAt={{ x: 77, y: 276 }}
-          system="execution"
-          markerId="architecture-execution-mobile"
-        />
-      </g>
-      <g
-        style={{ opacity: systemOpacity(mode, "verification") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <FlowPath
-          d="M250 508V550H100V574"
-          label="trigger"
-          labelAt={{ x: 164, y: 528 }}
-          system="verification"
-          markerId="architecture-verification-mobile"
-        />
-      </g>
-      <g
-        style={{ opacity: systemOpacity(mode, "evidence") }}
-        className="transition-opacity duration-300 motion-reduce:transition-none"
-      >
-        <FlowPath
-          d="M112 508V520H6V856H30"
-          label="record"
-          labelAt={{ x: 40, y: 847 }}
-          system="evidence"
-          markerId="architecture-evidence-mobile"
-        />
-        <FlowPath
-          d="M250 508V520H354V856H330"
-          label="persist"
-          labelAt={{ x: 320, y: 847 }}
-          system="evidence"
-          markerId="architecture-evidence-mobile"
-        />
-      </g>
+      {/* host-call boundary */}
+      <line x1="44" y1="190" x2="316" y2="190" stroke="var(--color-border-strong)" strokeDasharray="4 4" />
+      <text x="316" y="184" textAnchor="end" fontSize="9.5" fill={mut}>host-call boundary</text>
 
-      <path
-        d="M180 104L112 392L104 199L100 855L100 603L260 603L260 697L260 855L260 940"
-        fill="none"
-        stroke="var(--color-border-strong)"
-        strokeDasharray="3 7"
-        strokeOpacity="0.16"
-        strokeWidth="1"
-      />
-      <TraceSegment
-        d="M180 104L112 392"
-        active={traceStep >= 2}
-        system="execution"
-      />
-      <TraceSegment
-        d="M112 392L104 199"
-        active={traceStep >= 3}
-        system="execution"
-      />
-      <TraceSegment
-        d="M104 199L100 855"
-        active={traceStep >= 4}
-        system="evidence"
-      />
-      <TraceSegment
-        d="M100 855L100 603"
-        active={traceStep >= 5}
-        system="verification"
-      />
-      <TraceSegment
-        d="M100 603L260 603"
-        active={traceStep >= 6}
-        system="verification"
-      />
-      <TraceSegment
-        d="M260 603L260 697"
-        active={traceStep >= 7}
-        system="verification"
-      />
-      <TraceSegment
-        d="M260 697L260 855"
-        active={traceStep >= 8}
-        system="evidence"
-      />
-      <TraceSegment
-        d="M260 855L260 940"
-        active={traceStep >= 9}
-        system="evidence"
-      />
+      {/* section labels (generous gap above first box) */}
+      <text x="100" y="210" fontSize="10.5" fontWeight="600" fill={mut}>EXECUTION · workers</text>
+      <text x="100" y="624" fontSize="10.5" fontWeight="600" fill={mut}>EVIDENCE · records</text>
 
-      {traceStep > 0 ? (
-        <circle
-          cx={point.x}
-          cy={point.y}
-          r="7"
-          fill={traceColor}
-          stroke="var(--color-bg-primary)"
-          strokeWidth="2"
-          className="transition-[cx,cy,fill] duration-500 ease-out motion-reduce:transition-none"
-        />
-      ) : null}
+      {/* user */}
+      <rect x="105" y="16" width="150" height="34" rx="8" fill="var(--color-bg-secondary)" stroke={active === "user" ? QUERY : "var(--color-border)"} strokeWidth={sw("user")} />
+      <text x="180" y="38" textAnchor="middle" fontSize="12" fill={t}>User · local web UI</text>
 
-      {reducedMotion && traceStep > 0 ? (
-        <g
-          fill="var(--color-bg-primary)"
-          stroke="var(--color-border-strong)"
-          textAnchor="middle"
-          fontFamily="var(--font-family-code)"
-          fontSize="8"
-        >
-          {MOBILE_TRACE_POINTS.map((tracePoint, index) => (
-            <g key={`${tracePoint.x}-${tracePoint.y}`}>
-              <circle cx={tracePoint.x} cy={tracePoint.y} r="9" />
-              <text
-                x={tracePoint.x}
-                y={tracePoint.y + 3}
-                fill="var(--color-text-primary)"
-                stroke="none"
-              >
-                {index + 1}
-              </text>
-            </g>
-          ))}
-        </g>
+      {/* daemon */}
+      <rect x="64" y="82" width="232" height="86" rx="10" fill={t} stroke={active === "daemon" ? QUERY : "none"} strokeWidth={active === "daemon" ? 3 : 0} />
+      <text x="180" y="114" textAnchor="middle" fontSize="16" fontWeight="700" fill={inv}>Daemon</text>
+      <text x="180" y="134" textAnchor="middle" fontSize="10.5" fill={inv} opacity="0.8">the authority</text>
+      <text x="180" y="152" textAnchor="middle" fontSize="10" fill={inv} opacity="0.75">permits · records · review · connectors</text>
+
+      {/* repl */}
+      <rect x="100" y="224" width="220" height="50" rx="8" fill={tint(EXEC)} stroke={EXEC} strokeWidth={sw("repl")} />
+      <text x="210" y="247" textAnchor="middle" fontSize="12.5" fontWeight="600" fill={t}>repl — control plane</text>
+      <text x="210" y="263" textAnchor="middle" fontSize="9.5" fill={sub}>stdlib · connectors, agents</text>
+
+      {/* handoff */}
+      <rect x="130" y="310" width="160" height="44" rx="6" fill="var(--color-surface-code)" stroke={active === "handoff" ? QUERY : "var(--color-border-strong)"} strokeWidth={sw("handoff", 1)} />
+      <text x="210" y="330" textAnchor="middle" fontSize="11" fontWeight="600" fill={t} fontFamily="var(--font-code, monospace)">./handoff/*.json</text>
+      <text x="210" y="344" textAnchor="middle" fontSize="8.5" fill={mut}>files, not memory</text>
+
+      {/* python */}
+      <rect x="100" y="398" width="220" height="50" rx="8" fill={tint(EXEC)} stroke={EXEC} strokeWidth={sw("python")} />
+      <text x="210" y="421" textAnchor="middle" fontSize="12.5" fontWeight="600" fill={t}>Python / R kernels</text>
+      <text x="210" y="437" textAnchor="middle" fontSize="9.5" fill={sub}>data plane · persistent state</text>
+
+      {/* compute */}
+      <rect x="100" y="478" width="220" height="44" rx="8" fill="var(--color-bg-primary)" stroke={EXEC} strokeWidth="1.4" strokeDasharray="5 4" />
+      <text x="210" y="504" textAnchor="middle" fontSize="11.5" fontWeight="600" fill={t}>Compute provider · gated</text>
+
+      {/* mcp */}
+      <rect x="100" y="558" width="220" height="50" rx="8" fill="var(--color-bg-secondary)" stroke={active === "mcp" ? QUERY : "var(--color-border)"} strokeWidth={sw("mcp")} />
+      <text x="210" y="581" textAnchor="middle" fontSize="12" fontWeight="600" fill={t}>MCP · connectors · app tiles</text>
+      <text x="210" y="597" textAnchor="middle" fontSize="9.5" fill={sub}>the external world</text>
+
+      {/* artifact */}
+      <rect x="100" y="638" width="220" height="52" rx="8" fill={tint(EVID)} stroke={EVID} strokeWidth={sw("artifact")} />
+      <text x="210" y="662" textAnchor="middle" fontSize="12.5" fontWeight="600" fill={t}>Artifact store</text>
+      <text x="210" y="678" textAnchor="middle" fontSize="9.5" fill={sub}>versioned · lineage observed first</text>
+
+      {/* reviewer */}
+      <rect x="100" y="720" width="220" height="52" rx="8" fill={tint(SUPER)} stroke={SUPER} strokeWidth={sw("reviewer")} />
+      <text x="210" y="744" textAnchor="middle" fontSize="12.5" fontWeight="600" fill={t}>Reviewer</text>
+      <text x="210" y="760" textAnchor="middle" fontSize="9.5" fill={sub}>background · read-only</text>
+
+      {playing ? (
+        <QueryPacket key={`${runId}-${hop}`} path={MOBILE_EDGES[hop]} />
       ) : null}
     </svg>
   );
@@ -1261,134 +341,123 @@ function MobileArchitectureGraphic({
 
 export function ClaudeScienceArchitecture() {
   const prefersReducedMotion = useReducedMotion();
-  const [mode, setMode] = React.useState<SystemMode>("all");
-  const [traceStep, setTraceStep] = React.useState(0);
-  const [isTracing, setIsTracing] = React.useState(false);
+  const [hop, setHop] = React.useState(0);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [runId, setRunId] = React.useState(0);
+  const titleId = React.useId().replace(/:/g, "");
+  const descId = React.useId().replace(/:/g, "");
 
   React.useEffect(() => {
-    if (!isTracing) return;
-
-    if (prefersReducedMotion) {
-      setTraceStep(9);
-      setIsTracing(false);
-      return;
+    if (!isPlaying) return;
+    if (hop >= N_HOPS - 1) {
+      const timer = window.setTimeout(() => setIsPlaying(false), STEP_MS);
+      return () => window.clearTimeout(timer);
     }
-
-    if (traceStep >= 9) {
-      setIsTracing(false);
-      return;
-    }
-
-    const timer = window.setTimeout(
-      () => setTraceStep((step) => step + 1),
-      540,
-    );
+    const timer = window.setTimeout(() => setHop((h) => h + 1), STEP_MS);
     return () => window.clearTimeout(timer);
-  }, [isTracing, prefersReducedMotion, traceStep]);
+  }, [isPlaying, hop]);
 
-  const traceWorkflow = () => {
-    setMode("all");
-
-    if (prefersReducedMotion) {
-      setTraceStep(9);
-      setIsTracing(false);
-      return;
-    }
-
-    setTraceStep(1);
-    setIsTracing(true);
+  const playFlow = () => {
+    if (prefersReducedMotion || isPlaying) return;
+    setRunId((r) => r + 1);
+    setHop(0);
+    setIsPlaying(true);
   };
+
+  const active = isPlaying ? JOURNEY_NODES[hop] : null;
 
   return (
     <FigureScaffold
       eyebrow="Runtime architecture"
-      title="The daemon-centered harness"
-      description="Execution, verification, and artifact evidence cross one daemon-owned authority boundary. Selecting a path preserves the whole topology; the workflow trace follows one work unit through it."
+      title="One daemon, everything subordinate"
+      description="Kernels compute and hand data off through files; the daemon owns authority, connectors, and durable evidence. Play to follow one query — hop by hop, always back through the daemon."
       caption={
         <>
           <strong>
             Figure B. Kernels hold state; the daemon owns authority and history.
           </strong>{" "}
-          The paths are analytical, while the gates, workers, reviewer flow,
-          persistence tables, and replay machinery are directly observed in the
-          local runtime and extracted daemon fragments.
+          The control kernel and data kernels share a workspace, not memory;
+          every privileged call crosses the host-call boundary; lineage is
+          observed at runtime before it is reconstructed; the reviewer wakes on
+          checkpoints. Roles are read from the local runtime and extracted daemon
+          fragments.
         </>
       }
     >
       <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
+        {prefersReducedMotion ? (
+          <span className="type-caption text-figure-muted">
+            Static diagram (reduced motion).
+          </span>
+        ) : (
+          <button
+            type="button"
+            className="min-h-11 border border-border px-3 py-2 type-label text-figure-primary transition-colors hover:bg-ground-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring disabled:cursor-wait disabled:text-figure-muted"
+            onClick={playFlow}
+            disabled={isPlaying}
+          >
+            {isPlaying ? "Tracing a query…" : "▶ Trace one query"}
+          </button>
+        )}
         <div
-          className="grid w-full max-w-sm grid-cols-2 border border-border p-1 sm:inline-flex sm:w-auto sm:max-w-full sm:flex-wrap"
-          role="group"
-          aria-label="Select architecture circuit"
+          className="flex flex-wrap gap-x-5 gap-y-2 type-caption text-figure-secondary"
+          aria-label="Diagram notation"
         >
-          {SYSTEMS.map((system) => (
-            <button
-              key={system.id}
-              type="button"
-              aria-pressed={mode === system.id}
-              className={`min-h-11 px-3 py-2 type-label transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring ${
-                mode === system.id
-                  ? "bg-action-primary text-figure-inverse"
-                  : "text-figure-secondary hover:bg-ground-secondary hover:text-figure-primary"
-              }`}
-              onClick={() => setMode(system.id)}
-            >
-              {system.label}
-            </button>
-          ))}
-        </div>
-        <button
-          type="button"
-          className="min-h-11 border border-border px-3 py-2 type-label text-figure-primary transition-colors hover:bg-ground-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring disabled:cursor-wait disabled:text-figure-muted"
-          onClick={traceWorkflow}
-          disabled={isTracing}
-        >
-          {isTracing ? "Tracing workflow..." : "Trace one workflow"}
-        </button>
-      </div>
-
-      <div
-        className="mt-4 flex flex-wrap gap-x-5 gap-y-2 type-caption text-figure-secondary"
-        aria-label="Diagram notation"
-      >
-        {(["execution", "verification", "evidence"] as SystemId[]).map(
-          (system) => (
-            <span key={system} className="inline-flex items-center gap-2">
+          <span className="inline-flex items-center gap-2">
+            <span
+              className="inline-block size-2.5 rounded-full"
+              style={{ backgroundColor: QUERY }}
+              aria-hidden="true"
+            />
+            the query
+          </span>
+          {(
+            [
+              ["execution", EXEC],
+              ["supervision", SUPER],
+              ["evidence", EVID],
+            ] as const
+          ).map(([label, color]) => (
+            <span key={label} className="inline-flex items-center gap-2">
               <span
                 className="h-0 w-6 border-t-2"
-                style={{ borderColor: SYSTEM_COLORS[system] }}
+                style={{ borderColor: color }}
                 aria-hidden="true"
               />
-              {system}
+              {label}
             </span>
-          ),
-        )}
-        <span className="inline-flex items-center gap-2">
-          <span
-            className="h-0 w-6 border-t border-dashed border-border-strong"
-            aria-hidden="true"
-          />
-          analytical grouping or optional path
-        </span>
-        <span className="inline-flex items-center gap-2">
-          <span
-            className="h-2 w-6 border-y border-border-strong"
-            aria-hidden="true"
-          />
-          authority or delivery boundary
-        </span>
+          ))}
+          <span className="inline-flex items-center gap-2">
+            <span
+              className="h-0 w-6 border-t border-dashed border-border-strong"
+              aria-hidden="true"
+            />
+            gated · fallback
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span
+              className="h-0 w-6 border-t-2 border-dotted border-border-strong"
+              aria-hidden="true"
+            />
+            event-triggered
+          </span>
+        </div>
       </div>
 
-      <div className="mt-4 min-w-0">
-        <DesktopArchitectureGraphic
-          mode={mode}
-          traceStep={traceStep}
-          reducedMotion={prefersReducedMotion}
+      <div className="mt-4 min-w-0 border-y border-border py-4">
+        <DesktopArchitecture
+          playing={isPlaying}
+          active={active}
+          hop={hop}
+          runId={runId}
+          titleId={titleId}
+          descId={descId}
         />
-        <MobileArchitectureGraphic
-          mode={mode}
-          traceStep={traceStep}
-          reducedMotion={prefersReducedMotion}
+        <MobileArchitecture
+          playing={isPlaying}
+          active={active}
+          hop={hop}
+          runId={runId}
         />
       </div>
 
@@ -1396,23 +465,11 @@ export function ClaudeScienceArchitecture() {
         className="type-caption mt-3 border-l-2 border-action-primary pl-3 text-figure-secondary"
         aria-live="polite"
       >
-        {TRACE_STEPS[traceStep]}
+        <span className="text-figure-muted">
+          {hop + 1} / {N_HOPS}:
+        </span>{" "}
+        {CAPTIONS[hop]}
       </p>
-
-      <div className="mt-4 grid gap-3 border-t border-border pt-4 sm:grid-cols-3 sm:gap-6">
-        <p className="type-caption m-0 text-figure-secondary">
-          <strong className="text-figure-primary">Execution:</strong> kernel
-          requests cross daemon permit and handler validation.
-        </p>
-        <p className="type-caption m-0 text-figure-secondary">
-          <strong className="text-figure-primary">Verification:</strong>{" "}
-          detached review can still bind terminal delivery.
-        </p>
-        <p className="type-caption m-0 text-figure-secondary">
-          <strong className="text-figure-primary">Evidence:</strong> logs,
-          artifacts, lineage, checks, and replay survive the message loop.
-        </p>
-      </div>
     </FigureScaffold>
   );
 }
