@@ -51,6 +51,8 @@ import {
   HostCallProtocol,
   VerifierTimeline,
   ArtifactLineageExplorer,
+  ProvenanceCapture,
+  ProvenanceConfidence,
   ArtifactViewer,
 } from '../content/claude-science';
 
@@ -311,6 +313,8 @@ export function getMDXComponents(): MDXComponentMap {
     HostCallProtocol,
     VerifierTimeline,
     ArtifactLineageExplorer,
+    ProvenanceCapture,
+    ProvenanceConfidence,
     ArtifactViewer,
 
     // Layout

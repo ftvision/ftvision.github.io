@@ -22,27 +22,27 @@ except Exception:
     EMAIL = None
 ```
 
-没有 `import host`。Python 环境里也没有 `host` 这个包。可这个名字就在正在运行的内核里。一个起步项目的代码记录里还藏着另一条线索：`host.exec_peek(...)`。在一段看着再普通不过的 Python 会话里，这些都是小小的不对劲，却勾着好奇的人去一探究竟：**是谁把 `host` 放进来的，调用的另一头又是什么？**<LocalSource id="artifact-host-clue" source="~/.claude-science/orgs/<org-id>/operon-cli.db, artifact_versions.extracted_code; ~/.claude-science/runtime/<version>/seed/manifest_*.json" note="Generated artifact code and bundled starter-session code containing host calls" />。
+没有 `import host`。Python 环境里也没有 `host` 这个包。可这个名字就在正在运行的内核里。一个起步项目的代码记录里还藏着另一条线索：`host.exec_peek(...)`。在一段看着再普通不过的 Python 会话里，这些都是小小的不对劲，却勾着好奇的人去一探究竟：**是谁把 `host` 放进来的，调用的另一头又是什么？**。
 
-顺着这个问题往下追，产品会露出更多。`~/.claude-science/runtime/<version>` 下那份可读的 `kernel_worker.py` 说，host SDK 是在内核启动后第一次 `execute()` 时装进去的。SDK 本身在那个运行时里并不是一个正常文件。它是一段 Python 源码，嵌在部署好的 `claude-science` 守护进程里，旁边还并排放着 TypeScript/JavaScript 写的 host 实现。用 `strings` 把守护进程抠出来，能看清这些片段怎么挑选、怎么注入、怎么挂到同一个单例上。也能看清 `host.llm()`、`host.mcp()` 这类方法，是同步 RPC 回到守护进程，而不是 Python 进程自己干的特权活儿。
+顺着这个问题往下追，产品会露出更多。`~/.claude-science/runtime/<version>` 下那份可读的 `kernel_worker.py` 说，host SDK 是在内核启动后第一次 `execute()` 时装进去的。SDK 本身在那个运行时里并不是一个正常文件。它是一段 Python 源码，嵌在部署好的 `claude-science` 守护进程里，旁边还并排放着 TypeScript/JavaScript 写的 host 实现。守护进程来挑选这些片段、注入、挂到同一个单例上。`host.llm()`、`host.mcp()` 这类方法，是同步 RPC 回到守护进程，而不是 Python 进程自己干的特权活儿。
 
 这条边界是一种架构设计。Python 和 R 可以把大数据集、拟合好的模型攥住好几个钟头，而连接器、模型、凭据、远程计算、验证、发布这些权柄，始终握在守护进程手里。智能体拿代码当一门紧凑的编排语言用，可代码跑在按能力裁剪过的环境里。审查者能查这份工作，却不必卷进主智能体的自我反思循环。一个制品能熬过整场对话，把生成它的代码、环境、依赖、验证记录都还带在身上。
 
-对做智能体框架的人来说，Claude Science 是一个有用的案例：它让你看清，模型的原始能力、管住它的那套框架、应用自己的执行环境，这三样怎么合到一处，把科学家零散的工作步骤串成一条连贯的流水线。这篇文章追的就是它怎么做到的：先看应用外壳和它落到磁盘上的载荷，再看 `host` 背后那条隐藏的边界，最后看这条边界撑起的执行、制品、验证三条流。这里剖的实现版本是 `0.1.15`。<Marginnote>关于机制的说法，都来自本地应用包、`~/.claude-science/runtime` 下的文件、SQLite 迁移，还有用 `strings` 从 `~/.claude-science/bin/claude-science` 抠出来的 Python 或守护进程片段。</Marginnote>
+对做智能体框架的人来说，Claude Science 是一个有用的案例：它让你看清，模型的原始能力、管住它的那套框架、应用自己的执行环境，这三样怎么合到一处，把科学家零散的工作步骤串成一条连贯的流水线。这篇文章追的就是它怎么做到的：先看应用外壳和它落到磁盘上的载荷，再看 `host` 背后那条隐藏的边界，最后看这条边界撑起的执行、制品、验证三条流。这里剖的实现版本是 `0.1.15`。<Marginnote>关于机制的说法，都来自本地应用包、`~/.claude-science/runtime` 下的文件、SQLite 迁移，以及部署好的 `claude-science` 守护进程的行为。</Marginnote>
 
 ## 装到你机器上的是什么
 
-在追 `host` 之前，先从任何用户都能查的东西说起。这个 macOS 应用包，大半只是一层签名外壳，负责启动和更新。它先跑一个种子可执行文件，在应用主目录下部署一个更新的 `claude-science` 守护进程，再让这个守护进程在本机回环地址上提供本地 web 应用。守护进程接着在 `~/.claude-science/runtime` 下挑一份带版本号的运行时载荷<LocalSource id="app-shell" source="/Applications/Claude Science.app/Contents/Resources/bin/claude-science; ~/.claude-science/bin/claude-science; ~/.claude-science/runtime/<version>/BUILD.json" note="The signed bundle, staged daemon, and selected runtime can be inspected directly on an installed machine" />。
+在追 `host` 之前，先从任何用户都能查的东西说起。这个 macOS 应用包，大半只是一层签名外壳，负责启动和更新。它先跑一个种子可执行文件，在应用主目录下部署一个更新的 `claude-science` 守护进程，再让这个守护进程在本机回环地址上提供本地 web 应用。守护进程接着在 `~/.claude-science/runtime` 下挑一份带版本号的运行时载荷。
 
-这份载荷在 `BUILD.json` 里写明自己的构建号和平台。围着这个小文件的，才是真正的产品发行内容：web 客户端、agent 配置、内核 worker、SQLite 迁移、科研技能、MCP 服务器、算力提供方代码、种子项目、micromamba、图像处理依赖、字体，还有写入追踪支持。运行时本身可以整个替换。大得多的 Python 和 R 环境则单独装在 `~/.claude-science/conda` 下<LocalSource id="runtime-payload" source="~/.claude-science/runtime/<version>/BUILD.json and its sibling directories; ~/.claude-science/conda" note="Versioned product payload and separately provisioned execution environments" />。
+这份载荷在 `BUILD.json` 里写明自己的构建号和平台。围着这个小文件的，才是真正的产品发行内容：web 客户端、agent 配置、内核 worker、SQLite 迁移、科研技能、MCP 服务器、算力提供方代码、种子项目、micromamba、图像处理依赖、字体，还有写入追踪支持。运行时本身可以整个替换。大得多的 Python 和 R 环境则单独装在 `~/.claude-science/conda` 下。
 
 <WideBlock width="wide">
   <ClaudeScienceShipment />
 </WideBlock>
 
-签名外壳可以一直很小，守护进程和产品载荷则能快速迭代。在我查的这套安装里，基础的 Python 分析、R 分析和自带的 MCP 服务，各住在单独的 conda 环境里；具体的工作区，再往上叠本地 Python 虚拟环境和 R 库<LocalSource id="analysis-environments" source="~/.claude-science/conda/envs/python; ~/.claude-science/conda/envs/r; ~/.claude-science/conda/envs/operon-mcp; ~/.claude-science/orgs/<org-id>/workspaces/<workspace-id>" note="Provisioned Python, R, and MCP environments plus workspace-local overlays" />。
+签名外壳可以一直很小，守护进程和产品载荷则能快速迭代。在我查的这套安装里，基础的 Python 分析、R 分析和自带的 MCP 服务，各住在单独的 conda 环境里；具体的工作区，再往上叠本地 Python 虚拟环境和 R 库。
 
-载荷里还压着几个起步项目：一个 CRISPR 筛选、一个酶工程、一个嗜极生物分析、一个免疫治疗分析。它们的清单和归档里，装着计划、报告、表格、图、结构、数组、中间结果，还有生成这些东西的消息流记录。这些示例在用户自己机器上留下一份可读的标本，照见产品的制品模型<LocalSource id="seed-projects" source="~/.claude-science/runtime/<version>/seed/manifest_*.json and ~/.claude-science/runtime/<version>/seed/assets_*.tar.gz" note="Bundled starter projects, recorded sessions, and artifact assets" />。它帮用户上手、摸索，弄懂这产品能做什么、交付的东西又是什么成色。
+载荷里还压着几个起步项目：一个 CRISPR 筛选、一个酶工程、一个嗜极生物分析、一个免疫治疗分析。它们的清单和归档里，装着计划、报告、表格、图、结构、数组、中间结果，还有生成这些东西的消息流记录。这些示例在用户自己机器上留下一份可读的标本，照见产品的制品模型。它帮用户上手、摸索，弄懂这产品能做什么、交付的东西又是什么成色。
 
 ## 跟着 `host` 进入守护进程
 
@@ -53,20 +53,15 @@ except Exception:
 # execute() after kernel start -- see base.ts postStartCode mechanism.
 ```
 
-这个文件里有 SDK 调用的协议管道，却没有 SDK 的实现本体<LocalSource id="kernel-injection-clue" source="~/.claude-science/runtime/<version>/kernels/kernel_worker.py, near the kernel namespace initialization" note="The shipped Python worker identifies the first-execute postStartCode injection mechanism" />。要找到缺失的源码，下一步就是那个部署好的守护进程：
+这个文件里有 SDK 调用的协议管道，却没有 SDK 的实现本体。那份实现是 `claude-science` 守护进程的一部分，由它按内核来组装、注入。
 
-```bash
-strings ~/.claude-science/bin/claude-science > claude-science.strings
-rg -n 'FRAGMENT MODEL|Host-callback protocol|class _OperonSDK' claude-science.strings
-```
-
-抠出来的 Python 说：有一个基础片段总会先发过去，随后按 agent 配置，把一批受门控的片段接在后面。后面这些片段，往一个已经建好的单例上挂方法。基础片段把这个单例同时绑到 `host` 和旧名字 `operon` 上，再把这个对象注册进 `sys.modules`。这就是为什么明明没装任何模块，`import host` 看着也能用。
+守护进程总会先发一个基础片段，随后按 agent 配置，把一批受门控的片段接在后面。后面这些片段，往一个已经建好的单例上挂方法。基础片段把这个单例同时绑到 `host` 和旧名字 `operon` 上，再把这个对象注册进 `sys.modules`。这就是为什么明明没装任何模块，`import host` 看着也能用。
 
 同一个片段还回答了：一次方法调用的另一头发生了什么。在内核里，`host.llm()`、`host.artifacts()`、`host.mcp()`、`host.compute.create()` 看着都像普通 Python。可每一个到头来，都会把一个同步请求序列化，走内核私有协议发出去，然后等守护进程给一个对得上的响应：
 
 <HostCallProtocol />
 
-注入进来的这套方法，图的只是方便，不是最终权柄。守护进程给每种内核挑一套允许调用的方法，派发前先查这份许可，再让各个处理器自己做校验。就算你硬造一个原始的 `_host_call("mcp", ...)`，也拿不回一个当初就没给分析内核的能力<LocalSource id="host-rpc" source="Embedded Python and host dispatcher in ~/.claude-science/bin/claude-science; extract with strings and search for 'Host-callback protocol', '_host_call', and 'Host call not permitted'" note="SDK fragment assembly, host-call wire protocol, daemon permit sets, and dispatcher gate" />。
+注入进来的这套方法，图的只是方便，不是最终权柄。守护进程给每种内核挑一套允许调用的方法，派发前先查这份许可，再让各个处理器自己做校验。就算你硬造一个原始的 `_host_call("mcp", ...)`，也拿不回一个当初就没给分析内核的能力。
 
 <Blockquote variant="pullquote">
   内核持有工作状态。守护进程握着权柄和历史。
@@ -84,7 +79,7 @@ rg -n 'FRAGMENT MODEL|Host-callback protocol|class _OperonSDK' claude-science.st
 
 很多智能体产品把工具做成一个个离散的模型动作：一次工具调用，一个结果，一段推理，再下一次调用。Claude Science 也支持这套，但它真正与众不同的界面是代码。这差别，在规模上最看得清楚。
 
-拿它自带的 `literature-review` 技能背后那次文献扫描来说。这个技能把 `search_openalex`、`expand_citations` 这样的辅助函数直接加载进 Python 内核。一个单元格用它们拉来几百篇候选论文，在引文图上双向游走，整批就当一张表留在内核里。因为模型调用也在同一个内核里跑，一个循环就能给每篇候选挂上 `host.llm()`，打相关性分、抽取它报告的效应，于是对几百条记录的筛查，是一个 Python 单元格，而不是几百轮对话。然后 matplotlib 把结果画出来。在模型的对话记录里，这整场扫描就是两三次工具调用，而不是一轮一轮跑工具循环要耗掉的几百次<LocalSource id="literature-sweep" source="~/.claude-science/runtime/<version>/skills/literature-review/kernel.py and SKILL.md; ~/.claude-science/runtime/<version>/mcp-servers/bio-tools/lib/openalex_works" note="Shipped literature-review skill: kernel-loaded search_openalex and expand_citations, plus in-kernel model calls over retrieved records" />。
+拿它自带的 `literature-review` 技能背后那次文献扫描来说。这个技能把 `search_openalex`、`expand_citations` 这样的辅助函数直接加载进 Python 内核。一个单元格用它们拉来几百篇候选论文，在引文图上双向游走，整批就当一张表留在内核里。因为模型调用也在同一个内核里跑，一个循环就能给每篇候选挂上 `host.llm()`，打相关性分、抽取它报告的效应，于是对几百条记录的筛查，是一个 Python 单元格，而不是几百轮对话。然后 matplotlib 把结果画出来。在模型的对话记录里，这整场扫描就是两三次工具调用，而不是一轮一轮跑工具循环要耗掉的几百次。
 
 撑起这件事的有两条性质，都是这一刀的要点。第一，那些论文根本不必进入模型的上下文。它们作为数据活在持久内核里，只有精简后的综合结果传回来。第二，迭代在代码里，不在模型一轮一轮的对话记录里。一个 `for` 循环在单个单元格里发出这 N 次调用，模型只写一次单元格、只读一个结果。换成离散的工具接口，就得花 N 次单独的工具调用和结果往返，每次都是一整个模型轮次。代码把循环挪出了语言模型。
 
@@ -94,13 +89,13 @@ rg -n 'FRAGMENT MODEL|Host-callback protocol|class _OperonSDK' claude-science.st
   <OrchestrationScale />
 </WideBlock>
 
-主 `OPERON` 提示词把工作流讲得很直白。MCP 调用走 `repl`，不走 Python 或 R。对样本或记录的循环，应该在一个 REPL 单元格里跑完。结果要序列化进 `./handoff/<name>.json`，再由分析内核加载。一次 Python 调用应该装下一个完整的逻辑分析步骤，因为哪怕内核本身持久，每次调用也要花一整个模型往返<LocalSource id="operon-workflow" source="~/.claude-science/runtime/<version>/agents/operon/metadata.yaml, 'Kernel selection' and 'Minimize kernel calls'" note="OPERON instructions for control-kernel MCP loops, file handoff, and persistent analysis cells" />。
+主 `OPERON` 提示词把工作流讲得很直白。MCP 调用走 `repl`，不走 Python 或 R。对样本或记录的循环，应该在一个 REPL 单元格里跑完。结果要序列化进 `./handoff/<name>.json`，再由分析内核加载。一次 Python 调用应该装下一个完整的逻辑分析步骤，因为哪怕内核本身持久，每次调用也要花一整个模型往返。
 
 ### 控制内核与数据内核
 
 控制 REPL 以隔离、只用标准库的模式跑 Python。它拿到的是编排类的片段：MCP、agent、技能、frame 查询、委派、结构化输出、远程计算。而装满了包的 Python 和 R 内核，拿不到这些界面。它们拿到的是面向分析的方法：制品查找、血缘、模型调用、凭据。
 
-当分析代码去试 `host.mcp`，SDK 不会假装这个方法存在。它抛的 `AttributeError` 会说：连接器工具在这个内核里没有界面，叫智能体去 `repl` 里取数、把 JSON 写到 `./handoff` 下、再从 Python 里读。同一条教学式报错，也管着 agent、技能、计算、查询、frame、执行控制、结构化输出。它还点明了进程边界：这些内核共享工作区的当前目录，但不共享内存<LocalSource id="control-data-contract" source="Embedded SDK in ~/.claude-science/bin/claude-science; extract with strings and search for 'no surface in this kernel' and 'host.mcp'" note="User-facing control/data-kernel contract and control-only MCP fragment" />。
+当分析代码去试 `host.mcp`，SDK 不会假装这个方法存在。它抛的 `AttributeError` 会说：连接器工具在这个内核里没有界面，叫智能体去 `repl` 里取数、把 JSON 写到 `./handoff` 下、再从 Python 里读。同一条教学式报错，也管着 agent、技能、计算、查询、frame、执行控制、结构化输出。它还点明了进程边界：这些内核共享工作区的当前目录，但不共享内存。
 
 | host 界面                     | 分析用 Python/R | Operon 控制 REPL   | 审查者      |
 | ----------------------------- | --------------- | ------------------ | ----------- |
@@ -109,7 +104,7 @@ rg -n 'FRAGMENT MODEL|Host-callback protocol|class _OperonSDK' claude-science.st
 | 计算、委派、提交产出          | 无              | 按配置/提供方门控  | 无          |
 | frame 与数据库自省            | 无              | 有                 | 有限只读    |
 
-缺席的那些 SDK 方法是第一道关卡，不是安全边界。片段的缺席在教你 API，也顺手抛出一条有用的报错。真正的权柄是守护进程的许可集。就算内核代码硬造一个原始的 `_host_call("mcp", ...)`，分析内核的许可集里也没有它，而 MCP 处理器还会各自要求：一个 Operon 内核、身份认证、连接器解析、schema 校验、策略审批<LocalSource id="daemon-gates" source="Host dispatcher in ~/.claude-science/bin/claude-science; extract with strings and search for 'Host call not permitted', 'MCP calls require an Operon kernel', and 'validateToolInput'" note="Daemon-side host-call gates and MCP validation path" />。
+缺席的那些 SDK 方法是第一道关卡，不是安全边界。片段的缺席在教你 API，也顺手抛出一条有用的报错。真正的权柄是守护进程的许可集。就算内核代码硬造一个原始的 `_host_call("mcp", ...)`，分析内核的许可集里也没有它，而 MCP 处理器还会各自要求：一个 Operon 内核、身份认证、连接器解析、schema 校验、策略审批。
 
 <WideBlock width="wide">
   <CapabilityGates />
@@ -121,25 +116,25 @@ rg -n 'FRAGMENT MODEL|Host-callback protocol|class _OperonSDK' claude-science.st
 
 ### 有持久状态，内核却不掌权
 
-Python worker 是一个长命的子进程，带一个持久命名空间。它接收 JSON 请求，把每个单元格编译进一个合成文件名（比如 `<kernel:17>`），在 `linecache` 里登记源码，再在前面单元格用过的同一个命名空间里求值。加载好的矩阵、拟合好的模型、写好的辅助函数，都能跨轮次活下来。每个响应都带着 stdout、stderr、轨迹信息、墙钟时间、CPU 时间和峰值内存<LocalSource id="python-worker" source="~/.claude-science/runtime/<version>/kernels/kernel_worker.py" note="Long-lived Python worker, persistent source registration, interrupt survival, and per-cell usage" />。
+Python worker 是一个长命的子进程，带一个持久命名空间。它接收 JSON 请求，把每个单元格编译进一个合成文件名（比如 `<kernel:17>`），在 `linecache` 里登记源码，再在前面单元格用过的同一个命名空间里求值。加载好的矩阵、拟合好的模型、写好的辅助函数，都能跨轮次活下来。每个响应都带着 stdout、stderr、轨迹信息、墙钟时间、CPU 时间和峰值内存。
 
 持久得配上协议加固。流式输出、最终响应、单元格执行到一半的 host 调用，共用锁，好让 JSON 行不会交叠。协议用的文件描述符，和用户看得见的 stdout 分开。用户代码运行前，先把密钥变量清掉。从可写根目录加载动态库，一概拒绝，除非落在一条明确的环境豁免里。`exit`、`quit` 和中断都有专门处理，不会随手把内核毁掉。
 
-R 大体上是同一个形状。它是一个长命的 `Rscript` worker，保住 `.GlobalEnv`，通过标准流交换 JSON，剥掉机密，看住 `dyn.load`，并在求值期间支持 host 回调。Bash 不一样：证据指向的是受管的子进程执行，而不是持久的 shell 内存。它照样参与，靠的是执行记录、后台输出、进程组中断和 host 审批<LocalSource id="r-shell-workers" source="Embedded R worker and shell runner in ~/.claude-science/bin/claude-science; extract with strings and search for '.GlobalEnv', 'dyn.load', and 'process group'" note="Persistent R worker and the bounded evidence for process-based shell execution" />。<Marginnote>Python 和 R 的持久，在 worker 源码里写得明明白白。shell 的持久没有。在 macOS 上，抠出来的写追踪配置也说，Darwin 这条路不像 Linux 那样追踪 Bash。</Marginnote>
+R 大体上是同一个形状。它是一个长命的 `Rscript` worker，保住 `.GlobalEnv`，通过标准流交换 JSON，剥掉机密，看住 `dyn.load`，并在求值期间支持 host 回调。Bash 不一样：证据指向的是受管的子进程执行，而不是持久的 shell 内存。它照样参与，靠的是执行记录、后台输出、进程组中断和 host 审批。<Marginnote>Python 和 R 的持久，在 worker 源码里写得明明白白。shell 的持久没有。在 macOS 上，写追踪配置也说，Darwin 这条路不像 Linux 那样追踪 Bash。</Marginnote>
 
 持久内核不是新东西。这里真正要紧的设计选择，是持久却不给内核权柄。一个 Python 进程可以攥着一个巨大的矩阵一个钟头。可要做一次特权的 host 操作，它还是得向守护进程开口。
 
 ### 智能体集群编排
 
-控制平面不止管计算。它那些受门控的 SDK 片段，暴露出 agent 配置的增删改查、技能和连接器的挂载、技能的编辑与发布、子智能体的委派、收集、中断，还有结构化结果的提交。这些都是 host 调用，不是去改一个随手写的提示词文件。守护进程能给新智能体的搭建加上校验和策略，也能管住它们怎么用工具<LocalSource id="agent-surface" source="Embedded SDK and host handlers in ~/.claude-science/bin/claude-science; search extracted strings for 'host.agents', 'host.skills', 'delegate', and 'submit_output'" note="Daemon-mediated agent, skill, delegation, and structured-output surfaces" />。
+控制平面不止管计算。它那些受门控的 SDK 片段，暴露出 agent 配置的增删改查、技能和连接器的挂载、技能的编辑与发布、子智能体的委派、收集、中断，还有结构化结果的提交。这些都是 host 调用，不是去改一个随手写的提示词文件。守护进程能给新智能体的搭建加上校验和策略，也能管住它们怎么用工具。
 
-新手引导用的是同一个运行器，只是故意收窄了。自带的 `ONBOARDING` 配置不能跑 Python、R、Bash、`repl`，不能搜索、管包，也不能用远程计算。它用选项卡片做一次有边界的访谈，等选定第一个任务后再收集权限，然后把任务交给一个干活的智能体。一个本可以做成固定向导的产品流程，在这套框架里，成了一个受约束的 agent 配置<LocalSource id="onboarding-agent" source="~/.claude-science/runtime/<version>/agents/onboarding/metadata.yaml" note="Constrained onboarding profile, question flow, permission timing, and handoff" />。
+新手引导用的是同一个运行器，只是故意收窄了。自带的 `ONBOARDING` 配置不能跑 Python、R、Bash、`repl`，不能搜索、管包，也不能用远程计算。它用选项卡片做一次有边界的访谈，等选定第一个任务后再收集权限，然后把任务交给一个干活的智能体。一个本可以做成固定向导的产品流程，在这套框架里，成了一个受约束的 agent 配置。
 
 对做框架的人，第一刀给出一条具体的教训。给模型"代码执行"，不是一项能力。Claude Science 把它拆成好几样：持久的数据状态、标准库控制代码、外部工具 RPC、受管子进程、远程作业，还有守护进程掌握的策略。代码把这些拼到一起，却没抹掉它们之间的边界。
 
 ## 第二刀：制品才是产品，消息不是
 
-`OPERON` 提示词叫智能体产出制品，不只是答案。工作区里的文件在保存前，用户看不见。图应该按版本 id 嵌入。报告链接制品，要按身份，而不是含混的文件名。最终回复指向主交付物，其余的搁在制品托盘里<LocalSource id="artifact-contract" source="~/.claude-science/runtime/<version>/agents/operon/metadata.yaml, 'Artifacts' instructions" note="OPERON's artifact-first user-output contract" />。
+`OPERON` 提示词叫智能体产出制品，不只是答案。工作区里的文件在保存前，用户看不见。图应该按版本 id 嵌入。报告链接制品，要按身份，而不是含混的文件名。最终回复指向主交付物，其余的搁在制品托盘里。
 
 这不是排版上的润色。它点出了这套系统里能留存的那个单元。
 
@@ -153,41 +148,33 @@ R 大体上是同一个形状。它是一个长命的 `Rscript` worker，保住 
 
 光凭代码文本，判不准血缘。路径可能是动态拼出来的。一个 dataframe 可能是某个库调用切出来的。一张图可能是某个对象写的，而这个对象的来历，在最后那句 `savefig` 里根本看不见。Claude Science 先试着在代码运行时观测数据流。
 
-在用户代码之前，分析 SDK 会包装选定的读取器和写入器。`pandas.read_*`、`numpy.load*`、`anndata.read_h5ad` 这类读取器，给返回的对象贴上来源版本 id。`DataFrame.to_*`、`Figure.savefig`、`numpy.save*`、`json.dump` 这类写入器，收集这些标记，记下哪些来源版本流到了一个输出路径。等那个路径成了制品，host 就向内核要它的运行时输入<LocalSource id="runtime-provenance" source="Runtime-provenance fragment embedded in ~/.claude-science/bin/claude-science; search extracted strings for '__operon_runtime_inputs__'" note="Runtime reader/writer wrapping, object tags, and host harvest surface" />。
+在用户代码之前，分析 SDK 会包装选定的读取器和写入器。`pandas.read_*`、`numpy.load*`、`anndata.read_h5ad` 这类读取器，给返回的对象贴上来源版本 id。`DataFrame.to_*`、`Figure.savefig`、`numpy.save*`、`json.dump` 这类写入器，收集这些标记，记下哪些来源版本流到了一个输出路径。等那个路径成了制品，host 就向内核要它的运行时输入。
 
-```text
-artifact version id
-  -> tagged reader result
-  -> pandas / NumPy transformations
-  -> wrapped writer(output_path)
-  -> __operon_runtime_inputs__(output_path)
-  -> exact upstream version edge
-```
+<WideBlock width="wide">
+  <ProvenanceCapture />
+</WideBlock>
 
 这套机制靠 pandas 属性、打了标记的 NumPy 子类、标量包装器，还有尽量用上的一张辅助表，把标记往下传。它故意不是全面的污点追踪。它明确不做的，包括通用的数据流追踪，也包括对 R 或 Bash 的完整覆盖。普通字典、不受支持的库、执行的字符串，都可能把标记弄丢。写入器带着标记触发，host 就有一份直接映射。不带，host 就退回到代码和依赖重建。
 
 这个先后次序，才是要紧的选择：
 
-```text
-runtime observation when tags survive
-  -> recorded reads, writes, executions, and host calls
-  -> post-hoc dependency mapping when direct evidence is incomplete
-  -> pending / unresolved lineage when convergence has not finished
-```
+<WideBlock width="wide">
+  <ProvenanceConfidence />
+</WideBlock>
 
-把次序倒过来、让一个 LLM 从代码里推断每一条边，本来很容易。Claude Science 没这么做。模型辅助的重建，是兜底<LocalSource id="provenance-fallback" source="Runtime-provenance and dependency-mapping code embedded in ~/.claude-science/bin/claude-science; search extracted strings for 'NOT a generic dataflow tracer' and 'dependency_mappings'" note="Explicit provenance non-goals and daemon-side dependency convergence" />。<Marginnote>溯源的可信度并不均匀。Python 的对象包装器最全。R 和 Bash 更多靠写追踪和事后重建，而抠出来的 Darwin 配置说，Bash 不走 Linux 那条 preload 路径来追踪。别把“有血缘”讲成一个非黑即白的保证。</Marginnote>
+把次序倒过来、让一个 LLM 从代码里推断每一条边，本来很容易。Claude Science 没这么做。模型辅助的重建，是兜底。<Marginnote>溯源的可信度并不均匀。Python 的对象包装器最全。R 和 Bash 更多靠写追踪和事后重建，而 Darwin 配置说，Bash 不走 Linux 那条 preload 路径来追踪。别把“有血缘”讲成一个非黑即白的保证。</Marginnote>
 
 ### 文件底下的那条记录
 
-制品不只是一个路径。它是一条以项目为范围、带版本的记录。制品这一行，标明项目、根对话、生成它的 frame、文件名、最新版本、所在文件夹、优先级，还有这一项是临时的还是用户提供的。每个版本可以保留内容类型、大小、校验和、存储路径、抽取出的代码、一段代码描述、血缘消息、agent、语言、依赖映射、环境快照、注释，还有父版本。另有单独的行，存精确到"版本对版本"的依赖<LocalSource id="artifact-schema" source="~/.claude-science/runtime/<version>/drizzle/sqlite/0000_yummy_ken_ellis.sql; 0004_content_snapshots.sql; 0005_execution_log.sql" note="Artifact identity, version metadata, dependencies, snapshots, and producing-cell fields" />。
+制品不只是一个路径。它是一条以项目为范围、带版本的记录。制品这一行，标明项目、根对话、生成它的 frame、文件名、最新版本、所在文件夹、优先级，还有这一项是临时的还是用户提供的。每个版本可以保留内容类型、大小、校验和、存储路径、抽取出的代码、一段代码描述、血缘消息、agent、语言、依赖映射、环境快照、注释，还有父版本。另有单独的行，存精确到"版本对版本"的依赖。
 
 在这条记录底下，Claude Science 至少记了三层证据。
 
-**第一层是执行日志。**一个单元格可以记下它的 frame、序号、内核 id、环境、语言、源码、stdout、stderr、状态、写了哪些文件、读了哪些文件，还有出错的位置。一个制品版本，可以指回生成它的那个单元格，也指回单元格源码的快照<LocalSource id="execution-log" source="~/.claude-science/runtime/<version>/drizzle/sqlite/0005_execution_log.sql; ~/.claude-science/orgs/<org-id>/operon-cli.db, execution_log and content_snapshots" note="Per-cell execution evidence and producing-cell links" />。
+**第一层是执行日志。**一个单元格可以记下它的 frame、序号、内核 id、环境、语言、源码、stdout、stderr、状态、写了哪些文件、读了哪些文件，还有出错的位置。一个制品版本，可以指回生成它的那个单元格，也指回单元格源码的快照。
 
-**第二层是 host 调用日志。**单元格里做的一次特权调用，可以连同方法、参数、序号、可否推导、内联或引用的响应数据、错误、字节数、执行日志 id 一起存下来。这把"代码跑了"和"代码向 host 要了一个外部或特权的结果"分了开来<LocalSource id="host-call-log" source="~/.claude-science/runtime/<version>/drizzle/sqlite/0006_host_call_log.sql; ~/.claude-science/orgs/<org-id>/operon-cli.db, host_call_log" note="Ordered host-call records linked to an execution" />。
+**第二层是 host 调用日志。**单元格里做的一次特权调用，可以连同方法、参数、序号、可否推导、内联或引用的响应数据、错误、字节数、执行日志 id 一起存下来。这把"代码跑了"和"代码向 host 要了一个外部或特权的结果"分了开来。
 
-**第三层是制品图。**依赖连的是精确版本，不是文件名。`host.lineage.graph(version_id)` 取回拓扑，开销很小。`host.lineage[version_id]` 能为选中的节点返回代码、消息、环境、输入、校验和、frame 和生成它的单元格。结果里还带一个 `extraction_pending`，所以当前零条边，不一定就说明这个制品没有输入<LocalSource id="lineage-api" source="Embedded SDK in ~/.claude-science/bin/claude-science; search extracted strings for 'get_lineage', 'get_lineage_topology', and 'extraction_pending'" note="Lineage record and dependency-topology APIs, including pending extraction" />。
+**第三层是制品图。**依赖连的是精确版本，不是文件名。`host.lineage.graph(version_id)` 取回拓扑，开销很小。`host.lineage[version_id]` 能为选中的节点返回代码、消息、环境、输入、校验和、frame 和生成它的单元格。结果里还带一个 `extraction_pending`，所以当前零条边，不一定就说明这个制品没有输入。
 
 合到一起，这几层能表达出：这张图来自那张表，由这个单元格生成，经过这些 host 调用，在这个环境下，在这个 agent frame 里。覆盖也许不全，但这套 schema 把这条链当成头等的状态，而不是事后临时凑的一段话。
 
@@ -201,34 +188,13 @@ runtime observation when tags survive
 
 如果一个制品是直接从一个有记录的单元格存下来的，`producing_cell_id` 和单元格源码给出最强的一条路。碰上更复杂的序列，一个版本可以存 `extracted_code`、`code_description`、`lineage_messages` 和 `dependency_mappings`。环境和血缘快照可以按哈希寻址。`parent_version_id` 保住祖先关系。运行时标记可能给出精确的上游 id。守护进程随后把映射收敛成依赖边，同时核对：存下来的映射文本，没在一次并发更新里被改动过。
 
-结果是一个可信度的层级：
-
-1. 观测到的运行时输入标记，加上精确的生成单元格；
-2. 记录下的读写文件，加上记录下的 host 调用；
-3. 抽取出的代码，加上环境快照；
-4. 事后的依赖映射与描述；
-5. 未决或待抽取。
-
-这个层级，本该写进对产品的解释里。有些边是观测到的。有些是重建的。有些还悬着。
+这里的可信度次序，和那张血缘阶梯图是同一套，只是换到重建这一侧看：守护进程先认观测到的标记和生成单元格，拿不到就退到记录下的调用、抽取的代码和快照，再退到事后映射，还没收敛的标成未决。有些边是观测到的，有些是重建的，有些还悬着。
 
 ### 重放，但不假装 host 从未存在
 
 导出带来一个难题。笔记本代码里可能有 `host.llm()`、`host.artifacts()`、`host.lineage`、`host.mcp()`、委派，或者对 app 的调用。出了 Claude Science，`host` 不是一个装好的包，守护进程的状态也不在。只导出 Python，得到的笔记本，重要调用全都会失败。
 
-自带的重放垫片选了个直接的办法。host 的响应写进 `operon_tape.json`。一个独立的笔记本加载这条磁带，把 `host` 和旧名字 `operon` 都绑到一个重放对象上，按顺序一条条消费。抽取出的代码要是省掉了某些已知的发现类调用，这些调用可以跳过。方法一旦对不上，就在游标前进之前抛错，免得一次错位悄悄把后面每一条响应都挪偏<LocalSource id="replay-shim" source="Notebook replay shim embedded in ~/.claude-science/bin/claude-science; search extracted strings for 'operon_tape.json' and 'host-SDK replay drift'" note="Sequential response tape, replay cursor, mirrored host surfaces, and unavailable capabilities" />。
-
-游标的逻辑，故意做得很严：
-
-```python
-rec = tape[self._i]
-j = self._i
-while rec["method"] != requested and rec["method"] in SKIPPABLE:
-    j += 1
-    rec = tape[j]
-if rec["method"] != requested:
-    raise RuntimeError("host-SDK replay drift")
-# Only a match commits the cursor.
-```
+自带的重放垫片选了个直接的办法。host 的响应写进 `operon_tape.json`。一个独立的笔记本加载这条磁带，把 `host` 和旧名字 `operon` 都绑到一个重放对象上，按顺序一条条消费。抽取出的代码要是省掉了某些已知的发现类调用，这些调用可以跳过。方法一旦对不上，就在游标前进之前抛错，免得一次错位悄悄把后面每一条响应都挪偏。
 
 这个垫片镜像了模型调用、制品、血缘、凭据、frame、子智能体、委派、MCP 和 app 工具。它的能力报告也承认：agent、技能、计算和后台执行控制都用不了。重排调用，或者加入新的 host 效应，都会让这条磁带失效。
 
@@ -242,19 +208,19 @@ if rec["method"] != requested:
 
 Claude Science 实现的是另一样东西：一个脱离主循环、归运行器所有的验证器。
 
-我剖的这个版本带着两个隐藏的验证配置：`REVIEWER` 和 `BOOKMARKER`。它们不是两个一直在跑的智能体。审查者这条路，在我观察的本地运行时里是活的。bookmarker 的实现也在同一个版本里，但 `bookmarks_enabled` 默认是 false，本地也没见到任何 bookmarker 的 frame 或对话记录标注。对 0.1.15 准确的说法是：一个活跃的后台审查者，加一条休眠的书签路径，而不是"两个智能体一直在后台跑"<LocalSource id="verification-profiles" source="~/.claude-science/runtime/<version>/agents/reviewer/metadata.yaml; ~/.claude-science/runtime/<version>/agents/bookmarker/metadata.yaml; verifier defaults embedded in ~/.claude-science/bin/claude-science" note="Hidden reviewer and bookmarker profiles plus verifier defaults" />。
+我剖的这个版本带着两个隐藏的验证配置：`REVIEWER` 和 `BOOKMARKER`。它们不是两个一直在跑的智能体。审查者这条路，在我观察的本地运行时里是活的。bookmarker 的实现也在同一个版本里，但 `bookmarks_enabled` 默认是 false，本地也没见到任何 bookmarker 的 frame 或对话记录标注。对 0.1.15 准确的说法是：一个活跃的后台审查者，加一条休眠的书签路径，而不是"两个智能体一直在后台跑"。
 
 ### 审查者要做什么
 
 `REVIEWER` 不是第二个科学家。它的活儿是读另一个智能体的运行记录，报出这份工作在哪儿编造了结果、凭空捏了来源、或者偏离了计划。它的提示词，对方法要求得异常严。第一条规矩是**追溯，不要重算**：智能体报了一个数，审查者就去找打印出这个数的那个单元格，看有没有矛盾。一个它在自己窗口里追不到的值，单凭这一点还不算一条问题。这针对的是验证器一种特定的失效。两次独立的分析可能因为选了不同的过滤条件、库或随机种子而对不上，可光是对不上，说明不了哪一次真的跟着用户的工作走。一个做追溯的审查者，问的是一个更窄、答得出的问题：那个要留存的结论，和会话自己声称"是它生成了这个结论"的那条证据路径，对得上吗？
 
-为把它摁在这个问题上，配置剥掉了那些会让它跑偏、另起炉灶做分析的工具。它关掉计划、委派、联网搜索和思考，也排除 Python、R、Bash、包和环境管理、写制品、改文件、全文检索和计算。守护进程随后只给一个只读的 host 界面：frame、限定范围的查询、制品路径和列表，还有血缘<LocalSource id="reviewer-profile" source="~/.claude-science/runtime/<version>/agents/reviewer/metadata.yaml; reviewer permit set embedded in ~/.claude-science/bin/claude-science" note="Reviewer capability exclusions, trace rubric, and daemon-enforced read-only host surface" />。
+为把它摁在这个问题上，配置剥掉了那些会让它跑偏、另起炉灶做分析的工具。它关掉计划、委派、联网搜索和思考，也排除 Python、R、Bash、包和环境管理、写制品、改文件、全文检索和计算。守护进程随后只给一个只读的 host 界面：frame、限定范围的查询、制品路径和列表，还有血缘。
 
 第二条规矩，露出了这套设计的优先级：一条问题算多重，看那个说法待在哪儿。存进图里或报告里的一个错数，用户下周会引用它，身边没有一行对话记录，所以制品按严标准卡。聊天里一句松散的话，滚一滚就没了，所以只有照着做真会误导人，才标出来。审查者守的是留得住的记录，不是那些闲话。
 
-值得停一下的是，这些选择是测出来的，不是拍脑袋断言的。关掉思考的那段代码注明：在"追溯数值"这类活儿上，思考吃掉了审查者大约 72% 的输出 token，换来的召回提升约等于零。不给 Python 的那段代码注明：三十轮生产环境的审查里，Python 占了 41% 的工具调用，而这些全是评分标准明令禁止的重算。审查者的形态，是拿基准一点点测出来定下的<LocalSource id="reviewer-eval" source="~/.claude-science/runtime/<version>/agents/reviewer/metadata.yaml, enable_thinking and excluded_tools comments" note="Measured justifications (bench-reviewer reps; n=30 production rounds) for disabling thinking and excluding Python" />。<Marginnote>给任何做验证器的人一条教训：拿真实评测去调你的评判者，别光是写。bookmarker 的提示词，是对着 62 个金标准检查点一点点爬坡调出来的，代码里还特意警告：别手改措辞，除非你重跑一遍评测。</Marginnote>
+值得停一下的是，这些选择是测出来的，不是拍脑袋断言的。关掉思考的那段代码注明：在"追溯数值"这类活儿上，思考吃掉了审查者大约 72% 的输出 token，换来的召回提升约等于零。不给 Python 的那段代码注明：三十轮生产环境的审查里，Python 占了 41% 的工具调用，而这些全是评分标准明令禁止的重算。审查者的形态，是拿基准一点点测出来定下的。<Marginnote>给任何做验证器的人一条教训：拿真实评测去调你的评判者，别光是写。bookmarker 的提示词，是对着 62 个金标准检查点一点点爬坡调出来的，代码里还特意警告：别手改措辞，除非你重跑一遍评测。</Marginnote>
 
-`BOOKMARKER` 复用同一套检查点机件，用途更窄：留下面包屑，让回头的用户一点就能跳回去，每个窗口最多两句原文引用，往往一句都没有。它的提示词，是拿 62 个金标准检查点窗口的评测，一轮一轮磨出来的。它自己的注释也警告：改措辞之前先重跑评测，因为好几处看着合理的改动，实测把分数拉低了。在 0.1.15 里，bookmarker 装了，却默认关着，所以这是一项已经造好、也测过、先摁着不用的能力，不是活的<LocalSource id="bookmarker-profile" source="~/.claude-science/runtime/<version>/agents/bookmarker/metadata.yaml; bookmarker permit set embedded in ~/.claude-science/bin/claude-science" note="Bookmarker breadcrumb contract, submit-output-only gate, and 62-checkpoint eval note; disabled by default in 0.1.15" />。<Marginnote>本地检查找到两个隐藏的审查者 frame，四行留存的 `verification_checks` 记录，全是 `pass`，没有 bookmarker 的 frame，也没有对话记录标注。这证明审查在本地跑过，但它没测审查者的准确率，也没走遍每一条分支。</Marginnote>
+`BOOKMARKER` 复用同一套检查点机件，用途更窄：留下面包屑，让回头的用户一点就能跳回去，每个窗口最多两句原文引用，往往一句都没有。它的提示词，是拿 62 个金标准检查点窗口的评测，一轮一轮磨出来的。它自己的注释也警告：改措辞之前先重跑评测，因为好几处看着合理的改动，实测把分数拉低了。在 0.1.15 里，bookmarker 装了，却默认关着，所以这是一项已经造好、也测过、先摁着不用的能力，不是活的。<Marginnote>本地检查找到两个隐藏的审查者 frame，四行留存的 `verification_checks` 记录，全是 `pass`，没有 bookmarker 的 frame，也没有对话记录标注。这证明审查在本地跑过，但它没测审查者的准确率，也没走遍每一条分支。</Marginnote>
 
 <WideBlock width="wide">
   <VerificationProfiles />
@@ -262,9 +228,9 @@ Claude Science 实现的是另一样东西：一个脱离主循环、归运行�
 
 ### 它按独立窗口运行，不是定时任务
 
-审查不按钟点触发。就在运行器派发一批工具调用之前，它问两件事：离上次检查点，时间够不够了。这期间，是不是攒下了真正的工作。按默认值，这意味着至少 120 秒，外加一个够格的信号：三个新制品、一个结构化的 Markdown 块，或者两千字的原创输入。安静地等，什么都不触发。有动静但没有够格的信号，也什么都不触发。被人读成 cron 周期的那两个"120 秒"，一个是检查点之间的最小间隔，一个是合并用的暂缓，都不是心跳<LocalSource id="verifier-config" source="Verifier configuration and runner predicate embedded in ~/.claude-science/bin/claude-science; extract with strings and search for 'min_checkpoint_interval_ms' and 'msSinceLastCheckpoint'" note="Verifier defaults and the pre-tool content-and-time checkpoint predicate" />。
+审查不按钟点触发。就在运行器派发一批工具调用之前，它问两件事：离上次检查点，时间够不够了。这期间，是不是攒下了真正的工作。按默认值，这意味着至少 120 秒，外加一个够格的信号：三个新制品、一个结构化的 Markdown 块，或者两千字的原创输入。安静地等，什么都不触发。有动静但没有够格的信号，也什么都不触发。被人读成 cron 周期的那两个"120 秒"，一个是检查点之间的最小间隔，一个是合并用的暂缓，都不是心跳。
 
-检查点真触发时，验证器给一个有边界的窗口拍快照：消息，再加执行、制品、计划和溯源的上下文。然后派出一个脱离主循环的审查者。要是已经有一个在忙，新单元就并进待处理的窗口，否则暂缓计时器先让附近的工作聚一聚。一个天真的调度器会对每个信号都拉起一个审查者，反复查重叠的切片。这个则把附近的证据攒成一次更大的审查，还让可见的对话记录里不出现任何"请检查我"的循环<LocalSource id="verifier-hold" source="Runner code embedded in ~/.claude-science/bin/claude-science; search extracted strings for 'pendingUnit' and 'mid_dispatch_hold_ms'" note="Pending-unit merge and detached mid-dispatch hold" />。这张图摆出了那个判定条件和两个计时器。<Marginnote>"后台"在这儿有个精确的意思。一次审查可以在主会话继续推进时仍然在飞，但触发这件事，还是在运行器的边界上判定的。它既不是一个一直空转的进程，也不是按挂钟走的 cron。</Marginnote>
+检查点真触发时，验证器给一个有边界的窗口拍快照：消息，再加执行、制品、计划和溯源的上下文。然后派出一个脱离主循环的审查者。要是已经有一个在忙，新单元就并进待处理的窗口，否则暂缓计时器先让附近的工作聚一聚。一个天真的调度器会对每个信号都拉起一个审查者，反复查重叠的切片。这个则把附近的证据攒成一次更大的审查，还让可见的对话记录里不出现任何"请检查我"的循环。这张图摆出了那个判定条件和两个计时器。<Marginnote>"后台"在这儿有个精确的意思。一次审查可以在主会话继续推进时仍然在飞，但触发这件事，还是在运行器的边界上判定的。它既不是一个一直空转的进程，也不是按挂钟走的 cron。</Marginnote>
 
 <WideBlock width="wide">
   <VerifierTimeline />
@@ -274,11 +240,11 @@ Claude Science 实现的是另一样东西：一个脱离主循环、归运行�
 
 一个只在完成后加个徽章的审查者，不过是数据统计。Claude Science 的审查者，参与流程控制。
 
-自然完成要过 `_gateReviewerTerminalBarrier()` 这道关。这道屏障判断：还没审的那段尾巴要不要一个收尾检查点，该冲刷时把攥着的单元冲刷掉，再等在飞或待处理的审查跑完。然后它把审查通知一条条排掉。如果有一条该送达，运行器就把它注入会话，把打回计数加一，存下状态，再返回一个否决，逼主智能体继续干<LocalSource id="terminal-barrier" source="Runner code embedded in ~/.claude-science/bin/claude-science; search extracted strings for '_gateReviewerTerminalBarrier'" note="Terminal verification checkpoint, wait, notice drain, bounce, and completion veto" />。
+自然完成要过一道收尾审查屏障。这道屏障判断：还没审的那段尾巴要不要一个收尾检查点，该冲刷时把攥着的单元冲刷掉，再等在飞或待处理的审查跑完。然后它把审查通知一条条排掉。如果有一条该送达，运行器就把它注入会话，把打回计数加一，存下状态，再返回一个否决，逼主智能体继续干。
 
 打回次数默认封顶在三次。这挡住了审查者和主智能体把会话困在一场没完没了的争执里。
 
-最强的一例，是委派出去的结果。一个子智能体把结构化输出往上交给父智能体，审查者要是抢先把它判否，运行器就赶在父智能体看到之前把这份输出扔掉，再把子智能体打发回去，让它改正或反驳这条问题，重新调一次 `submit_output`。在改好的结果回来、或者重试额度耗尽之前，父智能体什么也拿不到<LocalSource id="output-invalidation" source="Runner code embedded in ~/.claude-science/bin/claude-science; search extracted strings for 'outputInvalidationCount' and 'submit_output again'" note="Blocking finding and delegated structured-output invalidation" />。
+最强的一例，是委派出去的结果。一个子智能体把结构化输出往上交给父智能体，审查者要是抢先把它判否，运行器就赶在父智能体看到之前把这份输出扔掉，再把子智能体打发回去，让它改正或反驳这条问题，重新调一次 `submit_output`。在改好的结果回来、或者重试额度耗尽之前，父智能体什么也拿不到。
 
 审查者能作废智能体之间的一次交接，不只是标记一下。
 

@@ -2,6 +2,8 @@ export { ClaudeScienceShipment } from "./ClaudeScienceShipment";
 export { ClaudeScienceArchitecture } from "./ClaudeScienceArchitecture";
 export { VerifierTimeline } from "./VerifierTimeline";
 export { ArtifactLineageExplorer } from "./ArtifactLineageExplorer";
+export { ProvenanceCapture } from "./ProvenanceCapture";
+export { ProvenanceConfidence } from "./ProvenanceConfidence";
 export { OrchestrationScale } from "./OrchestrationScale";
 export { CapabilityGates } from "./CapabilityGates";
 export { VerificationProfiles } from "./VerificationProfiles";
