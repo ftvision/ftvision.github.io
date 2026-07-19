@@ -7,53 +7,43 @@ import { FigureScaffold } from "./FigureScaffold";
 /**
  * Figure D2 — "Verification agents".
  *
- * Cut II ships two hidden verification profiles, REVIEWER and BOOKMARKER,
- * spawned by the verifier over a transcript window. This figure shows, per
- * agent, (a) the deliberately constrained PROFILE — capability flags switched
- * off plus the excluded_tools list — and (b) a SHORTENED system prompt with
- * load-bearing lines kept verbatim and ellipses marking the cuts.
+ * The verifier spawns two hidden subagents, REVIEWER and BOOKMARKER, over each
+ * transcript window. The point is not the exact excluded_tools list — it is that
+ * each profile is cut down to almost nothing, then handed one tight prompt. So
+ * the profile is collapsed to a single capability bar (how many tools survive)
+ * plus a plain-English line; the shortened system prompt is the hero.
  *
- * Every value here is transcribed from the shipped 0.1.15 agent metadata:
- *   - runtime/agents/reviewer/metadata.yaml
- *   - runtime/agents/bookmarker/metadata.yaml
- * The capability flags and excluded_tools lists are verbatim; only the prompt
- * text is abbreviated (see the caption).
+ * Values are from the shipped 0.1.15 agent metadata (reviewer/bookmarker
+ * metadata.yaml): the kept/excluded tool sets and the five off capability flags
+ * are verbatim; only the prompt text is abbreviated (see the caption).
  */
 
 type AgentId = "reviewer" | "bookmarker";
 
-interface DeniedFlag {
-  code: string;
-  gloss: string;
-}
-
 interface Agent {
   id: AgentId;
   tab: string;
-  role: string;
   accent: string;
-  excluded: string[];
+  role: string;
   keeps: string[];
+  excluded: string[]; // kept for an honest count; not rendered as a list
+  off: string;
   prompt: string;
 }
 
 const REVIEWER_ACCENT = "var(--color-data-1)";
 const BOOKMARKER_ACCENT = "var(--color-data-5)";
-
-// Both profiles switch off the same five capabilities (verbatim flag values).
-const DENIED: DeniedFlag[] = [
-  { code: "enable_plan_mode: false", gloss: "no planning stage" },
-  { code: "enable_subtask_delegation: false", gloss: "cannot spawn sub-agents" },
-  { code: "enable_web_search: false", gloss: "no outside lookups" },
-  { code: "enable_thinking: false", gloss: "measured ~0 quality delta on trace work" },
-  { code: "skills_locked: true", gloss: "skill catalog locked, no search_skills" },
-];
+// Both profiles switch off the same five capability flags (verbatim):
+// enable_plan_mode, enable_subtask_delegation, enable_web_search,
+// enable_thinking, skills_locked.
+const CAP_FLAGS_OFF = 5;
 
 const REVIEWER: Agent = {
   id: "reviewer",
   tab: "REVIEWER",
-  role: "Reads another agent's transcript and reports fabrication, hallucination, or plan deviation. Never a root agent.",
   accent: REVIEWER_ACCENT,
+  role: "A read-only tracer: it reads another agent's transcript and reports where it fabricated, hallucinated, or deviated. Never a root agent.",
+  keeps: ["repl", "read_file", "submit_output"],
   excluded: [
     "python",
     "bash",
@@ -65,7 +55,7 @@ const REVIEWER: Agent = {
     "fetch_article_fulltext",
     "list_compute",
   ],
-  keeps: ["repl", "read_file", "submit_output"],
+  off: "No python, bash, or R; no planning, delegation, web search, or thinking; the skill catalog is locked. It can look and report, nothing more.",
   prompt: `You are the REVIEWER — a transcript reviewer.
 
 You receive pointers into another agent's conversation … read that transcript and report where it fabricated, hallucinated, or deviated.
@@ -80,8 +70,9 @@ Call submit_output ONCE with your findings and stop — do not write any assista
 const BOOKMARKER: Agent = {
   id: "bookmarker",
   tab: "BOOKMARKER",
-  role: "Reads the same window and returns 0 to 2 verbatim spans worth bookmarking. Never a root agent.",
   accent: BOOKMARKER_ACCENT,
+  role: "A write-only marker: it reads the same window and returns 0–2 verbatim spans a returning user would want to jump back to. Never a root agent.",
+  keeps: ["submit_output"],
   excluded: [
     "python",
     "bash",
@@ -95,7 +86,7 @@ const BOOKMARKER: Agent = {
     "fetch_article_fulltext",
     "list_compute",
   ],
-  keeps: ["submit_output"],
+  off: "Everything the reviewer loses, plus repl and read_file — it cannot even open a file. It only writes bookmarks.",
   prompt: `You are the BOOKMARKER — you leave breadcrumbs in another agent's transcript so a returning user can jump straight to what matters.
 
 You receive a window of an agent's work … Decide what — if anything — a user reopening this session tomorrow would want to click straight back to, and return 0-2 VERBATIM quotes via submit_output.
@@ -184,100 +175,63 @@ function AgentTabs({
   );
 }
 
-function ToolChip({
-  children,
-  accent,
-}: {
-  children: React.ReactNode;
-  accent?: string;
-}) {
-  return (
-    <code
-      className={cn(
-        "inline-block break-all rounded-[3px] border px-1.5 py-0.5 font-code text-[0.72rem] leading-4",
-        accent
-          ? "border-l-2 bg-ground-secondary text-figure-primary"
-          : "border-border bg-ground-secondary text-figure-secondary",
-      )}
-      style={accent ? { borderColor: "var(--color-border-default)", borderLeftColor: accent } : undefined}
-    >
-      {children}
-    </code>
-  );
-}
+function CapabilityBar({ agent }: { agent: Agent }) {
+  const total = agent.keeps.length + agent.excluded.length;
+  const kept = agent.keeps.length;
 
-function ProfilePanel({ agent }: { agent: Agent }) {
   return (
     <div className="min-w-0">
-      <p className="type-overline m-0 text-figure-muted">Profile</p>
-      <p className="type-body-sm m-0 mt-1 text-figure-secondary">{agent.role}</p>
+      <p className="type-body-sm m-0 font-medium text-figure-primary">
+        {agent.role}
+      </p>
 
-      <div className="mt-4">
-        <p className="type-overline m-0 mb-2 text-figure-muted">
-          Capabilities switched off
-        </p>
-        <ul
-          className="m-0 list-none space-y-2 p-0"
-          style={{ listStyle: "none" }}
-        >
-          {DENIED.map((flag) => (
-            <li
-              key={flag.code}
-              className="flex items-start gap-2"
-              style={{ listStyle: "none" }}
+      <p className="type-overline m-0 mb-2 mt-4 text-figure-muted">
+        Capability, at a glance
+      </p>
+      <div
+        className="flex h-11 items-end gap-1"
+        role="img"
+        aria-label={`Keeps ${kept} of ${total} tools; all ${CAP_FLAGS_OFF} capability flags off.`}
+      >
+        {Array.from({ length: total }).map((_, index) => {
+          const on = index < kept;
+          return (
+            <span
+              key={index}
+              aria-hidden="true"
+              className="w-4 rounded-t-[2px] transition-[height,background-color] duration-300 ease-out motion-reduce:transition-none"
+              style={{
+                height: on ? "100%" : "26%",
+                backgroundColor: on ? agent.accent : "var(--color-border-strong)",
+              }}
+            />
+          );
+        })}
+      </div>
+      <p className="type-caption m-0 mt-2 text-figure-secondary">
+        keeps{" "}
+        <b style={{ color: agent.accent }}>{kept}</b> of {total} tools · all{" "}
+        {CAP_FLAGS_OFF} capability flags off
+      </p>
+
+      <p className="type-overline m-0 mb-2 mt-4 text-figure-muted">Keeps only</p>
+      <ul
+        className="m-0 flex list-none flex-wrap gap-1.5 p-0"
+        style={{ listStyle: "none" }}
+      >
+        {agent.keeps.map((tool) => (
+          <li key={tool} style={{ listStyle: "none" }}>
+            <code
+              className="inline-block rounded-[4px] px-2 py-0.5 font-code text-[0.72rem] font-semibold leading-5 text-figure-inverse"
+              style={{ backgroundColor: agent.accent }}
             >
-              <span
-                aria-hidden="true"
-                className="mt-[0.1rem] shrink-0 text-[0.8rem] font-semibold leading-4"
-                style={{ color: "var(--color-status-danger)" }}
-              >
-                &#10007;
-              </span>
-              <span className="min-w-0">
-                <code className="block break-all font-code text-[0.72rem] leading-4 text-figure-primary">
-                  {flag.code}
-                </code>
-                <span className="type-caption m-0 mt-0.5 block text-figure-muted">
-                  {flag.gloss}
-                </span>
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+              {tool}
+            </code>
+          </li>
+        ))}
+      </ul>
 
-      <div className="mt-4">
-        <div className="flex items-baseline justify-between gap-2">
-          <p className="type-overline m-0 text-figure-muted">Excluded tools</p>
-          <p className="type-caption m-0 text-figure-muted">
-            {agent.excluded.length} removed
-          </p>
-        </div>
-        <ul
-          className="m-0 mt-2 flex list-none flex-wrap gap-1.5 p-0"
-          style={{ listStyle: "none" }}
-        >
-          {agent.excluded.map((tool) => (
-            <li key={tool} style={{ listStyle: "none" }}>
-              <ToolChip>{tool}</ToolChip>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="mt-4">
-        <p className="type-overline m-0 mb-2 text-figure-muted">Keeps only</p>
-        <ul
-          className="m-0 flex list-none flex-wrap gap-1.5 p-0"
-          style={{ listStyle: "none" }}
-        >
-          {agent.keeps.map((tool) => (
-            <li key={tool} style={{ listStyle: "none" }}>
-              <ToolChip accent="var(--color-status-success)">{tool}</ToolChip>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <p className="type-caption m-0 mt-4 text-figure-muted">{agent.off}</p>
     </div>
   );
 }
@@ -286,14 +240,11 @@ function PromptPanel({ agent }: { agent: Agent }) {
   return (
     <div className="min-w-0">
       <div className="flex items-baseline justify-between gap-2">
-        <p className="type-overline m-0 text-figure-muted">System prompt</p>
+        <p className="type-overline m-0 text-figure-muted">The one tight prompt</p>
         <p className="type-caption m-0 text-figure-muted">shortened</p>
       </div>
-      <div
-        className="mt-2 overflow-x-auto rounded-[4px] border border-l-2 border-border bg-surface-code"
-        style={{ borderLeftColor: agent.accent }}
-      >
-        <pre className="type-caption m-0 whitespace-pre-wrap break-words p-3 font-code leading-5 text-figure-primary">
+      <div className="mt-2 overflow-x-auto rounded-[4px] border border-border bg-surface-code">
+        <pre className="type-caption m-0 whitespace-pre-wrap break-words p-3 font-code leading-6 text-figure-primary">
           {agent.prompt}
         </pre>
       </div>
@@ -307,30 +258,18 @@ function PromptPanel({ agent }: { agent: Agent }) {
 export function VerificationProfiles() {
   const [active, setActive] = React.useState<AgentId>("reviewer");
   const baseId = React.useId().replace(/:/g, "");
-  const activeAgent = AGENTS.find((agent) => agent.id === active) ?? REVIEWER;
 
   return (
     <FigureScaffold
       eyebrow="Verification agents"
-      title="Two agents, one job each"
-      description="The verifier spawns two hidden subagents over each transcript window. Each is a real, deliberately constrained profile: most capabilities switched off, tools stripped to a tiny allowlist, and a short purpose-built system prompt."
-      caption="Figure D2. Config and prompt are drawn from the shipped 0.1.15 agent metadata (reviewer and bookmarker metadata.yaml). The capability flags and excluded_tools lists are verbatim; the system prompts are shortened, with ellipses marking cuts and the load-bearing lines kept word for word."
+      title="Two agents, stripped to one job each"
+      description="The verifier spawns two hidden subagents over each transcript window. Each is a real profile cut down to almost nothing — most tools gone, every capability flag off — then handed one tight, purpose-built prompt."
+      caption="Figure D2. The kept and excluded tool sets and the five off capability flags are verbatim from the shipped 0.1.15 agent metadata (reviewer and bookmarker metadata.yaml). The capability bar counts them; the system prompts are shortened, with ellipses marking cuts and the load-bearing lines kept word for word."
     >
-      <p className="type-body-sm m-0 mb-4 text-figure-secondary">
-        At every checkpoint the verifier spawns these two hidden agents over the
-        same transcript window. Neither plans, delegates, searches the web, or
-        thinks; each keeps a tiny tool allowlist and a prompt written for one
-        job.
-      </p>
-
       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <AgentTabs active={active} baseId={baseId} onSelect={setActive} />
-        <p
-          className="type-caption m-0 text-figure-secondary"
-          aria-live="polite"
-        >
-          {activeAgent.tab}: {DENIED.length} off, {activeAgent.excluded.length}{" "}
-          tools excluded, {activeAgent.keeps.length} kept
+        <p className="type-caption m-0 text-figure-muted">
+          At every checkpoint, over the same transcript window.
         </p>
       </div>
 
@@ -347,8 +286,8 @@ export function VerificationProfiles() {
               hidden={!isActive}
               className="focus-visible:outline-none"
             >
-              <div className="grid gap-6 md:grid-cols-2">
-                <ProfilePanel agent={agent} />
+              <div className="grid gap-6 md:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] md:gap-8">
+                <CapabilityBar agent={agent} />
                 <PromptPanel agent={agent} />
               </div>
             </div>
