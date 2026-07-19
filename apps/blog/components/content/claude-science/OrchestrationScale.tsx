@@ -110,7 +110,6 @@ hits.to_parquet("./outputs/enrichment.parquet")`,
 };
 
 const ORDER: ScenarioId[] = ["lit", "crispr"];
-const KIND_ACCENT: Record<CellKind, string> = { python: EXEC, repl: EVID };
 
 function ScenarioTabs({
   scenario,
@@ -191,27 +190,31 @@ function CodeCells({ scenario }: { scenario: ScenarioId }) {
           the whole sweep, 2 tool calls
         </p>
       </div>
-      <div className="grid gap-3 md:grid-cols-2">
+      <div className="mx-auto grid max-w-2xl gap-3">
         {s.cells.map((cell, index) => (
           <div
             key={cell.label}
-            className="min-w-0 overflow-hidden rounded-[4px] border border-l-2 border-border bg-ground-primary"
-            style={{ borderLeftColor: KIND_ACCENT[cell.kind] }}
+            className="min-w-0 overflow-hidden rounded-[6px] border border-border bg-ground-secondary"
           >
-            <div className="flex items-baseline justify-between gap-2 border-b border-border px-3 py-2">
-              <p className="type-overline m-0 text-figure-secondary">
-                <span className="font-code" style={{ color: KIND_ACCENT[cell.kind] }}>
-                  {cell.kind}
-                </span>{" "}
-                · cell {index + 1}
-              </p>
-              <p className="type-caption m-0 truncate text-figure-muted">
+            <div className="flex items-baseline justify-between gap-2 border-b border-border bg-ground-primary px-3 py-1.5">
+              <span className="type-overline m-0 font-code text-figure-muted">
+                Python 3
+              </span>
+              <span className="type-caption m-0 truncate text-figure-muted">
                 {cell.label}
-              </p>
+              </span>
             </div>
-            <pre className="type-caption m-0 overflow-x-auto whitespace-pre p-3 font-code leading-5 text-figure-primary">
-              <code>{cell.code}</code>
-            </pre>
+            <div className="flex">
+              <span
+                aria-hidden="true"
+                className="shrink-0 select-none whitespace-nowrap py-3 pl-3 pr-2 font-code text-[0.72rem] leading-5 text-action-primary"
+              >
+                In [{index + 1}]:
+              </span>
+              <pre className="type-caption m-0 min-w-0 flex-1 overflow-x-auto whitespace-pre py-3 pr-3 font-code leading-5 text-figure-primary">
+                <code>{cell.code}</code>
+              </pre>
+            </div>
           </div>
         ))}
       </div>
@@ -352,7 +355,7 @@ function MobileDiagram({
   return (
     <div className="grid gap-3 md:hidden">
       {/* Discrete */}
-      <div className="rounded-[4px] border border-l-2 border-border bg-ground-primary p-3" style={{ borderLeftColor: EVID }}>
+      <div className="rounded-[4px] border border-border bg-ground-primary p-3">
         <p className="type-label m-0 text-figure-primary">Discrete tool use</p>
         <p className="type-caption m-0 mt-0.5 text-figure-muted">
           the model sits inside the loop
@@ -374,7 +377,7 @@ function MobileDiagram({
       </div>
 
       {/* Claude Science */}
-      <div className="rounded-[4px] border border-l-2 border-border bg-ground-primary p-3" style={{ borderLeftColor: EXEC }}>
+      <div className="rounded-[4px] border border-border bg-ground-primary p-3">
         <p className="type-label m-0 text-figure-primary">Claude Science — code in the kernel</p>
         <p className="type-caption m-0 mt-0.5 text-figure-muted">the loop runs off-model</p>
         <p className="type-caption m-0 mt-2 text-figure-secondary">
