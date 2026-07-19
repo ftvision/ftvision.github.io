@@ -19,6 +19,9 @@ export type { MarginnoteProps } from './Marginnote';
 export { Reference } from './Reference';
 export type { ReferenceProps } from './Reference';
 
+export { LocalSource } from './LocalSource';
+export type { LocalSourceProps } from './LocalSource';
+
 export { References } from './References';
 export type { ReferencesProps } from './References';
 

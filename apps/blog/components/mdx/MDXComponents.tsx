@@ -26,6 +26,7 @@ import {
   Marginnote,
   Reference,
   References,
+  LocalSource,
   WideBlock,
   TimelineMap,
   XEmbed,
@@ -40,6 +41,18 @@ import {
   PassContent,
   ReadingDepthPoint,
 } from '../content';
+
+import {
+  ClaudeScienceShipment,
+  ClaudeScienceArchitecture,
+  OrchestrationScale,
+  CapabilityGates,
+  VerificationProfiles,
+  HostCallProtocol,
+  VerifierTimeline,
+  ArtifactLineageExplorer,
+  ArtifactViewer,
+} from '../content/claude-science';
 
 // Editorial components for magazine-style layouts
 import { EditorialGrid, EditorialSection, FeaturedCard, Item, DigestEntry } from '../editorial';
@@ -287,6 +300,18 @@ export function getMDXComponents(): MDXComponentMap {
     // Citations
     Reference,
     References,
+    LocalSource,
+
+    // Claude Science figures
+    ClaudeScienceShipment,
+    ClaudeScienceArchitecture,
+    OrchestrationScale,
+    CapabilityGates,
+    VerificationProfiles,
+    HostCallProtocol,
+    VerifierTimeline,
+    ArtifactLineageExplorer,
+    ArtifactViewer,
 
     // Layout
     WideBlock,
