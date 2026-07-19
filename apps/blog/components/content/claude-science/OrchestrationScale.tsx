@@ -8,20 +8,12 @@ import { FigureScaffold } from "./FigureScaffold";
 /**
  * Figure C — "Code as orchestration".
  *
- * The single idea: one cell of code collapses N operations into a flat model
- * transcript. A coded loop issues N governed round trips (to a connector or a
- * model, across the daemon) from inside a persistent kernel, while the model's
- * transcript only ever records ~2 tool calls and the working set (papers,
- * genes) stays in the kernel. Discrete tool use spends one call/result pair per
- * item, so its context grows with N.
- *
- * Two shipped scenarios the reader switches between:
- *   - Literature sweep (literature-review skill): search_openalex +
- *     expand_citations fill a kernel table with ~240 papers; a host.llm() loop
- *     triages each; matplotlib draws. Two python cells.
- *   - CRISPR annotation: a repl cell loops host.mcp over gene ids into one
- *     ./handoff file; a python cell loads the matrix and computes enrichment.
- *     One repl cell, one python cell.
+ * The single idea, framed the way Anthropic frames code execution with MCP:
+ * with discrete tool use the model sits *inside* the loop — every call and
+ * result passes through its context, so the context grows with N. With Claude
+ * Science the model emits one code cell and the loop runs *off-model* inside the
+ * kernel; only the code and one result reach the transcript, so it stays flat at
+ * two tool calls while hundreds of governed round trips happen in the kernel.
  */
 
 type ScenarioId = "lit" | "crispr";
@@ -37,27 +29,23 @@ interface Scenario {
   tab: string;
   blurb: string;
   kernelLabel: string;
-  loopGlyph: string;
-  workingSet: string;
-  connectorOverline: string;
-  connectorTitle: string;
-  connectorSub: string;
-  roundTrips: string;
-  flow: string[];
+  toolShort: string; // discrete tool node label
+  toolCall: string; // the governed call the loop repeats
+  nLabel: string; // magnitude of the loop
   cells: CodeCell[];
   discreteTag: string;
 }
 
-// The three systems of the essay's visual grammar.
 const EXEC = "var(--color-data-1)"; // execution / kernels
-const GOVERN = "var(--color-data-3)"; // daemon authority
-const EVIDENCE = "var(--color-data-5)"; // durable data / handoff
-const IDLE = "var(--color-border-muted)";
+const EVID = "var(--color-data-5)"; // durable data
+const PACKET = "var(--color-action-primary)"; // one item crossing
+const MUTED = "var(--color-border-strong)";
 
-// How many loop iterations the diagram draws. The label carries the true
-// magnitude (hundreds of papers, every gene); the marks are a representative
-// sample of a much longer loop.
-const LOOP_TICKS = 9;
+const tint = (c: string) => `color-mix(in srgb, ${c} 14%, var(--color-bg-primary))`;
+
+// Visible loop iterations. The label carries the true magnitude.
+const VIS = 8;
+const STEP_MS = 240;
 
 const SCENARIOS: Record<ScenarioId, Scenario> = {
   lit: {
@@ -65,13 +53,9 @@ const SCENARIOS: Record<ScenarioId, Scenario> = {
     blurb:
       "search_openalex and expand_citations fill a kernel table with ~240 papers; a host.llm() loop scores each abstract and pulls its effect. Two python cells.",
     kernelLabel: "persistent python kernel",
-    loopGlyph: "for p in papers:",
-    workingSet: "candidates table · ~240 rows",
-    connectorOverline: "MODEL · VIA DAEMON",
-    connectorTitle: "host.llm(rubric, p)",
-    connectorSub: "score + extract the effect",
-    roundTrips: "≈ 240 host.llm() round trips",
-    flow: ["OpenAlex sweep", "kernel table", "host.llm ×N", "matplotlib", "effects.png"],
+    toolShort: "host.llm()",
+    toolCall: "host.llm(rubric, p)",
+    nLabel: "×240",
     cells: [
       {
         kind: "python",
@@ -99,13 +83,9 @@ plt.savefig("effects.png")          # -> artifact`,
     blurb:
       "A repl cell calls host.mcp once per gene into one ./handoff file; a python cell loads the user's matrix and computes enrichment. One repl cell, one python cell.",
     kernelLabel: "control repl kernel",
-    loopGlyph: "for g in gene_ids:",
-    workingSet: "gene ids + annotation rows",
-    connectorOverline: "CONNECTOR · VIA DAEMON",
-    connectorTitle: 'host.mcp("bio", "annotate")',
-    connectorSub: "one governed call per gene",
-    roundTrips: "one host.mcp() call per gene",
-    flow: ["gene ids", "host.mcp ×N", "handoff.json", "enrich()", "enrichment.parquet"],
+    toolShort: "host.mcp()",
+    toolCall: 'host.mcp("bio", "annotate")',
+    nLabel: "× N genes",
     cells: [
       {
         kind: "repl",
@@ -130,11 +110,7 @@ hits.to_parquet("./outputs/enrichment.parquet")`,
 };
 
 const ORDER: ScenarioId[] = ["lit", "crispr"];
-
-const KIND_ACCENT: Record<CellKind, string> = {
-  python: EXEC,
-  repl: GOVERN,
-};
+const KIND_ACCENT: Record<CellKind, string> = { python: EXEC, repl: EVID };
 
 function ScenarioTabs({
   scenario,
@@ -210,9 +186,7 @@ function CodeCells({ scenario }: { scenario: ScenarioId }) {
   return (
     <section aria-label="The two tool calls the model emits">
       <div className="mb-3 flex items-baseline justify-between gap-3">
-        <p className="type-overline m-0 text-figure-muted">
-          What the model emits
-        </p>
+        <p className="type-overline m-0 text-figure-muted">What the model emits</p>
         <p className="type-caption m-0 text-figure-secondary">
           the whole sweep, 2 tool calls
         </p>
@@ -226,10 +200,7 @@ function CodeCells({ scenario }: { scenario: ScenarioId }) {
           >
             <div className="flex items-baseline justify-between gap-2 border-b border-border px-3 py-2">
               <p className="type-overline m-0 text-figure-secondary">
-                <span
-                  className="font-code"
-                  style={{ color: KIND_ACCENT[cell.kind] }}
-                >
+                <span className="font-code" style={{ color: KIND_ACCENT[cell.kind] }}>
                   {cell.kind}
                 </span>{" "}
                 · cell {index + 1}
@@ -248,247 +219,129 @@ function CodeCells({ scenario }: { scenario: ScenarioId }) {
   );
 }
 
-function DataflowStrip({ scenario }: { scenario: ScenarioId }) {
-  const s = SCENARIOS[scenario];
+function Keyframes() {
   return (
-    <div
-      className="flex flex-wrap items-center gap-x-1.5 gap-y-2"
-      aria-label="Dataflow for the selected scenario"
-    >
-      <span className="type-overline mr-1 text-figure-muted">lineage</span>
-      {s.flow.map((step, index) => {
-        const isLast = index === s.flow.length - 1;
-        return (
-          <React.Fragment key={step}>
-            <span
-              className="type-caption rounded-[3px] border border-border bg-ground-secondary px-2 py-0.5 font-code text-figure-secondary"
-              style={
-                isLast
-                  ? {
-                      borderColor: EVIDENCE,
-                      color: "var(--color-text-primary)",
-                    }
-                  : undefined
-              }
-            >
-              {step}
-            </span>
-            {!isLast ? (
-              <span aria-hidden="true" className="type-caption text-figure-muted">
-                &rarr;
-              </span>
-            ) : null}
-          </React.Fragment>
-        );
-      })}
-    </div>
+    <style>{`@keyframes cs-c-bounce{0%{offset-distance:0%;opacity:0}8%{opacity:1}92%{opacity:1}100%{offset-distance:100%;opacity:0}}@keyframes cs-c-orbit{from{offset-distance:0%}to{offset-distance:100%}}.cs-c-bnc{animation:cs-c-bounce 1.7s linear infinite}.cs-c-orb{animation:cs-c-orbit 1s linear infinite}`}</style>
   );
 }
 
-function DesktopFanout({
+function DesktopDiagram({
   scenario,
   progress,
-  markerId,
+  running,
   titleId,
-  descriptionId,
+  descId,
 }: {
   scenario: ScenarioId;
   progress: number;
-  markerId: string;
+  running: boolean;
   titleId: string;
-  descriptionId: string;
+  descId: string;
 }) {
   const s = SCENARIOS[scenario];
+  const modelFill = "var(--color-text-primary)";
+  const modelText = "var(--color-bg-primary)";
+  const t = "var(--color-text-primary)";
+  const sub = "var(--color-text-secondary)";
+  const mut = "var(--color-text-muted)";
+  // The packet rides this rounded-rect track, drawn OUTSIDE the call box so it
+  // never crosses the code text.
+  const orbit =
+    "M430 172 H640 A12 12 0 0 1 652 184 V218 A12 12 0 0 1 640 230 H430 A12 12 0 0 1 418 218 V184 A12 12 0 0 1 430 172 Z";
 
   return (
     <svg
       role="img"
-      aria-labelledby={`${titleId} ${descriptionId}`}
-      viewBox="0 0 760 224"
+      aria-labelledby={`${titleId} ${descId}`}
+      viewBox="0 0 720 434"
       className="hidden h-auto w-full md:block"
     >
-      <title id={titleId}>
-        One code cell fans out into N governed round trips
-      </title>
-      <desc id={descriptionId}>
-        A persistent kernel on the left holds the working set and runs a loop.
-        Solid arrows cross a double-ruled daemon authority boundary to a
-        connector or model on the right and return, once per iteration. A row of
-        marks tallies the governed round trips. The working set never leaves the
-        kernel.
+      <title id={titleId}>Where the loop runs, and what the transcript records</title>
+      <desc id={descId}>
+        With discrete tool use the model sits inside the loop: each call and
+        result passes through it, and the model context grows with the number of
+        iterations. With Claude Science the model emits one code cell and the loop
+        runs inside the kernel; only one result returns, and the model transcript
+        stays at two tool calls.
       </desc>
       <defs>
-        <marker
-          id={markerId}
-          viewBox="0 0 10 10"
-          refX="8"
-          refY="5"
-          markerWidth="6"
-          markerHeight="6"
-          orient="auto-start-reverse"
-        >
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-text-muted)" />
+        <Keyframes />
+        <marker id="cs-c-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M1 1 L8 5 L1 9" fill="none" stroke={EXEC} strokeWidth="1.6" />
         </marker>
       </defs>
 
-      <g aria-hidden="true">
-        {/* Persistent kernel (execution) */}
-        <rect
-          x="14"
-          y="26"
-          width="250"
-          height="158"
-          rx="5"
-          fill="var(--color-bg-primary)"
-          stroke="var(--color-border-default)"
-        />
-        <line x1="17" y1="30" x2="17" y2="180" stroke={EXEC} strokeWidth="2.5" />
-        <text
-          x="34"
-          y="50"
-          fill="var(--color-text-muted)"
-          fontSize="10.5"
-          letterSpacing="0.4"
-        >
-          {s.kernelLabel.toUpperCase()}
-        </text>
-        <text
-          x="34"
-          y="79"
-          fill="var(--color-text-primary)"
-          fontSize="13"
-          fontFamily="monospace"
-        >
-          {s.loopGlyph}
-        </text>
-        <rect
-          x="32"
-          y="92"
-          width="216"
-          height="66"
-          rx="4"
-          fill="var(--color-surface-code)"
-          stroke="var(--color-border-muted)"
-        />
-        <text x="44" y="112" fill="var(--color-text-muted)" fontSize="9.5">
-          WORKING SET
-        </text>
-        <text x="44" y="130" fill="var(--color-text-primary)" fontSize="11.5">
-          {s.workingSet}
-        </text>
-        <text x="44" y="147" fill={EVIDENCE} fontSize="10">
-          stays in the kernel
-        </text>
+      {/* ---- LEFT: discrete, model in the loop ---- */}
+      <text x="20" y="22" fontSize="13" fontWeight="700" fill={t}>Discrete tool use</text>
+      <text x="20" y="38" fontSize="10.5" fill={mut}>the model sits inside the loop</text>
 
-        {/* Daemon authority boundary (supervision) */}
-        <line x1="316" y1="20" x2="316" y2="192" stroke="var(--color-border-strong)" strokeWidth="1" />
-        <line x1="322" y1="20" x2="322" y2="192" stroke="var(--color-border-strong)" strokeWidth="1" />
-        <text
-          x="319"
-          y="14"
-          textAnchor="middle"
-          fill="var(--color-text-muted)"
-          fontSize="10.5"
-          letterSpacing="0.4"
-        >
-          DAEMON
-        </text>
-        <text
-          x="319"
-          y="206"
-          textAnchor="middle"
-          fill="var(--color-text-muted)"
-          fontSize="9.5"
-        >
-          governs every crossing
-        </text>
+      <rect x="80" y="56" width="150" height="40" rx="8" fill={modelFill} />
+      <text x="155" y="81" textAnchor="middle" fontSize="12.5" fontWeight="600" fill={modelText}>Model</text>
+      <rect x="80" y="168" width="150" height="40" rx="8" fill={tint(EXEC)} stroke={EXEC} />
+      <text x="155" y="193" textAnchor="middle" fontSize="12" fontWeight="600" fontFamily="var(--font-code, monospace)" fill={t}>{s.toolShort}</text>
 
-        {/* Round-trip arrows across the boundary */}
-        <line
-          x1="264"
-          y1="96"
-          x2="452"
-          y2="96"
-          stroke={GOVERN}
-          strokeWidth="2"
-          markerEnd={`url(#${markerId})`}
-        />
-        <line
-          x1="452"
-          y1="118"
-          x2="264"
-          y2="118"
-          stroke={GOVERN}
-          strokeWidth="1.6"
-          markerEnd={`url(#${markerId})`}
-        />
-        <text
-          x="358"
-          y="112"
-          textAnchor="middle"
-          fill={GOVERN}
-          fontSize="11"
-          fontWeight="600"
-        >
-          ×N
-        </text>
+      <path d="M138 96 L138 168" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-c-arr)" />
+      <path d="M172 168 L172 96" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-c-arr)" />
+      <text x="120" y="136" textAnchor="end" fontSize="9.5" fill={sub}>call</text>
+      <text x="190" y="136" fontSize="9.5" fill={sub}>result</text>
+      <text x="155" y="236" textAnchor="middle" fontSize="11" fontWeight="700" fill={EVID}>repeat {s.nLabel}</text>
+      <text x="155" y="251" textAnchor="middle" fontSize="9.5" fill={mut}>every call + result passes through the model</text>
+      {running ? (
+        <circle r="5" fill={PACKET} className="cs-c-bnc" style={{ offsetPath: `path('M138 96 L138 168 L172 168 L172 96')` }} />
+      ) : null}
 
-        {/* Connector / model node (right) */}
-        <rect
-          x="452"
-          y="58"
-          width="294"
-          height="96"
-          rx="5"
-          fill="var(--color-bg-primary)"
-          stroke="var(--color-border-default)"
-        />
-        <line x1="455" y1="62" x2="455" y2="150" stroke={EXEC} strokeWidth="2.5" />
-        <text
-          x="472"
-          y="84"
-          fill="var(--color-text-muted)"
-          fontSize="10"
-          letterSpacing="0.4"
-        >
-          {s.connectorOverline}
-        </text>
-        <text
-          x="472"
-          y="108"
-          fill="var(--color-text-primary)"
-          fontSize="13.5"
-          fontFamily="monospace"
-        >
-          {s.connectorTitle}
-        </text>
-        <text x="472" y="128" fill="var(--color-text-muted)" fontSize="10.5">
-          {s.connectorSub}
-        </text>
+      <line x1="360" y1="14" x2="360" y2="262" stroke="var(--color-border)" />
 
-        {/* Governed round-trip tally */}
-        <text x="468" y="176" fill="var(--color-text-muted)" fontSize="9.5">
-          {s.roundTrips}
-        </text>
-        {Array.from({ length: LOOP_TICKS }).map((_, index) => (
-          <circle
-            key={index}
-            cx={470 + index * 30}
-            cy={196}
-            r="5"
-            fill={index < progress ? GOVERN : IDLE}
-            className="transition-[fill] duration-150 motion-reduce:transition-none"
-          />
-        ))}
-        <text x={470 + LOOP_TICKS * 30} y="200" fill="var(--color-text-muted)" fontSize="12">
-          …
-        </text>
-      </g>
+      {/* ---- RIGHT: code, loop off-model in the kernel ---- */}
+      <text x="384" y="22" fontSize="13" fontWeight="700" fill={t}>Claude Science — code in the kernel</text>
+      <text x="384" y="38" fontSize="10.5" fill={mut}>the loop runs off-model</text>
+
+      <rect x="440" y="56" width="150" height="40" rx="8" fill={modelFill} />
+      <text x="515" y="81" textAnchor="middle" fontSize="12.5" fontWeight="600" fill={modelText}>Model</text>
+
+      <rect x="400" y="150" width="270" height="104" rx="8" fill={tint(EXEC)} stroke={EXEC} />
+      <text x="416" y="166" fontSize="10" fill={mut}>{s.kernelLabel.toUpperCase()}</text>
+      {/* loop track: faint at rest, the packet rides it at run time */}
+      <path d={orbit} fill="none" stroke={EXEC} strokeOpacity="0.45" strokeWidth="1.3" strokeDasharray="4 4" />
+      {/* the repeated call, boxed so the track never crosses the text */}
+      <rect x="430" y="182" width="210" height="38" rx="8" fill="var(--color-bg-primary)" stroke="var(--color-border-muted)" />
+      <text x="535" y="205" textAnchor="middle" fontSize="11" fontFamily="var(--font-code, monospace)" fill={t}>{s.toolCall}</text>
+      <text x="535" y="245" textAnchor="middle" fontSize="9.5" fontWeight="700" fill={EVID}>repeats {s.nLabel}</text>
+      {running ? (
+        <circle r="5" fill={PACKET} className="cs-c-orb" style={{ offsetPath: `path('${orbit}')` }} />
+      ) : null}
+
+      <path d="M488 96 L488 150" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-c-arr)" />
+      <path d="M542 150 L542 96" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-c-arr)" />
+      <text x="480" y="128" textAnchor="end" fontSize="9.5" fill={sub}>1 code cell</text>
+      <text x="550" y="128" fontSize="9.5" fill={sub}>1 result</text>
+
+      {/* ---- BOTTOM: model context window ---- */}
+      <line x1="20" y1="288" x2="700" y2="288" stroke="var(--color-border)" />
+      <text x="20" y="310" fontSize="11" fontWeight="700" fill={mut}>MODEL CONTEXT WINDOW</text>
+
+      <text x="20" y="336" fontSize="11.5" fontWeight="600" fill={t}>Discrete</text>
+      <rect x="90" y="322" width="260" height="94" rx="5" fill="var(--color-bg-primary)" stroke="var(--color-border)" />
+      {Array.from({ length: Math.min(progress, VIS) }).map((_, i) => (
+        <g key={i}>
+          <rect x="98" y={330 + i * 10} width="244" height="4" rx="1" fill={EXEC} opacity="0.85" />
+          <rect x="98" y={335 + i * 10} width="244" height="4" rx="1" fill={MUTED} />
+        </g>
+      ))}
+      <text x="342" y="410" textAnchor="end" fontSize="9" fill={EVID}>grows with N — {s.nLabel} …</text>
+
+      <text x="384" y="336" fontSize="11.5" fontWeight="600" fill={t}>Claude Science</text>
+      <rect x="480" y="322" width="220" height="94" rx="5" fill="var(--color-bg-primary)" stroke="var(--color-border)" />
+      <rect x="490" y="332" width="200" height="16" rx="3" fill={tint(EXEC)} stroke={EXEC} />
+      <text x="500" y="344" fontSize="9" fontFamily="var(--font-code, monospace)" fill={EXEC}>python · cell 1</text>
+      <rect x="490" y="352" width="200" height="16" rx="3" fill={tint(EXEC)} stroke={EXEC} />
+      <text x="500" y="364" fontSize="9" fontFamily="var(--font-code, monospace)" fill={EXEC}>python · cell 2</text>
+      <text x="690" y="410" textAnchor="end" fontSize="9" fill={EXEC}>stays flat — 2 tool calls</text>
     </svg>
   );
 }
 
-function MobileFanout({
+function MobileDiagram({
   scenario,
   progress,
 }: {
@@ -497,152 +350,43 @@ function MobileFanout({
 }) {
   const s = SCENARIOS[scenario];
   return (
-    <div className="md:hidden" aria-label="One cell fans out into N governed round trips">
-      <div
-        className="rounded-[4px] border border-l-2 border-border bg-ground-primary p-3"
-        style={{ borderLeftColor: EXEC }}
-      >
-        <p className="type-overline m-0 text-figure-muted">
-          {s.kernelLabel.toUpperCase()}
+    <div className="grid gap-3 md:hidden">
+      {/* Discrete */}
+      <div className="rounded-[4px] border border-l-2 border-border bg-ground-primary p-3" style={{ borderLeftColor: EVID }}>
+        <p className="type-label m-0 text-figure-primary">Discrete tool use</p>
+        <p className="type-caption m-0 mt-0.5 text-figure-muted">
+          the model sits inside the loop
         </p>
-        <p className="m-0 mt-1 font-code text-[0.8rem] text-figure-primary">
-          {s.loopGlyph}
+        <p className="type-caption m-0 mt-2 text-figure-secondary">
+          <span className="font-medium text-figure-primary">Model → {s.toolShort} → Model</span>, repeated{" "}
+          <span className="font-medium" style={{ color: EVID }}>{s.nLabel}</span>. Every call and result passes through the model.
         </p>
-        <div className="mt-2 rounded-[3px] bg-surface-code p-2">
-          <p className="type-caption m-0 text-figure-primary">{s.workingSet}</p>
-          <p className="type-caption m-0" style={{ color: EVIDENCE }}>
-            stays in the kernel
-          </p>
-        </div>
-      </div>
-
-      <div className="flex flex-col items-center py-1 text-figure-muted">
-        <span className="h-4 border-l border-border-strong" aria-hidden="true" />
-        <span className="type-caption" style={{ color: GOVERN }}>
-          ×N across the daemon
-        </span>
-        <span className="h-4 border-l border-border-strong" aria-hidden="true" />
-      </div>
-
-      <div
-        className="rounded-[4px] border border-l-2 border-border bg-ground-primary p-3"
-        style={{ borderLeftColor: GOVERN }}
-      >
-        <p className="type-overline m-0 text-figure-muted">
-          {s.connectorOverline}
-        </p>
-        <p className="m-0 mt-1 break-words font-code text-[0.8rem] text-figure-primary">
-          {s.connectorTitle}
-        </p>
-        <p className="type-caption m-0 mt-1 text-figure-muted">
-          {s.roundTrips}
-        </p>
-        <div className="mt-2 flex flex-wrap gap-1.5" aria-hidden="true">
-          {Array.from({ length: LOOP_TICKS }).map((_, index) => (
-            <span
-              key={index}
-              className="size-2 rounded-full transition-[background-color] duration-150 motion-reduce:transition-none"
-              style={{
-                backgroundColor: index < progress ? GOVERN : IDLE,
-              }}
-            />
+        <div className="mt-2 flex flex-wrap gap-1" aria-hidden="true">
+          {Array.from({ length: Math.min(progress, VIS) }).map((_, i) => (
+            <span key={i} className="flex flex-col gap-[2px]">
+              <span className="block h-1 w-5 rounded-[1px]" style={{ backgroundColor: EXEC, opacity: 0.85 }} />
+              <span className="block h-1 w-5 rounded-[1px]" style={{ backgroundColor: MUTED }} />
+            </span>
           ))}
+          <span className="type-caption self-center" style={{ color: EVID }}>{s.nLabel} …</span>
         </div>
-      </div>
-    </div>
-  );
-}
-
-function TranscriptMeter({
-  scenario,
-  progress,
-}: {
-  scenario: ScenarioId;
-  progress: number;
-}) {
-  const s = SCENARIOS[scenario];
-  const iterations = Array.from({ length: progress });
-
-  return (
-    <div className="grid gap-4 sm:grid-cols-2">
-      {/* Claude Science: two tool calls, flat context */}
-      <div className="min-w-0">
-        <div className="mb-2 flex items-baseline justify-between gap-2">
-          <p className="type-label m-0 text-figure-primary">Claude Science</p>
-          <p
-            className="type-caption m-0 rounded-[3px] px-1.5 py-0.5 font-medium"
-            style={{ color: EXEC, backgroundColor: "var(--color-bg-secondary)" }}
-          >
-            2 tool calls
-          </p>
-        </div>
-        <div className="flex h-[168px] flex-col-reverse gap-1.5 overflow-hidden rounded-[4px] border border-border bg-ground-secondary p-2">
-          {s.cells.map((cell) => (
-            <div
-              key={cell.label}
-              className="flex min-h-[34px] items-center gap-2 rounded-[3px] border border-l-2 border-border bg-ground-primary px-2 py-1"
-              style={{ borderLeftColor: KIND_ACCENT[cell.kind] }}
-            >
-              <span
-                className="type-overline font-code"
-                style={{ color: KIND_ACCENT[cell.kind] }}
-              >
-                {cell.kind}
-              </span>
-              <span className="type-caption truncate text-figure-secondary">
-                {cell.label}
-              </span>
-            </div>
-          ))}
-        </div>
-        <p className="type-caption mt-2 text-figure-muted">
-          Context stays flat. The papers and genes never enter the transcript.
-        </p>
+        <p className="type-caption m-0 mt-1 text-figure-muted">Context grows with N.</p>
       </div>
 
-      {/* Discrete tool use: N call/result pairs, context grows with N */}
-      <div className="min-w-0">
-        <div className="mb-2 flex items-baseline justify-between gap-2">
-          <p className="type-label m-0 text-figure-primary">Discrete tool use</p>
-          <p
-            className="type-caption m-0 rounded-[3px] px-1.5 py-0.5 font-medium text-figure-secondary"
-            style={{ backgroundColor: "var(--color-bg-secondary)" }}
-          >
-            {s.discreteTag}
-          </p>
-        </div>
-        <div className="relative h-[168px] overflow-hidden rounded-[4px] border border-border bg-ground-secondary p-2">
-          <div className="flex h-full flex-col-reverse gap-[3px]" aria-hidden="true">
-            {iterations.map((_, index) => (
-              <React.Fragment key={index}>
-                <div
-                  className="h-[7px] shrink-0 rounded-[1px] opacity-80"
-                  style={{ backgroundColor: EXEC }}
-                />
-                <div
-                  className="h-[7px] shrink-0 rounded-[1px]"
-                  style={{ backgroundColor: "var(--color-border-strong)" }}
-                />
-              </React.Fragment>
-            ))}
-          </div>
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-14"
-            style={{
-              background:
-                "linear-gradient(var(--color-bg-secondary), transparent)",
-            }}
-          />
-          <p
-            className="type-caption absolute right-2 top-1.5 m-0 font-medium text-figure-muted"
-          >
-            {s.discreteTag} …
-          </p>
-        </div>
-        <p className="type-caption mt-2 text-figure-muted">
-          One call and one result per item, so the context grows with N.
+      {/* Claude Science */}
+      <div className="rounded-[4px] border border-l-2 border-border bg-ground-primary p-3" style={{ borderLeftColor: EXEC }}>
+        <p className="type-label m-0 text-figure-primary">Claude Science — code in the kernel</p>
+        <p className="type-caption m-0 mt-0.5 text-figure-muted">the loop runs off-model</p>
+        <p className="type-caption m-0 mt-2 text-figure-secondary">
+          Model emits <span className="font-medium text-figure-primary">1 code cell</span>; the loop runs{" "}
+          <span className="font-medium" style={{ color: EVID }}>{s.nLabel}</span> inside the kernel; only{" "}
+          <span className="font-medium text-figure-primary">1 result</span> returns.
         </p>
+        <div className="mt-2 flex gap-1.5" aria-hidden="true">
+          <span className="rounded-[3px] px-1.5 py-0.5 font-code text-[0.7rem]" style={{ backgroundColor: tint(EXEC), color: EXEC }}>python · cell 1</span>
+          <span className="rounded-[3px] px-1.5 py-0.5 font-code text-[0.7rem]" style={{ backgroundColor: tint(EXEC), color: EXEC }}>python · cell 2</span>
+        </div>
+        <p className="type-caption m-0 mt-1 text-figure-muted">Transcript stays flat — 2 tool calls.</p>
       </div>
     </div>
   );
@@ -651,40 +395,38 @@ function TranscriptMeter({
 export function OrchestrationScale() {
   const reducedMotion = useReducedMotion();
   const [scenario, setScenario] = React.useState<ScenarioId>("lit");
-  const [progress, setProgress] = React.useState(LOOP_TICKS);
+  const [progress, setProgress] = React.useState(VIS);
   const [running, setRunning] = React.useState(false);
   const ids = React.useId().replace(/:/g, "");
 
-  // Advance one iteration at a time, then stop. No looping animation.
   React.useEffect(() => {
     if (!running) return undefined;
-    if (progress >= LOOP_TICKS) {
+    if (progress >= VIS) {
       setRunning(false);
       return undefined;
     }
     const id = window.setTimeout(() => {
-      setProgress((value) => Math.min(value + 1, LOOP_TICKS));
-    }, 95);
+      setProgress((value) => Math.min(value + 1, VIS));
+    }, STEP_MS);
     return () => window.clearTimeout(id);
   }, [running, progress]);
 
-  // Reduced motion always shows the completed loop.
   React.useEffect(() => {
     if (reducedMotion) {
       setRunning(false);
-      setProgress(LOOP_TICKS);
+      setProgress(VIS);
     }
   }, [reducedMotion]);
 
   function selectScenario(id: ScenarioId) {
     setScenario(id);
     setRunning(false);
-    setProgress(LOOP_TICKS);
+    setProgress(VIS);
   }
 
   function runLoop() {
     if (reducedMotion) {
-      setProgress(LOOP_TICKS);
+      setProgress(VIS);
       return;
     }
     setProgress(0);
@@ -696,9 +438,9 @@ export function OrchestrationScale() {
   return (
     <FigureScaffold
       eyebrow="Code as orchestration"
-      title="One call, many operations"
-      description="Switch between two shipped workflows. Each is a couple of tool calls in the transcript, but a for-loop inside the cell fans out into hundreds of governed round trips, with the papers or genes held in the kernel."
-      caption="Figure C. One coded cell issues N governed round trips across the daemon while the working set stays in the kernel, so the model's transcript records only two tool calls. Discrete tool use spends one call-and-result pair per item, so its context grows with N. Grounded in the shipped literature-review skill and the CRISPR gene-annotation loop."
+      title="Where the loop runs"
+      description="With discrete tool use the model sits inside the loop, so its context grows with every call. Claude Science emits one code cell and runs the loop off-model in the kernel — hundreds of governed round trips, two tool calls in the transcript."
+      caption="Figure C. Discrete tool use puts the model in the loop: each call and result passes through its context, which grows with N. Claude Science emits one code cell and runs the loop inside the kernel, so the transcript stays at two tool calls while the working set never leaves the kernel. Grounded in the shipped literature-review skill and the CRISPR gene-annotation loop; the contrast follows Anthropic's code-execution-with-MCP framing."
     >
       <ScenarioTabs scenario={scenario} onSelect={selectScenario} />
 
@@ -710,32 +452,10 @@ export function OrchestrationScale() {
         <CodeCells scenario={scenario} />
       </div>
 
-      <div className="border-b border-border py-5">
-        <p className="type-body-sm m-0 mb-4 text-figure-secondary">
-          One cell issues{" "}
-          <span className="font-medium text-figure-primary">
-            N governed round trips
-          </span>{" "}
-          across the daemon. The model&rsquo;s transcript never sees them; the
-          working set stays in the kernel.
-        </p>
-        <DesktopFanout
-          scenario={scenario}
-          progress={progress}
-          markerId={`${ids}-arrow`}
-          titleId={`${ids}-title`}
-          descriptionId={`${ids}-desc`}
-        />
-        <MobileFanout scenario={scenario} progress={progress} />
-        <div className="mt-4">
-          <DataflowStrip scenario={scenario} />
-        </div>
-      </div>
-
       <div className="py-5">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <p className="type-overline m-0 text-figure-muted">
-            Transcript cost
+            One loop, two ways to run it
           </p>
           {reducedMotion ? (
             <p className="type-caption m-0 text-figure-muted">
@@ -743,13 +463,8 @@ export function OrchestrationScale() {
             </p>
           ) : (
             <div className="flex items-center gap-3">
-              <span
-                aria-live="polite"
-                className="type-caption text-figure-muted"
-              >
-                {running
-                  ? `fanning out: ${progress} / ${LOOP_TICKS}`
-                  : "showing the full loop"}
+              <span aria-live="polite" className="type-caption text-figure-muted">
+                {running ? `running: ${progress} / ${VIS}` : "showing the full loop"}
               </span>
               <button
                 type="button"
@@ -762,7 +477,14 @@ export function OrchestrationScale() {
             </div>
           )}
         </div>
-        <TranscriptMeter scenario={scenario} progress={progress} />
+        <DesktopDiagram
+          scenario={scenario}
+          progress={progress}
+          running={running}
+          titleId={`${ids}-title`}
+          descId={`${ids}-desc`}
+        />
+        <MobileDiagram scenario={scenario} progress={progress} />
       </div>
     </FigureScaffold>
   );
