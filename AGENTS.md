@@ -51,6 +51,14 @@ Storybook-dependent tests require Storybook to be running.
 See `CLAUDE.md` and `plan/docs/DESIGN_SYSTEM.md` for detailed component,
 theme, i18n, and testing guidance.
 
+## Editorial Publication Design
+
+For landing, Essays, Series, About, reading pages, bilingual typography, or
+interactive publication surfaces, load
+`.codex/skills/editorial-publication-design/SKILL.md` before editing. It routes
+work through the canonical typography and responsive-composition contracts;
+`design-qa.md` is visual-review history, not the current specification.
+
 ## Blog Writing Workflow
 
 Use GitHub Issues as the lightweight source of truth for essay and personal-IP
@@ -79,14 +87,23 @@ Issue shape:
 
 ```markdown
 ## Raw idea
+
 ## Thesis
+
 ## Strongest counterargument
+
 ## Target reader
+
 ## Angle
+
 ## Outline
+
 ## Draft / PR
+
 ## Packaging
+
 ## Distribution
+
 ## Learnings after publication
 ```
 

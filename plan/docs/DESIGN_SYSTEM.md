@@ -2,6 +2,19 @@
 
 This document explains the 5-layer design system architecture used in the blog application.
 
+Long-form essays and interactive reference works also follow the
+[Editorial Typography Specification](./EDITORIAL_TYPOGRAPHY.md). It defines a
+publication-specific typography subsystem without replacing generic UI type
+tokens. Their structural reflow follows
+[Editorial Responsive Composition](./EDITORIAL_RESPONSIVE_COMPOSITION.md),
+which separates invariant publishing relationships from provisional title-leaf
+layouts and breakpoints.
+
+Agents working on those surfaces should enter through the repo-local
+[`editorial-publication-design` skill](../../.codex/skills/editorial-publication-design/SKILL.md).
+The skill supplies the implementation and rendered-QA workflow; the two linked
+documents remain the normative design contract.
+
 ## Quick Reference
 
 | Layer | Location | Purpose | Who Modifies |
