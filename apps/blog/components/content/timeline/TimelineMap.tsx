@@ -50,7 +50,6 @@ export function TimelineMap<T extends TimelineItem>({
         if (!el) return;
 
         // Temporarily reset margin to get the true position
-        const prevMargin = el.style.marginLeft;
         el.style.marginLeft = '0px';
 
         // Force reflow to ensure measurement is accurate
