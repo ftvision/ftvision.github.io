@@ -6,7 +6,8 @@
   "types": "src/index.tsx",
   "exports": {
     ".": "./src/index.tsx",
-    "./lib/utils": "./src/lib/utils.ts"
+    "./lib/utils": "./src/lib/utils.ts",
+    "./editorial-classification": "./src/components/EditorialClassification/index.ts"
   },
   "scripts": {
     "lint": "eslint src/",

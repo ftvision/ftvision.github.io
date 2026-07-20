@@ -96,6 +96,13 @@ export {
 } from '@ui/components/Dropdown';
 
 // Editorial Components
+export {
+  EditorialClassification,
+  EditorialLabel,
+  editorialLabelVariants,
+  type EditorialClassificationProps,
+  type EditorialLabelProps,
+} from '@ui/components/EditorialClassification';
 export { Blockquote, blockquoteVariants, type BlockquoteProps } from '@ui/components/Blockquote';
 export {
   Figure,

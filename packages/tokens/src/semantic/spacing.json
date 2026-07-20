@@ -41,6 +41,10 @@
       "lg": { "value": "{primitive.spacing.16}", "$description": "64px - Large section break" },
       "xl": { "value": "{primitive.spacing.20}", "$description": "80px - Extra large section break" },
       "2xl": { "value": "{primitive.spacing.24}", "$description": "96px - Hero section break" }
+    },
+    "editorial": {
+      "$description": "Relationships inside publication title leaves and editorial apparatus",
+      "apparatus-to-display": { "value": "clamp(2rem, 2.5vw, 2.5rem)", "$description": "Space from a classification row to its title block; shared by essays, reference works, and archives" }
     }
   }
 }
