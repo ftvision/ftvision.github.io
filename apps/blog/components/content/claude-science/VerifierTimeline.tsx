@@ -6,8 +6,8 @@ import { FigureScaffold } from "./FigureScaffold";
 
 // Shared colour grammar with Figure B: one hue per system.
 const EXEC = "var(--color-data-1)"; // main agent thread
-const SUPER = "var(--color-data-3)"; // detached reviewer thread
-const EVID = "var(--color-data-5)"; // snapshotted evidence window
+const SUPER = "var(--color-text-secondary)"; // detached reviewer thread
+const EVID = "var(--color-data-1)"; // snapshotted evidence window
 const NEUTRAL = "var(--color-text-muted)";
 const MAINT = "var(--color-action-primary)"; // the main-agent token
 
@@ -202,7 +202,7 @@ function DesktopForkJoin({
       role="img"
       aria-labelledby={`${titleId} ${descId}`}
       viewBox="0 0 960 440"
-      className="hidden h-auto w-full md:block"
+      className="hidden h-auto w-full font-sans md:block"
     >
       <title id={titleId}>A fork/join view of Claude Science verification</title>
       <desc id={descId}>
@@ -257,13 +257,13 @@ function DesktopForkJoin({
         fill="none"
         stroke={on("barrier") ? MAINT : NEUTRAL}
         strokeWidth="1.3"
-        strokeDasharray="4 4"
+        strokeDasharray="5 4"
         markerEnd="url(#cs-fj-arrow)"
       />
 
       {/* bounce / re-run arc: the reviewer's authority forces another turn */}
       <path
-        d="M808 92 C 792 40 566 28 458 102"
+        d="M808 92 L808 46 Q808 38 800 38 L466 38 Q458 38 458 46 L458 102"
         fill="none"
         stroke={SUPER}
         strokeWidth="1.6"
@@ -305,12 +305,12 @@ function DesktopForkJoin({
         stroke={on("predicate") ? MAINT : "var(--color-border-strong)"}
         strokeWidth={on("predicate") ? 2.2 : 1.4}
       />
-      <text x="244" y="171" fontSize="10.5" fontWeight="700" fill={t}>checkpoint predicate</text>
+      <text x="244" y="171" fontSize="10.5" fontWeight="600" fill={t}>checkpoint predicate</text>
       <ClockGlyph x={258} y={196} color={sub} />
       <text x="274" y="192" fontSize="10.5" fontWeight="600" fill={t}>interval floor</text>
       <text x="274" y="205" fontSize="8.5" fill={sub}>≥ 120 s since last checkpoint</text>
       <text x="440" y="196" fontSize="9" fontWeight="600" fill={sub} textAnchor="end" style={{ fontVariantNumeric: "tabular-nums" }}>120 s</text>
-      <text x="341" y="223" fontSize="9.5" fontWeight="700" fill={sub} textAnchor="middle">AND</text>
+      <text x="341" y="223" fontSize="9.5" fontWeight="600" fill={sub} textAnchor="middle">AND</text>
       <SignalGlyph x={258} y={244} color={sub} />
       <text x="274" y="240" fontSize="10.5" fontWeight="600" fill={t}>content signal · any one</text>
       <text x="274" y="253" fontSize="8.5" fill={sub}>3 artifacts · structural block · 2,000 chars</text>
@@ -344,7 +344,7 @@ function DesktopForkJoin({
       <text x="720" y="362" fontSize="8.5" fill={mut} textAnchor="middle">written to durable state</text>
 
       {/* ================= labels & barrier (top layer) ==================== */}
-      <text x="56" y="58" fontSize="11" fontWeight="700" fill={t}>MAIN AGENT</text>
+      <text x="56" y="58" fontSize="11" fontWeight="600" fill={t}>MAIN AGENT</text>
       <text x="56" y="72" fontSize="9" fill={mut}>main operon · one continuous thread</text>
       <Boundary x={250} y={110} state="skip" />
       <text x="250" y="130" fontSize="8.5" fill={mut} textAnchor="middle">skip</text>
@@ -356,7 +356,7 @@ function DesktopForkJoin({
       <text x="392" y="284" fontSize="9" fontWeight="600" fill={SUPER}>spawn · non-blocking</text>
       <text x="392" y="296" fontSize="8.5" fill={mut}>hold: coalesce, merge if busy</text>
 
-      <text x="56" y="300" fontSize="10.5" fontWeight="700" fill={SUPER}>DETACHED REVIEWER</text>
+      <text x="56" y="300" fontSize="10.5" fontWeight="600" fill={SUPER}>DETACHED REVIEWER</text>
       <text x="56" y="313" fontSize="9" fill={mut}>background · read-only · runs in parallel</text>
 
       <text x="812" y="238" fontSize="8.5" fill={mut} textAnchor="middle">barrier reads</text>
@@ -394,7 +394,7 @@ function MobileForkJoin() {
   const mut = "var(--color-text-muted)";
 
   return (
-    <svg viewBox="0 0 360 720" className="h-auto w-full md:hidden" aria-hidden="true">
+    <svg viewBox="0 0 360 720" className="h-auto w-full font-sans md:hidden" aria-hidden="true">
       <defs>
         {arrowMarker("cs-fj-arrow-m")}
         {arrowMarker("cs-fj-arrow-m-super", SUPER)}
@@ -402,7 +402,7 @@ function MobileForkJoin() {
       </defs>
 
       {/* main agent thread: a continuous rail down the left */}
-      <text x="20" y="30" fontSize="10.5" fontWeight="700" fill={t}>MAIN AGENT</text>
+      <text x="20" y="30" fontSize="10.5" fontWeight="600" fill={t}>MAIN AGENT</text>
       <text x="20" y="43" fontSize="8.5" fill={mut}>one continuous thread · never blocks at the fork</text>
       <line x1="40" y1="58" x2="40" y2="612" stroke={EXEC} strokeWidth="1.8" />
 
@@ -411,12 +411,12 @@ function MobileForkJoin() {
 
       <path d="M40 100 L40 120 L96 120" fill="none" stroke={NEUTRAL} strokeWidth="1.4" markerEnd="url(#cs-fj-arrow-m)" />
       <rect x="96" y="98" width="248" height="96" rx="9" fill="var(--color-bg-secondary)" stroke="var(--color-border-strong)" strokeWidth="1.4" />
-      <text x="108" y="118" fontSize="10" fontWeight="700" fill={t}>checkpoint predicate</text>
+      <text x="108" y="118" fontSize="10" fontWeight="600" fill={t}>checkpoint predicate</text>
       <ClockGlyph x={118} y={140} color={sub} />
       <text x="134" y="137" fontSize="9.5" fontWeight="600" fill={t}>interval floor</text>
       <text x="134" y="149" fontSize="8" fill={sub}>≥ 120 s since last checkpoint</text>
       <text x="330" y="140" fontSize="8.5" fontWeight="600" fill={sub} textAnchor="end">120 s</text>
-      <text x="220" y="166" fontSize="9" fontWeight="700" fill={sub} textAnchor="middle">AND</text>
+      <text x="220" y="166" fontSize="9" fontWeight="600" fill={sub} textAnchor="middle">AND</text>
       <SignalGlyph x={118} y={180} color={sub} />
       <text x="134" y="177" fontSize="9.5" fontWeight="600" fill={t}>content signal · any one</text>
       <text x="134" y="188" fontSize="7.8" fill={sub}>3 artifacts · block · 2,000 chars</text>
@@ -426,8 +426,8 @@ function MobileForkJoin() {
 
       <path d="M220 194 L220 214 L250 214" fill="none" stroke={SUPER} strokeWidth="1.5" markerEnd="url(#cs-fj-arrow-m-super)" />
       <text x="128" y="212" fontSize="8.5" fontWeight="600" fill={SUPER}>spawn · non-blocking →</text>
-      <rect x="120" y="230" width="228" height="250" rx="10" fill="none" stroke={SUPER} strokeWidth="1.1" strokeDasharray="4 4" />
-      <text x="132" y="248" fontSize="9.5" fontWeight="700" fill={SUPER}>DETACHED REVIEWER · background</text>
+      <rect x="120" y="230" width="228" height="250" rx="10" fill="none" stroke={SUPER} strokeWidth="1.1" strokeDasharray="5 4" />
+      <text x="132" y="248" fontSize="9.5" fontWeight="600" fill={SUPER}>DETACHED REVIEWER · background</text>
 
       <rect x="134" y="258" width="200" height="58" rx="8" fill={tint(EVID)} stroke={EVID} strokeWidth="1.4" />
       <text x="234" y="280" fontSize="10" fontWeight="600" fill={t} textAnchor="middle">bounded window</text>
@@ -443,13 +443,13 @@ function MobileForkJoin() {
       <text x="234" y="442" fontSize="8" fill={sub} textAnchor="middle">finding / notice</text>
       <text x="234" y="453" fontSize="8" fill={mut} textAnchor="middle">→ durable state</text>
 
-      <path d="M134 433 L40 433" fill="none" stroke={NEUTRAL} strokeWidth="1.3" strokeDasharray="4 4" markerEnd="url(#cs-fj-arrow-m)" />
+      <path d="M134 433 L40 433" fill="none" stroke={NEUTRAL} strokeWidth="1.3" strokeDasharray="5 4" markerEnd="url(#cs-fj-arrow-m)" />
       <text x="128" y="476" fontSize="8" fill={mut} textAnchor="end">barrier reads verdict</text>
 
       <line x1="24" y1="512" x2="180" y2="512" stroke={t} strokeWidth="2.4" />
       <line x1="24" y1="518" x2="180" y2="518" stroke={t} strokeWidth="1.2" />
       <circle cx="40" cy="515" r="6" fill="none" stroke={MAINT} strokeWidth="1.6" />
-      <text x="24" y="540" fontSize="10" fontWeight="700" fill={t}>terminal barrier</text>
+      <text x="24" y="540" fontSize="10" fontWeight="600" fill={t}>terminal barrier</text>
       <text x="24" y="552" fontSize="8.5" fill={mut}>the only blocking point · waits for the verdict</text>
 
       <path d="M40 566 L40 582 L60 582" fill="none" stroke={EXEC} strokeWidth="1.5" markerEnd="url(#cs-fj-arrow-m-exec)" />

@@ -316,7 +316,7 @@ function GateDiagram({
           textAnchor="middle"
           fill="var(--color-text-primary)"
           fontSize="16"
-          fontWeight="500"
+          fontWeight="600"
         >
           kernel SDK surface
         </text>
@@ -345,7 +345,7 @@ function GateDiagram({
           textAnchor="middle"
           fill="var(--color-text-primary)"
           fontSize="16"
-          fontWeight="500"
+          fontWeight="600"
         >
           daemon permit set
         </text>
@@ -366,7 +366,7 @@ function GateDiagram({
           y2="410"
           stroke="var(--color-border-strong)"
           strokeWidth="1"
-          strokeDasharray="4 4"
+          strokeDasharray="5 4"
         />
         <line
           x1={G2 - 3}
@@ -455,7 +455,7 @@ function GateDiagram({
                   y2={y}
                   stroke={IDLE}
                   strokeWidth="1.5"
-                  strokeDasharray="2 6"
+                  strokeDasharray="1.5 4"
                   opacity="0.6"
                 />
               ) : (
@@ -504,7 +504,7 @@ function GateDiagram({
                 y={y - 4}
                 fill="var(--color-text-primary)"
                 fontSize="13"
-                fontWeight="500"
+                fontWeight="600"
               >
                 {admit ? "admitted" : blockedAt1 ? "blocked in kernel" : "blocked at daemon"}
               </text>

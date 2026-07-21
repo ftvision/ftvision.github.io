@@ -20,7 +20,7 @@ import { FigureScaffold } from "./FigureScaffold";
  * Every deliverable in this run shows the same split.
  */
 
-const EVID = "var(--color-data-5)"; // evidence / lineage
+const EVID = "var(--color-data-1)"; // evidence / lineage
 const NEUTRAL = "var(--color-text-muted)";
 const tint = (c: string) => `color-mix(in srgb, ${c} 14%, var(--color-bg-primary))`;
 
@@ -119,7 +119,7 @@ export function ArtifactLineageExplorer() {
               fill="none"
               stroke={NEUTRAL}
               strokeWidth="1.6"
-              strokeDasharray="6 4"
+              strokeDasharray="5 4"
               markerEnd={`url(#${baseId}-mut)`}
             >
               <title>Reconstructed — inferred after the run; the cell never read the raw JSON directly.</title>
@@ -128,20 +128,20 @@ export function ArtifactLineageExplorer() {
           </g>
 
           {/* parent edge: report v1 -> v2 */}
-          <path d="M599 74 L599 100" fill="none" stroke="var(--color-border-strong)" strokeWidth="1.4" strokeDasharray="3 2" markerEnd={`url(#${baseId}-par)`}>
+          <path d="M599 74 L599 100" fill="none" stroke="var(--color-border-strong)" strokeWidth="1.4" strokeDasharray="2 3" markerEnd={`url(#${baseId}-par)`}>
             <title>Parent version — v2 is a revision of v1.</title>
           </path>
           <text x="611" y="90" fontSize="9" fill="var(--color-text-secondary)">revised from v1</text>
 
           {/* observed input node */}
           <rect x="16" y="62" width="210" height="46" rx="8" fill={tint(EVID)} stroke={EVID} strokeWidth="1.4" />
-          <text x="30" y="82" fontSize="11" fontWeight="500" fill="var(--color-text-primary)">heritability_estimates.csv</text>
+          <text x="30" y="82" fontSize="11" fontWeight="600" fill="var(--color-text-primary)">heritability_estimates.csv</text>
           <text x="30" y="98" fontSize="9.5" fill="var(--color-text-secondary)">v1 · read by the cell</text>
 
           {/* reconstructed input node (dimmed until reconstruction links it) */}
           <g style={{ opacity: showRecon ? 1 : 0.4, transition: "opacity .3s ease" }}>
             <rect x="16" y="176" width="210" height="46" rx="8" fill={tint(EVID)} stroke={EVID} strokeWidth="1.4" strokeDasharray={showRecon ? undefined : "4 3"} />
-            <text x="30" y="196" fontSize="11" fontWeight="500" fill="var(--color-text-primary)">unparsed.json</text>
+            <text x="30" y="196" fontSize="11" fontWeight="600" fill="var(--color-text-primary)">unparsed.json</text>
             <text x="30" y="212" fontSize="9.5" fill="var(--color-text-secondary)">v1 · raw data, never read directly</text>
           </g>
 
@@ -151,17 +151,17 @@ export function ArtifactLineageExplorer() {
 
           {/* deliverable node */}
           <rect x="490" y="100" width="222" height="58" rx="8" fill={tint(EVID)} stroke={EVID} strokeWidth="2" />
-          <text x="504" y="123" fontSize="10.5" fontWeight="500" fill="var(--color-text-primary)">pet_genetics_heritability</text>
-          <text x="504" y="138" fontSize="10.5" fontWeight="500" fill="var(--color-text-primary)">_report.md</text>
+          <text x="504" y="123" fontSize="10.5" fontWeight="600" fill="var(--color-text-primary)">pet_genetics_heritability</text>
+          <text x="504" y="138" fontSize="10.5" fontWeight="600" fill="var(--color-text-primary)">_report.md</text>
           <text x="504" y="153" fontSize="9.5" fill="var(--color-text-secondary)">v2 · the deliverable</text>
 
           {/* legend */}
           <g transform="translate(16 244)">
             <line x1="0" y1="0" x2="28" y2="0" stroke={EVID} strokeWidth="1.8" />
             <text x="34" y="4" fontSize="9.5" fill="var(--color-text-secondary)">observed</text>
-            <line x1="120" y1="0" x2="148" y2="0" stroke={NEUTRAL} strokeWidth="1.6" strokeDasharray="6 4" />
+            <line x1="120" y1="0" x2="148" y2="0" stroke={NEUTRAL} strokeWidth="1.6" strokeDasharray="5 4" />
             <text x="154" y="4" fontSize="9.5" fill="var(--color-text-secondary)">reconstructed</text>
-            <line x1="264" y1="0" x2="292" y2="0" stroke="var(--color-border-strong)" strokeWidth="1.4" strokeDasharray="3 2" />
+            <line x1="264" y1="0" x2="292" y2="0" stroke="var(--color-border-strong)" strokeWidth="1.4" strokeDasharray="2 3" />
             <text x="298" y="4" fontSize="9.5" fill="var(--color-text-secondary)">parent version</text>
           </g>
         </svg>

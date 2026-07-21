@@ -12,7 +12,7 @@ import { FigureScaffold } from "./FigureScaffold";
  * dotted) carries the confidence, the same grammar the lineage graph uses.
  */
 
-const EVID = "var(--color-data-5)"; // evidence / lineage
+const EVID = "var(--color-data-1)"; // evidence / lineage
 const NEUTRAL = "var(--color-text-muted)";
 const tint = (c: string) => `color-mix(in srgb, ${c} 14%, var(--color-bg-primary))`;
 
@@ -29,7 +29,7 @@ export function ProvenanceConfidence() {
           viewBox="0 0 720 244"
           role="img"
           aria-labelledby="prov-conf-title"
-          className="block h-auto w-full min-w-[480px]"
+          className="block h-auto w-full min-w-[480px] font-sans"
         >
           <title id="prov-conf-title">
             A four-tier confidence ladder: runtime observation drawn solid is
@@ -56,29 +56,29 @@ export function ProvenanceConfidence() {
 
           {/* tier 1 — observed */}
           <rect x="44" y="12" width="668" height="40" rx="8" fill={tint(EVID)} stroke={EVID} strokeWidth="1.5" />
-          <text x="60" y="30" fontSize="12.5" fontWeight="500" fill="var(--color-text-primary)">Observed at runtime</text>
+          <text x="60" y="30" fontSize="12.5" fontWeight="600" fill="var(--color-text-primary)">Observed at runtime</text>
           <text x="60" y="45" fontSize="10.5" fill="var(--color-text-secondary)">tags survive read &#8594; write</text>
-          <text x="696" y="36" fontSize="10" fontWeight="500" fill={EVID} textAnchor="end">exact</text>
+          <text x="696" y="36" fontSize="10" fontWeight="600" fill={EVID} textAnchor="end">exact</text>
 
           {/* tier 2 — recorded */}
           <rect x="44" y="60" width="668" height="40" rx="8" fill="none" stroke={EVID} strokeWidth="1.5" />
-          <text x="60" y="78" fontSize="12.5" fontWeight="500" fill="var(--color-text-primary)">Recorded</text>
+          <text x="60" y="78" fontSize="12.5" fontWeight="600" fill="var(--color-text-primary)">Recorded</text>
           <text x="60" y="93" fontSize="10.5" fill="var(--color-text-secondary)">reads · writes · executions · host calls</text>
 
           {/* tier 3 — reconstructed */}
-          <rect x="44" y="108" width="668" height="40" rx="8" fill="none" stroke={NEUTRAL} strokeWidth="1.5" strokeDasharray="6 4" />
-          <text x="60" y="126" fontSize="12.5" fontWeight="500" fill="var(--color-text-secondary)">Reconstructed · fallback</text>
+          <rect x="44" y="108" width="668" height="40" rx="8" fill="none" stroke={NEUTRAL} strokeWidth="1.5" strokeDasharray="5 4" />
+          <text x="60" y="126" fontSize="12.5" fontWeight="600" fill="var(--color-text-secondary)">Reconstructed · fallback</text>
           <text x="60" y="141" fontSize="10.5" fill={NEUTRAL}>post-hoc dependency mapping, extracted code</text>
 
           {/* tier 4 — pending */}
           <rect x="44" y="156" width="668" height="40" rx="8" fill="none" stroke={NEUTRAL} strokeWidth="1.4" strokeDasharray="1.5 4" opacity="0.75" />
-          <text x="60" y="174" fontSize="12.5" fontWeight="500" fill={NEUTRAL}>Pending</text>
+          <text x="60" y="174" fontSize="12.5" fontWeight="600" fill={NEUTRAL}>Pending</text>
           <text x="60" y="189" fontSize="10.5" fill={NEUTRAL}>convergence unfinished</text>
 
           {/* legend */}
           <line x1="44" y1="224" x2="80" y2="224" stroke={EVID} strokeWidth="1.6" />
           <text x="88" y="228" fontSize="10.5" fill="var(--color-text-secondary)">observed</text>
-          <line x1="190" y1="224" x2="226" y2="224" stroke={NEUTRAL} strokeWidth="1.5" strokeDasharray="6 4" />
+          <line x1="190" y1="224" x2="226" y2="224" stroke={NEUTRAL} strokeWidth="1.5" strokeDasharray="5 4" />
           <text x="234" y="228" fontSize="10.5" fill="var(--color-text-secondary)">reconstructed</text>
           <line x1="352" y1="224" x2="388" y2="224" stroke={NEUTRAL} strokeWidth="1.4" strokeDasharray="1.5 4" />
           <text x="396" y="228" fontSize="10.5" fill="var(--color-text-secondary)">pending</text>

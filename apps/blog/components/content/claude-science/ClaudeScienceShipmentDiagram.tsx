@@ -69,7 +69,7 @@ export const SHIPMENT_STAGES: ShipmentStage[] = [
 ];
 
 const PRODUCT_ACCENT = "var(--color-data-1)";
-const PROVISIONED_ACCENT = "var(--color-status-success)";
+const PROVISIONED_ACCENT = "var(--color-border-strong)";
 const STEP_MS = 520;
 
 function accentFor(stage: ShipmentStage) {
@@ -138,7 +138,7 @@ function StationBox({
         height={h}
         rx="2"
         fill={
-          provisioned ? "var(--color-status-success)" : "var(--color-bg-secondary)"
+          provisioned ? "var(--color-border-strong)" : "var(--color-bg-secondary)"
         }
         fillOpacity={provisioned ? 0.08 : 1}
         stroke={accent}
@@ -157,7 +157,7 @@ function StationBox({
         y={y + 22}
         fill="var(--color-text-primary)"
         fontSize="13"
-        fontWeight="550"
+        fontWeight="600"
       >
         {title ?? stage.label}
       </text>
@@ -211,7 +211,7 @@ function TopElbow({
         fill="none"
         stroke="var(--color-border-strong)"
         strokeWidth="1.4"
-        strokeDasharray="5 5"
+        strokeDasharray="5 4"
         strokeLinecap="round"
         strokeLinejoin="round"
         markerEnd={`url(#${markerId})`}
@@ -251,7 +251,7 @@ function DownArrow({
         fill="none"
         stroke="var(--color-border-strong)"
         strokeWidth="1.3"
-        strokeDasharray="5 5"
+        strokeDasharray="5 4"
         strokeLinecap="round"
         markerEnd={`url(#${markerId})`}
       />
@@ -468,7 +468,7 @@ function DesktopUnpack({
             y={boxes.provisioned.y + 202}
             fill={PROVISIONED_ACCENT}
             fontSize="30"
-            fontWeight="650"
+            fontWeight="600"
           >
             ≈95%
           </text>
@@ -615,7 +615,7 @@ function MobileUnpack({
             textAnchor="end"
             fill={PROVISIONED_ACCENT}
             fontSize="30"
-            fontWeight="650"
+            fontWeight="600"
           >
             ≈95%
           </text>

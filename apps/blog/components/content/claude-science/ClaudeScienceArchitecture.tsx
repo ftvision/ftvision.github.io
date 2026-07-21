@@ -6,8 +6,8 @@ import { FigureScaffold } from "./FigureScaffold";
 
 // Essay colour grammar: three systems, one hue each.
 const EXEC = "var(--color-data-1)"; // execution / kernels
-const SUPER = "var(--color-data-3)"; // supervision / reviewer
-const EVID = "var(--color-data-5)"; // evidence / artifacts
+const SUPER = "var(--color-text-secondary)"; // supervision / reviewer
+const EVID = "var(--color-data-1)"; // evidence / artifacts
 const NEUTRAL = "var(--color-text-muted)";
 const QUERY = "var(--color-action-primary)"; // the traced query packet
 
@@ -150,9 +150,9 @@ function DesktopArchitecture({
       </defs>
 
       {/* grouping panels */}
-      <rect x="24" y="96" width="252" height="332" rx="10" fill="none" stroke="var(--color-border-strong)" strokeDasharray="4 4" />
+      <rect x="24" y="96" width="252" height="332" rx="10" fill="none" stroke="var(--color-border-strong)" strokeDasharray="5 4" />
       <text x="36" y="115" fontSize="10.5" fontWeight="600" fill={mut}>EXECUTION · workers</text>
-      <rect x="468" y="238" width="228" height="150" rx="10" fill="none" stroke="var(--color-border-strong)" strokeDasharray="4 4" />
+      <rect x="468" y="238" width="228" height="150" rx="10" fill="none" stroke="var(--color-border-strong)" strokeDasharray="5 4" />
       <text x="480" y="257" fontSize="10.5" fontWeight="600" fill={mut}>EVIDENCE · durable records</text>
 
       {/* connectors */}
@@ -164,7 +164,7 @@ function DesktopArchitecture({
       <path d="M145 240 L145 260" fill="none" stroke={NEUTRAL} strokeWidth="1.5" markerEnd="url(#cs-arch-arrow)" />
       <path d="M450 149 L468 149" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow)" />
       <path d="M450 300 L480 300" fill="none" stroke={EVID} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow)" />
-      <path d="M375 360 L375 408" fill="none" stroke={SUPER} strokeWidth="1.5" strokeDasharray="1 5" markerEnd="url(#cs-arch-arrow)" />
+      <path d="M375 360 L375 408" fill="none" stroke={SUPER} strokeWidth="1.5" strokeDasharray="1.5 4" markerEnd="url(#cs-arch-arrow)" />
 
       <text x="152" y="192" fontSize="9.5" fill={mut}>write</text>
       <text x="152" y="255" fontSize="9.5" fill={mut}>read</text>
@@ -172,7 +172,7 @@ function DesktopArchitecture({
       <text x="382" y="388" fontSize="9.5" fill={SUPER}>on checkpoint</text>
 
       {/* host-call boundary */}
-      <line x1="286" y1="122" x2="286" y2="352" stroke="var(--color-border-strong)" strokeDasharray="4 4" />
+      <line x1="286" y1="122" x2="286" y2="352" stroke="var(--color-border-strong)" strokeDasharray="5 4" />
       <text transform="rotate(-90 293 300)" x="293" y="300" textAnchor="middle" fontSize="10" fill={mut}>host-call boundary</text>
 
       {/* user */}
@@ -181,7 +181,7 @@ function DesktopArchitecture({
 
       {/* daemon */}
       <rect x="300" y="110" width="150" height="250" rx="10" fill={t} stroke={active === "daemon" ? QUERY : "none"} strokeWidth={active === "daemon" ? 3 : 0} />
-      <text x="375" y="182" textAnchor="middle" fontSize="17" fontWeight="700" fill={inv}>Daemon</text>
+      <text x="375" y="182" textAnchor="middle" fontSize="17" fontWeight="600" fill={inv}>Daemon</text>
       <text x="375" y="202" textAnchor="middle" fontSize="11" fill={inv} opacity="0.72">the authority</text>
       <line x1="322" y1="218" x2="428" y2="218" stroke={inv} strokeOpacity="0.2" />
       <text x="375" y="242" textAnchor="middle" fontSize="11" fill={inv} opacity="0.86">permits · records</text>
@@ -267,7 +267,7 @@ function MobileArchitecture({
       <path d="M64 500 L100 500" fill="none" stroke={EXEC} strokeWidth="1.5" strokeDasharray="5 4" markerEnd="url(#cs-arch-arrow-m)" markerStart="url(#cs-arch-arrow-m)" />
       <path d="M64 583 L100 583" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow-m)" markerStart="url(#cs-arch-arrow-m)" />
       <path d="M64 664 L100 664" fill="none" stroke={EVID} strokeWidth="1.6" markerEnd="url(#cs-arch-arrow-m)" markerStart="url(#cs-arch-arrow-m)" />
-      <path d="M64 746 L100 746" fill="none" stroke={SUPER} strokeWidth="1.5" strokeDasharray="1 5" markerEnd="url(#cs-arch-arrow-m)" />
+      <path d="M64 746 L100 746" fill="none" stroke={SUPER} strokeWidth="1.5" strokeDasharray="1.5 4" markerEnd="url(#cs-arch-arrow-m)" />
 
       {/* internal handoff flow */}
       <path d="M210 274 L210 310" fill="none" stroke={NEUTRAL} strokeWidth="1.5" markerEnd="url(#cs-arch-arrow-m)" />
@@ -281,7 +281,7 @@ function MobileArchitecture({
       <path d="M180 50 L180 82" fill="none" stroke={NEUTRAL} strokeWidth="1.5" markerEnd="url(#cs-arch-arrow-m)" />
 
       {/* host-call boundary */}
-      <line x1="44" y1="190" x2="316" y2="190" stroke="var(--color-border-strong)" strokeDasharray="4 4" />
+      <line x1="44" y1="190" x2="316" y2="190" stroke="var(--color-border-strong)" strokeDasharray="5 4" />
       <text x="316" y="184" textAnchor="end" fontSize="9.5" fill={mut}>host-call boundary</text>
 
       {/* section labels (generous gap above first box) */}
@@ -294,7 +294,7 @@ function MobileArchitecture({
 
       {/* daemon */}
       <rect x="64" y="82" width="232" height="86" rx="10" fill={t} stroke={active === "daemon" ? QUERY : "none"} strokeWidth={active === "daemon" ? 3 : 0} />
-      <text x="180" y="114" textAnchor="middle" fontSize="16" fontWeight="700" fill={inv}>Daemon</text>
+      <text x="180" y="114" textAnchor="middle" fontSize="16" fontWeight="600" fill={inv}>Daemon</text>
       <text x="180" y="134" textAnchor="middle" fontSize="10.5" fill={inv} opacity="0.8">the authority</text>
       <text x="180" y="152" textAnchor="middle" fontSize="10" fill={inv} opacity="0.75">permits · records · review · connectors</text>
 

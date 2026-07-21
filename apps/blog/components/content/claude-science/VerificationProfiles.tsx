@@ -32,7 +32,7 @@ interface Agent {
 }
 
 const REVIEWER_ACCENT = "var(--color-data-1)";
-const BOOKMARKER_ACCENT = "var(--color-data-5)";
+const BOOKMARKER_ACCENT = "var(--color-data-1)";
 // Both profiles switch off the same five capability flags (verbatim):
 // enable_plan_mode, enable_subtask_delegation, enable_web_search,
 // enable_thinking, skills_locked.

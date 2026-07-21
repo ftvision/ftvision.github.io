@@ -56,7 +56,7 @@ export function HostCallProtocol() {
               textAnchor="middle"
               fill="var(--color-text-primary)"
               fontSize="14"
-              fontWeight="500"
+              fontWeight="600"
             >
               analysis kernel
             </text>
@@ -85,7 +85,7 @@ export function HostCallProtocol() {
               textAnchor="middle"
               fill="var(--color-text-primary)"
               fontSize="14"
-              fontWeight="500"
+              fontWeight="600"
             >
               daemon (host)
             </text>
@@ -104,18 +104,18 @@ export function HostCallProtocol() {
               y1="68"
               x2="170"
               y2="262"
-              stroke="var(--color-border-muted)"
-              strokeWidth="1"
-              strokeDasharray="4 4"
+              stroke="var(--color-border-strong)"
+              strokeWidth="1.4"
+              strokeDasharray="5 4"
             />
             <line
               x1="550"
               y1="68"
               x2="550"
               y2="262"
-              stroke="var(--color-border-muted)"
-              strokeWidth="1"
-              strokeDasharray="4 4"
+              stroke="var(--color-border-strong)"
+              strokeWidth="1.4"
+              strokeDasharray="5 4"
             />
 
             <rect
@@ -195,7 +195,7 @@ export function HostCallProtocol() {
               y1="200"
               x2="175"
               y2="200"
-              stroke="var(--color-status-success)"
+              stroke="var(--color-data-1)"
               strokeWidth="1.5"
               markerEnd="url(#hostwire-arrow)"
             />
@@ -209,7 +209,7 @@ export function HostCallProtocol() {
               fill="var(--color-text-muted)"
             >
               <tspan>{'or  {"type":"host_response","id":"u1",'}</tspan>
-              <tspan fill="var(--color-status-danger)">{'"error":"…"'}</tspan>
+              <tspan fill="var(--color-text-muted)">{'"error":"…"'}</tspan>
               <tspan>{"}"}</tspan>
             </text>
 

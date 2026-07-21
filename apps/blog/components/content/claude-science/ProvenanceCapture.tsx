@@ -15,7 +15,7 @@ import { FigureScaffold } from "./FigureScaffold";
  * follow the essay grammar: uniform border, tinted fill, no accent bar.
  */
 
-const EVID = "var(--color-data-5)"; // evidence / lineage
+const EVID = "var(--color-data-1)"; // evidence / lineage
 const NEUTRAL = "var(--color-text-muted)";
 const tint = (c: string) => `color-mix(in srgb, ${c} 14%, var(--color-bg-primary))`;
 
@@ -32,7 +32,7 @@ export function ProvenanceCapture() {
           viewBox="0 0 720 148"
           role="img"
           aria-labelledby="prov-cap-title"
-          className="block h-auto w-full min-w-[560px]"
+          className="block h-auto w-full min-w-[560px] font-sans"
         >
           <title id="prov-cap-title">
             A source artifact&apos;s version tag is attached at a wrapped read,
@@ -55,17 +55,17 @@ export function ProvenanceCapture() {
 
           {/* source node */}
           <rect x="8" y="18" width="150" height="48" rx="8" fill={tint(EVID)} stroke={EVID} strokeWidth="1.4" />
-          <text x="24" y="38" fontSize="12.5" fontWeight="500" fill="var(--color-text-primary)">count-matrix v3</text>
+          <text x="24" y="38" fontSize="12.5" fontWeight="600" fill="var(--color-text-primary)">count-matrix v3</text>
           <text x="24" y="55" fontSize="10.5" fill="var(--color-text-secondary)">source artifact</text>
 
           {/* analysis node */}
           <rect x="285" y="18" width="150" height="48" rx="8" fill="var(--color-bg-secondary)" stroke="var(--color-border-strong)" strokeWidth="1.4" />
-          <text x="301" y="38" fontSize="12.5" fontWeight="500" fill="var(--color-text-primary)">analysis code</text>
+          <text x="301" y="38" fontSize="12.5" fontWeight="600" fill="var(--color-text-primary)">analysis code</text>
           <text x="301" y="55" fontSize="10.5" fill="var(--color-text-secondary)">pandas / NumPy</text>
 
           {/* output node */}
           <rect x="562" y="18" width="150" height="48" rx="8" fill={tint(EVID)} stroke={EVID} strokeWidth="1.4" />
-          <text x="578" y="38" fontSize="12.5" fontWeight="500" fill="var(--color-text-primary)">fig.png v1</text>
+          <text x="578" y="38" fontSize="12.5" fontWeight="600" fill="var(--color-text-primary)">fig.png v1</text>
           <text x="578" y="55" fontSize="10.5" fill="var(--color-text-secondary)">output artifact</text>
 
           {/* wrapped read */}
@@ -79,9 +79,9 @@ export function ProvenanceCapture() {
           <text x="499" y="60" fontSize="9.5" fontStyle="italic" fill={NEUTRAL} textAnchor="middle">tag harvested</text>
 
           {/* resulting exact edge, curving back underneath */}
-          <path d="M637 70 C 637 126, 83 126, 83 70" fill="none" stroke={EVID} strokeWidth="1.6" markerEnd="url(#prov-cap-arrow)" />
+          <path d="M637 66 L637 110 Q637 118 629 118 L91 118 Q83 118 83 110 L83 66" fill="none" stroke={EVID} strokeWidth="1.6" markerEnd="url(#prov-cap-arrow)" />
           <rect x="258" y="106" width="204" height="24" rx="4" fill="var(--color-bg-primary)" stroke={EVID} strokeWidth="1.2" />
-          <text x="360" y="122" fontSize="10.5" fontWeight="500" fill={EVID} textAnchor="middle">exact upstream edge</text>
+          <text x="360" y="122" fontSize="10.5" fontWeight="600" fill={EVID} textAnchor="middle">exact upstream edge</text>
         </svg>
       </div>
     </FigureScaffold>

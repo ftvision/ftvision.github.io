@@ -37,7 +37,7 @@ interface Scenario {
 }
 
 const EXEC = "var(--color-data-1)"; // execution / kernels
-const EVID = "var(--color-data-5)"; // durable data
+const EVID = "var(--color-data-1)"; // durable data
 const PACKET = "var(--color-action-primary)"; // one item crossing
 const MUTED = "var(--color-border-strong)";
 
@@ -275,7 +275,7 @@ function DesktopDiagram({
       </defs>
 
       {/* ---- LEFT: discrete, model in the loop ---- */}
-      <text x="20" y="22" fontSize="13" fontWeight="700" fill={t}>Discrete tool use</text>
+      <text x="20" y="22" fontSize="13" fontWeight="600" fill={t}>Discrete tool use</text>
       <text x="20" y="38" fontSize="10.5" fill={mut}>the model sits inside the loop</text>
 
       <rect x="80" y="56" width="150" height="40" rx="8" fill={modelFill} />
@@ -287,7 +287,7 @@ function DesktopDiagram({
       <path d="M172 168 L172 96" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-c-arr)" />
       <text x="120" y="136" textAnchor="end" fontSize="9.5" fill={sub}>call</text>
       <text x="190" y="136" fontSize="9.5" fill={sub}>result</text>
-      <text x="155" y="236" textAnchor="middle" fontSize="11" fontWeight="700" fill={EVID}>repeat {s.nLabel}</text>
+      <text x="155" y="236" textAnchor="middle" fontSize="11" fontWeight="600" fill={EVID}>repeat {s.nLabel}</text>
       <text x="155" y="251" textAnchor="middle" fontSize="9.5" fill={mut}>every call + result passes through the model</text>
       {running ? (
         <circle r="5" fill={PACKET} className="cs-c-bnc" style={{ offsetPath: `path('M138 96 L138 168 L172 168 L172 96')` }} />
@@ -296,7 +296,7 @@ function DesktopDiagram({
       <line x1="360" y1="14" x2="360" y2="262" stroke="var(--color-border)" />
 
       {/* ---- RIGHT: code, loop off-model in the kernel ---- */}
-      <text x="384" y="22" fontSize="13" fontWeight="700" fill={t}>Claude Science — code in the kernel</text>
+      <text x="384" y="22" fontSize="13" fontWeight="600" fill={t}>Claude Science — code in the kernel</text>
       <text x="384" y="38" fontSize="10.5" fill={mut}>the loop runs off-model</text>
 
       <rect x="440" y="56" width="150" height="40" rx="8" fill={modelFill} />
@@ -305,11 +305,11 @@ function DesktopDiagram({
       <rect x="400" y="150" width="270" height="104" rx="8" fill={tint(EXEC)} stroke={EXEC} />
       <text x="416" y="166" fontSize="10" fill={mut}>{s.kernelLabel.toUpperCase()}</text>
       {/* loop track: faint at rest, the packet rides it at run time */}
-      <path d={orbit} fill="none" stroke={EXEC} strokeOpacity="0.45" strokeWidth="1.3" strokeDasharray="4 4" />
+      <path d={orbit} fill="none" stroke={EXEC} strokeOpacity="0.45" strokeWidth="1.3" strokeDasharray="5 4" />
       {/* the repeated call, boxed so the track never crosses the text */}
       <rect x="430" y="182" width="210" height="38" rx="8" fill="var(--color-bg-primary)" stroke="var(--color-border-muted)" />
       <text x="535" y="205" textAnchor="middle" fontSize="11" fontFamily="var(--font-code, monospace)" fill={t}>{s.toolCall}</text>
-      <text x="535" y="245" textAnchor="middle" fontSize="9.5" fontWeight="700" fill={EVID}>repeats {s.nLabel}</text>
+      <text x="535" y="245" textAnchor="middle" fontSize="9.5" fontWeight="600" fill={EVID}>repeats {s.nLabel}</text>
       {running ? (
         <circle r="5" fill={PACKET} className="cs-c-orb" style={{ offsetPath: `path('${orbit}')` }} />
       ) : null}
@@ -321,7 +321,7 @@ function DesktopDiagram({
 
       {/* ---- BOTTOM: model context window ---- */}
       <line x1="20" y1="288" x2="700" y2="288" stroke="var(--color-border)" />
-      <text x="20" y="310" fontSize="11" fontWeight="700" fill={mut}>MODEL CONTEXT WINDOW</text>
+      <text x="20" y="310" fontSize="11" fontWeight="600" fill={mut}>MODEL CONTEXT WINDOW</text>
 
       <text x="20" y="336" fontSize="11.5" fontWeight="600" fill={t}>Discrete</text>
       <rect x="90" y="322" width="260" height="94" rx="5" fill="var(--color-bg-primary)" stroke="var(--color-border)" />
