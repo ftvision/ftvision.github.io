@@ -12,7 +12,7 @@ export function ClaudeScienceShipment() {
       caption={
         <>
           <strong>
-            Figure A. The signed app is the bootstrap, not the scientific
+            Figure 1. The signed app is the bootstrap, not the scientific
             runtime.
           </strong>{" "}
           The illustration is interpretive; the on-disk loci, contents, and

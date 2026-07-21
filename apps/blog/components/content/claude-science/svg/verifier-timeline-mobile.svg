@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 720" role="img" aria-labelledby="verifier-mobile-title verifier-mobile-desc">
+  <title id="verifier-mobile-title">Claude Science verification on a narrow screen</title>
+  <desc id="verifier-mobile-desc">The main agent continues while a detached reviewer inspects a bounded window and writes a verdict. The terminal barrier is the only blocking point.</desc>
+  <style>svg{--exec:var(--color-data-1,#2563eb);--super:var(--color-text-secondary,#4b5563);--evidence:var(--color-data-1,#2563eb);--neutral:var(--color-text-muted,#6b7280);--main:var(--color-action-primary,#2563eb);--text:var(--color-text-primary,#111827);--subtext:var(--color-text-secondary,#4b5563);--page:var(--color-bg-primary,#fff);--panel:var(--color-bg-secondary,#f3f4f6);--border:var(--color-border-strong,#9ca3af);font-family:var(--font-sans,system-ui,sans-serif)}.window{fill:color-mix(in srgb,var(--evidence) 14%,var(--page))}.reviewer{fill:color-mix(in srgb,var(--super) 14%,var(--page))}</style>
+  <defs>
+    <marker id="vt-m-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="var(--neutral)" stroke-width="1.6"/>
+    </marker>
+    <marker id="vt-m-super" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="var(--super)" stroke-width="1.6"/>
+    </marker>
+    <marker id="vt-m-exec" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="var(--exec)" stroke-width="1.6"/>
+    </marker>
+  </defs>
+  <text x="20" y="30" font-size="10.5" font-weight="600" fill="var(--text)">MAIN AGENT</text>
+  <text x="20" y="43" font-size="8.5" fill="var(--neutral)">one continuous thread &#xB7; never blocks at the fork</text>
+  <line x1="40" y1="58" x2="40" y2="612" stroke="var(--exec)" stroke-width="1.8"/>
+  <line x1="40" y1="81" x2="40" y2="103" stroke="var(--text)"/>
+  <path d="M40 85.5L46.5 92L40 98.5L33.5 92Z" fill="var(--page)" stroke="var(--text)" stroke-width="1.6"/>
+  <text x="54" y="88" font-size="8.5" font-weight="600" fill="var(--text)">checkpoint fires</text>
+  <path d="M40 100L40 120L96 120" fill="none" stroke="var(--neutral)" stroke-width="1.4" marker-end="url(#vt-m-arrow)"/>
+  <rect x="96" y="98" width="248" height="96" rx="9" fill="var(--panel)" stroke="var(--border)" stroke-width="1.4"/>
+  <text x="108" y="118" font-size="10" font-weight="600" fill="var(--text)">checkpoint predicate</text>
+  <g stroke="var(--subtext)" fill="none" stroke-width="1.4">
+    <circle cx="118" cy="140" r="7"/>
+    <path d="M118 136.3L118 140L121.2 142"/>
+  </g>
+  <text x="134" y="137" font-size="9.5" font-weight="600" fill="var(--text)">interval floor</text>
+  <text x="134" y="149" font-size="8" fill="var(--subtext)">&#x2265; 120 s since last checkpoint</text>
+  <text x="330" y="140" font-size="8.5" font-weight="600" fill="var(--subtext)" text-anchor="end">120 s</text>
+  <text x="220" y="166" font-size="9" font-weight="600" fill="var(--subtext)" text-anchor="middle">AND</text>
+  <g stroke="var(--subtext)" fill="none">
+    <rect x="112.5" y="172.5" width="11" height="15" rx="1.6"/>
+    <path d="M115.5 176.5H120.5M115.5 180H120.5M115.5 183.5H119"/>
+  </g>
+  <text x="134" y="177" font-size="9.5" font-weight="600" fill="var(--text)">content signal &#xB7; any one</text>
+  <text x="134" y="188" font-size="7.8" fill="var(--subtext)">3 artifacts &#xB7; block &#xB7; 2,000 chars</text>
+  <text x="48" y="230" font-size="8.5" fill="var(--subtext)">keeps moving</text>
+  <text x="48" y="241" font-size="8.5" fill="var(--subtext)">non-blocking</text>
+  <path d="M220 194L220 214L250 214" fill="none" stroke="var(--super)" stroke-width="1.5" marker-end="url(#vt-m-super)"/>
+  <text x="128" y="212" font-size="8.5" font-weight="600" fill="var(--super)">spawn &#xB7; non-blocking &#x2192;</text>
+  <rect x="120" y="230" width="228" height="250" rx="10" fill="none" stroke="var(--super)" stroke-width="1.1" stroke-dasharray="5 4"/>
+  <text x="132" y="248" font-size="9.5" font-weight="600" fill="var(--super)">DETACHED REVIEWER &#xB7; background</text>
+  <rect class="window" x="134" y="258" width="200" height="58" rx="8" stroke="var(--evidence)" stroke-width="1.4"/>
+  <text x="234" y="280" font-size="10" font-weight="600" fill="var(--text)" text-anchor="middle">bounded window</text>
+  <text x="234" y="296" font-size="8" fill="var(--subtext)" text-anchor="middle">snapshot &#xB7; msgs &#xB7; exec &#xB7; artifact</text>
+  <text x="234" y="307" font-size="8" fill="var(--subtext)" text-anchor="middle">plan &#xB7; provenance</text>
+  <path d="M234 316L234 334" stroke="var(--super)" marker-end="url(#vt-m-super)"/>
+  <rect class="reviewer" x="134" y="334" width="200" height="52" rx="8" stroke="var(--super)" stroke-width="1.4"/>
+  <path d="M226 356Q234 349 242 356Q234 363 226 356Z" fill="none" stroke="var(--super)"/>
+  <circle cx="234" cy="356" r="2.4" fill="var(--super)"/>
+  <text x="234" y="378" font-size="10" font-weight="600" fill="var(--text)" text-anchor="middle">reviewer &#xB7; read-only</text>
+  <path d="M234 386L234 404" stroke="var(--super)" marker-end="url(#vt-m-super)"/>
+  <rect x="134" y="404" width="200" height="58" rx="8" fill="var(--panel)" stroke="var(--border)" stroke-width="1.4"/>
+  <text x="234" y="426" font-size="10" font-weight="600" fill="var(--text)" text-anchor="middle">verdict</text>
+  <text x="234" y="442" font-size="8" fill="var(--subtext)" text-anchor="middle">finding / notice</text>
+  <text x="234" y="453" font-size="8" fill="var(--neutral)" text-anchor="middle">&#x2192; durable state</text>
+  <path d="M134 433L40 433" fill="none" stroke="var(--neutral)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#vt-m-arrow)"/>
+  <text x="128" y="476" font-size="8" fill="var(--neutral)" text-anchor="end">barrier reads verdict</text>
+  <line x1="24" y1="512" x2="180" y2="512" stroke="var(--text)" stroke-width="2.4"/>
+  <line x1="24" y1="518" x2="180" y2="518" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="40" cy="515" r="6" fill="none" stroke="var(--main)" stroke-width="1.6"/>
+  <text x="24" y="540" font-size="10" font-weight="600" fill="var(--text)">terminal barrier</text>
+  <text x="24" y="552" font-size="8.5" fill="var(--neutral)">the only blocking point &#xB7; waits for the verdict</text>
+  <path d="M40 566L40 582L60 582" fill="none" stroke="var(--exec)" marker-end="url(#vt-m-exec)"/>
+  <text x="66" y="585" font-size="9.5" fill="var(--text)">finish &#xB7; deliver</text>
+  <path d="M40 594L60 594" stroke="var(--super)" marker-end="url(#vt-m-super)"/>
+  <text x="66" y="597" font-size="9.5" fill="var(--text)">bounce &#xB7; re-run another turn (&#x2264; 3)</text>
+  <path d="M40 606L60 606" stroke="var(--super)" marker-end="url(#vt-m-super)"/>
+  <text x="66" y="609" font-size="9.5" fill="var(--text)">invalidate &#xB7; delegated output</text>
+</svg>

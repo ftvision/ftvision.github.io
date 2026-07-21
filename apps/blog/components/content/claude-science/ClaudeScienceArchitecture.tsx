@@ -76,13 +76,13 @@ export function ClaudeScienceArchitecture() {
       caption={
         <>
           <strong>
-            Figure B. Kernels hold state; the daemon owns authority and history.
+            Figure 3. Kernels hold state; the daemon owns authority and history.
           </strong>{" "}
           The control kernel and data kernels share a workspace, not memory;
           every privileged call crosses the host-call boundary; lineage is
           observed at runtime before it is reconstructed; the reviewer wakes on
-          checkpoints. Roles are read from the local runtime and extracted daemon
-          fragments.
+          checkpoints. Roles are read from the local runtime and extracted
+          daemon fragments.
         </>
       }
     >

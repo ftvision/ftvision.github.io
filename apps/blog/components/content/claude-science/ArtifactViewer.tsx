@@ -23,7 +23,12 @@ import { FigureScaffold } from "./FigureScaffold";
  * render nothing), and each image is lazy-loaded.
  */
 
-type TabId = "code" | "execution-log" | "messages" | "environment" | "provenance";
+type TabId =
+  | "code"
+  | "execution-log"
+  | "messages"
+  | "environment"
+  | "provenance";
 
 interface ArtifactTab {
   id: TabId;
@@ -163,96 +168,96 @@ export function ArtifactViewer() {
 
   return (
     <>
-    <FigureScaffold
-      eyebrow="Artifact governance"
-      title="One artifact and the layers it carries"
-      description="This generated figure from a live session opens with tabs for its reconstructed code, raw execution record, agent messages, and pinned environment. Its provenance is available from the artifact menu."
-      caption="Figure. Real screenshots from a live pet-genetics session in Claude Science, viewing the artifact fig2_publication_trend.png. The tab bar is the product's own. Provenance is the artifact's right-click menu, shown here as a fifth view; nothing is recolored, so these are the shipped dark UI."
-    >
-      <p className="type-body-sm m-0 mb-4 text-figure-secondary">
-        This is one real artifact from a live pet-genetics session. Switch tabs
-        to read each layer it carries, straight from the product UI.
-      </p>
-
-      <div className="mb-4">
-        <ArtifactTabs active={active} baseId={baseId} onSelect={setActive} />
-        <p
-          className="type-caption m-0 mt-2 text-figure-muted"
-          aria-live="polite"
-        >
-          {activeTab.descriptor}
+      <FigureScaffold
+        eyebrow="Artifact governance"
+        title="One artifact and the layers it carries"
+        description="This generated figure from a live session opens with tabs for its reconstructed code, raw execution record, agent messages, and pinned environment. Its provenance is available from the artifact menu."
+        caption="Figure 9. Real screenshots from a live pet-genetics session in Claude Science, viewing the artifact fig2_publication_trend.png. The tab bar is the product's own. Provenance is the artifact's right-click menu, shown here as a fifth view; nothing is recolored, so these are the shipped dark UI."
+      >
+        <p className="type-body-sm m-0 mb-4 text-figure-secondary">
+          This is one real artifact from a live pet-genetics session. Switch
+          tabs to read each layer it carries, straight from the product UI.
         </p>
-      </div>
 
-      <div className="border-t border-border pt-5">
-        {TABS.map((tab) => {
-          const isActive = tab.id === active;
-          return (
-            <div
-              key={tab.id}
-              role="tabpanel"
-              id={`${baseId}-panel-${tab.id}`}
-              aria-labelledby={`${baseId}-tab-${tab.id}`}
-              tabIndex={0}
-              hidden={!isActive}
-              className="focus-visible:outline-none"
-            >
-              {isActive ? (
-                <button
-                  type="button"
-                  onClick={() => setZoomed(true)}
-                  aria-label={`Enlarge screenshot: ${tab.label}`}
-                  className="group relative block w-full cursor-zoom-in overflow-hidden rounded border border-border bg-ground-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action-primary"
-                >
-                  {/* Only the active tab's image is mounted; switching tabs
+        <div className="mb-4">
+          <ArtifactTabs active={active} baseId={baseId} onSelect={setActive} />
+          <p
+            className="type-caption m-0 mt-2 text-figure-muted"
+            aria-live="polite"
+          >
+            {activeTab.descriptor}
+          </p>
+        </div>
+
+        <div className="border-t border-border pt-5">
+          {TABS.map((tab) => {
+            const isActive = tab.id === active;
+            return (
+              <div
+                key={tab.id}
+                role="tabpanel"
+                id={`${baseId}-panel-${tab.id}`}
+                aria-labelledby={`${baseId}-tab-${tab.id}`}
+                tabIndex={0}
+                hidden={!isActive}
+                className="focus-visible:outline-none"
+              >
+                {isActive ? (
+                  <button
+                    type="button"
+                    onClick={() => setZoomed(true)}
+                    aria-label={`Enlarge screenshot: ${tab.label}`}
+                    className="group relative block w-full cursor-zoom-in overflow-hidden rounded border border-border bg-ground-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-action-primary"
+                  >
+                    {/* Only the active tab's image is mounted; switching tabs
                       unmounts the previous one. A plain <img> keeps this lazy
                       and lets the screenshot scale to the container width;
                       next/image is intentionally avoided here. */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={tab.src}
-                    alt={tab.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className="block h-auto w-full"
-                  />
-                  <span className="pointer-events-none absolute bottom-2 right-2 rounded bg-black/60 px-2 py-1 font-sans text-xs text-white opacity-0 transition-opacity group-hover:opacity-100 motion-reduce:transition-none">
-                    Click to enlarge
-                  </span>
-                </button>
-              ) : null}
-            </div>
-          );
-        })}
-      </div>
-    </FigureScaffold>
-    {zoomed && typeof document !== "undefined"
-      ? createPortal(
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label={activeTab.alt}
-            onClick={() => setZoomed(false)}
-            className="fixed inset-0 z-[9999] flex cursor-zoom-out items-center justify-center bg-black/80 p-4"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={activeTab.src}
-              alt={activeTab.alt}
-              className="h-auto max-h-[92vh] w-auto max-w-[96vw] rounded-lg object-contain shadow-2xl"
-            />
-            <button
-              type="button"
-              aria-label="Close enlarged image"
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={tab.src}
+                      alt={tab.alt}
+                      loading="lazy"
+                      decoding="async"
+                      className="block h-auto w-full"
+                    />
+                    <span className="pointer-events-none absolute bottom-2 right-2 rounded bg-black/60 px-2 py-1 font-sans text-xs text-white opacity-0 transition-opacity group-hover:opacity-100 motion-reduce:transition-none">
+                      Click to enlarge
+                    </span>
+                  </button>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+      </FigureScaffold>
+      {zoomed && typeof document !== "undefined"
+        ? createPortal(
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-label={activeTab.alt}
               onClick={() => setZoomed(false)}
-              className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-2xl leading-none text-white hover:bg-black/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="fixed inset-0 z-[9999] flex cursor-zoom-out items-center justify-center bg-black/80 p-4"
             >
-              ×
-            </button>
-          </div>,
-          document.body,
-        )
-      : null}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={activeTab.src}
+                alt={activeTab.alt}
+                className="h-auto max-h-[92vh] w-auto max-w-[96vw] rounded-lg object-contain shadow-2xl"
+              />
+              <button
+                type="button"
+                aria-label="Close enlarged image"
+                onClick={() => setZoomed(false)}
+                className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/60 text-2xl leading-none text-white hover:bg-black/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                ×
+              </button>
+            </div>,
+            document.body,
+          )
+        : null}
     </>
   );
 }

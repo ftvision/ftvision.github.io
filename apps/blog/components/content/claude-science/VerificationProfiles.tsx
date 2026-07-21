@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { FigureScaffold } from "./FigureScaffold";
 
 /**
- * Figure D2 — "Verification agents".
+ * Figure 10 — "Verification agents".
  *
  * The release ships two hidden profiles, REVIEWER and BOOKMARKER. REVIEWER is
  * enabled by default; BOOKMARKER is wired into the same checkpoint machinery
@@ -203,19 +203,22 @@ function CapabilityBar({ agent }: { agent: Agent }) {
               className="w-4 rounded-t-[2px] transition-[height,background-color] duration-300 ease-out motion-reduce:transition-none"
               style={{
                 height: on ? "100%" : "26%",
-                backgroundColor: on ? agent.accent : "var(--color-border-strong)",
+                backgroundColor: on
+                  ? agent.accent
+                  : "var(--color-border-strong)",
               }}
             />
           );
         })}
       </div>
       <p className="type-caption m-0 mt-2 text-figure-secondary">
-        keeps{" "}
-        <b style={{ color: agent.accent }}>{kept}</b> of {total} explicitly listed tools ·{" "}
-        {PROFILE_RESTRICTIONS} profile restrictions
+        keeps <b style={{ color: agent.accent }}>{kept}</b> of {total}{" "}
+        explicitly listed tools · {PROFILE_RESTRICTIONS} profile restrictions
       </p>
 
-      <p className="type-overline m-0 mb-2 mt-4 text-figure-muted">Keeps only</p>
+      <p className="type-overline m-0 mb-2 mt-4 text-figure-muted">
+        Keeps only
+      </p>
       <ul
         className="m-0 flex list-none flex-wrap gap-1.5 p-0"
         style={{ listStyle: "none" }}
@@ -241,7 +244,9 @@ function PromptPanel({ agent }: { agent: Agent }) {
   return (
     <div className="min-w-0">
       <div className="flex items-baseline justify-between gap-2">
-        <p className="type-overline m-0 text-figure-muted">The one tight prompt</p>
+        <p className="type-overline m-0 text-figure-muted">
+          The one tight prompt
+        </p>
         <p className="type-caption m-0 text-figure-muted">shortened</p>
       </div>
       <div className="mt-2 overflow-x-auto rounded-[4px] border border-border bg-surface-code">
@@ -265,7 +270,7 @@ export function VerificationProfiles() {
       eyebrow="Verification agents"
       title="Two profiles, one enabled by default"
       description="The release ships REVIEWER and BOOKMARKER profiles over the same checkpoint window. REVIEWER is enabled by default; BOOKMARKER is implemented but disabled. Each profile is cut down to one narrow job."
-      caption="Figure D2. The kept and excluded tool sets and five profile restrictions come from the shipped 0.1.15 metadata. Four capability switches are off, while skill discovery is locked. The prompts are shortened, with ellipses marking cuts. BOOKMARKER is shown as a shipped profile, not as an active default."
+      caption="Figure 10. The kept and excluded tool sets and five profile restrictions come from the shipped 0.1.15 metadata. Four capability switches are off, while skill discovery is locked. The prompts are shortened, with ellipses marking cuts. BOOKMARKER is shown as a shipped profile, not as an active default."
     >
       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <AgentTabs active={active} baseId={baseId} onSelect={setActive} />

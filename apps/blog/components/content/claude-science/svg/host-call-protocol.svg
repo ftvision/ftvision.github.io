@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 282" role="img" aria-labelledby="hostwire-title hostwire-desc">
+  <title id="hostwire-title">The kernel-to-daemon host call is a synchronous request and response</title>
+  <desc id="hostwire-desc">A sequence diagram with two lifelines, the kernel and the daemon. The kernel sends a host_call message and blocks. The daemon returns a host_response with the same id carrying either data or an error.</desc>
+  <style>
+    svg {
+      --text: var(--color-text-primary, #111827);
+      --subtext: var(--color-text-secondary, #4b5563);
+      --muted: var(--color-text-muted, #6b7280);
+      --panel: var(--color-bg-secondary, #f3f4f6);
+      --border: var(--color-border-muted, #d1d5db);
+      --strong-border: var(--color-border-strong, #9ca3af);
+      --accent: var(--color-data-1, #2563eb);
+      --id: var(--color-action-primary, #2563eb);
+      font-family: var(--font-sans, system-ui, sans-serif);
+    }
+  </style>
+  <defs>
+    <marker id="hostwire-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10z" fill="var(--muted)"/>
+    </marker>
+  </defs>
+  <rect x="60" y="24" width="220" height="44" rx="4" fill="var(--panel)" stroke="var(--border)"/>
+  <text x="170" y="44" text-anchor="middle" fill="var(--text)" font-size="14" font-weight="600">analysis kernel</text>
+  <text x="170" y="60" text-anchor="middle" fill="var(--muted)" font-size="11">Python or R process</text>
+  <rect x="440" y="24" width="220" height="44" rx="4" fill="var(--panel)" stroke="var(--border)"/>
+  <text x="550" y="44" text-anchor="middle" fill="var(--text)" font-size="14" font-weight="600">daemon (host)</text>
+  <text x="550" y="60" text-anchor="middle" fill="var(--muted)" font-size="11">authority + connectors</text>
+  <line x1="170" y1="68" x2="170" y2="262" stroke="var(--strong-border)" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="550" y1="68" x2="550" y2="262" stroke="var(--strong-border)" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <rect x="165" y="116" width="10" height="84" rx="1" fill="var(--accent)" opacity=".16"/>
+  <rect x="165" y="116" width="10" height="84" rx="1" fill="none" stroke="var(--accent)"/>
+  <text x="150" y="156" text-anchor="end" fill="var(--subtext)" font-size="11">blocks</text>
+  <text x="150" y="170" text-anchor="end" fill="var(--muted)" font-size="11">sync wait</text>
+  <text x="360" y="104" text-anchor="middle" font-size="11" font-family="var(--font-code, monospace)" fill="var(--text)">
+    <tspan>{"type":"host_call",</tspan>
+    <tspan fill="var(--id)">"id":"u1",</tspan>
+    <tspan>"method":"llm","args":[&#x2026;]}</tspan>
+  </text>
+  <line x1="175" y1="116" x2="550" y2="116" stroke="var(--subtext)" stroke-width="1.5" marker-end="url(#hostwire-arrow)"/>
+  <text x="360" y="188" text-anchor="middle" font-size="11" font-family="var(--font-code, monospace)" fill="var(--text)">
+    <tspan>{"type":"host_response",</tspan>
+    <tspan fill="var(--id)">"id":"u1",</tspan>
+    <tspan>"data":&#x2026;}</tspan>
+  </text>
+  <line x1="550" y1="200" x2="175" y2="200" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#hostwire-arrow)"/>
+  <text x="360" y="228" text-anchor="middle" font-size="10.5" font-family="var(--font-code, monospace)" fill="var(--muted)">
+    <tspan>or  {"type":"host_response","id":"u1",</tspan>
+    <tspan>"error":"&#x2026;"</tspan>
+    <tspan>}</tspan>
+  </text>
+  <text x="360" y="254" text-anchor="middle" fill="var(--muted)" font-size="11">Mismatched replies are discarded; eight unmatched reads raise a protocol-desynchronization error.</text>
+</svg>

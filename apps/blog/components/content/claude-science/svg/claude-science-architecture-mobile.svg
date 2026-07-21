@@ -52,13 +52,11 @@
       .query-packet { display: none; }
     }
   </style>
-
   <defs>
     <marker id="cs-arch-m-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M1 1 L8 5 L1 9" fill="none" stroke="var(--cs-neutral)" stroke-width="1.6"/>
     </marker>
   </defs>
-
   <line x1="64" y1="168" x2="64" y2="746" stroke="var(--cs-strong-border)" stroke-width="1.6"/>
   <g id="cs-arch-m-connectors" fill="none">
     <path d="M64 249 L100 249" stroke="var(--cs-exec)" stroke-width="1.6" marker-end="url(#cs-arch-m-arrow)" marker-start="url(#cs-arch-m-arrow)"/>
@@ -71,70 +69,58 @@
     <path d="M210 354 L210 398" stroke="var(--cs-neutral)" stroke-width="1.5" marker-end="url(#cs-arch-m-arrow)"/>
     <path d="M180 50 L180 82" stroke="var(--cs-neutral)" stroke-width="1.5" marker-end="url(#cs-arch-m-arrow)"/>
   </g>
-
   <text x="222" y="296" font-size="9.5" fill="var(--cs-neutral)">write</text>
   <text x="222" y="380" font-size="9.5" fill="var(--cs-neutral)">read</text>
   <text x="150" y="742" font-size="9.5" fill="var(--cs-super)">on checkpoint</text>
   <text x="150" y="496" font-size="9.5" fill="var(--cs-neutral)">gated</text>
-
   <line x1="44" y1="190" x2="316" y2="190" stroke="var(--cs-strong-border)" stroke-dasharray="5 4"/>
   <text x="316" y="184" text-anchor="end" font-size="9.5" fill="var(--cs-neutral)">host-call boundary</text>
-  <text x="100" y="210" font-size="10.5" font-weight="600" fill="var(--cs-neutral)">EXECUTION · workers</text>
-  <text x="100" y="624" font-size="10.5" font-weight="600" fill="var(--cs-neutral)">EVIDENCE · records</text>
-
+  <text x="100" y="210" font-size="10.5" font-weight="600" fill="var(--cs-neutral)">EXECUTION &#xB7; workers</text>
+  <text x="100" y="624" font-size="10.5" font-weight="600" fill="var(--cs-neutral)">EVIDENCE &#xB7; records</text>
   <g id="cs-arch-m-user">
     <rect id="cs-arch-m-node-user" class="node" x="105" y="16" width="150" height="34" rx="8" fill="var(--cs-panel)" stroke="var(--cs-border)" stroke-width="1.4"/>
-    <text x="180" y="38" text-anchor="middle" font-size="12" fill="var(--cs-text)">User · local web UI</text>
+    <text x="180" y="38" text-anchor="middle" font-size="12" fill="var(--cs-text)">User &#xB7; local web UI</text>
   </g>
-
   <g id="cs-arch-m-daemon">
     <rect id="cs-arch-m-node-daemon" class="node" x="64" y="82" width="232" height="86" rx="10" fill="var(--cs-text)" stroke="none" stroke-width="0"/>
     <text x="180" y="114" text-anchor="middle" font-size="16" font-weight="600" fill="var(--cs-page)">Daemon</text>
     <text x="180" y="134" text-anchor="middle" font-size="10.5" fill="var(--cs-page)" opacity=".8">the authority</text>
-    <text x="180" y="152" text-anchor="middle" font-size="10" fill="var(--cs-page)" opacity=".75">permits · records · review · connectors</text>
+    <text x="180" y="152" text-anchor="middle" font-size="10" fill="var(--cs-page)" opacity=".75">permits &#xB7; records &#xB7; review &#xB7; connectors</text>
   </g>
-
   <g id="cs-arch-m-repl">
     <rect id="cs-arch-m-node-repl" class="node execution-node" x="100" y="224" width="220" height="50" rx="8"/>
-    <text x="210" y="247" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--cs-text)">repl — control plane</text>
-    <text x="210" y="263" text-anchor="middle" font-size="9.5" fill="var(--cs-subtext)">stdlib · connectors, agents</text>
+    <text x="210" y="247" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--cs-text)">repl &#x2014; control plane</text>
+    <text x="210" y="263" text-anchor="middle" font-size="9.5" fill="var(--cs-subtext)">stdlib &#xB7; connectors, agents</text>
   </g>
-
   <g id="cs-arch-m-handoff">
     <rect id="cs-arch-m-node-handoff" class="node" x="130" y="310" width="160" height="44" rx="6" fill="var(--cs-code)" stroke="var(--cs-strong-border)" stroke-width="1"/>
     <text x="210" y="330" text-anchor="middle" font-size="11" font-weight="600" fill="var(--cs-text)" font-family="var(--font-code, monospace)">./handoff/*.json</text>
     <text x="210" y="344" text-anchor="middle" font-size="8.5" fill="var(--cs-neutral)">files, not memory</text>
   </g>
-
   <g id="cs-arch-m-python">
     <rect id="cs-arch-m-node-python" class="node execution-node" x="100" y="398" width="220" height="50" rx="8"/>
     <text x="210" y="421" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--cs-text)">Python / R kernels</text>
-    <text x="210" y="437" text-anchor="middle" font-size="9.5" fill="var(--cs-subtext)">data plane · persistent state</text>
+    <text x="210" y="437" text-anchor="middle" font-size="9.5" fill="var(--cs-subtext)">data plane &#xB7; persistent state</text>
   </g>
-
   <g id="cs-arch-m-compute">
     <rect x="100" y="478" width="220" height="44" rx="8" fill="var(--cs-page)" stroke="var(--cs-exec)" stroke-width="1.4" stroke-dasharray="5 4"/>
-    <text x="210" y="504" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--cs-text)">Compute provider · gated</text>
+    <text x="210" y="504" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--cs-text)">Compute provider &#xB7; gated</text>
   </g>
-
   <g id="cs-arch-m-mcp">
     <rect id="cs-arch-m-node-mcp" class="node" x="100" y="558" width="220" height="50" rx="8" fill="var(--cs-panel)" stroke="var(--cs-border)" stroke-width="1.4"/>
-    <text x="210" y="581" text-anchor="middle" font-size="12" font-weight="600" fill="var(--cs-text)">MCP · connectors · app tiles</text>
+    <text x="210" y="581" text-anchor="middle" font-size="12" font-weight="600" fill="var(--cs-text)">MCP &#xB7; connectors &#xB7; app tiles</text>
     <text x="210" y="597" text-anchor="middle" font-size="9.5" fill="var(--cs-subtext)">the external world</text>
   </g>
-
   <g id="cs-arch-m-artifact">
     <rect id="cs-arch-m-node-artifact" class="node evidence-node" x="100" y="638" width="220" height="52" rx="8"/>
     <text x="210" y="662" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--cs-text)">Artifact store</text>
-    <text x="210" y="678" text-anchor="middle" font-size="9.5" fill="var(--cs-subtext)">versioned · lineage observed first</text>
+    <text x="210" y="678" text-anchor="middle" font-size="9.5" fill="var(--cs-subtext)">versioned &#xB7; lineage observed first</text>
   </g>
-
   <g id="cs-arch-m-reviewer">
     <rect id="cs-arch-m-node-reviewer" class="node" x="100" y="720" width="220" height="52" rx="8" fill="var(--cs-panel)" stroke="var(--cs-super)" stroke-width="1.4"/>
     <text x="210" y="744" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--cs-text)">Reviewer</text>
-    <text x="210" y="760" text-anchor="middle" font-size="9.5" fill="var(--cs-subtext)">background · read-only</text>
+    <text x="210" y="760" text-anchor="middle" font-size="9.5" fill="var(--cs-subtext)">background &#xB7; read-only</text>
   </g>
-
   <g id="cs-arch-m-query-packets" aria-hidden="true">
     <circle id="cs-arch-m-packet-0" class="query-packet" r="5.5" fill="var(--cs-query)" stroke="var(--cs-page)" stroke-width="1.5" style="offset-path:path('M180 50 L180 82');offset-rotate:0deg"/>
     <circle id="cs-arch-m-packet-1" class="query-packet" r="5.5" fill="var(--cs-query)" stroke="var(--cs-page)" stroke-width="1.5" style="offset-path:path('M64 168 L64 249 L100 249');offset-rotate:0deg"/>
