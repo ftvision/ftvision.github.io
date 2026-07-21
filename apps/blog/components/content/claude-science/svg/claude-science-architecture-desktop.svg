@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-labelledby="cs-arch-desktop-title cs-arch-desktop-desc">
+  <title id="cs-arch-desktop-title">Daemon-centered Claude Science architecture</title>
+  <desc id="cs-arch-desktop-desc">The daemon is the central authority. A control kernel and persistent data kernels exchange data through files in a shared workspace. Privileged calls cross the host-call boundary into the daemon, which mediates connectors, artifacts, and review.</desc>
+  <style>
+    svg {
+      --cs-exec: var(--color-data-1, #2563eb);
+      --cs-super: var(--color-text-secondary, #4b5563);
+      --cs-evidence: var(--color-data-1, #2563eb);
+      --cs-neutral: var(--color-text-muted, #6b7280);
+      --cs-query: var(--color-action-primary, #2563eb);
+      --cs-text: var(--color-text-primary, #111827);
+      --cs-subtext: var(--color-text-secondary, #4b5563);
+      --cs-page: var(--color-bg-primary, #ffffff);
+      --cs-panel: var(--color-bg-secondary, #f3f4f6);
+      --cs-code: var(--color-surface-code, #f8fafc);
+      --cs-border: var(--color-border, #d1d5db);
+      --cs-strong-border: var(--color-border-strong, #9ca3af);
+      font-family: var(--font-sans, system-ui, sans-serif);
+    }
+
+    .node { transition: stroke 160ms ease, stroke-width 160ms ease; }
+    .execution-node { fill: var(--cs-panel); stroke: var(--cs-exec); stroke-width: 1.4; }
+    .evidence-node { fill: var(--cs-panel); stroke: var(--cs-evidence); stroke-width: 1.4; }
+    .query-packet { opacity: 0; }
+
+    .cs-svg-host[data-active="daemon"] #cs-arch-d-node-daemon,
+    .cs-svg-host[data-active="repl"] #cs-arch-d-node-repl,
+    .cs-svg-host[data-active="handoff"] #cs-arch-d-node-handoff,
+    .cs-svg-host[data-active="python"] #cs-arch-d-node-python,
+    .cs-svg-host[data-active="mcp"] #cs-arch-d-node-mcp,
+    .cs-svg-host[data-active="artifact"] #cs-arch-d-node-artifact,
+    .cs-svg-host[data-active="reviewer"] #cs-arch-d-node-reviewer {
+      stroke: var(--cs-query);
+      stroke-width: 3;
+    }
+
+    @keyframes cs-arch-query { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+    .cs-svg-host[data-playing="true"][data-hop="0"] #cs-arch-d-packet-0,
+    .cs-svg-host[data-playing="true"][data-hop="1"] #cs-arch-d-packet-1,
+    .cs-svg-host[data-playing="true"][data-hop="2"] #cs-arch-d-packet-2,
+    .cs-svg-host[data-playing="true"][data-hop="3"] #cs-arch-d-packet-3,
+    .cs-svg-host[data-playing="true"][data-hop="4"] #cs-arch-d-packet-4,
+    .cs-svg-host[data-playing="true"][data-hop="5"] #cs-arch-d-packet-5,
+    .cs-svg-host[data-playing="true"][data-hop="6"] #cs-arch-d-packet-6,
+    .cs-svg-host[data-playing="true"][data-hop="7"] #cs-arch-d-packet-7 {
+      opacity: 1;
+      animation: cs-arch-query 700ms linear both;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .node { transition: none; }
+      .query-packet { display: none; }
+    }
+  </style>
+
+  <defs>
+    <marker id="cs-arch-d-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="var(--cs-neutral)" stroke-width="1.6"/>
+    </marker>
+  </defs>
+
+  <rect x="24" y="96" width="252" height="332" rx="10" fill="none" stroke="var(--cs-strong-border)" stroke-dasharray="5 4"/>
+  <text x="36" y="115" font-size="10.5" font-weight="600" fill="var(--cs-neutral)">EXECUTION · workers</text>
+  <rect x="468" y="238" width="228" height="150" rx="10" fill="none" stroke="var(--cs-strong-border)" stroke-dasharray="5 4"/>
+  <text x="480" y="257" font-size="10.5" font-weight="600" fill="var(--cs-neutral)">EVIDENCE · durable records</text>
+
+  <g id="cs-arch-d-connectors" fill="none">
+    <path d="M375 62 L375 110" stroke="var(--cs-neutral)" stroke-width="1.5" marker-end="url(#cs-arch-d-arrow)"/>
+    <path d="M250 150 L300 150" stroke="var(--cs-exec)" stroke-width="1.6" marker-end="url(#cs-arch-d-arrow)" marker-start="url(#cs-arch-d-arrow)"/>
+    <path d="M250 283 L300 272" stroke="var(--cs-exec)" stroke-width="1.6" marker-end="url(#cs-arch-d-arrow)" marker-start="url(#cs-arch-d-arrow)"/>
+    <path d="M250 345 L300 332" stroke="var(--cs-exec)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#cs-arch-d-arrow)" marker-start="url(#cs-arch-d-arrow)"/>
+    <path d="M145 176 L145 198" stroke="var(--cs-neutral)" stroke-width="1.5" marker-end="url(#cs-arch-d-arrow)"/>
+    <path d="M145 240 L145 260" stroke="var(--cs-neutral)" stroke-width="1.5" marker-end="url(#cs-arch-d-arrow)"/>
+    <path d="M450 149 L468 149" stroke="var(--cs-exec)" stroke-width="1.6" marker-end="url(#cs-arch-d-arrow)"/>
+    <path d="M450 300 L480 300" stroke="var(--cs-evidence)" stroke-width="1.6" marker-end="url(#cs-arch-d-arrow)"/>
+    <path d="M375 360 L375 408" stroke="var(--cs-super)" stroke-width="1.5" stroke-dasharray="1.5 4" marker-end="url(#cs-arch-d-arrow)"/>
+  </g>
+
+  <text x="152" y="192" font-size="9.5" fill="var(--cs-neutral)">write</text>
+  <text x="152" y="255" font-size="9.5" fill="var(--cs-neutral)">read</text>
+  <text x="384" y="150" font-size="9.5" fill="var(--cs-neutral)" text-anchor="end">host call</text>
+  <text x="382" y="388" font-size="9.5" fill="var(--cs-super)">on checkpoint</text>
+
+  <line x1="286" y1="122" x2="286" y2="352" stroke="var(--cs-strong-border)" stroke-dasharray="5 4"/>
+  <text transform="rotate(-90 293 300)" x="293" y="300" text-anchor="middle" font-size="10" fill="var(--cs-neutral)">host-call boundary</text>
+
+  <g id="cs-arch-d-user">
+    <rect id="cs-arch-d-node-user" class="node" x="300" y="28" width="150" height="34" rx="8" fill="var(--cs-panel)" stroke="var(--cs-border)" stroke-width="1.4"/>
+    <text x="375" y="50" text-anchor="middle" font-size="12" fill="var(--cs-text)">User · local web UI</text>
+  </g>
+
+  <g id="cs-arch-d-daemon">
+    <rect id="cs-arch-d-node-daemon" class="node" x="300" y="110" width="150" height="250" rx="10" fill="var(--cs-text)" stroke="none" stroke-width="0"/>
+    <text x="375" y="182" text-anchor="middle" font-size="17" font-weight="600" fill="var(--cs-page)">Daemon</text>
+    <text x="375" y="202" text-anchor="middle" font-size="11" fill="var(--cs-page)" opacity=".72">the authority</text>
+    <line x1="322" y1="218" x2="428" y2="218" stroke="var(--cs-page)" stroke-opacity=".2"/>
+    <text x="375" y="242" text-anchor="middle" font-size="11" fill="var(--cs-page)" opacity=".86">permits · records</text>
+    <text x="375" y="260" text-anchor="middle" font-size="11" fill="var(--cs-page)" opacity=".86">review · connectors</text>
+  </g>
+
+  <g id="cs-arch-d-repl">
+    <rect id="cs-arch-d-node-repl" class="node execution-node" x="40" y="126" width="210" height="50" rx="8"/>
+    <text x="145" y="150" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--cs-text)">repl — control plane</text>
+    <text x="145" y="167" text-anchor="middle" font-size="10" fill="var(--cs-subtext)">stdlib · connectors, agents</text>
+  </g>
+
+  <g id="cs-arch-d-handoff">
+    <rect id="cs-arch-d-node-handoff" class="node" x="66" y="198" width="158" height="42" rx="6" fill="var(--cs-code)" stroke="var(--cs-strong-border)" stroke-width="1"/>
+    <text x="145" y="216" text-anchor="middle" font-size="11" font-weight="600" fill="var(--cs-text)" font-family="var(--font-code, monospace)">./handoff/*.json</text>
+    <text x="145" y="231" text-anchor="middle" font-size="9" fill="var(--cs-neutral)">shared cwd — files, not memory</text>
+  </g>
+
+  <g id="cs-arch-d-python">
+    <rect id="cs-arch-d-node-python" class="node execution-node" x="40" y="260" width="210" height="50" rx="8"/>
+    <text x="145" y="284" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--cs-text)">Python / R kernels</text>
+    <text x="145" y="301" text-anchor="middle" font-size="10" fill="var(--cs-subtext)">data plane · persistent state</text>
+  </g>
+
+  <g id="cs-arch-d-compute">
+    <rect x="40" y="322" width="210" height="46" rx="8" fill="var(--cs-page)" stroke="var(--cs-exec)" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="145" y="343" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--cs-text)">Compute provider</text>
+    <text x="145" y="358" text-anchor="middle" font-size="9.5" fill="var(--cs-subtext)">gated · remote</text>
+  </g>
+
+  <g id="cs-arch-d-mcp">
+    <rect id="cs-arch-d-node-mcp" class="node" x="468" y="122" width="228" height="54" rx="8" fill="var(--cs-panel)" stroke="var(--cs-border)" stroke-width="1.4"/>
+    <text x="582" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="var(--cs-text)">MCP · connectors · app tiles</text>
+    <text x="582" y="163" text-anchor="middle" font-size="10" fill="var(--cs-subtext)">the external world</text>
+  </g>
+
+  <g id="cs-arch-d-artifact">
+    <rect id="cs-arch-d-node-artifact" class="node evidence-node" x="480" y="264" width="204" height="52" rx="8"/>
+    <text x="582" y="287" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--cs-text)">Artifact store</text>
+    <text x="582" y="304" text-anchor="middle" font-size="10" fill="var(--cs-subtext)">versioned records</text>
+    <text x="484" y="342" font-size="10" font-weight="600" fill="var(--cs-neutral)">lineage</text>
+    <line x1="484" y1="356" x2="510" y2="356" stroke="var(--cs-evidence)" stroke-width="2"/>
+    <text x="516" y="360" font-size="9.5" fill="var(--cs-subtext)">runtime tags → observed</text>
+    <line x1="484" y1="376" x2="510" y2="376" stroke="var(--cs-neutral)" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="516" y="380" font-size="9.5" fill="var(--cs-subtext)">reconstruction → fallback</text>
+  </g>
+
+  <g id="cs-arch-d-reviewer">
+    <rect id="cs-arch-d-node-reviewer" class="node" x="300" y="408" width="150" height="52" rx="8" fill="var(--cs-panel)" stroke="var(--cs-super)" stroke-width="1.4"/>
+    <text x="375" y="432" text-anchor="middle" font-size="13" font-weight="600" fill="var(--cs-text)">Reviewer</text>
+    <text x="375" y="449" text-anchor="middle" font-size="10" fill="var(--cs-subtext)">background · read-only</text>
+  </g>
+
+  <g id="cs-arch-d-query-packets" aria-hidden="true">
+    <circle id="cs-arch-d-packet-0" class="query-packet" r="5.5" fill="var(--cs-query)" stroke="var(--cs-page)" stroke-width="1.5" style="offset-path:path('M375 62 L375 110');offset-rotate:0deg"/>
+    <circle id="cs-arch-d-packet-1" class="query-packet" r="5.5" fill="var(--cs-query)" stroke="var(--cs-page)" stroke-width="1.5" style="offset-path:path('M300 150 L250 150');offset-rotate:0deg"/>
+    <circle id="cs-arch-d-packet-2" class="query-packet" r="5.5" fill="var(--cs-query)" stroke="var(--cs-page)" stroke-width="1.5" style="offset-path:path('M145 176 L145 198');offset-rotate:0deg"/>
+    <circle id="cs-arch-d-packet-3" class="query-packet" r="5.5" fill="var(--cs-query)" stroke="var(--cs-page)" stroke-width="1.5" style="offset-path:path('M145 240 L145 260');offset-rotate:0deg"/>
+    <circle id="cs-arch-d-packet-4" class="query-packet" r="5.5" fill="var(--cs-query)" stroke="var(--cs-page)" stroke-width="1.5" style="offset-path:path('M250 283 L300 272');offset-rotate:0deg"/>
+    <circle id="cs-arch-d-packet-5" class="query-packet" r="5.5" fill="var(--cs-query)" stroke="var(--cs-page)" stroke-width="1.5" style="offset-path:path('M450 149 L468 149');offset-rotate:0deg"/>
+    <circle id="cs-arch-d-packet-6" class="query-packet" r="5.5" fill="var(--cs-query)" stroke="var(--cs-page)" stroke-width="1.5" style="offset-path:path('M450 300 L480 300');offset-rotate:0deg"/>
+    <circle id="cs-arch-d-packet-7" class="query-packet" r="5.5" fill="var(--cs-query)" stroke="var(--cs-page)" stroke-width="1.5" style="offset-path:path('M375 360 L375 408');offset-rotate:0deg"/>
+  </g>
+</svg>
