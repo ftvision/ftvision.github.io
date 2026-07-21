@@ -11,9 +11,9 @@ lang: en
 translationOf: "dissecting-claude-science"
 ---
 
-On June 30, 2026, Anthropic released a new product: Claude Science<Reference id="official-claude-science" citation="Anthropic, Claude Science, an AI workbench for scientists, June 30, 2026." url="https://www.anthropic.com/news/claude-science-ai-workbench" />. It looks like a simple local app.<Marginnote>Starting the app unexpectedly opens a localhost page in your browser instead of a conventional desktop window.</Marginnote> Its real novelty sits below the interface: Anthropic has turned the scientific workbench itself into an agent harness, with a daemon mediating the path from a running analysis to the evidence behind the final artifact.
+On June 30, 2026, Anthropic released Claude Science in beta<Reference id="official-claude-science" citation="Anthropic, Claude Science, an AI workbench for scientists, June 30, 2026." url="https://www.anthropic.com/news/claude-science-ai-workbench" />. It looks like a simple local app.<Marginnote>Starting the app unexpectedly opens a localhost page in your browser instead of a conventional desktop window.</Marginnote> Its real novelty sits below the interface: Anthropic has turned the scientific workbench itself into an agent harness, with a daemon mediating the path from a running analysis to the evidence behind the final artifact.
 
-The visible experience is intentionally familiar. You open a project, talk to an agent, watch it write and execute code, and receive a figure, table, structure, or report. Each artifact also exposes the code that produced it. That code was my first way into the architecture. In one generated analysis, I found a call like this:
+The visible experience is intentionally familiar. You open a project, talk to an agent, watch it write and execute code, and receive a figure, table, structure, or report. Generated outputs can also expose the code that produced them. That code was my first way into the architecture. In one generated analysis, I found a call like this:
 
 ```python
 try:
@@ -22,13 +22,13 @@ except Exception:
     EMAIL = None
 ```
 
-There was no `import host`. There was no `host` package in the Python environment. Yet the name existed inside the running kernel. A starter project contained another clue, `host.exec_peek(...)`, inside the recorded code path. These are small anomalies in an otherwise ordinary-looking Python session, but they invite curious people to investigate: **what put `host` there, and what is on the other side of the call?**.
+There was no `import host`. There was no `host` package in the Python environment. Yet the name existed inside the running kernel. A starter project contained another clue, `host.exec_peek(...)`, inside its recorded code path. These small anomalies in an otherwise ordinary Python session raised the question that led me through the system: **what put `host` there, and what is on the other side of the call?**
 
-Following that question reveals more of the product. The readable `kernel_worker.py` under `~/.claude-science/runtime/<version>` says that the host SDK is installed through the first `execute()` after kernel startup. The SDK itself is not a normal file in that runtime. It is embedded as Python source inside the staged `claude-science` daemon, alongside the TypeScript/JavaScript host implementation. The daemon selects those fragments, injects them, and attaches them to one singleton; methods such as `host.llm()` and `host.mcp()` are synchronous RPC back into the daemon, not privileged work performed by the Python process.
+The answer begins with a concrete mechanism. `kernel_worker.py` says that the host SDK is installed through the first `execute()` after kernel startup. The daemon injects that SDK, and calls such as `host.llm()` and `host.mcp()` become synchronous RPC back across the process boundary. That call boundary supplies the essay's spine: kernels hold working state, while the daemon holds authority and history.
 
-That boundary is an architectural design. Python and R can keep large datasets and fitted analytical models alive for hours, while the daemon retains authority over connectors, models, credentials, remote compute, verification, and publication. The agent uses code as a compact orchestration language, but the code runs inside capability-shaped environments. A reviewer inspects the work without becoming part of the main agent's self-reflection loop. An artifact survives the conversation with its producing code, environment, dependencies, and verification record still attached.
+From that split follow the product's three defining choices. Code compresses orchestration without collapsing capability boundaries. Artifacts outlive the conversation as versioned evidence. Review runs outside the main agent's self-reflection loop and can block completion.
 
-For Agent Harness developers, Claude Science is a useful case study: it shows how a model's raw capability, the harness that governs it, and the application's own execution environment combine to turn a scientist's scattered work steps into one connected pipeline. This essay traces how it does that: first the app shell and the payload it places on disk, then the hidden boundary behind `host`, then the execution, artifact, and verification flows that boundary makes possible. The implementation examined here is `0.1.15`.<Marginnote>The mechanism claims come from the local app bundle, the files under `~/.claude-science/runtime`, the SQLite migrations, and the behavior of the staged `claude-science` daemon.</Marginnote>
+For agent-harness developers, Claude Science is a useful case study in how model capability, harness policy, and application-owned execution combine into one scientific pipeline. I will follow the same boundary from beginning to end: first through the app shell and runtime payload, then through the injection and RPC behind `host`, and finally through the code, artifact, and verification flows that the daemon controls. The implementation examined here is `0.1.15-dev`.<Marginnote>The mechanism claims come from the local app bundle, the files under `~/.claude-science/runtime`, the SQLite migrations, and the behavior of the staged `claude-science` daemon.</Marginnote>
 
 ## What Ships to Your Machine
 
@@ -42,7 +42,7 @@ The payload identifies its build and platform in `BUILD.json`. Around that small
 
 The signed shell can remain small while the daemon and product payload move quickly. In the inspected installation, baseline Python analysis, R analysis, and bundled MCP services lived in separate conda environments; individual workspaces then added local Python virtual environments and R libraries on top.
 
-The payload also contains compressed starter projects for a CRISPR screen, enzyme engineering, extremophile analysis, and immunotherapy analysis. Their manifests and archives contain plans, reports, tables, figures, structures, arrays, intermediate results, and the recorded message streams that produced them. The examples leave a readable specimen of the product's artifact model on the user's own machine. It helps users learn, explore, and understand what the product can do and the quality of its deliverables.
+The payload also contains compressed starter projects for a CRISPR screen, enzyme engineering, extremophile analysis, and immunotherapy analysis. Their manifests and archives contain plans, reports, tables, figures, structures, arrays, intermediate results, and the recorded message streams that produced them. Because all of this lives on the user's machine, the starter projects are more than demos. They are inspectable specimens of the product's artifact model: users can see what Claude Science does, how it did it, and what quality its deliverables reach.
 
 ## Following `host` Into the Daemon
 
@@ -61,27 +61,27 @@ The same fragment answers what happens on the other side of a method call. Insid
 
 <HostCallProtocol />
 
-The injected method surface is a usability aid, not the final authority. The daemon chooses an allowed method set for each kernel kind, checks that permit before dispatch, and lets individual handlers perform their own validation. A fabricated raw `_host_call("mcp", ...)` does not recover a capability that was omitted from the analysis kernel.
+The injected methods make the SDK convenient to use; they do not grant the final authority. The daemon chooses an allowed method set for each kernel kind, checks that permit before dispatch, and lets each handler perform its own validation. Fabricating a raw `_host_call("mcp", ...)` does not recover a capability omitted from the analysis kernel.
 
 <Blockquote variant="pullquote">
   Kernels hold working state. The daemon holds authority and history.
 </Blockquote>
 
-The daemon is the architectural center. It owns identity, permissions, agent frames, execution records, artifact storage, connector access, compute providers, verification state, and the local web service. Python, R, shell processes, the stdlib-only control REPL, and remote compute remain subordinate workers. They can calculate, retain state, and produce files; they do not decide which external capabilities they may use or which outputs become durable.
+The daemon is the architectural center. It owns identity, permissions, agent frames, execution records, artifact storage, connector access, compute providers, verification state, and the local web service. Python, R, shell processes, the stdlib-only control REPL, and remote compute remain subordinate workers. Python and R can retain state, and all of these workers can calculate or produce files; none decides which external capabilities it may use or which outputs become durable.
 
 <WideBlock width="wide">
   <ClaudeScienceArchitecture />
 </WideBlock>
 
-With that boundary in view, the rest of the essay takes the product apart one cut at a time. Start with how the agent does any work at all: it writes code.
+With the physical payload and the `host` boundary now connected, we can follow the consequences of that design. The first is how the agent does its work: it writes code.
 
 ## Cut I: Code as the Orchestration Language
 
-Most agent products follow a Re-Act loop with modification: a paragraph of reasoning, one or more tool calls, a group of results, then next turn. Claude Science does the same, but its distinction is to use Python code to express and orchestrate tool-call control flows, and the difference is easiest to see at scale.
+Most agent products use some variation of a ReAct loop: reasoning, one or more tool calls, results, then another model turn. Claude Science can do that too, but its distinctive interface is code. Python expresses the control flow among tools, and the difference becomes clear at scale.
 
-Take the literature sweep behind its shipped `literature-review` skill. The skill loads helpers like `search_openalex` and `expand_citations` straight into the Python kernel; one cell uses them to pull hundreds of candidate papers and walk their citation graph in both directions, and the whole set stays in the kernel as a table. Because model calls run inside that same kernel, a loop can put `host.llm()` on each candidate, scoring relevance and extracting the effect it reports. A triage over hundreds of records becomes one Python cell rather than hundreds of turns. Then matplotlib draws the result. In the model's transcript, that entire sweep is a couple of tool calls, not the hundreds a turn-by-turn tool loop would spend.
+Take the literature sweep behind the shipped `literature-review` skill. The skill loads helpers such as `search_openalex` and `expand_citations` directly into the Python kernel. One cell can pull hundreds of candidate papers, walk their citation graph in both directions, and retain the result as a table. Because model calls run inside the same kernel, a loop can call `host.llm()` on each candidate to score relevance and extract its reported effect. The model writes one cell and receives one consolidated result; it does not have to manage hundreds of tool exchanges in its transcript. Matplotlib can then draw the result from the table already in memory.
 
-Here are two important points. First, the papers never have to enter the model's context. They live as data inside the persistent kernel, and only the compact synthesis crosses back. Second, the iteration lives in the code, not in the model's turn-by-turn transcript. One `for` loop makes its N calls from inside a single cell, so the model writes the cell once and reads a single result. A discrete tool interface would instead spend N separate tool-call and result exchanges, a full model turn apiece. Code moves the loop out of the language model.
+Two properties make this compression possible. First, the full working set never has to enter the main agent's conversation context. It remains data inside the persistent kernel; individual `host.llm()` requests cross the boundary, and only the consolidated result returns to the main transcript. Second, the iteration lives in code rather than in the model's turn-by-turn transcript. One `for` loop makes N calls from inside a single cell. The model writes the loop once and reads one result. Code moves the iteration out of the language model.
 
 Code is therefore not just a way to analyze returned data. **It compresses the orchestration.** The rest of this cut is the machinery that keeps that compression safe: the code runs inside capability-shaped processes, and the boundaries between them are as deliberate as the code itself.
 
@@ -93,26 +93,25 @@ The main `OPERON` prompt states the workflow directly. MCP calls happen in `repl
 
 ### The control kernel and the data kernels
 
-The control REPL runs Python in isolated, stdlib-only mode. It receives orchestration fragments for MCP, agents, skills, frame queries, delegation, structured output, and remote compute. The package-rich Python and R kernels do not receive those surfaces. They receive analysis-oriented methods such as artifact lookup, lineage, model calls, credentials, and analytic libraries.
+The control REPL runs Python in isolated, stdlib-only mode. It receives orchestration fragments for MCP, agents, skills, frame queries, delegation, structured output, and provider-gated remote compute. The package-rich Python and R kernels do not receive those surfaces. They receive analysis-oriented methods such as artifact lookup, lineage, model calls, credentials, and analytic libraries.
 
 When analysis code tries `host.mcp`, the SDK does not pretend the method exists. Its `AttributeError` says that connector tools have no surface in that kernel, tells the agent to fetch in `repl`, write JSON under `./handoff`, and read it from Python. The same teaching error covers agents, skills, compute, query, frames, execution control, and structured output. It also names the process boundary: the kernels share a workspace current directory, but not LLM context or memory.
 
 | Host surface                           | Analysis Python/R | Operon control REPL    | Reviewer          |
 | -------------------------------------- | ----------------- | ---------------------- | ----------------- |
-| artifacts, lineage, model calls        | yes               | yes                    | read-only subset  |
+| artifacts and lineage                  | yes               | yes                    | read-only         |
+| model calls                            | yes               | yes                    | no                |
 | MCP, agents, skills                    | no                | yes                    | no                |
 | compute, delegation, output submission | no                | profile/provider gated | no                |
 | frame and database introspection       | no                | yes                    | bounded read-only |
 
-The missing SDK methods are only the first gate. Fragment absence teaches the API and produces a useful error. The daemon permit set is authority. Even if kernel code manufactured a raw `_host_call("mcp", ...)`, the analysis permit set excludes it and the MCP handler independently requires an Operon kernel, authentication, connector resolution, schema validation, and policy approval.
+Withholding SDK methods is only the first gate. It teaches the API by producing a useful error. Authority lies in the daemon's permit set. Even if kernel code manufactured a raw `_host_call("mcp", ...)`, the analysis permit set would exclude it. The MCP handler would still require an Operon kernel, authentication, connector resolution, schema validation, and policy approval.
 
 <WideBlock width="wide">
   <CapabilityGates />
 </WideBlock>
 
-The same split shows up at smaller scale: a list comprehension can call a connector once per record and stay one REPL tool use with N daemon round trips.
-
-Code is also a capability boundary. Third-party scientific packages run in stateful analysis kernels. Accessing connectors and mutating agents run in the narrower control kernel. A pandas object cannot leak by reference from Python into `repl`; it must become a file. It also makes the crossing nameable, inspectable, hashable, and eligible for artifact lineage.
+Code is also a capability boundary. Third-party scientific packages run in stateful analysis kernels. Connector access and agent mutation run in the narrower control kernel. A pandas object cannot pass by reference from Python into `repl`; it must become a file. That conversion adds a step, but it also makes the crossing nameable, inspectable, hashable, and eligible for artifact lineage.
 
 ### Persistent state without kernel authority
 
@@ -126,21 +125,23 @@ Bash is different: the evidence points to managed subprocess execution rather th
 
 Persistent kernels are not new. The design choice that matters here is persistence without kernel authority. A Python process may hold a giant matrix for an hour; it must still ask the daemon for a privileged host operation.
 
-### Agent-swarm orchestration in Code
+### Agent-swarm orchestration through code
 
 The control plane does not stop at compute. Its gated SDK fragments let the agent create and edit agent profiles, attach skills and connectors, edit and publish skills, delegate to, collect, and interrupt child agents, and submit structured results. These are host calls, not edits to an informal prompt file. The daemon can validate and apply policy when it builds new agents, not only when they use tools.
 
 Onboarding uses the same runner in a deliberately narrow form. The shipped `ONBOARDING` profile cannot run Python, R, Bash, `repl`, search, package management, or remote compute. It conducts a bounded interview with option cards, collects permissions after a first task is selected, and hands the task to a working agent. This product flow could have been a fixed wizard. Instead it becomes a constrained agent profile inside the harness.
 
-For harness developers, Cut I yields a specific lesson. Giving a model "code execution" is not one capability. Claude Science decomposes it into persistent data state, stdlib control code, external-tool RPC, managed subprocesses, remote jobs, and daemon-owned policy. Code joins those pieces without erasing their boundaries.
+For harness developers, Cut I yields a specific lesson. Giving a model "code execution" is not one capability. Claude Science decomposes it into persistent data state, standard-library control code, external-tool RPC, managed subprocesses, remote jobs, and daemon-owned policy. Code joins those pieces without erasing their boundaries.
+
+That is the first consequence of the daemon boundary: work can move across processes while authority remains centralized. Those crossings create the next problem. If results must pass through files and outlive a kernel, the system needs a durable record of what each result is and where it came from.
 
 ## Cut II: Artifacts, Not Messages, Are the Product
 
-The `OPERON` prompt tells the agent to produce artifacts, not just answers. Workspace files are invisible to the user until saved. Figures should be embedded by version id. Reports should link artifacts by identity rather than ambiguous filename. The final response should point to the primary deliverable while the artifact tray carries the rest.
+The `OPERON` prompt tells the agent to produce artifacts, not just answers. Workspace files remain invisible to the user until they are saved. Figures should be embedded by version id. Reports should link artifacts by identity rather than by an ambiguous filename. The final response should point to the primary deliverable while the artifact tray carries the rest.
 
 This is not presentation polish. It names the system's durable unit.
 
-For that record to be useful, it has to answer one question: what each version was built from. Claude Science answers with a dependency graph over exact versions, not filenames. What matters is not only the edges but how each one is known: some inputs are observed while the code runs, some are reconstructed after the fact, and a few stay pending until extraction settles. The figure puts that distinction first, and the rest of this cut is how each layer underneath it is recorded.
+For an artifact record to be useful, it has to answer one question: what was each version built from? Claude Science answers with a dependency graph over exact versions, not filenames. The underlying mapping record can distinguish inputs found by runtime observation from inputs supplied by post-hoc reconstruction, while extraction itself may remain pending. The figure puts that distinction first; the rest of this cut explains how the evidence is recorded.
 
 <WideBlock width="wide">
   <ArtifactLineageExplorer />
@@ -150,13 +151,13 @@ For that record to be useful, it has to answer one question: what each version w
 
 Code text alone is a poor lineage oracle. A path may be assembled dynamically. A dataframe may be sliced through library calls. A figure may be written by an object whose origin is invisible in the final `savefig` statement. Claude Science first tries to observe dataflow while code runs.
 
-Before agent's analytical code, the analysis SDK wraps selected readers and writers. Readers such as `pandas.read_*`, `numpy.load*`, and `anndata.read_h5ad` attach source version ids to returned objects. Writers such as `DataFrame.to_*`, `Figure.savefig`, `numpy.save*`, and `json.dump` harvest those tags and record which source versions reached an output path. When that path becomes an artifact, the host asks the kernel for its runtime inputs.
+Before the agent's analytical code runs, the analysis SDK wraps selected readers and writers. Readers such as `pandas.read_*`, `numpy.load*`, and `anndata.read_h5ad` attach source version ids to returned objects. Writers such as `DataFrame.to_*`, `Figure.savefig`, `numpy.save*`, and `json.dump` harvest those tags and record which source versions reached an output path. When that path becomes an artifact, the host asks the kernel for its runtime inputs.
 
 <WideBlock width="wide">
   <ProvenanceCapture />
 </WideBlock>
 
-The mechanism propagates tags through pandas attributes, tagged NumPy subclasses, scalar wrappers, and a side table where possible. It is deliberately not universal taint tracking. Its own non-goals include generic dataflow tracing and complete R or Bash coverage. Plain dictionaries, unsupported libraries, and executed strings can lose tags. If a writer fires with tags, the host has a direct mapping. If not, the host falls back to code and dependency reconstruction.
+The mechanism propagates tags through pandas attributes, tagged NumPy subclasses, scalar wrappers, and a side table where possible. It is deliberately not universal taint tracking. Its own non-goals include generic dataflow tracing and complete R or Bash coverage. Plain dictionaries, unsupported libraries, and executed strings can lose tags. When a wrapped writer fires, its recorded input set—even an empty one—is authoritative. Only when no wrapper saw the path does the host fall back to code and dependency reconstruction.
 
 That ordering is the important choice:
 
@@ -165,7 +166,7 @@ That ordering is the important choice:
 </WideBlock>
 
 
-How about using LLM as a judge and ask an LLM to infer every edge from code? Claude Science does that as well, but only as a fallback.<Marginnote>Provenance confidence is uneven. Python has the richest object wrappers. R and Bash depend more on write tracing and post-hoc reconstruction, and the Darwin configuration says Bash is not traced through the same preload path as Linux. "Has lineage" should not be presented as a binary guarantee.</Marginnote>
+An LLM could infer every edge from code, but Claude Science uses that approach only as a fallback.<Marginnote>Provenance confidence is uneven. Python has the richest object wrappers. R and Bash depend more on write tracing and post-hoc reconstruction, and the Darwin configuration says Bash is not traced through the same preload path as Linux. "Has lineage" should not be presented as a binary guarantee.</Marginnote>
 
 ### The record beneath the file
 
@@ -191,7 +192,7 @@ There is no single magical "reconstruct code" function. The system assembles sev
 
 If an artifact was saved directly from a recorded cell, `producing_cell_id` and cell sources provide the strongest path. For a more complex sequence, a version can store `extracted_code`, `code_description`, `lineage_messages`, and `dependency_mappings`. Environment and lineage snapshots can be addressed by hash. `parent_version_id` preserves ancestry. Runtime tags may provide exact upstream ids. The daemon then converges mappings into dependency edges while checking that stored mapping text has not changed under a concurrent update.
 
-The result is the same confidence ordering the lineage ladder showed, now read from the reconstruction side: the daemon prefers observed tags and producing cells, falls back through recorded calls, extracted code, and snapshots to post-hoc mappings, and marks whatever has not converged as pending. Some edges were observed, some reconstructed, some remain unsettled.
+The result follows the same confidence ordering as the lineage ladder, now viewed from the reconstruction side. The daemon prefers observed tags and producing cells. It then falls back through recorded calls, extracted code, and snapshots to post-hoc mappings, and marks whatever has not converged as pending. Some edges were observed, some reconstructed, and some remain unsettled.
 
 ### Replay without pretending the host never existed
 
@@ -201,19 +202,23 @@ The shipped replay shim chooses a direct solution. Host responses are written to
 
 The shim mirrors model calls, artifacts, lineage, credentials, frames, children, delegation, MCP, and app tools. Its capability report admits that agents, skills, compute, and background execution controls are unavailable. Reordering calls or adding new host effects breaks the tape.
 
-This is portability, not full recomputation. A replayed LLM answer is the answer recorded during the live run. A replayed MCP result is not a fresh query. The tape proves that exported code can execute against preserved host responses in the recorded order. It does not prove that a clean environment can regenerate those responses from the outside world. Nevertheless, Claude Science exports those dependencies as data, and the research process is kept as reproducible as possible <Marginnote>A synthetic smoke test confirmed sequential consumption, controlled skipping of a discovery entry, and soft handling of a recorded credential failure. No real exported notebook bundle was present in the inspected app data, so end-to-end export completeness remains unverified.</Marginnote>.
+This is portability, not full recomputation. A replayed LLM answer is the answer recorded during the live run. A replayed MCP result is not a fresh query. The tape proves that exported code can execute against preserved host responses in the recorded order. It does not prove that a clean environment can regenerate those responses from the outside world. That limitation does not invalidate replay; it defines it. Instead of hiding the host dependencies until an exported notebook fails, Claude Science exports them as data.<Marginnote>A synthetic smoke test confirmed sequential consumption, controlled skipping of a discovery entry, and soft handling of a recorded credential failure. No real exported notebook bundle was present in the inspected app data, so end-to-end export completeness remains unverified.</Marginnote>
+
+The artifact system turns execution into durable evidence. That evidence, in turn, makes a different kind of review possible: a reviewer can trace the saved claim back through the record without rerunning the analysis or joining the main agent's reasoning loop.
 
 ## Cut III: A Reviewer Outside the Main Agent Loop
 
-LLM still hallucinates and makes mistakes. Many agent products try to mitigate this problem. A simple approach asks the same model to write a result, reflect on it, and decide whether it reflected enough. Even when a second model is called, the main loop often owns when to call it and what to do with the answer.
+Many agent systems leave verification inside the loop being verified. The same model produces a result, reflects on it, and decides whether the reflection is sufficient. Even when a second model is called, the main loop often decides when to call it and what to do with the answer.
 
 Claude Science does something else: a detached verifier owned by the runner.
 
-The target release ships two verification profiles, `REVIEWER` and `BOOKMARKER`. They are not two constantly running agents. The reviewer path is active in the observed local runtime. The bookmarker implementation ships in the same release, but `bookmarks_enabled` defaults to false, and no local bookmarker frame or transcript annotation was observed.
+The inspected release ships two verification profiles, `REVIEWER` and `BOOKMARKER`. They are not two constantly running agents. The reviewer path is active in the observed local runtime. The bookmarker implementation ships in the same release, but `bookmarks_enabled` defaults to false, and no local bookmarker frame or transcript annotation was observed.
 
 ### What the reviewer is told to do
 
-`REVIEWER` is not a second scientist. It reads the main agent's transcript and reports where the work fabricated a result, hallucinated a source, or drifted from the plan. Its prompt is unusually strict about method. Its first rule is **trace, don't recompute**: if the agent claims a number, the reviewer finds the cell that printed it and looks for a contradiction, and a value it cannot trace inside its window is not, on its own, a finding. This targets a specific verifier failure. Two independent analyses can disagree because they chose different filters, libraries, or random seeds. That disagreement alone does not show which one followed the user's work. A tracing reviewer asks: does the durable claim agree with the evidence path the session says produced it? To hold it to that question, the profile strips the tools that would let it wander off and start its own analysis. It disables planning, delegation, web search, and thinking, and it excludes Python, R, Bash, package and environment management, artifact writing, file editing, full-text retrieval, and compute. The daemon then grants only a read-only host surface: frames, scoped queries, artifact paths and listings, and lineage.
+`REVIEWER` is not a second scientist. It reads the main agent's transcript and reports where the work fabricated a result, hallucinated a source, or drifted from the plan. Its prompt is unusually strict about method. Its first rule is **trace, don't recompute**: if the agent claims a number, the reviewer finds the cell that printed it and looks for a contradiction. A value it cannot trace inside its window is not, on its own, a finding. Two independent analyses can disagree because they chose different filters, libraries, or random seeds. That disagreement alone does not show which analysis followed the user's work. A tracing reviewer asks a narrower question: does the durable claim agree with the evidence path that the session says produced it?
+
+To hold the reviewer to that question, the profile strips away tools that would let it start another analysis. It disables planning, delegation, web search, and thinking. It also excludes Python, R, Bash, package and environment management, artifact writing, file editing, full-text retrieval, and compute. The daemon grants only a read-only host surface: frames, scoped queries, artifact paths and listings, and lineage.
 
 The second rule is where the design shows its priorities: the reviewer weights a finding by where the claim lives. A wrong number in a saved figure or report is one the user cites next week with no transcript beside it, so artifacts are held to a strict bar. A loose phrase in chat scrolls away, so it is flagged only if acting on it would actually mislead. The reviewer guards the durable record, not the chatter.
 
@@ -227,9 +232,9 @@ The `BOOKMARKER` reuses the same checkpoint machinery for a narrower purpose: le
 
 ### It runs as detached windows, not a cron
 
-Review does not fire on a clock. Immediately before the runner dispatches a batch of tool calls, it asks two things: has enough time passed since the last checkpoint, and has real work accumulated since. At the defaults that means at least 120 seconds plus one qualifying signal, three new artifacts, a structural Markdown block, or two thousand characters of authored input. Quiet waiting triggers nothing; activity without a qualifying signal triggers nothing.
+Review does not fire on a clock. Immediately before the runner dispatches a batch of tool calls, it asks two things: has enough time passed since the last checkpoint, and has real work accumulated since? At the defaults, at least 120 seconds must have passed, and one of three signals must be present: three new artifacts, a structural Markdown block, or two thousand characters of authored input. Quiet waiting triggers nothing; activity without a qualifying signal triggers nothing.
 
-When a checkpoint does fire, the verifier snapshots a bounded window, messages plus execution, artifact, plan, and provenance context, and dispatches a detached reviewer. If one is already busy, the new unit merges into the pending window; otherwise the hold timer lets nearby work coalesce first. The figure lays out the predicate, both timers, and the detached reviewer's return at a terminal barrier<Marginnote>"Background" is precise: a review stays in flight, but the trigger is still checked at runner boundaries, not on a wall-clock.</Marginnote>.
+When a checkpoint fires, the verifier snapshots a bounded window: messages plus execution, artifact, plan, and provenance context. It then dispatches a detached reviewer. If one is already busy, the new unit merges into the pending window; otherwise the hold timer lets nearby work coalesce first. The figure lays out the predicate, both timers, and the detached reviewer's return at a terminal barrier<Marginnote>"Background" is precise: a review stays in flight, but the trigger is still checked at runner boundaries, not on a wall-clock.</Marginnote>.
 
 <WideBlock width="wide">
   <VerifierTimeline />
@@ -239,24 +244,26 @@ When a checkpoint does fire, the verifier snapshots a bounded window, messages p
 
 The reviewer participates in flow control.
 
-Natural completion passes through a terminal reviewer barrier. The barrier decides whether the unreviewed tail needs a terminal checkpoint, flushes a held unit when appropriate, and waits for in-flight or pending review. It then drains review notices. If a notice should be delivered, the runner injects it into the session, increments a bounce counter, saves state, and returns a veto so the main agent must continue. The idea is similar to how `/goal` or `/loop` is implemented in Claude Code and Codex.
+Natural completion passes through a terminal reviewer barrier. The barrier decides whether the unreviewed tail needs a final checkpoint, dispatches any held unit, and waits for in-flight or pending review. It then drains the review notices. If one should be delivered, the runner injects it into the session, increments a bounce counter, saves state, and vetoes completion so the main agent must continue.
 
 The bounce count is bounded at three by default. This prevents the reviewer and main agent from trapping the session in an unlimited dispute.
 
 The strongest case is a delegated result. When a sub-agent hands a structured output up to its parent and a reviewer fails it first, the runner throws the output away before the parent sees it and sends the sub-agent back to fix or rebut the finding and call `submit_output` again. The parent gets nothing until a corrected result comes back, or the retry budget runs out. The reviewer can void a handoff between agents, not just flag it.
 
-## Where do we go from here
+## What the Three Cuts Reveal
 
-Claude Science is not an AI that writes Python for scientists. It is a harness that puts AI, data, and compute under governance. Code runs, but inside processes whose capabilities the daemon shapes. Artifacts are produced, but as versioned records. Review happens, but as flow control the daemon owns and can use to hold an answer back.
+Claude Science is not merely an AI that writes Python for scientists. It is a daemon-centered harness that governs the path from work to evidence. Kernels retain the state needed for long-running analysis, but the daemon retains authority. Code compresses the work, but capability boundaries still hold. Artifact records can preserve the result together with versions, inputs, execution, and environment. Review checks that record from outside the main loop and can stop a result from advancing.
 
-None of that is science-specific. A serious domain agent, in any field, is not built from a longer system prompt or a wider tool menu. It is built from the objects a harness makes durable and auditable, the boundaries it enforces between them, and the control flow it holds back for the moment the evidence disagrees with the agent.
+None of that is specific to science. A serious domain agent is not built by adding a longer system prompt or a wider tool menu. It is built by deciding which objects must endure, which boundaries must remain enforceable, and where the system can still interrupt the agent when the evidence disagrees. Claude Science's most useful lesson is therefore not a feature. It is an architecture: working state in the kernels, authority and history in the daemon, and a continuous evidence path between them.
 
-Where will it go from here? Based on my observations of Claude Code, I would guess:
+### Three Predictions
 
-1. Anthropic will train or fine tune a Life Science vertical model, based on Opus or Fable.
-2. Claude Science will reach v1.0 with a new model release. That model, vertical or not, will absorb a lot of knowledge from using Claude Science, the way their recent models have absorbed knowledge from Claude Code.
-3. Anthropic's own wet-lab initiatives will make model, harness, and lab coevolve faster.
+The architecture above is what I could observe in `0.1.15`. The next three claims are predictions, not reverse-engineering findings. They also draw on the trajectory I have watched in Claude Code: a harness does not merely expose model capabilities. The real workflows and feedback that accumulate through it can also shape the models that follow; Anthropic's opt-in Development Partner Program explicitly describes using shared Claude Code sessions to improve models<Reference id="claude-code-development-partner-program" citation="Anthropic, About the Development Partner Program." url="https://support.anthropic.com/en/articles/11174108-about-the-development-partner-program" />. On that basis, I expect:
 
-I look forward to seeing this product improve.
+1. Anthropic will train or fine-tune a model specialized for life sciences, built on Opus or Fable.
+2. Claude Science will reach v1.0 alongside a major model release. Whether or not that model is explicitly specialized for life sciences, the workflows and feedback accumulated through Claude Science will help shape it, much as I believe Claude Code has shaped Anthropic's recent coding models.
+3. Anthropic has already conducted and supported wet-lab studies<Reference id="anthropic-wet-lab-studies" citation="Anthropic, LLMs and biorisk: Evidence from controlled trials and evaluations." url="https://www.anthropic.com/research/biorisk" />. I expect those initiatives to tighten the feedback loop among model, harness, and laboratory, accelerating their coevolution.
+
+These are predictions. The architecture above is why I find them plausible, and why I want to see what this product becomes.
 
 <References title="Sources and local evidence" />

@@ -40,7 +40,7 @@ export function ArtifactLineageExplorer() {
     <FigureScaffold
       eyebrow="Lineage · observed vs reconstructed"
       title="How each dependency is known"
-      description="Runtime observation catches only the inputs a cell reads directly. The daemon reconstructs the rest. Toggle between what runtime captured and the full graph it filled in."
+      description="Runtime observation catches inputs a cell reads through supported paths. Post-hoc reconstruction can add dependencies it missed. Toggle between the runtime record and the graph after reconstruction."
       caption="Figure E. Real lineage of one deliverable; the same split holds for all five in the run. The estimates file the cell read is observed; the raw JSON it never opened is reconstructed."
     >
       <div className="mb-4">

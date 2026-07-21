@@ -5,11 +5,11 @@ import { FigureScaffold } from "./FigureScaffold";
  * Figure — "Provenance confidence" (Cut II, lineage).
  *
  * Replaces the plaintext `runtime observation -> ... -> pending` flow and
- * folds in the later numbered "hierarchy of confidence". The single idea:
- * every lineage edge is ranked by how it is known. Runtime observation is
- * exact; recorded evidence is next; reconstruction is a fallback; a few edges
- * stay pending until convergence finishes. The line style (solid, dashed,
- * dotted) carries the confidence, the same grammar the lineage graph uses.
+ * folds in the later numbered "hierarchy of confidence". The single idea is
+ * the order in which the system acquires lineage evidence: runtime observation,
+ * recorded evidence, post-hoc reconstruction, or still-pending extraction.
+ * This is an evidence-order diagram, not a claim that the topology API stores a
+ * confidence rank on every edge.
  */
 
 const EVID = "var(--color-data-1)"; // evidence / lineage
@@ -21,8 +21,8 @@ export function ProvenanceConfidence() {
     <FigureScaffold
       eyebrow="Provenance · confidence"
       title="Observed before reconstructed"
-      description="Every lineage edge is ranked by how it is known. Runtime observation is exact, reconstruction is a fallback, and a few edges stay pending until convergence finishes. The line style carries the confidence."
-      caption="Figure. Same solid, dashed, and dotted grammar as the lineage graph. Higher is more direct evidence."
+      description="Claude Science prefers runtime-observed inputs, falls back to recorded and reconstructed evidence when needed, and marks extraction as pending until it settles. This is the order of evidence, not a confidence field stored on every graph edge."
+      caption="Figure. Higher means a more direct evidence path; the topology itself stores dependencies, while mapping records and extraction state explain how they were assembled."
     >
       <div className="min-w-0 overflow-x-auto">
         <svg
@@ -32,9 +32,9 @@ export function ProvenanceConfidence() {
           className="block h-auto w-full min-w-[480px] font-sans"
         >
           <title id="prov-conf-title">
-            A four-tier confidence ladder: runtime observation drawn solid is
-            most direct, then recorded evidence, then reconstruction drawn
-            dashed, then pending lineage drawn dotted.
+            A four-tier evidence ladder: runtime observation drawn solid is most
+            direct, then recorded evidence, then reconstruction drawn dashed,
+            then pending extraction drawn dotted.
           </title>
           <defs>
             <marker
@@ -58,7 +58,7 @@ export function ProvenanceConfidence() {
           <rect x="44" y="12" width="668" height="40" rx="8" fill={tint(EVID)} stroke={EVID} strokeWidth="1.5" />
           <text x="60" y="30" fontSize="12.5" fontWeight="600" fill="var(--color-text-primary)">Observed at runtime</text>
           <text x="60" y="45" fontSize="10.5" fill="var(--color-text-secondary)">tags survive read &#8594; write</text>
-          <text x="696" y="36" fontSize="10" fontWeight="600" fill={EVID} textAnchor="end">exact</text>
+          <text x="696" y="36" fontSize="10" fontWeight="600" fill={EVID} textAnchor="end">direct</text>
 
           {/* tier 2 — recorded */}
           <rect x="44" y="60" width="668" height="40" rx="8" fill="none" stroke={EVID} strokeWidth="1.5" />

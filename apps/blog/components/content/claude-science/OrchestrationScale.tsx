@@ -11,9 +11,9 @@ import { FigureScaffold } from "./FigureScaffold";
  * The single idea, framed the way Anthropic frames code execution with MCP:
  * with discrete tool use the model sits *inside* the loop — every call and
  * result passes through its context, so the context grows with N. With Claude
- * Science the model emits one code cell and the loop runs *off-model* inside the
- * kernel; only the code and one result reach the transcript, so it stays flat at
- * two tool calls while hundreds of governed round trips happen in the kernel.
+ * Science the model emits two code cells and the loop runs *off-model* inside
+ * the kernel. The transcript stays flat at two tool calls while hundreds of
+ * governed round trips happen inside those calls.
  */
 
 type ScenarioId = "lit" | "crispr";
@@ -54,18 +54,20 @@ const SCENARIOS: Record<ScenarioId, Scenario> = {
       "search_openalex and expand_citations fill a kernel table with ~240 papers; a host.llm() loop scores each abstract and pulls its effect. Two python cells.",
     kernelLabel: "persistent python kernel",
     toolShort: "host.llm()",
-    toolCall: "host.llm(rubric, p)",
+    toolCall: "host.llm(prompt)",
     nLabel: "×240",
     cells: [
       {
         kind: "python",
         label: "retrieve + triage, one kernel",
-        code: `papers = search_openalex(query, n=25)
+        code: `import json
+papers = search_openalex(query, n=25)
 for seed in papers[:3]:
     g = expand_citations(seed["doi"])
     papers += g["references"] + g["cited_by"]
 for p in papers:                    # ~240 candidates
-    p["score"], p["effect"] = host.llm(rubric, p)`,
+    prompt = rubric + "\n\n" + json.dumps(p)
+    p.update(json.loads(host.llm(prompt)["text"]))`,
       },
       {
         kind: "python",
@@ -84,14 +86,15 @@ plt.savefig("effects.png")          # -> artifact`,
       "A repl cell calls host.mcp once per gene into one ./handoff file; a python cell loads the user's matrix and computes enrichment. One repl cell, one python cell.",
     kernelLabel: "control repl kernel",
     toolShort: "host.mcp()",
-    toolCall: 'host.mcp("bio", "annotate")',
+    toolCall: 'host.mcp("bio", "civic_search_genes", …)',
     nLabel: "× N genes",
     cells: [
       {
         kind: "repl",
         label: "loop the connector, write one handoff",
         code: `import json
-rows = [host.mcp("bio", "annotate", {"gene": g})
+rows = [host.mcp("bio", "civic_search_genes",
+                 entrez_symbol=g)
         for g in gene_ids]          # one call per gene
 json.dump(rows,
           open("./handoff/gene_annotations.json", "w"))`,
@@ -263,9 +266,9 @@ function DesktopDiagram({
       <desc id={descId}>
         With discrete tool use the model sits inside the loop: each call and
         result passes through it, and the model context grows with the number of
-        iterations. With Claude Science the model emits one code cell and the loop
-        runs inside the kernel; only one result returns, and the model transcript
-        stays at two tool calls.
+        iterations. With Claude Science the model emits two code cells; the loop
+        runs inside the kernel, two compact cell results return, and the model
+        transcript stays at two tool calls.
       </desc>
       <defs>
         <Keyframes />
@@ -316,8 +319,8 @@ function DesktopDiagram({
 
       <path d="M488 96 L488 150" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-c-arr)" />
       <path d="M542 150 L542 96" fill="none" stroke={EXEC} strokeWidth="1.6" markerEnd="url(#cs-c-arr)" />
-      <text x="480" y="128" textAnchor="end" fontSize="9.5" fill={sub}>1 code cell</text>
-      <text x="550" y="128" fontSize="9.5" fill={sub}>1 result</text>
+      <text x="480" y="128" textAnchor="end" fontSize="9.5" fill={sub}>2 code cells</text>
+      <text x="550" y="128" fontSize="9.5" fill={sub}>2 results</text>
 
       {/* ---- BOTTOM: model context window ---- */}
       <line x1="20" y1="288" x2="700" y2="288" stroke="var(--color-border)" />
@@ -381,9 +384,9 @@ function MobileDiagram({
         <p className="type-label m-0 text-figure-primary">Claude Science — code in the kernel</p>
         <p className="type-caption m-0 mt-0.5 text-figure-muted">the loop runs off-model</p>
         <p className="type-caption m-0 mt-2 text-figure-secondary">
-          Model emits <span className="font-medium text-figure-primary">1 code cell</span>; the loop runs{" "}
-          <span className="font-medium" style={{ color: EVID }}>{s.nLabel}</span> inside the kernel; only{" "}
-          <span className="font-medium text-figure-primary">1 result</span> returns.
+          Model emits <span className="font-medium text-figure-primary">2 code cells</span>; the loop runs{" "}
+          <span className="font-medium" style={{ color: EVID }}>{s.nLabel}</span> inside the kernel;{" "}
+          <span className="font-medium text-figure-primary">2 compact results</span> return.
         </p>
         <div className="mt-2 flex gap-1.5" aria-hidden="true">
           <span className="rounded-[3px] px-1.5 py-0.5 font-code text-[0.7rem]" style={{ backgroundColor: tint(EXEC), color: EXEC }}>python · cell 1</span>
@@ -442,8 +445,8 @@ export function OrchestrationScale() {
     <FigureScaffold
       eyebrow="Code as orchestration"
       title="Where the loop runs"
-      description="With discrete tool use the model sits inside the loop, so its context grows with every call. Claude Science emits one code cell and runs the loop off-model in the kernel — hundreds of governed round trips, two tool calls in the transcript."
-      caption="Figure C. Discrete tool use puts the model in the loop: each call and result passes through its context, which grows with N. Claude Science emits one code cell and runs the loop inside the kernel, so the transcript stays at two tool calls while the working set never leaves the kernel. Grounded in the shipped literature-review skill and the CRISPR gene-annotation loop; the contrast follows Anthropic's code-execution-with-MCP framing."
+      description="With discrete tool use the model sits inside the loop, so its context grows with every call. Claude Science uses two code-cell tool calls while hundreds of governed round trips run inside the kernels."
+      caption="Figure C. Discrete tool use puts the model in the loop: each call and result passes through its context, which grows with N. Here Claude Science uses two code-cell tool calls, so the number of model-level tool calls stays fixed while the inner loop scales. The working table stays in the kernel; individual host-call inputs and compact results cross the boundary. Grounded in the shipped literature-review skill and the CRISPR gene-annotation loop."
     >
       <ScenarioTabs scenario={scenario} onSelect={selectScenario} />
 

@@ -63,7 +63,7 @@ export const SHIPMENT_STAGES: ShipmentStage[] = [
     size: "≈3.7 GB",
     path: "~/.claude-science/conda",
     verb: "provisions",
-    contents: ["python env", "r env", "operon-mcp", "seed assets"],
+    contents: ["python env", "r env", "operon-mcp"],
     kind: "provisioned",
   },
 ];

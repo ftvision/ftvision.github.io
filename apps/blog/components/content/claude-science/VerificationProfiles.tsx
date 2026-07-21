@@ -7,14 +7,15 @@ import { FigureScaffold } from "./FigureScaffold";
 /**
  * Figure D2 — "Verification agents".
  *
- * The verifier spawns two hidden subagents, REVIEWER and BOOKMARKER, over each
- * transcript window. The point is not the exact excluded_tools list — it is that
- * each profile is cut down to almost nothing, then handed one tight prompt. So
+ * The release ships two hidden profiles, REVIEWER and BOOKMARKER. REVIEWER is
+ * enabled by default; BOOKMARKER is wired into the same checkpoint machinery
+ * but disabled by default. The point is not the exact excluded_tools list — it
+ * is that each profile is cut down to almost nothing, then handed one tight prompt. So
  * the profile is collapsed to a single capability bar (how many tools survive)
  * plus a plain-English line; the shortened system prompt is the hero.
  *
  * Values are from the shipped 0.1.15 agent metadata (reviewer/bookmarker
- * metadata.yaml): the kept/excluded tool sets and the five off capability flags
+ * metadata.yaml): the kept/excluded tool sets and the five profile restrictions
  * are verbatim; only the prompt text is abbreviated (see the caption).
  */
 
@@ -33,10 +34,10 @@ interface Agent {
 
 const REVIEWER_ACCENT = "var(--color-data-1)";
 const BOOKMARKER_ACCENT = "var(--color-data-1)";
-// Both profiles switch off the same five capability flags (verbatim):
+// Both profiles carry the same five profile restrictions (verbatim):
 // enable_plan_mode, enable_subtask_delegation, enable_web_search,
 // enable_thinking, skills_locked.
-const CAP_FLAGS_OFF = 5;
+const PROFILE_RESTRICTIONS = 5;
 
 const REVIEWER: Agent = {
   id: "reviewer",
@@ -191,7 +192,7 @@ function CapabilityBar({ agent }: { agent: Agent }) {
       <div
         className="flex h-11 items-end gap-1"
         role="img"
-        aria-label={`Keeps ${kept} of ${total} tools; all ${CAP_FLAGS_OFF} capability flags off.`}
+        aria-label={`Keeps ${kept} of ${total} explicitly listed tools; ${PROFILE_RESTRICTIONS} profile restrictions.`}
       >
         {Array.from({ length: total }).map((_, index) => {
           const on = index < kept;
@@ -210,8 +211,8 @@ function CapabilityBar({ agent }: { agent: Agent }) {
       </div>
       <p className="type-caption m-0 mt-2 text-figure-secondary">
         keeps{" "}
-        <b style={{ color: agent.accent }}>{kept}</b> of {total} tools · all{" "}
-        {CAP_FLAGS_OFF} capability flags off
+        <b style={{ color: agent.accent }}>{kept}</b> of {total} explicitly listed tools ·{" "}
+        {PROFILE_RESTRICTIONS} profile restrictions
       </p>
 
       <p className="type-overline m-0 mb-2 mt-4 text-figure-muted">Keeps only</p>
@@ -262,14 +263,14 @@ export function VerificationProfiles() {
   return (
     <FigureScaffold
       eyebrow="Verification agents"
-      title="Two agents, stripped to one job each"
-      description="The verifier spawns two hidden subagents over each transcript window. Each is a real profile cut down to almost nothing — most tools gone, every capability flag off — then handed one tight, purpose-built prompt."
-      caption="Figure D2. The kept and excluded tool sets and the five off capability flags are verbatim from the shipped 0.1.15 agent metadata (reviewer and bookmarker metadata.yaml). The capability bar counts them; the system prompts are shortened, with ellipses marking cuts and the load-bearing lines kept word for word."
+      title="Two profiles, one enabled by default"
+      description="The release ships REVIEWER and BOOKMARKER profiles over the same checkpoint window. REVIEWER is enabled by default; BOOKMARKER is implemented but disabled. Each profile is cut down to one narrow job."
+      caption="Figure D2. The kept and excluded tool sets and five profile restrictions come from the shipped 0.1.15 metadata. Four capability switches are off, while skill discovery is locked. The prompts are shortened, with ellipses marking cuts. BOOKMARKER is shown as a shipped profile, not as an active default."
     >
       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <AgentTabs active={active} baseId={baseId} onSelect={setActive} />
         <p className="type-caption m-0 text-figure-muted">
-          At every checkpoint, over the same transcript window.
+          Same checkpoint window; BOOKMARKER disabled by default.
         </p>
       </div>
 

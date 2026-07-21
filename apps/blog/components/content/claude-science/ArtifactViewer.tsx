@@ -165,8 +165,8 @@ export function ArtifactViewer() {
     <>
     <FigureScaffold
       eyebrow="Artifact governance"
-      title="One artifact, every layer it carries"
-      description="Every Claude Science artifact opens with the same tab bar. Over one figure from a live session, its own tabs expose each layer the artifact carries: the code that produced it, the raw execution record, the agent's messages, the pinned environment, and where it came from."
+      title="One artifact and the layers it carries"
+      description="This generated figure from a live session opens with tabs for its reconstructed code, raw execution record, agent messages, and pinned environment. Its provenance is available from the artifact menu."
       caption="Figure. Real screenshots from a live pet-genetics session in Claude Science, viewing the artifact fig2_publication_trend.png. The tab bar is the product's own. Provenance is the artifact's right-click menu, shown here as a fifth view; nothing is recolored, so these are the shipped dark UI."
     >
       <p className="type-body-sm m-0 mb-4 text-figure-secondary">
