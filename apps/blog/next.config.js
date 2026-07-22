@@ -30,6 +30,39 @@ const nextConfig = {
   webpack: (config, { isServer }) => {
     config.resolve.alias['@ui'] = path.resolve(__dirname, '../../packages/ui/src');
 
+    // Keep SVGs as inspectable source assets while allowing MDX/TSX to import
+    // them as React components. Add `?url` when a URL is needed instead.
+    const svgComponentLoader = path.resolve(
+      __dirname,
+      'lib/webpack/svg-component-loader.cjs'
+    );
+    const assetRule = config.module.rules.find(
+      (rule) => rule.test instanceof RegExp && rule.test.test('.svg')
+    );
+
+    if (assetRule) {
+      config.module.rules.push(
+        {
+          ...assetRule,
+          test: /\.svg$/i,
+          resourceQuery: /url/,
+        },
+        {
+          test: /\.svg$/i,
+          issuer: assetRule.issuer,
+          resourceQuery: { not: [...(assetRule.resourceQuery?.not || []), /url/] },
+          use: [svgComponentLoader],
+        }
+      );
+      assetRule.exclude = /\.svg$/i;
+    } else {
+      config.module.rules.push({
+        test: /\.svg$/i,
+        issuer: /\.(?:[jt]sx?|mdx)$/,
+        use: [svgComponentLoader],
+      });
+    }
+
     // Externalize problematic modules during SSR
     if (isServer) {
       // react-syntax-highlighter has issues with SSR, mark as external

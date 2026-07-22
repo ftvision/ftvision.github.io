@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 760" role="img" aria-labelledby="shipment-mobile-title shipment-mobile-desc">
+  <title id="shipment-mobile-title">Unpacking the Claude Science 0.1.15 installation</title>
+  <desc id="shipment-mobile-desc">The signed app stages a daemon, which selects a versioned runtime, which provisions the much larger Python, R, and MCP execution environments.</desc>
+  <style>
+    svg { --product:var(--color-data-1,#2563eb); --provisioned:var(--color-border-strong,#9ca3af); --text:var(--color-text-primary,#111827); --subtext:var(--color-text-secondary,#4b5563); --muted:var(--color-text-muted,#6b7280); --panel:var(--color-bg-secondary,#f3f4f6); font-family:var(--font-sans,system-ui,sans-serif); }
+    .code { font-family:var(--font-family-code,monospace); } .layer { transition:opacity 360ms ease-out,transform 360ms cubic-bezier(.22,1,.36,1); transform-box:fill-box; transform-origin:center; }
+    .cs-svg-host[data-revealed="1"] .stage-2,.cs-svg-host[data-revealed="1"] .stage-3,.cs-svg-host[data-revealed="1"] .stage-4,.cs-svg-host[data-revealed="2"] .stage-3,.cs-svg-host[data-revealed="2"] .stage-4,.cs-svg-host[data-revealed="3"] .stage-4 { opacity:0; transform:translateY(-16px); }
+    .station{fill:var(--panel);stroke:var(--product);stroke-width:1.4}.provisioned-station{fill:var(--provisioned);fill-opacity:.08;stroke:var(--provisioned);stroke-width:1.4}.divider{stroke:var(--product);stroke-opacity:.35}.bullet{fill:var(--muted)}
+    @media (prefers-reduced-motion:reduce){.layer{transition:none}}
+  </style>
+  <defs>
+    <marker id="shipment-mobile-arrow" viewBox="0 0 8 8" refX="6.5" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 1L7 4L0 7Z" fill="var(--provisioned)"/>
+    </marker>
+  </defs>
+  <text x="16" y="22" fill="var(--muted)" class="code" font-size="10">UNPACKED &#xB7; DARWIN-ARM64</text>
+  <text x="16" y="35" fill="var(--muted)" font-size="9">dashed = reconstructed staging</text>
+  <g class="layer stage-2" aria-hidden="true">
+    <path d="M180 100V134" fill="none" stroke="var(--provisioned)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#shipment-mobile-arrow)"/>
+    <text x="192" y="120" fill="var(--subtext)" class="code" font-size="10">stages</text>
+  </g>
+  <g class="layer stage-3" aria-hidden="true">
+    <path d="M180 266V300" fill="none" stroke="var(--provisioned)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#shipment-mobile-arrow)"/>
+    <text x="192" y="286" fill="var(--subtext)" class="code" font-size="10">selects</text>
+  </g>
+  <g class="layer stage-4" aria-hidden="true">
+    <path d="M180 488V522" fill="none" stroke="var(--provisioned)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#shipment-mobile-arrow)"/>
+    <text x="192" y="508" fill="var(--subtext)" class="code" font-size="10">provisions</text>
+  </g>
+  <g class="layer stage-1">
+    <rect class="station" x="16" y="44" width="328" height="56" rx="2"/>
+    <text x="28" y="66" fill="var(--text)" font-size="13" font-weight="600">Signed app</text>
+    <text x="333" y="66" text-anchor="end" fill="var(--product)" class="code" font-size="11" font-weight="600">111 MB</text>
+    <text x="28" y="83" fill="var(--muted)" class="code" font-size="9">/Applications</text>
+  </g>
+  <g class="layer stage-2">
+    <rect class="station" x="16" y="134" width="328" height="132" rx="2"/>
+    <path class="divider" d="M16 180H344"/>
+    <text x="28" y="156" fill="var(--text)" font-size="13" font-weight="600">Staged daemon</text>
+    <text x="333" y="156" text-anchor="end" fill="var(--product)" class="code" font-size="11" font-weight="600">&#x2248;112 MB</text>
+    <text x="28" y="173" fill="var(--muted)" class="code" font-size="9">~/.claude-science/bin</text>
+    <g fill="var(--subtext)" class="code" font-size="9.5">
+      <circle class="bullet" cx="32" cy="199" r="1.4"/>
+      <text x="39" y="202">host &#xB7; dispatcher</text>
+      <circle class="bullet" cx="32" cy="219" r="1.4"/>
+      <text x="39" y="222">web service</text>
+      <circle class="bullet" cx="190" cy="199" r="1.4"/>
+      <text x="197" y="202">SDK templates &#xD7;21</text>
+      <circle class="bullet" cx="190" cy="219" r="1.4"/>
+      <text x="197" y="222">kernel manager</text>
+    </g>
+  </g>
+  <g class="layer stage-3">
+    <rect class="station" x="16" y="300" width="328" height="188" rx="2"/>
+    <path class="divider" d="M16 346H344"/>
+    <text x="28" y="322" fill="var(--text)" font-size="13" font-weight="600">Versioned runtime</text>
+    <text x="333" y="322" text-anchor="end" fill="var(--product)" class="code" font-size="11" font-weight="600">&#x2248;95 MB</text>
+    <text x="28" y="339" fill="var(--muted)" class="code" font-size="9">~/.claude-science/runtime</text>
+    <g fill="var(--subtext)" class="code" font-size="9.5">
+      <circle class="bullet" cx="32" cy="365" r="1.4"/>
+      <text x="39" y="368">agents</text>
+      <circle class="bullet" cx="32" cy="386" r="1.4"/>
+      <text x="39" y="389">kernels</text>
+      <circle class="bullet" cx="32" cy="407" r="1.4"/>
+      <text x="39" y="410">compute</text>
+      <circle class="bullet" cx="136" cy="365" r="1.4"/>
+      <text x="143" y="368">skills</text>
+      <circle class="bullet" cx="136" cy="386" r="1.4"/>
+      <text x="143" y="389">mcp-servers</text>
+      <circle class="bullet" cx="136" cy="407" r="1.4"/>
+      <text x="143" y="410">drizzle/sqlite</text>
+      <circle class="bullet" cx="240" cy="365" r="1.4"/>
+      <text x="247" y="368">seed</text>
+      <circle class="bullet" cx="240" cy="386" r="1.4"/>
+      <text x="247" y="389">web-dist</text>
+      <circle class="bullet" cx="240" cy="407" r="1.4"/>
+      <text x="247" y="410">support bins</text>
+    </g>
+  </g>
+  <g class="layer stage-4">
+    <rect class="provisioned-station" x="16" y="522" width="328" height="210" rx="2"/>
+    <path d="M16 568H344" stroke="var(--provisioned)" stroke-opacity=".35"/>
+    <text x="28" y="544" fill="var(--text)" font-size="13" font-weight="600">Execution environments</text>
+    <text x="333" y="544" text-anchor="end" fill="var(--provisioned)" class="code" font-size="11" font-weight="600">&#x2248;3.7 GB</text>
+    <text x="28" y="561" fill="var(--muted)" class="code" font-size="9">~/.claude-science/conda</text>
+    <g fill="var(--subtext)" class="code" font-size="9.5">
+      <circle class="bullet" cx="32" cy="587" r="1.4"/>
+      <text x="39" y="590">python env</text>
+      <circle class="bullet" cx="32" cy="608" r="1.4"/>
+      <text x="39" y="611">r env</text>
+      <circle class="bullet" cx="190" cy="587" r="1.4"/>
+      <text x="197" y="590">operon-mcp</text>
+    </g>
+    <text x="330" y="670" text-anchor="end" fill="var(--provisioned)" font-size="30" font-weight="600">&#x2248;95%</text>
+    <text x="330" y="692" text-anchor="end" fill="var(--subtext)" class="code" font-size="10">of the ~3.9 GB app home</text>
+  </g>
+</svg>

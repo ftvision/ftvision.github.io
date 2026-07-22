@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 148" role="img" aria-labelledby="prov-cap-title">
+  <title id="prov-cap-title">A source artifact's version tag is attached at a wrapped read, rides through the analysis, and is harvested at a wrapped write, producing one exact upstream lineage edge.</title>
+  <style>
+    svg {
+      --evidence: var(--color-data-1, #2563eb);
+      --text: var(--color-text-primary, #111827);
+      --subtext: var(--color-text-secondary, #4b5563);
+      --muted: var(--color-text-muted, #6b7280);
+      --page: var(--color-bg-primary, #fff);
+      --panel: var(--color-bg-secondary, #f3f4f6);
+      --strong-border: var(--color-border-strong, #9ca3af);
+      font-family: var(--font-sans, system-ui, sans-serif);
+    }
+    .evidence-node { fill: color-mix(in srgb, var(--evidence) 14%, var(--page)); stroke: var(--evidence); stroke-width: 1.4; }
+  </style>
+  <defs>
+    <marker id="prov-cap-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="var(--evidence)" stroke-width="1.6"/>
+    </marker>
+  </defs>
+  <rect class="evidence-node" x="8" y="18" width="150" height="48" rx="8"/>
+  <text x="24" y="38" font-size="12.5" font-weight="600" fill="var(--text)">count-matrix v3</text>
+  <text x="24" y="55" font-size="10.5" fill="var(--subtext)">source artifact</text>
+  <rect x="285" y="18" width="150" height="48" rx="8" fill="var(--panel)" stroke="var(--strong-border)" stroke-width="1.4"/>
+  <text x="301" y="38" font-size="12.5" font-weight="600" fill="var(--text)">analysis code</text>
+  <text x="301" y="55" font-size="10.5" fill="var(--subtext)">pandas / NumPy</text>
+  <rect class="evidence-node" x="562" y="18" width="150" height="48" rx="8"/>
+  <text x="578" y="38" font-size="12.5" font-weight="600" fill="var(--text)">fig.png v1</text>
+  <text x="578" y="55" font-size="10.5" fill="var(--subtext)">output artifact</text>
+  <path d="M160 42 L283 42" fill="none" stroke="var(--evidence)" stroke-width="1.6" marker-end="url(#prov-cap-arrow)"/>
+  <text x="221" y="13" font-size="10.5" fill="var(--subtext)" text-anchor="middle">wrapped read</text>
+  <text x="221" y="60" font-size="9.5" font-style="italic" fill="var(--muted)" text-anchor="middle">tag on</text>
+  <path d="M437 42 L560 42" fill="none" stroke="var(--evidence)" stroke-width="1.6" marker-end="url(#prov-cap-arrow)"/>
+  <text x="499" y="13" font-size="10.5" fill="var(--subtext)" text-anchor="middle">wrapped write</text>
+  <text x="499" y="60" font-size="9.5" font-style="italic" fill="var(--muted)" text-anchor="middle">tag harvested</text>
+  <path d="M637 66 L637 110 Q637 118 629 118 L91 118 Q83 118 83 110 L83 66" fill="none" stroke="var(--evidence)" stroke-width="1.6" marker-end="url(#prov-cap-arrow)"/>
+  <rect x="258" y="106" width="204" height="24" rx="4" fill="var(--page)" stroke="var(--evidence)" stroke-width="1.2"/>
+  <text x="360" y="122" font-size="10.5" font-weight="600" fill="var(--evidence)" text-anchor="middle">exact upstream edge</text>
+</svg>

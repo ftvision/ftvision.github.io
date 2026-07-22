@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 258" role="img" aria-labelledby="artifact-lineage-title artifact-lineage-desc">
+  <title id="artifact-lineage-title">Observed and reconstructed artifact lineage</title>
+  <desc id="artifact-lineage-desc">The report was built from the estimates table, observed at runtime, and the raw JSON, reconstructed after the run. Its own version 1 is the parent version.</desc>
+  <style>
+    svg {
+      --evidence: var(--color-data-1, #2563eb);
+      --text: var(--color-text-primary, #111827);
+      --subtext: var(--color-text-secondary, #4b5563);
+      --muted: var(--color-text-muted, #6b7280);
+      --page: var(--color-bg-primary, #fff);
+      --strong-border: var(--color-border-strong, #9ca3af);
+      font-family: var(--font-sans, system-ui, sans-serif);
+    }
+    .evidence-node { fill: color-mix(in srgb, var(--evidence) 14%, var(--page)); stroke: var(--evidence); stroke-width: 1.4; }
+    .reconstructed { transition: opacity .3s ease; }
+    .cs-svg-host[data-mode="runtime"] .reconstructed-edge { opacity: 0; }
+    .cs-svg-host[data-mode="runtime"] .reconstructed-node { opacity: .4; }
+    .cs-svg-host[data-mode="runtime"] .reconstructed-node rect { stroke-dasharray: 4 3; }
+    @media (prefers-reduced-motion: reduce) { .reconstructed { transition: none; } }
+  </style>
+  <defs>
+    <marker id="artifact-lineage-observed-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="var(--evidence)" stroke-width="1.6"/>
+    </marker>
+    <marker id="artifact-lineage-muted-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="var(--muted)" stroke-width="1.6"/>
+    </marker>
+    <marker id="artifact-lineage-parent-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L8 5 L1 9" fill="none" stroke="var(--strong-border)" stroke-width="1.6"/>
+    </marker>
+  </defs>
+  <path d="M226 85 C372 85 356 127 488 127" fill="none" stroke="var(--evidence)" stroke-width="1.8" marker-end="url(#artifact-lineage-observed-arrow)">
+    <title>Observed &#x2014; the analysis cell read this file directly at runtime.</title>
+  </path>
+  <text x="330" y="78" font-size="9.5" font-style="italic" fill="var(--muted)" text-anchor="middle">observed</text>
+  <g class="reconstructed reconstructed-edge">
+    <path d="M226 199 C372 199 360 147 488 147" fill="none" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#artifact-lineage-muted-arrow)">
+      <title>Reconstructed &#x2014; inferred after the run; the cell never read the raw JSON directly.</title>
+    </path>
+    <text x="330" y="206" font-size="9.5" font-style="italic" fill="var(--muted)" text-anchor="middle">reconstructed</text>
+  </g>
+  <path d="M599 74 L599 100" fill="none" stroke="var(--strong-border)" stroke-width="1.4" stroke-dasharray="2 3" marker-end="url(#artifact-lineage-parent-arrow)">
+    <title>Parent version &#x2014; v2 is a revision of v1.</title>
+  </path>
+  <text x="611" y="90" font-size="9" fill="var(--subtext)">revised from v1</text>
+  <rect class="evidence-node" x="16" y="62" width="210" height="46" rx="8"/>
+  <text x="30" y="82" font-size="11" font-weight="600" fill="var(--text)">heritability_estimates.csv</text>
+  <text x="30" y="98" font-size="9.5" fill="var(--subtext)">v1 &#xB7; read by the cell</text>
+  <g class="reconstructed reconstructed-node">
+    <rect class="evidence-node" x="16" y="176" width="210" height="46" rx="8"/>
+    <text x="30" y="196" font-size="11" font-weight="600" fill="var(--text)">unparsed.json</text>
+    <text x="30" y="212" font-size="9.5" fill="var(--subtext)">v1 &#xB7; raw data, never read directly</text>
+  </g>
+  <rect x="490" y="44" width="222" height="30" rx="8" fill="none" stroke="var(--strong-border)" stroke-width="1.2" opacity=".55"/>
+  <text x="504" y="63" font-size="9.5" fill="var(--subtext)">report.md v1 &#xB7; previous draft</text>
+  <rect x="490" y="100" width="222" height="58" rx="8" fill="color-mix(in srgb, var(--evidence) 14%, var(--page))" stroke="var(--evidence)" stroke-width="2"/>
+  <text x="504" y="123" font-size="10.5" font-weight="600" fill="var(--text)">pet_genetics_heritability</text>
+  <text x="504" y="138" font-size="10.5" font-weight="600" fill="var(--text)">_report.md</text>
+  <text x="504" y="153" font-size="9.5" fill="var(--subtext)">v2 &#xB7; the deliverable</text>
+  <g transform="translate(16 244)">
+    <line x1="0" y1="0" x2="28" y2="0" stroke="var(--evidence)" stroke-width="1.8"/>
+    <text x="34" y="4" font-size="9.5" fill="var(--subtext)">observed</text>
+    <line x1="120" y1="0" x2="148" y2="0" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <text x="154" y="4" font-size="9.5" fill="var(--subtext)">reconstructed</text>
+    <line x1="264" y1="0" x2="292" y2="0" stroke="var(--strong-border)" stroke-width="1.4" stroke-dasharray="2 3"/>
+    <text x="298" y="4" font-size="9.5" fill="var(--subtext)">parent version</text>
+  </g>
+</svg>

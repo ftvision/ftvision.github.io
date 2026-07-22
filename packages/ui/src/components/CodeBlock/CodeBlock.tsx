@@ -10,7 +10,7 @@ const customTheme: Record<string, React.CSSProperties> = {
   'code[class*="language-"]': {
     color: 'var(--color-text-primary)',
     background: 'none',
-    fontFamily: 'var(--font-code)',
+    fontFamily: 'var(--font-family-code)',
     fontSize: '0.875rem',
     lineHeight: '1.75',
     textAlign: 'left' as const,
@@ -24,7 +24,7 @@ const customTheme: Record<string, React.CSSProperties> = {
   'pre[class*="language-"]': {
     color: 'var(--color-text-primary)',
     background: 'transparent',
-    fontFamily: 'var(--font-code)',
+    fontFamily: 'var(--font-family-code)',
     fontSize: '0.875rem',
     lineHeight: '1.75',
     textAlign: 'left' as const,
@@ -306,7 +306,7 @@ const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
             }}
             codeTagProps={{
               style: {
-                fontFamily: 'var(--font-code)',
+                fontFamily: 'var(--font-family-code)',
               },
             }}
             lineNumberStyle={{

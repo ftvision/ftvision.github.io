@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" role="img" aria-labelledby="verifier-timeline-title verifier-timeline-desc">
+  <title id="verifier-timeline-title">A fork and join view of Claude Science verification</title>
+  <desc id="verifier-timeline-desc">The main agent keeps running after a checkpoint forks a detached reviewer. The reviewer writes a verdict to durable state. The only blocking point is completion, where a terminal barrier reads that verdict.</desc>
+  <style>
+    svg { --exec:var(--color-data-1,#2563eb); --super:var(--color-text-secondary,#4b5563); --evidence:var(--color-data-1,#2563eb); --neutral:var(--color-text-muted,#6b7280); --main:var(--color-action-primary,#2563eb); --text:var(--color-text-primary,#111827); --subtext:var(--color-text-secondary,#4b5563); --page:var(--color-bg-primary,#fff); --panel:var(--color-bg-secondary,#f3f4f6); --border:var(--color-border-strong,#9ca3af); font-family:var(--font-sans,system-ui,sans-serif); }
+    .window { fill:color-mix(in srgb,var(--evidence) 14%,var(--page));stroke:var(--evidence);stroke-width:1.4 }.reviewer { fill:color-mix(in srgb,var(--super) 14%,var(--page));stroke:var(--super);stroke-width:1.4 }.node { transition:fill .2s,stroke .2s,stroke-width .2s }.query{opacity:0}
+    .cs-svg-host[data-active~="predicate"] .predicate { fill:color-mix(in srgb,var(--main) 14%,var(--page));stroke:var(--main);stroke-width:2.2 }.cs-svg-host[data-active~="window"] .window,.cs-svg-host[data-active~="reviewer"] .reviewer,.cs-svg-host[data-active~="verdict"] .verdict { stroke-width:2.6 }.cs-svg-host[data-active~="verdict"] .verdict { fill:color-mix(in srgb,var(--super) 14%,var(--page));stroke:var(--super) }.cs-svg-host[data-active~="boundary"] .boundary-fire * { stroke:var(--main) }.cs-svg-host[data-active~="boundary"] .boundary-label{fill:var(--main)}.cs-svg-host[data-active~="barrier"] .barrier{stroke:var(--main)}.cs-svg-host[data-active~="outcome"] .outcome{opacity:1}
+    @keyframes verifier-token{from{offset-distance:0%}to{offset-distance:100%}}@keyframes verifier-pulse{0%,100%{r:7;opacity:.85}50%{r:15;opacity:0}}
+    .cs-svg-host[data-playing="true"][data-hop="0"] .packet-0,.cs-svg-host[data-playing="true"][data-hop="1"] .packet-1-main,.cs-svg-host[data-playing="true"][data-hop="1"] .packet-1-review,.cs-svg-host[data-playing="true"][data-hop="2"] .packet-2-main,.cs-svg-host[data-playing="true"][data-hop="2"] .packet-2-review,.cs-svg-host[data-playing="true"][data-hop="3"] .packet-3-main,.cs-svg-host[data-playing="true"][data-hop="3"] .packet-3-review,.cs-svg-host[data-playing="true"][data-hop="4"] .packet-4-review,.cs-svg-host[data-playing="true"][data-hop="5"] .packet-5 { opacity:1;animation:verifier-token 1050ms linear both }.wait{display:none}.cs-svg-host[data-playing="true"][data-hop="4"] .wait{display:block}.wait-pulse{animation:verifier-pulse 1.4s infinite}.outcome{opacity:.6}
+    @media(prefers-reduced-motion:reduce){.node{transition:none}.query,.wait{display:none!important}}
+  </style>
+  <defs>
+    <marker id="vt-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="var(--neutral)" stroke-width="1.6"/>
+    </marker>
+    <marker id="vt-arrow-super" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="var(--super)" stroke-width="1.6"/>
+    </marker>
+    <marker id="vt-arrow-exec" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="var(--exec)" stroke-width="1.6"/>
+    </marker>
+  </defs>
+  <line x1="56" y1="110" x2="812" y2="110" stroke="var(--exec)" stroke-width="1.8"/>
+  <g fill="var(--exec)" opacity=".5">
+    <rect x="140" y="105" width="6" height="10" rx="1"/>
+    <rect x="196" y="105" width="6" height="10" rx="1"/>
+    <rect x="470" y="105" width="6" height="10" rx="1"/>
+    <rect x="540" y="105" width="6" height="10" rx="1"/>
+    <rect x="600" y="105" width="6" height="10" rx="1"/>
+    <rect x="660" y="105" width="6" height="10" rx="1"/>
+    <rect x="720" y="105" width="6" height="10" rx="1"/>
+  </g>
+  <path d="M341 116L341 150" fill="none" stroke="var(--neutral)" stroke-width="1.4" marker-end="url(#vt-arrow)"/>
+  <path d="M341 264L341 306" fill="none" stroke="var(--super)" stroke-width="1.5" marker-end="url(#vt-arrow-super)"/>
+  <line x1="250" y1="345" x2="800" y2="345" stroke="var(--super)" stroke-width="1.4" opacity=".6"/>
+  <path d="M772 306L772 158L806 158" fill="none" stroke="var(--neutral)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#vt-arrow)"/>
+  <path class="outcome" d="M808 92L808 46Q808 38 800 38L466 38Q458 38 458 46L458 102" fill="none" stroke="var(--super)" stroke-width="1.6" marker-end="url(#vt-arrow-super)"/>
+  <path class="outcome" d="M818 110L888 110" fill="none" stroke="var(--exec)" stroke-width="1.7" marker-end="url(#vt-arrow-exec)"/>
+  <path class="outcome" d="M818 130L842 130" fill="none" stroke="var(--super)" stroke-width="1.5" marker-end="url(#vt-arrow-super)"/>
+  <g aria-hidden="true">
+    <circle class="query packet-0" r="5.5" fill="var(--main)" stroke="var(--page)" stroke-width="1.5" style="offset-path:path('M60 110 L333 110');offset-rotate:0deg"/>
+    <circle class="query packet-1-main" r="5.5" fill="var(--main)" stroke="var(--page)" stroke-width="1.5" style="offset-path:path('M349 110 L540 110');offset-rotate:0deg"/>
+    <circle class="query packet-1-review" r="5.5" fill="var(--super)" stroke="var(--page)" stroke-width="1.5" style="offset-path:path('M341 264 L341 345');offset-rotate:0deg"/>
+    <circle class="query packet-2-main" r="5.5" fill="var(--main)" stroke="var(--page)" stroke-width="1.5" style="offset-path:path('M540 110 L706 110');offset-rotate:0deg"/>
+    <circle class="query packet-2-review" r="5.5" fill="var(--super)" stroke="var(--page)" stroke-width="1.5" style="offset-path:path('M341 345 L525 345');offset-rotate:0deg"/>
+    <circle class="query packet-3-main" r="5.5" fill="var(--main)" stroke="var(--page)" stroke-width="1.5" style="offset-path:path('M706 110 L802 110');offset-rotate:0deg"/>
+    <circle class="query packet-3-review" r="5.5" fill="var(--super)" stroke="var(--page)" stroke-width="1.5" style="offset-path:path('M525 345 L720 345');offset-rotate:0deg"/>
+    <circle class="query packet-4-review" r="5.5" fill="var(--super)" stroke="var(--page)" stroke-width="1.5" style="offset-path:path('M772 345 L772 158 L804 158');offset-rotate:0deg"/>
+    <circle class="query packet-5" r="5.5" fill="var(--main)" stroke="var(--page)" stroke-width="1.5" style="offset-path:path('M820 110 L888 110');offset-rotate:0deg"/>
+  </g>
+  <rect class="node predicate" x="230" y="150" width="222" height="114" rx="10" fill="var(--panel)" stroke="var(--border)" stroke-width="1.4"/>
+  <text x="244" y="171" font-size="10.5" font-weight="600" fill="var(--text)">checkpoint predicate</text>
+  <g stroke="var(--subtext)" fill="none" stroke-width="1.4" stroke-linecap="round">
+    <circle cx="258" cy="196" r="7"/>
+    <path d="M258 192.3L258 196L261.2 198"/>
+  </g>
+  <text x="274" y="192" font-size="10.5" font-weight="600" fill="var(--text)">interval floor</text>
+  <text x="274" y="205" font-size="8.5" fill="var(--subtext)">&#x2265; 120 s since last checkpoint</text>
+  <text x="440" y="196" font-size="9" font-weight="600" fill="var(--subtext)" text-anchor="end">120 s</text>
+  <text x="341" y="223" font-size="9.5" font-weight="600" fill="var(--subtext)" text-anchor="middle">AND</text>
+  <g stroke="var(--subtext)" fill="none" stroke-width="1.3" stroke-linecap="round">
+    <rect x="252.5" y="236.5" width="11" height="15" rx="1.6"/>
+    <path d="M255.5 240.5H260.5M255.5 244H260.5M255.5 247.5H259" stroke-width="1"/>
+  </g>
+  <text x="274" y="240" font-size="10.5" font-weight="600" fill="var(--text)">content signal &#xB7; any one</text>
+  <text x="274" y="253" font-size="8.5" fill="var(--subtext)">3 artifacts &#xB7; structural block &#xB7; 2,000 chars</text>
+  <rect class="node window" x="250" y="306" width="160" height="78" rx="9"/>
+  <text x="330" y="330" font-size="11" font-weight="600" fill="var(--text)" text-anchor="middle">bounded window</text>
+  <text x="330" y="348" font-size="8.5" fill="var(--subtext)" text-anchor="middle">messages &#xB7; execution &#xB7; artifact</text>
+  <text x="330" y="360" font-size="8.5" fill="var(--subtext)" text-anchor="middle">plan &#xB7; provenance</text>
+  <text x="330" y="374" font-size="8.5" fill="var(--neutral)" text-anchor="middle">a snapshot, not a live feed</text>
+  <rect class="node reviewer" x="440" y="306" width="170" height="78" rx="9"/>
+  <g stroke="var(--super)" fill="none" stroke-width="1.4">
+    <path d="M517 332Q525 325 533 332Q525 339 517 332Z"/>
+    <circle cx="525" cy="332" r="2.4" fill="var(--super)" stroke="none"/>
+  </g>
+  <text x="525" y="358" font-size="11" font-weight="600" fill="var(--text)" text-anchor="middle">reviewer</text>
+  <text x="525" y="372" font-size="8.5" fill="var(--subtext)" text-anchor="middle">traces &#xB7; trace, don&#x2019;t recompute</text>
+  <rect class="node verdict" x="640" y="306" width="160" height="78" rx="9" fill="var(--panel)" stroke="var(--border)" stroke-width="1.4"/>
+  <text x="720" y="330" font-size="11" font-weight="600" fill="var(--text)" text-anchor="middle">verdict</text>
+  <text x="720" y="348" font-size="8.5" fill="var(--subtext)" text-anchor="middle">finding / notice</text>
+  <text x="720" y="362" font-size="8.5" fill="var(--neutral)" text-anchor="middle">written to durable state</text>
+  <text x="56" y="58" font-size="11" font-weight="600" fill="var(--text)">MAIN AGENT</text>
+  <text x="56" y="72" font-size="9" fill="var(--neutral)">main operon &#xB7; one continuous thread</text>
+  <g opacity=".5">
+    <line x1="250" y1="99" x2="250" y2="121" stroke="var(--neutral)"/>
+    <path d="M250 103.5L256.5 110L250 116.5L243.5 110Z" fill="var(--page)" stroke="var(--neutral)" stroke-width="1.2"/>
+    <path d="M247.2 107.2L252.8 112.8M252.8 107.2L247.2 112.8" stroke="var(--neutral)" stroke-width="1.1"/>
+  </g>
+  <text x="250" y="130" font-size="8.5" fill="var(--neutral)" text-anchor="middle">skip</text>
+  <g class="boundary-fire">
+    <line x1="341" y1="99" x2="341" y2="121" stroke="var(--text)"/>
+    <path d="M341 103.5L347.5 110L341 116.5L334.5 110Z" fill="var(--page)" stroke="var(--text)" stroke-width="1.6"/>
+  </g>
+  <text class="boundary-label" x="341" y="94" font-size="9.5" font-weight="600" fill="var(--text)" text-anchor="middle">checkpoint fires</text>
+  <text x="600" y="100" font-size="9" fill="var(--subtext)" text-anchor="middle">keeps moving &#xB7; non-blocking</text>
+  <text x="612" y="34" font-size="9" font-weight="600" fill="var(--super)" text-anchor="middle">bounce &#xB7; re-run another turn (&#x2264; 3)</text>
+  <text x="392" y="284" font-size="9" font-weight="600" fill="var(--super)">spawn &#xB7; non-blocking</text>
+  <text x="392" y="296" font-size="8.5" fill="var(--neutral)">hold: coalesce, merge if busy</text>
+  <text x="56" y="300" font-size="10.5" font-weight="600" fill="var(--super)">DETACHED REVIEWER</text>
+  <text x="56" y="313" font-size="9" fill="var(--neutral)">background &#xB7; read-only &#xB7; runs in parallel</text>
+  <text x="812" y="238" font-size="8.5" fill="var(--neutral)" text-anchor="middle">barrier reads</text>
+  <text x="812" y="249" font-size="8.5" fill="var(--neutral)" text-anchor="middle">the verdict</text>
+  <line class="barrier" x1="809" y1="86" x2="809" y2="150" stroke="var(--text)" stroke-width="2"/>
+  <line class="barrier" x1="815" y1="86" x2="815" y2="150" stroke="var(--text)" stroke-width="1.1"/>
+  <g class="wait">
+    <circle cx="806" cy="110" r="7" fill="none" stroke="var(--main)" stroke-width="1.6"/>
+    <circle class="wait-pulse" cx="806" cy="110" r="7" fill="none" stroke="var(--main)" stroke-width="1.2"/>
+  </g>
+  <text x="812" y="170" font-size="10" font-weight="600" fill="var(--text)" text-anchor="middle">terminal barrier</text>
+  <text x="812" y="183" font-size="8.5" fill="var(--neutral)" text-anchor="middle">the only blocking point</text>
+  <text x="812" y="194" font-size="8.5" fill="var(--neutral)" text-anchor="middle">waits for the verdict</text>
+  <text x="848" y="106" font-size="9.5" fill="var(--text)">finish &#xB7; deliver</text>
+  <text x="848" y="133" font-size="9" fill="var(--text)">invalidate &#xB7; delegated output</text>
+</svg>
