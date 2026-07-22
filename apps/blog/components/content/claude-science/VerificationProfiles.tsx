@@ -271,6 +271,7 @@ export function VerificationProfiles() {
       title="Two profiles, one enabled by default"
       description="The release ships REVIEWER and BOOKMARKER profiles over the same checkpoint window. REVIEWER is enabled by default; BOOKMARKER is implemented but disabled. Each profile is cut down to one narrow job."
       caption="Figure 10. The kept and excluded tool sets and five profile restrictions come from the shipped 0.1.15 metadata. Four capability switches are off, while skill discovery is locked. The prompts are shortened, with ellipses marking cuts. BOOKMARKER is shown as a shipped profile, not as an active default."
+      captionZh="图 10。工具保留清单、排除清单和五项配置约束，都来自 0.1.15 随附的元数据。四项能力开关关闭，技能目录锁定。提示词做了删节，省略号标出删去的内容。图中列出 BOOKMARKER，是因为它已随版本发布；这不表示它默认启用。"
     >
       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <AgentTabs active={active} baseId={baseId} onSelect={setActive} />

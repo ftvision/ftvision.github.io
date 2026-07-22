@@ -234,6 +234,7 @@ export function CapabilityGates() {
       title="Two gates decide what a kernel may do"
       description="The same host calls, judged against one kernel at a time. A missing SDK method stops a call inside the Python runtime, but that gate is ergonomic. The daemon permit set is the gate that actually contains the kernel."
       caption="Figure 5. Gate 1 is the injected SDK surface: absent methods raise in the kernel before any host round trip. Gate 2 is the daemon permit set, checked after the call crosses the process boundary. A hand-forged _host_call skips gate 1 but not gate 2."
+      captionZh="图 5。第一道关卡是注入内核的 SDK 界面：方法不存在，调用还没离开内核就会报错。第二道关卡是守护进程的许可集，调用跨过进程边界后才检查。手工伪造 _host_call 能绕过第一关，却绕不过第二关。"
     >
       <KernelToggle kernel={kernel} onSelect={setKernel} />
       <div className="mt-5 border-y border-border py-4">

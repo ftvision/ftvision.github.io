@@ -21,6 +21,12 @@ export function ClaudeScienceShipment() {
           reconstructed staging handoff.
         </>
       }
+      captionZh={
+        <>
+          <strong>图 1。签名应用只是引导程序，不是科研运行时。</strong>{" "}
+          这张图示意了拆包过程。磁盘位置、内容和大致体积，直接取自目标机器的实际安装。各层从左到右展开，虚线箭头表示根据证据重建的部署交接。
+        </>
+      }
     >
       <ClaudeScienceShipmentDiagram />
     </FigureScaffold>

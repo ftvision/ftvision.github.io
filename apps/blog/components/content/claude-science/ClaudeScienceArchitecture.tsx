@@ -85,6 +85,14 @@ export function ClaudeScienceArchitecture() {
           daemon fragments.
         </>
       }
+      captionZh={
+        <>
+          <strong>图 3。内核保存状态；权柄和历史归守护进程。</strong>{" "}
+          控制内核和数据内核共享工作区，却不共享内存；所有特权调用都要跨过
+          host
+          调用边界；溯源先观测，后重建；审查者在检查点触发时醒来。图中各角色来自本地运行时和抽取出的守护进程代码片段。
+        </>
+      }
     >
       <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
         {prefersReducedMotion ? (

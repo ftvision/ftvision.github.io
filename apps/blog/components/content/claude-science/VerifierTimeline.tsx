@@ -74,6 +74,7 @@ export function VerifierTimeline() {
       title="Review forks off the main agent; only completion blocks"
       description="A checkpoint spawns a detached reviewer that runs in the background. The main agent never waits for it and keeps moving. The single blocking point is completion, where a terminal barrier reads the verdict and delivers, bounces the agent for another turn, or invalidates an output."
       caption="Figure 11. The first 120-second default is a checkpoint interval floor; the second is a separate mid-dispatch hold. Review is detached and non-blocking; the main agent only waits at completion, where the terminal barrier delivers, bounces for another turn, or invalidates."
+      captionZh="图 11。图中第一个 120 秒，是检查点间隔的默认下限；第二个 120 秒，则是派发过程中的另一段暂缓时间。审查独立运行，不会阻塞主智能体；只有任务收尾时，主智能体才会等待。终止屏障随后决定是交付结果、打回再跑一轮，还是将输出作废。"
     >
       <div className="flex min-w-0 flex-wrap items-center justify-between gap-3">
         {reduced ? (
