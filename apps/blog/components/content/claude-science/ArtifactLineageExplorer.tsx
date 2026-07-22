@@ -38,6 +38,7 @@ export function ArtifactLineageExplorer() {
       title="How each dependency is known"
       description="Runtime observation catches inputs a cell reads through supported paths. Post-hoc reconstruction can add dependencies it missed. Toggle between the runtime record and the graph after reconstruction."
       caption="Figure 6. Real lineage of one deliverable; the same split holds for all five in the run. The estimates file the cell read is observed; the raw JSON it never opened is reconstructed."
+      captionZh="图 6。一项真实交付物的溯源图；同一次运行中的五项交付物都有同样的分层。生成这项交付物的代码实际读过估算文件，所以这条边来自观测。代码没有打开原始 JSON 文件，那条边来自重建。"
     >
       <div className="mb-4">
         <div

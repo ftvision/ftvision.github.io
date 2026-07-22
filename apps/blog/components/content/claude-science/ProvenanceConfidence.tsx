@@ -9,6 +9,7 @@ export function ProvenanceConfidence() {
       title="Observed before reconstructed"
       description="Claude Science prefers runtime-observed inputs, falls back to recorded and reconstructed evidence when needed, and marks extraction as pending until it settles. This is the order of evidence, not a confidence field stored on every graph edge."
       caption="Figure 8. Higher means a more direct evidence path; the topology itself stores dependencies, while mapping records and extraction state explain how they were assembled."
+      captionZh="图 8。位置越高，证据路径越直接。拓扑图本身只保存依赖关系；映射记录和抽取状态则说明这些边是怎样得到的。"
     >
       <div className="min-w-0 overflow-x-auto">
         <ProvenanceConfidenceSvg className="block h-auto w-full min-w-[480px]" />

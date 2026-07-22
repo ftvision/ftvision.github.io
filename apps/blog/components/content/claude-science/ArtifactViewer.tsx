@@ -173,6 +173,7 @@ export function ArtifactViewer() {
         title="One artifact and the layers it carries"
         description="This generated figure from a live session opens with tabs for its reconstructed code, raw execution record, agent messages, and pinned environment. Its provenance is available from the artifact menu."
         caption="Figure 9. Real screenshots from a live pet-genetics session in Claude Science, viewing the artifact fig2_publication_trend.png. The tab bar is the product's own. Provenance is the artifact's right-click menu, shown here as a fifth view; nothing is recolored, so these are the shipped dark UI."
+        captionZh="图 9。这些截图取自 Claude Science 一次真实的宠物遗传学会话，当时查看的产物是 fig2_publication_trend.png。选项卡来自产品原界面；右键菜单里的 Provenance（溯源），这里列作第五个视图。截图没有重新着色，保留了产品原有的深色界面。"
       >
         <p className="type-body-sm m-0 mb-4 text-figure-secondary">
           This is one real artifact from a live pet-genetics session. Switch
