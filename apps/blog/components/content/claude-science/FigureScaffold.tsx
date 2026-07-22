@@ -1,4 +1,7 @@
+"use client";
+
 import * as React from "react";
+import { useLanguage } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 interface FigureScaffoldProps {
@@ -6,6 +9,7 @@ interface FigureScaffoldProps {
   title: string;
   description: string;
   caption: React.ReactNode;
+  captionZh?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
 }
@@ -15,9 +19,12 @@ export function FigureScaffold({
   title,
   description,
   caption,
+  captionZh,
   children,
   className,
 }: FigureScaffoldProps) {
+  const { language } = useLanguage();
+
   return (
     <figure aria-label={title} className={cn("my-10 min-w-0", className)}>
       <div className="border-y border-border py-5 sm:py-6">
@@ -33,7 +40,7 @@ export function FigureScaffold({
         <div className="min-w-0 pt-5 sm:pt-6">{children}</div>
       </div>
       <figcaption className="type-caption mt-3 max-w-3xl text-figure-muted">
-        {caption}
+        {language === "zh" && captionZh ? captionZh : caption}
       </figcaption>
     </figure>
   );

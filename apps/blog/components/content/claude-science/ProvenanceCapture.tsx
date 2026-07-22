@@ -9,6 +9,7 @@ export function ProvenanceCapture() {
       title="How one observed edge is captured"
       description="The analysis SDK wraps readers and writers. A source version tag rides the object from a wrapped read to a wrapped write, where it is harvested, so the daemon records one exact upstream edge without parsing the code."
       caption="Figure 7. When a tag survives read to write, the daemon records one exact edge."
+      captionZh="图 7。只要来源标记从读取一路传到写入，守护进程就能记下一条精确的依赖边。"
     >
       <div className="min-w-0 overflow-x-auto">
         <ProvenanceCaptureSvg className="block h-auto w-full min-w-[560px]" />

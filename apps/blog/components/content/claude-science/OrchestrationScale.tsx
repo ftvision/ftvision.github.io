@@ -324,6 +324,7 @@ export function OrchestrationScale() {
       title="Where the loop runs"
       description="With discrete tool use the model sits inside the loop, so its context grows with every call. Claude Science uses two code-cell tool calls while hundreds of governed round trips run inside the kernels."
       caption="Figure 4. Discrete tool use puts the model in the loop: each call and result passes through its context, which grows with N. Here Claude Science uses two code-cell tool calls, so the number of model-level tool calls stays fixed while the inner loop scales. The working table stays in the kernel; individual host-call inputs and compact results cross the boundary. Grounded in the shipped literature-review skill and the CRISPR gene-annotation loop."
+      captionZh="图 4。离散工具调用把模型放进循环：每次调用和结果都要穿过模型上下文，上下文随 N 增长。Claude Science 只让模型发起两次 Python 代码执行。内层循环无论跑多少次，模型层的工具调用数都不变。工作数据表留在内核中，跨过边界的只有每次 host 调用的输入和精简结果。图中机制取自随产品发布的 literature-review 技能和 CRISPR 基因注释循环。"
     >
       <ScenarioTabs scenario={scenario} onSelect={selectScenario} />
       <p
