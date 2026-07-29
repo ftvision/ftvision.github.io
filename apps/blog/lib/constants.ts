@@ -5,7 +5,7 @@
 import type { EssayType, Topic, Language, PeriodicType, SeriesCategory } from '@/types/content';
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.feitong.phd';
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://feitong.phd';
 
 export function canonicalPath(path: string): string {
   const rootedPath = path.startsWith('/') ? path : `/${path}`;

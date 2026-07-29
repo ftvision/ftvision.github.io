@@ -42,6 +42,7 @@ describe.each(Object.entries(layoutPaths))('%s root layout', (_locale, path) => 
   it('sets metadataBase', async () => {
     const mod = await import(path);
     expect(mod.metadata.metadataBase).toBeInstanceOf(URL);
+    expect(mod.metadata.metadataBase.origin).toBe('https://feitong.phd');
   });
 
   it('declares x-default hreflang', async () => {

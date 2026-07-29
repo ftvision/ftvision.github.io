@@ -165,7 +165,7 @@ export function OgCard({ title, kicker, byline, brand, locale }: OgCardProps) {
             color: COLORS.muted,
           }}
         >
-          www.feitong.phd
+          feitong.phd
         </span>
       </div>
     </div>
