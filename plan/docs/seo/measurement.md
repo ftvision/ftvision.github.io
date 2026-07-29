@@ -30,7 +30,7 @@ The single most important SEO tool. Free.
 
 1. Add property → choose **Domain** (not URL prefix). Covers `www`, `non-www`, `http`, `https` in one shot.
 2. Verify via DNS TXT record at your domain registrar. Or use the HTML meta tag method — easier, can be wired through `metadata.verification.google` in `apps/blog/app/layout.tsx`.
-3. Submit `https://www.feitong.phd/sitemap.xml` under Sitemaps.
+3. Submit `https://feitong.phd/sitemap.xml` under Sitemaps.
 4. Wait 3–7 days for data to populate.
 
 **What to look at, week by week:**
@@ -177,7 +177,7 @@ Day 0 — DNS live:
 
 - [ ] Verify Google Search Console (domain property)
 - [ ] Verify Bing Webmaster Tools
-- [ ] Submit `https://www.feitong.phd/sitemap.xml` in both
+- [ ] Submit `https://feitong.phd/sitemap.xml` in both
 - [ ] Run PageSpeed Insights on `/` and one essay → save the scores as a baseline
 - [ ] Add analytics (Plausible or Umami)
 
