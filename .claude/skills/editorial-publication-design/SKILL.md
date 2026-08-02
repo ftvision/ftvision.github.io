@@ -15,14 +15,16 @@ system.
 Read these sources completely, in this order:
 
 1. `AGENTS.md` for repository boundaries and commands.
-2. `plan/docs/EDITORIAL_TYPOGRAPHY.md` for canonical vocabulary, type roles,
+2. `plan/docs/EDITORIAL_SYSTEM_ARCHITECTURE.md` when the task adds, replaces,
+   or compares complete publication languages or work-specific renderers.
+3. `plan/docs/EDITORIAL_TYPOGRAPHY.md` for canonical vocabulary, type roles,
    measures, apparatus, and language-specific composition.
-3. `plan/docs/EDITORIAL_RESPONSIVE_COMPOSITION.md` for responsive editions,
+4. `plan/docs/EDITORIAL_RESPONSIVE_COMPOSITION.md` for responsive editions,
    invariants, breakpoint acceptance, and QA widths.
-4. The relevant sections of `plan/docs/DESIGN_SYSTEM.md` for layer boundaries
+5. The relevant sections of `plan/docs/DESIGN_SYSTEM.md` for layer boundaries
    and token usage.
-5. The target component, content source, styles, and Storybook story.
-6. `design-qa.md` only when prior rendered evidence is useful.
+6. The target component, content source, styles, and Storybook story.
+7. `design-qa.md` only when prior rendered evidence is useful.
 
 `design-qa.md` is an evidence ledger containing accepted, rejected, and
 superseded passes. It is never the normative source when it conflicts with the
@@ -53,6 +55,12 @@ Choose the document role before choosing layout:
 
 Do not force different page roles into one template. They share a house style,
 not one information architecture.
+
+When comparing a completely different house style, also name the publication
+system and the work presentation. Share content and behavioral capabilities;
+allow each system to own DOM, grid, typography, apparatus, interaction
+presentation, and responsive editions. Resolve work renderers by slug, then
+presentation, then kind, then fallback as defined in the architecture document.
 
 ## Assign typographic roles before styling
 
