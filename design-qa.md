@@ -6,6 +6,67 @@
 > `plan/docs/EDITORIAL_RESPONSIVE_COMPOSITION.md`. When entries disagree, the
 > newer dated correction and the canonical specifications take precedence.
 
+## Fine Press / Modernist renderer comparison — 2026-08-02
+
+- Stories: `Explorations / Publication Systems / System Lab` and the eight
+  standalone Fine Press / Modernist work stories
+- Systems: Fine Press and Modernist
+- Real works: landing front table, Rejection Letter, Product Commandments, and
+  100 Vision Papers
+- Tested viewports: 1440 x 900 and 390 x 844
+- Tested states: system/work resolution, English/Chinese, full/spine, atlas,
+  searchable index, method, and local Modernist light/dark mode
+
+### Architecture and content findings
+
+- A token theme could not express the intended difference. Fine Press and
+  Modernist therefore use independent renderers and CSS while sharing authored
+  MDX, work identity, accessibility semantics, reading-depth capability, and
+  Vision 100 data.
+- Renderer resolution passed in the order `slug → presentation → kind →
+fallback`. The Storybook system lab ended on Fine Press / Rejection Letter
+  after traversing both systems and all work-specific states.
+- Product Commandments preserved the complete English and Chinese MDX. Chinese
+  full mode rendered ten commandment headings; Chinese spine preserved the
+  opening and ten-part index; the actual reading region exposed
+  `lang="zh-Hans"`.
+- Rejection Letter preserved four authored sections and the documentary email.
+  The evidence figure remained between the two MDX segments at its authored
+  position after `The email`; no raw `XEmbed` or `ZoomableImage` component text
+  leaked into the reading surface.
+- Vision 100 used the complete 100-paper dataset and real map. The custom index
+  returned nine papers for `Hubel`, matching author-name search rather than
+  only first-author counting, and the method view exposed three source/limits
+  sections.
+
+### Typography and responsive evidence
+
+- Fine Press remained on the established contract: Vollkorn 560 for the lead
+  title and Newsreader 440 for the publication premise.
+- Modernist used a separate grotesk display stack and Source Serif 4 for Latin
+  continuous reading. Chinese continuous reading explicitly used Noto Serif SC
+  and 1.92 leading rather than an accidental browser fallback.
+- Document horizontal overflow measured zero for all four Modernist works at
+  the inspected 1440 px and 390 px states. At 390 px, the Rejection Letter body
+  and deck both occupied the deliberate 358 px content frame; Vision 100 method
+  retained all three sections; Chinese full mode retained all ten headings.
+- The Modernist dark control changed only the renderer root to dark mode
+  (`rgb(20, 20, 20)` paper / `rgb(242, 239, 229)` ink); the document theme
+  remained light, confirming system-local mode isolation.
+
+### Functional validation
+
+- The Storybook `SystemLab` interaction completed in a fresh browser tab with
+  no console warnings or errors.
+- TypeScript, targeted ESLint, Prettier for new implementation files,
+  Storybook production build, and `git diff --check` passed.
+- Storybook build retained existing repository warnings about ignored
+  module-level `use client` directives and large chunks; neither originated in
+  this renderer comparison.
+
+Final result: passed as a Storybook architecture and visual comparison;
+production system selection remains intentionally staged.
+
 ## Landing tonal-hierarchy correction — 2026-07-18
 
 - Story: `Explorations / Editorial Home / Fine Press`
