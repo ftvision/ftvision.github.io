@@ -12,6 +12,8 @@ import '@fontsource-variable/source-serif-4/opsz.css';
 import '@fontsource-variable/vollkorn';
 import '@fontsource/instrument-serif';
 import '@fontsource/libre-caslon-display';
+import '@fontsource/noto-serif-sc/400.css';
+import '@fontsource/noto-serif-sc/600.css';
 
 // Import token CSS
 import '@blog/tokens/css';

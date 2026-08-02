@@ -129,6 +129,36 @@ are a migration boundary, not the desired final source layout. Modernist is a
 separate implementation with independent DOM and CSS. Neither system is the
 fallback stylesheet for the other.
 
+### 5.1 Modernist typography contract
+
+Modernist owns a role-based typography system; it does not own one “Modernist
+font” that is enlarged, emboldened, and reused everywhere. Its provisional
+default is the **Editorial Contrast** system:
+
+| Role                    | Provisional face                        | Responsibility                                                     |
+| ----------------------- | --------------------------------------- | ------------------------------------------------------------------ |
+| Monumental display      | Schibsted Grotesk                       | Title leaves, authored display numerals, and the nameplate anchor  |
+| Supporting hierarchy    | Newsreader                              | Decks, section headings, row titles, and short editorial arguments |
+| Continuous Latin body   | Source Serif 4                          | Essays, explanations, and sustained reading                        |
+| Editorial apparatus     | Repository monospace stack              | Classification, dates, folios, indices, and real metadata          |
+| Interactive control UI  | Instrument Sans                         | Navigation, tabs, search, filters, toggles, and buttons            |
+| CJK display             | Noto Sans SC                            | Chinese monumental titles                                          |
+| CJK hierarchy and body  | Noto Serif SC with documented fallbacks | Chinese headings and continuous reading                            |
+| CJK interactive control | Noto Sans SC                            | Chinese navigation and controls                                    |
+
+Storybook may compare complete alternative role maps. A comparison must name
+and render all of these roles against real publication material; changing one
+grotesk variable across display, deck, metadata, and controls is only a
+typeface audition and does not qualify as a publication typography system.
+
+The current comparison also includes **International Grid** (Archivo display,
+Instrument Sans hierarchy, Schibsted UI) and **Quiet Rationalism** (Instrument
+Sans display, Newsreader hierarchy, Schibsted UI). Source Serif 4, the
+monospace apparatus, and the explicit CJK split remain controls so the review
+can distinguish public voice from continuous-reading and writing-system
+requirements. The old Arial Narrow treatment is retained only as rejected
+evidence of collapsed roles.
+
 ## 6. Selection and loading
 
 Production should select one publication system at build time or at the site

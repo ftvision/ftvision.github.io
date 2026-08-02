@@ -6,6 +6,59 @@
 > `plan/docs/EDITORIAL_RESPONSIVE_COMPOSITION.md`. When entries disagree, the
 > newer dated correction and the canonical specifications take precedence.
 
+## Modernist role-system correction — 2026-08-02
+
+- Stories: `Explorations / Publication Systems / Modernist Typography Systems`
+  and `System Lab`
+- Supersedes: the same-day `Modernist typography study` below, which compared
+  display candidates but still assigned each candidate to too many unrelated
+  roles
+- Real works: landing, Rejection Letter, Product Commandments, and 100 Vision
+  Papers
+
+### Finding and correction
+
+- **P1 — a typeface audition was presented as a typography system:** the prior
+  switch changed display, supporting headings, metadata, and controls together.
+  That concealed the distinction between public voice, sustained reading,
+  documentary apparatus, interaction, and Chinese composition. The corrected
+  lab compares complete role maps and exposes every assignment in a role
+  ledger.
+- The recommended `Editorial Contrast` map is Schibsted Grotesk for monumental
+  display, Newsreader for decks and supporting hierarchy, Source Serif 4 for
+  continuous Latin reading, the repository monospace stack for dates and
+  indices, Instrument Sans for controls, Noto Sans SC for Chinese display/UI,
+  and Noto Serif SC for Chinese hierarchy and continuous reading.
+- `International Grid` and `Quiet Rationalism` remain complete alternatives.
+  The Arial Narrow treatment is retained as `Collapsed Baseline`, explicitly
+  rejected evidence of what happens when display, support, apparatus, and UI
+  collapse into one typographic color.
+
+### Responsive and functional evidence
+
+- The role map was verified against every real work at 1440 x 900 and 390 x 844. All inspected states measured zero document-level horizontal overflow.
+- Product Commandments retained full English/Chinese reading, argument, and
+  spine modes. Chinese full mode computed Noto Sans SC for the title and Noto
+  Serif SC for both supporting hierarchy and body; its reading line height was
+  31.744 px at the 390 px viewport.
+- Vision 100 retained Atlas, Index, and Method. Its index rendered all 100
+  papers and filtered to the single Felleman / Van Essen record for the query
+  `Felleman`.
+- Rejection Letter was checked immediately around 480, 832, and 1024 px. The
+  832/833 transition initially changed a four-line title into five lines because
+  the `8ch` measure included grid padding. Treating the title measure as a
+  content box preserves the same four-line formation while allowing the grid
+  gutter to change independently.
+- Modernist light/dark mode returned to light successfully; browser warnings
+  and errors were empty.
+- TypeScript, targeted ESLint, targeted Prettier, the Storybook production
+  build, and `git diff --check` passed. The build retained the repository's
+  existing module-directive, sourcemap, and chunk-size warnings.
+
+Result: the Storybook selector now compares publication typography systems,
+not interchangeable headline fonts. Editorial Contrast remains provisional
+until the Modernist renderer itself is selected for production.
+
 ## Modernist typography study — 2026-08-02
 
 - Stories: `Explorations / Publication Systems / Modernist Typeface Study` and

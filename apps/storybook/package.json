@@ -27,6 +27,7 @@
     "@fontsource-variable/vollkorn": "^5.2.10",
     "@fontsource/instrument-serif": "^5.2.8",
     "@fontsource/libre-caslon-display": "^5.2.7",
+    "@fontsource/noto-serif-sc": "^5.2.9",
     "@storybook/addon-essentials": "^8.4.0",
     "@storybook/addon-interactions": "^8.4.0",
     "@storybook/addon-links": "^8.4.0",

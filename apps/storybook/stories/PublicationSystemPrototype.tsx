@@ -12,9 +12,9 @@ import {
   ModernistVision100,
 } from "./ModernistPublicationSystem";
 import {
-  MODERNIST_TYPEFACES,
-  type ModernistTypefaceId,
-} from "./ModernistTypefaceLab";
+  MODERNIST_TYPOGRAPHY_SYSTEMS,
+  type ModernistTypographyId,
+} from "./ModernistTypographyLab";
 
 import "./publication-system-prototype.css";
 
@@ -176,7 +176,7 @@ export function resolveWorkRenderer(
 export interface PublicationSystemPrototypeProps {
   initialSystem?: PublicationSystemId;
   initialWork?: WorkId;
-  initialModernistTypeface?: ModernistTypefaceId;
+  initialModernistTypography?: ModernistTypographyId;
   showLabControls?: boolean;
 }
 
@@ -191,13 +191,13 @@ const workOrder: WorkId[] = [
 export function PublicationSystemPrototype({
   initialSystem = "fine-press",
   initialWork = "landing",
-  initialModernistTypeface = "schibsted",
+  initialModernistTypography = "editorial-contrast",
   showLabControls = true,
 }: PublicationSystemPrototypeProps) {
   const [systemId, setSystemId] = useState<PublicationSystemId>(initialSystem);
   const [workId, setWorkId] = useState<WorkId>(initialWork);
-  const [modernistTypeface, setModernistTypeface] =
-    useState<ModernistTypefaceId>(initialModernistTypeface);
+  const [modernistTypography, setModernistTypography] =
+    useState<ModernistTypographyId>(initialModernistTypography);
   const system = PUBLICATION_SYSTEMS[systemId];
   const manifest = WORK_MANIFESTS[workId];
   const Renderer = useMemo(
@@ -208,7 +208,7 @@ export function PublicationSystemPrototype({
   return (
     <div
       className="publication-system"
-      data-modernist-typeface={modernistTypeface}
+      data-modernist-typography={modernistTypography}
       data-publication-system={systemId}
     >
       {showLabControls ? (
@@ -254,19 +254,19 @@ export function PublicationSystemPrototype({
 
             {systemId === "modernist" ? (
               <label>
-                <span>Typeface</span>
+                <span>Typography</span>
                 <select
-                  aria-label="Modernist typeface"
-                  value={modernistTypeface}
+                  aria-label="Modernist typography system"
+                  value={modernistTypography}
                   onChange={(event) =>
-                    setModernistTypeface(
-                      event.target.value as ModernistTypefaceId,
+                    setModernistTypography(
+                      event.target.value as ModernistTypographyId,
                     )
                   }
                 >
-                  {MODERNIST_TYPEFACES.map((typeface) => (
-                    <option key={typeface.id} value={typeface.id}>
-                      {typeface.label}
+                  {MODERNIST_TYPOGRAPHY_SYSTEMS.map((system) => (
+                    <option key={system.id} value={system.id}>
+                      {system.label}
                     </option>
                   ))}
                 </select>

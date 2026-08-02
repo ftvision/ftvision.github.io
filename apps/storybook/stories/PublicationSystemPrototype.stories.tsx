@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
 
 import { PublicationSystemPrototype } from "./PublicationSystemPrototype";
-import { ModernistTypefaceLab } from "./ModernistTypefaceLab";
+import { ModernistTypographyLab } from "./ModernistTypographyLab";
 
 const meta: Meta<typeof PublicationSystemPrototype> = {
   title: "Explorations / Publication Systems",
@@ -16,7 +16,7 @@ const meta: Meta<typeof PublicationSystemPrototype> = {
 - Fine Press and Modernist own independent DOM structure, grid, typography, apparatus, responsive editions, and interaction presentation.
 - The shared contract stops at authored content, semantic work identity, URLs, accessibility, and behavioral capabilities.
 - Work kind supplies an ordinary fallback; presentation identity preserves the concrete shape of Product Commandments and 100 Vision Papers; slug remains the final escape hatch.
-- Modernist exposes a Storybook-only typeface study. Schibsted Grotesk, Archivo, and Instrument Sans are complete display/apparatus role systems; Arial Narrow remains only as the rejected baseline.
+- Modernist exposes a Storybook-only typography-system study. Every candidate assigns display, supporting, body, apparatus, UI, and CJK roles; the collapsed Arial Narrow pass remains only as rejected evidence.
 - The lab switcher is Storybook apparatus, not a proposed reader-facing runtime theme control.`,
       },
     },
@@ -44,15 +44,15 @@ export const SystemLab: Story = {
       canvas.getByText("Independent / California / 2026"),
     ).toBeVisible();
 
-    const typeface = canvas.getByRole("combobox", {
-      name: "Modernist typeface",
+    const typography = canvas.getByRole("combobox", {
+      name: "Modernist typography system",
     });
-    await expect(typeface).toHaveValue("schibsted");
-    await userEvent.selectOptions(typeface, "archivo");
+    await expect(typography).toHaveValue("editorial-contrast");
+    await userEvent.selectOptions(typography, "international-grid");
     await expect(
       canvasElement.querySelector(".publication-system"),
-    ).toHaveAttribute("data-modernist-typeface", "archivo");
-    await userEvent.selectOptions(typeface, "schibsted");
+    ).toHaveAttribute("data-modernist-typography", "international-grid");
+    await userEvent.selectOptions(typography, "editorial-contrast");
 
     await userEvent.selectOptions(
       canvas.getByRole("combobox", { name: "Work" }),
@@ -96,7 +96,8 @@ export const SystemLab: Story = {
 };
 
 export const ModernistTypefaceStudy: Story = {
-  render: () => <ModernistTypefaceLab />,
+  name: "Modernist Typography Systems",
+  render: () => <ModernistTypographyLab />,
   parameters: {
     viewport: { defaultViewport: "desktop" },
   },
