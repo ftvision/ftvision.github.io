@@ -6,6 +6,59 @@
 > `plan/docs/EDITORIAL_RESPONSIVE_COMPOSITION.md`. When entries disagree, the
 > newer dated correction and the canonical specifications take precedence.
 
+## Modernist typography study — 2026-08-02
+
+- Stories: `Explorations / Publication Systems / Modernist Typeface Study` and
+  `System Lab`
+- Candidates: Schibsted Grotesk, Archivo, Instrument Sans, and the rejected
+  Arial Narrow baseline
+- Controlled role: Source Serif 4 remained the Latin continuous-reading face;
+  each candidate changed the display, supporting-headline, and apparatus roles
+- Tested works: landing, Rejection Letter, Product Commandments, and 100 Vision
+  Papers
+
+### Decisions and comparison findings
+
+- The initial Arial Narrow stack was rejected. Its compressed proportions,
+  generic browser-era drawing, 800/700 weight pairing, and forced uppercase
+  made Modernist look like a caricature of a poster rather than a publication
+  system.
+- Schibsted Grotesk is the current provisional default: display 650,
+  supporting headline 520, and apparatus 620. Archivo remains the more
+  mechanical alternative at 680/560/620; Instrument Sans remains the quieter
+  contemporary alternative at 620/520/600.
+- Authored title casing is preserved. Uppercase remains available to real
+  classification and control apparatus rather than being imposed on every
+  title and section heading.
+- The typeface switch changes a complete role system—including family, role
+  weights, title tracking, heading tracking, and display leading—not only one
+  `font-family` value.
+- Chinese is an independent role rather than a Latin fallback. Modernist
+  Chinese title leaves use loaded Noto Sans SC Variable at 650; continuous
+  Chinese reading remains Noto Serif SC with 1.92 leading.
+
+### Responsive and functional evidence
+
+- All three candidate webfonts and Noto Sans SC reported loaded through the
+  browser font set; computed display and apparatus families changed with the
+  Storybook selector.
+- The type specimen and every Modernist work measured zero document overflow
+  at 1440 x 900 and 390 x 844. The Product Commandments title was additionally
+  checked at 320 px.
+- The wider grotesks exposed a 55 px Product Commandments overflow at 390 px.
+  The accepted correction uses a content-fit mobile title scale and a stable
+  number/title plus deck composition instead of breaking the word
+  `Commandments` or shrinking every Modernist title.
+- Product Commandments was checked immediately around the 480, 832, and 1024
+  px structural boundaries. Its title size remains continuous, its line group
+  does not jump at 1024/1025 px, and overflow remains zero.
+- Browser logs contained only Vite connection/HMR and React DevTools info;
+  there were no warnings or errors from the typography implementation.
+
+Result: Schibsted Grotesk is the provisional default for the comparison, not a
+promoted production token. The Storybook study intentionally keeps Archivo,
+Instrument Sans, and the rejected baseline visible for editorial selection.
+
 ## Fine Press / Modernist renderer comparison — 2026-08-02
 
 - Stories: `Explorations / Publication Systems / System Lab` and the eight

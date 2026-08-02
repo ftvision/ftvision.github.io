@@ -11,6 +11,10 @@ import {
   ModernistRejectionEssay,
   ModernistVision100,
 } from "./ModernistPublicationSystem";
+import {
+  MODERNIST_TYPEFACES,
+  type ModernistTypefaceId,
+} from "./ModernistTypefaceLab";
 
 import "./publication-system-prototype.css";
 
@@ -172,6 +176,7 @@ export function resolveWorkRenderer(
 export interface PublicationSystemPrototypeProps {
   initialSystem?: PublicationSystemId;
   initialWork?: WorkId;
+  initialModernistTypeface?: ModernistTypefaceId;
   showLabControls?: boolean;
 }
 
@@ -186,10 +191,13 @@ const workOrder: WorkId[] = [
 export function PublicationSystemPrototype({
   initialSystem = "fine-press",
   initialWork = "landing",
+  initialModernistTypeface = "schibsted",
   showLabControls = true,
 }: PublicationSystemPrototypeProps) {
   const [systemId, setSystemId] = useState<PublicationSystemId>(initialSystem);
   const [workId, setWorkId] = useState<WorkId>(initialWork);
+  const [modernistTypeface, setModernistTypeface] =
+    useState<ModernistTypefaceId>(initialModernistTypeface);
   const system = PUBLICATION_SYSTEMS[systemId];
   const manifest = WORK_MANIFESTS[workId];
   const Renderer = useMemo(
@@ -198,7 +206,11 @@ export function PublicationSystemPrototype({
   );
 
   return (
-    <div className="publication-system" data-publication-system={systemId}>
+    <div
+      className="publication-system"
+      data-modernist-typeface={modernistTypeface}
+      data-publication-system={systemId}
+    >
       {showLabControls ? (
         <header
           className="publication-system__lab"
@@ -239,6 +251,27 @@ export function PublicationSystemPrototype({
                 ))}
               </select>
             </label>
+
+            {systemId === "modernist" ? (
+              <label>
+                <span>Typeface</span>
+                <select
+                  aria-label="Modernist typeface"
+                  value={modernistTypeface}
+                  onChange={(event) =>
+                    setModernistTypeface(
+                      event.target.value as ModernistTypefaceId,
+                    )
+                  }
+                >
+                  {MODERNIST_TYPEFACES.map((typeface) => (
+                    <option key={typeface.id} value={typeface.id}>
+                      {typeface.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ) : null}
           </div>
         </header>
       ) : null}

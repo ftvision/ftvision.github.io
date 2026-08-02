@@ -1,9 +1,13 @@
 import type { Preview } from '@storybook/react';
 
+import '@fontsource-variable/archivo';
 import '@fontsource-variable/brygada-1918';
 import '@fontsource-variable/fraunces/full.css';
+import '@fontsource-variable/instrument-sans';
 import '@fontsource-variable/newsreader/standard.css';
 import '@fontsource-variable/newsreader/standard-italic.css';
+import '@fontsource-variable/noto-sans-sc';
+import '@fontsource-variable/schibsted-grotesk';
 import '@fontsource-variable/source-serif-4/opsz.css';
 import '@fontsource-variable/vollkorn';
 import '@fontsource/instrument-serif';
