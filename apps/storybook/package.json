@@ -16,6 +16,13 @@
   },
   "devDependencies": {
     "@blog/config": "workspace:*",
+    "@fontsource-variable/brygada-1918": "^5.2.8",
+    "@fontsource-variable/fraunces": "^5.2.9",
+    "@fontsource-variable/newsreader": "^5.2.10",
+    "@fontsource-variable/source-serif-4": "^5.2.9",
+    "@fontsource-variable/vollkorn": "^5.2.10",
+    "@fontsource/instrument-serif": "^5.2.8",
+    "@fontsource/libre-caslon-display": "^5.2.7",
     "@storybook/addon-essentials": "^8.4.0",
     "@storybook/addon-interactions": "^8.4.0",
     "@storybook/addon-links": "^8.4.0",

@@ -1,5 +1,14 @@
 import type { Preview } from '@storybook/react';
 
+import '@fontsource-variable/brygada-1918';
+import '@fontsource-variable/fraunces/full.css';
+import '@fontsource-variable/newsreader/standard.css';
+import '@fontsource-variable/newsreader/standard-italic.css';
+import '@fontsource-variable/source-serif-4/opsz.css';
+import '@fontsource-variable/vollkorn';
+import '@fontsource/instrument-serif';
+import '@fontsource/libre-caslon-display';
+
 // Import token CSS
 import '@blog/tokens/css';
 

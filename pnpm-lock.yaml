@@ -160,6 +160,27 @@ importers:
       '@blog/config':
         specifier: workspace:*
         version: link:../../packages/config
+      '@fontsource-variable/brygada-1918':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource-variable/fraunces':
+        specifier: ^5.2.9
+        version: 5.2.9
+      '@fontsource-variable/newsreader':
+        specifier: ^5.2.10
+        version: 5.2.10
+      '@fontsource-variable/source-serif-4':
+        specifier: ^5.2.9
+        version: 5.2.9
+      '@fontsource-variable/vollkorn':
+        specifier: ^5.2.10
+        version: 5.2.10
+      '@fontsource/instrument-serif':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/libre-caslon-display':
+        specifier: ^5.2.7
+        version: 5.2.7
       '@storybook/addon-essentials':
         specifier: ^8.4.0
         version: 8.6.14(@types/react@18.3.27)(storybook@8.6.17(prettier@3.7.4))
@@ -716,6 +737,27 @@ packages:
   '@eslint/js@8.57.1':
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@fontsource-variable/brygada-1918@5.2.8':
+    resolution: {integrity: sha512-uJVruRjPIzihO6VuHeVhe8c+HAyYfvhr7h6ewSzeQ6Pqdspr86zh9p3+SZucUNoiSwy7fgaiei5eqx8+eePeIg==}
+
+  '@fontsource-variable/fraunces@5.2.9':
+    resolution: {integrity: sha512-Y6IjunlN9Ni723np+GIgAaKzCDBrPRrqNi01TZxHs5wtHYROWFM9W6yiT+/gGwSjWIRD18oX17kD/BRWekc/Lw==}
+
+  '@fontsource-variable/newsreader@5.2.10':
+    resolution: {integrity: sha512-MdI2iRwrqWpMOU/2aV2BgfZ4dJNlj/XlYaY8Zb7t87mWqHskYW0XiUANkt1cyOCiEfW2VQ0bQ5vZgGPp6B2B4w==}
+
+  '@fontsource-variable/source-serif-4@5.2.9':
+    resolution: {integrity: sha512-PPcxjLFk/fS0WHg79pDM2YNvz61kC+oYZ5cWZZyCS0DHpJncmuYOuiZAsvj4tDxlWPBEvxxcRLQQNmSaRbPkqw==}
+
+  '@fontsource-variable/vollkorn@5.2.10':
+    resolution: {integrity: sha512-xsMmoV6OgjuI9K2uKBJW+EyA8EdpRJt+6S9rtfMNYqnbgmq/16Tec8+wyBGG9+c9XGH/1ji3cydru4+9Gf+vnQ==}
+
+  '@fontsource/instrument-serif@5.2.8':
+    resolution: {integrity: sha512-s+bkz+syj2rO00Rmq9g0P+PwuLig33DR1xDR8pTWmovH1pUjwnncrFk++q9mmOex8fUQ7oW80gPpPDaw7V1MMw==}
+
+  '@fontsource/libre-caslon-display@5.2.7':
+    resolution: {integrity: sha512-mN1axL4p3Wzqm/+3qbf3p/lM3Wn64Nk0cfOqE/Pbz01/ytCqgn/D/cCIDpjbKLPekMNwcVaNhpRBm04M+VZKjw==}
 
   '@fontsource/noto-serif-sc@5.2.9':
     resolution: {integrity: sha512-+wosdNmyrtRjnqJ/4A6i99jApm6ye34n8Nh7jUO3P/+6Hd1ZBY1gB9yGaI5jVxb56RS1lM2kTc0DzX1ifRO2MA==}
@@ -5082,6 +5124,20 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.1': {}
+
+  '@fontsource-variable/brygada-1918@5.2.8': {}
+
+  '@fontsource-variable/fraunces@5.2.9': {}
+
+  '@fontsource-variable/newsreader@5.2.10': {}
+
+  '@fontsource-variable/source-serif-4@5.2.9': {}
+
+  '@fontsource-variable/vollkorn@5.2.10': {}
+
+  '@fontsource/instrument-serif@5.2.8': {}
+
+  '@fontsource/libre-caslon-display@5.2.7': {}
 
   '@fontsource/noto-serif-sc@5.2.9': {}
 

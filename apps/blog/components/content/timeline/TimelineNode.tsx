@@ -1,6 +1,5 @@
 'use client';
 
-import * as React from 'react';
 import type { TimelineItem, NodePosition } from '@/types/timeline';
 
 export interface TimelineNodeProps<T extends TimelineItem> {

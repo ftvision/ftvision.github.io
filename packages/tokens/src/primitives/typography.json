@@ -11,6 +11,7 @@
         "sans-cjk": { "value": "'Noto Sans CJK SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif", "$description": "Sans-serif stack with CJK support for Chinese Aesthetic theme UI" }
       },
       "size": {
+        "2xs": { "value": "0.7rem", "$description": "~11px - editorial apparatus and compact metadata" },
         "xs": { "value": "0.8rem", "$description": "~13px - caption, label" },
         "sm": { "value": "0.875rem", "$description": "~14px - small text" },
         "base": { "value": "1rem", "$description": "16px - body text anchor" },
