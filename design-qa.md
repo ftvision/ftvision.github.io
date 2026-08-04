@@ -6,6 +6,173 @@
 > `plan/docs/EDITORIAL_RESPONSIVE_COMPOSITION.md`. When entries disagree, the
 > newer dated correction and the canonical specifications take precedence.
 
+## Modernist role-system correction — 2026-08-02
+
+- Stories: `Explorations / Publication Systems / Modernist Typography Systems`
+  and `System Lab`
+- Supersedes: the same-day `Modernist typography study` below, which compared
+  display candidates but still assigned each candidate to too many unrelated
+  roles
+- Real works: landing, Rejection Letter, Product Commandments, and 100 Vision
+  Papers
+
+### Finding and correction
+
+- **P1 — a typeface audition was presented as a typography system:** the prior
+  switch changed display, supporting headings, metadata, and controls together.
+  That concealed the distinction between public voice, sustained reading,
+  documentary apparatus, interaction, and Chinese composition. The corrected
+  lab compares complete role maps and exposes every assignment in a role
+  ledger.
+- The recommended `Editorial Contrast` map is Schibsted Grotesk for monumental
+  display, Newsreader for decks and supporting hierarchy, Source Serif 4 for
+  continuous Latin reading, the repository monospace stack for dates and
+  indices, Instrument Sans for controls, Noto Sans SC for Chinese display/UI,
+  and Noto Serif SC for Chinese hierarchy and continuous reading.
+- `International Grid` and `Quiet Rationalism` remain complete alternatives.
+  The Arial Narrow treatment is retained as `Collapsed Baseline`, explicitly
+  rejected evidence of what happens when display, support, apparatus, and UI
+  collapse into one typographic color.
+
+### Responsive and functional evidence
+
+- The role map was verified against every real work at 1440 x 900 and 390 x 844. All inspected states measured zero document-level horizontal overflow.
+- Product Commandments retained full English/Chinese reading, argument, and
+  spine modes. Chinese full mode computed Noto Sans SC for the title and Noto
+  Serif SC for both supporting hierarchy and body; its reading line height was
+  31.744 px at the 390 px viewport.
+- Vision 100 retained Atlas, Index, and Method. Its index rendered all 100
+  papers and filtered to the single Felleman / Van Essen record for the query
+  `Felleman`.
+- Rejection Letter was checked immediately around 480, 832, and 1024 px. The
+  832/833 transition initially changed a four-line title into five lines because
+  the `8ch` measure included grid padding. Treating the title measure as a
+  content box preserves the same four-line formation while allowing the grid
+  gutter to change independently.
+- Modernist light/dark mode returned to light successfully; browser warnings
+  and errors were empty.
+- TypeScript, targeted ESLint, targeted Prettier, the Storybook production
+  build, and `git diff --check` passed. The build retained the repository's
+  existing module-directive, sourcemap, and chunk-size warnings.
+
+Result: the Storybook selector now compares publication typography systems,
+not interchangeable headline fonts. Editorial Contrast remains provisional
+until the Modernist renderer itself is selected for production.
+
+## Modernist typography study — 2026-08-02
+
+- Stories: `Explorations / Publication Systems / Modernist Typeface Study` and
+  `System Lab`
+- Candidates: Schibsted Grotesk, Archivo, Instrument Sans, and the rejected
+  Arial Narrow baseline
+- Controlled role: Source Serif 4 remained the Latin continuous-reading face;
+  each candidate changed the display, supporting-headline, and apparatus roles
+- Tested works: landing, Rejection Letter, Product Commandments, and 100 Vision
+  Papers
+
+### Decisions and comparison findings
+
+- The initial Arial Narrow stack was rejected. Its compressed proportions,
+  generic browser-era drawing, 800/700 weight pairing, and forced uppercase
+  made Modernist look like a caricature of a poster rather than a publication
+  system.
+- Schibsted Grotesk is the current provisional default: display 650,
+  supporting headline 520, and apparatus 620. Archivo remains the more
+  mechanical alternative at 680/560/620; Instrument Sans remains the quieter
+  contemporary alternative at 620/520/600.
+- Authored title casing is preserved. Uppercase remains available to real
+  classification and control apparatus rather than being imposed on every
+  title and section heading.
+- The typeface switch changes a complete role system—including family, role
+  weights, title tracking, heading tracking, and display leading—not only one
+  `font-family` value.
+- Chinese is an independent role rather than a Latin fallback. Modernist
+  Chinese title leaves use loaded Noto Sans SC Variable at 650; continuous
+  Chinese reading remains Noto Serif SC with 1.92 leading.
+
+### Responsive and functional evidence
+
+- All three candidate webfonts and Noto Sans SC reported loaded through the
+  browser font set; computed display and apparatus families changed with the
+  Storybook selector.
+- The type specimen and every Modernist work measured zero document overflow
+  at 1440 x 900 and 390 x 844. The Product Commandments title was additionally
+  checked at 320 px.
+- The wider grotesks exposed a 55 px Product Commandments overflow at 390 px.
+  The accepted correction uses a content-fit mobile title scale and a stable
+  number/title plus deck composition instead of breaking the word
+  `Commandments` or shrinking every Modernist title.
+- Product Commandments was checked immediately around the 480, 832, and 1024
+  px structural boundaries. Its title size remains continuous, its line group
+  does not jump at 1024/1025 px, and overflow remains zero.
+- Browser logs contained only Vite connection/HMR and React DevTools info;
+  there were no warnings or errors from the typography implementation.
+
+Result: Schibsted Grotesk is the provisional default for the comparison, not a
+promoted production token. The Storybook study intentionally keeps Archivo,
+Instrument Sans, and the rejected baseline visible for editorial selection.
+
+## Fine Press / Modernist renderer comparison — 2026-08-02
+
+- Stories: `Explorations / Publication Systems / System Lab` and the eight
+  standalone Fine Press / Modernist work stories
+- Systems: Fine Press and Modernist
+- Real works: landing front table, Rejection Letter, Product Commandments, and
+  100 Vision Papers
+- Tested viewports: 1440 x 900 and 390 x 844
+- Tested states: system/work resolution, English/Chinese, full/spine, atlas,
+  searchable index, method, and local Modernist light/dark mode
+
+### Architecture and content findings
+
+- A token theme could not express the intended difference. Fine Press and
+  Modernist therefore use independent renderers and CSS while sharing authored
+  MDX, work identity, accessibility semantics, reading-depth capability, and
+  Vision 100 data.
+- Renderer resolution passed in the order `slug → presentation → kind →
+fallback`. The Storybook system lab ended on Fine Press / Rejection Letter
+  after traversing both systems and all work-specific states.
+- Product Commandments preserved the complete English and Chinese MDX. Chinese
+  full mode rendered ten commandment headings; Chinese spine preserved the
+  opening and ten-part index; the actual reading region exposed
+  `lang="zh-Hans"`.
+- Rejection Letter preserved four authored sections and the documentary email.
+  The evidence figure remained between the two MDX segments at its authored
+  position after `The email`; no raw `XEmbed` or `ZoomableImage` component text
+  leaked into the reading surface.
+- Vision 100 used the complete 100-paper dataset and real map. The custom index
+  returned nine papers for `Hubel`, matching author-name search rather than
+  only first-author counting, and the method view exposed three source/limits
+  sections.
+
+### Typography and responsive evidence
+
+- Fine Press remained on the established contract: Vollkorn 560 for the lead
+  title and Newsreader 440 for the publication premise.
+- Modernist used a separate grotesk display stack and Source Serif 4 for Latin
+  continuous reading. Chinese continuous reading explicitly used Noto Serif SC
+  and 1.92 leading rather than an accidental browser fallback.
+- Document horizontal overflow measured zero for all four Modernist works at
+  the inspected 1440 px and 390 px states. At 390 px, the Rejection Letter body
+  and deck both occupied the deliberate 358 px content frame; Vision 100 method
+  retained all three sections; Chinese full mode retained all ten headings.
+- The Modernist dark control changed only the renderer root to dark mode
+  (`rgb(20, 20, 20)` paper / `rgb(242, 239, 229)` ink); the document theme
+  remained light, confirming system-local mode isolation.
+
+### Functional validation
+
+- The Storybook `SystemLab` interaction completed in a fresh browser tab with
+  no console warnings or errors.
+- TypeScript, targeted ESLint, Prettier for new implementation files,
+  Storybook production build, and `git diff --check` passed.
+- Storybook build retained existing repository warnings about ignored
+  module-level `use client` directives and large chunks; neither originated in
+  this renderer comparison.
+
+Final result: passed as a Storybook architecture and visual comparison;
+production system selection remains intentionally staged.
+
 ## Landing tonal-hierarchy correction — 2026-07-18
 
 - Story: `Explorations / Editorial Home / Fine Press`

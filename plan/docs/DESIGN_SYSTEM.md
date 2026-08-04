@@ -10,6 +10,11 @@ tokens. Their structural reflow follows
 which separates invariant publishing relationships from provisional title-leaf
 layouts and breakpoints.
 
+Completely different editorial grammars use the
+[Editorial Publication System Architecture](./EDITORIAL_SYSTEM_ARCHITECTURE.md).
+It separates shared work content and behavior from independently implemented
+renderers; a publication system is not merely another token theme.
+
 Agents working on those surfaces should enter through the repo-local
 [`editorial-publication-design` skill](../../.codex/skills/editorial-publication-design/SKILL.md).
 The skill supplies the implementation and rendered-QA workflow; the two linked
@@ -387,4 +392,5 @@ import { ModeToggle } from '@/components/layout/ModeToggle';
 
 - [Developer Guide](./DEVELOPER_GUIDE.md) - For app developers building pages and features
 - [Architect Guide](./ARCHITECT_GUIDE.md) - For design system maintainers
+- [Editorial Publication System Architecture](./EDITORIAL_SYSTEM_ARCHITECTURE.md) - Renderer systems and work-specific presentations
 - [MDX Components](../MDX_COMPONENTS.md) - Available components for content authors
