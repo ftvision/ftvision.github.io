@@ -1,0 +1,66 @@
+---
+title: "Learning frontend design with AI"
+description: ""
+date: "2026-06-16"
+type: guide
+topics:
+  - technical
+  - design
+lang: en
+draft: true
+---
+
+I always want to learn the frontend design. However, ever since my early years in competitve progrramming, all my focus was on data structure, algorithms, efficiency. Later on, I've sent a lot of time on data analysis, where making figures out of data concerns part of design, but as a graduate student, my main responsibility was to tell a story with my data, and human psychology data is not that complicated.
+
+Now we are at the AI era, and we vibe everything. So I start my journey of learning by doing, with AI. there is a long way to go, but I would like to share a a few things I have learned so far.
+
+# learning the design system
+
+My journey started from late 2024, early 2025, when I was working on a desktop app for general purpose agent. Back then, I have spent more than a year at the startup I worked as a backend engineer. The lesson learned from our first pivot was building a beautiful infrastructure doesn't make much impact if the product doesn't deliver value to users and doesn't gain retention.
+
+then around 2025/10, claude opus 4.1 and sonnet 4.5 has released, and I started to thinking about building my own product. The problem is I don't know how to design the product, so I asked claude to teach me, from the system perspective. 
+
+The thoughts was that: there must be a structure way of thinking to design the product. It must have a language or a vocabuary, otherwise there is no way big companies are able to ship a consistent looking and feeling of the product. The idea of the design, ultimately when it is implemented in the software system, may be able to be expressed. If I can undestand that language, if I can express the specturm of the design space clearly, and if I can communicate the ideas to LLM clearly, LLM must be able to delive the highest quality of design of the product. The problem that I cannot drive my coding agent to create the amazing product design is because I don't know how to articulate it.
+
+So I set out to learn the design language from Claude. In the end, it resulted as a repo [Learn Design System](https://github.com/ftvision/learn-design-system). What I have learned is the vocabulary of implementing the design is "design system", where it has tokens, it has components, styles, themes etc. If we can name each concept clearly, we can use those concepts as building blocks, and by organiizing those building blocks, I will be able to build beautiful product design.
+
+Also, if this is right way. I should be apply the "foundation" of design system before I create any other product. so I packaged "app-starter-kit", that includes `AI_AGENT_PROMPT.md`, `BOOTSTRAP_GUIDE.md`, and `README_BOOTSTRAP.md`, intended to allow people to copy and paste to their own projects and tell their agents to set the foundation of their own design system.
+
+
+# learning to use design skills
+
+Little did I know there is a better way for the "app-starter-kit": Anthropic announced the "Agent Skills" in 2025/10. In the announcement, they open source and published a set of recommended agent skills, including the [frontend-design skill](https://github.com/anthropics/skills/tree/main/skills/frontend-design). With this frontend design skill, Claude code was able to significantly improve the design quality of the UI output. 
+
+Ever since the annoucement, lots of people start to publish their skills. A major category was actually the frontend design skills, because before that, it was so easy to tell the frontend design slops made by LLMs, and no one really had a systematic way to improve it. By systematic, I mean a way that can be reproduced by anyone, with a clear outcome improvement. 
+
+There comes my second step for the design learning, and I settled with the [Impeccable Skill](https://impeccable.style/). It is not a single `SKILL.md`, but instead a very conprehensive set of commands that guide your coding agents to craft, to refine, to polish, to audit, your UI design. 
+
+(probably need to add a bit more  details)
+
+That again improved the design of my toy products. I also felt much less burden of trying to remember all the vocabularies to talk to llm. Also, the skill's parameters, such as "bolder", "quieter", "adapt", "polish", "optimize", and distilled a lot of specific instructions into a concise set of commands. That provides a level of abstraction, or a smaller size of vocabulary for me to express my design intent, without being too vague. 
+
+# You need a way to feel the design: leveraging Storybook and Image Gen.
+
+with (1) and (2), I have two tools that I can implement a consistent UI design, and able to guide my agents to refresh my UI design with more experiments. In fact, in order learn and experiment, I made my blog to allow three different themes: a new york time style, a brutalism style, and a Chinese aeathetic style. The previous two tools are still purely techincal, but fundamentally it is not art. It tells me there is a way to implement a digital surface **if** I have good ideas of what they surface should look like.
+
+The problem is I may not have good ideas of what the surface should look like. It nows comes down to the *design taste* and *design ideas*. The difficult part is to come up with a design in front of a blank slate. That is still a magic process to me: I can't yet fathom how a UI/UX design would come up with the first version of the design given a cold product spec. Before them, there is nothing visual. it was usually a verbal description, usually a very vague one. yet, a great design is able to produce something intangile to something concrete -- a concrete visual presentation of an idea.
+
+Some parts of such process is learnable, to be honest, especially in the area of website or app design. Most of the design, nowadays, are following some conventions and with common componnets with clear affordance -- hero, buttons, tab, accordion. The industry has gone through [Bootstrap]() to [Tailwind](), from [Apple UI Kit]() to [Material Design](). Most of the vocabularies are shared, and consolidated. And there are more libraries, such as Redix UI, Shadcn, etc. I am sure there are now agnet-friendly UI components.
+
+But all those tools doesn't solve the problem of product design, meaning that it doesn't easily allow some untrained minds to vibe with LLM. You can still clearly tell some good designs. 
+
+Now that imagining 0-1 step. People used to use figma, some wireframe, etc. But those tools are kinda cumbersome. Until nano banana comes out, and more importantly, recently GPT-image-2.0. 
+
+GPT-image-2.0 is extremely good at helping you imagine the initial design with Mock. Sometimes it is too good to be implemented as-is. 
+
+[some example of GPT imagined mock design]
+
+
+now this has lower the barrier of the most challenging part of my process of product design. in addition to browsing all other UI demo sites (a, b, c), I can now ask GPT-image-2.0, or more specifically, ask Codex to use `image-gen` skill to generate mock UI designs for me. Starting from there, I can discuss what I want and see directly and feel directly what the design would look like. If I don't like, I can ask Codex to tune to design. I can also learn from Codex about the vocabularies of generating those designs, so that in the future my design imagined by GPT is more precise. It also trains me the ability to form a mental imagary and then communicate those mental imagery to the LLM. those imagary start as very vague, but gradually has become clearer.
+
+There's a special power of "feeling before building". That is the magic of vibe coding in general, because that made the previously unimaginable possible and tangible. Then it provides a way to concretely iterate and play with. 
+
+
+# conclusion
+
+There's a still long way to go. to master the taste, you need to read, experiment, and see a lot. to master the skill, you still need to go deep into the technical. The deeper you know about the technical cross stack, the better you are able to express your design intent, the better you can control and build your design.
